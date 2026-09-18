@@ -262,7 +262,12 @@ public sealed class VisionTranslationService
             bool sourceUsesLatin = source.Text.Any(c => c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
             bool hasHangul = item.Translation.Any(c => c is >= '\uAC00' and <= '\uD7A3');
 
-            if (sourceUsesLatin && source.Text.Length >= 4 && !hasHangul)
+            // "NO.", "NEVER.", "RUN!" 같은 초단문도 반드시 한국어 결과여야 한다.
+            if (sourceUsesLatin && IsRenderableType(item.Type) && !hasHangul)
+                return false;
+
+            if (sourceUsesLatin &&
+                NormalizeComparable(item.Translation) == NormalizeComparable(source.Text))
                 return false;
         }
 
@@ -285,16 +290,20 @@ NON-NEGOTIABLE RULES:
 5. Preserve meaning first. Do not invent facts, relationships, motives, names, or details that are not supported by the page.
 6. Make the final Korean natural and concise while preserving speaker voice, politeness, emotional force, punctuation, and comic rhythm.
 7. Keep names and recurring terms consistent. Transliterate common proper nouns naturally into Korean when appropriate.
-8. Classify each block as one of: dialogue, caption, sign, sfx, other.
-9. Set render=false only for decorative/background signage or sound effects that should remain as artwork. Dialogue and narrative captions must use render=true.
-10. For render=true, translation MUST be a finished Korean translation, not the source text.
-11. Preserve useful visual line structure with [BR]. Use original_region_count as a guide:
+8. Classify each block as one of: dialogue, thought, caption, sign, sfx, logo, background, other.
+9. Set render=true ONLY for dialogue, thought, and narrative caption. Set render=false for sign, sfx, logo, background, and other artwork text.
+10. Very short speech is still dialogue. Words such as "NO.", "YES.", "WAIT!", "RUN!", "NEVER." must never be dropped merely because they are short.
+11. For render=true, translation MUST be a finished Korean translation, never unchanged source text.
+12. Before finalizing each translation, silently check three things: literal fidelity, natural Korean speech/caption style, and brevity for a speech balloon. Do not output the checks.
+13. Avoid stiff translationese. Use the shortest natural Korean wording that preserves the exact intent, relationship, register, emotion, and emphasis.
+14. Read neighboring input blocks as local page context so recurring names, honorifics, pronouns, and speaker tone stay consistent, but never merge separate ids.
+15. Preserve useful visual line structure with [BR]. Use original_region_count as a guide:
     - 1 line: normally no [BR]
     - 2 lines: normally one [BR]
     - 3+ lines: use readable balanced breaks close to the original line count
     Break at natural phrase boundaries; never strand a weak particle by itself.
-12. Keep exactly one output object for every input id. Do not merge, omit, duplicate, or renumber ids.
-13. Do not output reasoning, notes, markdown, or commentary. Output one JSON object only.
+16. Keep exactly one output object for every input id. Do not merge, omit, duplicate, or renumber ids.
+17. Do not output reasoning, notes, markdown, or commentary. Output one JSON object only.
 
 OUTPUT SCHEMA:
 {
@@ -368,9 +377,13 @@ INPUT BLOCKS:
                         ? NormalizeType(typeEl.GetString())
                         : "dialogue";
 
-                bool render =
+                bool requestedRender =
                     !region.TryGetProperty("render", out var renderEl) ||
                     renderEl.ValueKind != JsonValueKind.False;
+
+                bool render =
+                    requestedRender &&
+                    IsRenderableType(type);
 
                 result.Add(new VisionTranslation(
                     id,
@@ -394,12 +407,29 @@ INPUT BLOCKS:
         return value?.Trim().ToLowerInvariant() switch
         {
             "dialogue" => "dialogue",
+            "thought" => "thought",
             "caption" => "caption",
             "sign" => "sign",
             "sfx" => "sfx",
+            "logo" => "logo",
+            "background" => "background",
             "other" => "other",
             _ => "dialogue"
         };
+    }
+
+    static bool IsRenderableType(string? type)
+        => type is "dialogue" or "thought" or "caption";
+
+    static string NormalizeComparable(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return "";
+
+        return new string(
+            text.Where(char.IsLetterOrDigit)
+                .Select(char.ToLowerInvariant)
+                .ToArray());
     }
 
     static CropPayload CreateCropPayload(
