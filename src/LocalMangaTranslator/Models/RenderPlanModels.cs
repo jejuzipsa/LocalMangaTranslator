@@ -42,6 +42,7 @@ public sealed record RenderUnitPlan(
     VisionTranslation Region,
     BalloonLayout Container,
     IReadOnlyList<PlannedOcrLine> Lines,
+    ErasePlan Erase,
     TextLayoutPlan Layout,
     bool Approved,
     string Reason);
