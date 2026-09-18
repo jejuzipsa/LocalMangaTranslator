@@ -1,0 +1,12 @@
+{
+  "id": "qwen3.8-27b",
+  "name": "Qwen 3.8 27B HQ (Ollama)",
+  "type": "vision_llm",
+  "provider": "ollama",
+  "modelTag": "qwen3.8:27b",
+  "apiBase": "http://127.0.0.1:11434",
+  "supportsImage": true,
+  "supportsText": true,
+  "enabled": true,
+  "tasks": ["review", "translation"]
+}
