@@ -34,4 +34,10 @@ public sealed class ModelCatalog
 
         return result.OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
     }
+
+    public IReadOnlyList<ModelProfile> LoadForTask(string task)
+        => Load()
+            .Where(x => x.SupportsTask(task))
+            .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase)
+            .ToList();
 }
