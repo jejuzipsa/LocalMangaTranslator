@@ -27,6 +27,7 @@ public partial class MainWindow : System.Windows.Window
 
     readonly OllamaClient ollama = new();
     readonly VisionTranslationService vision = new();
+    readonly OcrBlockGrouper blockGrouper = new();
     readonly ImageRenderService renderer = new();
 
     CancellationTokenSource? workCts;
@@ -475,9 +476,15 @@ public partial class MainWindow : System.Windows.Window
                     continue;
                 }
 
+                item.Status = "문장 블록 병합";
+                SetStatus(i, item, "OCR 문장 블록 병합");
+
+                var blocks = blockGrouper.Group(lines);
+                Log($"{item.FileName} | OCR 병합 · {lines.Count}줄 → {blocks.Count}개 블록");
+
                 item.Status = "OCR 검수·번역";
-                SetStatus(i, item, "Qwen Vision OCR 검수·번역");
-                Log($"{item.FileName} | Vision LLM 검수·번역 시작");
+                SetStatus(i, item, "Qwen Vision 문맥 검수·번역");
+                Log($"{item.FileName} | Vision LLM 블록 검수·번역 시작");
 
                 var visionProgress = new Progress<string>(message =>
                 {
@@ -487,7 +494,7 @@ public partial class MainWindow : System.Windows.Window
 
                 var translated = await vision.ReviewAndTranslateAsync(
                     item.FilePath,
-                    lines,
+                    blocks,
                     model,
                     visionProgress,
                     workCts.Token);
@@ -495,7 +502,8 @@ public partial class MainWindow : System.Windows.Window
                 int corrected = translated.Count(x =>
                     !string.Equals(x.Source.Text.Trim(), x.CorrectedText.Trim(), StringComparison.Ordinal));
 
-                Log($"{item.FileName} | Vision 완료 · {translated.Count}개 번역 · OCR 교정 {corrected}개");
+                int skipped = translated.Count(x => !x.Render);
+                Log($"{item.FileName} | Vision 완료 · {translated.Count}개 블록 · OCR 교정 {corrected}개 · 조판 제외 {skipped}개");
 
                 var document = new VisionTranslationDocument
                 {
