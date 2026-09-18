@@ -663,6 +663,10 @@ public sealed class ImageRenderService
         int width = bitmap.PixelWidth;
         int height = bitmap.PixelHeight;
 
+        // 페이지 안에서 원문 글자 크기의 중앙값을 기준으로 잡아
+        // 짧은 대사라고 글자가 갑자기 커지거나, 비슷한 캡션끼리 크기가 들쭉날쭉해지는 것을 줄인다.
+        double pageFontReference = ComputePageFontReference(regions);
+
         var visual = new DrawingVisual();
 
         using (var dc = visual.RenderOpen())
@@ -722,7 +726,9 @@ public sealed class ImageRenderService
                     text,
                     box,
                     layout.DarkBackground,
-                    region.Type);
+                    region.Type,
+                    ComputeSourceGlyphHint(region.Source, pageFontReference),
+                    pageFontReference);
             }
         }
 
@@ -1049,12 +1055,55 @@ public sealed class ImageRenderService
         return bitmap;
     }
 
+    static double ComputePageFontReference(
+        IReadOnlyList<VisionTranslation> regions)
+    {
+        var samples = regions
+            .Where(x => x.Render)
+            .SelectMany(x => x.Source.Lines)
+            .Where(x => x.Confidence >= 0.70f)
+            .Select(x => Math.Min(x.W, x.H))
+            .Where(x => x >= 10 && x <= 120)
+            .OrderBy(x => x)
+            .ToArray();
+
+        if (samples.Length == 0)
+            return 32;
+
+        int mid = samples.Length / 2;
+        return samples.Length % 2 == 1
+            ? samples[mid]
+            : (samples[mid - 1] + samples[mid]) / 2.0;
+    }
+
+    static double ComputeSourceGlyphHint(
+        OcrTextBlock block,
+        double fallback)
+    {
+        var samples = block.Lines
+            .Where(x => x.Confidence >= 0.60f)
+            .Select(x => Math.Min(x.W, x.H))
+            .Where(x => x >= 8 && x <= 160)
+            .OrderBy(x => x)
+            .ToArray();
+
+        if (samples.Length == 0)
+            return fallback;
+
+        int mid = samples.Length / 2;
+        return samples.Length % 2 == 1
+            ? samples[mid]
+            : (samples[mid - 1] + samples[mid]) / 2.0;
+    }
+
     static void DrawFittedText(
         DrawingContext dc,
         string text,
         System.Windows.Rect box,
         bool darkBackground,
-        string type)
+        string type,
+        double sourceGlyphHint,
+        double pageFontReference)
     {
         var culture = CultureInfo.GetCultureInfo("ko-KR");
         var typeface = new Typeface(
@@ -1071,12 +1120,28 @@ public sealed class ImageRenderService
             8,
             13);
 
-        double maxFont = Math.Clamp(
+        double containerMaxFont = Math.Clamp(
             caption
                 ? Math.Min(box.Height * 0.34, 48)
                 : Math.Min(box.Height * 0.46, 56),
             Math.Max(minFont, 12),
             caption ? 48 : 56);
+
+        // 원문 OCR 글자 크기를 그대로 쓰면 페이지마다 OCR bbox 편차가 커서 불안정하다.
+        // 페이지 중앙값 주변으로만 허용한 뒤 최대 폰트 크기의 상한으로 사용한다.
+        double normalizedGlyph = Math.Clamp(
+            sourceGlyphHint,
+            pageFontReference * 0.78,
+            pageFontReference * 1.22);
+
+        double sourceDrivenMax = normalizedGlyph * (caption ? 0.92 : 0.98);
+
+        double maxFont = Math.Min(
+            containerMaxFont,
+            Math.Clamp(
+                sourceDrivenMax,
+                Math.Max(minFont, 12),
+                caption ? 46 : 52));
 
         double[] lineHeightFactors = [1.12, 1.06, 1.00];
 
