@@ -1,15 +1,19 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.Json;
 using Microsoft.Win32;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
 
 namespace LocalMangaTranslator;
 
-public partial class MainWindow
+public partial class MainWindow : System.Windows.Window
 {
     static readonly HashSet<string> ImageExtensions =
         new(StringComparer.OrdinalIgnoreCase) { ".jpg", ".jpeg", ".png", ".webp", ".bmp" };
+
+    readonly OllamaClient ollama = new();
+    readonly VisionTranslationService vision = new();
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
@@ -21,14 +25,14 @@ public partial class MainWindow
         InitializeComponent();
         DataContext = this;
 
-        var defaultOutput = Path.Combine(
+        OutputPathBox.Text = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
             "LocalMangaTranslator_Output");
-        OutputPathBox.Text = defaultOutput;
 
         LoadModels();
         Log("프로그램 시작");
         InitializeOcr();
+        Loaded += async (_, _) => await CheckSelectedModelAsync();
     }
 
     void InitializeOcr()
@@ -48,14 +52,85 @@ public partial class MainWindow
     void LoadModels()
     {
         var root = Path.Combine(AppContext.BaseDirectory, "models", "vision_llm");
-        var catalog = new ModelCatalog(root);
-        var models = catalog.Load();
-
+        var models = new ModelCatalog(root).Load();
         ModelBox.ItemsSource = models;
         if (models.Count > 0) ModelBox.SelectedIndex = 0;
+
         Log(models.Count > 0
             ? $"Vision 모델 프로필 {models.Count}개 발견"
             : "Vision 모델 프로필이 없습니다");
+    }
+
+    async Task CheckSelectedModelAsync()
+    {
+        if (ModelBox.SelectedItem is not ModelProfile model) return;
+
+        if (!await ollama.IsServerReadyAsync(model))
+        {
+            Log("Ollama 서버를 찾지 못했습니다 · Ollama를 설치/실행한 뒤 다시 확인하세요");
+            return;
+        }
+
+        var installed = await ollama.IsModelInstalledAsync(model);
+        Log(installed
+            ? $"모델 준비됨: {model.ModelTag}"
+            : $"모델 미설치: {model.ModelTag} · [모델 확인/설치] 버튼으로 다운로드 가능");
+    }
+
+    async void InstallModel_Click(object sender, System.Windows.RoutedEventArgs e)
+    {
+        if (ModelBox.SelectedItem is not ModelProfile model)
+        {
+            Log("설치할 Vision 모델을 선택하세요");
+            return;
+        }
+
+        if (!await ollama.IsServerReadyAsync(model))
+        {
+            Log("Ollama 서버에 연결할 수 없습니다 · Ollama 설치/실행이 먼저 필요합니다");
+            return;
+        }
+
+        if (await ollama.IsModelInstalledAsync(model))
+        {
+            Log($"이미 설치되어 있습니다: {model.ModelTag}");
+            return;
+        }
+
+        InstallModelButton.IsEnabled = false;
+        StopButton.IsEnabled = true;
+        workCts = new CancellationTokenSource();
+
+        try
+        {
+            Log($"모델 다운로드 시작: {model.ModelTag}");
+            var progress = new Progress<string>(message =>
+            {
+                CurrentStatusText.Text = $"모델 다운로드 · {message}";
+                Log($"모델 다운로드 · {message}");
+            });
+
+            await ollama.PullModelAsync(model, progress, workCts.Token);
+            Log($"모델 다운로드 완료: {model.ModelTag}");
+            CurrentStatusText.Text = "모델 준비 완료";
+        }
+        catch (OperationCanceledException)
+        {
+            Log("모델 다운로드 중지됨");
+            CurrentStatusText.Text = "다운로드 중지됨";
+        }
+        catch (Exception ex)
+        {
+            Log($"모델 다운로드 실패: {ex.Message}");
+            CurrentStatusText.Text = "모델 다운로드 실패";
+        }
+        finally
+        {
+            workCts.Dispose();
+            workCts = null;
+            InstallModelButton.IsEnabled = true;
+            StopButton.IsEnabled = false;
+        }
     }
 
     void AddFiles(IEnumerable<string> paths)
@@ -70,7 +145,9 @@ public partial class MainWindow
                 continue;
             }
 
-            if (!File.Exists(path) || !ImageExtensions.Contains(Path.GetExtension(path)) || existing.Contains(path))
+            if (!File.Exists(path) ||
+                !ImageExtensions.Contains(Path.GetExtension(path)) ||
+                existing.Contains(path))
                 continue;
 
             Queue.Add(new QueueItem { FilePath = path });
@@ -137,7 +214,10 @@ public partial class MainWindow
         try
         {
             Directory.CreateDirectory(OutputPathBox.Text);
-            Process.Start(new ProcessStartInfo("explorer.exe", OutputPathBox.Text) { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("explorer.exe", OutputPathBox.Text)
+            {
+                UseShellExecute = true
+            });
         }
         catch (Exception ex)
         {
@@ -165,10 +245,23 @@ public partial class MainWindow
             return;
         }
 
+        if (!await ollama.IsServerReadyAsync(model))
+        {
+            Log("Ollama 서버에 연결할 수 없습니다");
+            return;
+        }
+
+        if (!await ollama.IsModelInstalledAsync(model))
+        {
+            Log($"Vision 모델이 설치되어 있지 않습니다: {model.ModelTag}");
+            return;
+        }
+
         Directory.CreateDirectory(OutputPathBox.Text);
         workCts = new CancellationTokenSource();
         StartButton.IsEnabled = false;
         StopButton.IsEnabled = true;
+        InstallModelButton.IsEnabled = false;
 
         Log($"작업 시작 | 모델: {model.Name}");
 
@@ -181,23 +274,60 @@ public partial class MainWindow
                 var sw = Stopwatch.StartNew();
 
                 item.Status = "OCR 중";
-                CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · OCR";
+                SetStatus(i, item, "OCR");
                 Log($"{item.FileName} | OCR 시작");
 
                 var lines = await ocr.RecognizeAsync(item.FilePath, workCts.Token);
                 Log($"{item.FileName} | OCR 완료 · {lines.Count}개 영역");
 
-                // 다음 커밋에서 이 지점에 Vision LLM 검수+번역을 연결한다.
-                item.Status = "Vision 연결 대기";
-                Log($"{item.FileName} | OCR 결과 준비 완료 · Vision LLM 단계는 아직 미연결");
+                if (lines.Count == 0)
+                {
+                    item.Status = "텍스트 없음";
+                    Log($"{item.FileName} | 감지된 텍스트 없음");
+                    FinishItem(i, item, sw);
+                    continue;
+                }
 
-                sw.Stop();
-                item.Elapsed = $"{sw.Elapsed.TotalSeconds:0.0}초";
-                OverallProgress.Value = (i + 1) * 100.0 / Queue.Count;
+                item.Status = "OCR 검수·번역";
+                SetStatus(i, item, "Qwen Vision OCR 검수·번역");
+                Log($"{item.FileName} | Vision LLM 검수·번역 시작");
+
+                var translated = await vision.ReviewAndTranslateAsync(
+                    item.FilePath,
+                    lines,
+                    model,
+                    workCts.Token);
+
+                int corrected = translated.Count(x =>
+                    !string.Equals(x.Source.Text.Trim(), x.CorrectedText.Trim(), StringComparison.Ordinal));
+
+                Log($"{item.FileName} | Vision 완료 · {translated.Count}개 번역 · OCR 교정 {corrected}개");
+
+                var document = new VisionTranslationDocument
+                {
+                    SourceFile = item.FileName,
+                    Model = model.ModelTag,
+                    Regions = translated
+                };
+
+                var jsonPath = Path.Combine(
+                    OutputPathBox.Text,
+                    Path.GetFileNameWithoutExtension(item.FilePath) + ".translation.json");
+
+                await File.WriteAllTextAsync(
+                    jsonPath,
+                    JsonSerializer.Serialize(document, new JsonSerializerOptions { WriteIndented = true }),
+                    workCts.Token);
+
+                item.Status = "번역 데이터 완료";
+                Log($"{item.FileName} | 번역 JSON 저장: {Path.GetFileName(jsonPath)}");
+                Log($"{item.FileName} | 다음 단계: 인페인트/조판 연결 예정");
+
+                FinishItem(i, item, sw);
             }
 
-            CurrentStatusText.Text = "OCR 단계 완료 · Vision LLM 연결 필요";
-            Log("현재 구현 범위 완료: UI + 작업 큐 + OCR");
+            CurrentStatusText.Text = "OCR + Vision 검수·번역 완료";
+            Log("현재 구현 범위 완료 · 다음 단계는 인페인트와 한글 조판");
         }
         catch (OperationCanceledException)
         {
@@ -215,7 +345,18 @@ public partial class MainWindow
             workCts = null;
             StartButton.IsEnabled = true;
             StopButton.IsEnabled = false;
+            InstallModelButton.IsEnabled = true;
         }
+    }
+
+    void SetStatus(int index, QueueItem item, string stage)
+        => CurrentStatusText.Text = $"{index + 1}/{Queue.Count} · {item.FileName} · {stage}";
+
+    void FinishItem(int index, QueueItem item, Stopwatch sw)
+    {
+        sw.Stop();
+        item.Elapsed = $"{sw.Elapsed.TotalSeconds:0.0}초";
+        OverallProgress.Value = (index + 1) * 100.0 / Queue.Count;
     }
 
     void Stop_Click(object sender, System.Windows.RoutedEventArgs e)

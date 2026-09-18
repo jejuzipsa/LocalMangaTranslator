@@ -1,0 +1,35 @@
+name: Windows Portable Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Publish win-x64
+        run: >
+          dotnet publish src/LocalMangaTranslator/LocalMangaTranslator.csproj
+          -c Release
+          -r win-x64
+          --self-contained true
+          -p:PublishSingleFile=false
+          -p:DebugType=None
+          -o publish/LocalMangaTranslator
+      - name: Add empty model folders
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/ocr | Out-Null
+          New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/inpaint | Out-Null
+          New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/vision_llm | Out-Null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LocalMangaTranslator-win-x64
+          path: publish/LocalMangaTranslator
+          if-no-files-found: error
+          compression-level: 6

@@ -71,15 +71,20 @@
                     <ColumnDefinition Width="18"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="저장 위치" VerticalAlignment="Center" Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="0" Text="저장 위치" VerticalAlignment="Center"
+                           Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
                 <TextBox Grid.Column="1" x:Name="OutputPathBox" IsReadOnly="True" Padding="8,6"/>
                 <Button Grid.Column="2" Content="선택" Click="ChooseOutput_Click"/>
                 <Button Grid.Column="3" Content="폴더 열기" Click="OpenOutput_Click"/>
 
-                <TextBlock Grid.Column="5" Text="Vision 모델" VerticalAlignment="Center" Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                <TextBlock Grid.Column="5" Text="Vision 모델" VerticalAlignment="Center"
+                           Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
                 <ComboBox Grid.Column="6" x:Name="ModelBox" DisplayMemberPath="Name"/>
+                <Button Grid.Column="7" x:Name="InstallModelButton" Content="모델 확인/설치"
+                        Click="InstallModel_Click"/>
             </Grid>
         </Border>
 
@@ -90,17 +95,22 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <TextBlock x:Name="CurrentStatusText" Text="대기 중" Foreground="{StaticResource Muted}" Margin="0,0,0,6"/>
+                <TextBlock x:Name="CurrentStatusText" Text="대기 중"
+                           Foreground="{StaticResource Muted}" Margin="0,0,0,6"/>
                 <ProgressBar x:Name="OverallProgress" Height="12" Minimum="0" Maximum="100" Value="0"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="14,0,0,0" VerticalAlignment="Bottom">
-                <Button x:Name="StartButton" Content="번역 시작" Click="Start_Click" Background="#2456A8" MinWidth="110"/>
-                <Button x:Name="StopButton" Content="작업 중지" Click="Stop_Click" IsEnabled="False" MinWidth="110"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="14,0,0,0"
+                        VerticalAlignment="Bottom">
+                <Button x:Name="StartButton" Content="번역 시작" Click="Start_Click"
+                        Background="#2456A8" MinWidth="110"/>
+                <Button x:Name="StopButton" Content="작업 중지" Click="Stop_Click"
+                        IsEnabled="False" MinWidth="110"/>
             </StackPanel>
         </Grid>
 
-        <Border Grid.Row="6" Background="#090D12" BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="8">
+        <Border Grid.Row="6" Background="#090D12" BorderBrush="{StaticResource Border}"
+                BorderThickness="1" CornerRadius="8">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="36"/>
