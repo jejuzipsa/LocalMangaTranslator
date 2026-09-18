@@ -25,7 +25,9 @@ public sealed class TranslationRefinementService
 
         // Vision 검수 단계의 번역을 항상 안전한 fallback으로 보존한다.
         var result = reviewed.ToList();
-        var renderable = reviewed.Where(x => x.Render).ToList();
+        var renderable = reviewed
+            .Where(x => x.Render && IsRenderableType(x.Type))
+            .ToList();
 
         for (int offset = 0; offset < renderable.Count; offset += BatchSize)
         {
@@ -44,7 +46,9 @@ public sealed class TranslationRefinementService
                 var translated = await SendBatchAsync(batch, model, token);
                 foreach (var item in translated)
                 {
-                    if (!string.IsNullOrWhiteSpace(item.Translation))
+                    var source = batch.FirstOrDefault(x => x.Id == item.Id);
+                    if (source is not null &&
+                        IsUsableTranslation(source, item.Translation))
                         map[item.Id] = item.Translation;
                 }
             }
@@ -69,7 +73,7 @@ public sealed class TranslationRefinementService
                     var recovered = one.FirstOrDefault(x =>
                         x.Id == item.Id && !string.IsNullOrWhiteSpace(x.Translation));
 
-                    if (!string.IsNullOrWhiteSpace(recovered.Translation))
+                    if (IsUsableTranslation(item, recovered.Translation))
                     {
                         map[item.Id] = recovered.Translation;
                         continue;
@@ -101,10 +105,12 @@ public sealed class TranslationRefinementService
         ModelProfile model,
         CancellationToken token)
     {
-        var payload = batch.Select(x => new
+        var payload = batch.Select((x, index) => new
         {
             id = x.Id,
+            sequence = index,
             corrected_source = x.CorrectedText,
+            source_language = x.Source.Language,
             type = x.Type,
             original_region_count = x.Source.OriginalRegionCount,
             draft_translation = x.Translation
@@ -182,16 +188,21 @@ You are the final translation stage for a comic/manga localization pipeline.
 The Vision review stage has already corrected OCR against the image. Translate the corrected source into natural Korean.
 
 RULES:
-1. Use corrected_source as the authoritative source. draft_translation is only a hint and may be replaced completely.
-2. Preserve meaning, speaker voice, politeness, emotion, punctuation, names, and recurring terminology.
-3. Write concise natural Korean suitable for speech bubbles and captions. Prefer shorter natural wording when meaning is unchanged.
-4. Preserve useful visual line structure with [BR]. Use original_region_count only as a layout hint.
-5. Do not add explanations, notes, markdown, reasoning, or extra fields.
-6. Return exactly one item for every input id. Never merge, omit, duplicate, or renumber ids.
-7. Every translation field must contain finished Korean.
-8. ALL output items MUST be inside the regions array. Never place id or translation at the root object.
-9. Output only id and translation for each region. Do not echo original_region_count, corrected_source, type, or draft_translation.
-10. Keep the JSON structure valid until every input id has been emitted.
+1. Use corrected_source as the authoritative source. draft_translation is only a draft and may be replaced completely.
+2. Read the entire INPUT batch as nearby page context before translating. Use neighboring items to keep names, honorifics, pronouns, relationships, and speaker voice consistent, but NEVER merge separate ids.
+3. Preserve exact meaning, intent, speaker attitude, politeness level, emotion, emphasis, punctuation, names, and recurring terminology. Do not invent information.
+4. Produce idiomatic Korean that sounds written for a Korean comic, not like a literal machine translation. Remove English word order and stiff translationese.
+5. Prefer concise speech-bubble wording. If two Korean phrasings mean the same thing, choose the shorter and more natural one.
+6. Preserve character voice. Casual, rough, formal, old-fashioned, sarcastic, threatening, hesitant, or intimate speech should remain distinct when supported by the source.
+7. Very short dialogue is important. Translate standalone speech such as "NO.", "YES.", "WAIT!", "RUN!", "NEVER." into natural Korean; never return it unchanged.
+8. Silently perform three checks before emitting each result: (a) fidelity to source, (b) natural Korean, (c) balloon brevity. Output only the final wording.
+9. Preserve useful visual line structure with [BR]. Use original_region_count only as a layout hint, not as a reason to split grammar unnaturally.
+10. Every translation field must be finished Korean. Do not leave ordinary English/Japanese source fragments untranslated. Proper names should be transliterated naturally when appropriate.
+11. Do not add explanations, notes, markdown, reasoning, or extra fields.
+12. Return exactly one item for every input id. Never merge, omit, duplicate, or renumber ids.
+13. ALL output items MUST be inside the regions array. Never place id or translation at the root object.
+14. Output only id and translation for each region. Do not echo sequence, source_language, original_region_count, corrected_source, type, or draft_translation.
+15. Keep the JSON structure valid until every input id has been emitted.
 
 OUTPUT:
 {
@@ -262,6 +273,62 @@ INPUT:
             return;
 
         result.Add((id, translation));
+    }
+
+    static bool IsRenderableType(string? type)
+        => type is "dialogue" or "thought" or "caption";
+
+    static bool IsUsableTranslation(
+        VisionTranslation source,
+        string? translation)
+    {
+        if (string.IsNullOrWhiteSpace(translation))
+            return false;
+
+        string text = translation.Trim();
+
+        bool sourceUsesLatin =
+            source.CorrectedText.Any(c =>
+                c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
+
+        if (!sourceUsesLatin)
+            return true;
+
+        bool hasHangul =
+            text.Any(c => c is >= '\uAC00' and <= '\uD7A3');
+
+        // 영어 대사/캡션이 그대로 남는 결과를 막는다.
+        if (IsRenderableType(source.Type) && !hasHangul)
+            return false;
+
+        if (NormalizeComparable(text) ==
+            NormalizeComparable(source.CorrectedText))
+            return false;
+
+        int latin = text.Count(c =>
+            c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
+
+        int hangul = text.Count(c =>
+            c is >= '\uAC00' and <= '\uD7A3');
+
+        // 고유명사 몇 글자는 허용하되, 결과 대부분이 영어라면 실패로 보고
+        // 개별 재시도 후 Vision 단계 번역으로 fallback한다.
+        if (latin >= 4 &&
+            latin > Math.Max(4, hangul * 2))
+            return false;
+
+        return true;
+    }
+
+    static string NormalizeComparable(string? text)
+    {
+        if (string.IsNullOrWhiteSpace(text))
+            return "";
+
+        return new string(
+            text.Where(char.IsLetterOrDigit)
+                .Select(char.ToLowerInvariant)
+                .ToArray());
     }
 
     static string Compact(string text)
