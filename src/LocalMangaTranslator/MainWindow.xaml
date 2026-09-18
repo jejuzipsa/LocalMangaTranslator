@@ -22,7 +22,7 @@
 
         <Grid Grid.Row="0" Margin="0,0,0,14">
             <TextBlock Text="LocalMangaTranslator" FontSize="25" FontWeight="SemiBold"/>
-            <TextBlock Text="OCR → Vision LLM 검수·번역 → 인페인트 → 조판"
+            <TextBlock Text="OCR → Vision OCR 검수 → 번역 → 인페인트 → 조판"
                        Foreground="{StaticResource Muted}" Margin="0,35,0,0"/>
         </Grid>
 
@@ -99,40 +99,69 @@
         <Border Grid.Row="4" Background="{StaticResource Panel}" BorderBrush="{StaticResource Border}"
                 BorderThickness="1" CornerRadius="8" Padding="8" Margin="0,10,0,0">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="18"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="300"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Text="저장 위치" VerticalAlignment="Center"
-                           Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
-                <TextBox Grid.Column="1" x:Name="OutputPathBox" IsReadOnly="True"
-                         Padding="8,5" MinHeight="32" VerticalContentAlignment="Center"/>
-                <Button Grid.Column="2" Content="선택" Click="ChooseOutput_Click"
-                        Padding="12,5" MinHeight="32"/>
-                <Button Grid.Column="3" Content="폴더 열기" Click="OpenOutput_Click"
-                        Padding="12,5" MinHeight="32"/>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="5" Text="Vision 모델" VerticalAlignment="Center"
-                           Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
-                <ComboBox Grid.Column="6"
-                          x:Name="ModelBox"
-                          MinHeight="32"
-                          SelectionChanged="ModelBox_SelectionChanged">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource Text}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <Button Grid.Column="7" x:Name="InstallModelButton" Content="모델 확인/설치"
-                        Click="InstallModel_Click" Padding="12,5" MinHeight="32"/>
+                    <TextBlock Grid.Column="0" Text="저장 위치" VerticalAlignment="Center"
+                               Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                    <TextBox Grid.Column="1" x:Name="OutputPathBox" IsReadOnly="True"
+                             Padding="8,5" MinHeight="32" VerticalContentAlignment="Center"/>
+                    <Button Grid.Column="2" Content="선택" Click="ChooseOutput_Click"
+                            Padding="12,5" MinHeight="32"/>
+                    <Button Grid.Column="3" Content="폴더 열기" Click="OpenOutput_Click"
+                            Padding="12,5" MinHeight="32"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="18"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="OCR 검수 모델" VerticalAlignment="Center"
+                               Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                    <ComboBox Grid.Column="1"
+                              x:Name="ReviewModelBox"
+                              MinHeight="32"
+                              SelectionChanged="ModelBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Foreground="{StaticResource Text}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Grid.Column="3" Text="번역 모델" VerticalAlignment="Center"
+                               Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                    <ComboBox Grid.Column="4"
+                              x:Name="TranslationModelBox"
+                              MinHeight="32"
+                              SelectionChanged="ModelBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" Foreground="{StaticResource Text}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Grid.Column="6" x:Name="InstallModelButton" Content="선택 모델 확인/설치"
+                            Click="InstallModel_Click" Padding="12,5" MinHeight="32"/>
+                </Grid>
             </Grid>
         </Border>
 
