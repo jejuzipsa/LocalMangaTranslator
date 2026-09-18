@@ -133,6 +133,7 @@ public sealed class VisionTranslationService
         {
             model = model.ModelTag,
             stream = false,
+            think = false,
             format = "json",
             options = new
             {
@@ -330,7 +331,8 @@ public sealed class VisionTranslationService
 3. translation에는 자연스러운 한국어 번역만 적는다.
 4. 말투, 호칭, 감정, 문장부호를 이미지 문맥에 맞게 유지한다.
 5. 항목을 추가/삭제/병합하지 말고 반드시 입력 id를 그대로 유지한다.
-6. 설명이나 마크다운 없이 JSON만 출력한다.
+6. 추론 과정은 출력하지 말고 즉시 JSON 결과만 반환한다.
+7. 설명이나 마크다운 없이 JSON만 출력한다.
 
 출력 형식:
 {
