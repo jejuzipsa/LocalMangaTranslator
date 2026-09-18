@@ -246,7 +246,9 @@ public static class BalloonMaskService
             avgConfidence >= 0.52 &&
             meaningfulLength <= 46 &&
             block.OriginalRegionCount <= 4 &&
-            blockRect.Width * (double)blockRect.Height <= 120000;
+            blockRect.Width * (double)blockRect.Height <= 120000 &&
+            blockRect.Width <= source.Cols * 0.27 &&
+            blockRect.Height <= source.Rows * 0.16;
 
         bool dark = EstimateDarkBackground(
             source,
