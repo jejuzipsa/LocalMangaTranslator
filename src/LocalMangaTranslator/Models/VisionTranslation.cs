@@ -1,12 +1,12 @@
-using LocalMangaTranslator.Services;
-
 namespace LocalMangaTranslator.Models;
 
 public sealed record VisionTranslation(
     int Id,
-    OcrLine Source,
+    OcrTextBlock Source,
     string CorrectedText,
-    string Translation
+    string Translation,
+    string Type,
+    bool Render
 );
 
 public sealed class VisionTranslationDocument
