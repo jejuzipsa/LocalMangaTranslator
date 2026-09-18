@@ -88,7 +88,7 @@ public sealed class VisionTranslationService
     {
         var json = JsonSerializer.Serialize(ocrPayload);
 
-        return $"""
+        const string instructions = """
 너는 일본어/영어 만화 이미지 OCR 검수 및 한국어 번역기다.
 첨부된 원본 이미지와 아래 OCR 결과를 함께 확인하라.
 
@@ -102,15 +102,16 @@ public sealed class VisionTranslationService
 7. 설명이나 마크다운 없이 JSON만 출력한다.
 
 출력 형식:
-{{
+{
   "regions": [
-    {{ "id": 0, "corrected": "원문", "translation": "한국어" }}
+    { "id": 0, "corrected": "원문", "translation": "한국어" }
   ]
-}}
+}
 
 OCR:
-{json}
 """;
+
+        return instructions + Environment.NewLine + json;
     }
 
     static List<VisionTranslation> ParseResult(string content, IReadOnlyList<OcrLine> lines)
