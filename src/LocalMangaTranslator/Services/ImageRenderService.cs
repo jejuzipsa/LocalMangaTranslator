@@ -28,16 +28,34 @@ public sealed class ImageRenderService
 
         Dictionary<int, BalloonLayout> layouts;
 
+        var debugDir = Path.Combine(
+            Path.GetDirectoryName(outputPath) ?? AppContext.BaseDirectory,
+            "debug");
+
+        var debugPath = Path.Combine(
+            debugDir,
+            Path.GetFileNameWithoutExtension(outputPath) + ".balloon-debug.png");
+
         try
         {
             progress?.Report($"말풍선 마스크 분석 + 글자 마스크 생성 · {renderRegions.Count}개 블록");
 
             layouts = await Task.Run(
-                () => InpaintPreservingContainers(sourcePath, cleanedPath, renderRegions, token),
+                () => InpaintPreservingContainers(
+                    sourcePath,
+                    cleanedPath,
+                    debugPath,
+                    renderRegions,
+                    progress,
+                    token),
                 token);
 
-            int detected = layouts.Values.Count(x => x.Detected);
-            progress?.Report($"말풍선 마스크 감지 {detected}/{renderRegions.Count} · 글자만 제거 완료");
+            int detected = layouts.Values.Count(x => x.Detected && x.ShouldRender);
+            int fallback = layouts.Values.Count(x => x.Mode == "fallback" && x.ShouldRender);
+            int rejected = layouts.Values.Count(x => !x.ShouldRender);
+
+            progress?.Report(
+                $"말풍선 마스크 성공 {detected} · fallback {fallback} · 원문 유지 {rejected}");
 
             token.ThrowIfCancellationRequested();
             progress?.Report("자동 줄바꿈·글자 크기 조절 + 한글 조판 시작");
@@ -60,7 +78,9 @@ public sealed class ImageRenderService
     static Dictionary<int, BalloonLayout> InpaintPreservingContainers(
         string sourcePath,
         string cleanedPath,
+        string debugPath,
         IReadOnlyList<VisionTranslation> regions,
+        IProgress<string>? progress,
         CancellationToken token)
     {
         using var source = Cv2.ImRead(sourcePath, ImreadModes.Color);
@@ -81,6 +101,10 @@ public sealed class ImageRenderService
                 region.Type);
 
             layouts[region.Id] = layout;
+            progress?.Report(layout.Diagnostic(region.Id));
+
+            if (!layout.ShouldRender)
+                continue;
 
             foreach (var line in block.Lines)
             {
@@ -92,6 +116,12 @@ public sealed class ImageRenderService
                     layout);
             }
         }
+
+        SaveDebugOverlay(
+            source,
+            regions,
+            layouts,
+            debugPath);
 
         // 글자 가장자리의 안티앨리어싱까지 최소 범위로 포함한다.
         using (var kernel = Cv2.GetStructuringElement(
@@ -562,8 +592,21 @@ public sealed class ImageRenderService
                         null,
                         0,
                         0,
-                        region.Type);
+                        region.Type,
+                        "rejected",
+                        false,
+                        "layout_missing",
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0);
                 }
+
+                if (!layout.ShouldRender)
+                    continue;
 
                 var box = new System.Windows.Rect(
                     layout.Inner.X,
@@ -597,6 +640,86 @@ public sealed class ImageRenderService
 
         using var stream = File.Create(outputPath);
         encoder.Save(stream);
+    }
+
+    static void SaveDebugOverlay(
+        Mat source,
+        IReadOnlyList<VisionTranslation> regions,
+        IReadOnlyDictionary<int, BalloonLayout> layouts,
+        string debugPath)
+    {
+        try
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(debugPath)!);
+            using var debug = source.Clone();
+
+            foreach (var region in regions)
+            {
+                if (!layouts.TryGetValue(region.Id, out var layout))
+                    continue;
+
+                Scalar color = layout.Mode switch
+                {
+                    "speech" => new Scalar(0, 220, 0),
+                    "caption" or "caption_flood" => new Scalar(220, 120, 0),
+                    "fallback" => new Scalar(0, 220, 220),
+                    _ => new Scalar(0, 0, 230)
+                };
+
+                var ocr = ClampRect(
+                    (int)Math.Floor(region.Source.X),
+                    (int)Math.Floor(region.Source.Y),
+                    (int)Math.Ceiling(region.Source.W),
+                    (int)Math.Ceiling(region.Source.H),
+                    source.Cols,
+                    source.Rows);
+
+                Cv2.Rectangle(
+                    debug,
+                    ocr,
+                    new Scalar(180, 180, 180),
+                    1);
+
+                Cv2.Rectangle(
+                    debug,
+                    layout.Bounds,
+                    color,
+                    2);
+
+                if (layout.ShouldRender)
+                {
+                    Cv2.Rectangle(
+                        debug,
+                        layout.Inner,
+                        color,
+                        1);
+                }
+
+                string label =
+                    $"{region.Id}:{layout.Mode}" +
+                    (layout.ShouldRender ? "" : ":KEEP");
+
+                var labelPoint = new OpenCvSharp.Point(
+                    Math.Max(0, layout.Bounds.X),
+                    Math.Max(14, layout.Bounds.Y - 4));
+
+                Cv2.PutText(
+                    debug,
+                    label,
+                    labelPoint,
+                    HersheyFonts.HersheySimplex,
+                    0.42,
+                    color,
+                    1,
+                    LineTypes.AntiAlias);
+            }
+
+            Cv2.ImWrite(debugPath, debug);
+        }
+        catch
+        {
+            // 디버그 출력 실패는 실제 번역/조판 작업을 중단시키지 않는다.
+        }
     }
 
     static string NormalizeForAutoLayout(string text)
