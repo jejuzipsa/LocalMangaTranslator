@@ -76,10 +76,7 @@ public partial class MainWindow : System.Windows.Window
             : "Vision 모델 프로필이 없습니다");
 
         if (models.Count > 0)
-        {
-            SelectedModelText.Text = $"선택 모델: {models[0].Name}";
             Log($"선택 모델: {models[0].Name} | {models[0].ModelTag}");
-        }
     }
 
     void ApplyDarkTitleBar()
@@ -107,14 +104,8 @@ public partial class MainWindow : System.Windows.Window
 
     void ModelBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
-        if (ModelBox.SelectedItem is ModelProfile model)
-        {
-            if (SelectedModelText is not null)
-                SelectedModelText.Text = $"선택 모델: {model.Name}";
-
-            if (LogBox is not null)
-                Log($"Vision 모델 선택: {model.Name} | {model.ModelTag}");
-        }
+        if (ModelBox.SelectedItem is ModelProfile model && LogBox is not null)
+            Log($"Vision 모델 선택: {model.Name} | {model.ModelTag}");
     }
 
     async Task CheckSelectedModelAsync()
