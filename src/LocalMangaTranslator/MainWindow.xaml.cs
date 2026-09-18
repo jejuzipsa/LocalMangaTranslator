@@ -27,6 +27,7 @@ public partial class MainWindow : System.Windows.Window
 
     readonly OllamaClient ollama = new();
     readonly VisionTranslationService vision = new();
+    readonly ImageRenderService renderer = new();
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
@@ -512,15 +513,37 @@ public partial class MainWindow : System.Windows.Window
                     JsonSerializer.Serialize(document, new JsonSerializerOptions { WriteIndented = true }),
                     workCts.Token);
 
-                item.Status = "번역 데이터 완료";
                 Log($"{item.FileName} | 번역 JSON 저장: {Path.GetFileName(jsonPath)}");
-                Log($"{item.FileName} | 다음 단계: 인페인트/조판 연결 예정");
+
+                item.Status = "인페인트 중";
+                SetStatus(i, item, "인페인트");
+                Log($"{item.FileName} | 인페인트 시작");
+
+                var imagePath = Path.Combine(
+                    OutputPathBox.Text,
+                    Path.GetFileNameWithoutExtension(item.FilePath) + ".translated.png");
+
+                var renderProgress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
+                    Log($"{item.FileName} | {message}");
+                });
+
+                await renderer.RenderAsync(
+                    item.FilePath,
+                    translated,
+                    imagePath,
+                    renderProgress,
+                    workCts.Token);
+
+                item.Status = "완료";
+                Log($"{item.FileName} | 완료 이미지: {Path.GetFileName(imagePath)}");
 
                 FinishItem(i, item, sw);
             }
 
-            CurrentStatusText.Text = "OCR + Vision 검수·번역 완료";
-            Log("현재 구현 범위 완료 · 다음 단계는 인페인트와 한글 조판");
+            CurrentStatusText.Text = "번역 이미지 생성 완료";
+            Log("전체 작업 완료 · OCR → Vision 검수·번역 → 인페인트 → 한글 조판");
         }
         catch (OperationCanceledException)
         {
