@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using Microsoft.Win32;
 using LocalMangaTranslator.Models;
@@ -9,6 +10,18 @@ namespace LocalMangaTranslator;
 
 public partial class MainWindow : System.Windows.Window
 {
+    const int DwmwaUseImmersiveDarkMode = 20;
+    const int DwmwaUseImmersiveDarkModeBefore20H1 = 19;
+    const int DwmwaCaptionColor = 35;
+    const int DwmwaTextColor = 36;
+
+    [DllImport("dwmapi.dll")]
+    static extern int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
+
+    static readonly int DarkCaptionColor = ColorRef(0x0D, 0x11, 0x17);
+    static readonly int LightTextColor = ColorRef(0xE6, 0xED, 0xF3);
+
+    static int ColorRef(byte r, byte g, byte b) => r | (g << 8) | (b << 16);
     static readonly HashSet<string> ImageExtensions =
         new(StringComparer.OrdinalIgnoreCase) { ".jpg", ".jpeg", ".png", ".webp", ".bmp" };
 
@@ -28,6 +41,8 @@ public partial class MainWindow : System.Windows.Window
         OutputPathBox.Text = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
             "LocalMangaTranslator_Output");
+
+        SourceInitialized += (_, _) => ApplyDarkTitleBar();
 
         LoadModels();
         Log("프로그램 시작");
@@ -59,6 +74,38 @@ public partial class MainWindow : System.Windows.Window
         Log(models.Count > 0
             ? $"Vision 모델 프로필 {models.Count}개 발견"
             : "Vision 모델 프로필이 없습니다");
+
+        if (models.Count > 0)
+            Log($"선택 모델: {models[0].Name} | {models[0].ModelTag}");
+    }
+
+    void ApplyDarkTitleBar()
+    {
+        try
+        {
+            var hwnd = new System.Windows.Interop.WindowInteropHelper(this).Handle;
+            if (hwnd == IntPtr.Zero) return;
+
+            int enabled = 1;
+            if (DwmSetWindowAttribute(hwnd, DwmwaUseImmersiveDarkMode, ref enabled, sizeof(int)) != 0)
+                DwmSetWindowAttribute(hwnd, DwmwaUseImmersiveDarkModeBefore20H1, ref enabled, sizeof(int));
+
+            int caption = DarkCaptionColor;
+            DwmSetWindowAttribute(hwnd, DwmwaCaptionColor, ref caption, sizeof(int));
+
+            int textColor = LightTextColor;
+            DwmSetWindowAttribute(hwnd, DwmwaTextColor, ref textColor, sizeof(int));
+        }
+        catch
+        {
+            // 구형 Windows에서는 제목 표시줄 색상 변경을 건너뛴다.
+        }
+    }
+
+    void ModelBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+    {
+        if (ModelBox.SelectedItem is ModelProfile model && LogBox is not null)
+            Log($"Vision 모델 선택: {model.Name} | {model.ModelTag}");
     }
 
     async Task CheckSelectedModelAsync()
@@ -181,7 +228,7 @@ public partial class MainWindow : System.Windows.Window
                 $"Ollama 설치 실패 (winget 종료코드 {process.ExitCode}) · {detail}");
         }
 
-        Log("Ollama 설치 완료 · 서버 시작 확인 중");
+        Log("Ollama 런타임 설치 완료 · 서버 시작 확인 중");
         CurrentStatusText.Text = "Ollama 시작 확인 중...";
 
         if (await WaitForOllamaAsync(model, token, 12))
