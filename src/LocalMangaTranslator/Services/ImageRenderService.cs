@@ -11,13 +11,6 @@ public sealed class ImageRenderService
 {
     const double InpaintRadius = 2.5;
 
-    sealed record ContainerLayout(
-        OpenCvSharp.Rect Bounds,
-        OpenCvSharp.Rect Inner,
-        bool DarkBackground,
-        bool Detected,
-        string Type);
-
     public async Task RenderAsync(
         string sourcePath,
         IReadOnlyList<VisionTranslation> regions,
@@ -33,18 +26,18 @@ public sealed class ImageRenderService
             Path.GetTempPath(),
             $"lmt_inpaint_{Guid.NewGuid():N}.png");
 
-        Dictionary<int, ContainerLayout> layouts;
+        Dictionary<int, BalloonLayout> layouts;
 
         try
         {
-            progress?.Report($"말풍선/캡션 분석 + 글자 마스크 생성 · {renderRegions.Count}개 블록");
+            progress?.Report($"말풍선 마스크 분석 + 글자 마스크 생성 · {renderRegions.Count}개 블록");
 
             layouts = await Task.Run(
                 () => InpaintPreservingContainers(sourcePath, cleanedPath, renderRegions, token),
                 token);
 
             int detected = layouts.Values.Count(x => x.Detected);
-            progress?.Report($"컨테이너 감지 {detected}/{renderRegions.Count} · 글자만 제거 완료");
+            progress?.Report($"말풍선 마스크 감지 {detected}/{renderRegions.Count} · 글자만 제거 완료");
 
             token.ThrowIfCancellationRequested();
             progress?.Report("자동 줄바꿈·글자 크기 조절 + 한글 조판 시작");
@@ -64,7 +57,7 @@ public sealed class ImageRenderService
         }
     }
 
-    static Dictionary<int, ContainerLayout> InpaintPreservingContainers(
+    static Dictionary<int, BalloonLayout> InpaintPreservingContainers(
         string sourcePath,
         string cleanedPath,
         IReadOnlyList<VisionTranslation> regions,
@@ -75,45 +68,19 @@ public sealed class ImageRenderService
             throw new InvalidOperationException("원본 이미지를 열 수 없습니다.");
 
         using var mask = Mat.Zeros(source.Rows, source.Cols, MatType.CV_8UC1).ToMat();
-        var layouts = new Dictionary<int, ContainerLayout>(regions.Count);
+        var layouts = new Dictionary<int, BalloonLayout>(regions.Count);
 
         foreach (var region in regions)
         {
             token.ThrowIfCancellationRequested();
 
             var block = region.Source;
-            var blockRect = ClampRect(
-                (int)Math.Floor(block.X),
-                (int)Math.Floor(block.Y),
-                (int)Math.Ceiling(block.W),
-                (int)Math.Ceiling(block.H),
-                source.Cols,
-                source.Rows);
-
-            var (containerRect, detected) = DetectContainerRect(
+            var layout = BalloonMaskService.Analyze(
                 source,
-                blockRect,
+                block,
                 region.Type);
 
-            var innerRect = ComputeInnerRect(
-                containerRect,
-                blockRect,
-                detected,
-                region.Type,
-                source.Cols,
-                source.Rows);
-
-            bool darkBackground = EstimateDarkBackground(
-                source,
-                innerRect,
-                block.Lines);
-
-            layouts[region.Id] = new ContainerLayout(
-                containerRect,
-                innerRect,
-                darkBackground,
-                detected,
-                region.Type);
+            layouts[region.Id] = layout;
 
             foreach (var line in block.Lines)
             {
@@ -122,7 +89,7 @@ public sealed class ImageRenderService
                     source,
                     mask,
                     line,
-                    detected ? containerRect : (OpenCvSharp.Rect?)null);
+                    layout);
             }
         }
 
@@ -364,7 +331,7 @@ public sealed class ImageRenderService
         Mat source,
         Mat globalMask,
         OcrLine line,
-        OpenCvSharp.Rect? container)
+        BalloonLayout layout)
     {
         int expand = Math.Max(1, (int)Math.Ceiling(line.H * 0.035));
 
@@ -376,20 +343,9 @@ public sealed class ImageRenderService
             source.Cols,
             source.Rows);
 
-        if (container is not null)
+        if (layout.Detected)
         {
-            // 말풍선/캡션 외곽선은 마스크에서 보호한다.
-            var c = container.Value;
-            int guard = Math.Clamp(Math.Min(c.Width, c.Height) / 80, 2, 4);
-            var safeContainer = c.Width > guard * 2 + 2 && c.Height > guard * 2 + 2
-                ? new OpenCvSharp.Rect(
-                    c.X + guard,
-                    c.Y + guard,
-                    c.Width - guard * 2,
-                    c.Height - guard * 2)
-                : c;
-
-            var clipped = Intersect(textRect, safeContainer);
+            var clipped = Intersect(textRect, layout.Bounds);
             if (clipped.Width <= 0 || clipped.Height <= 0)
                 return;
             textRect = clipped;
@@ -404,9 +360,9 @@ public sealed class ImageRenderService
             source.Cols,
             source.Rows);
 
-        if (container is not null)
+        if (layout.Detected)
         {
-            var clipped = Intersect(sampleRect, container.Value);
+            var clipped = Intersect(sampleRect, layout.Bounds);
             if (clipped.Width > 0 && clipped.Height > 0)
                 sampleRect = clipped;
         }
@@ -439,6 +395,9 @@ public sealed class ImageRenderService
         {
             for (int x = textRect.Left; x < textRect.Right; x++)
             {
+                if (layout.Detected && !layout.Contains(x, y))
+                    continue;
+
                 var pixel = source.At<Vec3b>(y, x);
                 double distance = ColorDistance(pixel, background);
 
@@ -464,6 +423,9 @@ public sealed class ImageRenderService
             {
                 for (int x = textRect.Left; x < textRect.Right; x++)
                 {
+                    if (layout.Detected && !layout.Contains(x, y))
+                        continue;
+
                     var pixel = source.At<Vec3b>(y, x);
                     double delta = Luminance(pixel) - bgLuma;
 
@@ -560,7 +522,7 @@ public sealed class ImageRenderService
     static void TypesetAndSave(
         string cleanedPath,
         IReadOnlyList<VisionTranslation> regions,
-        IReadOnlyDictionary<int, ContainerLayout> layouts,
+        IReadOnlyDictionary<int, BalloonLayout> layouts,
         string outputPath,
         CancellationToken token)
     {
@@ -592,11 +554,14 @@ public sealed class ImageRenderService
                         width,
                         height);
 
-                    layout = new ContainerLayout(
+                    layout = new BalloonLayout(
                         fallback,
                         fallback,
                         false,
                         false,
+                        null,
+                        0,
+                        0,
                         region.Type);
                 }
 
