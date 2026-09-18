@@ -11,6 +11,11 @@ public sealed class ModelProfile
     public bool SupportsImage { get; set; } = true;
     public bool SupportsText { get; set; } = true;
     public bool Enabled { get; set; } = true;
+    public string[] Tasks { get; set; } = [];
+
+    public bool SupportsTask(string task)
+        => Tasks.Length == 0 ||
+           Tasks.Any(x => string.Equals(x, task, StringComparison.OrdinalIgnoreCase));
 
     public override string ToString() => Name;
 }
