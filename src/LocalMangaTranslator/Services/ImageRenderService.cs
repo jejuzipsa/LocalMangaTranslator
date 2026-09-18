@@ -571,8 +571,7 @@ public sealed class ImageRenderService
                 if (string.IsNullOrWhiteSpace(text))
                     continue;
 
-                ContainerLayout layout;
-                if (!layouts.TryGetValue(region.Id, out layout!))
+                if (!layouts.TryGetValue(region.Id, out var layout))
                 {
                     var fallback = ClampRect(
                         (int)region.Source.X,
