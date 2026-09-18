@@ -18,9 +18,20 @@ public sealed class ImageRenderService
         IProgress<string>? progress = null,
         CancellationToken token = default)
     {
-        var renderRegions = regions.Where(x => x.Render).ToList();
+        var requestedRegions = regions.Where(x => x.Render).ToList();
+        var renderRegions = SuppressDuplicateRegions(
+            requestedRegions,
+            out var suppressedDuplicates);
+
         if (renderRegions.Count == 0)
             throw new InvalidOperationException("조판할 번역 영역이 없습니다.");
+
+        if (suppressedDuplicates.Count > 0)
+        {
+            progress?.Report(
+                $"중복 OCR/번역 영역 {suppressedDuplicates.Count}개 제외 · " +
+                string.Join(", ", suppressedDuplicates.Select(x => $"id={x.Id}")));
+        }
 
         string cleanedPath = Path.Combine(
             Path.GetTempPath(),
@@ -855,6 +866,160 @@ public sealed class ImageRenderService
         }
     }
 
+    static List<VisionTranslation> SuppressDuplicateRegions(
+        IReadOnlyList<VisionTranslation> regions,
+        out List<VisionTranslation> suppressed)
+    {
+        suppressed = [];
+        if (regions.Count <= 1)
+            return regions.ToList();
+
+        // 더 완전한 블록을 먼저 검토한다. 같은 캡션/말풍선을 OCR 멀티패스가
+        // 일부 줄만 다시 잡은 경우 작은 중복 블록이 뒤에서 자연스럽게 제거된다.
+        var ordered = regions
+            .OrderByDescending(DuplicateKeepScore)
+            .ThenBy(x => x.Id)
+            .ToList();
+
+        var kept = new List<VisionTranslation>(ordered.Count);
+
+        foreach (var candidate in ordered)
+        {
+            bool duplicate = kept.Any(existing =>
+                IsDuplicateRenderRegion(existing, candidate));
+
+            if (duplicate)
+            {
+                suppressed.Add(candidate);
+                continue;
+            }
+
+            kept.Add(candidate);
+        }
+
+        return kept
+            .OrderBy(x => x.Id)
+            .ToList();
+    }
+
+    static double DuplicateKeepScore(VisionTranslation region)
+    {
+        double area = Math.Max(
+            1.0,
+            region.Source.W * region.Source.H);
+
+        int textLength = NormalizeDuplicateText(
+            string.IsNullOrWhiteSpace(region.CorrectedText)
+                ? region.Source.Text
+                : region.CorrectedText).Length;
+
+        return
+            region.Source.OriginalRegionCount * 1000.0 +
+            textLength * 12.0 +
+            Math.Sqrt(area);
+    }
+
+    static bool IsDuplicateRenderRegion(
+        VisionTranslation a,
+        VisionTranslation b)
+    {
+        // dialogue와 caption처럼 의미가 다른 타입끼리는 중복으로 지우지 않는다.
+        if (!string.Equals(
+                a.Type,
+                b.Type,
+                StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        var ar = new OpenCvSharp.Rect2d(
+            a.Source.X,
+            a.Source.Y,
+            Math.Max(1, a.Source.W),
+            Math.Max(1, a.Source.H));
+
+        var br = new OpenCvSharp.Rect2d(
+            b.Source.X,
+            b.Source.Y,
+            Math.Max(1, b.Source.W),
+            Math.Max(1, b.Source.H));
+
+        double intersection = IntersectionArea(ar, br);
+        double smallerArea = Math.Max(
+            1.0,
+            Math.Min(ar.Width * ar.Height, br.Width * br.Height));
+
+        double containment = intersection / smallerArea;
+        if (containment < 0.82)
+            return false;
+
+        string at = NormalizeDuplicateText(
+            string.IsNullOrWhiteSpace(a.CorrectedText)
+                ? a.Source.Text
+                : a.CorrectedText);
+
+        string bt = NormalizeDuplicateText(
+            string.IsNullOrWhiteSpace(b.CorrectedText)
+                ? b.Source.Text
+                : b.CorrectedText);
+
+        if (at.Length < 4 || bt.Length < 4)
+            return false;
+
+        // 큰 블록 문장 안에 작은 OCR 재검출 문장이 포함되는 전형적인 중복.
+        if (at.Contains(bt, StringComparison.Ordinal) ||
+            bt.Contains(at, StringComparison.Ordinal))
+            return true;
+
+        // OCR 교정 차이로 완전한 substring이 아니어도 단어 대부분이 같으면 중복.
+        double tokenSimilarity = TokenContainment(at, bt);
+        return containment >= 0.90 && tokenSimilarity >= 0.78;
+    }
+
+    static string NormalizeDuplicateText(string text)
+    {
+        var chars = text
+            .ToLowerInvariant()
+            .Where(char.IsLetterOrDigit)
+            .ToArray();
+
+        return new string(chars);
+    }
+
+    static double TokenContainment(string a, string b)
+    {
+        static HashSet<string> Tokens(string value)
+        {
+            var tokens = new HashSet<string>(
+                StringComparer.OrdinalIgnoreCase);
+
+            for (int i = 0; i < value.Length - 2; i++)
+                tokens.Add(value.Substring(i, 3));
+
+            return tokens;
+        }
+
+        var ta = Tokens(a);
+        var tb = Tokens(b);
+
+        if (ta.Count == 0 || tb.Count == 0)
+            return 0;
+
+        int common = ta.Count(x => tb.Contains(x));
+        return common / (double)Math.Min(ta.Count, tb.Count);
+    }
+
+    static double IntersectionArea(
+        OpenCvSharp.Rect2d a,
+        OpenCvSharp.Rect2d b)
+    {
+        double left = Math.Max(a.Left, b.Left);
+        double top = Math.Max(a.Top, b.Top);
+        double right = Math.Min(a.Right, b.Right);
+        double bottom = Math.Min(a.Bottom, b.Bottom);
+
+        return Math.Max(0, right - left) *
+               Math.Max(0, bottom - top);
+    }
+
     static string NormalizeForAutoLayout(string text)
     {
         var normalized = text
@@ -1015,13 +1180,16 @@ public sealed class ImageRenderService
 
         var origin = new System.Windows.Point(box.X, originY);
 
-        Brush fill = darkBackground ? Brushes.White : Brushes.Black;
-        Brush outline = darkBackground ? Brushes.Black : Brushes.White;
+        // 말풍선/캡션 색상에 관계없이 가장 범용적으로 읽히는 기본 스타일.
+        // 검은 글자 + 얇은 흰 테두리는 흰색, 컬러, 어두운 말풍선 모두에서
+        // 글자 형태를 안정적으로 유지한다.
+        Brush fill = Brushes.Black;
+        Brush outline = Brushes.White;
 
         var geometry = best.BuildGeometry(origin);
         var pen = new Pen(
             outline,
-            Math.Clamp(bestSize * 0.035, 0.45, 1.35));
+            Math.Clamp(bestSize * 0.035, 0.45, 1.25));
 
         dc.DrawGeometry(fill, pen, geometry);
     }
