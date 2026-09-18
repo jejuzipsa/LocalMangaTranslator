@@ -7,7 +7,8 @@ namespace LocalMangaTranslator.Services;
 
 public sealed class TranslationRefinementService
 {
-    const int BatchSize = 12;
+    // 12B 모델에서 긴 JSON 응답이 무너지는 경우가 있어 한 번에 너무 많은 블록을 보내지 않는다.
+    const int BatchSize = 6;
 
     readonly HttpClient http = new()
     {
@@ -22,17 +23,68 @@ public sealed class TranslationRefinementService
     {
         if (reviewed.Count == 0) return [];
 
+        // Vision 검수 단계의 번역을 항상 안전한 fallback으로 보존한다.
         var result = reviewed.ToList();
         var renderable = reviewed.Where(x => x.Render).ToList();
 
         for (int offset = 0; offset < renderable.Count; offset += BatchSize)
         {
             token.ThrowIfCancellationRequested();
-            var batch = renderable.Skip(offset).Take(BatchSize).ToList();
-            progress?.Report($"번역 배치 {offset / BatchSize + 1}/{(renderable.Count + BatchSize - 1) / BatchSize} · {batch.Count}개 블록");
 
-            var translated = await SendBatchAsync(batch, model, token);
-            var map = translated.ToDictionary(x => x.Id, x => x.Translation);
+            var batch = renderable.Skip(offset).Take(BatchSize).ToList();
+            int batchIndex = offset / BatchSize + 1;
+            int batchCount = (renderable.Count + BatchSize - 1) / BatchSize;
+
+            progress?.Report($"번역 배치 {batchIndex}/{batchCount} · {batch.Count}개 블록");
+
+            var map = new Dictionary<int, string>();
+
+            try
+            {
+                var translated = await SendBatchAsync(batch, model, token);
+                foreach (var item in translated)
+                {
+                    if (!string.IsNullOrWhiteSpace(item.Translation))
+                        map[item.Id] = item.Translation;
+                }
+            }
+            catch (Exception ex) when (ex is not OperationCanceledException)
+            {
+                // 배치 전체가 실패해도 바로 페이지 전체를 중단하지 않는다.
+                progress?.Report($"번역 배치 응답 문제 · 누락 블록만 재시도: {Compact(ex.Message)}");
+            }
+
+            var missing = batch
+                .Where(x => !map.TryGetValue(x.Id, out var text) || string.IsNullOrWhiteSpace(text))
+                .ToList();
+
+            foreach (var item in missing)
+            {
+                token.ThrowIfCancellationRequested();
+                progress?.Report($"번역 누락 ID {item.Id} · 개별 재시도");
+
+                try
+                {
+                    var one = await SendBatchAsync([item], model, token);
+                    var recovered = one.FirstOrDefault(x =>
+                        x.Id == item.Id && !string.IsNullOrWhiteSpace(x.Translation));
+
+                    if (!string.IsNullOrWhiteSpace(recovered.Translation))
+                    {
+                        map[item.Id] = recovered.Translation;
+                        continue;
+                    }
+                }
+                catch (Exception ex) when (ex is not OperationCanceledException)
+                {
+                    progress?.Report($"번역 ID {item.Id} 재시도 실패 · Vision 번역 유지: {Compact(ex.Message)}");
+                }
+
+                // reviewed의 Translation은 Vision 검수 단계에서 이미 검증된 한국어 번역이다.
+                // 최종 번역 모델이 형식을 깨뜨려도 이 값을 유지하면 작업 전체는 계속 진행된다.
+                if (!string.IsNullOrWhiteSpace(item.Translation))
+                    map[item.Id] = item.Translation;
+            }
 
             for (int i = 0; i < result.Count; i++)
             {
@@ -66,9 +118,9 @@ public sealed class TranslationRefinementService
             format = "json",
             options = new
             {
-                temperature = 0.12,
+                temperature = 0.08,
                 num_ctx = 8192,
-                num_predict = 2200
+                num_predict = 1800
             },
             messages = new[]
             {
@@ -106,13 +158,16 @@ public sealed class TranslationRefinementService
         if (string.IsNullOrWhiteSpace(content))
             throw new InvalidOperationException("번역 모델 응답이 비어 있습니다.");
 
-        var parsed = Parse(content);
-        var expected = batch.Select(x => x.Id).OrderBy(x => x).ToArray();
-        var actual = parsed.Select(x => x.Id).OrderBy(x => x).ToArray();
+        var expectedIds = batch.Select(x => x.Id).ToHashSet();
+        var parsed = Parse(content)
+            .Where(x => expectedIds.Contains(x.Id) && !string.IsNullOrWhiteSpace(x.Translation))
+            .GroupBy(x => x.Id)
+            .Select(x => x.First())
+            .ToList();
 
-        if (!expected.SequenceEqual(actual) ||
-            parsed.Any(x => string.IsNullOrWhiteSpace(x.Translation)))
-            throw new InvalidOperationException($"번역 결과 검증 실패: {Compact(content)}");
+        // 부분 응답도 살려서 반환한다. 누락 ID는 호출부에서 개별 재시도한다.
+        if (parsed.Count == 0)
+            throw new InvalidOperationException($"번역 결과를 읽지 못했습니다: {Compact(content)}");
 
         return parsed;
     }
@@ -129,11 +184,14 @@ The Vision review stage has already corrected OCR against the image. Translate t
 RULES:
 1. Use corrected_source as the authoritative source. draft_translation is only a hint and may be replaced completely.
 2. Preserve meaning, speaker voice, politeness, emotion, punctuation, names, and recurring terminology.
-3. Write concise natural Korean suitable for speech bubbles and captions.
-4. Preserve useful visual line structure with [BR]. Use original_region_count as a guide.
-5. Do not add explanations, notes, markdown, or reasoning.
+3. Write concise natural Korean suitable for speech bubbles and captions. Prefer shorter natural wording when meaning is unchanged.
+4. Preserve useful visual line structure with [BR]. Use original_region_count only as a layout hint.
+5. Do not add explanations, notes, markdown, reasoning, or extra fields.
 6. Return exactly one item for every input id. Never merge, omit, duplicate, or renumber ids.
 7. Every translation field must contain finished Korean.
+8. ALL output items MUST be inside the regions array. Never place id or translation at the root object.
+9. Output only id and translation for each region. Do not echo original_region_count, corrected_source, type, or draft_translation.
+10. Keep the JSON structure valid until every input id has been emitted.
 
 OUTPUT:
 {
@@ -167,27 +225,18 @@ INPUT:
             }
 
             using var doc = JsonDocument.Parse(normalized);
-            if (!doc.RootElement.TryGetProperty("regions", out var regions) ||
-                regions.ValueKind != JsonValueKind.Array)
-                return [];
-
             var result = new List<(int, string)>();
             var used = new HashSet<int>();
 
-            foreach (var region in regions.EnumerateArray())
+            if (doc.RootElement.TryGetProperty("regions", out var regions) &&
+                regions.ValueKind == JsonValueKind.Array)
             {
-                if (!region.TryGetProperty("id", out var idEl) ||
-                    !idEl.TryGetInt32(out int id) ||
-                    !used.Add(id))
-                    continue;
-
-                var translation =
-                    region.TryGetProperty("translation", out var textEl)
-                        ? textEl.GetString()?.Trim() ?? ""
-                        : "";
-
-                result.Add((id, translation));
+                foreach (var region in regions.EnumerateArray())
+                    TryAdd(region, result, used);
             }
+
+            // Gemma가 마지막 항목을 regions 배열 밖(root)에 내보내는 사례를 회수한다.
+            TryAdd(doc.RootElement, result, used);
 
             return result;
         }
@@ -195,6 +244,24 @@ INPUT:
         {
             return [];
         }
+    }
+
+    static void TryAdd(
+        JsonElement element,
+        List<(int Id, string Translation)> result,
+        HashSet<int> used)
+    {
+        if (element.ValueKind != JsonValueKind.Object ||
+            !element.TryGetProperty("id", out var idEl) ||
+            !idEl.TryGetInt32(out int id) ||
+            !element.TryGetProperty("translation", out var textEl))
+            return;
+
+        var translation = textEl.GetString()?.Trim() ?? "";
+        if (string.IsNullOrWhiteSpace(translation) || !used.Add(id))
+            return;
+
+        result.Add((id, translation));
     }
 
     static string Compact(string text)
