@@ -27,6 +27,7 @@ public partial class MainWindow : System.Windows.Window
 
     readonly OllamaClient ollama = new();
     readonly VisionTranslationService vision = new();
+    readonly TranslationRefinementService translationRefiner = new();
     readonly OcrBlockGrouper blockGrouper = new();
     readonly ImageRenderService renderer = new();
 
@@ -49,7 +50,7 @@ public partial class MainWindow : System.Windows.Window
         LoadModels();
         Log("프로그램 시작");
         InitializeOcr();
-        Loaded += async (_, _) => await CheckSelectedModelAsync();
+        Loaded += async (_, _) => await CheckSelectedModelsAsync();
     }
 
     void InitializeOcr()
@@ -69,16 +70,35 @@ public partial class MainWindow : System.Windows.Window
     void LoadModels()
     {
         var root = Path.Combine(AppContext.BaseDirectory, "models", "vision_llm");
-        var models = new ModelCatalog(root).Load();
-        ModelBox.ItemsSource = models;
-        if (models.Count > 0) ModelBox.SelectedIndex = 0;
+        var catalog = new ModelCatalog(root);
+        var reviewModels = catalog.LoadForTask("review")
+            .Where(x => x.SupportsImage)
+            .ToList();
+        var translationModels = catalog.LoadForTask("translation")
+            .Where(x => x.SupportsText)
+            .ToList();
 
-        Log(models.Count > 0
-            ? $"Vision 모델 프로필 {models.Count}개 발견"
-            : "Vision 모델 프로필이 없습니다");
+        ReviewModelBox.ItemsSource = reviewModels;
+        TranslationModelBox.ItemsSource = translationModels;
 
-        if (models.Count > 0)
-            Log($"선택 모델: {models[0].Name} | {models[0].ModelTag}");
+        SelectPreferredModel(ReviewModelBox, reviewModels, "gemma4-12b-it-qat");
+        SelectPreferredModel(TranslationModelBox, translationModels, "gemma4-12b-it-qat");
+
+        Log($"모델 프로필 · OCR 검수 {reviewModels.Count}개 / 번역 {translationModels.Count}개");
+        Log($"OCR 엔진 · {ocr?.Status ?? "초기화 전"}");
+    }
+
+    static void SelectPreferredModel(
+        System.Windows.Controls.ComboBox box,
+        IReadOnlyList<ModelProfile> models,
+        string preferredId)
+    {
+        if (models.Count == 0) return;
+
+        var preferred = models.FirstOrDefault(x =>
+            string.Equals(x.Id, preferredId, StringComparison.OrdinalIgnoreCase));
+
+        box.SelectedItem = preferred ?? models[0];
     }
 
     void ApplyDarkTitleBar()
@@ -106,31 +126,58 @@ public partial class MainWindow : System.Windows.Window
 
     void ModelBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
-        if (ModelBox.SelectedItem is ModelProfile model && LogBox is not null)
-            Log($"Vision 모델 선택: {model.Name} | {model.ModelTag}");
+        if (LogBox is null) return;
+
+        if (sender == ReviewModelBox && ReviewModelBox.SelectedItem is ModelProfile review)
+            Log($"OCR 검수 모델 선택: {review.Name} | {review.ModelTag}");
+        else if (sender == TranslationModelBox && TranslationModelBox.SelectedItem is ModelProfile translation)
+            Log($"번역 모델 선택: {translation.Name} | {translation.ModelTag}");
     }
 
-    async Task CheckSelectedModelAsync()
+    async Task CheckSelectedModelsAsync()
     {
-        if (ModelBox.SelectedItem is not ModelProfile model) return;
-
-        if (!await ollama.IsServerReadyAsync(model))
+        var selected = new[]
         {
-            Log("Ollama 서버를 찾지 못했습니다 · [모델 확인/설치] 버튼에서 Ollama와 모델을 준비할 수 있습니다");
-            return;
+            ReviewModelBox.SelectedItem as ModelProfile,
+            TranslationModelBox.SelectedItem as ModelProfile
         }
+        .Where(x => x is not null)
+        .Cast<ModelProfile>()
+        .GroupBy(x => (x.ApiBase, x.ModelTag))
+        .Select(x => x.First())
+        .ToList();
 
-        var installed = await ollama.IsModelInstalledAsync(model);
-        Log(installed
-            ? $"모델 준비됨: {model.ModelTag}"
-            : $"모델 미설치: {model.ModelTag} · [모델 확인/설치] 버튼으로 다운로드 가능");
+        foreach (var model in selected)
+        {
+            if (!await ollama.IsServerReadyAsync(model))
+            {
+                Log("Ollama 서버를 찾지 못했습니다 · [선택 모델 확인/설치]에서 Ollama와 모델을 준비할 수 있습니다");
+                return;
+            }
+
+            var installed = await ollama.IsModelInstalledAsync(model);
+            Log(installed
+                ? $"모델 준비됨: {model.ModelTag}"
+                : $"모델 미설치: {model.ModelTag} · [선택 모델 확인/설치]로 다운로드 가능");
+        }
     }
 
     async void InstallModel_Click(object sender, System.Windows.RoutedEventArgs e)
     {
-        if (ModelBox.SelectedItem is not ModelProfile model)
+        var selected = new[]
         {
-            Log("설치할 Vision 모델을 선택하세요");
+            ReviewModelBox.SelectedItem as ModelProfile,
+            TranslationModelBox.SelectedItem as ModelProfile
+        }
+        .Where(x => x is not null)
+        .Cast<ModelProfile>()
+        .GroupBy(x => (x.ApiBase, x.ModelTag))
+        .Select(x => x.First())
+        .ToList();
+
+        if (selected.Count == 0)
+        {
+            Log("확인/설치할 모델을 선택하세요");
             return;
         }
 
@@ -140,29 +187,33 @@ public partial class MainWindow : System.Windows.Window
 
         try
         {
-            if (!await ollama.IsServerReadyAsync(model, workCts.Token))
+            var runtimeModel = selected[0];
+            if (!await ollama.IsServerReadyAsync(runtimeModel, workCts.Token))
             {
-                var ready = await EnsureOllamaRuntimeAsync(model, workCts.Token);
+                var ready = await EnsureOllamaRuntimeAsync(runtimeModel, workCts.Token);
                 if (!ready) return;
             }
 
-            if (await ollama.IsModelInstalledAsync(model, workCts.Token))
+            foreach (var model in selected)
             {
-                Log($"이미 설치되어 있습니다: {model.ModelTag}");
-                CurrentStatusText.Text = "모델 준비 완료";
-                return;
+                if (await ollama.IsModelInstalledAsync(model, workCts.Token))
+                {
+                    Log($"이미 설치되어 있습니다: {model.ModelTag}");
+                    continue;
+                }
+
+                Log($"모델 다운로드 시작: {model.ModelTag}");
+                var progress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"모델 다운로드 · {model.Name} · {message}";
+                    Log($"모델 다운로드 · {model.ModelTag} · {message}");
+                });
+
+                await ollama.PullModelAsync(model, progress, workCts.Token);
+                Log($"모델 다운로드 완료: {model.ModelTag}");
             }
 
-            Log($"모델 다운로드 시작: {model.ModelTag}");
-            var progress = new Progress<string>(message =>
-            {
-                CurrentStatusText.Text = $"모델 다운로드 · {message}";
-                Log($"모델 다운로드 · {message}");
-            });
-
-            await ollama.PullModelAsync(model, progress, workCts.Token);
-            Log($"모델 다운로드 완료: {model.ModelTag}");
-            CurrentStatusText.Text = "모델 준비 완료";
+            CurrentStatusText.Text = "선택 모델 준비 완료";
         }
         catch (OperationCanceledException)
         {
@@ -186,7 +237,7 @@ public partial class MainWindow : System.Windows.Window
     async Task<bool> EnsureOllamaRuntimeAsync(ModelProfile model, CancellationToken token)
     {
         var answer = System.Windows.MessageBox.Show(
-            "Qwen Vision 모델을 실행하려면 Ollama가 필요합니다.\n\n지금 Ollama를 자동 설치할까요?",
+            "로컬 AI 모델을 실행하려면 Ollama가 필요합니다.\n\n지금 Ollama를 자동 설치할까요?",
             "Ollama 설치",
             System.Windows.MessageBoxButton.YesNo,
             System.Windows.MessageBoxImage.Question);
@@ -421,9 +472,15 @@ public partial class MainWindow : System.Windows.Window
             return;
         }
 
-        if (ModelBox.SelectedItem is not ModelProfile model)
+        if (ReviewModelBox.SelectedItem is not ModelProfile reviewModel)
         {
-            Log("Vision 모델을 선택해야 합니다");
+            Log("OCR 검수 모델을 선택해야 합니다");
+            return;
+        }
+
+        if (TranslationModelBox.SelectedItem is not ModelProfile translationModel)
+        {
+            Log("번역 모델을 선택해야 합니다");
             return;
         }
 
@@ -433,16 +490,22 @@ public partial class MainWindow : System.Windows.Window
             return;
         }
 
-        if (!await ollama.IsServerReadyAsync(model))
+        if (!await ollama.IsServerReadyAsync(reviewModel) ||
+            !await ollama.IsServerReadyAsync(translationModel))
         {
             Log("Ollama 서버에 연결할 수 없습니다");
             return;
         }
 
-        if (!await ollama.IsModelInstalledAsync(model))
+        foreach (var requiredModel in new[] { reviewModel, translationModel }
+                     .GroupBy(x => (x.ApiBase, x.ModelTag))
+                     .Select(x => x.First()))
         {
-            Log($"Vision 모델이 설치되어 있지 않습니다: {model.ModelTag}");
-            return;
+            if (!await ollama.IsModelInstalledAsync(requiredModel))
+            {
+                Log($"선택 모델이 설치되어 있지 않습니다: {requiredModel.ModelTag}");
+                return;
+            }
         }
 
         Directory.CreateDirectory(OutputPathBox.Text);
@@ -451,7 +514,7 @@ public partial class MainWindow : System.Windows.Window
         StopButton.IsEnabled = true;
         InstallModelButton.IsEnabled = false;
 
-        Log($"작업 시작 | 모델: {model.Name}");
+        Log($"작업 시작 | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
 
         try
         {
@@ -482,9 +545,9 @@ public partial class MainWindow : System.Windows.Window
                 var blocks = blockGrouper.Group(lines);
                 Log($"{item.FileName} | OCR 병합 · {lines.Count}줄 → {blocks.Count}개 블록");
 
-                item.Status = "OCR 검수·번역";
-                SetStatus(i, item, "Qwen Vision 문맥 검수·번역");
-                Log($"{item.FileName} | Vision LLM 블록 검수·번역 시작");
+                item.Status = "OCR 검수";
+                SetStatus(i, item, $"Vision OCR 검수 · {reviewModel.Name}");
+                Log($"{item.FileName} | Vision OCR 검수 시작 · {reviewModel.ModelTag}");
 
                 var visionProgress = new Progress<string>(message =>
                 {
@@ -492,23 +555,41 @@ public partial class MainWindow : System.Windows.Window
                     Log($"{item.FileName} | {message}");
                 });
 
-                var translated = await vision.ReviewAndTranslateAsync(
+                var reviewed = await vision.ReviewAndTranslateAsync(
                     item.FilePath,
                     blocks,
-                    model,
+                    reviewModel,
                     visionProgress,
                     workCts.Token);
 
-                int corrected = translated.Count(x =>
+                int corrected = reviewed.Count(x =>
                     !string.Equals(x.Source.Text.Trim(), x.CorrectedText.Trim(), StringComparison.Ordinal));
 
-                int skipped = translated.Count(x => !x.Render);
-                Log($"{item.FileName} | Vision 완료 · {translated.Count}개 블록 · OCR 교정 {corrected}개 · 조판 제외 {skipped}개");
+                int skipped = reviewed.Count(x => !x.Render);
+                Log($"{item.FileName} | Vision 검수 완료 · {reviewed.Count}개 블록 · OCR 교정 {corrected}개 · 조판 제외 {skipped}개");
+
+                item.Status = "번역 중";
+                SetStatus(i, item, $"최종 번역 · {translationModel.Name}");
+                Log($"{item.FileName} | 최종 번역 시작 · {translationModel.ModelTag}");
+
+                var translationProgress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
+                    Log($"{item.FileName} | {message}");
+                });
+
+                var translated = await translationRefiner.TranslateAsync(
+                    reviewed,
+                    translationModel,
+                    translationProgress,
+                    workCts.Token);
+
+                Log($"{item.FileName} | 최종 번역 완료 · {translated.Count(x => x.Render)}개 조판 대상");
 
                 var document = new VisionTranslationDocument
                 {
                     SourceFile = item.FileName,
-                    Model = model.ModelTag,
+                    Model = $"review={reviewModel.ModelTag}; translation={translationModel.ModelTag}",
                     Regions = translated
                 };
 
@@ -551,7 +632,7 @@ public partial class MainWindow : System.Windows.Window
             }
 
             CurrentStatusText.Text = "번역 이미지 생성 완료";
-            Log("전체 작업 완료 · OCR → Vision 검수·번역 → 인페인트 → 한글 조판");
+            Log("전체 작업 완료 · OCR → Vision OCR 검수 → 번역 → 인페인트 → 한글 조판");
         }
         catch (OperationCanceledException)
         {
