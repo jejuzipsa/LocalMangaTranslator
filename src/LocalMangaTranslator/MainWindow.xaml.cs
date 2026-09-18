@@ -67,7 +67,7 @@ public partial class MainWindow : System.Windows.Window
 
         if (!await ollama.IsServerReadyAsync(model))
         {
-            Log("Ollama 서버를 찾지 못했습니다 · Ollama를 설치/실행한 뒤 다시 확인하세요");
+            Log("Ollama 서버를 찾지 못했습니다 · [모델 확인/설치] 버튼에서 Ollama와 모델을 준비할 수 있습니다");
             return;
         }
 
@@ -85,24 +85,25 @@ public partial class MainWindow : System.Windows.Window
             return;
         }
 
-        if (!await ollama.IsServerReadyAsync(model))
-        {
-            Log("Ollama 서버에 연결할 수 없습니다 · Ollama 설치/실행이 먼저 필요합니다");
-            return;
-        }
-
-        if (await ollama.IsModelInstalledAsync(model))
-        {
-            Log($"이미 설치되어 있습니다: {model.ModelTag}");
-            return;
-        }
-
         InstallModelButton.IsEnabled = false;
         StopButton.IsEnabled = true;
         workCts = new CancellationTokenSource();
 
         try
         {
+            if (!await ollama.IsServerReadyAsync(model, workCts.Token))
+            {
+                var ready = await EnsureOllamaRuntimeAsync(model, workCts.Token);
+                if (!ready) return;
+            }
+
+            if (await ollama.IsModelInstalledAsync(model, workCts.Token))
+            {
+                Log($"이미 설치되어 있습니다: {model.ModelTag}");
+                CurrentStatusText.Text = "모델 준비 완료";
+                return;
+            }
+
             Log($"모델 다운로드 시작: {model.ModelTag}");
             var progress = new Progress<string>(message =>
             {
@@ -116,13 +117,13 @@ public partial class MainWindow : System.Windows.Window
         }
         catch (OperationCanceledException)
         {
-            Log("모델 다운로드 중지됨");
-            CurrentStatusText.Text = "다운로드 중지됨";
+            Log("설치/다운로드 중지됨");
+            CurrentStatusText.Text = "작업 중지됨";
         }
         catch (Exception ex)
         {
-            Log($"모델 다운로드 실패: {ex.Message}");
-            CurrentStatusText.Text = "모델 다운로드 실패";
+            Log($"모델 준비 실패: {ex.Message}");
+            CurrentStatusText.Text = "모델 준비 실패";
         }
         finally
         {
@@ -131,6 +132,144 @@ public partial class MainWindow : System.Windows.Window
             InstallModelButton.IsEnabled = true;
             StopButton.IsEnabled = false;
         }
+    }
+
+    async Task<bool> EnsureOllamaRuntimeAsync(ModelProfile model, CancellationToken token)
+    {
+        var answer = System.Windows.MessageBox.Show(
+            "Qwen Vision 모델을 실행하려면 Ollama가 필요합니다.\n\n지금 Ollama를 자동 설치할까요?",
+            "Ollama 설치",
+            System.Windows.MessageBoxButton.YesNo,
+            System.Windows.MessageBoxImage.Question);
+
+        if (answer != System.Windows.MessageBoxResult.Yes)
+        {
+            Log("Ollama 설치 취소");
+            CurrentStatusText.Text = "Ollama 설치 필요";
+            return false;
+        }
+
+        Log("Ollama 설치 시작 · Windows 패키지 관리자(winget) 사용");
+        CurrentStatusText.Text = "Ollama 설치 중...";
+
+        var psi = new ProcessStartInfo
+        {
+            FileName = "winget.exe",
+            Arguments = "install --id Ollama.Ollama -e --silent --accept-package-agreements --accept-source-agreements --disable-interactivity",
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true
+        };
+
+        using var process = Process.Start(psi)
+            ?? throw new InvalidOperationException("winget을 실행할 수 없습니다.");
+
+        var stdoutTask = process.StandardOutput.ReadToEndAsync(token);
+        var stderrTask = process.StandardError.ReadToEndAsync(token);
+        await process.WaitForExitAsync(token);
+
+        var stdout = await stdoutTask;
+        var stderr = await stderrTask;
+
+        if (process.ExitCode != 0)
+        {
+            var detail = string.IsNullOrWhiteSpace(stderr) ? stdout : stderr;
+            detail = detail.Replace('\r', ' ').Replace('\n', ' ').Trim();
+            if (detail.Length > 300) detail = detail[..300] + "...";
+            throw new InvalidOperationException(
+                $"Ollama 설치 실패 (winget 종료코드 {process.ExitCode}) · {detail}");
+        }
+
+        Log("Ollama 설치 완료 · 서버 시작 확인 중");
+        CurrentStatusText.Text = "Ollama 시작 확인 중...";
+
+        if (await WaitForOllamaAsync(model, token, 12))
+        {
+            Log("Ollama 서버 준비 완료");
+            return true;
+        }
+
+        var exe = FindOllamaExe();
+        if (exe is not null)
+        {
+            Log($"Ollama 서버 시작: {exe}");
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = exe,
+                    Arguments = "serve",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WindowStyle = ProcessWindowStyle.Hidden
+                });
+            }
+            catch (Exception ex)
+            {
+                Log($"Ollama 서버 시작 재시도 실패: {ex.Message}");
+            }
+        }
+        else
+        {
+            Log("Ollama 실행 파일을 찾지 못했습니다 · 설치 후 프로그램 재실행이 필요할 수 있습니다");
+        }
+
+        if (await WaitForOllamaAsync(model, token, 20))
+        {
+            Log("Ollama 서버 준비 완료");
+            return true;
+        }
+
+        throw new InvalidOperationException(
+            "Ollama는 설치됐지만 서버가 시작되지 않았습니다. 프로그램을 한 번 다시 실행해 주세요.");
+    }
+
+    async Task<bool> WaitForOllamaAsync(ModelProfile model, CancellationToken token, int seconds)
+    {
+        for (int i = 0; i < seconds; i++)
+        {
+            token.ThrowIfCancellationRequested();
+            if (await ollama.IsServerReadyAsync(model, token))
+                return true;
+
+            await Task.Delay(1000, token);
+        }
+
+        return false;
+    }
+
+    static string? FindOllamaExe()
+    {
+        var candidates = new[]
+        {
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Programs", "Ollama", "ollama.exe"),
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "Ollama", "ollama.exe"),
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                "Ollama", "ollama.exe")
+        };
+
+        foreach (var path in candidates)
+            if (File.Exists(path))
+                return path;
+
+        var pathValue = Environment.GetEnvironmentVariable("PATH") ?? "";
+        foreach (var dir in pathValue.Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries))
+        {
+            try
+            {
+                var candidate = Path.Combine(dir.Trim(), "ollama.exe");
+                if (File.Exists(candidate)) return candidate;
+            }
+            catch { }
+        }
+
+        return null;
     }
 
     void AddFiles(IEnumerable<string> paths)
