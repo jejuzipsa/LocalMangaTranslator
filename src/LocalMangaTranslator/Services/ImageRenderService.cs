@@ -105,7 +105,7 @@ public sealed class ImageRenderService
         token.ThrowIfCancellationRequested();
 
         using var cleaned = new Mat();
-        Cv2.Inpaint(source, mask, cleaned, InpaintRadius, InpaintMethod.Telea);
+        Cv2.Inpaint(source, mask, cleaned, InpaintRadius, InpaintTypes.Telea);
 
         if (!Cv2.ImWrite(cleanedPath, cleaned))
             throw new InvalidOperationException("인페인트 결과 이미지를 저장하지 못했습니다.");
@@ -258,6 +258,7 @@ public sealed class ImageRenderService
         double low = minFont;
         double high = maxFont;
         FormattedText? best = null;
+        double bestSize = minFont;
 
         for (int i = 0; i < 10; i++)
         {
@@ -267,6 +268,7 @@ public sealed class ImageRenderService
             if (candidate.Height <= box.Height * 0.96)
             {
                 best = candidate;
+                bestSize = size;
                 low = size;
             }
             else
@@ -284,7 +286,7 @@ public sealed class ImageRenderService
         Brush outline = darkBackground ? Brushes.Black : Brushes.White;
 
         var geometry = best.BuildGeometry(origin);
-        var pen = new Pen(outline, Math.Clamp(best.FontSize * 0.065, 0.8, 2.2));
+        var pen = new Pen(outline, Math.Clamp(bestSize * 0.065, 0.8, 2.2));
 
         dc.DrawGeometry(fill, pen, geometry);
     }
