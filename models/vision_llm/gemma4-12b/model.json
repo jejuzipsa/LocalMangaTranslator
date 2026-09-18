@@ -1,0 +1,12 @@
+{
+  "id": "gemma4-12b",
+  "name": "Gemma 4 12B (Ollama)",
+  "type": "vision_llm",
+  "provider": "ollama",
+  "modelTag": "gemma4:12b",
+  "apiBase": "http://127.0.0.1:11434",
+  "supportsImage": true,
+  "supportsText": true,
+  "enabled": true,
+  "tasks": ["review", "translation"]
+}
