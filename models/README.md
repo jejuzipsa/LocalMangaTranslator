@@ -13,6 +13,13 @@
 - Qwen 3.5 9B
   - tag: `qwen3.5:9b`
   - tasks: `review`, `translation`
+- Qwen 3.8 27B HQ
+  - tag: `qwen3.8:27b`
+  - tasks: `review`, `translation`
+- Aya Expanse 8B
+  - tag: `aya-expanse:8b`
+  - tasks: `translation`
+  - text-only translation model; not shown in OCR review model list
 
 예시:
 
