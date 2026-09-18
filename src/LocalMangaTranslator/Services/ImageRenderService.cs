@@ -18,7 +18,8 @@ public sealed class ImageRenderService
         IProgress<string>? progress = null,
         CancellationToken token = default)
     {
-        if (regions.Count == 0)
+        var renderRegions = regions.Where(x => x.Render).ToList();
+        if (renderRegions.Count == 0)
             throw new InvalidOperationException("조판할 번역 영역이 없습니다.");
 
         string cleanedPath = Path.Combine(
@@ -29,16 +30,16 @@ public sealed class ImageRenderService
 
         try
         {
-            progress?.Report($"인페인트 마스크 생성 · {regions.Count}개 영역");
+            progress?.Report($"인페인트 마스크 생성 · {renderRegions.Count}개 블록");
 
             darkBackground = await Task.Run(
-                () => Inpaint(sourcePath, cleanedPath, regions, token),
+                () => Inpaint(sourcePath, cleanedPath, renderRegions, token),
                 token);
 
             token.ThrowIfCancellationRequested();
-            progress?.Report("인페인트 완료 · 한글 조판 시작");
+            progress?.Report("인페인트 완료 · 블록 단위 한글 조판 시작");
 
-            TypesetAndSave(cleanedPath, regions, darkBackground, outputPath, token);
+            TypesetAndSave(cleanedPath, renderRegions, darkBackground, outputPath, token);
 
             progress?.Report($"완성 이미지 저장 · {Path.GetFileName(outputPath)}");
         }
@@ -70,29 +71,37 @@ public sealed class ImageRenderService
         {
             token.ThrowIfCancellationRequested();
 
-            var line = region.Source;
-            int padX = Math.Max(4, (int)Math.Ceiling(line.W * 0.10));
-            int padY = Math.Max(4, (int)Math.Ceiling(line.H * 0.14));
-
-            var rect = ClampRect(
-                (int)Math.Floor(line.X) - padX,
-                (int)Math.Floor(line.Y) - padY,
-                (int)Math.Ceiling(line.W) + padX * 2,
-                (int)Math.Ceiling(line.H) + padY * 2,
+            var block = region.Source;
+            var blockRect = ClampRect(
+                (int)Math.Floor(block.X),
+                (int)Math.Floor(block.Y),
+                (int)Math.Ceiling(block.W),
+                (int)Math.Ceiling(block.H),
                 source.Cols,
                 source.Rows);
 
-            if (rect.Width <= 1 || rect.Height <= 1)
-                continue;
-
-            using (var roi = new Mat(source, rect))
+            using (var roi = new Mat(source, blockRect))
             {
                 var mean = Cv2.Mean(roi);
                 double luminance = mean.Val2 * 0.299 + mean.Val1 * 0.587 + mean.Val0 * 0.114;
                 darkBackground[region.Id] = luminance < 125;
             }
 
-            Cv2.Rectangle(mask, rect, Scalar.White, -1);
+            foreach (var line in block.Lines)
+            {
+                int padX = Math.Max(5, (int)Math.Ceiling(line.H * 0.18));
+                int padY = Math.Max(4, (int)Math.Ceiling(line.H * 0.12));
+
+                var rect = ClampRect(
+                    (int)Math.Floor(line.X) - padX,
+                    (int)Math.Floor(line.Y) - padY,
+                    (int)Math.Ceiling(line.W) + padX * 2,
+                    (int)Math.Ceiling(line.H) + padY * 2,
+                    source.Cols,
+                    source.Rows);
+
+                Cv2.Rectangle(mask, rect, Scalar.White, -1);
+            }
         }
 
         using (var kernel = Cv2.GetStructuringElement(
@@ -154,11 +163,14 @@ public sealed class ImageRenderService
             {
                 token.ThrowIfCancellationRequested();
 
-                string text = region.Translation.Trim();
+                string text = region.Translation
+                    .Replace("[BR]", Environment.NewLine, StringComparison.OrdinalIgnoreCase)
+                    .Trim();
+
                 if (string.IsNullOrWhiteSpace(text))
                     continue;
 
-                var box = CreateTextBox(region.Source, width, height);
+                var box = CreateTextBox(region, width, height);
                 bool dark = darkBackground.TryGetValue(region.Id, out var value) && value;
 
                 DrawFittedText(dc, text, box, dark);
@@ -198,23 +210,21 @@ public sealed class ImageRenderService
         return bitmap;
     }
 
-    static System.Windows.Rect CreateTextBox(OcrLine line, int imageWidth, int imageHeight)
+    static System.Windows.Rect CreateTextBox(
+        VisionTranslation region,
+        int imageWidth,
+        int imageHeight)
     {
-        bool vertical = line.H > line.W * 1.35;
+        var block = region.Source;
 
-        double targetWidth = vertical
-            ? Math.Max(line.W * 2.8, line.H * 0.72)
-            : line.W * 1.22;
+        double widthScale = region.Type == "caption" ? 1.04 : 1.18;
+        double heightScale = region.Type == "caption" ? 1.06 : 1.18;
 
-        double targetHeight = vertical
-            ? line.H * 1.05
-            : line.H * 1.55;
+        double targetWidth = Math.Max(block.W + 12, block.W * widthScale);
+        double targetHeight = Math.Max(block.H + 10, block.H * heightScale);
 
-        targetWidth = Math.Max(targetWidth, line.W + 12);
-        targetHeight = Math.Max(targetHeight, line.H + 10);
-
-        double centerX = line.X + line.W / 2;
-        double centerY = line.Y + line.H / 2;
+        double centerX = block.X + block.W / 2;
+        double centerY = block.Y + block.H / 2;
 
         double x = Math.Clamp(
             centerX - targetWidth / 2,
@@ -249,10 +259,12 @@ public sealed class ImageRenderService
             FontWeights.SemiBold,
             FontStretches.Normal);
 
+        int requestedLines = Math.Max(1, text.Count(c => c == '\n') + 1);
+
         double maxFont = Math.Clamp(
-            Math.Min(box.Height * 0.72, 48),
-            12,
-            48);
+            Math.Min(box.Height / requestedLines * 0.78, 52),
+            11,
+            52);
 
         double minFont = Math.Min(9, maxFont);
         double low = minFont;
@@ -260,7 +272,7 @@ public sealed class ImageRenderService
         FormattedText? best = null;
         double bestSize = minFont;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
             double size = (low + high) / 2;
             var candidate = MakeFormattedText(text, culture, typeface, size, box.Width);
@@ -286,7 +298,7 @@ public sealed class ImageRenderService
         Brush outline = darkBackground ? Brushes.Black : Brushes.White;
 
         var geometry = best.BuildGeometry(origin);
-        var pen = new Pen(outline, Math.Clamp(bestSize * 0.065, 0.8, 2.2));
+        var pen = new Pen(outline, Math.Clamp(bestSize * 0.055, 0.75, 2.0));
 
         dc.DrawGeometry(fill, pen, geometry);
     }
@@ -298,7 +310,7 @@ public sealed class ImageRenderService
         double fontSize,
         double maxWidth)
     {
-        var formatted = new FormattedText(
+        return new FormattedText(
             text,
             culture,
             FlowDirection.LeftToRight,
@@ -312,7 +324,5 @@ public sealed class ImageRenderService
             LineHeight = fontSize * 1.12,
             Trimming = TextTrimming.None
         };
-
-        return formatted;
     }
 }
