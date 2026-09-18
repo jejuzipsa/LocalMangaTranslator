@@ -195,7 +195,8 @@
                 </Grid.RowDefinitions>
                 <DockPanel Grid.Row="0" Margin="10,0">
                     <TextBlock Text="작업 로그" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <Button Content="지우기" DockPanel.Dock="Right" Click="ClearLog_Click" Padding="10,4"/>
+                    <Button Content="지우기" DockPanel.Dock="Right" Click="ClearLog_Click"
+                            Width="48" Height="24" Padding="0" Margin="4,6,0,6" FontSize="11"/>
                 </DockPanel>
                 <TextBox Grid.Row="1" x:Name="LogBox" IsReadOnly="True" AcceptsReturn="True"
                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
