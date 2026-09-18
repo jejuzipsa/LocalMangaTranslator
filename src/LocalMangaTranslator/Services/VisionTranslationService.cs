@@ -10,36 +10,36 @@ namespace LocalMangaTranslator.Services;
 
 public sealed class VisionTranslationService
 {
-    const int MaxBatchRegions = 6;
-    const double MaxBatchAreaRatio = 0.24;
-    const int DefaultVisionImageSide = 1100;
+    const int MaxBatchBlocks = 4;
+    const double MaxBatchAreaRatio = 0.30;
+    const int DefaultVisionImageSide = 1200;
 
     readonly HttpClient http = new()
     {
         Timeout = TimeSpan.FromMinutes(10)
     };
 
-    sealed record BatchItem(int GlobalId, OcrLine Line);
+    sealed record BatchItem(int GlobalId, OcrTextBlock Block);
     sealed record CropPayload(string ImageBase64, int OffsetX, int OffsetY, double Scale);
 
     public async Task<List<VisionTranslation>> ReviewAndTranslateAsync(
         string imagePath,
-        IReadOnlyList<OcrLine> ocrLines,
+        IReadOnlyList<OcrTextBlock> blocks,
         ModelProfile model,
         IProgress<string>? progress = null,
         CancellationToken token = default)
     {
-        if (ocrLines.Count == 0) return [];
+        if (blocks.Count == 0) return [];
 
-        var batches = BuildBatches(imagePath, ocrLines);
-        progress?.Report($"Vision 입력을 {batches.Count}개 배치로 분할 · 총 {ocrLines.Count}개 영역");
+        var batches = BuildBatches(imagePath, blocks);
+        progress?.Report($"Vision 입력 · OCR {blocks.Sum(x => x.OriginalRegionCount)}줄 → {blocks.Count}개 블록 → {batches.Count}개 배치");
 
-        var all = new List<VisionTranslation>(ocrLines.Count);
+        var all = new List<VisionTranslation>(blocks.Count);
 
         for (int i = 0; i < batches.Count; i++)
         {
             token.ThrowIfCancellationRequested();
-            progress?.Report($"Vision 배치 {i + 1}/{batches.Count} · {batches[i].Count}개 영역");
+            progress?.Report($"Vision 배치 {i + 1}/{batches.Count} · {batches[i].Count}개 블록");
 
             var result = await SendBatchAsync(
                 imagePath,
@@ -58,15 +58,17 @@ public sealed class VisionTranslationService
             .ToList();
     }
 
-    static List<List<BatchItem>> BuildBatches(string imagePath, IReadOnlyList<OcrLine> lines)
+    static List<List<BatchItem>> BuildBatches(
+        string imagePath,
+        IReadOnlyList<OcrTextBlock> blocks)
     {
         var (imageWidth, imageHeight) = GetImageSize(imagePath);
         double pageArea = Math.Max(1, (double)imageWidth * imageHeight);
 
-        var ordered = lines
-            .Select((line, id) => new BatchItem(id, line))
-            .OrderBy(x => x.Line.Y + x.Line.H / 2)
-            .ThenBy(x => x.Line.X + x.Line.W / 2)
+        var ordered = blocks
+            .Select((block, id) => new BatchItem(id, block))
+            .OrderBy(x => x.Block.Y + x.Block.H / 2)
+            .ThenBy(x => x.Block.X + x.Block.W / 2)
             .ToList();
 
         var batches = new List<List<BatchItem>>();
@@ -81,12 +83,11 @@ public sealed class VisionTranslationService
             }
 
             var tentative = current.Append(item).ToList();
-            var bounds = GetBounds(tentative.Select(x => x.Line));
+            var bounds = GetBounds(tentative.Select(x => x.Block));
             double unionArea = Math.Max(1, (bounds.Right - bounds.X) * (bounds.Bottom - bounds.Y));
-            bool tooWide = unionArea / pageArea > MaxBatchAreaRatio;
-            bool tooMany = current.Count >= MaxBatchRegions;
 
-            if (tooWide || tooMany)
+            if (current.Count >= MaxBatchBlocks ||
+                unionArea / pageArea > MaxBatchAreaRatio)
             {
                 batches.Add(current);
                 current = [item];
@@ -111,23 +112,22 @@ public sealed class VisionTranslationService
         int maxImageSide)
     {
         var crop = await Task.Run(
-            () => CreateCropPayload(imagePath, batch.Select(x => x.Line), maxImageSide),
+            () => CreateCropPayload(imagePath, batch.Select(x => x.Block), maxImageSide),
             token);
 
-        var batchLines = batch.Select(x => x.Line).ToList();
-        var ocrPayload = batch.Select((item, localId) => new
+        var batchBlocks = batch.Select(x => x.Block).ToList();
+
+        var payload = batch.Select((item, localId) => new
         {
             id = localId,
-            x = Math.Round((item.Line.X - crop.OffsetX) * crop.Scale, 1),
-            y = Math.Round((item.Line.Y - crop.OffsetY) * crop.Scale, 1),
-            width = Math.Round(item.Line.W * crop.Scale, 1),
-            height = Math.Round(item.Line.H * crop.Scale, 1),
-            ocr = item.Line.Text,
-            confidence = Math.Round(item.Line.Confidence, 3),
-            language = item.Line.Language
+            x = Math.Round((item.Block.X - crop.OffsetX) * crop.Scale, 1),
+            y = Math.Round((item.Block.Y - crop.OffsetY) * crop.Scale, 1),
+            width = Math.Round(item.Block.W * crop.Scale, 1),
+            height = Math.Round(item.Block.H * crop.Scale, 1),
+            original_region_count = item.Block.OriginalRegionCount,
+            ocr = item.Block.Text,
+            language = item.Block.Language
         }).ToArray();
-
-        var prompt = BuildPrompt(ocrPayload);
 
         var request = new
         {
@@ -137,16 +137,16 @@ public sealed class VisionTranslationService
             format = "json",
             options = new
             {
-                temperature = 0.1,
+                temperature = 0.05,
                 num_ctx = 8192,
-                num_predict = 1400
+                num_predict = 1800
             },
             messages = new[]
             {
                 new
                 {
                     role = "user",
-                    content = prompt,
+                    content = BuildPrompt(payload),
                     images = new[] { crop.ImageBase64 }
                 }
             }
@@ -171,19 +171,14 @@ public sealed class VisionTranslationService
                 response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
                 responseText.Contains("exceeds the available context size", StringComparison.OrdinalIgnoreCase);
 
-            if (contextOverflow && maxImageSide > 640)
+            if (contextOverflow && maxImageSide > 680)
             {
-                int smallerSide = maxImageSide > 850 ? 780 : 640;
+                int smallerSide = maxImageSide > 900 ? 850 : 680;
                 return await SendBatchAsync(imagePath, batch, model, token, smallerSide);
             }
 
             if (contextOverflow && batch.Count > 1)
-            {
-                var splitResults = new List<VisionTranslation>();
-                foreach (var item in batch)
-                    splitResults.AddRange(await SendBatchAsync(imagePath, [item], model, token, 720));
-                return splitResults;
-            }
+                return await RetryIndividuallyAsync(imagePath, batch, model, token);
 
             throw new InvalidOperationException(
                 $"Ollama 응답 오류 {(int)response.StatusCode}: {Compact(responseText)}");
@@ -196,50 +191,220 @@ public sealed class VisionTranslationService
 
         var content = contentEl.GetString();
         if (string.IsNullOrWhiteSpace(content))
-            throw new InvalidOperationException("Vision LLM 응답이 비어 있습니다.");
-
-        var parsed = ParseResult(content, batchLines);
-
-        if (parsed.Count == 0)
         {
             if (batch.Count > 1)
-            {
-                var splitResults = new List<VisionTranslation>();
-                foreach (var item in batch)
-                    splitResults.AddRange(await SendBatchAsync(imagePath, [item], model, token, 720));
-                return splitResults;
-            }
+                return await RetryIndividuallyAsync(imagePath, batch, model, token);
+
+            throw new InvalidOperationException("Vision LLM 응답이 비어 있습니다.");
+        }
+
+        var parsed = ParseResult(content, batchBlocks);
+
+        if (!IsCompleteAndUsable(parsed, batchBlocks))
+        {
+            if (batch.Count > 1)
+                return await RetryIndividuallyAsync(imagePath, batch, model, token);
 
             throw new InvalidOperationException(
-                $"Vision LLM JSON을 해석하지 못했습니다: {Compact(content)}");
+                $"Vision LLM 결과 검증 실패: {Compact(content)}");
         }
 
-        var final = parsed.Select(x =>
+        return parsed.Select(x =>
         {
             var sourceItem = batch[x.Id];
-            return new VisionTranslation(
-                sourceItem.GlobalId,
-                sourceItem.Line,
-                x.CorrectedText,
-                x.Translation);
-        }).ToList();
-
-        if (parsed.Count < batch.Count)
-        {
-            var returnedLocalIds = parsed.Select(x => x.Id).ToHashSet();
-            for (int localId = 0; localId < batch.Count; localId++)
+            return x with
             {
-                if (returnedLocalIds.Contains(localId)) continue;
-                final.AddRange(await SendBatchAsync(imagePath, [batch[localId]], model, token, 720));
-            }
+                Id = sourceItem.GlobalId,
+                Source = sourceItem.Block
+            };
+        }).ToList();
+    }
+
+    async Task<List<VisionTranslation>> RetryIndividuallyAsync(
+        string imagePath,
+        IReadOnlyList<BatchItem> batch,
+        ModelProfile model,
+        CancellationToken token)
+    {
+        var results = new List<VisionTranslation>();
+
+        foreach (var item in batch)
+        {
+            token.ThrowIfCancellationRequested();
+            var one = await SendBatchAsync(imagePath, [item], model, token, 760);
+            results.AddRange(one);
         }
 
-        return final;
+        return results;
+    }
+
+    static bool IsCompleteAndUsable(
+        IReadOnlyList<VisionTranslation> result,
+        IReadOnlyList<OcrTextBlock> blocks)
+    {
+        if (result.Count != blocks.Count)
+            return false;
+
+        var ids = result.Select(x => x.Id).OrderBy(x => x).ToArray();
+        for (int i = 0; i < blocks.Count; i++)
+            if (ids[i] != i)
+                return false;
+
+        foreach (var item in result)
+        {
+            if (!item.Render)
+                continue;
+
+            if (string.IsNullOrWhiteSpace(item.Translation))
+                return false;
+
+            var source = blocks[item.Id];
+            bool sourceUsesLatin = source.Text.Any(c => c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
+            bool hasHangul = item.Translation.Any(c => c is >= '\uAC00' and <= '\uD7A3');
+
+            if (sourceUsesLatin && source.Text.Length >= 4 && !hasHangul)
+                return false;
+        }
+
+        return true;
+    }
+
+    static string BuildPrompt(object payload)
+    {
+        var json = JsonSerializer.Serialize(payload);
+
+        const string instructions = """
+TARGET LANGUAGE: Korean (한국어).
+You are a professional comic and manga translator. The attached image crop and OCR blocks belong to the same comic page.
+
+NON-NEGOTIABLE RULES:
+1. Return Korean only in every translation field. Never leave ordinary English/Japanese source fragments untranslated.
+2. Use the image, neighboring blocks, character emotion, scene context, and surrounding dialogue to resolve meaning.
+3. OCR is only a draft. Correct OCR against the visible image before translating.
+4. Each input block may contain several OCR lines from one speech bubble or caption. Reconstruct them as ONE coherent utterance before translating.
+5. Preserve meaning first. Do not invent facts, relationships, motives, names, or details that are not supported by the page.
+6. Make the final Korean natural and concise while preserving speaker voice, politeness, emotional force, punctuation, and comic rhythm.
+7. Keep names and recurring terms consistent. Transliterate common proper nouns naturally into Korean when appropriate.
+8. Classify each block as one of: dialogue, caption, sign, sfx, other.
+9. Set render=false only for decorative/background signage or sound effects that should remain as artwork. Dialogue and narrative captions must use render=true.
+10. For render=true, translation MUST be a finished Korean translation, not the source text.
+11. Preserve useful visual line structure with [BR]. Use original_region_count as a guide:
+    - 1 line: normally no [BR]
+    - 2 lines: normally one [BR]
+    - 3+ lines: use readable balanced breaks close to the original line count
+    Break at natural phrase boundaries; never strand a weak particle by itself.
+12. Keep exactly one output object for every input id. Do not merge, omit, duplicate, or renumber ids.
+13. Do not output reasoning, notes, markdown, or commentary. Output one JSON object only.
+
+OUTPUT SCHEMA:
+{
+  "regions": [
+    {
+      "id": 0,
+      "corrected": "exact corrected source text for this block",
+      "translation": "natural Korean[BR]with optional visual breaks",
+      "type": "dialogue",
+      "render": true
+    }
+  ]
+}
+
+INPUT BLOCKS:
+""";
+
+        return instructions + Environment.NewLine + json;
+    }
+
+    static List<VisionTranslation> ParseResult(
+        string content,
+        IReadOnlyList<OcrTextBlock> blocks)
+    {
+        try
+        {
+            var normalized = content.Trim();
+            var fence = new string((char)96, 3);
+
+            if (normalized.StartsWith(fence))
+            {
+                int firstNewLine = normalized.IndexOf('\n');
+                if (firstNewLine >= 0)
+                    normalized = normalized[(firstNewLine + 1)..];
+
+                int lastFence = normalized.LastIndexOf(fence, StringComparison.Ordinal);
+                if (lastFence >= 0)
+                    normalized = normalized[..lastFence].Trim();
+            }
+
+            using var doc = JsonDocument.Parse(normalized);
+
+            if (!doc.RootElement.TryGetProperty("regions", out var regions) ||
+                regions.ValueKind != JsonValueKind.Array)
+                return [];
+
+            var result = new List<VisionTranslation>();
+            var used = new HashSet<int>();
+
+            foreach (var region in regions.EnumerateArray())
+            {
+                if (!region.TryGetProperty("id", out var idEl) ||
+                    !idEl.TryGetInt32(out int id) ||
+                    id < 0 ||
+                    id >= blocks.Count ||
+                    !used.Add(id))
+                    continue;
+
+                string corrected =
+                    region.TryGetProperty("corrected", out var correctedEl)
+                        ? correctedEl.GetString()?.Trim() ?? ""
+                        : "";
+
+                string translation =
+                    region.TryGetProperty("translation", out var translationEl)
+                        ? translationEl.GetString()?.Trim() ?? ""
+                        : "";
+
+                string type =
+                    region.TryGetProperty("type", out var typeEl)
+                        ? NormalizeType(typeEl.GetString())
+                        : "dialogue";
+
+                bool render =
+                    !region.TryGetProperty("render", out var renderEl) ||
+                    renderEl.ValueKind != JsonValueKind.False;
+
+                result.Add(new VisionTranslation(
+                    id,
+                    blocks[id],
+                    string.IsNullOrWhiteSpace(corrected) ? blocks[id].Text : corrected,
+                    translation,
+                    type,
+                    render));
+            }
+
+            return result.OrderBy(x => x.Id).ToList();
+        }
+        catch
+        {
+            return [];
+        }
+    }
+
+    static string NormalizeType(string? value)
+    {
+        return value?.Trim().ToLowerInvariant() switch
+        {
+            "dialogue" => "dialogue",
+            "caption" => "caption",
+            "sign" => "sign",
+            "sfx" => "sfx",
+            "other" => "other",
+            _ => "dialogue"
+        };
     }
 
     static CropPayload CreateCropPayload(
         string imagePath,
-        IEnumerable<OcrLine> lines,
+        IEnumerable<OcrTextBlock> blocks,
         int maxImageSide)
     {
         using var input = File.OpenRead(imagePath);
@@ -248,12 +413,12 @@ public sealed class VisionTranslationService
             BitmapCreateOptions.PreservePixelFormat,
             BitmapCacheOption.OnLoad).Frames[0];
 
-        var bounds = GetBounds(lines);
+        var bounds = GetBounds(blocks);
         double width = Math.Max(1, bounds.Right - bounds.X);
         double height = Math.Max(1, bounds.Bottom - bounds.Y);
 
-        double padX = Math.Clamp(width * 0.12, 28, 90);
-        double padY = Math.Clamp(height * 0.18, 28, 100);
+        double padX = Math.Clamp(width * 0.16, 40, 140);
+        double padY = Math.Clamp(height * 0.20, 40, 150);
 
         int x = Math.Max(0, (int)Math.Floor(bounds.X - padX));
         int y = Math.Max(0, (int)Math.Floor(bounds.Y - padY));
@@ -262,22 +427,20 @@ public sealed class VisionTranslationService
         int cropWidth = Math.Max(1, right - x);
         int cropHeight = Math.Max(1, bottom - y);
 
-        BitmapSource source = new CroppedBitmap(frame, new Int32Rect(x, y, cropWidth, cropHeight));
+        BitmapSource source = new CroppedBitmap(
+            frame,
+            new Int32Rect(x, y, cropWidth, cropHeight));
 
         double longSide = Math.Max(cropWidth, cropHeight);
         double scale = 1.0;
 
         if (longSide > maxImageSide)
             scale = maxImageSide / longSide;
-        else if (longSide < 620)
-            scale = Math.Min(1.7, 760.0 / longSide);
+        else if (longSide < 650)
+            scale = Math.Min(1.6, 820.0 / longSide);
 
         if (Math.Abs(scale - 1.0) > 0.01)
-        {
-            source = new TransformedBitmap(
-                source,
-                new ScaleTransform(scale, scale));
-        }
+            source = new TransformedBitmap(source, new ScaleTransform(scale, scale));
 
         var encoder = new PngBitmapEncoder();
         encoder.Frames.Add(BitmapFrame.Create(source));
@@ -303,105 +466,17 @@ public sealed class VisionTranslationService
         return (frame.PixelWidth, frame.PixelHeight);
     }
 
-    static (double X, double Y, double Right, double Bottom) GetBounds(IEnumerable<OcrLine> lines)
+    static (double X, double Y, double Right, double Bottom) GetBounds(
+        IEnumerable<OcrTextBlock> blocks)
     {
-        var list = lines.ToList();
-        if (list.Count == 0)
-            return (0, 0, 1, 1);
+        var list = blocks.ToList();
+        if (list.Count == 0) return (0, 0, 1, 1);
 
         return (
             list.Min(x => x.X),
             list.Min(x => x.Y),
             list.Max(x => x.X + x.W),
             list.Max(x => x.Y + x.H));
-    }
-
-    static string BuildPrompt(object ocrPayload)
-    {
-        var json = JsonSerializer.Serialize(ocrPayload);
-
-        const string instructions = """
-너는 일본어/영어 만화 이미지 OCR 검수 및 한국어 번역기다.
-첨부 이미지는 원본 페이지에서 OCR 영역 주변만 잘라낸 이미지다.
-아래 OCR 좌표는 이 잘라낸 이미지 기준이다.
-
-목표:
-1. OCR 텍스트가 이미지와 다르면 corrected에 정확한 원문을 적는다.
-2. OCR이 맞으면 corrected에 동일한 원문을 적는다.
-3. translation에는 자연스러운 한국어 번역만 적는다.
-4. 말투, 호칭, 감정, 문장부호를 이미지 문맥에 맞게 유지한다.
-5. 항목을 추가/삭제/병합하지 말고 반드시 입력 id를 그대로 유지한다.
-6. 추론 과정은 출력하지 말고 즉시 JSON 결과만 반환한다.
-7. 설명이나 마크다운 없이 JSON만 출력한다.
-
-출력 형식:
-{
-  "regions": [
-    { "id": 0, "corrected": "원문", "translation": "한국어" }
-  ]
-}
-
-OCR:
-""";
-
-        return instructions + Environment.NewLine + json;
-    }
-
-    static List<VisionTranslation> ParseResult(string content, IReadOnlyList<OcrLine> lines)
-    {
-        try
-        {
-            var normalized = content.Trim();
-            var fenceToken = new string((char)96, 3);
-            if (normalized.StartsWith(fenceToken))
-            {
-                var firstNewLine = normalized.IndexOf('\n');
-                if (firstNewLine >= 0) normalized = normalized[(firstNewLine + 1)..];
-                var fence = normalized.LastIndexOf(fenceToken, StringComparison.Ordinal);
-                if (fence >= 0) normalized = normalized[..fence].Trim();
-            }
-
-            using var doc = JsonDocument.Parse(normalized);
-            var root = doc.RootElement;
-            if (!root.TryGetProperty("regions", out var regions) ||
-                regions.ValueKind != JsonValueKind.Array)
-                return [];
-
-            var result = new List<VisionTranslation>();
-            var used = new HashSet<int>();
-
-            foreach (var region in regions.EnumerateArray())
-            {
-                if (!region.TryGetProperty("id", out var idEl) ||
-                    !idEl.TryGetInt32(out var id))
-                    continue;
-
-                if (id < 0 || id >= lines.Count || !used.Add(id))
-                    continue;
-
-                var corrected = region.TryGetProperty("corrected", out var correctedEl)
-                    ? correctedEl.GetString()?.Trim()
-                    : null;
-
-                var translation = region.TryGetProperty("translation", out var translationEl)
-                    ? translationEl.GetString()?.Trim()
-                    : null;
-
-                result.Add(new VisionTranslation(
-                    id,
-                    lines[id],
-                    string.IsNullOrWhiteSpace(corrected) ? lines[id].Text : corrected,
-                    string.IsNullOrWhiteSpace(translation)
-                        ? corrected ?? lines[id].Text
-                        : translation));
-            }
-
-            return result.OrderBy(x => x.Id).ToList();
-        }
-        catch
-        {
-            return [];
-        }
     }
 
     static string Compact(string text)
