@@ -1,0 +1,12 @@
+{
+  "id": "aya-expanse-8b",
+  "name": "Aya Expanse 8B (Ollama)",
+  "type": "vision_llm",
+  "provider": "ollama",
+  "modelTag": "aya-expanse:8b",
+  "apiBase": "http://127.0.0.1:11434",
+  "supportsImage": false,
+  "supportsText": true,
+  "enabled": true,
+  "tasks": ["translation"]
+}
