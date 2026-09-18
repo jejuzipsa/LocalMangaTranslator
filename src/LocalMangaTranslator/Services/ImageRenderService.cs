@@ -378,7 +378,18 @@ public sealed class ImageRenderService
 
         if (container is not null)
         {
-            var clipped = Intersect(textRect, container.Value);
+            // 말풍선/캡션 외곽선은 마스크에서 보호한다.
+            var c = container.Value;
+            int guard = Math.Clamp(Math.Min(c.Width, c.Height) / 80, 2, 4);
+            var safeContainer = c.Width > guard * 2 + 2 && c.Height > guard * 2 + 2
+                ? new OpenCvSharp.Rect(
+                    c.X + guard,
+                    c.Y + guard,
+                    c.Width - guard * 2,
+                    c.Height - guard * 2)
+                : c;
+
+            var clipped = Intersect(textRect, safeContainer);
             if (clipped.Width <= 0 || clipped.Height <= 0)
                 return;
             textRect = clipped;
