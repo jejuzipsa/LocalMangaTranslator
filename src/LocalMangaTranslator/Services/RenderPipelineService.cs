@@ -149,8 +149,8 @@ public sealed class RenderPipelineService
             if (finalPlans.Count == 0)
             {
                 // 안전 정책: 지울 원문이 확인되지 않은 페이지에 번역문만 덮지 않는다.
-                File.Copy(sourcePath, outputPath, overwrite: true);
-                File.Copy(sourcePath, finalDebug, overwrite: true);
+                SaveSourceAsPng(sourcePath, outputPath);
+                File.Copy(outputPath, finalDebug, overwrite: true);
                 WritePlanJson(sourcePath, plans, planJson);
                 progress?.Report("안전하게 조판할 Unit이 없어 원문을 유지했습니다.");
                 return;
@@ -1724,6 +1724,22 @@ public sealed class RenderPipelineService
         return samples.Length % 2 == 1
             ? samples[mid]
             : (samples[mid - 1] + samples[mid]) / 2.0;
+    }
+
+    static void SaveSourceAsPng(
+        string sourcePath,
+        string outputPath)
+    {
+        using var source = Cv2.ImRead(
+            sourcePath,
+            ImreadModes.Color);
+
+        if (source.Empty() ||
+            !Cv2.ImWrite(outputPath, source))
+        {
+            throw new InvalidOperationException(
+                "원문 보존 이미지를 저장하지 못했습니다.");
+        }
     }
 
     static BitmapSource LoadBitmap(
