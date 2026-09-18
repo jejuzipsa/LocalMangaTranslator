@@ -478,10 +478,17 @@ public partial class MainWindow : System.Windows.Window
                 SetStatus(i, item, "Qwen Vision OCR 검수·번역");
                 Log($"{item.FileName} | Vision LLM 검수·번역 시작");
 
+                var visionProgress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
+                    Log($"{item.FileName} | {message}");
+                });
+
                 var translated = await vision.ReviewAndTranslateAsync(
                     item.FilePath,
                     lines,
                     model,
+                    visionProgress,
                     workCts.Token);
 
                 int corrected = translated.Count(x =>
