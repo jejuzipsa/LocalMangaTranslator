@@ -113,73 +113,173 @@ public static class BalloonMaskService
         Rect blockRect,
         string type)
     {
-        bool caption = string.Equals(type, "caption", StringComparison.OrdinalIgnoreCase);
-
-        int padX = (int)Math.Clamp(
-            blockRect.Width * (caption ? 0.75 : 1.35) + blockRect.Height * 0.12,
-            34,
-            300);
-
-        int padY = (int)Math.Clamp(
-            blockRect.Height * (caption ? 0.85 : 1.55) + blockRect.Width * 0.10,
-            32,
-            260);
-
-        var search = ClampRect(
-            blockRect.X - padX,
-            blockRect.Y - padY,
-            blockRect.Width + padX * 2,
-            blockRect.Height + padY * 2,
+        // StoneCandy의 balloon-fill 방식처럼 OCR 박스를 중심으로 넓은 창을 만든 뒤,
+        // 큰 경계 후보를 하나씩 장벽으로 세우고 중심 flood-fill 영역이 말풍선인지 찾는다.
+        var search = EnlargeWindow(
+            blockRect,
             source.Cols,
-            source.Rows);
+            source.Rows,
+            string.Equals(type, "caption", StringComparison.OrdinalIgnoreCase) ? 2.1 : 2.5);
 
         using var roi = new Mat(source, search);
-        using var gray = new Mat();
+
+        double scale = 1.0;
+        if (roi.Rows > 300 && roi.Cols > 300)
+            scale = 0.60;
+        else if (roi.Rows < 120 || roi.Cols < 120)
+            scale = 1.40;
+
+        using var working = new Mat();
+        if (Math.Abs(scale - 1.0) > 0.01)
+        {
+            Cv2.Resize(
+                roi,
+                working,
+                new Size(
+                    Math.Max(8, (int)Math.Round(roi.Cols * scale)),
+                    Math.Max(8, (int)Math.Round(roi.Rows * scale))),
+                0,
+                0,
+                InterpolationFlags.Area);
+        }
+        else
+        {
+            roi.CopyTo(working);
+        }
+
+        int width = working.Cols;
+        int height = working.Rows;
+        double imageArea = Math.Max(1.0, width * (double)height);
+
         using var blurred = new Mat();
+        using var gray = new Mat();
         using var edges = new Mat();
 
-        Cv2.CvtColor(roi, gray, ColorConversionCodes.BGR2GRAY);
-        Cv2.GaussianBlur(gray, blurred, new Size(3, 3), 0);
-        Cv2.Canny(blurred, edges, 55, 135, apertureSize: 3, L2gradient: true);
+        Cv2.GaussianBlur(working, blurred, new Size(3, 3), 0);
+        Cv2.CvtColor(blurred, gray, ColorConversionCodes.BGR2GRAY);
+        Cv2.Canny(gray, edges, 70, 140, apertureSize: 3, L2gradient: true);
 
-        using (var closeKernel = Cv2.GetStructuringElement(
-            MorphShapes.Ellipse,
-            new Size(5, 5)))
-        {
-            Cv2.MorphologyEx(
-                edges,
-                edges,
-                MorphTypes.Close,
-                closeKernel,
-                iterations: 2);
-        }
+        Cv2.Rectangle(
+            edges,
+            new Point(0, 0),
+            new Point(width - 1, height - 1),
+            Scalar.White,
+            1,
+            LineTypes.Link8);
 
         Cv2.FindContours(
             edges,
             out Point[][] contours,
             out _,
-            RetrievalModes.List,
-            ContourApproximationModes.ApproxSimple);
+            RetrievalModes.CComp,
+            ContourApproximationModes.ApproxNone);
 
-        double blockArea = Math.Max(1.0, blockRect.Width * (double)blockRect.Height);
-        double centerX = blockRect.X + blockRect.Width / 2.0;
-        double centerY = blockRect.Y + blockRect.Height / 2.0;
-        double localCenterX = centerX - search.X;
-        double localCenterY = centerY - search.Y;
+        using var barrier = Mat.Zeros(height, width, MatType.CV_8UC1).ToMat();
+        Mat? bestFlood = null;
+        int bestArea = int.MaxValue;
 
-        Point[]? bestContour = null;
-        Rect bestLocalBounds = default;
-        double bestScore = double.NegativeInfinity;
+        var seed = new Point(width / 2, height / 2);
+        var diff = new Scalar(10);
 
-        foreach (var contour in contours)
+        try
         {
-            if (contour.Length < 6)
-                continue;
+            for (int i = 0; i < contours.Length; i++)
+            {
+                var contourRect = Cv2.BoundingRect(contours[i]);
+                if (contourRect.Width * (double)contourRect.Height < imageArea * 0.40)
+                    continue;
 
-            var localBounds = Cv2.BoundingRect(contour);
-            if (localBounds.Width < Math.Max(14, blockRect.Width * 0.9) ||
-                localBounds.Height < Math.Max(12, blockRect.Height * 0.9))
-                continue;
+                Cv2.DrawContours(
+                    barrier,
+                    contours,
+                    i,
+                    Scalar.White,
+                    2,
+                    LineTypes.Link8);
+
+                using var candidate = barrier.Clone();
+
+                int filled = Cv2.FloodFill(
+                    candidate,
+                    seed,
+                    new Scalar(127),
+                    out _,
+                    diff,
+                    diff,
+                    FloodFillFlags.Link4);
+
+                if (filled <= imageArea * 0.30)
+                {
+                    Cv2.DrawContours(
+                        barrier,
+                        contours,
+                        i,
+                        Scalar.Black,
+                        2,
+                        LineTypes.Link8);
+                    continue;
+                }
+
+                if (filled < bestArea)
+                {
+                    bestFlood?.Dispose();
+                    bestFlood = candidate.Clone();
+                    bestArea = filled;
+                }
+            }
+
+            if (bestFlood is null)
+                return null;
+
+            using var rawMask = new Mat();
+            Cv2.InRange(
+                bestFlood,
+                new Scalar(126),
+                new Scalar(128),
+                rawMask);
+
+            using (var kernel = Cv2.GetStructuringElement(
+                MorphShapes.Ellipse,
+                new Size(3, 3)))
+            {
+                Cv2.MorphologyEx(
+                    rawMask,
+                    rawMask,
+                    MorphTypes.Close,
+                    kernel,
+                    iterations: 1);
+            }
+
+            using var originalScaleMask = new Mat();
+            if (Math.Abs(scale - 1.0) > 0.01)
+            {
+                Cv2.Resize(
+                    rawMask,
+                    originalScaleMask,
+                    new Size(search.Width, search.Height),
+                    0,
+                    0,
+                    InterpolationFlags.Nearest);
+            }
+            else
+            {
+                rawMask.CopyTo(originalScaleMask);
+            }
+
+            using var nonZero = new Mat();
+            Cv2.FindNonZero(originalScaleMask, nonZero);
+            if (nonZero.Empty())
+                return null;
+
+            var localBounds = Cv2.BoundingRect(nonZero);
+
+            double blockArea = Math.Max(1.0, blockRect.Width * (double)blockRect.Height);
+            double maskRectArea = Math.Max(1.0, localBounds.Width * (double)localBounds.Height);
+            double ratio = maskRectArea / blockArea;
+
+            // 패널 전체나 배경을 말풍선으로 오인했으면 사용하지 않는다.
+            if (ratio > 24.0)
+                return null;
 
             var globalBounds = new Rect(
                 search.X + localBounds.X,
@@ -188,101 +288,78 @@ public static class BalloonMaskService
                 localBounds.Height);
 
             double coverage = IntersectionArea(globalBounds, blockRect) / blockArea;
-            if (coverage < 0.62)
-                continue;
+            if (coverage < 0.55)
+                return null;
 
-            if (!PointInPolygon(contour, localCenterX, localCenterY))
-                continue;
+            using var cropped = new Mat(originalScaleMask, localBounds);
+            var safeMask = cropped.Clone();
 
-            double rectArea = Math.Max(1.0, localBounds.Width * (double)localBounds.Height);
-            double ratio = rectArea / blockArea;
-            double maxRatio = caption ? 16.0 : 22.0;
+            // 외곽선과 말풍선 꼬리를 건드리지 않도록 안쪽으로 조금 줄인 마스크를 사용한다.
+            int minDim = Math.Min(safeMask.Cols, safeMask.Rows);
+            int guard = Math.Clamp(minDim / 34, 2, 8);
+            int kernelSize = guard * 2 + 1;
 
-            if (ratio < 1.05 || ratio > maxRatio)
-                continue;
-
-            int touches = 0;
-            const int edgeTolerance = 3;
-            if (localBounds.Left <= edgeTolerance) touches++;
-            if (localBounds.Top <= edgeTolerance) touches++;
-            if (localBounds.Right >= search.Width - edgeTolerance) touches++;
-            if (localBounds.Bottom >= search.Height - edgeTolerance) touches++;
-            if (touches >= 3)
-                continue;
-
-            double contourArea = Math.Abs(Cv2.ContourArea(contour));
-            if (contourArea < blockArea * 0.70)
-                continue;
-
-            double fillRatio = Math.Clamp(contourArea / rectArea, 0, 1);
-            double preferredRatio = caption ? 2.0 : 2.8;
-            double sizePenalty = Math.Abs(Math.Log(ratio / preferredRatio));
-
-            double centerPenalty =
-                Math.Abs((globalBounds.X + globalBounds.Width / 2.0) - centerX) /
-                Math.Max(1, globalBounds.Width) +
-                Math.Abs((globalBounds.Y + globalBounds.Height / 2.0) - centerY) /
-                Math.Max(1, globalBounds.Height);
-
-            double score =
-                coverage * 6.0 +
-                fillRatio * (caption ? 1.1 : 0.45) -
-                sizePenalty * 1.25 -
-                centerPenalty * 0.8 -
-                touches * 0.4;
-
-            if (score > bestScore)
+            using (var erodeKernel = Cv2.GetStructuringElement(
+                MorphShapes.Ellipse,
+                new Size(kernelSize, kernelSize)))
             {
-                bestScore = score;
-                bestContour = contour;
-                bestLocalBounds = localBounds;
+                Cv2.Erode(safeMask, safeMask, erodeKernel, iterations: 1);
             }
+
+            double safeArea = Cv2.CountNonZero(safeMask);
+            if (safeArea < blockArea * 0.60)
+            {
+                safeMask.Dispose();
+                return null;
+            }
+
+            return (globalBounds, safeMask);
         }
-
-        if (bestContour is null || bestScore < 2.2)
-            return null;
-
-        using var wholeMask = Mat.Zeros(search.Height, search.Width, MatType.CV_8UC1).ToMat();
-        Cv2.FillPoly(wholeMask, new[] { bestContour }, Scalar.White);
-
-        var cropRect = ClampRect(
-            bestLocalBounds.X,
-            bestLocalBounds.Y,
-            bestLocalBounds.Width,
-            bestLocalBounds.Height,
-            search.Width,
-            search.Height);
-
-        using var cropped = new Mat(wholeMask, cropRect);
-        var safeMask = cropped.Clone();
-
-        int minDim = Math.Min(safeMask.Cols, safeMask.Rows);
-        int guard = Math.Clamp(minDim / 35, 2, 9);
-        int kernelSize = guard * 2 + 1;
-
-        using (var erodeKernel = Cv2.GetStructuringElement(
-            MorphShapes.Ellipse,
-            new Size(kernelSize, kernelSize)))
+        finally
         {
-            Cv2.Erode(safeMask, safeMask, erodeKernel, iterations: 1);
+            bestFlood?.Dispose();
         }
+    }
 
-        double safeArea = Cv2.CountNonZero(safeMask);
-        double blockAreaInMask = Math.Max(1, blockArea);
+    static Rect EnlargeWindow(
+        Rect rect,
+        int imageWidth,
+        int imageHeight,
+        double areaRatio)
+    {
+        double width = Math.Max(1, rect.Width);
+        double height = Math.Max(1, rect.Height);
+        double aspect = height / width;
 
-        if (safeArea < blockAreaInMask * 0.65)
-        {
-            safeMask.Dispose();
-            return null;
-        }
+        // StoneCandy enlarge_window과 같은 면적 비율 확장식.
+        double a = Math.Max(0.05, aspect);
+        double b = width + height * aspect;
+        double cc = (1.0 - areaRatio) * width * height;
+        double discriminant = Math.Max(0, b * b - 4.0 * a * cc);
+        double positiveRoot = (-b + Math.Sqrt(discriminant)) / (2.0 * a);
 
-        var bounds = new Rect(
-            search.X + cropRect.X,
-            search.Y + cropRect.Y,
-            cropRect.Width,
-            cropRect.Height);
+        int deltaY = Math.Max(18, (int)Math.Round(positiveRoot / 2.0));
+        int deltaX = Math.Max(18, (int)Math.Round(deltaY * aspect));
 
-        return (bounds, safeMask);
+        deltaX = Math.Min(
+            deltaX,
+            Math.Min(rect.X, Math.Max(0, imageWidth - rect.Right)));
+
+        deltaY = Math.Min(
+            deltaY,
+            Math.Min(rect.Y, Math.Max(0, imageHeight - rect.Bottom)));
+
+        // 이미지 가장자리 말풍선도 있으므로 한쪽 여백이 0이라고 전체 확장을 막지 않는다.
+        int left = Math.Max(0, rect.X - Math.Max(18, deltaX));
+        int top = Math.Max(0, rect.Y - Math.Max(18, deltaY));
+        int right = Math.Min(imageWidth, rect.Right + Math.Max(18, deltaX));
+        int bottom = Math.Min(imageHeight, rect.Bottom + Math.Max(18, deltaY));
+
+        return new Rect(
+            left,
+            top,
+            Math.Max(1, right - left),
+            Math.Max(1, bottom - top));
     }
 
     static Rect FindLargestRectangle(Mat binary)
