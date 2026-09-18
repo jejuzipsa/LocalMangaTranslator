@@ -89,6 +89,8 @@ public sealed class ImageRenderService
 
         using var mask = Mat.Zeros(source.Rows, source.Cols, MatType.CV_8UC1).ToMat();
         var layouts = new Dictionary<int, BalloonLayout>(regions.Count);
+        int detachedEraseCount = 0;
+        int detachedKeepCount = 0;
 
         foreach (var region in regions)
         {
@@ -109,12 +111,48 @@ public sealed class ImageRenderService
             foreach (var line in block.Lines)
             {
                 token.ThrowIfCancellationRequested();
+
+                bool detached =
+                    layout.Detected &&
+                    LineMaskCoverage(line, layout) < 0.20;
+
+                if (detached)
+                {
+                    // 대표 말풍선 밖에 있지만 같은 번역 블록에 포함된 OCR line.
+                    // NEVER.처럼 확실한 원문은 별도로 지우되, confidence가 낮은
+                    // 오검출(예: 그림을 "8"로 읽은 경우)은 원본을 보호한다.
+                    if (!ShouldEraseDetachedLine(line))
+                    {
+                        detachedKeepCount++;
+                        continue;
+                    }
+
+                    AddTextOnlyMask(
+                        source,
+                        mask,
+                        line,
+                        layout,
+                        constrainToLayout: false);
+
+                    detachedEraseCount++;
+                    progress?.Report(
+                        $"[detached-clean] id={region.Id} text=\"{line.Text}\" confidence={line.Confidence:0.00}");
+                    continue;
+                }
+
                 AddTextOnlyMask(
                     source,
                     mask,
                     line,
-                    layout);
+                    layout,
+                    constrainToLayout: true);
             }
+        }
+
+        if (detachedEraseCount > 0 || detachedKeepCount > 0)
+        {
+            progress?.Report(
+                $"분리 원문 정리 {detachedEraseCount}개 · 저신뢰 보호 {detachedKeepCount}개");
         }
 
         SaveDebugOverlay(
@@ -361,7 +399,8 @@ public sealed class ImageRenderService
         Mat source,
         Mat globalMask,
         OcrLine line,
-        BalloonLayout layout)
+        BalloonLayout layout,
+        bool constrainToLayout)
     {
         int expand = Math.Max(1, (int)Math.Ceiling(line.H * 0.035));
 
@@ -373,7 +412,7 @@ public sealed class ImageRenderService
             source.Cols,
             source.Rows);
 
-        if (layout.Detected)
+        if (constrainToLayout && layout.Detected)
         {
             var clipped = Intersect(textRect, layout.Bounds);
             if (clipped.Width <= 0 || clipped.Height <= 0)
@@ -390,7 +429,7 @@ public sealed class ImageRenderService
             source.Cols,
             source.Rows);
 
-        if (layout.Detected)
+        if (constrainToLayout && layout.Detected)
         {
             var clipped = Intersect(sampleRect, layout.Bounds);
             if (clipped.Width > 0 && clipped.Height > 0)
@@ -425,7 +464,7 @@ public sealed class ImageRenderService
         {
             for (int x = textRect.Left; x < textRect.Right; x++)
             {
-                if (layout.Detected && !layout.Contains(x, y))
+                if (constrainToLayout && layout.Detected && !layout.Contains(x, y))
                     continue;
 
                 var pixel = source.At<Vec3b>(y, x);
@@ -470,6 +509,59 @@ public sealed class ImageRenderService
                 }
             }
         }
+    }
+
+    static bool ShouldEraseDetachedLine(OcrLine line)
+    {
+        string text = line.Text.Trim();
+        if (string.IsNullOrWhiteSpace(text))
+            return false;
+
+        int letters = text.Count(char.IsLetter);
+        int digits = text.Count(char.IsDigit);
+
+        // 일반 텍스트는 0.82 이상, 한 글자/아주 짧은 대사는 0.90 이상일 때만 지운다.
+        // 숫자만 있는 detached OCR은 패널 그림/텍스처 오인 가능성이 커서 보호한다.
+        if (letters >= 2)
+            return line.Confidence >= 0.82f;
+
+        if (letters == 1 && digits == 0)
+            return line.Confidence >= 0.90f;
+
+        return false;
+    }
+
+    static double LineMaskCoverage(
+        OcrLine line,
+        BalloonLayout layout)
+    {
+        if (!layout.Detected)
+            return 1.0;
+
+        int inside = 0;
+        int total = 0;
+
+        // line 전체를 촘촘히 순회하지 않고 5 x 3 샘플로 대표 마스크와의 소속을 판정한다.
+        for (int yi = 0; yi < 3; yi++)
+        {
+            double ty = 0.20 + yi * 0.30;
+
+            for (int xi = 0; xi < 5; xi++)
+            {
+                double tx = 0.10 + xi * 0.20;
+
+                int x = (int)Math.Round(line.X + line.W * tx);
+                int y = (int)Math.Round(line.Y + line.H * ty);
+
+                total++;
+                if (layout.Contains(x, y))
+                    inside++;
+            }
+        }
+
+        return total == 0
+            ? 0
+            : inside / (double)total;
     }
 
     static List<Vec3b> CollectRingSamples(
@@ -693,6 +785,47 @@ public sealed class ImageRenderService
                         layout.Inner,
                         color,
                         1);
+                }
+
+                if (layout.ShouldRender && layout.Detected)
+                {
+                    foreach (var line in region.Source.Lines)
+                    {
+                        if (LineMaskCoverage(line, layout) >= 0.20)
+                            continue;
+
+                        bool clean = ShouldEraseDetachedLine(line);
+                        var lineRect = ClampRect(
+                            (int)Math.Floor(line.X),
+                            (int)Math.Floor(line.Y),
+                            (int)Math.Ceiling(line.W),
+                            (int)Math.Ceiling(line.H),
+                            source.Cols,
+                            source.Rows);
+
+                        Cv2.Rectangle(
+                            debug,
+                            lineRect,
+                            clean
+                                ? new Scalar(220, 0, 220)
+                                : new Scalar(0, 140, 255),
+                            2);
+
+                        if (clean)
+                        {
+                            Cv2.PutText(
+                                debug,
+                                "CLEAN",
+                                new OpenCvSharp.Point(
+                                    lineRect.X,
+                                    Math.Max(12, lineRect.Y - 3)),
+                                HersheyFonts.HersheySimplex,
+                                0.36,
+                                new Scalar(220, 0, 220),
+                                1,
+                                LineTypes.AntiAlias);
+                        }
+                    }
                 }
 
                 string label =
