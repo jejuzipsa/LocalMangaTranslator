@@ -81,8 +81,8 @@ public partial class MainWindow : System.Windows.Window
         ReviewModelBox.ItemsSource = reviewModels;
         TranslationModelBox.ItemsSource = translationModels;
 
-        SelectPreferredModel(ReviewModelBox, reviewModels, "gemma4-12b-it-qat");
-        SelectPreferredModel(TranslationModelBox, translationModels, "gemma4-12b-it-qat");
+        SelectPreferredModel(ReviewModelBox, reviewModels, "gemma4-12b");
+        SelectPreferredModel(TranslationModelBox, translationModels, "gemma4-12b");
 
         Log($"모델 프로필 · OCR 검수 {reviewModels.Count}개 / 번역 {translationModels.Count}개");
         Log($"OCR 엔진 · {ocr?.Status ?? "초기화 전"}");
