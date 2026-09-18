@@ -7,8 +7,8 @@
 `models/vision_llm/<id>/model.json`을 추가하면 프로그램 시작 시 자동으로 목록을 읽습니다.
 
 현재 프로필:
-- Gemma 4 12B IT QAT
-  - tag: `gemma4:12b-it-qat`
+- Gemma 4 12B
+  - tag: `gemma4:12b`
   - tasks: `review`, `translation`
 - Qwen 3.5 9B
   - tag: `qwen3.5:9b`
