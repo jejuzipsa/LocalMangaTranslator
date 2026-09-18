@@ -71,14 +71,15 @@ public static class BalloonMaskService
                 type);
         }
 
-        var (bounds, safeMask) = detected.Value;
+        var (bounds, detectedMask) = detected.Value;
+        using var safeMask = detectedMask;
         var innerLocal = FindLargestRectangle(safeMask);
 
         if (innerLocal.Width < 12 || innerLocal.Height < 12)
         {
             innerLocal = new Rect(
-                Math.Max(0, (int)Math.Round(blockRect.X - bounds.X)),
-                Math.Max(0, (int)Math.Round(blockRect.Y - bounds.Y)),
+                Math.Max(0, blockRect.X - bounds.X),
+                Math.Max(0, blockRect.Y - bounds.Y),
                 Math.Min(bounds.Width, Math.Max(12, blockRect.Width)),
                 Math.Min(bounds.Height, Math.Max(12, blockRect.Height)));
         }
@@ -382,11 +383,13 @@ public static class BalloonMaskService
 
     static byte[] ToByteArray(Mat mat)
     {
-        var data = new byte[mat.Rows * mat.Cols];
+        int rows = mat.Rows;
+        int cols = mat.Cols;
+        var data = new byte[rows * cols];
 
-        for (int y = 0; y < mat.Rows; y++)
-            for (int x = 0; x < mat.Cols; x++)
-                data[y * mat.Cols + x] = mat.At<byte>(y, x);
+        for (int y = 0; y < rows; y++)
+            for (int x = 0; x < cols; x++)
+                data[y * cols + x] = mat.At<byte>(y, x);
 
         return data;
     }
