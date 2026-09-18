@@ -1,0 +1,11 @@
+{
+  "id": "qwen3.5-9b",
+  "name": "Qwen 3.5 9B (Ollama)",
+  "type": "vision_llm",
+  "provider": "ollama",
+  "modelTag": "qwen3.5:9b",
+  "apiBase": "http://127.0.0.1:11434",
+  "supportsImage": true,
+  "supportsText": true,
+  "enabled": true
+}

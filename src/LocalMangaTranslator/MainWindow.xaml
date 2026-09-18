@@ -1,0 +1,119 @@
+<Window x:Class="LocalMangaTranslator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LocalMangaTranslator"
+        Width="1180" Height="820"
+        MinWidth="980" MinHeight="700"
+        Background="{StaticResource Bg}"
+        Foreground="{StaticResource Text}"
+        AllowDrop="True"
+        Drop="Window_Drop">
+
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="116"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="180"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,14">
+            <TextBlock Text="LocalMangaTranslator" FontSize="25" FontWeight="SemiBold"/>
+            <TextBlock Text="OCR → Vision LLM 검수·번역 → 인페인트 → 조판"
+                       Foreground="{StaticResource Muted}" Margin="0,35,0,0"/>
+        </Grid>
+
+        <Border Grid.Row="1" Background="{StaticResource Panel}" BorderBrush="{StaticResource Border}"
+                BorderThickness="1" CornerRadius="8" AllowDrop="True" Drop="Window_Drop">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="이미지 또는 폴더를 여기에 드래그" FontSize="18" HorizontalAlignment="Center"/>
+                <TextBlock Text="JPG · PNG · WEBP · BMP" Foreground="{StaticResource Muted}"
+                           Margin="0,8,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <DockPanel Grid.Row="2" Margin="0,12,0,10">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <Button Content="파일 추가" Click="AddFiles_Click"/>
+                <Button Content="폴더 추가" Click="AddFolder_Click"/>
+                <Button Content="전체 삭제" Click="Clear_Click"/>
+            </StackPanel>
+            <TextBlock x:Name="QueueCountText" Text="0개" Foreground="{StaticResource Muted}"
+                       VerticalAlignment="Center" HorizontalAlignment="Right"/>
+        </DockPanel>
+
+        <Border Grid.Row="3" Background="{StaticResource Panel}" BorderBrush="{StaticResource Border}"
+                BorderThickness="1" CornerRadius="8">
+            <DataGrid x:Name="QueueGrid" ItemsSource="{Binding Queue}" AutoGenerateColumns="False"
+                      HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                      Background="Transparent" Foreground="{StaticResource Text}"
+                      BorderThickness="0" RowBackground="#111821" AlternatingRowBackground="#151D27"
+                      CanUserAddRows="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="파일" Binding="{Binding FileName}" Width="*"/>
+                    <DataGridTextColumn Header="상태" Binding="{Binding Status}" Width="180"/>
+                    <DataGridTextColumn Header="시간" Binding="{Binding Elapsed}" Width="90"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <Border Grid.Row="4" Background="{StaticResource Panel}" BorderBrush="{StaticResource Border}"
+                BorderThickness="1" CornerRadius="8" Padding="12" Margin="0,12,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="저장 위치" VerticalAlignment="Center" Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                <TextBox Grid.Column="1" x:Name="OutputPathBox" IsReadOnly="True" Padding="8,6"/>
+                <Button Grid.Column="2" Content="선택" Click="ChooseOutput_Click"/>
+                <Button Grid.Column="3" Content="폴더 열기" Click="OpenOutput_Click"/>
+
+                <TextBlock Grid.Column="5" Text="Vision 모델" VerticalAlignment="Center" Foreground="{StaticResource Muted}" Margin="0,0,10,0"/>
+                <ComboBox Grid.Column="6" x:Name="ModelBox" DisplayMemberPath="Name"/>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="5" Margin="0,12,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock x:Name="CurrentStatusText" Text="대기 중" Foreground="{StaticResource Muted}" Margin="0,0,0,6"/>
+                <ProgressBar x:Name="OverallProgress" Height="12" Minimum="0" Maximum="100" Value="0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="14,0,0,0" VerticalAlignment="Bottom">
+                <Button x:Name="StartButton" Content="번역 시작" Click="Start_Click" Background="#2456A8" MinWidth="110"/>
+                <Button x:Name="StopButton" Content="작업 중지" Click="Stop_Click" IsEnabled="False" MinWidth="110"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="6" Background="#090D12" BorderBrush="{StaticResource Border}" BorderThickness="1" CornerRadius="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" Margin="10,0">
+                    <TextBlock Text="작업 로그" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <Button Content="지우기" DockPanel.Dock="Right" Click="ClearLog_Click" Padding="10,4"/>
+                </DockPanel>
+                <TextBox Grid.Row="1" x:Name="LogBox" IsReadOnly="True" AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                         FontFamily="Consolas" FontSize="12" Padding="10" TextWrapping="NoWrap"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
