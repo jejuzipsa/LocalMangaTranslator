@@ -296,6 +296,25 @@ try
         noLegacyLeak.Count == 1 &&
         noLegacyLeak[0].RegionId == "RG011" &&
         noLegacyLeak[0].DetectorMode == "rtdetr_region_rect");
+
+    var nearbyBubble = new PageRegion(
+        "RG012",
+        PageRegionKind.Bubble,
+        new Rect(118, 205, 92, 70),
+        0.89f,
+        "test-rtdetr");
+
+    var oneLegacyTwoLearned = PageAnalysisService.FuseContainers(
+        [candidate],
+        [learnedBubble, nearbyBubble],
+        fusionImagePath);
+
+    Check("one legacy contour cannot be reused by two learned bubbles",
+        oneLegacyTwoLearned.Count == 2 &&
+        oneLegacyTwoLearned.Count(x =>
+            x.DetectorMode == "rtdetr_region+legacy_mask") == 1 &&
+        oneLegacyTwoLearned.Count(x =>
+            x.DetectorMode == "rtdetr_region_rect") == 1);
 }
 finally
 {
