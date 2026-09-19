@@ -285,7 +285,7 @@ public sealed class VisionTranslationService
         if (!IsCompleteAndUsable(parsed, batchBlocks))
         {
             if (batch.Count > 1)
-                return await RetryIndividuallyAsync(imagePath, batch, model, token);
+                return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
             throw new InvalidOperationException(
                 $"Vision LLM 결과 검증 실패: {Compact(content)}");
