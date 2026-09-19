@@ -23,6 +23,8 @@ namespace LocalMangaTranslator.Services;
 public sealed class RenderPipelineService
 {
     const double InpaintRadius = 2.5;
+    const int FinalWebpLosslessQuality = 101;
+    const int DebugWebpQuality = 82;
 
     sealed record ContainerSelection(
         VisionTranslation Region,
@@ -65,12 +67,12 @@ public sealed class RenderPipelineService
         Directory.CreateDirectory(debugDir);
 
         string baseName = Path.GetFileNameWithoutExtension(outputPath);
-        string ocrDebug = Path.Combine(debugDir, $"{baseName}.01_ocr_raw.png");
-        string containerDebug = Path.Combine(debugDir, $"{baseName}.02_container_assignment.png");
-        string unitDebug = Path.Combine(debugDir, $"{baseName}.03_translation_units.png");
-        string eraseDebug = Path.Combine(debugDir, $"{baseName}.04_erase_mask.png");
-        string layoutDebug = Path.Combine(debugDir, $"{baseName}.05_layout_box.png");
-        string finalDebug = Path.Combine(debugDir, $"{baseName}.06_final_output.png");
+        string ocrDebug = Path.Combine(debugDir, $"{baseName}.01_ocr_raw.webp");
+        string containerDebug = Path.Combine(debugDir, $"{baseName}.02_container_assignment.webp");
+        string unitDebug = Path.Combine(debugDir, $"{baseName}.03_translation_units.webp");
+        string eraseDebug = Path.Combine(debugDir, $"{baseName}.04_erase_mask.webp");
+        string layoutDebug = Path.Combine(debugDir, $"{baseName}.05_layout_box.webp");
+        string finalDebug = Path.Combine(debugDir, $"{baseName}.06_final_output.webp");
         string planJson = Path.Combine(debugDir, $"{baseName}.render-plan.json");
 
         progress?.Report($"1/5 컨테이너 분석 · {candidates.Count}개 번역 블록");
@@ -149,8 +151,8 @@ public sealed class RenderPipelineService
             if (finalPlans.Count == 0)
             {
                 // 안전 정책: 지울 원문이 확인되지 않은 페이지에 번역문만 덮지 않는다.
-                SaveSourceAsPng(sourcePath, outputPath);
-                File.Copy(outputPath, finalDebug, overwrite: true);
+                SaveSourceAsOutput(sourcePath, outputPath);
+                SaveDebugCopy(outputPath, finalDebug);
                 WritePlanJson(sourcePath, plans, planJson);
                 progress?.Report("안전하게 조판할 Unit이 없어 원문을 유지했습니다.");
                 return;
@@ -165,7 +167,7 @@ public sealed class RenderPipelineService
                 outputPath,
                 token);
 
-            File.Copy(outputPath, finalDebug, overwrite: true);
+            SaveDebugCopy(outputPath, finalDebug);
             WritePlanJson(sourcePath, plans, planJson);
 
             progress?.Report(
@@ -320,7 +322,8 @@ public sealed class RenderPipelineService
 
             bool approved = item.Layout.ShouldRender &&
                             textLayout.Fits &&
-                            conflicts.Count == 0;
+                            conflicts.Count == 0 &&
+                            erase.Approved;
 
             string reason;
             if (!item.Layout.ShouldRender)
@@ -329,6 +332,8 @@ public sealed class RenderPipelineService
                 reason = $"line_ownership_conflict:{string.Join("+", conflicts)}";
             else if (!textLayout.Fits)
                 reason = $"layout_rejected:{textLayout.Reason}";
+            else if (!erase.Approved)
+                reason = $"erase_rejected:{erase.Reason}";
             else
                 reason = "ok";
 
@@ -361,39 +366,115 @@ public sealed class RenderPipelineService
     {
         int width = Math.Max(1, layout.Bounds.Width);
         int height = Math.Max(1, layout.Bounds.Height);
-        byte[] allowed;
+        var empty = new byte[width * height];
 
-        if (layout.Detected &&
-            layout.SafeMask is { Length: > 0 } &&
-            layout.MaskWidth == width &&
-            layout.MaskHeight == height)
+        // A fallback rectangle is useful for layout, but it is not proof that
+        // the pixels inside it are source text. 0009 therefore refuses erase
+        // permission unless a real container and its SafeMask both exist.
+        if (!layout.Detected)
         {
-            allowed = layout.SafeMask.ToArray();
-        }
-        else
-        {
-            // fallback도 무제한 삭제가 아니라 작은 승인 bounds 내부로 제한한다.
-            allowed = Enumerable.Repeat((byte)255, width * height).ToArray();
+            return new ErasePlan(
+                unitId,
+                containerId,
+                false,
+                "container_not_detected",
+                layout.Bounds,
+                empty,
+                width,
+                height,
+                []);
         }
 
-        var temporaryDetached = lines
-            .Where(x =>
-                layout.Detected &&
-                LineMaskCoverage(x.Source, layout) < 0.20 &&
-                ShouldEraseDetachedLine(x.Source))
+        if (layout.SafeMask is not { Length: > 0 } ||
+            layout.MaskWidth != width ||
+            layout.MaskHeight != height)
+        {
+            return new ErasePlan(
+                unitId,
+                containerId,
+                false,
+                "safe_mask_missing",
+                layout.Bounds,
+                empty,
+                width,
+                height,
+                []);
+        }
+
+        var approvedLineIds = lines
+            .Where(x => IsEraseEligibleLine(
+                x.Source,
+                layout))
             .Select(x => x.LineId)
-            .Distinct()
+            .Distinct(StringComparer.Ordinal)
             .ToList();
+
+        if (approvedLineIds.Count == 0)
+        {
+            return new ErasePlan(
+                unitId,
+                containerId,
+                false,
+                "no_safe_text_line",
+                layout.Bounds,
+                empty,
+                width,
+                height,
+                []);
+        }
 
         return new ErasePlan(
             unitId,
             containerId,
+            true,
+            "safe_container_text",
             layout.Bounds,
-            allowed,
+            layout.SafeMask.ToArray(),
             width,
             height,
-            lines.Select(x => x.LineId).Distinct().ToList(),
-            temporaryDetached);
+            approvedLineIds);
+    }
+
+    static bool IsEraseEligibleLine(
+        OcrLine line,
+        BalloonLayout layout)
+    {
+        if (!layout.Detected)
+            return false;
+
+        double coverage = LineMaskCoverage(
+            line,
+            layout);
+
+        if (coverage < 0.45)
+            return false;
+
+        string text = line.Text.Trim();
+        int meaningful = text.Count(char.IsLetterOrDigit);
+        if (meaningful < 2)
+            return false;
+
+        if (line.Confidence < 0.55f)
+            return false;
+
+        double containerArea = Math.Max(
+            1.0,
+            layout.Bounds.Width * (double)layout.Bounds.Height);
+
+        double lineArea = Math.Max(
+            1.0,
+            line.W * line.H);
+
+        // Very large OCR boxes over faces, fists or textured artwork are a
+        // recurring false-positive pattern. Real dialogue lines normally occupy
+        // only a narrow strip of a speech/caption container.
+        if (lineArea / containerArea > 0.28)
+            return false;
+
+        if (line.H > layout.Bounds.Height * 0.48)
+            return false;
+
+        return true;
     }
 
     static TextLayoutPlan CreateTextLayoutPlan(
@@ -636,7 +717,9 @@ public sealed class RenderPipelineService
         var erasedUnits = new HashSet<string>(
             StringComparer.Ordinal);
 
-        foreach (var plan in plans.Where(x => x.Approved))
+        foreach (var plan in plans.Where(x =>
+                     x.Approved &&
+                     x.Erase.Approved))
         {
             token.ThrowIfCancellationRequested();
 
@@ -649,36 +732,17 @@ public sealed class RenderPipelineService
                 allowed,
                 plan.Erase);
 
-            // 이전 detached-clean을 과도기 안전장치로 유지하되,
-            // 해당 OCR line의 좁은 사각형만 임시 삭제 허용영역으로 추가한다.
-            foreach (var line in plan.Lines.Where(x =>
-                         plan.Erase.TemporaryDetachedLineIds.Contains(x.LineId)))
-            {
-                AddTemporaryDetachedAllowance(
-                    allowed,
-                    line.Source,
-                    source.Cols,
-                    source.Rows);
-            }
-
             using var textMask = Mat.Zeros(
                 source.Rows,
                 source.Cols,
                 MatType.CV_8UC1).ToMat();
 
-            foreach (var line in plan.Lines)
+            foreach (var line in plan.Lines.Where(x =>
+                         plan.Erase.LineIds.Contains(
+                             x.LineId,
+                             StringComparer.Ordinal)))
             {
                 token.ThrowIfCancellationRequested();
-
-                bool detached =
-                    plan.Container.Detected &&
-                    LineMaskCoverage(line.Source, plan.Container) < 0.20;
-
-                if (detached &&
-                    !plan.Erase.TemporaryDetachedLineIds.Contains(line.LineId))
-                {
-                    continue;
-                }
 
                 AddTextCandidateMask(
                     source,
@@ -1135,12 +1199,44 @@ public sealed class RenderPipelineService
         Directory.CreateDirectory(
             Path.GetDirectoryName(outputPath)!);
 
-        var encoder = new PngBitmapEncoder();
-        encoder.Frames.Add(
-            BitmapFrame.Create(rendered));
+        string tempPng = Path.Combine(
+            Path.GetTempPath(),
+            $"lmt_typeset_{Guid.NewGuid():N}.png");
 
-        using var stream = File.Create(outputPath);
-        encoder.Save(stream);
+        try
+        {
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(
+                BitmapFrame.Create(rendered));
+
+            using (var stream = File.Create(tempPng))
+                encoder.Save(stream);
+
+            using var final = Cv2.ImRead(
+                tempPng,
+                ImreadModes.Color);
+
+            if (final.Empty() ||
+                !SaveLosslessWebp(
+                    outputPath,
+                    final))
+            {
+                throw new InvalidOperationException(
+                    "WebP 최종 이미지를 저장하지 못했습니다.");
+            }
+        }
+        finally
+        {
+            try
+            {
+                if (File.Exists(tempPng))
+                    File.Delete(tempPng);
+            }
+            catch
+            {
+                // 임시파일 정리 실패는 결과 저장을 실패 처리하지 않는다.
+            }
+        }
     }
 
     static void SavePlanningDebug(
@@ -1298,10 +1394,10 @@ public sealed class RenderPipelineService
                 LineTypes.AntiAlias);
         }
 
-        Cv2.ImWrite(ocrPath, ocr);
-        Cv2.ImWrite(containerPath, containers);
-        Cv2.ImWrite(unitPath, units);
-        Cv2.ImWrite(layoutPath, layout);
+        SaveDebugWebp(ocrPath, ocr);
+        SaveDebugWebp(containerPath, containers);
+        SaveDebugWebp(unitPath, units);
+        SaveDebugWebp(layoutPath, layout);
     }
 
     static void SaveEraseDebug(
@@ -1332,7 +1428,7 @@ public sealed class RenderPipelineService
                 }
             }
 
-            Cv2.ImWrite(path, debug);
+            SaveDebugWebp(path, debug);
         }
         catch
         {
@@ -1361,6 +1457,9 @@ public sealed class RenderPipelineService
                     ContainerMode = x.Container.Mode,
                     Approved = x.Approved,
                     Reason = x.Reason,
+                    EraseApproved = x.Erase.Approved,
+                    EraseReason = x.Erase.Reason,
+                    EraseEvidenceLineCount = x.Erase.LineIds.Count,
                     LayoutFits = x.Layout.Fits,
                     LayoutReason = x.Layout.Reason,
                     FontSize = x.Layout.FontSize,
@@ -1489,7 +1588,7 @@ public sealed class RenderPipelineService
         BalloonLayout layout)
     {
         if (!layout.Detected)
-            return 1.0;
+            return 0.0;
 
         int inside = 0;
         int total = 0;
@@ -1785,7 +1884,7 @@ public sealed class RenderPipelineService
             : (samples[mid - 1] + samples[mid]) / 2.0;
     }
 
-    static void SaveSourceAsPng(
+    static void SaveSourceAsOutput(
         string sourcePath,
         string outputPath)
     {
@@ -1794,11 +1893,55 @@ public sealed class RenderPipelineService
             ImreadModes.Color);
 
         if (source.Empty() ||
-            !Cv2.ImWrite(outputPath, source))
+            !SaveLosslessWebp(
+                outputPath,
+                source))
         {
             throw new InvalidOperationException(
                 "원문 보존 이미지를 저장하지 못했습니다.");
         }
+    }
+
+    static bool SaveLosslessWebp(
+        string path,
+        Mat image)
+        => Cv2.ImWrite(
+            path,
+            image,
+            new[]
+            {
+                new ImageEncodingParam(
+                    ImwriteFlags.WebPQuality,
+                    FinalWebpLosslessQuality)
+            });
+
+    static bool SaveDebugWebp(
+        string path,
+        Mat image)
+        => Cv2.ImWrite(
+            path,
+            image,
+            new[]
+            {
+                new ImageEncodingParam(
+                    ImwriteFlags.WebPQuality,
+                    DebugWebpQuality)
+            });
+
+    static void SaveDebugCopy(
+        string sourcePath,
+        string outputPath)
+    {
+        using var image = Cv2.ImRead(
+            sourcePath,
+            ImreadModes.Color);
+
+        if (image.Empty())
+            return;
+
+        SaveDebugWebp(
+            outputPath,
+            image);
     }
 
     static BitmapSource LoadBitmap(
