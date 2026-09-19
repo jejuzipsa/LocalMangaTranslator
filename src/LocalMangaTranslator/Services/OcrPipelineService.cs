@@ -226,6 +226,11 @@ public sealed class OcrPipelineService
                 unitBuild);
 
         unitBuild =
+            AttachRegionContainers(
+                unitBuild,
+                pageCandidates);
+
+        unitBuild =
             ApplySecondaryEvidence(
                 unitBuild,
                 pageCandidates,
@@ -450,6 +455,60 @@ public sealed class OcrPipelineService
             ordered);
     }
 
+    static OcrUnitBuildResult AttachRegionContainers(
+        OcrUnitBuildResult input,
+        IReadOnlyList<ContainerCandidate> candidates)
+    {
+        if (input.Units.Count == 0 ||
+            input.UnitOwnership.Count != input.Units.Count)
+        {
+            return input;
+        }
+
+        var byId =
+            candidates.ToDictionary(
+                x => x.CandidateId,
+                StringComparer.Ordinal);
+
+        var units =
+            input.Units
+                .Select((block, index) =>
+                {
+                    var ownership =
+                        input.UnitOwnership[index];
+
+                    if (string.IsNullOrWhiteSpace(
+                            ownership.CandidateId) ||
+                        !byId.TryGetValue(
+                            ownership.CandidateId,
+                            out var candidate))
+                    {
+                        return block;
+                    }
+
+                    return block with
+                    {
+                        RegionId =
+                            candidate.RegionId,
+                        RegionContainer =
+                            candidate
+                    };
+                })
+                .ToList();
+
+        return new OcrUnitBuildResult(
+            units,
+            input.ContainerCount,
+            input.AssignedLineCount,
+            input.OrphanGroupCount)
+        {
+            LineOwnership =
+                input.LineOwnership,
+            UnitOwnership =
+                input.UnitOwnership
+        };
+    }
+
     static OcrUnitBuildResult ApplySecondaryEvidence(
         OcrUnitBuildResult input,
         IReadOnlyList<ContainerCandidate> candidates,
@@ -598,7 +657,11 @@ public sealed class OcrPipelineService
                     SecondaryOcrSource =
                         secondary.Source,
                     SecondaryOcrAgreement =
-                        "secondary_only"
+                        "secondary_only",
+                    RegionId =
+                        candidate.RegionId,
+                    RegionContainer =
+                        candidate
                 });
 
             unitOwnership.Add(
