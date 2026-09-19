@@ -1,0 +1,340 @@
+{
+  "SourceFile": "core_bw_speech_basic_001.png",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T16:39:01.0776155+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 156.33333333333334,
+        "Y": 151,
+        "W": 190.66666666666666,
+        "H": 64.33333333333334,
+        "Text": "HERE I G000000000!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 203,
+            "Y": 151,
+            "W": 97.66666666666669,
+            "H": 33.66666666666666,
+            "Text": "HERE I",
+            "Confidence": 0.99887186,
+            "Language": "en"
+          },
+          {
+            "X": 156.33333333333334,
+            "Y": 175,
+            "W": 190.66666666666666,
+            "H": 40.33333333333334,
+            "Text": "G000000000!",
+            "Confidence": 0.98781,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "HERE I GOOOOOOOO!",
+      "Translation": "\uAC04\uB2E4\uC544\uC544\uC544\uC544\uC544\uC544\uC544\uC544!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 589.3333333333333,
+        "Y": 191.66666666666669,
+        "W": 158.66666666666674,
+        "H": 65.99999999999994,
+        "Text": "YOUR ROOM IS ROOM 431.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 589.3333333333333,
+            "Y": 191.66666666666669,
+            "W": 158.66666666666669,
+            "H": 35.66666666666667,
+            "Text": "YOUR ROOM IS",
+            "Confidence": 0.9973497,
+            "Language": "en"
+          },
+          {
+            "X": 596.3333333333333,
+            "Y": 217.33333333333331,
+            "W": 144.66666666666669,
+            "H": 40.33333333333333,
+            "Text": "ROOM 431.",
+            "Confidence": 0.9983728,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "YOUR ROOM IS ROOM 431.",
+      "Translation": "\uBC29\uC740 431\uD638\uC785\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 256,
+        "Y": 248,
+        "W": 53,
+        "H": 48,
+        "Text": "E7",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 256,
+            "Y": 248,
+            "W": 53,
+            "H": 48,
+            "Text": "E7",
+            "Confidence": 0.4596305,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "E7",
+      "Translation": "E7",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 438,
+        "Y": 484.3333333333333,
+        "W": 143,
+        "H": 64.66666666666669,
+        "Text": "NOW NOW. SLOW DOWN.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 447.6666666666667,
+            "Y": 484.3333333333333,
+            "W": 124,
+            "H": 37,
+            "Text": "NOW NOW.",
+            "Confidence": 0.9782187,
+            "Language": "en"
+          },
+          {
+            "X": 438,
+            "Y": 514,
+            "W": 143,
+            "H": 35,
+            "Text": "SLOW DOWN.",
+            "Confidence": 0.9945733,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "NOW NOW, SLOW DOWN.",
+      "Translation": "\uC790\uC790, \uC9C4\uC815\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 174.66666666666666,
+        "Y": 671.3333333333334,
+        "W": 206.00000000000003,
+        "H": 90.99999999999989,
+        "Text": "IN OTHER WORDS, FROM YOUR CURRENT POSITION,",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 180.33333333333334,
+            "Y": 671.3333333333334,
+            "W": 193.99999999999997,
+            "H": 37.666666666666664,
+            "Text": "IN OTHER WORDS,",
+            "Confidence": 0.98734677,
+            "Language": "en"
+          },
+          {
+            "X": 213,
+            "Y": 702.6666666666666,
+            "W": 128,
+            "H": 33,
+            "Text": "FROM YOUR",
+            "Confidence": 0.99989426,
+            "Language": "en"
+          },
+          {
+            "X": 174.66666666666666,
+            "Y": 730.6666666666666,
+            "W": 206.00000000000003,
+            "H": 31.666666666666686,
+            "Text": "CURRENT POSITION,",
+            "Confidence": 0.99842525,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "IN OTHER WORDS, FROM YOUR CURRENT POSITION,",
+      "Translation": "\uB2E4\uC2DC \uB9D0\uD574\uC11C, \uC9C0\uAE08 \uC704\uCE58\uC5D0\uC11C\n\uAC00\uB824\uBA74\n431\uAC1C\uC758 \uBC29\uC744 \uC9C0\uB098\uC57C \uD55C\uB2E4\uB294 \uAC70\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 861,
+        "Y": 682,
+        "W": 266,
+        "H": 70,
+        "Text": "YOU WILL HAVE TO PASS THROUGH 431 ROOMS.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 861,
+            "Y": 682,
+            "W": 266,
+            "H": 42,
+            "Text": "YOU WILL HAVE TO PASS",
+            "Confidence": 0.9976372,
+            "Language": "en"
+          },
+          {
+            "X": 871,
+            "Y": 709,
+            "W": 247.5,
+            "H": 43,
+            "Text": "THROUGH 431 ROOMS.",
+            "Confidence": 0.992842,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "YOU WILL HAVE TO PASS THROUGH 431 ROOMS.",
+      "Translation": "\uADF8\uAC8C \uBC14\uB85C\n\uBB38\uC81C\uB77C\uB294 \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 184.33333333333334,
+        "Y": 1261.6666666666667,
+        "W": 152.99999999999997,
+        "H": 61.33333333333326,
+        "Text": "THEREIN LIES PROBLEM. THE",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 188.33333333333334,
+            "Y": 1261.6666666666667,
+            "W": 145.33333333333334,
+            "H": 32.66666666666666,
+            "Text": "THEREIN LIES",
+            "Confidence": 0.9990345,
+            "Language": "en"
+          },
+          {
+            "X": 225.33333333333334,
+            "Y": 1289.6666666666667,
+            "W": 111.99999999999997,
+            "H": 33.33333333333333,
+            "Text": "PROBLEM.",
+            "Confidence": 0.9982999,
+            "Language": "en"
+          },
+          {
+            "X": 184.33333333333334,
+            "Y": 1291.6666666666667,
+            "W": 45.333333333333314,
+            "H": 28,
+            "Text": "THE",
+            "Confidence": 0.998705,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THEREIN LIES THE PROBLEM.",
+      "Translation": "\uAC70\uAE30\uC5D0 \uBB38\uC81C\uAC00\n\uC788\uB294 \uAC70\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 679,
+        "Y": 1292.5,
+        "W": 159,
+        "H": 41,
+        "Text": "AS I\u0027VE SAID,",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 679,
+            "Y": 1292.5,
+            "W": 159,
+            "H": 41,
+            "Text": "AS I\u0027VE SAID,",
+            "Confidence": 0.9917228,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "AS I\u0027VE SAID,",
+      "Translation": "\uB9D0\uD588\uC796\uC544,",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 863,
+        "Y": 1619,
+        "W": 244,
+        "H": 67.66666666666652,
+        "Text": "THE FURTHER YOU ARE FROM THIS ROOM...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 863,
+            "Y": 1619,
+            "W": 244,
+            "H": 42,
+            "Text": "THE FURTHER YOU ARE",
+            "Confidence": 0.9968228,
+            "Language": "en"
+          },
+          {
+            "X": 878,
+            "Y": 1654.3333333333333,
+            "W": 209.66666666666663,
+            "H": 32.33333333333333,
+            "Text": "FROM THIS ROOM...",
+            "Confidence": 0.9930761,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THE FURTHER YOU ARE FROM THIS ROOM...",
+      "Translation": "\uC774 \uBC29\uC5D0\uC11C \uBA40\uC5B4\uC9C8\uC218\uB85D...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

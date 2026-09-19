@@ -1,0 +1,1199 @@
+{
+  "SourceFile": "hard_dark_caption_dialogue_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T16:33:39.9471749+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 81.66666666666667,
+        "Y": 96.66666666666667,
+        "W": 229,
+        "H": 125.66666666666664,
+        "Text": "\u0022ALL YOUR DOCTORS YOUR DOCTORS HERE YOUR BEHAVIORAL COACH TO YOUR PHYSICAL HERAPIST... CARE ABOUT YOU.\u0022",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 81.66666666666667,
+            "Y": 96.66666666666667,
+            "W": 229,
+            "H": 26.999999999999996,
+            "Text": "\u0022ALL YOUR DOCTORS",
+            "Confidence": 0.9990085,
+            "Language": "en"
+          },
+          {
+            "X": 129.33333333333334,
+            "Y": 97.33333333333334,
+            "W": 70.66666666666666,
+            "H": 27.666666666666664,
+            "Text": "YOUR",
+            "Confidence": 0.99561864,
+            "Language": "en"
+          },
+          {
+            "X": 196,
+            "Y": 98,
+            "W": 114.66666666666669,
+            "H": 27,
+            "Text": "DOCTORS",
+            "Confidence": 0.99962,
+            "Language": "en"
+          },
+          {
+            "X": 97,
+            "Y": 113.66666666666666,
+            "W": 54.66666666666666,
+            "H": 26.000000000000007,
+            "Text": "HERE",
+            "Confidence": 0.9952434,
+            "Language": "en"
+          },
+          {
+            "X": 240.33333333333334,
+            "Y": 117.33333333333334,
+            "W": 57.66666666666666,
+            "H": 21.999999999999993,
+            "Text": "YOUR",
+            "Confidence": 0.9968128,
+            "Language": "en"
+          },
+          {
+            "X": 92,
+            "Y": 138.66666666666666,
+            "W": 210.66666666666669,
+            "H": 24.333333333333332,
+            "Text": "BEHAVIORAL COACH",
+            "Confidence": 0.996184,
+            "Language": "en"
+          },
+          {
+            "X": 95.33333333333333,
+            "Y": 159.33333333333334,
+            "W": 202,
+            "H": 22.333333333333336,
+            "Text": "TO YOUR PHYSICAL",
+            "Confidence": 0.9967144,
+            "Language": "en"
+          },
+          {
+            "X": 123.33333333333333,
+            "Y": 183,
+            "W": 114.66666666666667,
+            "H": 19,
+            "Text": "HERAPIST...",
+            "Confidence": 0.9720177,
+            "Language": "en"
+          },
+          {
+            "X": 95.33333333333333,
+            "Y": 196.33333333333331,
+            "W": 200.66666666666669,
+            "H": 26,
+            "Text": "CARE ABOUT YOU.\u0022",
+            "Confidence": 0.9800998,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "\u0022ALL YOUR DOCTORS HERE... FROM YOUR BEHAVIORAL COACH TO YOUR PHYSICAL THERAPIST... THEY CARE ABOUT YOU.\u0022",
+      "Translation": "\u0022\uC5EC\uAE30\uC5D0 \uC788\uB294 \uBAA8\uB4E0 \uC758\uC0AC\uB4E4\uC740... \uD589\uB3D9 \uAD50\uC815\uC0AC\uBD80\uD130 \uBB3C\uB9AC \uCE58\uB8CC\uC0AC\uAE4C\uC9C0... \uC804\uBD80 \uB2F9\uC2E0\uC744 \uC9C4\uC2EC\uC73C\uB85C \uAC71\uC815\uD558\uACE0 \uC788\uC5B4\uC694.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 351,
+        "Y": 106.66666666666666,
+        "W": 358,
+        "H": 89.00000000000003,
+        "Text": "\u0022THEY TRY, DAY IN AND DAY OUT ALL YOU DO AS VILLI LOODY STAGE DRAMA IN THIS BLOODY STAGE DRAMA CALL BATM THAT you",
+        "OriginalRegionCount": 11,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 359.3333333333333,
+            "Y": 106.66666666666666,
+            "W": 115.33333333333337,
+            "H": 28.000000000000007,
+            "Text": "\u0022THEY TRY,",
+            "Confidence": 0.99494004,
+            "Language": "en"
+          },
+          {
+            "X": 474.3333333333333,
+            "Y": 107.66666666666666,
+            "W": 210.66666666666669,
+            "H": 27.000000000000007,
+            "Text": "DAY IN AND DAY OUT",
+            "Confidence": 0.9693181,
+            "Language": "en"
+          },
+          {
+            "X": 351,
+            "Y": 127,
+            "W": 132.66666666666669,
+            "H": 27.666666666666657,
+            "Text": "ALL YOU DO",
+            "Confidence": 0.9654375,
+            "Language": "en"
+          },
+          {
+            "X": 624,
+            "Y": 128.33333333333331,
+            "W": 83,
+            "H": 25.333333333333343,
+            "Text": "AS VILLI",
+            "Confidence": 0.9946627,
+            "Language": "en"
+          },
+          {
+            "X": 474.3333333333333,
+            "Y": 145.66666666666669,
+            "W": 157.66666666666669,
+            "H": 30,
+            "Text": "LOODY STAGE",
+            "Confidence": 0.93737274,
+            "Language": "en"
+          },
+          {
+            "X": 621.6666666666666,
+            "Y": 146.33333333333331,
+            "W": 87,
+            "H": 28.66666666666667,
+            "Text": "DRAMA",
+            "Confidence": 0.99755424,
+            "Language": "en"
+          },
+          {
+            "X": 376.3333333333333,
+            "Y": 149.66666666666666,
+            "W": 317.6666666666667,
+            "H": 23,
+            "Text": "IN THIS BLOODY STAGE DRAMA",
+            "Confidence": 0.9944115,
+            "Language": "en"
+          },
+          {
+            "X": 579.3333333333334,
+            "Y": 166.66666666666669,
+            "W": 63,
+            "H": 27.33333333333333,
+            "Text": "CALL",
+            "Confidence": 0.99958384,
+            "Language": "en"
+          },
+          {
+            "X": 636,
+            "Y": 166.66666666666669,
+            "W": 73,
+            "H": 28.999999999999986,
+            "Text": "BATM",
+            "Confidence": 0.9988211,
+            "Language": "en"
+          },
+          {
+            "X": 477.6666666666667,
+            "Y": 167.66666666666669,
+            "W": 60.99999999999994,
+            "H": 25.999999999999986,
+            "Text": "THAT",
+            "Confidence": 0.9986948,
+            "Language": "en"
+          },
+          {
+            "X": 532.3333333333334,
+            "Y": 167.66666666666669,
+            "W": 57.33333333333326,
+            "H": 25.999999999999986,
+            "Text": "you",
+            "Confidence": 0.8853583,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "\u0022THEY TRY, DAY IN AND DAY OUT, AND ALL YOU DO IS CAST THEM AS VILLAINS IN THIS BLOODY STAGE DRAMA IN YOUR HEAD THAT YOU CALL \u0027BATMAN\u0027.\u0022",
+      "Translation": "\u0022\uADF8\uB4E4\uC740 \uB9E4\uC77C\uAC19\uC774 \uB178\uB825\uD558\uACE0 \uC788\uB294\uB370, \uB2F9\uC2E0\uC740 \uADF8\uC800 \uBA38\uB9BF\uC18D\uC5D0\uC11C \u0027\uBC30\uD2B8\uB9E8\u0027\uC774\uB77C \uBD80\uB974\uB294 \uC774 \uBE44\uADF9\uC801\uC778 \uC5F0\uADF9 \uC18D\uC5D0\uC11C \uADF8\uB4E4\uC744 \uC545\uB2F9\uC73C\uB85C\uB9CC \uBAB0\uC544\uC138\uC6B0\uACE0 \uC788\uC796\uC544\uC694.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 552.3333333333334,
+        "Y": 219,
+        "W": 343.66666666666663,
+        "H": 108.5,
+        "Text": "\u0022BUT THE TRUTH IS, YOU ARE NOT BATMAN, BRUCE. AND DR. HUDD IS NO FOR THE LOVE OF JUST..PLEASE, FOR THE LOVE OF GOD TELL ME YOU SEE NOW.\u0022",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 573.6666666666666,
+            "Y": 219,
+            "W": 298.66666666666674,
+            "H": 26.666666666666664,
+            "Text": "\u0022BUT THE TRUTH IS, YOU ARE",
+            "Confidence": 0.99254733,
+            "Language": "en"
+          },
+          {
+            "X": 562.3333333333334,
+            "Y": 234.66666666666666,
+            "W": 318.66666666666663,
+            "H": 37.666666666666664,
+            "Text": "NOT BATMAN, BRUCE. AND DR.",
+            "Confidence": 0.9740539,
+            "Language": "en"
+          },
+          {
+            "X": 565.3333333333334,
+            "Y": 260,
+            "W": 128.66666666666663,
+            "H": 25.333333333333343,
+            "Text": "HUDD IS NO",
+            "Confidence": 0.99755734,
+            "Language": "en"
+          },
+          {
+            "X": 706.6666666666666,
+            "Y": 271.6666666666667,
+            "W": 188.33333333333337,
+            "H": 36.00000000000001,
+            "Text": "FOR THE LOVE OF",
+            "Confidence": 0.98642635,
+            "Language": "en"
+          },
+          {
+            "X": 552.3333333333334,
+            "Y": 273,
+            "W": 343.66666666666663,
+            "H": 36.33333333333334,
+            "Text": "JUST..PLEASE, FOR THE LOVE OF",
+            "Confidence": 0.9503177,
+            "Language": "en"
+          },
+          {
+            "X": 565,
+            "Y": 295,
+            "W": 316,
+            "H": 32.5,
+            "Text": "GOD TELL ME YOU SEE NOW.\u0022",
+            "Confidence": 0.9856396,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "\u0022BUT THE TRUTH IS, YOU ARE NOT BATMAN, BRUCE. AND DR. HUDD IS NO... FOR THE LOVE OF GOD TELL ME YOU SEE NOW.\u0022",
+      "Translation": "\u0022\uD558\uC9C0\uB9CC \uC9C4\uC2E4\uC740, \uB2F9\uC2E0\uC740 \uBC30\uD2B8\uB9E8\uC774 \uC544\uB2C8\uC5D0\uC694, \uBE0C\uB8E8\uC2A4. \uADF8\uB9AC\uACE0 \uD5C8\uB4DC \uBC15\uC0AC\uB3C4... \uC81C\uBC1C, \uC774\uC81C \uC880 \uC54C\uC544\uCC28\uB838\uB2E4\uACE0 \uB9D0\uD574\uC918\uC694.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 832,
+        "Y": 763,
+        "W": 296,
+        "H": 189,
+        "Text": "KE E",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1041,
+            "Y": 763,
+            "W": 87,
+            "H": 189,
+            "Text": "KE",
+            "Confidence": 0.61349165,
+            "Language": "en"
+          },
+          {
+            "X": 832,
+            "Y": 804,
+            "W": 133,
+            "H": 145.33333333333334,
+            "Text": "E",
+            "Confidence": 0.42139947,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "KE E",
+      "Translation": "\uCF00 \uC5D0",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 608,
+        "Y": 842.3333333333334,
+        "W": 75.66666666666663,
+        "H": 41.66666666666663,
+        "Text": "SIGH CAN\u0027T.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 608,
+            "Y": 842.3333333333334,
+            "W": 63,
+            "H": 22.666666666666664,
+            "Text": "SIGH",
+            "Confidence": 0.96067476,
+            "Language": "en"
+          },
+          {
+            "X": 608,
+            "Y": 862,
+            "W": 75.66666666666667,
+            "H": 22,
+            "Text": "CAN\u0027T.",
+            "Confidence": 0.99132854,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "---SIGH--- I... I CAN\u0027T.",
+      "Translation": "---(\uD55C\uC228)--- \uB09C... \uB09C \uBABB\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 213.33333333333334,
+        "Y": 843,
+        "W": 86.66666666666666,
+        "H": 198,
+        "Text": "m",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 213.33333333333334,
+            "Y": 843,
+            "W": 86.66666666666666,
+            "H": 198,
+            "Text": "m",
+            "Confidence": 0.6706485,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1109.3333333333333,
+        "Y": 844.6666666666666,
+        "W": 155.66666666666674,
+        "H": 105.66666666666674,
+        "Text": "No... Nooo, Afffred dun\u0027t go! Don\u0027t leeev me! Pleeaz!",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1162,
+            "Y": 844.6666666666666,
+            "W": 53.333333333333314,
+            "H": 29.666666666666664,
+            "Text": "No...",
+            "Confidence": 0.9600276,
+            "Language": "en"
+          },
+          {
+            "X": 1114.3333333333333,
+            "Y": 862.6666666666666,
+            "W": 143.33333333333337,
+            "H": 32,
+            "Text": "Nooo, Afffred",
+            "Confidence": 0.96314734,
+            "Language": "en"
+          },
+          {
+            "X": 1136,
+            "Y": 883.6666666666666,
+            "W": 102.66666666666669,
+            "H": 31.333333333333336,
+            "Text": "dun\u0027t go!",
+            "Confidence": 0.9945461,
+            "Language": "en"
+          },
+          {
+            "X": 1109.3333333333333,
+            "Y": 905.3333333333334,
+            "W": 155.66666666666666,
+            "H": 27.33333333333333,
+            "Text": "Don\u0027t leeev me!",
+            "Confidence": 0.99376947,
+            "Language": "en"
+          },
+          {
+            "X": 1147.6666666666667,
+            "Y": 925,
+            "W": 79.00000000000003,
+            "H": 25.333333333333343,
+            "Text": "Pleeaz!",
+            "Confidence": 0.9964864,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "No... Nooo, Afffred dun\u0027t go! Don\u0027t leeev me! Pleeaz!",
+      "Translation": "\uC548 \uB3FC... \uC548 \uB3FC, \uC5D0\uD504\uB9AC\uB4DC \uAC00\uC9C0 \uB9C8! \uB0A0 \uB450\uACE0 \uAC00\uC9C0 \uB9C8! \uC81C\uBC1C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 719,
+        "Y": 881,
+        "W": 61,
+        "H": 48.66666666666674,
+        "Text": "IT\u0027LL IT\u0027LL TAKE",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 719,
+            "Y": 881,
+            "W": 61,
+            "H": 32,
+            "Text": "IT\u0027LL",
+            "Confidence": 0.9819553,
+            "Language": "en"
+          },
+          {
+            "X": 724.6666666666666,
+            "Y": 887.3333333333334,
+            "W": 49.999999999999986,
+            "H": 23.66666666666667,
+            "Text": "IT\u0027LL",
+            "Confidence": 0.996786,
+            "Language": "en"
+          },
+          {
+            "X": 720.6666666666666,
+            "Y": 908.3333333333334,
+            "W": 56.33333333333333,
+            "H": 21.333333333333343,
+            "Text": "TAKE",
+            "Confidence": 0.99984574,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "IT\u0027LL TAKE",
+      "Translation": "\uC2DC\uAC04\uC774 \uAC78\uB9B4\n\uAC83\uC785\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 92.5,
+        "Y": 887,
+        "W": 19.5,
+        "H": 17,
+        "Text": "**",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 92.5,
+            "Y": 887,
+            "W": 19.5,
+            "H": 17,
+            "Text": "**",
+            "Confidence": 0.429512,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "*",
+      "Translation": "*",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 654.6666666666666,
+        "Y": 907.3333333333334,
+        "W": 67.66666666666674,
+        "H": 43,
+        "Text": "JUST MR.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 666,
+            "Y": 907.3333333333334,
+            "W": 56.33333333333333,
+            "H": 23,
+            "Text": "JUST",
+            "Confidence": 0.99745387,
+            "Language": "en"
+          },
+          {
+            "X": 654.6666666666666,
+            "Y": 928.3333333333334,
+            "W": 41.333333333333336,
+            "H": 22.000000000000014,
+            "Text": "MR.",
+            "Confidence": 0.99912536,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "JUST MR.",
+      "Translation": "\uADF8\uC800...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 691.3333333333334,
+        "Y": 908,
+        "W": 152.33333333333326,
+        "H": 61,
+        "Text": "TIME, PENNYWORTH. ALL. THAT\u0027S",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 778.3333333333334,
+            "Y": 908,
+            "W": 56.333333333333314,
+            "H": 22.33333333333333,
+            "Text": "TIME,",
+            "Confidence": 0.99974245,
+            "Language": "en"
+          },
+          {
+            "X": 694.6666666666666,
+            "Y": 926.6666666666666,
+            "W": 149,
+            "H": 24.66666666666667,
+            "Text": "PENNYWORTH.",
+            "Confidence": 0.99945575,
+            "Language": "en"
+          },
+          {
+            "X": 766.3333333333334,
+            "Y": 947.3333333333334,
+            "W": 43.66666666666666,
+            "H": 21.666666666666657,
+            "Text": "ALL.",
+            "Confidence": 0.99536645,
+            "Language": "en"
+          },
+          {
+            "X": 691.3333333333334,
+            "Y": 947.6666666666666,
+            "W": 75.00000000000001,
+            "H": 21.333333333333336,
+            "Text": "THAT\u0027S",
+            "Confidence": 0.9983953,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "TIME, MR. PENNYWORTH. THAT\u0027S ALL.",
+      "Translation": "\uC2DC\uAC04\uC774 \uD544\uC694\uD560 \uBFD0\uC774\uC57C, \uD39C\uB2C8\uC6CC\uC2A4 \uC528.\n\uADF8\uAC8C \uC804\uBD80\uB77C\uB124.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 969,
+        "Y": 926,
+        "W": 38,
+        "H": 25,
+        "Text": "M",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 969,
+            "Y": 926,
+            "W": 38,
+            "H": 25,
+            "Text": "M",
+            "Confidence": 0.9840042,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "M",
+      "Translation": "\uC74C",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 54.5,
+        "Y": 927.6666666666666,
+        "W": 154,
+        "H": 87.66666666666663,
+        "Text": "Madd hattur. Jervis. Or Scerecraw. Did thhhis..",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 104,
+            "Y": 927.6666666666666,
+            "W": 59.33333333333334,
+            "H": 27.666666666666657,
+            "Text": "Madd",
+            "Confidence": 0.9998894,
+            "Language": "en"
+          },
+          {
+            "X": 54.5,
+            "Y": 940.5,
+            "W": 154,
+            "H": 43,
+            "Text": "hattur. Jervis.",
+            "Confidence": 0.9809566,
+            "Language": "en"
+          },
+          {
+            "X": 61.333333333333336,
+            "Y": 967,
+            "W": 143.66666666666666,
+            "H": 29.33333333333333,
+            "Text": "Or Scerecraw.",
+            "Confidence": 0.9957929,
+            "Language": "en"
+          },
+          {
+            "X": 71.33333333333333,
+            "Y": 987.6666666666666,
+            "W": 121.66666666666667,
+            "H": 27.666666666666686,
+            "Text": "Did thhhis..",
+            "Confidence": 0.9545518,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "Madd Hatter. Jervis.\nOr Screecraw.\nDid thhhis...",
+      "Translation": "\uB9E4\uB4DC \uD574\uD130. \uC800\uBE44\uC2A4.\n\uC544\uB2C8\uBA74 \uC2A4\uD06C\uB9AD\uB85C.\n\uC774\uAC8C...",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 484.6666666666667,
+        "Y": 938.6666666666666,
+        "W": 67.66666666666669,
+        "H": 65.33333333333337,
+        "Text": "1 R",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 494.3333333333333,
+            "Y": 938.6666666666666,
+            "W": 34.333333333333336,
+            "H": 28,
+            "Text": "1",
+            "Confidence": 0.3866231,
+            "Language": "en"
+          },
+          {
+            "X": 484.6666666666667,
+            "Y": 953.6666666666666,
+            "W": 67.66666666666666,
+            "H": 50.33333333333333,
+            "Text": "R",
+            "Confidence": 0.34828347,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "-\u003ESIGH\u003C-\nI... I CAN\u0027T.",
+      "Translation": "\u2014\uD558\uC544\u2014\n\uB09C... \uB09C \uD560 \uC218 \uC788\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 606,
+        "Y": 987,
+        "W": 198.66666666666663,
+        "H": 85.66666666666674,
+        "Text": "OF COURSE, DOCTOR. THANK YOU. FOR EVERYTHING.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 688.3333333333334,
+            "Y": 987,
+            "W": 35.66666666666667,
+            "H": 25.33333333333333,
+            "Text": "OF",
+            "Confidence": 0.999974,
+            "Language": "en"
+          },
+          {
+            "X": 606,
+            "Y": 1008,
+            "W": 96,
+            "H": 23.66666666666667,
+            "Text": "COURSE,",
+            "Confidence": 0.9990749,
+            "Language": "en"
+          },
+          {
+            "X": 701,
+            "Y": 1009.3333333333334,
+            "W": 103.66666666666666,
+            "H": 22,
+            "Text": "DOCTOR.",
+            "Confidence": 0.9987811,
+            "Language": "en"
+          },
+          {
+            "X": 620.3333333333334,
+            "Y": 1028.6666666666667,
+            "W": 71.66666666666667,
+            "H": 21.66666666666667,
+            "Text": "THANK",
+            "Confidence": 0.99981225,
+            "Language": "en"
+          },
+          {
+            "X": 687,
+            "Y": 1029.6666666666667,
+            "W": 105.33333333333334,
+            "H": 20.33333333333333,
+            "Text": "YOU. FOR",
+            "Confidence": 0.9939653,
+            "Language": "en"
+          },
+          {
+            "X": 634,
+            "Y": 1047,
+            "W": 141,
+            "H": 25.666666666666657,
+            "Text": "EVERYTHING.",
+            "Confidence": 0.99920595,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "IT\u0027LL\nJUST TAKE TIME,\nMR. PENNYWORTH.\nTHAT\u0027S ALL.",
+      "Translation": "\uADF8\uC800\n\uC2DC\uAC04\uC774 \uD544\uC694\uD560 \uBFD0\uC774\uC57C,\n\uD39C\uB2C8\uC6CC\uC2A4 \uC528.\n\uADF8\uAC8C \uC804\uBD80\uB77C\uB124.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 226,
+        "Y": 1390,
+        "W": 82.33333333333331,
+        "H": 103.66666666666674,
+        "Text": "_ I LOVE BOY. MY",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 273,
+            "Y": 1390,
+            "W": 29,
+            "H": 32,
+            "Text": "_",
+            "Confidence": 0.6993161,
+            "Language": "en"
+          },
+          {
+            "X": 286.33333333333337,
+            "Y": 1433.3333333333333,
+            "W": 16.666666666666657,
+            "H": 18,
+            "Text": "I",
+            "Confidence": 0.99496365,
+            "Language": "en"
+          },
+          {
+            "X": 236.33333333333334,
+            "Y": 1451.6666666666667,
+            "W": 64.33333333333334,
+            "H": 21.666666666666657,
+            "Text": "LOVE",
+            "Confidence": 0.99983263,
+            "Language": "en"
+          },
+          {
+            "X": 250,
+            "Y": 1471,
+            "W": 58.33333333333333,
+            "H": 22.66666666666667,
+            "Text": "BOY.",
+            "Confidence": 0.9977715,
+            "Language": "en"
+          },
+          {
+            "X": 226,
+            "Y": 1472.6666666666667,
+            "W": 29.666666666666668,
+            "H": 19.33333333333333,
+            "Text": "MY",
+            "Confidence": 0.99810666,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "I LOVE YOU, MY BOY.",
+      "Translation": "\uC0AC\uB791\uD55C\uB2E4, \uB0B4 \uC544\uB4E4\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 221.66666666666666,
+        "Y": 1450,
+        "W": 146.33333333333334,
+        "H": 84.33333333333326,
+        "Text": "YOu, I\u0027LL.. I\u0027LL BE BACK BACK BE SOON.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 296.3333333333333,
+            "Y": 1450,
+            "W": 55.66666666666667,
+            "H": 25.33333333333333,
+            "Text": "YOu,",
+            "Confidence": 0.78644425,
+            "Language": "en"
+          },
+          {
+            "X": 305,
+            "Y": 1468.6666666666667,
+            "W": 57,
+            "H": 27.33333333333333,
+            "Text": "I\u0027LL..",
+            "Confidence": 0.9388964,
+            "Language": "en"
+          },
+          {
+            "X": 221.66666666666666,
+            "Y": 1489,
+            "W": 146.33333333333334,
+            "H": 25.666666666666657,
+            "Text": "I\u0027LL BE BACK",
+            "Confidence": 0.9861464,
+            "Language": "en"
+          },
+          {
+            "X": 302.6666666666667,
+            "Y": 1489.6666666666667,
+            "W": 59.33333333333333,
+            "H": 21.33333333333333,
+            "Text": "BACK",
+            "Confidence": 0.9969024,
+            "Language": "en"
+          },
+          {
+            "X": 269.3333333333333,
+            "Y": 1491,
+            "W": 33.333333333333336,
+            "H": 20,
+            "Text": "BE",
+            "Confidence": 0.99979424,
+            "Language": "en"
+          },
+          {
+            "X": 256.6666666666667,
+            "Y": 1509,
+            "W": 75.33333333333331,
+            "H": 25.333333333333343,
+            "Text": "SOON.",
+            "Confidence": 0.9993493,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "I\u0027LL... I\u0027LL BE BACK SOON.",
+      "Translation": "\uAE08\uBC29... \uAE08\uBC29 \uB3CC\uC544\uC62C\uAC8C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 1029.6666666666667,
+        "Y": 1575.6666666666667,
+        "W": 99.33333333333326,
+        "H": 31.333333333333258,
+        "Text": "YOU\u0027VE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1029.6666666666667,
+            "Y": 1575.6666666666667,
+            "W": 99.33333333333331,
+            "H": 31.333333333333332,
+            "Text": "YOU\u0027VE",
+            "Confidence": 0.9184122,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "YOU\u0027VE",
+      "Translation": "\uB2F9\uC2E0\uC740",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 980.3333333333333,
+        "Y": 1596.5,
+        "W": 193.33333333333326,
+        "H": 106.16666666666674,
+        "Text": "IN LOST IN BEENLOST THE DARK A LONG TIME. YOUR EYES JUST NEED TO ADJUST.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1120.5,
+            "Y": 1596.5,
+            "W": 29.5,
+            "H": 25,
+            "Text": "IN",
+            "Confidence": 0.99870133,
+            "Language": "en"
+          },
+          {
+            "X": 1065,
+            "Y": 1598.6666666666667,
+            "W": 86.66666666666667,
+            "H": 23.666666666666664,
+            "Text": "LOST IN",
+            "Confidence": 0.9975079,
+            "Language": "en"
+          },
+          {
+            "X": 1008.3333333333334,
+            "Y": 1611,
+            "W": 109.99999999999997,
+            "H": 11.333333333333334,
+            "Text": "BEENLOST",
+            "Confidence": 0.92008156,
+            "Language": "en"
+          },
+          {
+            "X": 980.3333333333333,
+            "Y": 1615.6666666666667,
+            "W": 193.33333333333331,
+            "H": 29,
+            "Text": "THE DARK A LONG",
+            "Confidence": 0.99806225,
+            "Language": "en"
+          },
+          {
+            "X": 987.6666666666667,
+            "Y": 1636.6666666666667,
+            "W": 178.99999999999994,
+            "H": 28,
+            "Text": "TIME. YOUR EYES",
+            "Confidence": 0.98667306,
+            "Language": "en"
+          },
+          {
+            "X": 1001.6666666666667,
+            "Y": 1657.6666666666667,
+            "W": 151.33333333333331,
+            "H": 25,
+            "Text": "JUST NEED TO",
+            "Confidence": 0.9953717,
+            "Language": "en"
+          },
+          {
+            "X": 1031,
+            "Y": 1676,
+            "W": 91,
+            "H": 26.666666666666657,
+            "Text": "ADJUST.",
+            "Confidence": 0.9987083,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BEEN LOST IN THE DARK A LONG TIME. YOUR EYES JUST NEED TO ADJUST.",
+      "Translation": "\uC624\uB7AB\uB3D9\uC548 \uC5B4\uB460 \uC18D\uC5D0 \uAC07\uD600 \uC788\uC5C8\uB2E4. \uB208\uC774 \uC801\uC751\uD560 \uC2DC\uAC04\uC774 \uD544\uC694\uD560 \uBFD0\uC774\uB2E4.[BR]\uADF8\uC800 \uC2DC\uB825\uC774 \uB098\uBE60\uC9C4 \uAC8C \uC544\uB2C8\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 339,
+        "Y": 1740,
+        "W": 222,
+        "H": 223,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 339,
+            "Y": 1740,
+            "W": 222,
+            "H": 223,
+            "Text": "A",
+            "Confidence": 0.3676075,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "A",
+      "Translation": "A",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 546,
+        "Y": 1768.6666666666667,
+        "W": 212,
+        "H": 173.66666666666652,
+        "Text": "Please!! don\u0027t go!!! Don\u0027t go!Don\u0027t G000 IT\u0027S OKAY, BRUCE..",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 576.6666666666666,
+            "Y": 1768.6666666666667,
+            "W": 99.00000000000003,
+            "H": 33.33333333333333,
+            "Text": "Please!!",
+            "Confidence": 0.969,
+            "Language": "en"
+          },
+          {
+            "X": 560.6666666666666,
+            "Y": 1790,
+            "W": 130.66666666666666,
+            "H": 31.666666666666657,
+            "Text": "don\u0027t go!!!",
+            "Confidence": 0.9418719,
+            "Language": "en"
+          },
+          {
+            "X": 546,
+            "Y": 1810.3333333333333,
+            "W": 159.66666666666669,
+            "H": 32.333333333333314,
+            "Text": "Don\u0027t go!Don\u0027t",
+            "Confidence": 0.9848777,
+            "Language": "en"
+          },
+          {
+            "X": 555,
+            "Y": 1831,
+            "W": 120,
+            "H": 41,
+            "Text": "G000",
+            "Confidence": 0.9176864,
+            "Language": "en"
+          },
+          {
+            "X": 642.6666666666667,
+            "Y": 1890.6666666666667,
+            "W": 115.33333333333331,
+            "H": 32.33333333333334,
+            "Text": "IT\u0027S OKAY,",
+            "Confidence": 0.9352702,
+            "Language": "en"
+          },
+          {
+            "X": 648.3333333333333,
+            "Y": 1912,
+            "W": 98,
+            "H": 30.333333333333343,
+            "Text": "BRUCE..",
+            "Confidence": 0.8848895,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "please!!!\ndon\u0027t go!!!\nDon\u0027t go!Don\u0027t\nG000\nIT\u0027S OKAY,\nBRUCE...",
+      "Translation": "\uC81C\uBC1C!!!\n\uAC00\uC9C0 \uB9C8!!!\n\uAC00\uC9C0 \uB9C8! \uAC00\uC9C0\n\uB9C8...[BR]\uAD1C\uCC2E\uC544,\n\uBE0C\uB8E8\uC2A4...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 21,
+      "Source": {
+        "Id": 21,
+        "X": 1097.3333333333333,
+        "Y": 1857.3333333333333,
+        "W": 125.33333333333326,
+        "H": 27.333333333333258,
+        "Text": "THAT\u0027S ALL.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1097.3333333333333,
+            "Y": 1857.3333333333333,
+            "W": 125.33333333333334,
+            "H": 27.333333333333343,
+            "Text": "THAT\u0027S ALL.",
+            "Confidence": 0.99595016,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THAT\u0027S ALL.",
+      "Translation": "\uADF8\uAC8C \uC804\uBD80\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    }
+  ]
+}
