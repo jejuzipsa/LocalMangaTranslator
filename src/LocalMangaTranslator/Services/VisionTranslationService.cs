@@ -58,9 +58,16 @@ public sealed class VisionTranslationService
             .OrderBy(x => x.Id)
             .ToList();
 
-        return ApplyEvidenceGuard(
+        var guarded = ApplyEvidenceGuard(
             ordered,
             progress);
+
+        return await RescueShortSpeechFalseNegativesAsync(
+            imagePath,
+            guarded,
+            model,
+            progress,
+            token);
     }
 
     static List<List<BatchItem>> BuildBatches(
@@ -116,7 +123,8 @@ public sealed class VisionTranslationService
         IProgress<string>? progress,
         CancellationToken token,
         int maxImageSide,
-        int recoveryAttempt = 0)
+        int recoveryAttempt = 0,
+        bool shortSpeechRescue = false)
     {
         var crop = await Task.Run(
             () => CreateCropPayload(imagePath, batch.Select(x => x.Block), maxImageSide),
@@ -136,6 +144,11 @@ public sealed class VisionTranslationService
             secondary_ocr = item.Block.SecondaryOcrText,
             secondary_ocr_source = item.Block.SecondaryOcrSource,
             secondary_ocr_agreement = item.Block.SecondaryOcrAgreement,
+            container_kind = item.Block.RegionContainer?.Kind.ToString().ToLowerInvariant(),
+            container_score = item.Block.RegionContainer?.Score,
+            ocr_confidence = item.Block.Lines.Count == 0
+                ? 0
+                : Math.Round(item.Block.Lines.Average(x => x.Confidence), 3),
             language = item.Block.Language
         }).ToArray();
 
@@ -168,7 +181,9 @@ public sealed class VisionTranslationService
                 new
                 {
                     role = "user",
-                    content = BuildPrompt(payload),
+                    content = BuildPrompt(
+                        payload,
+                        shortSpeechRescue),
                     images = new[] { crop.ImageBase64 }
                 }
             }
@@ -211,7 +226,8 @@ public sealed class VisionTranslationService
                     progress,
                     token,
                     smallerSide,
-                    recoveryAttempt);
+                    recoveryAttempt,
+                    shortSpeechRescue);
             }
 
             if (contextOverflow && batch.Count > 1)
@@ -258,7 +274,8 @@ public sealed class VisionTranslationService
                     progress,
                     token,
                     smallerSide,
-                    nextAttempt);
+                    nextAttempt,
+                    shortSpeechRescue);
             }
 
             if (repeatAbort && batch.Count == 1)
@@ -307,6 +324,95 @@ public sealed class VisionTranslationService
                 Source = sourceItem.Block
             };
         }).ToList();
+    }
+
+    async Task<List<VisionTranslation>> RescueShortSpeechFalseNegativesAsync(
+        string imagePath,
+        IReadOnlyList<VisionTranslation> input,
+        ModelProfile model,
+        IProgress<string>? progress,
+        CancellationToken token)
+    {
+        var result = input.ToList();
+
+        for (int i = 0; i < result.Count; i++)
+        {
+            token.ThrowIfCancellationRequested();
+
+            var item = result[i];
+            if (!ShouldRetryShortSpeech(item))
+                continue;
+
+            progress?.Report(
+                $"[vision-rescue] id={item.Id} · 짧은 speech 후보 개별 재검수 " +
+                $"ocr='{Compact(item.Source.Text)}'");
+
+            try
+            {
+                var retry = await SendBatchAsync(
+                    imagePath,
+                    [new BatchItem(item.Id, item.Source)],
+                    model,
+                    progress,
+                    token,
+                    900,
+                    0,
+                    true);
+
+                var rescued = retry.FirstOrDefault();
+                if (rescued is null ||
+                    !rescued.Render ||
+                    !IsRenderableType(rescued.Type) ||
+                    string.IsNullOrWhiteSpace(rescued.Translation) ||
+                    IsUnsupportedExpansion(rescued))
+                {
+                    progress?.Report(
+                        $"[vision-rescue-keep] id={item.Id} · 짧은 speech 재검수 근거 부족");
+                    continue;
+                }
+
+                result[i] = rescued;
+                progress?.Report(
+                    $"[vision-rescue-ok] id={item.Id} · " +
+                    $"'{Compact(rescued.CorrectedText)}' → '{Compact(rescued.Translation)}'");
+            }
+            catch (Exception ex) when (
+                ex is InvalidOperationException or
+                HttpRequestException or
+                TaskCanceledException)
+            {
+                progress?.Report(
+                    $"[vision-rescue-keep] id={item.Id} · {Compact(ex.Message)}");
+            }
+        }
+
+        return result;
+    }
+
+    static bool ShouldRetryShortSpeech(
+        VisionTranslation item)
+    {
+        if (item.Render ||
+            item.Source.RegionContainer?.Kind !=
+                ContainerCandidateKind.Speech ||
+            item.Source.OriginalRegionCount != 1 ||
+            item.Source.Lines.Count == 0)
+        {
+            return false;
+        }
+
+        int meaningful =
+            MeaningfulLength(
+                item.Source.Text);
+
+        if (meaningful is < 1 or > 4)
+            return false;
+
+        double confidence =
+            item.Source.Lines.Average(
+                x => x.Confidence);
+
+        return confidence < 0.78;
     }
 
     async Task<List<VisionTranslation>> RetryIndividuallyAsync(
@@ -479,9 +585,25 @@ public sealed class VisionTranslationService
         return true;
     }
 
-    static string BuildPrompt(object payload)
+    static string BuildPrompt(
+        object payload,
+        bool shortSpeechRescue = false)
     {
         var json = JsonSerializer.Serialize(payload);
+
+        string rescueInstructions =
+            shortSpeechRescue
+                ? """
+SHORT-SPEECH RESCUE MODE:
+- This block is inside a page detector-confirmed speech bubble.
+- The primary OCR is very short and low-confidence, so strings such as "E7" may actually be a visible interjection such as "Eh?" or "Huh?".
+- Inspect the attached crop carefully and correct only glyphs that are visibly supported.
+- Do not classify the block as other merely because the OCR text looks nonsensical.
+- If the visible content is speech, return dialogue/thought with render=true and a concise Korean translation.
+- If the crop genuinely does not support readable speech, keep render=false rather than inventing text.
+
+"""
+                : "";
 
         const string instructions = """
 TARGET LANGUAGE: Korean (한국어).
@@ -527,7 +649,10 @@ OUTPUT SCHEMA:
 INPUT BLOCKS:
 """;
 
-        return instructions + Environment.NewLine + json;
+        return rescueInstructions +
+               instructions +
+               Environment.NewLine +
+               json;
     }
 
     static List<VisionTranslation> ParseResult(
