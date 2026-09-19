@@ -1617,9 +1617,14 @@ public sealed class RenderPipelineService
                 containerColor,
                 2);
 
+            string containerLabel =
+                plan.Approved
+                    ? $"{plan.ContainerId}:{plan.Container.Mode}"
+                    : $"{plan.ContainerId}:{plan.Container.Mode}:KEEP:{CompactPlanReason(plan.Reason)}";
+
             Cv2.PutText(
                 containers,
-                $"{plan.ContainerId}:{plan.Container.Mode}",
+                containerLabel,
                 new OpenCvSharp.Point(
                     plan.Container.Bounds.X,
                     Math.Max(14, plan.Container.Bounds.Y - 3)),
@@ -1709,6 +1714,32 @@ public sealed class RenderPipelineService
         SaveDebugWebp(containerPath, containers);
         SaveDebugWebp(unitPath, units);
         SaveDebugWebp(layoutPath, layout);
+    }
+
+    static string CompactPlanReason(
+        string? reason)
+    {
+        if (string.IsNullOrWhiteSpace(reason))
+            return "unknown";
+
+        string value =
+            reason
+                .Replace(
+                    "erase_rejected:",
+                    "",
+                    StringComparison.Ordinal)
+                .Replace(
+                    "container_rejected:",
+                    "",
+                    StringComparison.Ordinal)
+                .Replace(
+                    ";fallback=keep_original",
+                    "",
+                    StringComparison.Ordinal);
+
+        return value.Length <= 42
+            ? value
+            : value[..42];
     }
 
     static void SaveEraseDebug(
