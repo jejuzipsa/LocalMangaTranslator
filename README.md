@@ -6,15 +6,31 @@ Windows용 로컬 만화 이미지 번역기.
 
 ## 기본 파이프라인
 
+Architecture 2.0부터 페이지 구조 분석과 문자 인식을 서로 독립적으로 수행합니다.
+
 ```text
 이미지
-→ OCR (PP-OCRv5 / RapidOCR)
-→ Vision OCR 검수
-→ 최종 번역
-→ 인페인트
-→ 한글 조판
-→ 결과 저장
+├─ Page Analysis
+│  ├─ 만화 전용 RT-DETR: 말풍선 / 말풍선 안 글자 / 말풍선 밖 글자
+│  └─ 기존 기하 검출: 컨테이너 내부 mask 보조
+│
+└─ Text Analysis
+   ├─ PP-OCRv5 / RapidOCR 전체 페이지 OCR
+   └─ RT-DETR text region 대상 1x / 2x OCR
+          ↓
+      Evidence Fusion
+          ↓
+      Vision OCR 검수
+          ↓
+       최종 번역
+          ↓
+   안전 ErasePlan / 조판
+          ↓
+   WebP Lossless 결과
 ```
+
+RT-DETR은 문자열을 읽지 않습니다. 페이지의 구조/텍스트 영역을 찾는 별도 detector이며,
+OCR 결과와 공간 evidence를 합친 뒤에만 번역 unit을 만듭니다.
 
 ## 목표 UI
 
@@ -37,6 +53,7 @@ models/
     <model-id>/
       model.json
   ocr/
+  layout/
   inpaint/
 ```
 

@@ -12,17 +12,20 @@ namespace LocalMangaTranslator.Services;
 /// </summary>
 public sealed class PagePipelineService
 {
+    readonly PageAnalysisService pageAnalysis;
     readonly OcrPipelineService ocrPipeline;
     readonly VisionTranslationService vision;
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
 
     public PagePipelineService(
+        PageAnalysisService pageAnalysis,
         OcrPipelineService ocrPipeline,
         VisionTranslationService vision,
         TranslationRefinementService translationRefiner,
         RenderPipelineService renderer)
     {
+        this.pageAnalysis = pageAnalysis;
         this.ocrPipeline = ocrPipeline;
         this.vision = vision;
         this.translationRefiner = translationRefiner;
@@ -34,9 +37,32 @@ public sealed class PagePipelineService
         string outputDirectory,
         ModelProfile reviewModel,
         ModelProfile translationModel,
+        PipelineOptions options,
         IProgress<PipelineProgress>? progress = null,
         CancellationToken token = default)
     {
+        progress?.Report(new PipelineProgress(
+            PipelineStageKind.PageAnalysis,
+            options.RegionAnalysis == RegionAnalysisMode.HybridRtdetr
+                ? "페이지 구조 분석 · RT-DETR + 기존 컨테이너 검출"
+                : "페이지 구조 분석 · 기존 컨테이너 검출"));
+
+        var pageAnalysisResult =
+            await pageAnalysis.AnalyzeAsync(
+                sourcePath,
+                options,
+                token);
+
+        PipelineDebugWriter.SavePageAnalysisDiagnostics(
+            sourcePath,
+            outputDirectory,
+            pageAnalysisResult);
+
+        progress?.Report(new PipelineProgress(
+            PipelineStageKind.PageAnalysis,
+            $"페이지 구조 분석 완료 · {pageAnalysisResult.Mode} · " +
+            $"영역 {pageAnalysisResult.Regions.Count}개 / 컨테이너 {pageAnalysisResult.ContainerCandidates.Count}개"));
+
         progress?.Report(new PipelineProgress(
             PipelineStageKind.OcrObservation,
             "OCR 관측 / 병합 시작"));
@@ -44,6 +70,8 @@ public sealed class PagePipelineService
         var ocrStage =
             await ocrPipeline.AnalyzeAsync(
                 sourcePath,
+                pageAnalysisResult,
+                options,
                 token,
                 progress);
 

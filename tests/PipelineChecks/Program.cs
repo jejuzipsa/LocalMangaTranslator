@@ -199,6 +199,105 @@ Check("broad container splits distant text clusters", splitResult.Units.Count ==
 Check("split clusters keep one active owner per line", splitResult.LineOwnership.Count == 2 &&
     splitResult.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC010"));
 
+var textRegion = new PageRegion(
+    "RG001",
+    PageRegionKind.TextBubble,
+    new Rect(110, 210, 80, 42),
+    0.88f,
+    "test-rtdetr");
+var region1 = new OcrObservation(
+    "RO0001",
+    OcrPassKind.Region1x,
+    120, 220, 40, 12,
+    "HELLO",
+    0.72f,
+    "en",
+    1,
+    "RG001");
+var region2 = region1 with
+{
+    ObservationId = "RO0002",
+    Pass = OcrPassKind.Region2x,
+    Confidence = 0.74f,
+    Scale = 2
+};
+var regionEvidence = TextEvidenceFusionService.Validate(
+    [textRegion],
+    [region1, region2],
+    []);
+Check("independent text region cross-scale evidence accepted",
+    regionEvidence.Count == 2 &&
+    regionEvidence.All(x => x.Accepted && x.Reason == "region_cross_scale"));
+
+var weakRegionOnly = TextEvidenceFusionService.Validate(
+    [textRegion with { Score = 0.50f }],
+    [region1 with { ObservationId = "RO0003", Confidence = 0.52f }],
+    []);
+Check("weak uncorroborated region OCR rejected",
+    weakRegionOnly.Count == 1 &&
+    !weakRegionOnly[0].Accepted);
+
+var strongRegionOnly = TextEvidenceFusionService.Validate(
+    [textRegion],
+    [region1 with { ObservationId = "RO0004", Confidence = 0.88f }],
+    []);
+Check("strong learned text-region evidence may recover one OCR pass",
+    strongRegionOnly.Count == 1 &&
+    strongRegionOnly[0].Accepted &&
+    strongRegionOnly[0].Reason == "strong_region_ocr");
+
+string fusionImagePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_region_fusion_{Guid.NewGuid():N}.png");
+try
+{
+    using var fusionImage = Mat.Zeros(400, 400, MatType.CV_8UC3).ToMat();
+    Cv2.ImWrite(fusionImagePath, fusionImage);
+
+    var learnedBubble = new PageRegion(
+        "RG010",
+        PageRegionKind.Bubble,
+        new Rect(98, 198, 104, 84),
+        0.90f,
+        "test-rtdetr");
+
+    var fusedExisting = PageAnalysisService.FuseContainers(
+        [candidate],
+        [learnedBubble],
+        fusionImagePath);
+    Check("learned bubble evidence boosts matching geometric container",
+        fusedExisting.Count == 1 &&
+        fusedExisting[0].DetectorMode.StartsWith("rtdetr+", StringComparison.Ordinal) &&
+        fusedExisting[0].Score > candidate.Score);
+
+    var newBubble = new PageRegion(
+        "RG011",
+        PageRegionKind.Bubble,
+        new Rect(250, 250, 90, 70),
+        0.92f,
+        "test-rtdetr");
+
+    var fusedFallback = PageAnalysisService.FuseContainers(
+        [],
+        [newBubble],
+        fusionImagePath);
+    Check("learned bubble can seed OCR container without OCR text",
+        fusedFallback.Count == 1 &&
+        fusedFallback[0].DetectorMode == "rtdetr_bubble" &&
+        ContainerOcrValidator.ValidateCandidate(fusedFallback[0]).Eligible);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(fusionImagePath))
+            File.Delete(fusionImagePath);
+    }
+    catch
+    {
+    }
+}
+
 var weakArtworkBlock = new OcrTextBlock(
     900,
     10,
@@ -276,6 +375,39 @@ finally
     }
     catch
     {
+    }
+}
+
+if (string.Equals(
+        Environment.GetEnvironmentVariable("LMT_RTDETR_SMOKE"),
+        "1",
+        StringComparison.Ordinal))
+{
+    string detectorSmokeImage = Path.Combine(
+        Path.GetTempPath(),
+        $"lmt_rtdetr_smoke_{Guid.NewGuid():N}.png");
+
+    try
+    {
+        using var smokeImage = Mat.Zeros(480, 320, MatType.CV_8UC3).ToMat();
+        smokeImage.SetTo(new Scalar(255, 255, 255));
+        Cv2.ImWrite(detectorSmokeImage, smokeImage);
+
+        using var detector = new RtdetrPageRegionAnalyzer();
+        var detectorRegions = detector.Analyze(detectorSmokeImage);
+
+        Check("RT-DETR ONNX session and inference smoke", detectorRegions is not null);
+    }
+    finally
+    {
+        try
+        {
+            if (File.Exists(detectorSmokeImage))
+                File.Delete(detectorSmokeImage);
+        }
+        catch
+        {
+        }
     }
 }
 
