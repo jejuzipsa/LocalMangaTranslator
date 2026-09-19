@@ -20,8 +20,19 @@ public static class ExternalModelManager
 
     static readonly HttpClient Http = new()
     {
-        Timeout = TimeSpan.FromMinutes(20)
+        Timeout = TimeSpan.FromMinutes(30)
     };
+
+    const string BaberuBaseUrl =
+        "https://huggingface.co/genshiai-daichi/baberu-ocr/resolve/main/";
+
+    static readonly (string RelativePath, long MinimumBytes)[] BaberuFiles =
+    [
+        ("onnx/vision_int4.onnx", 45L * 1024 * 1024),
+        ("onnx/decoder_prefill_int8.onnx", 30L * 1024 * 1024),
+        ("onnx/decoder_step_int8.onnx", 30L * 1024 * 1024),
+        ("tokenizer/vocab.json", 100L * 1024)
+    ];
 
     public static string RtdetrModelPath
     {
@@ -162,6 +173,218 @@ public static class ExternalModelManager
                 $"RT-DETR 모델 설치 완료 · SHA256 {hash[..12]}…");
 
             return RtdetrModelPath;
+        }
+        finally
+        {
+            try
+            {
+                if (File.Exists(temporary))
+                    File.Delete(temporary);
+            }
+            catch
+            {
+            }
+        }
+    }
+
+    public static string BaberuModelRoot =>
+        Path.Combine(
+            AppContext.BaseDirectory,
+            "models",
+            "ocr",
+            "baberu");
+
+    public static string BaberuVisionPath =>
+        Path.Combine(
+            BaberuModelRoot,
+            "onnx",
+            "vision_int4.onnx");
+
+    public static string BaberuPrefillPath =>
+        Path.Combine(
+            BaberuModelRoot,
+            "onnx",
+            "decoder_prefill_int8.onnx");
+
+    public static string BaberuStepPath =>
+        Path.Combine(
+            BaberuModelRoot,
+            "onnx",
+            "decoder_step_int8.onnx");
+
+    public static string BaberuVocabPath =>
+        Path.Combine(
+            BaberuModelRoot,
+            "tokenizer",
+            "vocab.json");
+
+    public static bool IsBaberuReady()
+        => BaberuFiles.All(file =>
+        {
+            string path =
+                Path.Combine(
+                    BaberuModelRoot,
+                    file.RelativePath.Replace('/', Path.DirectorySeparatorChar));
+
+            return File.Exists(path) &&
+                   new FileInfo(path).Length >=
+                   file.MinimumBytes;
+        });
+
+    public static async Task<string> EnsureBaberuAsync(
+        IProgress<string>? progress = null,
+        CancellationToken token = default)
+    {
+        if (IsBaberuReady())
+        {
+            progress?.Report("Baberu OCR 모델 준비됨");
+            return BaberuModelRoot;
+        }
+
+        for (int i = 0; i < BaberuFiles.Length; i++)
+        {
+            var file =
+                BaberuFiles[i];
+
+            string target =
+                Path.Combine(
+                    BaberuModelRoot,
+                    file.RelativePath.Replace('/', Path.DirectorySeparatorChar));
+
+            if (File.Exists(target) &&
+                new FileInfo(target).Length >= file.MinimumBytes)
+            {
+                continue;
+            }
+
+            Directory.CreateDirectory(
+                Path.GetDirectoryName(target)!);
+
+            string label =
+                Path.GetFileName(target);
+
+            progress?.Report(
+                $"Baberu OCR {i + 1}/{BaberuFiles.Length} · {label}");
+
+            await DownloadFileAsync(
+                BaberuBaseUrl +
+                file.RelativePath +
+                "?download=true",
+                target,
+                file.MinimumBytes,
+                "Baberu OCR",
+                progress,
+                token);
+        }
+
+        if (!IsBaberuReady())
+        {
+            throw new InvalidOperationException(
+                "Baberu OCR 모델 설치가 완료되지 않았습니다.");
+        }
+
+        progress?.Report("Baberu OCR 모델 설치 완료");
+        return BaberuModelRoot;
+    }
+
+    static async Task DownloadFileAsync(
+        string url,
+        string target,
+        long minimumBytes,
+        string label,
+        IProgress<string>? progress,
+        CancellationToken token)
+    {
+        string temporary =
+            target + ".download";
+
+        try
+        {
+            using var response =
+                await Http.GetAsync(
+                    url,
+                    HttpCompletionOption.ResponseHeadersRead,
+                    token);
+
+            response.EnsureSuccessStatusCode();
+
+            long? total =
+                response.Content.Headers.ContentLength;
+
+            long received = 0;
+            int lastReportedPercent = -1;
+
+            await using (var input =
+                         await response.Content.ReadAsStreamAsync(token))
+            {
+                await using var output =
+                    new FileStream(
+                        temporary,
+                        FileMode.Create,
+                        FileAccess.Write,
+                        FileShare.None,
+                        1024 * 1024,
+                        useAsync: true);
+
+                var buffer =
+                    new byte[1024 * 1024];
+
+                while (true)
+                {
+                    int read =
+                        await input.ReadAsync(
+                            buffer.AsMemory(),
+                            token);
+
+                    if (read <= 0)
+                        break;
+
+                    await output.WriteAsync(
+                        buffer.AsMemory(0, read),
+                        token);
+
+                    received += read;
+
+                    if (total is > 0)
+                    {
+                        int percent =
+                            (int)Math.Clamp(
+                                Math.Floor(
+                                    received * 100.0 /
+                                    total.Value),
+                                0,
+                                100);
+
+                        if (percent != lastReportedPercent)
+                        {
+                            lastReportedPercent = percent;
+                            progress?.Report(
+                                $"{label} 다운로드 {percent}% · {Path.GetFileName(target)}");
+                        }
+                    }
+                }
+
+                await output.FlushAsync(token);
+            }
+
+            if (received < minimumBytes)
+            {
+                throw new InvalidOperationException(
+                    $"{label} 파일이 예상보다 작습니다: {Path.GetFileName(target)}");
+            }
+
+            string hash =
+                await ComputeSha256Async(
+                    temporary,
+                    token);
+
+            File.Move(
+                temporary,
+                target,
+                overwrite: true);
+
+            progress?.Report(
+                $"{label} 준비 · {Path.GetFileName(target)} · SHA256 {hash[..12]}…");
         }
         finally
         {
