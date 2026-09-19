@@ -107,6 +107,10 @@ public sealed class PageAnalysisService : IDisposable
             new List<ContainerCandidate>(
                 bubbles.Count);
 
+        var usedLegacy =
+            new HashSet<string>(
+                StringComparer.Ordinal);
+
         foreach (var bubble in bubbles)
         {
             token.ThrowIfCancellationRequested();
@@ -125,6 +129,9 @@ public sealed class PageAnalysisService : IDisposable
 
             var bestLegacy =
                 legacy
+                    .Where(candidate =>
+                        !usedLegacy.Contains(
+                            candidate.CandidateId))
                     .Select(candidate => new
                     {
                         Candidate = candidate,
@@ -162,6 +169,9 @@ public sealed class PageAnalysisService : IDisposable
 
             if (bestLegacy is not null)
             {
+                usedLegacy.Add(
+                    bestLegacy.Candidate.CandidateId);
+
                 // Keep the contour-derived bounds/mask only because the learned
                 // region already established that this physical area is a
                 // speech bubble.
