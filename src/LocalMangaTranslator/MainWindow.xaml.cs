@@ -671,6 +671,7 @@ public partial class MainWindow : System.Windows.Window
             PipelineStageKind.VisionReview => "Vision 검수",
             PipelineStageKind.Translation => "번역",
             PipelineStageKind.Render => "삭제/조판",
+            PipelineStageKind.FinalAudit => "완료 검토",
             PipelineStageKind.Completed => "완료",
             _ => stage.ToString()
         };
