@@ -41,6 +41,8 @@ public sealed class PagePipelineService
         IProgress<PipelineProgress>? progress = null,
         CancellationToken token = default)
     {
+        OutputDirectoryLayout.Ensure(outputDirectory);
+
         progress?.Report(new PipelineProgress(
             PipelineStageKind.PageAnalysis,
             options.RegionAnalysis == RegionAnalysisMode.HybridRtdetr
@@ -161,9 +163,6 @@ public sealed class PagePipelineService
             PipelineStageKind.Translation,
             $"최종 번역 완료 · {translated.Count(x => x.Render)}개 조판 대상"));
 
-        Directory.CreateDirectory(
-            outputDirectory);
-
         var document =
             new VisionTranslationDocument
             {
@@ -175,7 +174,7 @@ public sealed class PagePipelineService
 
         var jsonPath =
             Path.Combine(
-                outputDirectory,
+                OutputDirectoryLayout.Json(outputDirectory),
                 Path.GetFileNameWithoutExtension(sourcePath) +
                 ".translation.json");
 
@@ -191,7 +190,7 @@ public sealed class PagePipelineService
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Translation,
-            $"번역 JSON 저장: {Path.GetFileName(jsonPath)}"));
+            $"번역 JSON 저장: json/{Path.GetFileName(jsonPath)}"));
 
         var imagePath =
             Path.Combine(
