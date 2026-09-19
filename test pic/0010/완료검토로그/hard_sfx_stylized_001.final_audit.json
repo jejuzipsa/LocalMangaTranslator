@@ -1,0 +1,105 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "hard_sfx_stylized_001.jpg",
+  "output_file": "hard_sfx_stylized_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 5763,
+    "changed_ratio": 0.0021141734363260708,
+    "changed_regions": [
+      {
+        "x": 1156,
+        "y": 1213,
+        "width": 123,
+        "height": 77
+      },
+      {
+        "x": 1174,
+        "y": 1144,
+        "width": 90,
+        "height": 20
+      },
+      {
+        "x": 1241,
+        "y": 1283,
+        "width": 4,
+        "height": 4
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 4,
+    "bubbles": 2,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 4,
+      "Global2x": 5,
+      "Focus3x": 27,
+      "Region1x": 5,
+      "Region2x": 6,
+      "Container1x": 5,
+      "Container2x": 6
+    },
+    "canonical_lines": 14,
+    "units": 11,
+    "assigned_lines": 5,
+    "orphan_groups": 9,
+    "secondary_total": 2,
+    "secondary_accepted": 2,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 1134,
+          "Bottom": 1169,
+          "Left": 1157,
+          "Right": 1272,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026QUEEN?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 1202,
+          "Bottom": 1295,
+          "Left": 1151,
+          "Right": 1285,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT QUEEN WOULD THAT BE?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 11,
+    "requested_render": 3
+  },
+  "render": {
+    "total": 3,
+    "approved": 2,
+    "rejected": 1,
+    "rejection_reasons": {
+      "erase_rejected:no_safe_text_line": 1
+    }
+  }
+}
