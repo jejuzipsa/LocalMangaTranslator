@@ -29,6 +29,7 @@ public partial class MainWindow : System.Windows.Window
     readonly VisionTranslationService vision = new();
     readonly TranslationRefinementService translationRefiner = new();
     readonly OcrBlockGrouper blockGrouper = new();
+    readonly OcrContainerUnitBuilder unitBuilder = new();
     readonly RenderPipelineService renderer = new();
 
     CancellationTokenSource? workCts;
@@ -539,11 +540,28 @@ public partial class MainWindow : System.Windows.Window
                     continue;
                 }
 
-                item.Status = "문장 블록 병합";
-                SetStatus(i, item, "OCR 문장 블록 병합");
+                item.Status = "컨테이너 단위 구성";
+                SetStatus(i, item, "OCR 컨테이너 / line ownership");
 
-                var blocks = blockGrouper.Group(lines);
-                Log($"{item.FileName} | OCR 병합 · {lines.Count}줄 → {blocks.Count}개 블록");
+                var preliminaryBlocks = blockGrouper.Group(lines);
+
+                var unitBuild = await Task.Run(
+                    () => unitBuilder.Build(
+                        item.FilePath,
+                        lines,
+                        preliminaryBlocks,
+                        workCts.Token),
+                    workCts.Token);
+
+                var blocks = unitBuild.Units.ToList();
+
+                Log(
+                    $"{item.FileName} | OCR unit 구성 · " +
+                    $"{lines.Count}줄 → 예비 {preliminaryBlocks.Count}블록 → " +
+                    $"컨테이너 {unitBuild.ContainerCount}개 / " +
+                    $"배정 {unitBuild.AssignedLineCount}줄 / " +
+                    $"고아 {unitBuild.OrphanGroupCount}블록 → " +
+                    $"Vision 입력 {blocks.Count} unit");
 
                 item.Status = "OCR 검수";
                 SetStatus(i, item, $"Vision OCR 검수 · {reviewModel.Name}");
