@@ -104,9 +104,8 @@ public static class PipelineDebugWriter
         try
         {
             var debugDirectory =
-                Path.Combine(
-                    outputDirectory,
-                    "debug");
+                OutputDirectoryLayout.Debug(
+                    outputDirectory);
 
             Directory.CreateDirectory(
                 debugDirectory);
@@ -139,7 +138,9 @@ public static class PipelineDebugWriter
                         fill_ratio = x.FillRatio,
                         border_touches = x.BorderTouches,
                         mask_pixels =
-                            x.Mask.Count(v => v != 0)
+                            x.Mask.Count(v => v != 0),
+                        region_id =
+                            x.RegionId
                     })
                     .ToList();
 
@@ -163,7 +164,8 @@ public static class PipelineDebugWriter
                     attempts = stage.ContainerAttempts,
                     line_decisions = stage.ContainerLineDecisions,
                     region_attempts = stage.RegionAttempts,
-                    region_line_decisions = stage.RegionLineDecisions
+                    region_line_decisions = stage.RegionLineDecisions,
+                    secondary_ocr = stage.SecondaryOcrEvidence
                 }, new JsonSerializerOptions { WriteIndented = true }));
 
             var observationDocument =
@@ -195,6 +197,19 @@ public static class PipelineDebugWriter
                         WriteIndented = true
                     }));
 
+            SaveTrueOcrOverlay(
+                sourcePath,
+                stage.Observations
+                    .Where(x =>
+                        x.Pass is
+                            OcrPassKind.Global1x or
+                            OcrPassKind.Global2x or
+                            OcrPassKind.Focus3x)
+                    .ToList(),
+                Path.Combine(
+                    debugDirectory,
+                    $"{baseName}.00_true_ocr.webp"));
+
             File.WriteAllText(
                 Path.Combine(
                     debugDirectory,
@@ -218,6 +233,124 @@ public static class PipelineDebugWriter
         {
             // Debug output must never fail page processing.
         }
+    }
+
+    static void SaveTrueOcrOverlay(
+        string sourcePath,
+        IReadOnlyList<OcrObservation> observations,
+        string outputPath)
+    {
+        using var source =
+            Cv2.ImRead(
+                sourcePath,
+                ImreadModes.Color);
+
+        if (source.Empty())
+            return;
+
+        using var debug =
+            source.Clone();
+
+        foreach (var observation in observations)
+        {
+            var rect =
+                new Rect(
+                    Math.Max(
+                        0,
+                        (int)Math.Floor(
+                            observation.X)),
+                    Math.Max(
+                        0,
+                        (int)Math.Floor(
+                            observation.Y)),
+                    Math.Max(
+                        1,
+                        (int)Math.Ceiling(
+                            observation.W)),
+                    Math.Max(
+                        1,
+                        (int)Math.Ceiling(
+                            observation.H)));
+
+            Scalar color =
+                observation.Pass switch
+                {
+                    OcrPassKind.Global1x =>
+                        new Scalar(
+                            0,
+                            220,
+                            0),
+                    OcrPassKind.Global2x =>
+                        new Scalar(
+                            0,
+                            180,
+                            255),
+                    OcrPassKind.Focus3x =>
+                        new Scalar(
+                            255,
+                            0,
+                            220),
+                    _ =>
+                        new Scalar(
+                            180,
+                            180,
+                            180)
+                };
+
+            Cv2.Rectangle(
+                debug,
+                rect,
+                color,
+                1);
+
+            string label =
+                $"{observation.Pass}:{observation.Confidence:0.00}:{CompactLabel(observation.Text)}";
+
+            Cv2.PutText(
+                debug,
+                label,
+                new Point(
+                    rect.X,
+                    Math.Max(
+                        12,
+                        rect.Y - 2)),
+                HersheyFonts.HersheySimplex,
+                0.30,
+                color,
+                1,
+                LineTypes.AntiAlias);
+        }
+
+        Cv2.ImWrite(
+            outputPath,
+            debug,
+            new[]
+            {
+                new ImageEncodingParam(
+                    ImwriteFlags.WebPQuality,
+                    DebugWebpQuality)
+            });
+    }
+
+    static string CompactLabel(
+        string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return "";
+
+        string oneLine =
+            value
+                .Replace(
+                    '\r',
+                    ' ')
+                .Replace(
+                    '\n',
+                    ' ')
+                .Trim();
+
+        return oneLine.Length <= 26
+            ? oneLine
+            : oneLine[..26] + "…";
     }
 
     static void SavePageCandidateOverlay(
