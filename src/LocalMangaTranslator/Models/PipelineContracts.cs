@@ -14,6 +14,10 @@ public enum OcrPassKind
     Global2x,
     Focus3x,
 
+    // Independent Architecture 2.0 page-text regions detected before OCR.
+    Region1x,
+    Region2x,
+
     // Container passes retain the page candidate ID in SourceKey.
     Container1x,
     Container2x,
@@ -55,6 +59,23 @@ public sealed record ContainerOcrBatch(
     IReadOnlyList<OcrObservation> Observations,
     IReadOnlyList<ContainerOcrAttempt> Attempts);
 public sealed record ContainerLineDecision(string ObservationId, string CandidateId, bool Accepted, string Reason, double MaskCoverage);
+
+public sealed record RegionOcrAttempt(
+    string RegionId,
+    OcrPassKind Pass,
+    string Status,
+    int Count,
+    string? Error = null);
+
+public sealed record RegionOcrBatch(
+    IReadOnlyList<OcrObservation> Observations,
+    IReadOnlyList<RegionOcrAttempt> Attempts);
+
+public sealed record RegionLineDecision(
+    string ObservationId,
+    string RegionId,
+    bool Accepted,
+    string Reason);
 
 
 public enum ContainerCandidateKind
@@ -122,6 +143,9 @@ public sealed record OcrStageResult(
     public IReadOnlyList<ContainerOcrDecision> CandidateDecisions { get; init; } = [];
     public IReadOnlyList<ContainerOcrAttempt> ContainerAttempts { get; init; } = [];
     public IReadOnlyList<ContainerLineDecision> ContainerLineDecisions { get; init; } = [];
+    public IReadOnlyList<RegionOcrAttempt> RegionAttempts { get; init; } = [];
+    public IReadOnlyList<RegionLineDecision> RegionLineDecisions { get; init; } = [];
+    public PageAnalysisResult? PageAnalysis { get; init; }
 }
 
 public enum PipelineStageKind
