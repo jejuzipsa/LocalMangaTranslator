@@ -7,8 +7,12 @@ namespace LocalMangaTranslator.Services;
 
 public sealed class TranslationRefinementService
 {
-    // 12B 모델에서 긴 JSON 응답이 무너지는 경우가 있어 한 번에 너무 많은 블록을 보내지 않는다.
-    const int BatchSize = 6;
+    // Final translation is deliberately isolated per translation unit.
+    // 0011 proved that even a well-formed multi-id JSON response can move
+    // propositional content from one neighboring bubble into another.
+    // Text-only single-unit calls are slower, but preserve the container
+    // boundary as a hard semantic boundary.
+    const int BatchSize = 1;
 
     readonly HttpClient http = new()
     {
@@ -189,8 +193,8 @@ The Vision review stage has already corrected OCR against the image. Translate t
 
 RULES:
 1. Use corrected_source as the authoritative source. draft_translation is only a draft and may be replaced completely.
-2. Read the entire INPUT batch as nearby page context before translating. Use neighboring items to keep names, honorifics, pronouns, relationships, and speaker voice consistent, but NEVER merge separate ids.
-3. Preserve exact meaning, intent, speaker attitude, politeness level, emotion, emphasis, punctuation, names, and recurring terminology. Do not invent information.
+2. Treat corrected_source for this id as a protected semantic boundary. Translate ONLY information present in that corrected_source. Never import a clause, fact, number, action, object, or conclusion from another bubble/caption.
+3. Preserve exact meaning, intent, speaker attitude, politeness level, emotion, emphasis, punctuation, names, and recurring terminology. Do not invent information. If draft_translation contains meaning that is absent from corrected_source, discard that extra meaning completely.
 4. Produce idiomatic Korean that sounds written for a Korean comic, not like a literal machine translation. Remove English word order and stiff translationese.
 5. Prefer concise speech-bubble wording. If two Korean phrasings mean the same thing, choose the shorter and more natural one.
 6. Preserve character voice. Casual, rough, formal, old-fashioned, sarcastic, threatening, hesitant, or intimate speech should remain distinct when supported by the source.
@@ -199,7 +203,7 @@ RULES:
 9. Preserve useful visual line structure with [BR]. Use original_region_count only as a layout hint, not as a reason to split grammar unnaturally.
 10. Every translation field must be finished Korean. Do not leave ordinary English/Japanese source fragments untranslated. Proper names should be transliterated naturally when appropriate.
 11. Do not add explanations, notes, markdown, reasoning, or extra fields.
-12. Return exactly one item for every input id. Never merge, omit, duplicate, or renumber ids.
+12. Return exactly one item for the input id. Never merge, omit, duplicate, renumber, continue, or complete the sentence using text from another region.
 13. ALL output items MUST be inside the regions array. Never place id or translation at the root object.
 14. Output only id and translation for each region. Do not echo sequence, source_language, original_region_count, corrected_source, type, or draft_translation.
 15. Keep the JSON structure valid until every input id has been emitted.
