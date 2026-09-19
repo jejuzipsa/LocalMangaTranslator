@@ -20,6 +20,6 @@ jobs:
         run: |
           New-Item -ItemType Directory -Force .smoke | Out-Null
           $modelPath = Join-Path (Resolve-Path .smoke).Path "detector-v4-s_int8.onnx"
-          "LMT_RTDETR_MODEL_PATH=$modelPath" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-          "LMT_RTDETR_DOWNLOAD_SMOKE=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          $env:LMT_RTDETR_MODEL_PATH = $modelPath
+          $env:LMT_RTDETR_DOWNLOAD_SMOKE = "1"
           dotnet run --project tests/PipelineChecks/PipelineChecks.csproj -c Release
