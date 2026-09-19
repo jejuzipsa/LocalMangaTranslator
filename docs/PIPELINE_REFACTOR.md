@@ -129,8 +129,11 @@ Page context is passed separately so adjacent dialogue cannot silently become pa
 ### 0009 stabilization after test pic/0007
 
 0009 keeps the conservative 0008 ownership gate but adds a narrow second-pass rescue for
-weak lines that sit next to an already-owned line in the same physical container. The rescue
-does not apply to ambiguous lines and does not lower the global 0.90 geometry gate.
+weak lines that sit next to an already-owned line in the same physical container. It also allows
+two or more high-confidence weak lines to rescue each other when they independently prefer the
+same candidate and form one coherent local text stack. Single isolated artwork fragments do not
+qualify. Neither rescue path applies to ambiguous lines, and the global 0.90 geometry gate remains
+unchanged.
 
 Erase permission is now explicit and separate from translation/render intent:
 - fallback rectangles never grant erase permission;
