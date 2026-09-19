@@ -46,6 +46,41 @@ Check("bounding box alone does not prove interior", ContainerOcrValidator.Valida
     [candidate with { Mask = mask }], [a, b]).All(x => !x.Accepted));
 Check("page origin offsets respected", ContainerOcrValidator.MaskCoverage(candidate, a) == 1);
 
+using (var regionRenderSource = Mat.Zeros(400, 400, MatType.CV_8UC3).ToMat())
+{
+    regionRenderSource.SetTo(new Scalar(255, 255, 255));
+
+    var regionRenderBlock = new OcrTextBlock(
+        77,
+        120,
+        220,
+        40,
+        12,
+        "HELLO",
+        1,
+        "en",
+        [new OcrLine(120, 220, 40, 12, "HELLO", 0.90f, "en")])
+    {
+        RegionId = "RG077",
+        RegionContainer = candidate with
+        {
+            RegionId = "RG077"
+        }
+    };
+
+    var confirmedLayout = BalloonMaskService.AnalyzeConfirmedRegion(
+        regionRenderSource,
+        regionRenderBlock,
+        "dialogue",
+        regionRenderBlock.RegionContainer!);
+
+    Check("confirmed learned region supplies render safe mask directly",
+        confirmedLayout.Detected &&
+        confirmedLayout.ShouldRender &&
+        confirmedLayout.Mode == "region:test" &&
+        confirmedLayout.SafeMask is { Length: 8000 });
+}
+
 var unitBuilder = new OcrContainerUnitBuilder();
 var eligibleA = new ContainerOcrDecision("PC001", true, "eligible_for_ocr");
 var secondCandidate = candidate with
@@ -265,9 +300,10 @@ try
         [candidate],
         [learnedBubble],
         fusionImagePath);
-    Check("learned bubble evidence boosts matching geometric container",
+    Check("RT-DETR bubble may reuse matching legacy mask only",
         fusedExisting.Count == 1 &&
-        fusedExisting[0].DetectorMode.StartsWith("rtdetr+", StringComparison.Ordinal) &&
+        fusedExisting[0].DetectorMode == "rtdetr_region+legacy_mask" &&
+        fusedExisting[0].RegionId == "RG010" &&
         fusedExisting[0].Score > candidate.Score);
 
     var newBubble = new PageRegion(
@@ -281,10 +317,46 @@ try
         [],
         [newBubble],
         fusionImagePath);
-    Check("learned bubble can seed OCR container without OCR text",
+    Check("RT-DETR bubble can seed region container without legacy candidate",
         fusedFallback.Count == 1 &&
-        fusedFallback[0].DetectorMode == "rtdetr_bubble" &&
+        fusedFallback[0].DetectorMode == "rtdetr_region_rect" &&
+        fusedFallback[0].RegionId == "RG011" &&
         ContainerOcrValidator.ValidateCandidate(fusedFallback[0]).Eligible);
+
+    var noLegacyLeak = PageAnalysisService.FuseContainers(
+        [candidate],
+        [newBubble],
+        fusionImagePath);
+    Check("unmatched legacy candidate cannot become Architecture 2.0 container",
+        noLegacyLeak.Count == 1 &&
+        noLegacyLeak[0].RegionId == "RG011" &&
+        noLegacyLeak[0].DetectorMode == "rtdetr_region_rect");
+
+    var leftBubble = new PageRegion(
+        "RG012",
+        PageRegionKind.Bubble,
+        new Rect(80, 190, 80, 80),
+        0.89f,
+        "test-rtdetr");
+
+    var rightBubble = new PageRegion(
+        "RG013",
+        PageRegionKind.Bubble,
+        new Rect(140, 210, 80, 70),
+        0.88f,
+        "test-rtdetr");
+
+    var oneLegacyTwoLearned = PageAnalysisService.FuseContainers(
+        [candidate],
+        [leftBubble, rightBubble],
+        fusionImagePath);
+
+    Check("one legacy contour cannot be reused by two learned bubbles",
+        oneLegacyTwoLearned.Count == 2 &&
+        oneLegacyTwoLearned.Count(x =>
+            x.DetectorMode == "rtdetr_region+legacy_mask") == 1 &&
+        oneLegacyTwoLearned.Count(x =>
+            x.DetectorMode == "rtdetr_region_rect") == 1);
 }
 finally
 {
@@ -375,6 +447,145 @@ finally
     }
     catch
     {
+    }
+}
+
+string auditRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_audit_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(auditRoot);
+    Check("output layout creates debug json and audit folders",
+        Directory.Exists(OutputDirectoryLayout.Debug(auditRoot)) &&
+        Directory.Exists(OutputDirectoryLayout.Json(auditRoot)) &&
+        Directory.Exists(OutputDirectoryLayout.Audit(auditRoot)));
+
+    string auditSource = Path.Combine(auditRoot, "audit_source.png");
+    string auditFinal = Path.Combine(auditRoot, "audit_source.translated.webp");
+
+    using (var src = Mat.Zeros(40, 50, MatType.CV_8UC3).ToMat())
+    {
+        src.SetTo(new Scalar(255, 255, 255));
+        Cv2.Rectangle(src, new Rect(10, 10, 10, 8), new Scalar(0, 0, 0), -1);
+        Cv2.ImWrite(auditSource, src);
+
+        using var fin = src.Clone();
+        Cv2.Rectangle(fin, new Rect(12, 12, 5, 4), new Scalar(0, 0, 255), -1);
+        Cv2.ImWrite(
+            auditFinal,
+            fin,
+            [new ImageEncodingParam(ImwriteFlags.WebPQuality, 101)]);
+    }
+
+    var emptyStage = new OcrStageResult(
+        [],
+        [],
+        [],
+        [],
+        new OcrUnitBuildResult([], 0, 0, 0))
+    {
+        PageAnalysis = new PageAnalysisResult([], [], "test", false)
+    };
+
+    await new FinalAuditService().GenerateAsync(
+        auditSource,
+        auditFinal,
+        auditRoot,
+        emptyStage,
+        []);
+
+    Check("final audit writes compare json and summary after output",
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_source.final_compare.webp")) &&
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_source.final_audit.json")) &&
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_summary.json")));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(auditRoot))
+            Directory.Delete(auditRoot, true);
+    }
+    catch
+    {
+    }
+}
+
+if (string.Equals(
+        Environment.GetEnvironmentVariable("LMT_BABERU_SMOKE"),
+        "1",
+        StringComparison.Ordinal))
+{
+    string? root = Environment.GetEnvironmentVariable("LMT_BABERU_MODEL_ROOT");
+    if (string.IsNullOrWhiteSpace(root))
+        throw new Exception("LMT_BABERU_MODEL_ROOT missing for Baberu smoke");
+
+    await ExternalModelManager.EnsureBaberuAsync();
+
+    string sample = Path.Combine(
+        Path.GetTempPath(),
+        $"lmt_baberu_smoke_{Guid.NewGuid():N}.png");
+
+    try
+    {
+        using var smoke = Mat.Zeros(240, 320, MatType.CV_8UC3).ToMat();
+        smoke.SetTo(new Scalar(255, 255, 255));
+        Cv2.PutText(
+            smoke,
+            "HELLO",
+            new Point(82, 132),
+            HersheyFonts.HersheySimplex,
+            1.2,
+            new Scalar(0, 0, 0),
+            2,
+            LineTypes.AntiAlias);
+        Cv2.ImWrite(sample, smoke);
+
+        var bubble = new PageRegion(
+            "RG900",
+            PageRegionKind.Bubble,
+            new Rect(35, 50, 250, 130),
+            0.95f,
+            "smoke");
+
+        var textBubble = new PageRegion(
+            "RG901",
+            PageRegionKind.TextBubble,
+            new Rect(65, 92, 150, 52),
+            0.95f,
+            "smoke");
+
+        using var baberu = new BaberuOcrEngine();
+
+        var result = baberu.Analyze(
+            sample,
+            new PageAnalysisResult(
+                [bubble, textBubble],
+                [],
+                "smoke",
+                true));
+
+        Check("Baberu ONNX sessions and decode loop smoke",
+            result.Count == 1 &&
+            result[0].RegionId == "RG900");
+    }
+    finally
+    {
+        try
+        {
+            if (File.Exists(sample))
+                File.Delete(sample);
+        }
+        catch
+        {
+        }
     }
 }
 

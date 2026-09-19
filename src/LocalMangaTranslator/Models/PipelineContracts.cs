@@ -17,6 +17,7 @@ public enum OcrPassKind
     // Independent Architecture 2.0 page-text regions detected before OCR.
     Region1x,
     Region2x,
+    BaberuBubble,
 
     // Container passes retain the page candidate ID in SourceKey.
     Container1x,
@@ -77,6 +78,15 @@ public sealed record RegionLineDecision(
     bool Accepted,
     string Reason);
 
+public sealed record SecondaryOcrEvidence(
+    string EvidenceId,
+    string RegionId,
+    Rect Bounds,
+    string Text,
+    string Source,
+    bool Accepted,
+    string Reason);
+
 
 public enum ContainerCandidateKind
 {
@@ -101,8 +111,10 @@ public sealed record ContainerCandidate(
     int BorderTouches,
     byte[] Mask,
     int MaskWidth,
-    int MaskHeight);
-
+    int MaskHeight)
+{
+    public string? RegionId { get; init; }
+}
 public sealed record LineOwnershipDecision(
     string LineId,
     string? CandidateId,
@@ -145,6 +157,7 @@ public sealed record OcrStageResult(
     public IReadOnlyList<ContainerLineDecision> ContainerLineDecisions { get; init; } = [];
     public IReadOnlyList<RegionOcrAttempt> RegionAttempts { get; init; } = [];
     public IReadOnlyList<RegionLineDecision> RegionLineDecisions { get; init; } = [];
+    public IReadOnlyList<SecondaryOcrEvidence> SecondaryOcrEvidence { get; init; } = [];
     public PageAnalysisResult? PageAnalysis { get; init; }
 }
 
@@ -161,6 +174,7 @@ public enum PipelineStageKind
     VisionReview,
     Translation,
     Render,
+    FinalAudit,
     Completed
 }
 

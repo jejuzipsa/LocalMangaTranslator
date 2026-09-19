@@ -31,6 +31,7 @@ public partial class MainWindow : System.Windows.Window
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
+    BaberuOcrEngine? baberu;
     PageAnalysisService? pageAnalysis;
     OcrPipelineService? ocrPipeline;
     PagePipelineService? pagePipeline;
@@ -60,8 +61,9 @@ public partial class MainWindow : System.Windows.Window
         {
             var modelRoot = Path.Combine(AppContext.BaseDirectory, "models", "ocr");
             ocr = new OcrEngine(modelRoot);
+            baberu = new BaberuOcrEngine();
             pageAnalysis = new PageAnalysisService();
-            ocrPipeline = new OcrPipelineService(ocr);
+            ocrPipeline = new OcrPipelineService(ocr, baberu);
             pagePipeline = new PagePipelineService(
                 pageAnalysis,
                 ocrPipeline,
@@ -98,6 +100,9 @@ public partial class MainWindow : System.Windows.Window
         Log(ExternalModelManager.IsRtdetrReady()
             ? "페이지 분석 모델 · RT-DETR 준비됨"
             : "페이지 분석 모델 · RT-DETR 미설치");
+        Log(ExternalModelManager.IsBaberuReady()
+            ? "보조 OCR · Baberu 준비됨"
+            : "보조 OCR · Baberu 미설치");
     }
 
     static void SelectPreferredModel(
@@ -235,6 +240,19 @@ public partial class MainWindow : System.Windows.Window
 
                 await ExternalModelManager.EnsureRtdetrAsync(
                     layoutProgress,
+                    workCts.Token);
+            }
+
+            if (BaberuOcrCheckBox.IsChecked == true)
+            {
+                var baberuProgress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"Baberu OCR · {message}";
+                    Log($"Baberu OCR · {message}");
+                });
+
+                await ExternalModelManager.EnsureBaberuAsync(
+                    baberuProgress,
                     workCts.Token);
             }
 
@@ -543,11 +561,20 @@ public partial class MainWindow : System.Windows.Window
             return;
         }
 
+        if (BaberuOcrCheckBox.IsChecked == true &&
+            !ExternalModelManager.IsBaberuReady())
+        {
+            Log("Baberu 보조 OCR 모델이 없습니다 · [선택 모델 확인/설치]을 눌러 설치해 주세요");
+            return;
+        }
+
         var pipelineOptions = new PipelineOptions(
             HybridPageAnalysisCheckBox.IsChecked == true
                 ? RegionAnalysisMode.HybridRtdetr
                 : RegionAnalysisMode.Legacy,
-            TargetedRegionOcrCheckBox.IsChecked == true);
+            TargetedRegionOcrCheckBox.IsChecked == true,
+            BaberuOcrCheckBox.IsChecked == true,
+            FinalAuditCheckBox.IsChecked == true);
 
         Directory.CreateDirectory(OutputPathBox.Text);
         workCts = new CancellationTokenSource();
@@ -555,7 +582,7 @@ public partial class MainWindow : System.Windows.Window
         StopButton.IsEnabled = true;
         InstallModelButton.IsEnabled = false;
 
-        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | 영역 OCR: {pipelineOptions.EnableTargetedRegionOcr} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
+        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | Baberu: {pipelineOptions.EnableBaberuOcr} | 영역 OCR 진단: {pipelineOptions.EnableTargetedRegionOcr} | 완료검토: {pipelineOptions.EnableFinalAudit} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
 
         try
         {
@@ -644,6 +671,7 @@ public partial class MainWindow : System.Windows.Window
             PipelineStageKind.VisionReview => "Vision 검수",
             PipelineStageKind.Translation => "번역",
             PipelineStageKind.Render => "삭제/조판",
+            PipelineStageKind.FinalAudit => "완료 검토",
             PipelineStageKind.Completed => "완료",
             _ => stage.ToString()
         };
@@ -686,6 +714,7 @@ public partial class MainWindow : System.Windows.Window
         workCts?.Cancel();
         workCts?.Dispose();
         pageAnalysis?.Dispose();
+        baberu?.Dispose();
         ocr?.Dispose();
         base.OnClosed(e);
     }
