@@ -31,6 +31,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/ocr | Out-Null
+          New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/layout | Out-Null
           New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/inpaint | Out-Null
           New-Item -ItemType Directory -Force publish/LocalMangaTranslator/models/vision_llm | Out-Null
       - uses: actions/upload-artifact@v4
