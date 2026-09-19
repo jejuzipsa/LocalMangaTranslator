@@ -25,7 +25,7 @@ public static class PipelineDebugWriter
                 Path.Combine(debugDirectory, $"{baseName}.00_region_analysis.json"),
                 JsonSerializer.Serialize(new
                 {
-                    schema = "page-analysis-v2",
+                    schema = "page-analysis-v3-region-first",
                     mode = analysis.Mode,
                     external_detector_used = analysis.ExternalDetectorUsed,
                     external_detector_status = analysis.ExternalDetectorStatus,
@@ -40,7 +40,7 @@ public static class PipelineDebugWriter
                         score = x.Score,
                         source = x.Source
                     }),
-                    fused_containers = analysis.ContainerCandidates.Select(x => new
+                    active_containers = analysis.ContainerCandidates.Select(x => new
                     {
                         id = x.CandidateId,
                         kind = x.Kind.ToString(),
@@ -159,7 +159,7 @@ public static class PipelineDebugWriter
                 Path.Combine(debugDirectory, $"{baseName}.00_container_ocr_validation.json"),
                 JsonSerializer.Serialize(new
                 {
-                    schema = "container-ocr-v2",
+                    schema = "ocr-evidence-v3",
                     candidate_decisions = stage.CandidateDecisions,
                     attempts = stage.ContainerAttempts,
                     line_decisions = stage.ContainerLineDecisions,
