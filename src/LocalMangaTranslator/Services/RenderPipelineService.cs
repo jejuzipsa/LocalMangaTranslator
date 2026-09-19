@@ -320,7 +320,12 @@ public sealed class RenderPipelineService
                 item.Layout,
                 pageFontReference);
 
+            bool semanticSafe =
+                !RenderSafetyPolicy.IsSuspiciousVisionExpansion(
+                    item.Region);
+
             bool approved = item.Layout.ShouldRender &&
+                            semanticSafe &&
                             textLayout.Fits &&
                             conflicts.Count == 0 &&
                             erase.Approved;
@@ -328,6 +333,8 @@ public sealed class RenderPipelineService
             string reason;
             if (!item.Layout.ShouldRender)
                 reason = $"container_rejected:{item.Layout.Reason}";
+            else if (!semanticSafe)
+                reason = "vision_expansion_untrusted";
             else if (conflicts.Count > 0)
                 reason = $"line_ownership_conflict:{string.Join("+", conflicts)}";
             else if (!textLayout.Fits)
@@ -2039,5 +2046,36 @@ public sealed class RenderPipelineService
                 index,
                 0,
                 sorted.Count - 1)];
+    }
+}
+
+
+public static class RenderSafetyPolicy
+{
+    public static bool IsSuspiciousVisionExpansion(
+        VisionTranslation region)
+    {
+        if (region.Source.Lines.Count == 0 ||
+            region.Source.Lines.Count > 2)
+            return false;
+
+        int sourceLength = region.Source.Text.Count(
+            char.IsLetterOrDigit);
+
+        if (sourceLength == 0 ||
+            sourceLength > 4)
+            return false;
+
+        double confidence = region.Source.Lines.Average(
+            x => x.Confidence);
+
+        if (confidence >= 0.82)
+            return false;
+
+        int correctedLength = region.CorrectedText.Count(
+            char.IsLetterOrDigit);
+
+        return correctedLength >= 8 &&
+               correctedLength >= sourceLength * 2.5;
     }
 }
