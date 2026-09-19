@@ -239,6 +239,17 @@ public static class BalloonMaskService
 
         if (!maskValid)
         {
+            var learnedFallback =
+                TryCreateRtdetrTextRegionLayout(
+                    source,
+                    block,
+                    type,
+                    region,
+                    "region_mask_invalid");
+
+            if (learnedFallback is not null)
+                return learnedFallback;
+
             return CreateConservativeFallback(
                 source,
                 block,
@@ -366,6 +377,17 @@ public static class BalloonMaskService
                             ? "region_touches_page_border"
                             : "region_inner_invalid";
 
+            var learnedFallback =
+                TryCreateRtdetrTextRegionLayout(
+                    source,
+                    block,
+                    type,
+                    region,
+                    reason);
+
+            if (learnedFallback is not null)
+                return learnedFallback;
+
             return CreateConservativeFallback(
                 source,
                 block,
@@ -407,6 +429,233 @@ public static class BalloonMaskService
             innerRatio,
             lineContainment,
             textureStdDev);
+    }
+
+    static BalloonLayout? TryCreateRtdetrTextRegionLayout(
+        Mat source,
+        OcrTextBlock block,
+        string type,
+        ContainerCandidate region,
+        string previousReason)
+    {
+        if (!region.LearnedBounds.HasValue)
+            return null;
+
+        var textRegion =
+            block.RegionTextRegion;
+
+        if (textRegion is null ||
+            textRegion.Kind != PageRegionKind.TextBubble ||
+            textRegion.Score < 0.72f)
+        {
+            return null;
+        }
+
+        var learned =
+            region.LearnedBounds.Value;
+
+        var bubbleBounds =
+            ClampRect(
+                learned.X,
+                learned.Y,
+                learned.Width,
+                learned.Height,
+                source.Cols,
+                source.Rows);
+
+        var textBounds =
+            ClampRect(
+                textRegion.Bounds.X,
+                textRegion.Bounds.Y,
+                textRegion.Bounds.Width,
+                textRegion.Bounds.Height,
+                source.Cols,
+                source.Rows);
+
+        var blockRect =
+            ClampRect(
+                (int)Math.Floor(block.X),
+                (int)Math.Floor(block.Y),
+                (int)Math.Ceiling(block.W),
+                (int)Math.Ceiling(block.H),
+                source.Cols,
+                source.Rows);
+
+        if (bubbleBounds.Width < 18 ||
+            bubbleBounds.Height < 14 ||
+            textBounds.Width < 6 ||
+            textBounds.Height < 6)
+        {
+            return null;
+        }
+
+        double blockArea =
+            Math.Max(
+                1.0,
+                blockRect.Width *
+                (double)blockRect.Height);
+
+        double textArea =
+            Math.Max(
+                1.0,
+                textBounds.Width *
+                (double)textBounds.Height);
+
+        double blockTextCoverage =
+            IntersectionArea(
+                blockRect,
+                textBounds) /
+            blockArea;
+
+        double textInsideBubble =
+            IntersectionArea(
+                textBounds,
+                bubbleBounds) /
+            textArea;
+
+        // This rescue is intentionally narrow: the learned detector must
+        // independently agree on both the bubble and its inner text region,
+        // and the canonical OCR block must sit substantially inside that
+        // TextBubble. Artwork-only OCR therefore stays on the conservative
+        // fallback path.
+        if (blockTextCoverage < 0.52 ||
+            textInsideBubble < 0.60)
+        {
+            return null;
+        }
+
+        int width =
+            bubbleBounds.Width;
+
+        int height =
+            bubbleBounds.Height;
+
+        var safeMask =
+            new byte[
+                width *
+                height];
+
+        int guard =
+            Math.Clamp(
+                Math.Min(
+                    width,
+                    height) / 28,
+                2,
+                10);
+
+        long safePixels = 0;
+
+        for (int y = guard;
+             y < height - guard;
+             y++)
+        {
+            for (int x = guard;
+                 x < width - guard;
+                 x++)
+            {
+                safeMask[
+                    y * width +
+                    x] =
+                    255;
+
+                safePixels++;
+            }
+        }
+
+        int marginX =
+            Math.Clamp(
+                width / 12,
+                4,
+                28);
+
+        int marginY =
+            Math.Clamp(
+                height / 10,
+                4,
+                24);
+
+        var inner =
+            ClampRect(
+                bubbleBounds.X +
+                    marginX,
+                bubbleBounds.Y +
+                    marginY,
+                Math.Max(
+                    12,
+                    bubbleBounds.Width -
+                    marginX * 2),
+                Math.Max(
+                    12,
+                    bubbleBounds.Height -
+                    marginY * 2),
+                source.Cols,
+                source.Rows);
+
+        bool dark =
+            EstimateDarkBackground(
+                source,
+                inner,
+                block.Lines);
+
+        double maskAreaRatio =
+            safePixels /
+            blockArea;
+
+        double bboxAreaRatio =
+            bubbleBounds.Width *
+            (double)bubbleBounds.Height /
+            blockArea;
+
+        double bubbleCoverage =
+            IntersectionArea(
+                bubbleBounds,
+                blockRect) /
+            blockArea;
+
+        int pageBorderTouches = 0;
+        const int tolerance = 3;
+
+        if (bubbleBounds.Left <= tolerance)
+            pageBorderTouches++;
+
+        if (bubbleBounds.Top <= tolerance)
+            pageBorderTouches++;
+
+        if (bubbleBounds.Right >=
+            source.Cols - tolerance)
+        {
+            pageBorderTouches++;
+        }
+
+        if (bubbleBounds.Bottom >=
+            source.Rows - tolerance)
+        {
+            pageBorderTouches++;
+        }
+
+        return new BalloonLayout(
+            bubbleBounds,
+            inner,
+            true,
+            dark,
+            safeMask,
+            width,
+            height,
+            type,
+            "region:rtdetr_textbubble_rect",
+            true,
+            $"rtdetr_textbubble_confirmed_after:{previousReason}",
+            maskAreaRatio,
+            bboxAreaRatio,
+            bubbleCoverage,
+            pageBorderTouches,
+            inner.Width *
+            (double)inner.Height /
+            Math.Max(
+                1.0,
+                safePixels),
+            blockTextCoverage,
+            0);
     }
 
     static BalloonLayout? TryAcceptCandidate(
