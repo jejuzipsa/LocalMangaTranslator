@@ -379,6 +379,46 @@ finally
 }
 
 if (string.Equals(
+        Environment.GetEnvironmentVariable("LMT_RTDETR_DOWNLOAD_SMOKE"),
+        "1",
+        StringComparison.Ordinal))
+{
+    string? modelPath = Environment.GetEnvironmentVariable("LMT_RTDETR_MODEL_PATH");
+    if (string.IsNullOrWhiteSpace(modelPath))
+        throw new Exception("LMT_RTDETR_MODEL_PATH missing for download smoke");
+
+    try
+    {
+        if (File.Exists(modelPath))
+            File.Delete(modelPath);
+
+        string tempPath = modelPath + ".download";
+        if (File.Exists(tempPath))
+            File.Delete(tempPath);
+
+        string installed = await ExternalModelManager.EnsureRtdetrAsync();
+        Check("RT-DETR first-run download finalizes model file",
+            string.Equals(installed, modelPath, StringComparison.OrdinalIgnoreCase) &&
+            File.Exists(modelPath) &&
+            !File.Exists(tempPath) &&
+            new FileInfo(modelPath).Length > 8 * 1024 * 1024);
+    }
+    finally
+    {
+        try
+        {
+            if (File.Exists(modelPath))
+                File.Delete(modelPath);
+            if (File.Exists(modelPath + ".download"))
+                File.Delete(modelPath + ".download");
+        }
+        catch
+        {
+        }
+    }
+}
+
+if (string.Equals(
         Environment.GetEnvironmentVariable("LMT_RTDETR_SMOKE"),
         "1",
         StringComparison.Ordinal))

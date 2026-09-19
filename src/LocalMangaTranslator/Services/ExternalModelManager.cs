@@ -78,48 +78,65 @@ public static class ExternalModelManager
             long? total =
                 response.Content.Headers.ContentLength;
 
-            await using var input =
-                await response.Content.ReadAsStreamAsync(token);
-
-            await using var output =
-                new FileStream(
-                    temporary,
-                    FileMode.Create,
-                    FileAccess.Write,
-                    FileShare.None,
-                    1024 * 1024,
-                    useAsync: true);
-
-            var buffer =
-                new byte[1024 * 1024];
-
             long received = 0;
+            int lastReportedPercent = -1;
 
-            while (true)
+            await using (var input =
+                         await response.Content.ReadAsStreamAsync(token))
             {
-                int read =
-                    await input.ReadAsync(
-                        buffer.AsMemory(),
-                        token);
-
-                if (read <= 0)
-                    break;
-
-                await output.WriteAsync(
-                    buffer.AsMemory(0, read),
-                    token);
-
-                received += read;
-
-                if (total is > 0)
+                await using (var output =
+                             new FileStream(
+                                 temporary,
+                                 FileMode.Create,
+                                 FileAccess.Write,
+                                 FileShare.None,
+                                 1024 * 1024,
+                                 useAsync: true))
                 {
-                    progress?.Report(
-                        $"RT-DETR 다운로드 {received * 100.0 / total.Value:0}%");
+                    var buffer =
+                        new byte[1024 * 1024];
+
+                    while (true)
+                    {
+                        int read =
+                            await input.ReadAsync(
+                                buffer.AsMemory(),
+                                token);
+
+                        if (read <= 0)
+                            break;
+
+                        await output.WriteAsync(
+                            buffer.AsMemory(0, read),
+                            token);
+
+                        received += read;
+
+                        if (total is > 0)
+                        {
+                            int percent =
+                                (int)Math.Clamp(
+                                    Math.Floor(
+                                        received * 100.0 /
+                                        total.Value),
+                                    0,
+                                    100);
+
+                            if (percent != lastReportedPercent)
+                            {
+                                lastReportedPercent = percent;
+                                progress?.Report(
+                                    $"RT-DETR 다운로드 {percent}%");
+                            }
+                        }
+                    }
+
+                    await output.FlushAsync(token);
                 }
             }
 
-            await output.FlushAsync(token);
-
+            // The download stream must be fully disposed before the temporary
+            // file is reopened for hashing or moved into its final location.
             if (received < 8 * 1024 * 1024)
                 throw new InvalidOperationException(
                     "RT-DETR 모델 파일이 예상보다 작습니다.");
