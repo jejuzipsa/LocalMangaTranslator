@@ -1,0 +1,103 @@
+{
+  "SourceFile": "hard_sfx_combat_002.jpg",
+  "CreatedAt": "2026-09-19T15:59:04.1675837+09:00",
+  "Units": [
+    {
+      "UnitId": "U001",
+      "ContainerId": "C004",
+      "RegionId": 0,
+      "LineIds": [
+        "L0001"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": false,
+      "ContainerMode": "rejected",
+      "Approved": false,
+      "Reason": "container_rejected:touches_border;fallback=keep_original",
+      "LayoutFits": false,
+      "LayoutReason": "container_rejected",
+      "FontSize": 0,
+      "BoxX": 780,
+      "BoxY": 53,
+      "BoxWidth": 128,
+      "BoxHeight": 96,
+      "GlyphX": 0,
+      "GlyphY": 0,
+      "GlyphWidth": 0,
+      "GlyphHeight": 0
+    },
+    {
+      "UnitId": "U002",
+      "ContainerId": "C003",
+      "RegionId": 3,
+      "LineIds": [
+        "L0002"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": false,
+      "ContainerMode": "fallback",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 12.41946044921875,
+      "BoxX": 779,
+      "BoxY": 454,
+      "BoxWidth": 53,
+      "BoxHeight": 27,
+      "GlyphX": 791.0855908203125,
+      "GlyphY": 460.61272094726564,
+      "GlyphWidth": 28.6116552734375,
+      "GlyphHeight": 13.177176513671874
+    },
+    {
+      "UnitId": "U003",
+      "ContainerId": "C001",
+      "RegionId": 5,
+      "LineIds": [
+        "L0003",
+        "L0004"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "speech",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 21.1583935546875,
+      "BoxX": 1044,
+      "BoxY": 855,
+      "BoxWidth": 79,
+      "BoxHeight": 46,
+      "GlyphX": 1048.728403227539,
+      "GlyphY": 866.5280248095703,
+      "GlyphWidth": 69.17051288085938,
+      "GlyphHeight": 21.817607607421877
+    },
+    {
+      "UnitId": "U004",
+      "ContainerId": "C002",
+      "RegionId": 7,
+      "LineIds": [
+        "L0005"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "speech",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 23.458112792968752,
+      "BoxX": 812,
+      "BoxY": 1221,
+      "BoxWidth": 86,
+      "BoxHeight": 51,
+      "GlyphX": 829.0859318774415,
+      "GlyphY": 1233.8373356860352,
+      "GlyphWidth": 52.26606349121094,
+      "GlyphHeight": 24.080333510742186
+    }
+  ]
+}

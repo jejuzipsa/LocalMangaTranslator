@@ -1,0 +1,414 @@
+{
+  "SourceFile": "core_whitebg_short_speech_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T15:53:05.4310248+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 866,
+        "Y": 31.5,
+        "W": 379.5,
+        "H": 206.5,
+        "Text": "ALLL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 866,
+            "Y": 31.5,
+            "W": 379.5,
+            "H": 206.5,
+            "Text": "ALLL",
+            "Confidence": 0.41678154,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "ZZZZZZZZ",
+      "Translation": "\uB4DC\uB7EC\uB801... (\uB610\uB294 \uCFE8\uCFE8...)",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1049,
+        "Y": 260,
+        "W": 103.5,
+        "H": 37,
+        "Text": "BRUCE?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1049,
+            "Y": 260,
+            "W": 103.5,
+            "H": 37,
+            "Text": "BRUCE?",
+            "Confidence": 0.9990155,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BRUCE?",
+      "Translation": "\uBE0C\uB8E8\uC2A4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 614,
+        "Y": 764.6666666666666,
+        "W": 18.33333333333337,
+        "H": 11.333333333333371,
+        "Text": "108",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 614,
+            "Y": 764.6666666666666,
+            "W": 18.333333333333343,
+            "H": 11.333333333333336,
+            "Text": "108",
+            "Confidence": 0.7288004,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 637.3333333333334,
+        "Y": 795.3333333333334,
+        "W": 104,
+        "H": 50.66666666666663,
+        "Text": "Wh... wherre..",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 662,
+            "Y": 795.3333333333334,
+            "W": 54.666666666666686,
+            "H": 29.333333333333343,
+            "Text": "Wh...",
+            "Confidence": 0.96565527,
+            "Language": "en"
+          },
+          {
+            "X": 637.3333333333334,
+            "Y": 814.6666666666666,
+            "W": 104.00000000000001,
+            "H": 31.33333333333333,
+            "Text": "wherre..",
+            "Confidence": 0.9374035,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "Wh... wherrrre...",
+      "Translation": "\uC5B4... \uC5B4\uB514...[BR]\uC5B4\uB514\uC5D0...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 264,
+        "Y": 980,
+        "W": 114.66666666666669,
+        "H": 70.5,
+        "Text": "AIfrud?! Alfrd come in!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 277.66666666666663,
+            "Y": 980,
+            "W": 92.33333333333334,
+            "H": 30.66666666666667,
+            "Text": "AIfrud?!",
+            "Confidence": 0.96520966,
+            "Language": "en"
+          },
+          {
+            "X": 264,
+            "Y": 1001,
+            "W": 114.66666666666669,
+            "H": 30,
+            "Text": "Alfrd come",
+            "Confidence": 0.99521697,
+            "Language": "en"
+          },
+          {
+            "X": 298.5,
+            "Y": 1020,
+            "W": 43,
+            "H": 30.5,
+            "Text": "in!",
+            "Confidence": 0.9974129,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "Alfurd?!\nAlfrd come in!",
+      "Translation": "\uC54C\uD37C\uB4DC?!\n\uC54C\uD37C\uB4DC, \uB4E4\uC5B4\uC640!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 441.6666666666667,
+        "Y": 1038,
+        "W": 103.33333333333331,
+        "H": 48.33333333333326,
+        "Text": "Is anynun heeerre?!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 443.33333333333337,
+            "Y": 1038,
+            "W": 101.66666666666666,
+            "H": 27.66666666666667,
+            "Text": "Is anynun",
+            "Confidence": 0.96113914,
+            "Language": "en"
+          },
+          {
+            "X": 441.6666666666667,
+            "Y": 1057,
+            "W": 99.66666666666663,
+            "H": 29.333333333333343,
+            "Text": "heeerre?!",
+            "Confidence": 0.9968068,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "Is anyun heeeerre?!",
+      "Translation": "\uC548\uC724\uC774 \uC788\uB098?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 710.3333333333334,
+        "Y": 1095,
+        "W": 108.66666666666663,
+        "H": 203,
+        "Text": "cl",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 710.3333333333334,
+            "Y": 1095,
+            "W": 108.66666666666666,
+            "H": 203,
+            "Text": "cl",
+            "Confidence": 0.64720035,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "cl",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 601.6666666666666,
+        "Y": 1163,
+        "W": 94,
+        "H": 49.666666666666515,
+        "Text": "YOU\u0027RE HERE.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 601.6666666666666,
+            "Y": 1163,
+            "W": 93.99999999999999,
+            "H": 29.33333333333333,
+            "Text": "YOU\u0027RE",
+            "Confidence": 0.9837682,
+            "Language": "en"
+          },
+          {
+            "X": 614.3333333333334,
+            "Y": 1183.3333333333333,
+            "W": 67,
+            "H": 29.333333333333343,
+            "Text": "HERE.",
+            "Confidence": 0.99617594,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "YOU\u0027RE HERE.",
+      "Translation": "\uC5EC\uAE30 \uC788\uB124.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 671,
+        "Y": 1443,
+        "W": 138.66666666666663,
+        "H": 214,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 671,
+            "Y": 1443,
+            "W": 138.66666666666666,
+            "H": 214,
+            "Text": "E",
+            "Confidence": 0.46770477,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "E",
+      "Translation": "E",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 846.6666666666666,
+        "Y": 1469.6666666666667,
+        "W": 91.33333333333337,
+        "H": 48.666666666666515,
+        "Text": "BRUCE WAYNE...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 854,
+            "Y": 1469.6666666666667,
+            "W": 79.66666666666669,
+            "H": 27.333333333333332,
+            "Text": "BRUCE",
+            "Confidence": 0.99646777,
+            "Language": "en"
+          },
+          {
+            "X": 846.6666666666666,
+            "Y": 1488.3333333333333,
+            "W": 91.33333333333334,
+            "H": 29.999999999999993,
+            "Text": "WAYNE...",
+            "Confidence": 0.9641665,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BRUCE WAYNE...",
+      "Translation": "\uBE0C\uB8E8\uC2A4 \uC6E8\uC778...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 862.3333333333334,
+        "Y": 1533,
+        "W": 155.66666666666663,
+        "H": 112.33333333333326,
+        "Text": "MY LORD. MY LORD. YOU\u0027RE RIGHT HERE. AND IT\u0027S FINALLY OVER.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 880,
+            "Y": 1533,
+            "W": 115,
+            "H": 36,
+            "Text": "MY LORD.",
+            "Confidence": 0.94091886,
+            "Language": "en"
+          },
+          {
+            "X": 888,
+            "Y": 1540.6666666666667,
+            "W": 105.66666666666669,
+            "H": 24,
+            "Text": "MY LORD.",
+            "Confidence": 0.998694,
+            "Language": "en"
+          },
+          {
+            "X": 863.3333333333334,
+            "Y": 1559,
+            "W": 152.33333333333334,
+            "H": 25.666666666666657,
+            "Text": "YOU\u0027RE RIGHT",
+            "Confidence": 0.9954588,
+            "Language": "en"
+          },
+          {
+            "X": 862.3333333333334,
+            "Y": 1579.6666666666667,
+            "W": 155.66666666666666,
+            "H": 23.66666666666667,
+            "Text": "HERE. AND IT\u0027S",
+            "Confidence": 0.9980036,
+            "Language": "en"
+          },
+          {
+            "X": 896.6666666666667,
+            "Y": 1598.6666666666667,
+            "W": 85.33333333333331,
+            "H": 25.666666666666657,
+            "Text": "FINALLY",
+            "Confidence": 0.99959844,
+            "Language": "en"
+          },
+          {
+            "X": 905.3333333333334,
+            "Y": 1617.3333333333333,
+            "W": 68.33333333333331,
+            "H": 28.000000000000014,
+            "Text": "OVER.",
+            "Confidence": 0.9987067,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "MY LORD. YOU\u0027RE RIGHT HERE. AND IT\u0027S FINALLY OVER.",
+      "Translation": "\uC8FC\uAD70.[BR]\uB2F9\uC2E0\uC740 \uBC14\uB85C \uC5EC\uAE30 \uACC4\uC2ED\uB2C8\uB2E4.[BR]\uADF8\uB9AC\uACE0 \uB9C8\uCE68\uB0B4[BR]\uBAA8\uB4E0 \uAC83\uC774[BR]\uB05D\uB0AC\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
