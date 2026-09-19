@@ -150,8 +150,10 @@ public sealed record OcrStageResult(
 
 public enum PipelineStageKind
 {
+    PageAnalysis,
     ContainerDetection,
     ContainerValidation,
+    RegionOcr,
     ContainerOcr,
     OcrValidation,
     OcrObservation,
