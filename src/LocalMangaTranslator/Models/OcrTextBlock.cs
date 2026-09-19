@@ -12,4 +12,9 @@ public sealed record OcrTextBlock(
     int OriginalRegionCount,
     string Language,
     IReadOnlyList<OcrLine> Lines
-);
+)
+{
+    public string? SecondaryOcrText { get; init; }
+    public string? SecondaryOcrSource { get; init; }
+    public string? SecondaryOcrAgreement { get; init; }
+};
