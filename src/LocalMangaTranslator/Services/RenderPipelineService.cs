@@ -874,35 +874,6 @@ public sealed class RenderPipelineService
         }
     }
 
-    static void AddTemporaryDetachedAllowance(
-        Mat allowed,
-        OcrLine line,
-        int imageWidth,
-        int imageHeight)
-    {
-        int padX = Math.Max(
-            2,
-            (int)Math.Ceiling(line.H * 0.08));
-
-        int padY = Math.Max(
-            2,
-            (int)Math.Ceiling(line.H * 0.10));
-
-        var rect = ClampRect(
-            (int)Math.Floor(line.X) - padX,
-            (int)Math.Floor(line.Y) - padY,
-            (int)Math.Ceiling(line.W) + padX * 2,
-            (int)Math.Ceiling(line.H) + padY * 2,
-            imageWidth,
-            imageHeight);
-
-        Cv2.Rectangle(
-            allowed,
-            rect,
-            Scalar.White,
-            -1);
-    }
-
     static int ComputeEraseDilationRadius(
         RenderUnitPlan plan)
     {
@@ -934,11 +905,9 @@ public sealed class RenderPipelineService
             "caption",
             StringComparison.OrdinalIgnoreCase);
 
-        int maxRadius = !plan.Container.Detected
-            ? 4
-            : caption
-                ? 5
-                : 7;
+        int maxRadius = caption
+            ? 5
+            : 7;
 
         return (int)Math.Clamp(
             Math.Round(glyphSize * 0.10),
@@ -1617,25 +1586,6 @@ public sealed class RenderPipelineService
         return total == 0
             ? 0
             : inside / (double)total;
-    }
-
-    static bool ShouldEraseDetachedLine(
-        OcrLine line)
-    {
-        string text = line.Text.Trim();
-        if (string.IsNullOrWhiteSpace(text))
-            return false;
-
-        int letters = text.Count(char.IsLetter);
-        int digits = text.Count(char.IsDigit);
-
-        if (letters >= 2)
-            return line.Confidence >= 0.82f;
-
-        if (letters == 1 && digits == 0)
-            return line.Confidence >= 0.90f;
-
-        return false;
     }
 
     static List<VisionTranslation> SuppressDuplicateRegions(
