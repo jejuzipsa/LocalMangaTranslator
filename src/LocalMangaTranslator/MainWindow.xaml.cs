@@ -607,7 +607,7 @@ public partial class MainWindow : System.Windows.Window
             }
 
             CurrentStatusText.Text = "번역 이미지 생성 완료";
-            Log("전체 작업 완료 · OCR → Vision OCR 검수 → 번역 → 인페인트 → 한글 조판");
+            Log("전체 작업 완료 · 페이지 분석 + OCR → Evidence Fusion → Vision 검수 → 번역 → 안전 삭제/조판");
         }
         catch (OperationCanceledException)
         {
