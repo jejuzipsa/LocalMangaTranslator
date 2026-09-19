@@ -45,6 +45,7 @@ public sealed class VisionTranslationService
                 imagePath,
                 batches[i],
                 model,
+                progress,
                 token,
                 DefaultVisionImageSide);
 
@@ -108,8 +109,10 @@ public sealed class VisionTranslationService
         string imagePath,
         IReadOnlyList<BatchItem> batch,
         ModelProfile model,
+        IProgress<string>? progress,
         CancellationToken token,
-        int maxImageSide)
+        int maxImageSide,
+        int recoveryAttempt = 0)
     {
         var crop = await Task.Run(
             () => CreateCropPayload(imagePath, batch.Select(x => x.Block), maxImageSide),
@@ -137,9 +140,21 @@ public sealed class VisionTranslationService
             format = "json",
             options = new
             {
-                temperature = 0.05,
+                temperature = recoveryAttempt switch
+                {
+                    0 => 0.05,
+                    1 => 0.10,
+                    _ => 0.16
+                },
                 num_ctx = 8192,
-                num_predict = 1800
+                num_predict = recoveryAttempt switch
+                {
+                    0 => 1800,
+                    1 => 1000,
+                    _ => 700
+                },
+                repeat_penalty = recoveryAttempt == 0 ? 1.08 : 1.14,
+                repeat_last_n = 256
             },
             messages = new[]
             {
@@ -171,14 +186,81 @@ public sealed class VisionTranslationService
                 response.StatusCode == System.Net.HttpStatusCode.BadRequest &&
                 responseText.Contains("exceeds the available context size", StringComparison.OrdinalIgnoreCase);
 
+            bool repeatAbort =
+                response.StatusCode == System.Net.HttpStatusCode.InternalServerError &&
+                (responseText.Contains("token repeat limit reached", StringComparison.OrdinalIgnoreCase) ||
+                 responseText.Contains("prediction aborted", StringComparison.OrdinalIgnoreCase));
+
             if (contextOverflow && maxImageSide > 680)
             {
                 int smallerSide = maxImageSide > 900 ? 850 : 680;
-                return await SendBatchAsync(imagePath, batch, model, token, smallerSide);
+                progress?.Report(
+                    $"Vision 컨텍스트 초과 · 이미지 축소 {maxImageSide}→{smallerSide} 재시도");
+
+                return await SendBatchAsync(
+                    imagePath,
+                    batch,
+                    model,
+                    progress,
+                    token,
+                    smallerSide,
+                    recoveryAttempt);
             }
 
             if (contextOverflow && batch.Count > 1)
-                return await RetryIndividuallyAsync(imagePath, batch, model, token);
+            {
+                progress?.Report(
+                    $"Vision 컨텍스트 초과 · {batch.Count}개 블록을 개별 재시도");
+
+                return await RetryIndividuallyAsync(
+                    imagePath,
+                    batch,
+                    model,
+                    progress,
+                    token);
+            }
+
+            if (repeatAbort && batch.Count > 1)
+            {
+                progress?.Report(
+                    $"Vision 반복 토큰 중단 · {batch.Count}개 블록을 개별 재시도");
+
+                return await RetryIndividuallyAsync(
+                    imagePath,
+                    batch,
+                    model,
+                    progress,
+                    token);
+            }
+
+            if (repeatAbort && recoveryAttempt < 2)
+            {
+                int nextAttempt = recoveryAttempt + 1;
+                int smallerSide = nextAttempt == 1
+                    ? Math.Min(maxImageSide, 760)
+                    : Math.Min(maxImageSide, 640);
+
+                progress?.Report(
+                    $"Vision 반복 토큰 중단 · 단일 블록 복구 재시도 {nextAttempt}/2 " +
+                    $"(image={smallerSide}, predict={(nextAttempt == 1 ? 1000 : 700)})");
+
+                return await SendBatchAsync(
+                    imagePath,
+                    batch,
+                    model,
+                    progress,
+                    token,
+                    smallerSide,
+                    nextAttempt);
+            }
+
+            if (repeatAbort && batch.Count == 1)
+            {
+                progress?.Report(
+                    $"[vision-keep] id={batch[0].GlobalId} · 반복 토큰 오류가 계속되어 원문 유지");
+
+                return [CreateSafeFallback(batch[0])];
+            }
 
             throw new InvalidOperationException(
                 $"Ollama 응답 오류 {(int)response.StatusCode}: {Compact(responseText)}");
@@ -193,7 +275,7 @@ public sealed class VisionTranslationService
         if (string.IsNullOrWhiteSpace(content))
         {
             if (batch.Count > 1)
-                return await RetryIndividuallyAsync(imagePath, batch, model, token);
+                return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
             throw new InvalidOperationException("Vision LLM 응답이 비어 있습니다.");
         }
@@ -224,6 +306,7 @@ public sealed class VisionTranslationService
         string imagePath,
         IReadOnlyList<BatchItem> batch,
         ModelProfile model,
+        IProgress<string>? progress,
         CancellationToken token)
     {
         var results = new List<VisionTranslation>();
@@ -231,12 +314,41 @@ public sealed class VisionTranslationService
         foreach (var item in batch)
         {
             token.ThrowIfCancellationRequested();
-            var one = await SendBatchAsync(imagePath, [item], model, token, 760);
-            results.AddRange(one);
+
+            try
+            {
+                var one = await SendBatchAsync(
+                    imagePath,
+                    [item],
+                    model,
+                    progress,
+                    token,
+                    760);
+
+                results.AddRange(one);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // 한 블록의 Vision 실패 때문에 전체 페이지/전체 큐를 중단하지 않는다.
+                // 분류가 불확실하므로 해당 블록은 보수적으로 원문 유지한다.
+                progress?.Report(
+                    $"[vision-keep] id={item.GlobalId} · 개별 검수 실패 · {Compact(ex.Message)}");
+
+                results.Add(CreateSafeFallback(item));
+            }
         }
 
         return results;
     }
+
+    static VisionTranslation CreateSafeFallback(BatchItem item)
+        => new(
+            item.GlobalId,
+            item.Block,
+            item.Block.Text,
+            "",
+            "other",
+            false);
 
     static bool IsCompleteAndUsable(
         IReadOnlyList<VisionTranslation> result,
