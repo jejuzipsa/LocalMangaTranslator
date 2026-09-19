@@ -31,6 +31,7 @@ public partial class MainWindow : System.Windows.Window
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
+    PageAnalysisService? pageAnalysis;
     OcrPipelineService? ocrPipeline;
     PagePipelineService? pagePipeline;
 
@@ -59,8 +60,10 @@ public partial class MainWindow : System.Windows.Window
         {
             var modelRoot = Path.Combine(AppContext.BaseDirectory, "models", "ocr");
             ocr = new OcrEngine(modelRoot);
+            pageAnalysis = new PageAnalysisService();
             ocrPipeline = new OcrPipelineService(ocr);
             pagePipeline = new PagePipelineService(
+                pageAnalysis,
                 ocrPipeline,
                 vision,
                 translationRefiner,
@@ -92,6 +95,9 @@ public partial class MainWindow : System.Windows.Window
 
         Log($"모델 프로필 · OCR 검수 {reviewModels.Count}개 / 번역 {translationModels.Count}개");
         Log($"OCR 엔진 · {ocr?.Status ?? "초기화 전"}");
+        Log(ExternalModelManager.IsRtdetrReady()
+            ? "페이지 분석 모델 · RT-DETR 준비됨"
+            : "페이지 분석 모델 · RT-DETR 미설치");
     }
 
     static void SelectPreferredModel(
@@ -217,6 +223,19 @@ public partial class MainWindow : System.Windows.Window
 
                 await ollama.PullModelAsync(model, progress, workCts.Token);
                 Log($"모델 다운로드 완료: {model.ModelTag}");
+            }
+
+            if (HybridPageAnalysisCheckBox.IsChecked == true)
+            {
+                var layoutProgress = new Progress<string>(message =>
+                {
+                    CurrentStatusText.Text = $"페이지 분석 모델 · {message}";
+                    Log($"페이지 분석 모델 · {message}");
+                });
+
+                await ExternalModelManager.EnsureRtdetrAsync(
+                    layoutProgress,
+                    workCts.Token);
             }
 
             CurrentStatusText.Text = "선택 모델 준비 완료";
@@ -517,13 +536,26 @@ public partial class MainWindow : System.Windows.Window
             }
         }
 
+        if (HybridPageAnalysisCheckBox.IsChecked == true &&
+            !ExternalModelManager.IsRtdetrReady())
+        {
+            Log("RT-DETR 페이지 분석 모델이 없습니다 · [선택 모델 확인/설치]을 눌러 설치해 주세요");
+            return;
+        }
+
+        var pipelineOptions = new PipelineOptions(
+            HybridPageAnalysisCheckBox.IsChecked == true
+                ? RegionAnalysisMode.HybridRtdetr
+                : RegionAnalysisMode.Legacy,
+            TargetedRegionOcrCheckBox.IsChecked == true);
+
         Directory.CreateDirectory(OutputPathBox.Text);
         workCts = new CancellationTokenSource();
         StartButton.IsEnabled = false;
         StopButton.IsEnabled = true;
         InstallModelButton.IsEnabled = false;
 
-        Log($"작업 시작 | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
+        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | 영역 OCR: {pipelineOptions.EnableTargetedRegionOcr} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
 
         try
         {
@@ -558,6 +590,7 @@ public partial class MainWindow : System.Windows.Window
                         OutputPathBox.Text,
                         reviewModel,
                         translationModel,
+                        pipelineOptions,
                         pipelineProgress,
                         workCts.Token);
 
@@ -600,7 +633,9 @@ public partial class MainWindow : System.Windows.Window
         PipelineStageKind stage)
         => stage switch
         {
+            PipelineStageKind.PageAnalysis => "페이지 분석",
             PipelineStageKind.ContainerDetection => "컨테이너 검출",
+            PipelineStageKind.RegionOcr => "영역 OCR",
             PipelineStageKind.ContainerValidation => "컨테이너 검증",
             PipelineStageKind.ContainerOcr => "컨테이너 OCR",
             PipelineStageKind.OcrValidation => "OCR 검증",
@@ -650,6 +685,7 @@ public partial class MainWindow : System.Windows.Window
     {
         workCts?.Cancel();
         workCts?.Dispose();
+        pageAnalysis?.Dispose();
         ocr?.Dispose();
         base.OnClosed(e);
     }
