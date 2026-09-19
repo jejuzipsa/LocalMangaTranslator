@@ -21,7 +21,7 @@
 
         <Grid Grid.Row="0" Margin="0,0,0,14">
             <TextBlock Text="LocalMangaTranslator" FontSize="25" FontWeight="SemiBold"/>
-            <TextBlock Text="OCR → Vision OCR 검수 → 번역 → 인페인트 → 조판"
+            <TextBlock Text="페이지 분석 + OCR → Vision 검수 → 번역 → 안전 삭제 → 조판"
                        Foreground="{StaticResource Muted}" Margin="0,35,0,0"/>
         </Grid>
 
