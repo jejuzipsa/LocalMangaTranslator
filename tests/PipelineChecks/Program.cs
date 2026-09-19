@@ -458,6 +458,77 @@ finally
 }
 
 if (string.Equals(
+        Environment.GetEnvironmentVariable("LMT_BABERU_SMOKE"),
+        "1",
+        StringComparison.Ordinal))
+{
+    string? root = Environment.GetEnvironmentVariable("LMT_BABERU_MODEL_ROOT");
+    if (string.IsNullOrWhiteSpace(root))
+        throw new Exception("LMT_BABERU_MODEL_ROOT missing for Baberu smoke");
+
+    await ExternalModelManager.EnsureBaberuAsync();
+
+    string sample = Path.Combine(
+        Path.GetTempPath(),
+        $"lmt_baberu_smoke_{Guid.NewGuid():N}.png");
+
+    try
+    {
+        using var smoke = Mat.Zeros(240, 320, MatType.CV_8UC3).ToMat();
+        smoke.SetTo(new Scalar(255, 255, 255));
+        Cv2.PutText(
+            smoke,
+            "HELLO",
+            new Point(82, 132),
+            HersheyFonts.HersheySimplex,
+            1.2,
+            new Scalar(0, 0, 0),
+            2,
+            LineTypes.AntiAlias);
+        Cv2.ImWrite(sample, smoke);
+
+        var bubble = new PageRegion(
+            "RG900",
+            PageRegionKind.Bubble,
+            new Rect(35, 50, 250, 130),
+            0.95f,
+            "smoke");
+
+        var textBubble = new PageRegion(
+            "RG901",
+            PageRegionKind.TextBubble,
+            new Rect(65, 92, 150, 52),
+            0.95f,
+            "smoke");
+
+        using var baberu = new BaberuOcrEngine();
+
+        var result = baberu.Analyze(
+            sample,
+            new PageAnalysisResult(
+                [bubble, textBubble],
+                [],
+                "smoke",
+                true));
+
+        Check("Baberu ONNX sessions and decode loop smoke",
+            result.Count == 1 &&
+            result[0].RegionId == "RG900");
+    }
+    finally
+    {
+        try
+        {
+            if (File.Exists(sample))
+                File.Delete(sample);
+        }
+        catch
+        {
+        }
+    }
+}
+
+if (string.Equals(
         Environment.GetEnvironmentVariable("LMT_RTDETR_DOWNLOAD_SMOKE"),
         "1",
         StringComparison.Ordinal))
