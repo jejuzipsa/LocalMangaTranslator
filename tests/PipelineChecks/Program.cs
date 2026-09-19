@@ -142,7 +142,7 @@ Check("weak ownership line stays isolated", weakOverlapResult.UnitOwnership.Coun
     weakOverlapResult.UnitOwnership[0].Reason == "orphan_isolated_weak_owner");
 
 var rescueNeighbor = new OcrLine(145, 220, 40, 12, "COME", 0.93f, "en");
-var rescuableLine = new OcrLine(173, 240, 30, 12, "BACK", 0.91f, "en");
+var rescuableLine = new OcrLine(173, 234, 30, 12, "BACK", 0.91f, "en");
 var rescueResult = unitBuilder.Build(
     [rescueNeighbor, rescuableLine],
     [candidate],
