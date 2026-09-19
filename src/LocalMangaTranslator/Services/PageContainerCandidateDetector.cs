@@ -502,7 +502,7 @@ public sealed class PageContainerCandidateDetector
 
         Cv2.FillPoly(
             local,
-            [translated],
+            new[] { translated },
             Scalar.White);
 
         return local;
