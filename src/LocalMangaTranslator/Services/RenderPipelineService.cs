@@ -203,10 +203,17 @@ public sealed class RenderPipelineService
         {
             token.ThrowIfCancellationRequested();
 
-            var layout = BalloonMaskService.Analyze(
-                source,
-                region.Source,
-                region.Type);
+            var layout =
+                region.Source.RegionContainer is { } regionContainer
+                    ? BalloonMaskService.AnalyzeConfirmedRegion(
+                        source,
+                        region.Source,
+                        region.Type,
+                        regionContainer)
+                    : BalloonMaskService.Analyze(
+                        source,
+                        region.Source,
+                        region.Type);
 
             result[region.Id] = layout;
             progress?.Report(layout.Diagnostic(region.Id));
