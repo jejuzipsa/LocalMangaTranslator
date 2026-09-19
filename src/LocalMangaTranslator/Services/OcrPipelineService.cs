@@ -10,6 +10,7 @@ namespace LocalMangaTranslator.Services;
 public sealed class OcrPipelineService
 {
     readonly OcrEngine ocr;
+    readonly PageContainerCandidateDetector pageContainerDetector = new();
     readonly OcrBlockGrouper blockGrouper = new();
     readonly OcrContainerUnitBuilder unitBuilder = new();
 
@@ -23,6 +24,13 @@ public sealed class OcrPipelineService
         string sourcePath,
         CancellationToken token = default)
     {
+        var pageCandidates =
+            await Task.Run(
+                () => pageContainerDetector.Detect(
+                    sourcePath,
+                    token),
+                token);
+
         var observationBatch =
             await ocr.RecognizeDetailedAsync(
                 sourcePath,
@@ -35,6 +43,7 @@ public sealed class OcrPipelineService
         if (lines.Count == 0)
         {
             return new OcrStageResult(
+                pageCandidates,
                 observationBatch.Observations,
                 lines,
                 [],
@@ -58,6 +67,7 @@ public sealed class OcrPipelineService
                 token);
 
         return new OcrStageResult(
+            pageCandidates,
             observationBatch.Observations,
             lines,
             preliminaryBlocks,
