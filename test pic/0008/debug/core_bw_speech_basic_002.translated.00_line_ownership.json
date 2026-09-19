@@ -1,0 +1,250 @@
+{
+  "schema": "line-ownership-v1",
+  "lines": [
+    {
+      "LineId": "L0001",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0002",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0003",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0004",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0005",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0006",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0007",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0008",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0009",
+      "CandidateId": "PC028",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 13.914442997986477
+    },
+    {
+      "LineId": "L0010",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0011",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0012",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0013",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0014",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.4,
+      "Score": 4.719308789817701
+    },
+    {
+      "LineId": "L0015",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0016",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.4,
+      "Score": 4.860983187550768
+    }
+  ],
+  "units": [
+    {
+      "UnitId": 0,
+      "CandidateId": null,
+      "LineIds": [
+        "L0001",
+        "L0002"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 1,
+      "CandidateId": null,
+      "LineIds": [
+        "L0003"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 2,
+      "CandidateId": null,
+      "LineIds": [
+        "L0004"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 3,
+      "CandidateId": null,
+      "LineIds": [
+        "L0005"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 4,
+      "CandidateId": null,
+      "LineIds": [
+        "L0006"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 5,
+      "CandidateId": null,
+      "LineIds": [
+        "L0007",
+        "L0008"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 6,
+      "CandidateId": "PC028",
+      "LineIds": [
+        "L0009"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_owned"
+    },
+    {
+      "UnitId": 7,
+      "CandidateId": null,
+      "LineIds": [
+        "L0010",
+        "L0011"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 8,
+      "CandidateId": null,
+      "LineIds": [
+        "L0012"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 9,
+      "CandidateId": null,
+      "LineIds": [
+        "L0013",
+        "L0015"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 10,
+      "CandidateId": null,
+      "LineIds": [
+        "L0014"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 11,
+      "CandidateId": null,
+      "LineIds": [
+        "L0016"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    }
+  ],
+  "container_count": 43,
+  "assigned_line_count": 1,
+  "orphan_group_count": 11
+}
