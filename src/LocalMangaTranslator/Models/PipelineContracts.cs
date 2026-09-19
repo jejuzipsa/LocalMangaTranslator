@@ -1,4 +1,5 @@
 using LocalMangaTranslator.Services;
+using OpenCvSharp;
 
 namespace LocalMangaTranslator.Models;
 
@@ -47,6 +48,32 @@ public sealed record OcrObservationBatch(
     IReadOnlyList<OcrObservation> Observations,
     IReadOnlyList<OcrLine> MergedLines);
 
+
+public enum ContainerCandidateKind
+{
+    Speech,
+    Caption,
+    Unknown
+}
+
+/// <summary>
+/// A page-wide geometric candidate. It is deliberately not a translation unit
+/// and not erase permission. Later validation must attach text evidence before
+/// a candidate can participate in translation or deletion.
+/// </summary>
+public sealed record ContainerCandidate(
+    string CandidateId,
+    ContainerCandidateKind Kind,
+    Rect Bounds,
+    string DetectorMode,
+    bool Dark,
+    double Score,
+    double FillRatio,
+    int BorderTouches,
+    byte[] Mask,
+    int MaskWidth,
+    int MaskHeight);
+
 public sealed record OcrUnitBuildResult(
     IReadOnlyList<OcrTextBlock> Units,
     int ContainerCount,
@@ -59,6 +86,7 @@ public sealed record OcrUnitBuildResult(
 /// before this result is converted into translation units.
 /// </summary>
 public sealed record OcrStageResult(
+    IReadOnlyList<ContainerCandidate> PageCandidates,
     IReadOnlyList<OcrObservation> Observations,
     IReadOnlyList<OcrLine> MergedLines,
     IReadOnlyList<OcrTextBlock> PreliminaryBlocks,
