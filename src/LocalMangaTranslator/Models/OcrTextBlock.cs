@@ -17,4 +17,4 @@ public sealed record OcrTextBlock(
     public string? SecondaryOcrText { get; init; }
     public string? SecondaryOcrSource { get; init; }
     public string? SecondaryOcrAgreement { get; init; }
-};
+}
