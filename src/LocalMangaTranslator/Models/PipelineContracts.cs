@@ -63,3 +63,25 @@ public sealed record OcrStageResult(
     IReadOnlyList<OcrLine> MergedLines,
     IReadOnlyList<OcrTextBlock> PreliminaryBlocks,
     OcrUnitBuildResult UnitBuild);
+
+public enum PipelineStageKind
+{
+    OcrObservation,
+    OcrUnitFormation,
+    VisionReview,
+    Translation,
+    Render,
+    Completed
+}
+
+public sealed record PipelineProgress(
+    PipelineStageKind Stage,
+    string Message);
+
+public sealed record PagePipelineResult(
+    bool HasText,
+    OcrStageResult Ocr,
+    IReadOnlyList<VisionTranslation> Reviewed,
+    IReadOnlyList<VisionTranslation> Translated,
+    string? TranslationJsonPath,
+    string? OutputImagePath);
