@@ -106,7 +106,7 @@ public static class PipelineDebugWriter
             File.WriteAllText(
                 Path.Combine(
                     debugDirectory,
-                    $\"{baseName}.00_line_ownership.json\"),
+                    $"{baseName}.00_line_ownership.json"),
                 JsonSerializer.Serialize(
                     new
                     {
