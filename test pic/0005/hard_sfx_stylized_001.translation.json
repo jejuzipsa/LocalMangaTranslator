@@ -1,0 +1,342 @@
+{
+  "SourceFile": "hard_sfx_stylized_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T19:48:14.8337925+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 670,
+        "Y": 844,
+        "W": 130,
+        "H": 117.66666666666663,
+        "Text": "22",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 670,
+            "Y": 844,
+            "W": 130,
+            "H": 117.66666666666663,
+            "Text": "22",
+            "Confidence": 0.55818003,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "22",
+      "Translation": "22",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 616.3333333333334,
+        "Y": 1047,
+        "W": 82.66666666666663,
+        "H": 1,
+        "Text": "c",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 616.3333333333334,
+            "Y": 1047,
+            "W": 82.66666666666663,
+            "H": 1,
+            "Text": "c",
+            "Confidence": 0.52242947,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "c",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 1267.6666666666667,
+        "Y": 1139.6666666666667,
+        "W": 63.33333333333326,
+        "H": 137,
+        "Text": "rC",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1267.6666666666667,
+            "Y": 1139.6666666666667,
+            "W": 63.33333333333326,
+            "H": 137,
+            "Text": "rC",
+            "Confidence": 0.30852878,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "rC",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 886,
+        "Y": 1147,
+        "W": 281,
+        "H": 222,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 886,
+            "Y": 1147,
+            "W": 281,
+            "H": 222,
+            "Text": "E",
+            "Confidence": 0.4006722,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "ZZZZZZZZZ",
+      "Translation": "\uCE58\uC774\uC774\uC774\uC774\uC774\uC774\uC774\uC778",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1178.6666666666667,
+        "Y": 1147,
+        "W": 85,
+        "H": 15,
+        "Text": "QUEEN?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1178.6666666666667,
+            "Y": 1147,
+            "W": 85,
+            "H": 15,
+            "Text": "QUEEN?",
+            "Confidence": 0.994869,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "QUEEN?",
+      "Translation": "\uC5EC\uC655?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 634,
+        "Y": 1153.3333333333333,
+        "W": 53.66666666666663,
+        "H": 40.333333333333485,
+        "Text": "rd",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 634,
+            "Y": 1153.3333333333333,
+            "W": 53.66666666666663,
+            "H": 40.333333333333485,
+            "Text": "rd",
+            "Confidence": 0.50383306,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "rd",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 741.5,
+        "Y": 1172,
+        "W": 85,
+        "H": 56.5,
+        "Text": "2CL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 741.5,
+            "Y": 1172,
+            "W": 85,
+            "H": 56.5,
+            "Text": "2CL",
+            "Confidence": 0.68471175,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "...QUEEN?",
+      "Translation": "...\uC5EC\uC655?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1153.6666666666667,
+        "Y": 1209,
+        "W": 126,
+        "H": 82.66666666666674,
+        "Text": "WHAT QUEEN WOLLD THAT BE?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1184,
+            "Y": 1209,
+            "W": 66.5,
+            "H": 24.5,
+            "Text": "WHAT",
+            "Confidence": 0.99992204,
+            "Language": "en"
+          },
+          {
+            "X": 1183.3333333333333,
+            "Y": 1229.6666666666667,
+            "W": 69,
+            "H": 21.333333333333258,
+            "Text": "QUEEN",
+            "Confidence": 0.9928386,
+            "Language": "en"
+          },
+          {
+            "X": 1153.6666666666667,
+            "Y": 1249,
+            "W": 126,
+            "H": 23.666666666666742,
+            "Text": "WOLLD THAT",
+            "Confidence": 0.98863953,
+            "Language": "en"
+          },
+          {
+            "X": 1193.6666666666667,
+            "Y": 1269,
+            "W": 46,
+            "H": 22.666666666666742,
+            "Text": "BE?",
+            "Confidence": 0.99585766,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "WHAT QUEEN WOULD THAT BE?",
+      "Translation": "\uC5B4\uB5A4 \uC5EC\uC655\uC744[BR]\uB9D0\uD558\uB294 \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 298,
+        "Y": 1247,
+        "W": 179,
+        "H": 183,
+        "Text": "FE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 298,
+            "Y": 1247,
+            "W": 179,
+            "H": 183,
+            "Text": "FE",
+            "Confidence": 0.6358836,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "FE",
+      "Translation": "FE",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 815.3333333333334,
+        "Y": 1303,
+        "W": 47.33333333333337,
+        "H": 25,
+        "Text": "P",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 815.3333333333334,
+            "Y": 1303,
+            "W": 47.33333333333337,
+            "H": 25,
+            "Text": "P",
+            "Confidence": 0.37331662,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "P",
+      "Translation": "P",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1154.3333333333333,
+        "Y": 1304.3333333333333,
+        "W": 75.33333333333348,
+        "H": 56,
+        "Text": "X",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1154.3333333333333,
+            "Y": 1304.3333333333333,
+            "W": 75.33333333333348,
+            "H": 56,
+            "Text": "X",
+            "Confidence": 0.3668345,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "X",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}
