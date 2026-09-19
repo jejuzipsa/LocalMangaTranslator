@@ -141,7 +141,8 @@ Erase permission is now explicit and separate from translation/render intent:
 - individual OCR lines must pass safe-mask coverage, confidence, text-length and size gates;
 - detached-line allowance is removed from the active erase path;
 - dilation still occurs before the final intersection with the approved SafeMask;
-- when erase evidence is uncertain, the source pixels remain unchanged.
+- when erase evidence is uncertain, the source pixels remain unchanged;
+- short low-confidence OCR fragments cannot be expanded by Vision into much longer dialogue and rendered as if confirmed.
 
 Output policy in 0009:
 - internal OCR/inpaint/layout remains at source resolution;
