@@ -175,6 +175,7 @@ public enum PipelineStageKind
     VisionReview,
     Translation,
     Render,
+    FinalAudit,
     Completed
 }
 
