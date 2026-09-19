@@ -1,0 +1,63 @@
+{
+  "SourceFile": "hard_sfx_combat_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T17:22:05.0485826+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 885.3333333333333,
+        "Y": 768.6666666666667,
+        "W": 170.33333333333326,
+        "H": 165,
+        "Text": "CAK",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 885.3333333333333,
+            "Y": 768.6666666666667,
+            "W": 170.33333333333337,
+            "H": 165,
+            "Text": "CAK",
+            "Confidence": 0.9093882,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "GAK!",
+      "Translation": "\uCF70\uC545!",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 746.3333333333333,
+        "Y": 1829,
+        "W": 128,
+        "H": 44.33333333333326,
+        "Text": "SONOFA--!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 746.3333333333333,
+            "Y": 1829,
+            "W": 128,
+            "H": 44.33333333333334,
+            "Text": "SONOFA--!",
+            "Confidence": 0.93453825,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "SONOFA--!",
+      "Translation": "\uC18C\uB178\uD30C--!",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
