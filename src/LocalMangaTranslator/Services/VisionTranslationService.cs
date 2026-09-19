@@ -133,6 +133,9 @@ public sealed class VisionTranslationService
             height = Math.Round(item.Block.H * crop.Scale, 1),
             original_region_count = item.Block.OriginalRegionCount,
             ocr = item.Block.Text,
+            secondary_ocr = item.Block.SecondaryOcrText,
+            secondary_ocr_source = item.Block.SecondaryOcrSource,
+            secondary_ocr_agreement = item.Block.SecondaryOcrAgreement,
             language = item.Block.Language
         }).ToArray();
 
@@ -488,6 +491,7 @@ NON-NEGOTIABLE RULES:
 1. Return Korean only in every translation field. Never leave ordinary English/Japanese source fragments untranslated.
 2. Use the image, neighboring blocks, character emotion, scene context, and surrounding dialogue to resolve meaning.
 3. OCR is only a draft. Correct OCR against the visible image before translating.
+3a. secondary_ocr, when present, comes from an independent manga OCR. Treat it as separate transcription evidence, not as truth. If primary OCR and secondary OCR disagree, inspect the image and choose only what is visibly supported. Never concatenate competing OCR guesses.
 4. Each input block may contain several OCR lines from one speech bubble or caption. Reconstruct them as ONE coherent utterance before translating.
 5. Preserve meaning first. Do not invent facts, relationships, motives, names, or details that are not supported by the page.
 6. Make the final Korean natural and concise while preserving speaker voice, politeness, emotional force, punctuation, and comic rhythm.
