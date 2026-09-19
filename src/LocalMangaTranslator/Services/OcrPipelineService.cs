@@ -84,9 +84,11 @@ public sealed class OcrPipelineService
         var unitBuild =
             await Task.Run(
                 () => unitBuilder.Build(
-                    sourcePath,
                     lines,
-                    preliminaryBlocks,
+                    pageCandidates,
+                    candidateDecisions,
+                    containerBatch.Observations,
+                    lineDecisions,
                     token),
                 token);
 

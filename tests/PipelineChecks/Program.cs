@@ -44,6 +44,89 @@ for (int y = 20; y < 32; y++) for (int x = 20; x < 60; x++) mask[y * 100 + x] = 
 Check("bounding box alone does not prove interior", ContainerOcrValidator.ValidateLines(
     [candidate with { Mask = mask }], [a, b]).All(x => !x.Accepted));
 Check("page origin offsets respected", ContainerOcrValidator.MaskCoverage(candidate, a) == 1);
+
+var unitBuilder = new OcrContainerUnitBuilder();
+var eligibleA = new ContainerOcrDecision("PC001", true, "eligible_for_ocr");
+var secondCandidate = candidate with
+{
+    CandidateId = "PC002",
+    Bounds = new Rect(160, 200, 100, 80)
+};
+var eligibleB = new ContainerOcrDecision("PC002", true, "eligible_for_ocr");
+
+var ownedLine1 = new OcrLine(120, 220, 40, 12, "HELLO", 0.92f, "en");
+var ownedLine2 = new OcrLine(122, 240, 38, 12, "THERE", 0.91f, "en");
+var oneContainer = unitBuilder.Build(
+    [ownedLine1, ownedLine2],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("same container forms one unit", oneContainer.Units.Count == 1);
+Check("each line has one explicit owner", oneContainer.LineOwnership.Count == 2 &&
+    oneContainer.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC001"));
+Check("container unit keeps both canonical line ids", oneContainer.UnitOwnership.Count == 1 &&
+    oneContainer.UnitOwnership[0].LineIds.Count == 2 &&
+    oneContainer.UnitOwnership[0].CandidateId == "PC001");
+
+var outsideLine = new OcrLine(20, 20, 30, 10, "OUTSIDE", 0.9f, "en");
+var orphanResult = unitBuilder.Build(
+    [outsideLine],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("unowned line remains orphan", orphanResult.LineOwnership.Count == 1 &&
+    !orphanResult.LineOwnership[0].Assigned &&
+    orphanResult.LineOwnership[0].Reason == "no_container_owner" &&
+    orphanResult.OrphanGroupCount == 1);
+
+var ambiguousLine = new OcrLine(175, 220, 20, 12, "HELLO", 0.9f, "en");
+var ambiguousResult = unitBuilder.Build(
+    [ambiguousLine],
+    [candidate, secondCandidate],
+    [eligibleA, eligibleB],
+    [],
+    []);
+Check("ambiguous ownership is not forced", ambiguousResult.LineOwnership.Count == 1 &&
+    !ambiguousResult.LineOwnership[0].Assigned &&
+    ambiguousResult.LineOwnership[0].Reason == "ambiguous_container_owner");
+
+var ownershipEvidence = new OcrObservation(
+    "CO-EVIDENCE",
+    OcrPassKind.Container1x,
+    175, 220, 20, 12,
+    "HELLO",
+    0.95f,
+    "en",
+    1,
+    "PC001");
+var evidenceResult = unitBuilder.Build(
+    [ambiguousLine],
+    [candidate, secondCandidate],
+    [eligibleA, eligibleB],
+    [ownershipEvidence],
+    [new ContainerLineDecision("CO-EVIDENCE", "PC001", true, "cross_scale_agreement", 1)]);
+Check("validated container OCR pins ownership", evidenceResult.LineOwnership.Count == 1 &&
+    evidenceResult.LineOwnership[0].Assigned &&
+    evidenceResult.LineOwnership[0].CandidateId == "PC001" &&
+    evidenceResult.LineOwnership[0].Reason == "container_ocr_evidence");
+
+var duplicateCandidate = candidate with
+{
+    CandidateId = "PC003",
+    Bounds = new Rect(102, 202, 100, 80),
+    Score = 4.5
+};
+var duplicateResult = unitBuilder.Build(
+    [ownedLine1],
+    [candidate, duplicateCandidate],
+    [eligibleA, new ContainerOcrDecision("PC003", true, "eligible_for_ocr")],
+    [],
+    []);
+Check("duplicate physical containers canonicalize once", duplicateResult.ContainerCount == 1 &&
+    duplicateResult.Units.Count == 1);
+
 using var cancellation = new CancellationTokenSource();
 cancellation.Cancel();
 bool cancelled = false;

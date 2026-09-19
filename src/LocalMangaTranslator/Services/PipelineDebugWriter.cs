@@ -102,6 +102,25 @@ public static class PipelineDebugWriter
                     {
                         WriteIndented = true
                     }));
+
+            File.WriteAllText(
+                Path.Combine(
+                    debugDirectory,
+                    $\"{baseName}.00_line_ownership.json\"),
+                JsonSerializer.Serialize(
+                    new
+                    {
+                        schema = "line-ownership-v1",
+                        lines = stage.UnitBuild.LineOwnership,
+                        units = stage.UnitBuild.UnitOwnership,
+                        container_count = stage.UnitBuild.ContainerCount,
+                        assigned_line_count = stage.UnitBuild.AssignedLineCount,
+                        orphan_group_count = stage.UnitBuild.OrphanGroupCount
+                    },
+                    new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    }));
         }
         catch
         {
