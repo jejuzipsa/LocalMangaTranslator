@@ -46,9 +46,15 @@ public sealed class PagePipelineService
                 sourcePath,
                 token);
 
+        PipelineDebugWriter.SavePreVisionDiagnostics(
+            sourcePath,
+            outputDirectory,
+            ocrStage);
+
         progress?.Report(new PipelineProgress(
             PipelineStageKind.OcrObservation,
-            $"OCR 관측 완료 · {OcrPipelineService.FormatPassSummary(ocrStage.Observations)} → 병합 {ocrStage.MergedLines.Count}줄"));
+            $"페이지 컨테이너 후보 {ocrStage.PageCandidates.Count}개 · " +
+            $"{OcrPipelineService.FormatPassSummary(ocrStage.Observations)} → 병합 {ocrStage.MergedLines.Count}줄"));
 
         if (ocrStage.MergedLines.Count == 0)
         {
