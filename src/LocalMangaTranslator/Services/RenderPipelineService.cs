@@ -307,20 +307,32 @@ public sealed class RenderPipelineService
             var conflicts = plannedLines
                 .Where(x => lineOwners.ContainsKey(x.LineId))
                 .Select(x => x.LineId)
-                .Distinct()
+                .Distinct(StringComparer.Ordinal)
                 .ToList();
 
-            foreach (var line in plannedLines)
+            // A duplicated canonical line must not invalidate an otherwise
+            // independent translation unit. The earlier unit keeps ownership
+            // of the physical OCR line; this unit simply cannot erase that
+            // line again. If every line is already owned, the unit is still
+            // rejected because it has no independent source-text ownership.
+            var ownedLines = plannedLines
+                .Where(x => !lineOwners.ContainsKey(x.LineId))
+                .ToList();
+
+            if (conflicts.Count > 0 &&
+                ownedLines.Count > 0)
             {
-                if (!lineOwners.ContainsKey(line.LineId))
-                    lineOwners[line.LineId] = unitId;
+                progress?.Report(
+                    $"[line-trim] {unitId}/{item.ContainerId} id={item.Region.Id} " +
+                    $"duplicate={string.Join("+", conflicts)}");
             }
 
             var erase = CreateErasePlan(
                 unitId,
                 item.ContainerId,
+                item.Region,
                 item.Layout,
-                plannedLines);
+                ownedLines);
 
             var textLayout = CreateTextLayoutPlan(
                 item.Region,
@@ -331,10 +343,15 @@ public sealed class RenderPipelineService
                 !RenderSafetyPolicy.IsSuspiciousVisionExpansion(
                     item.Region);
 
+            bool allLinesConflict =
+                plannedLines.Count > 0 &&
+                ownedLines.Count == 0 &&
+                conflicts.Count > 0;
+
             bool approved = item.Layout.ShouldRender &&
                             semanticSafe &&
                             textLayout.Fits &&
-                            conflicts.Count == 0 &&
+                            !allLinesConflict &&
                             erase.Approved;
 
             string reason;
@@ -342,8 +359,8 @@ public sealed class RenderPipelineService
                 reason = $"container_rejected:{item.Layout.Reason}";
             else if (!semanticSafe)
                 reason = "vision_expansion_untrusted";
-            else if (conflicts.Count > 0)
-                reason = $"line_ownership_conflict:{string.Join("+", conflicts)}";
+            else if (allLinesConflict)
+                reason = $"line_ownership_conflict_all:{string.Join("+", conflicts)}";
             else if (!textLayout.Fits)
                 reason = $"layout_rejected:{textLayout.Reason}";
             else if (!erase.Approved)
@@ -351,7 +368,15 @@ public sealed class RenderPipelineService
             else
                 reason = "ok";
 
-            if (!approved)
+            if (approved)
+            {
+                // Only an actually renderable unit may claim canonical lines.
+                // A rejected unit must not block a later valid unit that shares
+                // one OCR observation.
+                foreach (var line in ownedLines)
+                    lineOwners[line.LineId] = unitId;
+            }
+            else
             {
                 progress?.Report(
                     $"[plan-keep] {unitId}/{item.ContainerId} id={item.Region.Id} reason={reason}");
@@ -375,6 +400,7 @@ public sealed class RenderPipelineService
     static ErasePlan CreateErasePlan(
         string unitId,
         string containerId,
+        VisionTranslation region,
         BalloonLayout layout,
         IReadOnlyList<PlannedOcrLine> lines)
     {
@@ -423,6 +449,27 @@ public sealed class RenderPipelineService
             .Distinct(StringComparer.Ordinal)
             .ToList();
 
+        bool relaxed = false;
+
+        // 0010 showed that RT-DETR can correctly confirm a speech/caption
+        // container while the primary OCR line narrowly misses one of the
+        // conservative erase gates. Only relax when the same region also has
+        // independent secondary OCR evidence. This keeps artwork-only false
+        // positives on the strict path.
+        if (approvedLineIds.Count == 0 &&
+            HasTrustedContainerEvidence(region, layout))
+        {
+            approvedLineIds = lines
+                .Where(x => IsRelaxedEraseEligibleLine(
+                    x.Source,
+                    layout))
+                .Select(x => x.LineId)
+                .Distinct(StringComparer.Ordinal)
+                .ToList();
+
+            relaxed = approvedLineIds.Count > 0;
+        }
+
         if (approvedLineIds.Count == 0)
         {
             return new ErasePlan(
@@ -441,7 +488,9 @@ public sealed class RenderPipelineService
             unitId,
             containerId,
             true,
-            "safe_container_text",
+            relaxed
+                ? "safe_container_text_relaxed"
+                : "safe_container_text",
             layout.Bounds,
             layout.SafeMask.ToArray(),
             width,
@@ -486,6 +535,67 @@ public sealed class RenderPipelineService
             return false;
 
         if (line.H > layout.Bounds.Height * 0.48)
+            return false;
+
+        return true;
+    }
+
+    static bool HasTrustedContainerEvidence(
+        VisionTranslation region,
+        BalloonLayout layout)
+    {
+        if (!layout.Detected ||
+            region.Source.RegionContainer is not { } candidate ||
+            string.IsNullOrWhiteSpace(candidate.RegionId) ||
+            string.IsNullOrWhiteSpace(region.Source.SecondaryOcrText))
+        {
+            return false;
+        }
+
+        int secondaryMeaningful =
+            region.Source.SecondaryOcrText.Count(
+                char.IsLetterOrDigit);
+
+        return secondaryMeaningful >= 2 &&
+               candidate.Score >= 3.0;
+    }
+
+    static bool IsRelaxedEraseEligibleLine(
+        OcrLine line,
+        BalloonLayout layout)
+    {
+        if (!layout.Detected)
+            return false;
+
+        double coverage = LineMaskCoverage(
+            line,
+            layout);
+
+        if (coverage < 0.30)
+            return false;
+
+        int meaningful =
+            line.Text.Trim().Count(
+                char.IsLetterOrDigit);
+
+        if (meaningful < 1 ||
+            line.Confidence < 0.35f)
+        {
+            return false;
+        }
+
+        double containerArea = Math.Max(
+            1.0,
+            layout.Bounds.Width * (double)layout.Bounds.Height);
+
+        double lineArea = Math.Max(
+            1.0,
+            line.W * line.H);
+
+        if (lineArea / containerArea > 0.42)
+            return false;
+
+        if (line.H > layout.Bounds.Height * 0.65)
             return false;
 
         return true;
