@@ -533,15 +533,19 @@ public sealed class FinalAuditService
             "DIFF",
             width * 2 + 12);
 
-        Cv2.ImWrite(
-            outputPath,
+        Cv2.ImEncode(
+            ".webp",
             sheet,
+            out byte[] encoded,
             new[]
             {
-                new ImageEncodingParam(
-                    ImwriteFlags.WebPQuality,
-                    AuditWebpQuality)
+                (int)ImwriteFlags.WebPQuality,
+                AuditWebpQuality
             });
+
+        File.WriteAllBytes(
+            outputPath,
+            encoded);
     }
 
     static void DrawLabel(
