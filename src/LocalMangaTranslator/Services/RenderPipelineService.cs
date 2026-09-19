@@ -67,7 +67,7 @@ public sealed class RenderPipelineService
         Directory.CreateDirectory(debugDir);
 
         string baseName = Path.GetFileNameWithoutExtension(outputPath);
-        string ocrDebug = Path.Combine(debugDir, $"{baseName}.01_ocr_raw.webp");
+        string ocrDebug = Path.Combine(debugDir, $"{baseName}.01_planned_lines.webp");
         string containerDebug = Path.Combine(debugDir, $"{baseName}.02_container_assignment.webp");
         string unitDebug = Path.Combine(debugDir, $"{baseName}.03_translation_units.webp");
         string eraseDebug = Path.Combine(debugDir, $"{baseName}.04_erase_mask.webp");
