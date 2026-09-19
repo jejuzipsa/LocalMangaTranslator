@@ -317,7 +317,10 @@ public sealed class VisionTranslationService
             if (batch.Count > 1)
                 return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
-            throw new InvalidOperationException("Vision LLM 응답이 비어 있습니다.");
+            progress?.Report(
+                $"[vision-keep] id={batch[0].GlobalId} · 단일 블록 Vision 응답이 비어 있어 원문 유지");
+
+            return [CreateSafeFallback(batch[0])];
         }
 
         var parsed = ParseResult(content, batchBlocks);
@@ -327,8 +330,11 @@ public sealed class VisionTranslationService
             if (batch.Count > 1)
                 return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
-            throw new InvalidOperationException(
-                $"Vision LLM 결과 검증 실패: {Compact(content)}");
+            progress?.Report(
+                $"[vision-keep] id={batch[0].GlobalId} · 단일 블록 Vision 결과 검증 실패 · 원문 유지 · " +
+                $"{Compact(content)}");
+
+            return [CreateSafeFallback(batch[0])];
         }
 
         return parsed.Select(x =>

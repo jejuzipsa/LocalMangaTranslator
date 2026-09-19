@@ -114,6 +114,10 @@ public sealed record ContainerCandidate(
     int MaskHeight)
 {
     public string? RegionId { get; init; }
+
+    // Original learned Bubble bounds from RT-DETR. When a legacy contour
+    // donates a more precise mask, Bounds may refer to that contour instead.
+    public Rect? LearnedBounds { get; init; }
 }
 public sealed record LineOwnershipDecision(
     string LineId,
