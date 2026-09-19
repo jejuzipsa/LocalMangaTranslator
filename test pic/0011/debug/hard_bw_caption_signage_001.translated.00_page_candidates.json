@@ -1,0 +1,47 @@
+[
+  {
+    "id": "PC001",
+    "kind": "Speech",
+    "x": 309,
+    "y": 212,
+    "width": 350,
+    "height": 62,
+    "mode": "rtdetr_region\u002Blegacy_mask",
+    "dark": false,
+    "score": 7.2337296503704565,
+    "fill_ratio": 0.9436405529953917,
+    "border_touches": 0,
+    "mask_pixels": 20325,
+    "region_id": "RG001"
+  },
+  {
+    "id": "PC002",
+    "kind": "Speech",
+    "x": 823,
+    "y": 583,
+    "width": 161,
+    "height": 91,
+    "mode": "rtdetr_region_rect",
+    "dark": false,
+    "score": 6.906631946563721,
+    "fill_ratio": 0.899256023479626,
+    "border_touches": 0,
+    "mask_pixels": 13175,
+    "region_id": "RG004"
+  },
+  {
+    "id": "PC003",
+    "kind": "Speech",
+    "x": 133,
+    "y": 584,
+    "width": 167,
+    "height": 325,
+    "mode": "rtdetr_region\u002Blegacy_mask",
+    "dark": false,
+    "score": 7.345635547258514,
+    "fill_ratio": 0.9834638415476739,
+    "border_touches": 0,
+    "mask_pixels": 52623,
+    "region_id": "RG003"
+  }
+]
