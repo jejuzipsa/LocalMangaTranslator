@@ -1,0 +1,583 @@
+{
+  "SourceFile": "core_speech_tail_layout_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-19T21:03:22.6203189+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 1001,
+        "Y": 240,
+        "W": 80.66666666666674,
+        "H": 48.66666666666663,
+        "Text": "DR. HUDD?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1016,
+            "Y": 240,
+            "W": 51.33333333333326,
+            "H": 28.66666666666663,
+            "Text": "DR.",
+            "Confidence": 0.9925485,
+            "Language": "en"
+          },
+          {
+            "X": 1001,
+            "Y": 259.66666666666663,
+            "W": 80.66666666666674,
+            "H": 29,
+            "Text": "HUDD?",
+            "Confidence": 0.991733,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "DR. HUDD?",
+      "Translation": "\uD5C8\uB4DC \uBC15\uC0AC?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 911,
+        "Y": 339,
+        "W": 204.5,
+        "H": 71,
+        "Text": "THE SCANS SHOW FULL ENGAGEMENT,",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 988,
+            "Y": 339,
+            "W": 51,
+            "H": 31,
+            "Text": "THE",
+            "Confidence": 0.99990886,
+            "Language": "en"
+          },
+          {
+            "X": 941,
+            "Y": 363,
+            "W": 148,
+            "H": 25.333333333333314,
+            "Text": "SCANS SHOW",
+            "Confidence": 0.9983582,
+            "Language": "en"
+          },
+          {
+            "X": 911,
+            "Y": 381,
+            "W": 204.5,
+            "H": 29,
+            "Text": "FULL ENGAGEMENT,",
+            "Confidence": 0.99388504,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THE SCANS SHOW FULL ENGAGEMENT,",
+      "Translation": "\uC2A4\uCE94 \uACB0\uACFC, \uC758\uC2DD\uC774 \uC644\uC804\uD788 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 384,
+        "Y": 397,
+        "W": 174,
+        "H": 143,
+        "Text": "0",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 384,
+            "Y": 397,
+            "W": 174,
+            "H": 143,
+            "Text": "0",
+            "Confidence": 0.3732313,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "0",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 918,
+        "Y": 404,
+        "W": 43,
+        "H": 21.333333333333314,
+        "Text": "MR.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 918,
+            "Y": 404,
+            "W": 43,
+            "H": 21.333333333333314,
+            "Text": "MR.",
+            "Confidence": 0.9995148,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "MR.",
+      "Translation": "\uC5B4,",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 963,
+        "Y": 404.3333333333333,
+        "W": 145,
+        "H": 20.33333333333337,
+        "Text": "PENNYWORTH.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 963,
+            "Y": 404.3333333333333,
+            "W": 145,
+            "H": 20.33333333333337,
+            "Text": "PENNYWORTH.",
+            "Confidence": 0.9995898,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "PENNYWORTH.",
+      "Translation": "\uD398\uB2C8\uC6CC\uC2A4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 965.3333333333334,
+        "Y": 423.3333333333333,
+        "W": 58,
+        "H": 22.666666666666686,
+        "Text": "STILL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 965.3333333333334,
+            "Y": 423.3333333333333,
+            "W": 58,
+            "H": 22.666666666666686,
+            "Text": "STILL",
+            "Confidence": 0.9997837,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "STILL",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1024.6666666666667,
+        "Y": 423.3333333333333,
+        "W": 88,
+        "H": 22.33333333333337,
+        "Text": "WAKING",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1024.6666666666667,
+            "Y": 423.3333333333333,
+            "W": 88,
+            "H": 22.33333333333337,
+            "Text": "WAKING",
+            "Confidence": 0.9997266,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "FULL ENGAGEMENT, MR. PENNYWORTH. HE\u0027S STILL WAKING UP, SURE, BUT HE\u0027S BACK WITH US.",
+      "Translation": "\uC758\uC2DD\uC774 \uC644\uC804\uD788 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4, \uD398\uB2C8\uC6CC\uC2A4 \uC528. \uC544\uC9C1 \uAE68\uC5B4\uB098\uB294 \uC911\uC774\uAE34 \uD558\uC9C0\uB9CC, \uC6B0\uB9AC \uACC1\uC73C\uB85C \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 911.5,
+        "Y": 440,
+        "W": 205.5,
+        "H": 69,
+        "Text": "UP, SURE, BUT HE\u0027S us.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 911.5,
+            "Y": 440,
+            "W": 205.5,
+            "H": 30,
+            "Text": "UP, SURE, BUT HE\u0027S",
+            "Confidence": 0.9502658,
+            "Language": "en"
+          },
+          {
+            "X": 991,
+            "Y": 479.6666666666667,
+            "W": 44.66666666666674,
+            "H": 29.333333333333314,
+            "Text": "us.",
+            "Confidence": 0.9683902,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THE SCANS SHOW FULL ENGAGEMENT, MR. PENNYWORTH. HE\u0027S STILL WAKING UP, SURE, BUT HE\u0027S BACK WITH US.",
+      "Translation": "\uC758\uC2DD\uC774 \uC644\uC804\uD788 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4, \uD398\uB2C8\uC6CC\uC2A4 \uC528.[BR]\uC544\uC9C1 \uAE68\uC5B4\uB098\uB294 \uC911\uC774\uAE34 \uD558\uC9C0\uB9CC,[BR]\uC815\uC2E0\uC740 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1060.3333333333333,
+        "Y": 443,
+        "W": 52.333333333333485,
+        "H": 21.666666666666686,
+        "Text": "HE\u0027S",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1060.3333333333333,
+            "Y": 443,
+            "W": 52.333333333333485,
+            "H": 21.666666666666686,
+            "Text": "HE\u0027S",
+            "Confidence": 0.99188006,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "HE\u0027S",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1015,
+        "Y": 443.6666666666667,
+        "W": 49,
+        "H": 21,
+        "Text": "BUT",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1015,
+            "Y": 443.6666666666667,
+            "W": 49,
+            "H": 21,
+            "Text": "BUT",
+            "Confidence": 0.9902332,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BUT",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 949,
+        "Y": 444,
+        "W": 60.33333333333337,
+        "H": 21.333333333333314,
+        "Text": "SURE,",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 949,
+            "Y": 444,
+            "W": 60.33333333333337,
+            "H": 21.333333333333314,
+            "Text": "SURE,",
+            "Confidence": 0.99714893,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "SURE,",
+      "Translation": "\uB2F9\uC5F0\uD558\uC9C0,",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1019,
+        "Y": 461.6666666666667,
+        "W": 54,
+        "H": 23.66666666666663,
+        "Text": "WITH",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1019,
+            "Y": 461.6666666666667,
+            "W": 54,
+            "H": 23.66666666666663,
+            "Text": "WITH",
+            "Confidence": 0.9985038,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "WITH",
+      "Translation": "\uD568\uAED8",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 955.6666666666666,
+        "Y": 462.3333333333333,
+        "W": 63.33333333333337,
+        "H": 22.666666666666686,
+        "Text": "BACK",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 955.6666666666666,
+            "Y": 462.3333333333333,
+            "W": 63.33333333333337,
+            "H": 22.666666666666686,
+            "Text": "BACK",
+            "Confidence": 0.99873793,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BACK",
+      "Translation": "\uB3CC\uC544\uC628",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 1134,
+        "Y": 517,
+        "W": 82,
+        "H": 19.5,
+        "Text": "BRUCE?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1134,
+            "Y": 517,
+            "W": 82,
+            "H": 19.5,
+            "Text": "BRUCE?",
+            "Confidence": 0.99876726,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BRUCE?",
+      "Translation": "\uBE0C\uB8E8\uC2A4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1127.3333333333333,
+        "Y": 550.6666666666666,
+        "W": 90.66666666666674,
+        "H": 23.33333333333337,
+        "Text": "TALK TO",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1127.3333333333333,
+            "Y": 550.6666666666666,
+            "W": 90.66666666666674,
+            "H": 23.33333333333337,
+            "Text": "TALK TO",
+            "Confidence": 0.9347253,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "BRUCE, TALK TO ME.",
+      "Translation": "\uBE0C\uB8E8\uC2A4, \uB9D0 \uC880 \uD574\uBD10.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 590,
+        "Y": 1233,
+        "W": 46,
+        "H": 37,
+        "Text": "1O",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 590,
+            "Y": 1233,
+            "W": 46,
+            "H": 37,
+            "Text": "1O",
+            "Confidence": 0.41936025,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "1O",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 1035,
+        "Y": 1747,
+        "W": 125.66666666666674,
+        "H": 198,
+        "Text": "20",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1035,
+            "Y": 1747,
+            "W": 125.66666666666674,
+            "H": 198,
+            "Text": "20",
+            "Confidence": 0.30342254,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "20",
+      "Translation": "20",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 1146.6666666666667,
+        "Y": 1829.3333333333333,
+        "W": 120.33333333333326,
+        "H": 111.66666666666674,
+        "Text": "Alfrid, Pleazzz. PLeeeze jus tak mmme hOm.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1167.3333333333333,
+            "Y": 1829.3333333333333,
+            "W": 71,
+            "H": 34.333333333333485,
+            "Text": "Alfrid,",
+            "Confidence": 0.9817603,
+            "Language": "en"
+          },
+          {
+            "X": 1158,
+            "Y": 1855,
+            "W": 88.5,
+            "H": 25.5,
+            "Text": "Pleazzz.",
+            "Confidence": 0.9988126,
+            "Language": "en"
+          },
+          {
+            "X": 1146.6666666666667,
+            "Y": 1873.3333333333333,
+            "W": 120.33333333333326,
+            "H": 29.333333333333485,
+            "Text": "PLeeeze jus",
+            "Confidence": 0.99799633,
+            "Language": "en"
+          },
+          {
+            "X": 1151.3333333333333,
+            "Y": 1895.3333333333333,
+            "W": 108.66666666666674,
+            "H": 24.333333333333485,
+            "Text": "tak mmme",
+            "Confidence": 0.9965874,
+            "Language": "en"
+          },
+          {
+            "X": 1169.3333333333333,
+            "Y": 1911.3333333333333,
+            "W": 64,
+            "H": 29.666666666666742,
+            "Text": "hOm.",
+            "Confidence": 0.92595756,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "Alfrid, pleazzz. Pleeze jus tak mmme hOm.",
+      "Translation": "\uC54C\uD504\uB9AC\uB4DC, \uC81C\uBC1C\uC694.[BR]\uC81C\uBC1C \uADF8\uB0E5 \uC880 \uBCF4\uB0B4\uC918\uC694.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
