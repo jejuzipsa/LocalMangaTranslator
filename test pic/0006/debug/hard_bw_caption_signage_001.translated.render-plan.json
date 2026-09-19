@@ -1,0 +1,78 @@
+{
+  "SourceFile": "hard_bw_caption_signage_001.png",
+  "CreatedAt": "2026-09-19T20:21:56.3599593+09:00",
+  "Units": [
+    {
+      "UnitId": "U001",
+      "ContainerId": "C001",
+      "RegionId": 2,
+      "LineIds": [
+        "L0001"
+      ],
+      "Type": "caption",
+      "ContainerDetected": true,
+      "ContainerMode": "caption",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 18.3587353515625,
+      "BoxX": 313,
+      "BoxY": 217,
+      "BoxWidth": 343,
+      "BoxHeight": 54,
+      "GlyphX": 313.28878296386716,
+      "GlyphY": 217.26269043457032,
+      "GlyphWidth": 182.82758543945312,
+      "GlyphHeight": 19.063059072265624
+    },
+    {
+      "UnitId": "U002",
+      "ContainerId": "C003",
+      "RegionId": 4,
+      "LineIds": [
+        "L0002"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": false,
+      "ContainerMode": "fallback",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 19.77856201171875,
+      "BoxX": 863,
+      "BoxY": 586,
+      "BoxWidth": 78,
+      "BoxHeight": 43,
+      "GlyphX": 869.463800588379,
+      "GlyphY": 596.7436467797852,
+      "GlyphWidth": 64.72468153808593,
+      "GlyphHeight": 20.46003310058594
+    },
+    {
+      "UnitId": "U003",
+      "ContainerId": "C002",
+      "RegionId": 6,
+      "LineIds": [
+        "L0003"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "speech_retry",
+      "Approved": true,
+      "Reason": "ok",
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 30.81721435546875,
+      "BoxX": 850,
+      "BoxY": 585,
+      "BoxWidth": 96,
+      "BoxHeight": 67,
+      "GlyphX": 868.9704532446289,
+      "GlyphY": 585.0981998266601,
+      "GlyphWidth": 56.40443042480469,
+      "GlyphHeight": 63.98749927246094
+    }
+  ]
+}
