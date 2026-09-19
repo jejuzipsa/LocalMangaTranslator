@@ -157,6 +157,22 @@ Check("rescued line joins container ownership", rescueResult.UnitOwnership.Any(x
     x.CandidateId == "PC001" &&
     x.LineIds.Count == 2));
 
+var peerWeak1 = new OcrLine(173, 220, 30, 12, "COME", 0.92f, "en");
+var peerWeak2 = new OcrLine(173, 240, 30, 12, "BACK", 0.91f, "en");
+var peerRescueResult = unitBuilder.Build(
+    [peerWeak1, peerWeak2],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("two coherent weak lines rescue each other", peerRescueResult.LineOwnership.Count == 2 &&
+    peerRescueResult.LineOwnership.All(x =>
+        x.Assigned &&
+        x.Reason == "rescued_peer_cluster"));
+Check("peer rescue forms a container unit", peerRescueResult.UnitOwnership.Count == 1 &&
+    peerRescueResult.UnitOwnership[0].CandidateId == "PC001" &&
+    peerRescueResult.UnitOwnership[0].LineIds.Count == 2);
+
 var broadCandidate = candidate with
 {
     CandidateId = "PC010",
