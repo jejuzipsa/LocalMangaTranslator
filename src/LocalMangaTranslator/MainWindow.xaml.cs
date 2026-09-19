@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text.Json;
 using Microsoft.Win32;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
@@ -33,6 +32,7 @@ public partial class MainWindow : System.Windows.Window
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
     OcrPipelineService? ocrPipeline;
+    PagePipelineService? pagePipeline;
 
     public ObservableCollection<QueueItem> Queue { get; } = [];
 
@@ -60,6 +60,11 @@ public partial class MainWindow : System.Windows.Window
             var modelRoot = Path.Combine(AppContext.BaseDirectory, "models", "ocr");
             ocr = new OcrEngine(modelRoot);
             ocrPipeline = new OcrPipelineService(ocr);
+            pagePipeline = new PagePipelineService(
+                ocrPipeline,
+                vision,
+                translationRefiner,
+                renderer);
             Log($"OCR: {ocr.Status}");
         }
         catch (Exception ex)
@@ -487,7 +492,8 @@ public partial class MainWindow : System.Windows.Window
 
         if (ocr is null ||
             !ocr.Ready ||
-            ocrPipeline is null)
+            ocrPipeline is null ||
+            pagePipeline is null)
         {
             Log($"OCR을 사용할 수 없습니다: {ocr?.Status ?? "초기화 안됨"}");
             return;
@@ -527,23 +533,35 @@ public partial class MainWindow : System.Windows.Window
                 var item = Queue[i];
                 var sw = Stopwatch.StartNew();
 
-                item.Status = "OCR 파이프라인";
-                SetStatus(i, item, "OCR 관측 / 병합 / 컨테이너 ownership");
-                Log($"{item.FileName} | OCR 파이프라인 시작");
+                item.Status = "파이프라인";
+                SetStatus(i, item, "페이지 파이프라인 시작");
+                Log($"{item.FileName} | 페이지 파이프라인 시작");
 
-                var ocrStage = await ocrPipeline.AnalyzeAsync(
-                    item.FilePath,
-                    workCts.Token);
+                var pipelineProgress =
+                    new Progress<PipelineProgress>(update =>
+                    {
+                        item.Status =
+                            PipelineStageLabel(update.Stage);
 
-                var lines =
-                    ocrStage.MergedLines.ToList();
+                        CurrentStatusText.Text =
+                            $"{i + 1}/{Queue.Count} · {item.FileName} · {update.Message}";
 
-                Log(
-                    $"{item.FileName} | OCR 관측 완료 · " +
-                    $"{OcrPipelineService.FormatPassSummary(ocrStage.Observations)} → " +
-                    $"병합 {lines.Count}줄");
+                        Log(
+                            $"{item.FileName} | " +
+                            $"[{PipelineStageLabel(update.Stage)}] " +
+                            update.Message);
+                    });
 
-                if (lines.Count == 0)
+                var result =
+                    await pagePipeline.ProcessAsync(
+                        item.FilePath,
+                        OutputPathBox.Text,
+                        reviewModel,
+                        translationModel,
+                        pipelineProgress,
+                        workCts.Token);
+
+                if (!result.HasText)
                 {
                     item.Status = "텍스트 없음";
                     Log($"{item.FileName} | 감지된 텍스트 없음");
@@ -551,103 +569,7 @@ public partial class MainWindow : System.Windows.Window
                     continue;
                 }
 
-                var unitBuild =
-                    ocrStage.UnitBuild;
-
-                var blocks =
-                    unitBuild.Units.ToList();
-
-                Log(
-                    $"{item.FileName} | OCR unit 구성 · " +
-                    $"{lines.Count}줄 → 예비 {ocrStage.PreliminaryBlocks.Count}블록 → " +
-                    $"컨테이너 {unitBuild.ContainerCount}개 / " +
-                    $"배정 {unitBuild.AssignedLineCount}줄 / " +
-                    $"고아 {unitBuild.OrphanGroupCount}블록 → " +
-                    $"Vision 입력 {blocks.Count} unit");
-
-                item.Status = "OCR 검수";
-                SetStatus(i, item, $"Vision OCR 검수 · {reviewModel.Name}");
-                Log($"{item.FileName} | Vision OCR 검수 시작 · {reviewModel.ModelTag}");
-
-                var visionProgress = new Progress<string>(message =>
-                {
-                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
-                    Log($"{item.FileName} | {message}");
-                });
-
-                var reviewed = await vision.ReviewAndTranslateAsync(
-                    item.FilePath,
-                    blocks,
-                    reviewModel,
-                    visionProgress,
-                    workCts.Token);
-
-                int corrected = reviewed.Count(x =>
-                    !string.Equals(x.Source.Text.Trim(), x.CorrectedText.Trim(), StringComparison.Ordinal));
-
-                int skipped = reviewed.Count(x => !x.Render);
-                Log($"{item.FileName} | Vision 검수 완료 · {reviewed.Count}개 블록 · OCR 교정 {corrected}개 · 조판 제외 {skipped}개");
-
-                item.Status = "번역 중";
-                SetStatus(i, item, $"최종 번역 · {translationModel.Name}");
-                Log($"{item.FileName} | 최종 번역 시작 · {translationModel.ModelTag}");
-
-                var translationProgress = new Progress<string>(message =>
-                {
-                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
-                    Log($"{item.FileName} | {message}");
-                });
-
-                var translated = await translationRefiner.TranslateAsync(
-                    reviewed,
-                    translationModel,
-                    translationProgress,
-                    workCts.Token);
-
-                Log($"{item.FileName} | 최종 번역 완료 · {translated.Count(x => x.Render)}개 조판 대상");
-
-                var document = new VisionTranslationDocument
-                {
-                    SourceFile = item.FileName,
-                    Model = $"review={reviewModel.ModelTag}; translation={translationModel.ModelTag}",
-                    Regions = translated
-                };
-
-                var jsonPath = Path.Combine(
-                    OutputPathBox.Text,
-                    Path.GetFileNameWithoutExtension(item.FilePath) + ".translation.json");
-
-                await File.WriteAllTextAsync(
-                    jsonPath,
-                    JsonSerializer.Serialize(document, new JsonSerializerOptions { WriteIndented = true }),
-                    workCts.Token);
-
-                Log($"{item.FileName} | 번역 JSON 저장: {Path.GetFileName(jsonPath)}");
-
-                item.Status = "인페인트 중";
-                SetStatus(i, item, "인페인트");
-                Log($"{item.FileName} | 인페인트 시작");
-
-                var imagePath = Path.Combine(
-                    OutputPathBox.Text,
-                    Path.GetFileNameWithoutExtension(item.FilePath) + ".translated.png");
-
-                var renderProgress = new Progress<string>(message =>
-                {
-                    CurrentStatusText.Text = $"{i + 1}/{Queue.Count} · {item.FileName} · {message}";
-                    Log($"{item.FileName} | {message}");
-                });
-
-                await renderer.RenderAsync(
-                    item.FilePath,
-                    translated,
-                    imagePath,
-                    renderProgress,
-                    workCts.Token);
-
                 item.Status = "완료";
-                Log($"{item.FileName} | 완료 이미지: {Path.GetFileName(imagePath)}");
-
                 FinishItem(i, item, sw);
             }
 
@@ -673,6 +595,19 @@ public partial class MainWindow : System.Windows.Window
             InstallModelButton.IsEnabled = true;
         }
     }
+
+    static string PipelineStageLabel(
+        PipelineStageKind stage)
+        => stage switch
+        {
+            PipelineStageKind.OcrObservation => "OCR 관측",
+            PipelineStageKind.OcrUnitFormation => "OCR Unit",
+            PipelineStageKind.VisionReview => "Vision 검수",
+            PipelineStageKind.Translation => "번역",
+            PipelineStageKind.Render => "삭제/조판",
+            PipelineStageKind.Completed => "완료",
+            _ => stage.ToString()
+        };
 
     void SetStatus(int index, QueueItem item, string stage)
         => CurrentStatusText.Text = $"{index + 1}/{Queue.Count} · {item.FileName} · {stage}";
