@@ -177,7 +177,9 @@ public sealed class PageAnalysisService : IDisposable
                             Math.Max(
                                 5.0,
                                 bestLegacy.Candidate.Score) +
-                            bubble.Score * 1.5
+                            bubble.Score * 1.5,
+                        RegionId =
+                            bubble.RegionId
                     });
 
                 continue;
@@ -203,7 +205,11 @@ public sealed class PageAnalysisService : IDisposable
                         source.Rows),
                     mask,
                     bounds.Width,
-                    bounds.Height));
+                    bounds.Height)
+                {
+                    RegionId =
+                        bubble.RegionId
+                });
         }
 
         var canonical =
