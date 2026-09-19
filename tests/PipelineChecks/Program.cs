@@ -198,6 +198,38 @@ Check("broad container splits distant text clusters", splitResult.Units.Count ==
 Check("split clusters keep one active owner per line", splitResult.LineOwnership.Count == 2 &&
     splitResult.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC010"));
 
+var weakArtworkBlock = new OcrTextBlock(
+    900,
+    10,
+    10,
+    56,
+    33,
+    "LEF",
+    1,
+    "en",
+    [new OcrLine(10, 10, 56, 33, "LEF", 0.54f, "en")]);
+var hallucinatedExpansion = new VisionTranslation(
+    900,
+    weakArtworkBlock,
+    "I DEVOUR THEM!",
+    "전부 먹어치워!",
+    "dialogue",
+    true);
+Check("low-confidence short OCR cannot expand into long dialogue",
+    RenderSafetyPolicy.IsSuspiciousVisionExpansion(hallucinatedExpansion));
+
+var highConfidenceShort = hallucinatedExpansion with
+{
+    Source = weakArtworkBlock with
+    {
+        Text = "HER",
+        Lines = [new OcrLine(10, 10, 46, 27, "HER", 0.99f, "en")]
+    },
+    CorrectedText = "FOR MY QUEEN AND HER HEIR!"
+};
+Check("high-confidence short speech may use Vision context",
+    !RenderSafetyPolicy.IsSuspiciousVisionExpansion(highConfidenceShort));
+
 string webpPath = Path.Combine(
     Path.GetTempPath(),
     $"lmt_lossless_{Guid.NewGuid():N}.webp");
