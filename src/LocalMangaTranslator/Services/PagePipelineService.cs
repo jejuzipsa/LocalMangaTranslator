@@ -17,6 +17,7 @@ public sealed class PagePipelineService
     readonly VisionTranslationService vision;
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
+    readonly FinalAuditService finalAudit = new();
 
     public PagePipelineService(
         PageAnalysisService pageAnalysis,
@@ -87,7 +88,7 @@ public sealed class PagePipelineService
             $"페이지 컨테이너 후보 {ocrStage.PageCandidates.Count}개 · " +
             $"{OcrPipelineService.FormatPassSummary(ocrStage.Observations)} → 병합 {ocrStage.MergedLines.Count}줄"));
 
-        if (ocrStage.MergedLines.Count == 0)
+        if (ocrStage.UnitBuild.Units.Count == 0)
         {
             return new PagePipelineResult(
                 false,
@@ -214,6 +215,40 @@ public sealed class PagePipelineService
             imagePath,
             renderProgress,
             token);
+
+        // Final image delivery is complete at this point. Audit is diagnostic
+        // only and can never invalidate or remove the finished output.
+        if (options.EnableFinalAudit)
+        {
+            progress?.Report(new PipelineProgress(
+                PipelineStageKind.FinalAudit,
+                "완료 이미지 검토 로그 생성"));
+
+            try
+            {
+                await finalAudit.GenerateAsync(
+                    sourcePath,
+                    imagePath,
+                    outputDirectory,
+                    ocrStage,
+                    translated,
+                    token);
+
+                progress?.Report(new PipelineProgress(
+                    PipelineStageKind.FinalAudit,
+                    $"완료검토로그/{Path.GetFileNameWithoutExtension(sourcePath)}.final_compare.webp"));
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                progress?.Report(new PipelineProgress(
+                    PipelineStageKind.FinalAudit,
+                    $"완료 검토 로그 생성 실패 · 결과 이미지는 정상 저장됨 · {ex.Message}"));
+            }
+        }
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Completed,
