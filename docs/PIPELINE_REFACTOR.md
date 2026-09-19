@@ -126,6 +126,26 @@ The purpose is to preserve container-first provenance while preventing the over-
 Vision primarily receives one container crop and that container's OCR observations.
 Page context is passed separately so adjacent dialogue cannot silently become part of the current unit.
 
+### 0009 stabilization after test pic/0007
+
+0009 keeps the conservative 0008 ownership gate but adds a narrow second-pass rescue for
+weak lines that sit next to an already-owned line in the same physical container. The rescue
+does not apply to ambiguous lines and does not lower the global 0.90 geometry gate.
+
+Erase permission is now explicit and separate from translation/render intent:
+- fallback rectangles never grant erase permission;
+- a real detected container and matching SafeMask are required;
+- individual OCR lines must pass safe-mask coverage, confidence, text-length and size gates;
+- detached-line allowance is removed from the active erase path;
+- dilation still occurs before the final intersection with the approved SafeMask;
+- when erase evidence is uncertain, the source pixels remain unchanged.
+
+Output policy in 0009:
+- internal OCR/inpaint/layout remains at source resolution;
+- final translated images use lossless WebP;
+- stage debug overlays use compressed WebP;
+- JSON diagnostics remain unchanged.
+
 ### Stage 5 - erase decision pipeline
 
 Create erase decisions independently from translation decisions.
