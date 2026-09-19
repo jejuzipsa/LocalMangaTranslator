@@ -127,6 +127,45 @@ var duplicateResult = unitBuilder.Build(
 Check("duplicate physical containers canonicalize once", duplicateResult.ContainerCount == 1 &&
     duplicateResult.Units.Count == 1);
 
+var weakOverlapLine = new OcrLine(185, 220, 30, 12, "EDGE", 0.90f, "en");
+var weakOverlapResult = unitBuilder.Build(
+    [weakOverlapLine],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("half overlap does not grant geometry ownership", weakOverlapResult.LineOwnership.Count == 1 &&
+    !weakOverlapResult.LineOwnership[0].Assigned &&
+    weakOverlapResult.LineOwnership[0].Reason == "weak_container_owner");
+Check("weak ownership line stays isolated", weakOverlapResult.UnitOwnership.Count == 1 &&
+    weakOverlapResult.UnitOwnership[0].IsOrphan &&
+    weakOverlapResult.UnitOwnership[0].Reason == "orphan_isolated_weak_owner");
+
+var broadCandidate = candidate with
+{
+    CandidateId = "PC010",
+    Bounds = new Rect(100, 200, 320, 320),
+    Mask = Enumerable.Repeat((byte)255, 320 * 320).ToArray(),
+    MaskWidth = 320,
+    MaskHeight = 320,
+    Score = 5.5,
+    FillRatio = 0.9
+};
+var broadEligible = new ContainerOcrDecision("PC010", true, "eligible_for_ocr");
+var farLine1 = new OcrLine(130, 230, 60, 14, "FIRST", 0.93f, "en");
+var farLine2 = new OcrLine(330, 440, 60, 14, "SECOND", 0.93f, "en");
+var splitResult = unitBuilder.Build(
+    [farLine1, farLine2],
+    [broadCandidate],
+    [broadEligible],
+    [],
+    []);
+Check("broad container splits distant text clusters", splitResult.Units.Count == 2 &&
+    splitResult.UnitOwnership.All(x => x.CandidateId == "PC010") &&
+    splitResult.UnitOwnership.All(x => x.Reason == "container_clustered"));
+Check("split clusters keep one active owner per line", splitResult.LineOwnership.Count == 2 &&
+    splitResult.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC010"));
+
 using var cancellation = new CancellationTokenSource();
 cancellation.Cancel();
 bool cancelled = false;

@@ -4,12 +4,15 @@ using OpenCvSharp;
 namespace LocalMangaTranslator.Services;
 
 /// <summary>
-/// 0007 container-first OCR unit builder.
+/// 0008 conservative container-first OCR unit builder.
 ///
-/// Page-wide container candidates are canonicalized before text grouping.
-/// Every merged OCR line receives at most one physical container owner.
-/// Lines with ambiguous or insufficient ownership evidence remain orphans and
-/// only those orphan lines fall back to the legacy proximity grouper.
+/// A page candidate may own a line only when container OCR evidence supports it
+/// or when geometry is strong enough to be unambiguous. Broad/weak candidate
+/// overlap is diagnostic evidence, not automatic ownership.
+///
+/// Owned lines are clustered again inside the container before translation-unit
+/// creation. Ambiguous/weak ownership lines stay isolated so the legacy grouper
+/// cannot silently re-merge them into a bad unit.
 /// </summary>
 public sealed class OcrContainerUnitBuilder
 {
@@ -31,7 +34,12 @@ public sealed class OcrContainerUnitBuilder
         CanonicalContainer Container,
         double Coverage,
         double Score,
-        bool HasContainerEvidence);
+        bool HasContainerEvidence,
+        double CenterPenalty);
+
+    sealed record HeldLine(
+        CanonicalLine Line,
+        string Reason);
 
     sealed record UnitDraft(
         OcrTextBlock Block,
@@ -41,6 +49,7 @@ public sealed class OcrContainerUnitBuilder
         string Reason);
 
     readonly OcrBlockGrouper orphanGrouper = new();
+    readonly OcrBlockGrouper containerGrouper = new();
 
     public OcrUnitBuildResult Build(
         IReadOnlyList<OcrLine> rawLines,
@@ -59,7 +68,9 @@ public sealed class OcrContainerUnitBuilder
             .ToHashSet(StringComparer.Ordinal);
 
         var canonicalContainers = CanonicalizeContainers(
-            pageCandidates.Where(x => eligibleIds.Contains(x.CandidateId)).ToList());
+            pageCandidates
+                .Where(x => eligibleIds.Contains(x.CandidateId))
+                .ToList());
 
         var acceptedObservationIds = lineDecisions
             .Where(x => x.Accepted)
@@ -81,43 +92,59 @@ public sealed class OcrContainerUnitBuilder
         var assigned = canonicalContainers.ToDictionary(
             x => x,
             _ => new List<CanonicalLine>());
-        var orphans = new List<CanonicalLine>();
+
+        // Truly unowned text can still use the old local grouper.
+        var legacyOrphans = new List<CanonicalLine>();
+
+        // Lines that touched a candidate but failed confidence/ambiguity gates
+        // must not be re-merged by the legacy grouper.
+        var isolatedHeldLines = new List<HeldLine>();
 
         foreach (var line in canonicalLines)
         {
             token.ThrowIfCancellationRequested();
 
-            var candidates = canonicalContainers
+            var evaluated = canonicalContainers
                 .Select(container => EvaluateOwnership(
                     line.Line,
                     container,
                     acceptedObservations))
-                .Where(x => x.Coverage >= 0.52)
+                .Where(x => x.Coverage >= 0.35)
                 .OrderByDescending(x => x.Score)
                 .ThenByDescending(x => x.Coverage)
                 .ToList();
 
+            var candidates = evaluated
+                .Where(x => IsTrustworthyOwner(line.Line, x))
+                .ToList();
+
             if (candidates.Count == 0)
             {
+                bool touchedCandidate = evaluated.Count > 0;
+                string reason = touchedCandidate
+                    ? "weak_container_owner"
+                    : "no_container_owner";
+
                 ownership.Add(new(
                     line.LineId,
                     null,
                     false,
-                    "no_container_owner",
-                    0,
-                    0));
-                orphans.Add(line);
+                    reason,
+                    evaluated.FirstOrDefault()?.Coverage ?? 0,
+                    evaluated.FirstOrDefault()?.Score ?? 0));
+
+                if (touchedCandidate)
+                    isolatedHeldLines.Add(new(line, reason));
+                else
+                    legacyOrphans.Add(line);
+
                 continue;
             }
 
             var best = candidates[0];
             var second = candidates.Count > 1 ? candidates[1] : null;
 
-            bool ambiguous = second is not null &&
-                             best.Score - second.Score < 0.75 &&
-                             best.HasContainerEvidence == second.HasContainerEvidence;
-
-            if (ambiguous)
+            if (second is not null && IsAmbiguous(best, second))
             {
                 ownership.Add(new(
                     line.LineId,
@@ -126,18 +153,23 @@ public sealed class OcrContainerUnitBuilder
                     "ambiguous_container_owner",
                     best.Coverage,
                     best.Score));
-                orphans.Add(line);
+
+                isolatedHeldLines.Add(new(
+                    line,
+                    "ambiguous_container_owner"));
+
                 continue;
             }
 
             assigned[best.Container].Add(line);
+
             ownership.Add(new(
                 line.LineId,
                 best.Container.Candidate.CandidateId,
                 true,
                 best.HasContainerEvidence
                     ? "container_ocr_evidence"
-                    : "geometry_owner",
+                    : "strong_geometry_owner",
                 best.Coverage,
                 best.Score));
         }
@@ -152,32 +184,74 @@ public sealed class OcrContainerUnitBuilder
             if (lines.Count == 0)
                 continue;
 
-            drafts.Add(new(
-                ToBlock(-1, lines.Select(x => x.Line).ToList()),
-                container.Candidate.CandidateId,
-                lines.Select(x => x.LineId).ToList(),
-                false,
-                "container_owned"));
+            // A broad geometric candidate is not proof that all of its text is
+            // one utterance. Reuse the local grouping rules inside the physical
+            // container so distant clusters cannot become one huge unit.
+            var clusters = containerGrouper.Group(
+                lines.Select(x => x.Line).ToList());
+
+            bool split = clusters.Count > 1;
+
+            foreach (var cluster in clusters)
+            {
+                token.ThrowIfCancellationRequested();
+
+                var clusterLines = MatchCanonicalLines(
+                    lines,
+                    cluster.Lines);
+
+                if (clusterLines.Count == 0)
+                    continue;
+
+                drafts.Add(new(
+                    ToBlock(
+                        -1,
+                        clusterLines.Select(x => x.Line).ToList()),
+                    container.Candidate.CandidateId,
+                    clusterLines.Select(x => x.LineId).ToList(),
+                    false,
+                    split
+                        ? "container_clustered"
+                        : "container_owned"));
+            }
         }
 
-        var orphanBlocks = orphanGrouper.Group(orphans.Select(x => x.Line).ToList());
+        var orphanBlocks = orphanGrouper.Group(
+            legacyOrphans.Select(x => x.Line).ToList());
+
         foreach (var block in orphanBlocks)
         {
             token.ThrowIfCancellationRequested();
 
-            var lineIds = block.Lines
-                .Select(line => orphans.FirstOrDefault(x => Equals(x.Line, line))?.LineId)
-                .Where(id => !string.IsNullOrWhiteSpace(id))
-                .Cast<string>()
-                .Distinct(StringComparer.Ordinal)
-                .ToList();
+            var blockLines = MatchCanonicalLines(
+                legacyOrphans,
+                block.Lines);
+
+            if (blockLines.Count == 0)
+                continue;
 
             drafts.Add(new(
-                block,
+                ToBlock(
+                    -1,
+                    blockLines.Select(x => x.Line).ToList()),
                 null,
-                lineIds,
+                blockLines.Select(x => x.LineId).ToList(),
                 true,
                 "orphan_legacy_group"));
+        }
+
+        foreach (var held in isolatedHeldLines)
+        {
+            token.ThrowIfCancellationRequested();
+
+            drafts.Add(new(
+                ToBlock(-1, [held.Line.Line]),
+                null,
+                [held.Line.LineId],
+                true,
+                held.Reason == "ambiguous_container_owner"
+                    ? "orphan_isolated_ambiguous"
+                    : "orphan_isolated_weak_owner"));
         }
 
         var orderedDrafts = drafts
@@ -198,11 +272,13 @@ public sealed class OcrContainerUnitBuilder
                 x.Reason))
             .ToList();
 
+        int orphanUnitCount = orderedDrafts.Count(x => x.IsOrphan);
+
         return new OcrUnitBuildResult(
             units,
             canonicalContainers.Count,
             ownership.Count(x => x.Assigned),
-            orphanBlocks.Count)
+            orphanUnitCount)
         {
             LineOwnership = ownership,
             UnitOwnership = unitOwnership
@@ -214,23 +290,74 @@ public sealed class OcrContainerUnitBuilder
         CanonicalContainer container,
         IReadOnlyList<OcrObservation> acceptedObservations)
     {
-        double coverage = LineMaskCoverage(line, container.Candidate);
+        double coverage = LineMaskCoverage(
+            line,
+            container.Candidate);
+
         bool hasEvidence = acceptedObservations.Any(observation =>
             container.SourceIds.Contains(observation.SourceKey) &&
             SameEvidenceLine(line, observation));
+
+        double centerPenalty = CenterDistancePenalty(
+            line,
+            container.Candidate.Bounds);
 
         double score =
             coverage * 10.0 +
             Math.Clamp(container.Candidate.Score, 0, 30) * 0.12 +
             Math.Clamp(container.Candidate.FillRatio, 0, 1) * 0.6 -
-            CenterDistancePenalty(line, container.Candidate.Bounds) +
+            centerPenalty +
             (hasEvidence ? 3.0 : 0);
 
         return new(
             container,
             coverage,
             score,
-            hasEvidence);
+            hasEvidence,
+            centerPenalty);
+    }
+
+    static bool IsTrustworthyOwner(
+        OcrLine line,
+        OwnershipCandidate candidate)
+    {
+        if (!double.IsFinite(candidate.Coverage) ||
+            !double.IsFinite(candidate.Score) ||
+            !double.IsFinite(candidate.CenterPenalty))
+            return false;
+
+        // A validated 1x/2x container OCR pair is strong evidence, but the
+        // merged line must still be substantially inside the same safe mask.
+        if (candidate.HasContainerEvidence)
+            return candidate.Coverage >= 0.72;
+
+        // Geometry-only ownership is intentionally much stricter than 0007.
+        // The old 0.52 threshold admitted half-overlapping lines and produced
+        // broad mixed units in the 0006 regression pages.
+        return candidate.Coverage >= 0.90 &&
+               line.Confidence >= 0.60f &&
+               candidate.Container.Candidate.Score >= 4.60 &&
+               candidate.Container.Candidate.FillRatio >= 0.60 &&
+               candidate.CenterPenalty <= 0.95;
+    }
+
+    static bool IsAmbiguous(
+        OwnershipCandidate best,
+        OwnershipCandidate second)
+    {
+        // Strong OCR evidence may break a geometry-only tie.
+        if (best.HasContainerEvidence &&
+            !second.HasContainerEvidence &&
+            best.Score - second.Score >= 0.45)
+            return false;
+
+        double scoreGap = best.Score - second.Score;
+        double coverageGap = best.Coverage - second.Coverage;
+
+        return scoreGap < 1.25 ||
+               (!best.HasContainerEvidence &&
+                !second.HasContainerEvidence &&
+                coverageGap < 0.08);
     }
 
     static List<CanonicalContainer> CanonicalizeContainers(
@@ -247,7 +374,9 @@ public sealed class OcrContainerUnitBuilder
         foreach (var candidate in ordered)
         {
             var existing = result.FirstOrDefault(x =>
-                IsSamePhysicalContainer(x.Candidate.Bounds, candidate.Bounds));
+                IsSamePhysicalContainer(
+                    x.Candidate.Bounds,
+                    candidate.Bounds));
 
             if (existing is null)
                 result.Add(new CanonicalContainer(candidate));
@@ -279,7 +408,8 @@ public sealed class OcrContainerUnitBuilder
     {
         if (candidate.MaskWidth <= 0 ||
             candidate.MaskHeight <= 0 ||
-            candidate.Mask.LongLength != (long)candidate.MaskWidth * candidate.MaskHeight)
+            candidate.Mask.LongLength !=
+                (long)candidate.MaskWidth * candidate.MaskHeight)
             return 0;
 
         int inside = 0;
@@ -363,19 +493,53 @@ public sealed class OcrContainerUnitBuilder
 
         foreach (var candidate in ordered)
         {
-            if (!kept.Any(x => IsSameLine(x.Line, candidate.Line)))
+            if (!kept.Any(x => IsSameLine(
+                    x.Line,
+                    candidate.Line)))
+            {
                 kept.Add(candidate);
+            }
         }
 
         return OrderLines(kept);
+    }
+
+    static List<CanonicalLine> MatchCanonicalLines(
+        IReadOnlyList<CanonicalLine> source,
+        IReadOnlyList<OcrLine> lines)
+    {
+        var remaining = source.ToList();
+        var result = new List<CanonicalLine>();
+
+        foreach (var line in lines)
+        {
+            int index = remaining.FindIndex(x =>
+                ReferenceEquals(x.Line, line) ||
+                Equals(x.Line, line));
+
+            if (index < 0)
+                continue;
+
+            result.Add(remaining[index]);
+            remaining.RemoveAt(index);
+        }
+
+        return OrderLines(result);
     }
 
     static bool IsSameLine(
         OcrLine a,
         OcrLine b)
     {
-        double intersection = IntersectionArea(ToRect(a), ToRect(b));
-        double minArea = Math.Max(1.0, Math.Min(a.W * a.H, b.W * b.H));
+        double intersection = IntersectionArea(
+            ToRect(a),
+            ToRect(b));
+
+        double minArea = Math.Max(
+            1.0,
+            Math.Min(
+                a.W * a.H,
+                b.W * b.H));
 
         if (intersection / minArea >= 0.72)
             return true;
@@ -385,13 +549,17 @@ public sealed class OcrContainerUnitBuilder
 
         if (at.Length == 0 ||
             bt.Length == 0 ||
-            !string.Equals(at, bt, StringComparison.OrdinalIgnoreCase))
+            !string.Equals(
+                at,
+                bt,
+                StringComparison.OrdinalIgnoreCase))
             return false;
 
         double acx = a.X + a.W / 2.0;
         double acy = a.Y + a.H / 2.0;
         double bcx = b.X + b.W / 2.0;
         double bcy = b.Y + b.H / 2.0;
+
         double distance = Math.Sqrt(
             Math.Pow(acx - bcx, 2) +
             Math.Pow(acy - bcy, 2));
@@ -408,6 +576,7 @@ public sealed class OcrContainerUnitBuilder
         IReadOnlyList<OcrLine> lines)
     {
         var ordered = OrderLines(lines);
+
         double x = ordered.Min(l => l.X);
         double y = ordered.Min(l => l.Y);
         double right = ordered.Max(l => l.X + l.W);
@@ -437,28 +606,45 @@ public sealed class OcrContainerUnitBuilder
             ordered);
     }
 
-    static List<OcrLine> OrderLines(IEnumerable<OcrLine> lines)
+    static List<OcrLine> OrderLines(
+        IEnumerable<OcrLine> lines)
     {
         var list = lines.ToList();
+
         bool vertical =
             list.Count >= 2 &&
             list.Count(IsVertical) > list.Count / 2;
 
         return vertical
-            ? list.OrderByDescending(x => x.X).ThenBy(x => x.Y).ToList()
-            : list.OrderBy(x => x.Y).ThenBy(x => x.X).ToList();
+            ? list
+                .OrderByDescending(x => x.X)
+                .ThenBy(x => x.Y)
+                .ToList()
+            : list
+                .OrderBy(x => x.Y)
+                .ThenBy(x => x.X)
+                .ToList();
     }
 
-    static List<CanonicalLine> OrderLines(IEnumerable<CanonicalLine> lines)
+    static List<CanonicalLine> OrderLines(
+        IEnumerable<CanonicalLine> lines)
     {
         var list = lines.ToList();
+
         bool vertical =
             list.Count >= 2 &&
-            list.Count(x => IsVertical(x.Line)) > list.Count / 2;
+            list.Count(x => IsVertical(x.Line)) >
+            list.Count / 2;
 
         return vertical
-            ? list.OrderByDescending(x => x.Line.X).ThenBy(x => x.Line.Y).ToList()
-            : list.OrderBy(x => x.Line.Y).ThenBy(x => x.Line.X).ToList();
+            ? list
+                .OrderByDescending(x => x.Line.X)
+                .ThenBy(x => x.Line.Y)
+                .ToList()
+            : list
+                .OrderBy(x => x.Line.Y)
+                .ThenBy(x => x.Line.X)
+                .ToList();
     }
 
     static bool IsVertical(OcrLine line)
