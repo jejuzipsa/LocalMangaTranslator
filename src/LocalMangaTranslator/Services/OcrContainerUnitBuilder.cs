@@ -493,8 +493,3 @@ public sealed class OcrContainerUnitBuilder
                 .ToArray());
 }
 
-public sealed record OcrUnitBuildResult(
-    IReadOnlyList<OcrTextBlock> Units,
-    int ContainerCount,
-    int AssignedLineCount,
-    int OrphanGroupCount);
