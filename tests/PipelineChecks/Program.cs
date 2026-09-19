@@ -46,6 +46,41 @@ Check("bounding box alone does not prove interior", ContainerOcrValidator.Valida
     [candidate with { Mask = mask }], [a, b]).All(x => !x.Accepted));
 Check("page origin offsets respected", ContainerOcrValidator.MaskCoverage(candidate, a) == 1);
 
+using (var regionRenderSource = Mat.Zeros(400, 400, MatType.CV_8UC3).ToMat())
+{
+    regionRenderSource.SetTo(new Scalar(255, 255, 255));
+
+    var regionRenderBlock = new OcrTextBlock(
+        77,
+        120,
+        220,
+        40,
+        12,
+        "HELLO",
+        1,
+        "en",
+        [new OcrLine(120, 220, 40, 12, "HELLO", 0.90f, "en")])
+    {
+        RegionId = "RG077",
+        RegionContainer = candidate with
+        {
+            RegionId = "RG077"
+        }
+    };
+
+    var confirmedLayout = BalloonMaskService.AnalyzeConfirmedRegion(
+        regionRenderSource,
+        regionRenderBlock,
+        "dialogue",
+        regionRenderBlock.RegionContainer!);
+
+    Check("confirmed learned region supplies render safe mask directly",
+        confirmedLayout.Detected &&
+        confirmedLayout.ShouldRender &&
+        confirmedLayout.Mode == "region:test" &&
+        confirmedLayout.SafeMask is { Length: 8000 });
+}
+
 var unitBuilder = new OcrContainerUnitBuilder();
 var eligibleA = new ContainerOcrDecision("PC001", true, "eligible_for_ocr");
 var secondCandidate = candidate with
