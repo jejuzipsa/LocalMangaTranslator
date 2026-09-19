@@ -222,6 +222,10 @@ public sealed class OcrPipelineService
         }
 
         unitBuild =
+            ConsolidateRegionOwnedUnits(
+                unitBuild);
+
+        unitBuild =
             ApplySecondaryEvidence(
                 unitBuild,
                 pageCandidates,
@@ -242,6 +246,208 @@ public sealed class OcrPipelineService
             SecondaryOcrEvidence = secondaryEvidence,
             PageAnalysis = pageAnalysis
         };
+    }
+
+    static OcrUnitBuildResult ConsolidateRegionOwnedUnits(
+        OcrUnitBuildResult input)
+    {
+        if (input.Units.Count == 0 ||
+            input.UnitOwnership.Count != input.Units.Count)
+        {
+            return input;
+        }
+
+        var entries =
+            input.Units
+                .Select((block, index) => new
+                {
+                    Block = block,
+                    Ownership = input.UnitOwnership[index]
+                })
+                .ToList();
+
+        var drafts =
+            new List<(
+                OcrTextBlock Block,
+                string? CandidateId,
+                IReadOnlyList<string> LineIds,
+                bool IsOrphan,
+                string Reason)>();
+
+        // A learned speech-bubble region owns one dialogue unit. Older
+        // clustering may split distant line stacks inside that bubble; merge
+        // those pieces before Vision so the external region map remains the
+        // structural source of truth.
+        foreach (var group in
+                 entries
+                     .Where(x =>
+                         !x.Ownership.IsOrphan &&
+                         !string.IsNullOrWhiteSpace(
+                             x.Ownership.CandidateId))
+                     .GroupBy(
+                         x => x.Ownership.CandidateId!,
+                         StringComparer.Ordinal))
+        {
+            var lines =
+                group
+                    .SelectMany(x =>
+                        x.Block.Lines)
+                    .GroupBy(x =>
+                        $"{Math.Round(x.X, 1)}|{Math.Round(x.Y, 1)}|" +
+                        $"{Math.Round(x.W, 1)}|{Math.Round(x.H, 1)}|" +
+                        $"{Normalize(x.Text)}")
+                    .Select(x =>
+                        x.OrderByDescending(y =>
+                            y.Confidence)
+                         .First())
+                    .OrderBy(x =>
+                        x.Y)
+                    .ThenBy(x =>
+                        x.X)
+                    .ToList();
+
+            if (lines.Count == 0)
+                continue;
+
+            var lineIds =
+                group
+                    .SelectMany(x =>
+                        x.Ownership.LineIds)
+                    .Distinct(
+                        StringComparer.Ordinal)
+                    .ToList();
+
+            drafts.Add((
+                BuildBlockFromLines(
+                    -1,
+                    lines),
+                group.Key,
+                lineIds,
+                false,
+                group.Count() > 1
+                    ? "region_owned_consolidated"
+                    : group.First().Ownership.Reason));
+        }
+
+        foreach (var entry in
+                 entries.Where(x =>
+                     x.Ownership.IsOrphan ||
+                     string.IsNullOrWhiteSpace(
+                         x.Ownership.CandidateId)))
+        {
+            drafts.Add((
+                entry.Block,
+                entry.Ownership.CandidateId,
+                entry.Ownership.LineIds,
+                entry.Ownership.IsOrphan,
+                entry.Ownership.Reason));
+        }
+
+        var ordered =
+            drafts
+                .OrderBy(x =>
+                    x.Block.Y)
+                .ThenBy(x =>
+                    x.Block.X)
+                .ToList();
+
+        var units =
+            ordered
+                .Select((x, id) =>
+                    x.Block with
+                    {
+                        Id = id
+                    })
+                .ToList();
+
+        var ownership =
+            ordered
+                .Select((x, id) =>
+                    new UnitOwnershipDecision(
+                        id,
+                        x.CandidateId,
+                        x.LineIds,
+                        x.IsOrphan,
+                        x.Reason))
+                .ToList();
+
+        return new OcrUnitBuildResult(
+            units,
+            input.ContainerCount,
+            input.AssignedLineCount,
+            ownership.Count(x =>
+                x.IsOrphan))
+        {
+            LineOwnership =
+                input.LineOwnership,
+            UnitOwnership =
+                ownership
+        };
+    }
+
+    static OcrTextBlock BuildBlockFromLines(
+        int id,
+        IReadOnlyList<OcrLine> lines)
+    {
+        var ordered =
+            lines
+                .OrderBy(x =>
+                    x.Y)
+                .ThenBy(x =>
+                    x.X)
+                .ToList();
+
+        double left =
+            ordered.Min(x =>
+                x.X);
+
+        double top =
+            ordered.Min(x =>
+                x.Y);
+
+        double right =
+            ordered.Max(x =>
+                x.X + x.W);
+
+        double bottom =
+            ordered.Max(x =>
+                x.Y + x.H);
+
+        string text =
+            string.Join(
+                " ",
+                ordered
+                    .Select(x =>
+                        x.Text.Trim())
+                    .Where(x =>
+                        !string.IsNullOrWhiteSpace(
+                            x)));
+
+        string language =
+            ordered
+                .GroupBy(x =>
+                    x.Language)
+                .OrderByDescending(x =>
+                    x.Count())
+                .Select(x =>
+                    x.Key)
+                .FirstOrDefault() ??
+            "en";
+
+        return new OcrTextBlock(
+            id,
+            left,
+            top,
+            Math.Max(
+                1,
+                right - left),
+            Math.Max(
+                1,
+                bottom - top),
+            text,
+            ordered.Count,
+            language,
+            ordered);
     }
 
     static OcrUnitBuildResult ApplySecondaryEvidence(
