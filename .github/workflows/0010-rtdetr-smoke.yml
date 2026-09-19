@@ -1,0 +1,31 @@
+name: 0010 RT-DETR Smoke
+
+on:
+  push:
+    branches:
+      - refactor/0010-architecture2-region-analysis
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Download detector
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force .smoke | Out-Null
+          curl.exe -L --fail --retry 3 -o .smoke/detector.onnx "https://huggingface.co/ogkalu/comic-text-and-bubble-detector/resolve/main/detector-v4-s_int8.onnx?download=true"
+          $hash = (Get-FileHash .smoke/detector.onnx -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($hash -ne "fb9d4f56c68c7345113b81909139171f1e2fbec2aa7f837768a897fb583a3a4f" -and
+              $hash -ne "5fe9e4f576e49d4e7e8b0e029d6d3cdc252abd4694113e1cae120e62c931ea79") {
+            throw "Unexpected detector SHA256: $hash"
+          }
+          "LMT_RTDETR_MODEL_PATH=$((Resolve-Path .smoke/detector.onnx).Path)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "LMT_RTDETR_SMOKE=1" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      - name: Run pipeline and detector smoke checks
+        run: dotnet run --project tests/PipelineChecks/PipelineChecks.csproj -c Release
