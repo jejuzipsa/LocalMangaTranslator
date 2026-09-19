@@ -82,11 +82,30 @@ public sealed record ContainerCandidate(
     int MaskWidth,
     int MaskHeight);
 
+public sealed record LineOwnershipDecision(
+    string LineId,
+    string? CandidateId,
+    bool Assigned,
+    string Reason,
+    double Coverage,
+    double Score);
+
+public sealed record UnitOwnershipDecision(
+    int UnitId,
+    string? CandidateId,
+    IReadOnlyList<string> LineIds,
+    bool IsOrphan,
+    string Reason);
+
 public sealed record OcrUnitBuildResult(
     IReadOnlyList<OcrTextBlock> Units,
     int ContainerCount,
     int AssignedLineCount,
-    int OrphanGroupCount);
+    int OrphanGroupCount)
+{
+    public IReadOnlyList<LineOwnershipDecision> LineOwnership { get; init; } = [];
+    public IReadOnlyList<UnitOwnershipDecision> UnitOwnership { get; init; } = [];
+}
 
 /// <summary>
 /// Explicit boundary between OCR acquisition and Vision review.
