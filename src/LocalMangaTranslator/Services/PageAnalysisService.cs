@@ -359,15 +359,14 @@ public sealed class PageAnalysisService : IDisposable
             // the learned detector and geometric detector refer to the same
             // physical bubble.
             bool candidateHasContour =
-                !string.Equals(
-                    candidate.DetectorMode,
-                    "rtdetr_bubble",
+                candidate.DetectorMode.Contains(
+                    "+legacy_mask",
                     StringComparison.Ordinal);
 
             bool existingFallback =
                 string.Equals(
                     kept[duplicate].DetectorMode,
-                    "rtdetr_bubble",
+                    "rtdetr_region_rect",
                     StringComparison.Ordinal);
 
             if (candidateHasContour &&
