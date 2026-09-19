@@ -378,6 +378,39 @@ finally
     }
 }
 
+if (string.Equals(
+        Environment.GetEnvironmentVariable("LMT_RTDETR_SMOKE"),
+        "1",
+        StringComparison.Ordinal))
+{
+    string detectorSmokeImage = Path.Combine(
+        Path.GetTempPath(),
+        $"lmt_rtdetr_smoke_{Guid.NewGuid():N}.png");
+
+    try
+    {
+        using var smokeImage = Mat.Zeros(480, 320, MatType.CV_8UC3).ToMat();
+        smokeImage.SetTo(new Scalar(255, 255, 255));
+        Cv2.ImWrite(detectorSmokeImage, smokeImage);
+
+        using var detector = new RtdetrPageRegionAnalyzer();
+        var detectorRegions = detector.Analyze(detectorSmokeImage);
+
+        Check("RT-DETR ONNX session and inference smoke", detectorRegions is not null);
+    }
+    finally
+    {
+        try
+        {
+            if (File.Exists(detectorSmokeImage))
+                File.Delete(detectorSmokeImage);
+        }
+        catch
+        {
+        }
+    }
+}
+
 using var cancellation = new CancellationTokenSource();
 cancellation.Cancel();
 bool cancelled = false;
