@@ -28,12 +28,11 @@ public partial class MainWindow : System.Windows.Window
     readonly OllamaClient ollama = new();
     readonly VisionTranslationService vision = new();
     readonly TranslationRefinementService translationRefiner = new();
-    readonly OcrBlockGrouper blockGrouper = new();
-    readonly OcrContainerUnitBuilder unitBuilder = new();
     readonly RenderPipelineService renderer = new();
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
+    OcrPipelineService? ocrPipeline;
 
     public ObservableCollection<QueueItem> Queue { get; } = [];
 
@@ -60,6 +59,7 @@ public partial class MainWindow : System.Windows.Window
         {
             var modelRoot = Path.Combine(AppContext.BaseDirectory, "models", "ocr");
             ocr = new OcrEngine(modelRoot);
+            ocrPipeline = new OcrPipelineService(ocr);
             Log($"OCR: {ocr.Status}");
         }
         catch (Exception ex)
@@ -485,7 +485,9 @@ public partial class MainWindow : System.Windows.Window
             return;
         }
 
-        if (ocr is null || !ocr.Ready)
+        if (ocr is null ||
+            !ocr.Ready ||
+            ocrPipeline is null)
         {
             Log($"OCR을 사용할 수 없습니다: {ocr?.Status ?? "초기화 안됨"}");
             return;
@@ -525,12 +527,21 @@ public partial class MainWindow : System.Windows.Window
                 var item = Queue[i];
                 var sw = Stopwatch.StartNew();
 
-                item.Status = "OCR 중";
-                SetStatus(i, item, "OCR");
-                Log($"{item.FileName} | OCR 시작");
+                item.Status = "OCR 파이프라인";
+                SetStatus(i, item, "OCR 관측 / 병합 / 컨테이너 ownership");
+                Log($"{item.FileName} | OCR 파이프라인 시작");
 
-                var lines = await ocr.RecognizeAsync(item.FilePath, workCts.Token);
-                Log($"{item.FileName} | OCR 완료 · {lines.Count}개 영역");
+                var ocrStage = await ocrPipeline.AnalyzeAsync(
+                    item.FilePath,
+                    workCts.Token);
+
+                var lines =
+                    ocrStage.MergedLines.ToList();
+
+                Log(
+                    $"{item.FileName} | OCR 관측 완료 · " +
+                    $"{OcrPipelineService.FormatPassSummary(ocrStage.Observations)} → " +
+                    $"병합 {lines.Count}줄");
 
                 if (lines.Count == 0)
                 {
@@ -540,24 +551,15 @@ public partial class MainWindow : System.Windows.Window
                     continue;
                 }
 
-                item.Status = "컨테이너 단위 구성";
-                SetStatus(i, item, "OCR 컨테이너 / line ownership");
+                var unitBuild =
+                    ocrStage.UnitBuild;
 
-                var preliminaryBlocks = blockGrouper.Group(lines);
-
-                var unitBuild = await Task.Run(
-                    () => unitBuilder.Build(
-                        item.FilePath,
-                        lines,
-                        preliminaryBlocks,
-                        workCts.Token),
-                    workCts.Token);
-
-                var blocks = unitBuild.Units.ToList();
+                var blocks =
+                    unitBuild.Units.ToList();
 
                 Log(
                     $"{item.FileName} | OCR unit 구성 · " +
-                    $"{lines.Count}줄 → 예비 {preliminaryBlocks.Count}블록 → " +
+                    $"{lines.Count}줄 → 예비 {ocrStage.PreliminaryBlocks.Count}블록 → " +
                     $"컨테이너 {unitBuild.ContainerCount}개 / " +
                     $"배정 {unitBuild.AssignedLineCount}줄 / " +
                     $"고아 {unitBuild.OrphanGroupCount}블록 → " +
