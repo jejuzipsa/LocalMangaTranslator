@@ -110,6 +110,17 @@ Validate each observation/line using:
 
 Only validated lines may eventually become erase evidence; Stage 5 still owns that decision.
 
+0008 stabilization after the 0006 image regression set:
+- Geometry-only ownership no longer uses the 0007 0.52 coverage gate. It now requires at least 0.90 mask coverage plus stronger candidate/center evidence.
+- Validated container OCR may own a merged line with slightly looser geometry, but still requires substantial mask containment.
+- Near-tie candidate ownership is held instead of forced.
+- A physical container may create multiple translation units when its owned lines form distant local clusters. "Container-first" no longer means "one candidate always equals one unit".
+- Lines rejected as weak/ambiguous owners are isolated and are not fed back into the legacy grouper.
+- Truly unowned lines may still use the legacy grouper as a compatibility fallback.
+- Regression checks cover weak half-overlap rejection and broad-container internal splitting.
+
+The purpose is to preserve container-first provenance while preventing the over-merge and mixed-dialogue failures visible in test pic/0006.
+
 ### Stage 4 - container-scoped Vision review
 
 Vision primarily receives one container crop and that container's OCR observations.
