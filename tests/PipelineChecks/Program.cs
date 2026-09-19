@@ -389,6 +389,74 @@ finally
     }
 }
 
+string auditRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_audit_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(auditRoot);
+    Check("output layout creates debug json and audit folders",
+        Directory.Exists(OutputDirectoryLayout.Debug(auditRoot)) &&
+        Directory.Exists(OutputDirectoryLayout.Json(auditRoot)) &&
+        Directory.Exists(OutputDirectoryLayout.Audit(auditRoot)));
+
+    string auditSource = Path.Combine(auditRoot, "audit_source.png");
+    string auditFinal = Path.Combine(auditRoot, "audit_source.translated.webp");
+
+    using (var src = Mat.Zeros(40, 50, MatType.CV_8UC3).ToMat())
+    {
+        src.SetTo(new Scalar(255, 255, 255));
+        Cv2.Rectangle(src, new Rect(10, 10, 10, 8), new Scalar(0, 0, 0), -1);
+        Cv2.ImWrite(auditSource, src);
+
+        using var fin = src.Clone();
+        Cv2.Rectangle(fin, new Rect(12, 12, 5, 4), new Scalar(0, 0, 255), -1);
+        Cv2.ImWrite(
+            auditFinal,
+            fin,
+            [new ImageEncodingParam(ImwriteFlags.WebPQuality, 101)]);
+    }
+
+    var emptyStage = new OcrStageResult(
+        [],
+        [],
+        [],
+        [],
+        new OcrUnitBuildResult([], 0, 0, 0))
+    {
+        PageAnalysis = new PageAnalysisResult([], [], "test", false)
+    };
+
+    await new FinalAuditService().GenerateAsync(
+        auditSource,
+        auditFinal,
+        auditRoot,
+        emptyStage,
+        []);
+
+    Check("final audit writes compare json and summary after output",
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_source.final_compare.webp")) &&
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_source.final_audit.json")) &&
+        File.Exists(Path.Combine(
+            OutputDirectoryLayout.Audit(auditRoot),
+            "audit_summary.json")));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(auditRoot))
+            Directory.Delete(auditRoot, true);
+    }
+    catch
+    {
+    }
+}
+
 if (string.Equals(
         Environment.GetEnvironmentVariable("LMT_RTDETR_DOWNLOAD_SMOKE"),
         "1",
