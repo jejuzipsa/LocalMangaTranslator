@@ -92,6 +92,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -152,6 +153,20 @@
                     <Button Grid.Column="6" x:Name="InstallModelButton" Content="선택 모델 확인/설치"
                             Click="InstallModel_Click" Padding="12,5" MinHeight="32"/>
                 </Grid>
+
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            Margin="0,8,0,0">
+                    <CheckBox x:Name="HybridPageAnalysisCheckBox"
+                              Content="만화 전용 페이지 분석 (RT-DETR + 기존 검출)"
+                              IsChecked="True"
+                              VerticalAlignment="Center"
+                              Margin="0,0,24,0"/>
+                    <CheckBox x:Name="TargetedRegionOcrCheckBox"
+                              Content="검출 영역 OCR 보강"
+                              IsChecked="True"
+                              VerticalAlignment="Center"/>
+                </StackPanel>
             </Grid>
         </Border>
 
