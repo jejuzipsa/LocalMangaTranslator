@@ -6,6 +6,7 @@ namespace LocalMangaTranslator.Services;
 
 public static class PipelineDebugWriter
 {
+    const int DebugWebpQuality = 82;
     public static void SavePreVisionDiagnostics(
         string sourcePath,
         string outputDirectory,
@@ -31,7 +32,7 @@ public static class PipelineDebugWriter
                 stage.PageCandidates,
                 Path.Combine(
                     debugDirectory,
-                    $"{baseName}.00_page_candidates.png"));
+                    $"{baseName}.00_page_candidates.webp"));
 
             var candidateDocument =
                 stage.PageCandidates
@@ -196,7 +197,13 @@ public static class PipelineDebugWriter
 
         Cv2.ImWrite(
             outputPath,
-            debug);
+            debug,
+            new[]
+            {
+                new ImageEncodingParam(
+                    ImwriteFlags.WebPQuality,
+                    DebugWebpQuality)
+            });
     }
 }
 

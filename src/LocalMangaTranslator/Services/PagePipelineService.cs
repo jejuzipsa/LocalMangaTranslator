@@ -169,7 +169,7 @@ public sealed class PagePipelineService
             Path.Combine(
                 outputDirectory,
                 Path.GetFileNameWithoutExtension(sourcePath) +
-                ".translated.png");
+                ".translated.webp");
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Render,
