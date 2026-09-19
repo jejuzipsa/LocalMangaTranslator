@@ -470,6 +470,45 @@ public sealed class RenderPipelineService
             relaxed = approvedLineIds.Count > 0;
         }
 
+        byte[]? textRegionMask =
+            null;
+
+        bool learnedTextRegion =
+            false;
+
+        if (approvedLineIds.Count == 0 &&
+            HasTrustedTextRegionEvidence(
+                region,
+                layout))
+        {
+            approvedLineIds =
+                lines
+                    .Where(x =>
+                        IsTextRegionEraseEligibleLine(
+                            x.Source,
+                            region.Source.RegionTextRegion!))
+                    .Select(x =>
+                        x.LineId)
+                    .Distinct(
+                        StringComparer.Ordinal)
+                    .ToList();
+
+            if (approvedLineIds.Count > 0)
+            {
+                textRegionMask =
+                    BuildTextRegionAllowedMask(
+                        layout,
+                        region.Source.RegionTextRegion!);
+
+                learnedTextRegion =
+                    textRegionMask.Any(x =>
+                        x != 0);
+
+                if (!learnedTextRegion)
+                    approvedLineIds = [];
+            }
+        }
+
         if (approvedLineIds.Count == 0)
         {
             return new ErasePlan(
@@ -488,11 +527,15 @@ public sealed class RenderPipelineService
             unitId,
             containerId,
             true,
-            relaxed
-                ? "safe_container_text_relaxed"
-                : "safe_container_text",
+            learnedTextRegion
+                ? "safe_rtdetr_text_region"
+                : relaxed
+                    ? "safe_container_text_relaxed"
+                    : "safe_container_text",
             layout.Bounds,
-            layout.SafeMask.ToArray(),
+            learnedTextRegion
+                ? textRegionMask!
+                : layout.SafeMask.ToArray(),
             width,
             height,
             approvedLineIds);
@@ -599,6 +642,181 @@ public sealed class RenderPipelineService
             return false;
 
         return true;
+    }
+
+    static bool HasTrustedTextRegionEvidence(
+        VisionTranslation region,
+        BalloonLayout layout)
+    {
+        if (!layout.Detected ||
+            region.Source.RegionContainer is not { } candidate ||
+            region.Source.RegionTextRegion is not { } textRegion ||
+            textRegion.Kind != PageRegionKind.TextBubble ||
+            textRegion.Score < 0.72f)
+        {
+            return false;
+        }
+
+        var bubbleBounds =
+            candidate.LearnedBounds ??
+            candidate.Bounds;
+
+        double textInsideBubble =
+            IntersectionArea(
+                textRegion.Bounds,
+                bubbleBounds) /
+            Math.Max(
+                1.0,
+                textRegion.Bounds.Width *
+                (double)textRegion.Bounds.Height);
+
+        return textInsideBubble >= 0.60;
+    }
+
+    static bool IsTextRegionEraseEligibleLine(
+        OcrLine line,
+        PageRegion textRegion)
+    {
+        int meaningful =
+            line.Text.Trim().Count(
+                char.IsLetterOrDigit);
+
+        if (meaningful < 1 ||
+            line.Confidence < 0.30f)
+        {
+            return false;
+        }
+
+        var lineRect =
+            new CvRect(
+                (int)Math.Floor(
+                    line.X),
+                (int)Math.Floor(
+                    line.Y),
+                Math.Max(
+                    1,
+                    (int)Math.Ceiling(
+                        line.W)),
+                Math.Max(
+                    1,
+                    (int)Math.Ceiling(
+                        line.H)));
+
+        double coverage =
+            IntersectionArea(
+                lineRect,
+                textRegion.Bounds) /
+            Math.Max(
+                1.0,
+                lineRect.Width *
+                (double)lineRect.Height);
+
+        return coverage >= 0.40;
+    }
+
+    static byte[] BuildTextRegionAllowedMask(
+        BalloonLayout layout,
+        PageRegion textRegion)
+    {
+        int width =
+            Math.Max(
+                1,
+                layout.Bounds.Width);
+
+        int height =
+            Math.Max(
+                1,
+                layout.Bounds.Height);
+
+        var mask =
+            new byte[
+                width *
+                height];
+
+        int left =
+            Math.Max(
+                layout.Bounds.Left,
+                textRegion.Bounds.Left);
+
+        int top =
+            Math.Max(
+                layout.Bounds.Top,
+                textRegion.Bounds.Top);
+
+        int right =
+            Math.Min(
+                layout.Bounds.Right,
+                textRegion.Bounds.Right);
+
+        int bottom =
+            Math.Min(
+                layout.Bounds.Bottom,
+                textRegion.Bounds.Bottom);
+
+        if (right <= left ||
+            bottom <= top)
+        {
+            return mask;
+        }
+
+        // Keep a tiny detector-edge guard while still allowing the OCR glyph
+        // dilation to cover anti-aliased outlines. The final inpaint mask is
+        // clipped to this RT-DETR TextBubble rectangle.
+        int guard =
+            Math.Clamp(
+                Math.Min(
+                    right - left,
+                    bottom - top) / 80,
+                0,
+                2);
+
+        left += guard;
+        top += guard;
+        right -= guard;
+        bottom -= guard;
+
+        if (right <= left ||
+            bottom <= top)
+        {
+            return mask;
+        }
+
+        for (int y = top;
+             y < bottom;
+             y++)
+        {
+            int localY =
+                y -
+                layout.Bounds.Y;
+
+            if (localY < 0 ||
+                localY >= height)
+            {
+                continue;
+            }
+
+            for (int x = left;
+                 x < right;
+                 x++)
+            {
+                int localX =
+                    x -
+                    layout.Bounds.X;
+
+                if (localX < 0 ||
+                    localX >= width)
+                {
+                    continue;
+                }
+
+                mask[
+                    localY * width +
+                    localX] =
+                    255;
+            }
+        }
+
+        return mask;
     }
 
     static TextLayoutPlan CreateTextLayoutPlan(
