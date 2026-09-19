@@ -6,8 +6,9 @@ namespace LocalMangaTranslator.Services;
 /// <summary>
 /// Architecture 2.0 page analysis branch.
 /// Region detection happens before and independently from OCR recognition.
-/// Existing geometric detection remains available as a fallback and supplies
-/// interior masks while RT-DETR contributes learned comic-layout evidence.
+/// RT-DETR owns the page region map. The legacy geometric detector may only
+/// supply a better interior mask for an already detected RT-DETR bubble; it
+/// cannot create additional containers in Architecture 2.0 mode.
 /// </summary>
 public sealed class PageAnalysisService : IDisposable
 {
@@ -71,7 +72,7 @@ public sealed class PageAnalysisService : IDisposable
             fused,
             "hybrid_rtdetr",
             true,
-            $"regions={regions.Count}; legacy={legacy.Count}; fused={fused.Count}");
+            $"regions={regions.Count}; legacy_mask_candidates={legacy.Count}; active_region_containers={fused.Count}");
     }
 
     public static IReadOnlyList<ContainerCandidate> FuseContainers(
@@ -87,84 +88,32 @@ public sealed class PageAnalysisService : IDisposable
 
         if (source.Empty())
             throw new InvalidOperationException(
-                "페이지 분석 fusion을 위해 원본 이미지를 열 수 없습니다.");
+                "페이지 분석을 위해 원본 이미지를 열 수 없습니다.");
 
+        // 0011 region-first rule:
+        // only RT-DETR Bubble regions may become speech containers.
+        // Legacy candidates are mask donors only and can never introduce an
+        // additional container by themselves.
         var bubbles =
             regions
-                .Where(
-                    x =>
-                        x.Kind ==
-                        PageRegionKind.Bubble)
-                .OrderByDescending(
-                    x => x.Score)
+                .Where(x =>
+                    x.Kind == PageRegionKind.Bubble &&
+                    x.Score >= 0.30f)
+                .OrderBy(x => x.Bounds.Y)
+                .ThenBy(x => x.Bounds.X)
                 .ToList();
 
-        var fused =
-            new List<ContainerCandidate>();
+        var active =
+            new List<ContainerCandidate>(
+                bubbles.Count);
 
-        foreach (var candidate in legacy)
-        {
-            token.ThrowIfCancellationRequested();
-
-            var supportingBubble =
-                bubbles
-                    .Select(
-                        bubble => new
-                        {
-                            Bubble = bubble,
-                            Overlap =
-                                Containment(
-                                    candidate.Bounds,
-                                    bubble.Bounds)
-                        })
-                    .Where(
-                        x =>
-                            x.Overlap >= 0.25)
-                    .OrderByDescending(
-                        x => x.Overlap)
-                    .ThenByDescending(
-                        x => x.Bubble.Score)
-                    .FirstOrDefault();
-
-            if (supportingBubble is null)
-            {
-                fused.Add(
-                    candidate);
-                continue;
-            }
-
-            fused.Add(
-                candidate with
-                {
-                    DetectorMode =
-                        $"rtdetr+{candidate.DetectorMode}",
-                    Score =
-                        candidate.Score +
-                        1.2 +
-                        supportingBubble.Bubble.Score,
-                    FillRatio =
-                        Math.Clamp(
-                            candidate.FillRatio +
-                            0.04,
-                            0,
-                            1)
-                });
-        }
+        var usedLegacy =
+            new HashSet<string>(
+                StringComparer.Ordinal);
 
         foreach (var bubble in bubbles)
         {
             token.ThrowIfCancellationRequested();
-
-            bool represented =
-                fused.Any(
-                    candidate =>
-                        Containment(
-                            candidate.Bounds,
-                            bubble.Bounds) >=
-                        0.55);
-
-            if (represented)
-                continue;
 
             var bounds =
                 ClampRect(
@@ -178,19 +127,87 @@ public sealed class PageAnalysisService : IDisposable
                 continue;
             }
 
+            var bestLegacy =
+                legacy
+                    .Where(candidate =>
+                        !usedLegacy.Contains(
+                            candidate.CandidateId))
+                    .Select(candidate => new
+                    {
+                        Candidate = candidate,
+                        IoU = IoU(
+                            candidate.Bounds,
+                            bounds),
+                        BubbleCoverage =
+                            IntersectionArea(
+                                candidate.Bounds,
+                                bounds) /
+                            Math.Max(
+                                1.0,
+                                bounds.Width *
+                                (double)bounds.Height),
+                        CandidateCoverage =
+                            IntersectionArea(
+                                candidate.Bounds,
+                                bounds) /
+                            Math.Max(
+                                1.0,
+                                candidate.Bounds.Width *
+                                (double)candidate.Bounds.Height)
+                    })
+                    .Where(x =>
+                        x.IoU >= 0.22 ||
+                        (x.BubbleCoverage >= 0.45 &&
+                         x.CandidateCoverage >= 0.45))
+                    .OrderByDescending(x => x.IoU)
+                    .ThenByDescending(x =>
+                        Math.Min(
+                            x.BubbleCoverage,
+                            x.CandidateCoverage))
+                    .ThenByDescending(x => x.Candidate.Score)
+                    .FirstOrDefault();
+
+            if (bestLegacy is not null)
+            {
+                usedLegacy.Add(
+                    bestLegacy.Candidate.CandidateId);
+
+                // Keep the contour-derived bounds/mask only because the learned
+                // region already established that this physical area is a
+                // speech bubble.
+                active.Add(
+                    bestLegacy.Candidate with
+                    {
+                        CandidateId = "",
+                        Kind =
+                            ContainerCandidateKind.Speech,
+                        DetectorMode =
+                            "rtdetr_region+legacy_mask",
+                        Score =
+                            Math.Max(
+                                5.0,
+                                bestLegacy.Candidate.Score) +
+                            bubble.Score * 1.5,
+                        RegionId =
+                            bubble.RegionId
+                    });
+
+                continue;
+            }
+
             var (mask, fillRatio) =
                 BuildSafeRectangleMask(
                     bounds);
 
-            fused.Add(
+            active.Add(
                 new ContainerCandidate(
                     "",
                     ContainerCandidateKind.Speech,
                     bounds,
-                    "rtdetr_bubble",
+                    "rtdetr_region_rect",
                     false,
-                    4.8 +
-                    bubble.Score * 2.2,
+                    5.0 +
+                    bubble.Score * 2.0,
                     fillRatio,
                     CountBorderTouches(
                         bounds,
@@ -198,12 +215,16 @@ public sealed class PageAnalysisService : IDisposable
                         source.Rows),
                     mask,
                     bounds.Width,
-                    bounds.Height));
+                    bounds.Height)
+                {
+                    RegionId =
+                        bubble.RegionId
+                });
         }
 
         var canonical =
             Canonicalize(
-                fused);
+                active);
 
         return canonical
             .Select(
@@ -214,6 +235,38 @@ public sealed class PageAnalysisService : IDisposable
                             $"PC{index + 1:000}"
                     })
             .ToList();
+    }
+
+    static double IoU(
+        Rect a,
+        Rect b)
+    {
+        double intersection =
+            IntersectionArea(
+                a,
+                b);
+
+        if (intersection <= 0)
+            return 0;
+
+        double areaA =
+            Math.Max(
+                1,
+                a.Width *
+                (double)a.Height);
+
+        double areaB =
+            Math.Max(
+                1,
+                b.Width *
+                (double)b.Height);
+
+        return intersection /
+               Math.Max(
+                   1,
+                   areaA +
+                   areaB -
+                   intersection);
     }
 
     static (byte[] Mask, double FillRatio) BuildSafeRectangleMask(
@@ -316,15 +369,14 @@ public sealed class PageAnalysisService : IDisposable
             // the learned detector and geometric detector refer to the same
             // physical bubble.
             bool candidateHasContour =
-                !string.Equals(
-                    candidate.DetectorMode,
-                    "rtdetr_bubble",
+                candidate.DetectorMode.Contains(
+                    "+legacy_mask",
                     StringComparison.Ordinal);
 
             bool existingFallback =
                 string.Equals(
                     kept[duplicate].DetectorMode,
-                    "rtdetr_bubble",
+                    "rtdetr_region_rect",
                     StringComparison.Ordinal);
 
             if (candidateHasContour &&

@@ -6,31 +6,41 @@ Windows용 로컬 만화 이미지 번역기.
 
 ## 기본 파이프라인
 
-Architecture 2.0부터 페이지 구조 분석과 문자 인식을 서로 독립적으로 수행합니다.
+0011부터 페이지 구조와 문자 판독을 끝까지 분리합니다.
 
 ```text
 이미지
-├─ Page Analysis
-│  ├─ 만화 전용 RT-DETR: 말풍선 / 말풍선 안 글자 / 말풍선 밖 글자
-│  └─ 기존 기하 검출: 컨테이너 내부 mask 보조
+├─ RT-DETR Region Map
+│  ├─ bubble
+│  ├─ text_bubble
+│  └─ text_free
 │
-└─ Text Analysis
-   ├─ PP-OCRv5 / RapidOCR 전체 페이지 OCR
-   └─ RT-DETR text region 대상 1x / 2x OCR
+├─ OCR A: PP-OCRv5 / RapidOCR
+│  └─ 전체 페이지 + RT-DETR 확정 bubble focused OCR
+│
+└─ OCR B: Baberu OCR
+   └─ RT-DETR speech-bubble crop
           ↓
-      Evidence Fusion
+      Region + OCR Evidence
           ↓
       Vision OCR 검수
           ↓
        최종 번역
           ↓
-   안전 ErasePlan / 조판
+   Region SafeMask 기반
+   ErasePlan + Layout
           ↓
-   WebP Lossless 결과
+   WebP Lossless 결과 저장
+          ↓
+   완료 검토 로그
 ```
 
-RT-DETR은 문자열을 읽지 않습니다. 페이지의 구조/텍스트 영역을 찾는 별도 detector이며,
-OCR 결과와 공간 evidence를 합친 뒤에만 번역 unit을 만듭니다.
+RT-DETR이 페이지 구조를 결정하고, legacy 기하 검출은 이미 확인된 말풍선의
+contour/safe-mask 보조에만 사용합니다. RapidOCR 영역 재검출 결과는 진단용으로
+분리하며 canonical OCR line에 직접 합치지 않습니다.
+
+Baberu는 별도의 만화 말풍선 OCR입니다. OCR A와 OCR B가 다르면 Vision 단계가
+실제 이미지를 보고 판정하며, 어느 OCR의 문자열도 그 자체로 삭제 권한을 주지 않습니다.
 
 ## 목표 UI
 
@@ -72,3 +82,22 @@ models/
 ## 조판
 
 렌더 단계는 말풍선/캡션의 색을 흰색으로 가정하지 않습니다. OCR 블록 주변의 경계 구조를 찾아 컨테이너를 추정하고, 글자 픽셀만 지운 뒤 원래 컨테이너를 유지합니다. 번역문은 내부 안전영역에 맞춰 자동 줄바꿈, 폰트 크기, 줄간격을 조절합니다.
+
+
+## 결과 폴더 구조
+
+출력 루트에는 최종 번역 이미지만 남깁니다.
+
+```text
+output/
+  debug/
+  json/
+  완료검토로그/
+  page001.translated.webp
+  page002.translated.webp
+```
+
+- `debug/`: 단계별 디버그 이미지와 진단 JSON
+- `json/`: 페이지별 최종 `*.translation.json`
+- `완료검토로그/`: 최종 결과 비교/Audit 자료
+- 출력 루트: 최종 번역 이미지

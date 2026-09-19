@@ -20,7 +20,9 @@ public enum PageRegionKind
 
 public sealed record PipelineOptions(
     RegionAnalysisMode RegionAnalysis = RegionAnalysisMode.HybridRtdetr,
-    bool EnableTargetedRegionOcr = true);
+    bool EnableTargetedRegionOcr = false,
+    bool EnableBaberuOcr = true,
+    bool EnableFinalAudit = true);
 
 public sealed record PageRegion(
     string RegionId,

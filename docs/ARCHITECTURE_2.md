@@ -64,3 +64,18 @@ RenderPipeline의 erase safety 정책은 0009 그대로 유지한다.
 - `검출 영역 OCR 보강`
 
 둘을 끄면 이전 방식과 직접 비교할 수 있다.
+
+
+## 0011 region-first 변경
+
+0010의 `legacy candidates + RT-DETR evidence` fusion은 사용하지 않는다.
+
+- RT-DETR `bubble`만 active speech container를 만든다.
+- legacy detector는 RT-DETR bubble과 겹칠 때만 contour/safe-mask donor로 사용한다.
+- unmatched legacy candidate는 Architecture 2.0 container가 될 수 없다.
+- RapidOCR region pass는 진단 evidence로만 남고 canonical line에 직접 merge하지 않는다.
+- Baberu OCR은 독립 OCR B이며 RT-DETR bubble crop을 읽는다.
+- OCR B가 단독으로 unit을 복구하려면 RT-DETR `text_bubble` evidence가 반드시 있어야 한다.
+- Vision은 primary OCR과 secondary OCR을 함께 보되 둘 중 하나를 자동 정답으로 취급하지 않는다.
+
+완성 이미지 저장 후 별도 Final Audit를 실행한다. Audit 실패는 결과물 저장을 실패 처리하지 않는다.

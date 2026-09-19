@@ -154,19 +154,29 @@
                             Click="InstallModel_Click" Padding="12,5" MinHeight="32"/>
                 </Grid>
 
-                <StackPanel Grid.Row="2"
-                            Orientation="Horizontal"
-                            Margin="0,8,0,0">
+                <WrapPanel Grid.Row="2"
+                           Margin="0,8,0,0">
                     <CheckBox x:Name="HybridPageAnalysisCheckBox"
-                              Content="만화 전용 페이지 분석 (RT-DETR + 기존 검출)"
+                              Content="RT-DETR 페이지 분석"
                               IsChecked="True"
                               VerticalAlignment="Center"
-                              Margin="0,0,24,0"/>
-                    <CheckBox x:Name="TargetedRegionOcrCheckBox"
-                              Content="검출 영역 OCR 보강"
+                              Margin="0,0,24,6"/>
+                    <CheckBox x:Name="BaberuOcrCheckBox"
+                              Content="Baberu 보조 OCR"
                               IsChecked="True"
-                              VerticalAlignment="Center"/>
-                </StackPanel>
+                              VerticalAlignment="Center"
+                              Margin="0,0,24,6"/>
+                    <CheckBox x:Name="TargetedRegionOcrCheckBox"
+                              Content="RapidOCR 영역 진단"
+                              IsChecked="False"
+                              VerticalAlignment="Center"
+                              Margin="0,0,24,6"/>
+                    <CheckBox x:Name="FinalAuditCheckBox"
+                              Content="완료 검토 로그"
+                              IsChecked="True"
+                              VerticalAlignment="Center"
+                              Margin="0,0,0,6"/>
+                </WrapPanel>
             </Grid>
         </Border>
 
