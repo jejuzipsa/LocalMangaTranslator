@@ -7,6 +7,95 @@ namespace LocalMangaTranslator.Services;
 public static class PipelineDebugWriter
 {
     const int DebugWebpQuality = 82;
+
+    public static void SavePageAnalysisDiagnostics(
+        string sourcePath,
+        string outputDirectory,
+        PageAnalysisResult analysis)
+    {
+        try
+        {
+            string debugDirectory = Path.Combine(outputDirectory, "debug");
+            Directory.CreateDirectory(debugDirectory);
+
+            string baseName =
+                Path.GetFileNameWithoutExtension(sourcePath) + ".translated";
+
+            File.WriteAllText(
+                Path.Combine(debugDirectory, $"{baseName}.00_region_analysis.json"),
+                JsonSerializer.Serialize(new
+                {
+                    schema = "page-analysis-v2",
+                    mode = analysis.Mode,
+                    external_detector_used = analysis.ExternalDetectorUsed,
+                    external_detector_status = analysis.ExternalDetectorStatus,
+                    regions = analysis.Regions.Select(x => new
+                    {
+                        id = x.RegionId,
+                        kind = x.Kind.ToString(),
+                        x = x.Bounds.X,
+                        y = x.Bounds.Y,
+                        width = x.Bounds.Width,
+                        height = x.Bounds.Height,
+                        score = x.Score,
+                        source = x.Source
+                    }),
+                    fused_containers = analysis.ContainerCandidates.Select(x => new
+                    {
+                        id = x.CandidateId,
+                        kind = x.Kind.ToString(),
+                        x = x.Bounds.X,
+                        y = x.Bounds.Y,
+                        width = x.Bounds.Width,
+                        height = x.Bounds.Height,
+                        mode = x.DetectorMode,
+                        score = x.Score,
+                        fill_ratio = x.FillRatio
+                    })
+                }, new JsonSerializerOptions { WriteIndented = true }));
+
+            using var source = Cv2.ImRead(sourcePath, ImreadModes.Color);
+            if (source.Empty()) return;
+            using var debug = source.Clone();
+
+            foreach (var region in analysis.Regions)
+            {
+                Scalar color = region.Kind switch
+                {
+                    PageRegionKind.Bubble => new Scalar(0, 220, 0),
+                    PageRegionKind.TextBubble => new Scalar(0, 0, 255),
+                    PageRegionKind.TextFree => new Scalar(255, 0, 220),
+                    PageRegionKind.Panel => new Scalar(255, 180, 0),
+                    _ => new Scalar(180, 180, 180)
+                };
+
+                Cv2.Rectangle(debug, region.Bounds, color, 2);
+                Cv2.PutText(
+                    debug,
+                    $"{region.RegionId}:{region.Kind}:{region.Score:0.00}",
+                    new Point(region.Bounds.X, Math.Max(14, region.Bounds.Y - 3)),
+                    HersheyFonts.HersheySimplex,
+                    0.34,
+                    color,
+                    1,
+                    LineTypes.AntiAlias);
+            }
+
+            Cv2.ImWrite(
+                Path.Combine(debugDirectory, $"{baseName}.00_region_analysis.webp"),
+                debug,
+                new[]
+                {
+                    new ImageEncodingParam(
+                        ImwriteFlags.WebPQuality,
+                        DebugWebpQuality)
+                });
+        }
+        catch
+        {
+            // Debug output must never fail page processing.
+        }
+    }
     public static void SavePreVisionDiagnostics(
         string sourcePath,
         string outputDirectory,
@@ -69,10 +158,12 @@ public static class PipelineDebugWriter
                 Path.Combine(debugDirectory, $"{baseName}.00_container_ocr_validation.json"),
                 JsonSerializer.Serialize(new
                 {
-                    schema = "container-ocr-v1",
+                    schema = "container-ocr-v2",
                     candidate_decisions = stage.CandidateDecisions,
                     attempts = stage.ContainerAttempts,
-                    line_decisions = stage.ContainerLineDecisions
+                    line_decisions = stage.ContainerLineDecisions,
+                    region_attempts = stage.RegionAttempts,
+                    region_line_decisions = stage.RegionLineDecisions
                 }, new JsonSerializerOptions { WriteIndented = true }));
 
             var observationDocument =
