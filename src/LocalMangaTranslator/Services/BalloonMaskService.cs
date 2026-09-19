@@ -51,6 +51,18 @@ public static class BalloonMaskService
         Mat Mask,
         string Mode);
 
+    sealed record CandidateRejection(
+        string Reason,
+        double MaskAreaRatio,
+        double BBoxAreaRatio,
+        double Coverage,
+        int TouchesBorder,
+        double InnerRatio,
+        double LineContainment,
+        double TextureStdDev,
+        double Score,
+        bool RetrySuggested);
+
     public static BalloonLayout Analyze(
         Mat source,
         OcrTextBlock block,
@@ -67,137 +79,283 @@ public static class BalloonMaskService
         bool caption =
             string.Equals(type, "caption", StringComparison.OrdinalIgnoreCase);
 
-        MaskCandidate? candidate = null;
+        CandidateRejection? bestRejected = null;
+        bool retrySuggested = false;
+        bool sawCandidate = false;
 
-        // 사각 내레이션/캡션은 일반 말풍선 flood-fill보다 먼저 전용 검출한다.
-        if (caption)
-            candidate = DetectCaptionMask(source, blockRect);
-
-        candidate ??= DetectSpeechMask(source, blockRect, caption);
-
-        if (candidate is null)
-            return CreateConservativeFallback(source, block, blockRect, type, "no_mask");
-
-        using (candidate.Mask)
+        BalloonLayout? TryCandidate(MaskCandidate? candidate)
         {
-            var innerLocal = FindLargestRectangle(candidate.Mask);
+            if (candidate is null)
+                return null;
 
-            double blockArea = Math.Max(
-                1.0,
-                blockRect.Width * (double)blockRect.Height);
+            sawCandidate = true;
 
-            double maskArea = Cv2.CountNonZero(candidate.Mask);
-            double bboxArea = Math.Max(
-                1.0,
-                candidate.Bounds.Width * (double)candidate.Bounds.Height);
-
-            double maskAreaRatio = maskArea / blockArea;
-            double bboxAreaRatio = bboxArea / blockArea;
-            double coverage = IntersectionArea(candidate.Bounds, blockRect) / blockArea;
-            int touchesBorder = CountTouchesSearchBorder(candidate.Bounds, candidate.Search);
-
-            double innerArea = Math.Max(
-                0.0,
-                innerLocal.Width * (double)innerLocal.Height);
-
-            double innerRatio = maskArea > 0
-                ? innerArea / maskArea
-                : 0;
-
-            double lineContainment = ComputeLineContainment(
-                candidate.Mask,
-                candidate.Bounds,
-                block.Lines);
-
-            double textureStdDev = ComputeTextureStdDev(
-                source,
-                candidate.Mask,
-                candidate.Bounds,
-                block.Lines);
-
-            var reasons = new List<string>();
-
-            double maxMaskRatio = caption ? 14.0 : 18.0;
-            double maxBBoxRatio = caption ? 18.0 : 24.0;
-
-            if (maskAreaRatio > maxMaskRatio)
-                reasons.Add("too_large_mask");
-
-            if (bboxAreaRatio > maxBBoxRatio)
-                reasons.Add("too_large_bbox");
-
-            if (coverage < 0.60)
-                reasons.Add("low_coverage");
-
-            if (touchesBorder >= 3)
-                reasons.Add("touches_border");
-
-            if (innerRatio < 0.15)
-                reasons.Add("low_inner_ratio");
-
-            if (lineContainment < 0.70)
-                reasons.Add("low_line_containment");
-
-            // 색 있는 말풍선은 허용한다. 다만 큰 영역인데 내부 질감까지 매우 복잡하면
-            // 패널/배경 오탐 가능성이 높으므로 그때만 거른다.
-            if (textureStdDev > 78 &&
-                (maskAreaRatio > 6.0 || bboxAreaRatio > 8.0))
-                reasons.Add("high_texture_variance");
-
-            if (innerLocal.Width < 12 || innerLocal.Height < 12)
-                reasons.Add("tiny_inner_rect");
-
-            if (reasons.Count > 0)
+            using (candidate.Mask)
             {
-                return CreateConservativeFallback(
+                var accepted = TryAcceptCandidate(
                     source,
                     block,
                     blockRect,
                     type,
-                    string.Join(",", reasons),
-                    maskAreaRatio,
-                    bboxAreaRatio,
-                    coverage,
-                    touchesBorder,
-                    innerRatio,
-                    lineContainment,
-                    textureStdDev,
-                    rejectedCandidate: true);
+                    caption,
+                    candidate,
+                    out var rejected);
+
+                if (accepted is not null)
+                    return accepted;
+
+                retrySuggested |= rejected.RetrySuggested;
+
+                if (bestRejected is null ||
+                    rejected.Score > bestRejected.Score)
+                {
+                    bestRejected = rejected;
+                }
+
+                return null;
+            }
+        }
+
+        // 1차: 기존 크기의 캡션/말풍선 후보를 모두 확인한다.
+        // 캡션 전용 후보가 잡혔더라도 검증에서 탈락하면 flood-fill 후보도 확인한다.
+        if (caption)
+        {
+            var accepted = TryCandidate(
+                DetectCaptionMask(
+                    source,
+                    blockRect,
+                    searchScale: 1.0,
+                    mode: "caption"));
+
+            if (accepted is not null)
+                return accepted;
+        }
+
+        {
+            var accepted = TryCandidate(
+                DetectSpeechMask(
+                    source,
+                    blockRect,
+                    caption,
+                    searchAreaRatio: caption ? 2.1 : 2.5,
+                    mode: caption ? "caption_flood" : "speech"));
+
+            if (accepted is not null)
+                return accepted;
+        }
+
+        // 0001 회귀셋에서 컨테이너 거절 27개 중 대부분이 search 경계 접촉이었다.
+        // 이 경우 곧바로 fallback으로 보내지 말고 검색영역을 넓혀 한 번 더 경계를 찾는다.
+        // 확대 후에도 동일 검증 규칙을 그대로 통과해야 하므로 패널 전체 오탐 안전장치는 유지된다.
+        if (retrySuggested)
+        {
+            if (caption)
+            {
+                var accepted = TryCandidate(
+                    DetectCaptionMask(
+                        source,
+                        blockRect,
+                        searchScale: 1.55,
+                        mode: "caption_retry"));
+
+                if (accepted is not null)
+                    return accepted;
             }
 
-            var inner = ClampRect(
-                candidate.Bounds.X + innerLocal.X,
-                candidate.Bounds.Y + innerLocal.Y,
-                innerLocal.Width,
-                innerLocal.Height,
-                source.Cols,
-                source.Rows);
+            {
+                var accepted = TryCandidate(
+                    DetectSpeechMask(
+                        source,
+                        blockRect,
+                        caption,
+                        searchAreaRatio: caption ? 4.2 : 5.0,
+                        mode: caption ? "caption_flood_retry" : "speech_retry"));
 
-            bool dark = EstimateDarkBackground(
-                source,
-                inner,
-                block.Lines);
-
-            return new BalloonLayout(
-                candidate.Bounds,
-                inner,
-                true,
-                dark,
-                ToByteArray(candidate.Mask),
-                candidate.Mask.Cols,
-                candidate.Mask.Rows,
-                type,
-                candidate.Mode,
-                true,
-                "ok",
-                maskAreaRatio,
-                bboxAreaRatio,
-                coverage,
-                touchesBorder,
-                innerRatio,
-                lineContainment,
-                textureStdDev);
+                if (accepted is not null)
+                    return accepted;
+            }
         }
+
+        if (bestRejected is not null)
+        {
+            return CreateConservativeFallback(
+                source,
+                block,
+                blockRect,
+                type,
+                bestRejected.Reason,
+                bestRejected.MaskAreaRatio,
+                bestRejected.BBoxAreaRatio,
+                bestRejected.Coverage,
+                bestRejected.TouchesBorder,
+                bestRejected.InnerRatio,
+                bestRejected.LineContainment,
+                bestRejected.TextureStdDev,
+                rejectedCandidate: true);
+        }
+
+        return CreateConservativeFallback(
+            source,
+            block,
+            blockRect,
+            type,
+            sawCandidate ? "candidate_unusable" : "no_mask");
+    }
+
+    static BalloonLayout? TryAcceptCandidate(
+        Mat source,
+        OcrTextBlock block,
+        Rect blockRect,
+        string type,
+        bool caption,
+        MaskCandidate candidate,
+        out CandidateRejection rejection)
+    {
+        var innerLocal = FindLargestRectangle(candidate.Mask);
+
+        double blockArea = Math.Max(
+            1.0,
+            blockRect.Width * (double)blockRect.Height);
+
+        double maskArea = Cv2.CountNonZero(candidate.Mask);
+        double bboxArea = Math.Max(
+            1.0,
+            candidate.Bounds.Width * (double)candidate.Bounds.Height);
+
+        double maskAreaRatio = maskArea / blockArea;
+        double bboxAreaRatio = bboxArea / blockArea;
+        double coverage =
+            IntersectionArea(candidate.Bounds, blockRect) /
+            blockArea;
+
+        int touchesBorder =
+            CountTouchesSearchBorder(
+                candidate.Bounds,
+                candidate.Search);
+
+        double innerArea = Math.Max(
+            0.0,
+            innerLocal.Width * (double)innerLocal.Height);
+
+        double innerRatio = maskArea > 0
+            ? innerArea / maskArea
+            : 0;
+
+        double lineContainment = ComputeLineContainment(
+            candidate.Mask,
+            candidate.Bounds,
+            block.Lines);
+
+        double textureStdDev = ComputeTextureStdDev(
+            source,
+            candidate.Mask,
+            candidate.Bounds,
+            block.Lines);
+
+        var reasons = new List<string>();
+
+        double maxMaskRatio = caption ? 14.0 : 18.0;
+        double maxBBoxRatio = caption ? 18.0 : 24.0;
+
+        if (maskAreaRatio > maxMaskRatio)
+            reasons.Add("too_large_mask");
+
+        if (bboxAreaRatio > maxBBoxRatio)
+            reasons.Add("too_large_bbox");
+
+        if (coverage < 0.60)
+            reasons.Add("low_coverage");
+
+        if (touchesBorder >= 3)
+            reasons.Add("touches_border");
+
+        if (innerRatio < 0.15)
+            reasons.Add("low_inner_ratio");
+
+        if (lineContainment < 0.70)
+            reasons.Add("low_line_containment");
+
+        if (textureStdDev > 78 &&
+            (maskAreaRatio > 6.0 ||
+             bboxAreaRatio > 8.0))
+        {
+            reasons.Add("high_texture_variance");
+        }
+
+        if (innerLocal.Width < 12 ||
+            innerLocal.Height < 12)
+        {
+            reasons.Add("tiny_inner_rect");
+        }
+
+        bool retry =
+            reasons.Contains("touches_border") ||
+            reasons.Contains("low_coverage") ||
+            reasons.Contains("low_line_containment");
+
+        double score =
+            coverage * 4.0 +
+            lineContainment * 3.0 +
+            Math.Clamp(innerRatio, 0, 1) -
+            touchesBorder * 0.40 -
+            reasons.Count * 1.50;
+
+        rejection = new CandidateRejection(
+            reasons.Count == 0
+                ? "ok"
+                : string.Join(",", reasons),
+            maskAreaRatio,
+            bboxAreaRatio,
+            coverage,
+            touchesBorder,
+            innerRatio,
+            lineContainment,
+            textureStdDev,
+            score,
+            retry);
+
+        if (reasons.Count > 0)
+            return null;
+
+        var inner = ClampRect(
+            candidate.Bounds.X + innerLocal.X,
+            candidate.Bounds.Y + innerLocal.Y,
+            innerLocal.Width,
+            innerLocal.Height,
+            source.Cols,
+            source.Rows);
+
+        bool dark = EstimateDarkBackground(
+            source,
+            inner,
+            block.Lines);
+
+        string reason =
+            candidate.Mode.EndsWith(
+                "_retry",
+                StringComparison.Ordinal)
+                ? "ok_after_retry"
+                : "ok";
+
+        return new BalloonLayout(
+            candidate.Bounds,
+            inner,
+            true,
+            dark,
+            ToByteArray(candidate.Mask),
+            candidate.Mask.Cols,
+            candidate.Mask.Rows,
+            type,
+            candidate.Mode,
+            true,
+            reason,
+            maskAreaRatio,
+            bboxAreaRatio,
+            coverage,
+            touchesBorder,
+            innerRatio,
+            lineContainment,
+            textureStdDev);
     }
 
     static BalloonLayout CreateConservativeFallback(
@@ -287,16 +445,18 @@ public static class BalloonMaskService
 
     static MaskCandidate? DetectCaptionMask(
         Mat source,
-        Rect blockRect)
+        Rect blockRect,
+        double searchScale,
+        string mode)
     {
         var search = ExpandRect(
             blockRect,
             source.Cols,
             source.Rows,
-            0.70,
-            0.85,
+            0.70 * searchScale,
+            0.85 * searchScale,
             28,
-            220);
+            (int)Math.Round(220 * searchScale));
 
         using var roi = new Mat(source, search);
         using var gray = new Mat();
@@ -428,19 +588,21 @@ public static class BalloonMaskService
             bounds,
             search,
             safe,
-            "caption");
+            mode);
     }
 
     static MaskCandidate? DetectSpeechMask(
         Mat source,
         Rect blockRect,
-        bool caption)
+        bool caption,
+        double searchAreaRatio,
+        string mode)
     {
         var search = EnlargeWindow(
             blockRect,
             source.Cols,
             source.Rows,
-            caption ? 2.1 : 2.5);
+            searchAreaRatio);
 
         using var roi = new Mat(source, search);
 
@@ -671,7 +833,7 @@ public static class BalloonMaskService
                 bounds,
                 search,
                 safeMask,
-                caption ? "caption_flood" : "speech");
+                mode);
         }
         finally
         {
