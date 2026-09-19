@@ -332,16 +332,23 @@ try
         noLegacyLeak[0].RegionId == "RG011" &&
         noLegacyLeak[0].DetectorMode == "rtdetr_region_rect");
 
-    var nearbyBubble = new PageRegion(
+    var leftBubble = new PageRegion(
         "RG012",
         PageRegionKind.Bubble,
-        new Rect(118, 205, 92, 70),
+        new Rect(80, 190, 80, 80),
         0.89f,
+        "test-rtdetr");
+
+    var rightBubble = new PageRegion(
+        "RG013",
+        PageRegionKind.Bubble,
+        new Rect(140, 210, 80, 70),
+        0.88f,
         "test-rtdetr");
 
     var oneLegacyTwoLearned = PageAnalysisService.FuseContainers(
         [candidate],
-        [learnedBubble, nearbyBubble],
+        [leftBubble, rightBubble],
         fusionImagePath);
 
     Check("one legacy contour cannot be reused by two learned bubbles",
