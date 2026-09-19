@@ -319,9 +319,6 @@ public sealed class RenderPipelineService
                 .Where(x => !lineOwners.ContainsKey(x.LineId))
                 .ToList();
 
-            foreach (var line in ownedLines)
-                lineOwners[line.LineId] = unitId;
-
             if (conflicts.Count > 0 &&
                 ownedLines.Count > 0)
             {
@@ -371,7 +368,15 @@ public sealed class RenderPipelineService
             else
                 reason = "ok";
 
-            if (!approved)
+            if (approved)
+            {
+                // Only an actually renderable unit may claim canonical lines.
+                // A rejected unit must not block a later valid unit that shares
+                // one OCR observation.
+                foreach (var line in ownedLines)
+                    lineOwners[line.LineId] = unitId;
+            }
+            else
             {
                 progress?.Report(
                     $"[plan-keep] {unitId}/{item.ContainerId} id={item.Region.Id} reason={reason}");
