@@ -23,13 +23,25 @@ public static class ExternalModelManager
         Timeout = TimeSpan.FromMinutes(20)
     };
 
-    public static string RtdetrModelPath =>
-        Path.Combine(
-            AppContext.BaseDirectory,
-            "models",
-            "layout",
-            "comic-text-bubble",
-            RtdetrFileName);
+    public static string RtdetrModelPath
+    {
+        get
+        {
+            string? overridePath =
+                Environment.GetEnvironmentVariable(
+                    "LMT_RTDETR_MODEL_PATH");
+
+            if (!string.IsNullOrWhiteSpace(overridePath))
+                return overridePath;
+
+            return Path.Combine(
+                AppContext.BaseDirectory,
+                "models",
+                "layout",
+                "comic-text-bubble",
+                RtdetrFileName);
+        }
+    }
 
     public static bool IsRtdetrReady()
         => File.Exists(RtdetrModelPath) &&
