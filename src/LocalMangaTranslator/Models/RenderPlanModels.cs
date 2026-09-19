@@ -29,12 +29,13 @@ public sealed record TextLayoutPlan(
 public sealed record ErasePlan(
     string UnitId,
     string ContainerId,
+    bool Approved,
+    string Reason,
     Rect AllowedBounds,
     byte[] AllowedMask,
     int MaskWidth,
     int MaskHeight,
-    IReadOnlyList<string> LineIds,
-    IReadOnlyList<string> TemporaryDetachedLineIds);
+    IReadOnlyList<string> LineIds);
 
 public sealed record RenderUnitPlan(
     string UnitId,
@@ -65,6 +66,9 @@ public sealed class RenderPlanDiagnostic
     public string ContainerMode { get; set; } = "";
     public bool Approved { get; set; }
     public string Reason { get; set; } = "";
+    public bool EraseApproved { get; set; }
+    public string EraseReason { get; set; } = "";
+    public int EraseEvidenceLineCount { get; set; }
     public bool LayoutFits { get; set; }
     public string LayoutReason { get; set; } = "";
     public double FontSize { get; set; }

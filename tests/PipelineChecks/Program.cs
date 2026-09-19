@@ -1,3 +1,4 @@
+using System.IO;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
 using OpenCvSharp;
@@ -141,6 +142,38 @@ Check("weak ownership line stays isolated", weakOverlapResult.UnitOwnership.Coun
     weakOverlapResult.UnitOwnership[0].IsOrphan &&
     weakOverlapResult.UnitOwnership[0].Reason == "orphan_isolated_weak_owner");
 
+var rescueNeighbor = new OcrLine(145, 220, 40, 12, "COME", 0.93f, "en");
+var rescuableLine = new OcrLine(173, 234, 30, 12, "BACK", 0.91f, "en");
+var rescueResult = unitBuilder.Build(
+    [rescueNeighbor, rescuableLine],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("weak line beside owned speech line is rescued", rescueResult.LineOwnership.Count == 2 &&
+    rescueResult.LineOwnership.Any(x =>
+        x.Assigned &&
+        x.Reason == "rescued_neighbor_geometry"));
+Check("rescued line joins container ownership", rescueResult.UnitOwnership.Any(x =>
+    x.CandidateId == "PC001" &&
+    x.LineIds.Count == 2));
+
+var peerWeak1 = new OcrLine(173, 220, 30, 12, "COME", 0.92f, "en");
+var peerWeak2 = new OcrLine(173, 240, 30, 12, "BACK", 0.91f, "en");
+var peerRescueResult = unitBuilder.Build(
+    [peerWeak1, peerWeak2],
+    [candidate],
+    [eligibleA],
+    [],
+    []);
+Check("two coherent weak lines rescue each other", peerRescueResult.LineOwnership.Count == 2 &&
+    peerRescueResult.LineOwnership.All(x =>
+        x.Assigned &&
+        x.Reason == "rescued_peer_cluster"));
+Check("peer rescue forms a container unit", peerRescueResult.UnitOwnership.Count == 1 &&
+    peerRescueResult.UnitOwnership[0].CandidateId == "PC001" &&
+    peerRescueResult.UnitOwnership[0].LineIds.Count == 2);
+
 var broadCandidate = candidate with
 {
     CandidateId = "PC010",
@@ -165,6 +198,86 @@ Check("broad container splits distant text clusters", splitResult.Units.Count ==
     splitResult.UnitOwnership.All(x => x.Reason == "container_clustered"));
 Check("split clusters keep one active owner per line", splitResult.LineOwnership.Count == 2 &&
     splitResult.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC010"));
+
+var weakArtworkBlock = new OcrTextBlock(
+    900,
+    10,
+    10,
+    56,
+    33,
+    "LEF",
+    1,
+    "en",
+    [new OcrLine(10, 10, 56, 33, "LEF", 0.54f, "en")]);
+var hallucinatedExpansion = new VisionTranslation(
+    900,
+    weakArtworkBlock,
+    "I DEVOUR THEM!",
+    "전부 먹어치워!",
+    "dialogue",
+    true);
+Check("low-confidence short OCR cannot expand into long dialogue",
+    RenderSafetyPolicy.IsSuspiciousVisionExpansion(hallucinatedExpansion));
+
+var highConfidenceShort = hallucinatedExpansion with
+{
+    Source = weakArtworkBlock with
+    {
+        Text = "HER",
+        Lines = [new OcrLine(10, 10, 46, 27, "HER", 0.99f, "en")]
+    },
+    CorrectedText = "FOR MY QUEEN AND HER HEIR!"
+};
+Check("high-confidence short speech may use Vision context",
+    !RenderSafetyPolicy.IsSuspiciousVisionExpansion(highConfidenceShort));
+
+string webpPath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_lossless_{Guid.NewGuid():N}.webp");
+try
+{
+    using var webpSource = Mat.Zeros(3, 4, MatType.CV_8UC3).ToMat();
+    webpSource.Set(0, 0, new Vec3b(3, 17, 251));
+    webpSource.Set(1, 2, new Vec3b(41, 123, 219));
+    webpSource.Set(2, 3, new Vec3b(255, 128, 7));
+
+    bool wroteWebp = Cv2.ImWrite(
+        webpPath,
+        webpSource,
+        new[]
+        {
+            new ImageEncodingParam(
+                ImwriteFlags.WebPQuality,
+                101)
+        });
+
+    Check("lossless WebP encoder writes output", wroteWebp && File.Exists(webpPath));
+
+    using var webpRoundTrip = Cv2.ImRead(
+        webpPath,
+        ImreadModes.Color);
+
+    bool exactWebp =
+        !webpRoundTrip.Empty() &&
+        webpRoundTrip.Rows == webpSource.Rows &&
+        webpRoundTrip.Cols == webpSource.Cols &&
+        webpRoundTrip.At<Vec3b>(0, 0).Equals(webpSource.At<Vec3b>(0, 0)) &&
+        webpRoundTrip.At<Vec3b>(1, 2).Equals(webpSource.At<Vec3b>(1, 2)) &&
+        webpRoundTrip.At<Vec3b>(2, 3).Equals(webpSource.At<Vec3b>(2, 3));
+
+    Check("lossless WebP roundtrip preserves pixels", exactWebp);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(webpPath))
+            File.Delete(webpPath);
+    }
+    catch
+    {
+    }
+}
 
 using var cancellation = new CancellationTokenSource();
 cancellation.Cancel();

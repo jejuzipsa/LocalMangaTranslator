@@ -4,7 +4,7 @@ using OpenCvSharp;
 namespace LocalMangaTranslator.Services;
 
 /// <summary>
-/// 0008 conservative container-first OCR unit builder.
+/// 0009 conservative container-first OCR unit builder with a narrow rescue pass.
 ///
 /// A page candidate may own a line only when container OCR evidence supports it
 /// or when geometry is strong enough to be unambiguous. Broad/weak candidate
@@ -174,6 +174,14 @@ public sealed class OcrContainerUnitBuilder
                 best.Score));
         }
 
+        RescueHeldLines(
+            isolatedHeldLines,
+            assigned,
+            ownership,
+            canonicalContainers,
+            acceptedObservations,
+            token);
+
         var drafts = new List<UnitDraft>();
 
         foreach (var container in canonicalContainers)
@@ -284,6 +292,250 @@ public sealed class OcrContainerUnitBuilder
             UnitOwnership = unitOwnership
         };
     }
+
+    static void RescueHeldLines(
+        List<HeldLine> heldLines,
+        Dictionary<CanonicalContainer, List<CanonicalLine>> assigned,
+        List<LineOwnershipDecision> ownership,
+        IReadOnlyList<CanonicalContainer> containers,
+        IReadOnlyList<OcrObservation> acceptedObservations,
+        CancellationToken token)
+    {
+        // 0008 correctly stopped half-overlapping artwork from becoming a
+        // container owner, but it also isolated an occasional real line inside
+        // an otherwise coherent speech balloon. Rescue only weak (not
+        // ambiguous) lines when a strong neighboring line already owns the same
+        // physical container. This does not lower the global ownership gate.
+        for (int i = heldLines.Count - 1; i >= 0; i--)
+        {
+            token.ThrowIfCancellationRequested();
+
+            var held = heldLines[i];
+            if (!string.Equals(
+                    held.Reason,
+                    "weak_container_owner",
+                    StringComparison.Ordinal))
+                continue;
+
+            var line = held.Line.Line;
+            if (line.Confidence < 0.72f ||
+                MeaningfulTextLength(line.Text) < 2)
+                continue;
+
+            var candidates = containers
+                .Select(container => EvaluateOwnership(
+                    line,
+                    container,
+                    acceptedObservations))
+                .Where(x =>
+                    x.Coverage >= 0.64 &&
+                    x.Container.Candidate.Score >= 4.60 &&
+                    x.Container.Candidate.FillRatio >= 0.60 &&
+                    x.CenterPenalty <= 0.95)
+                .OrderByDescending(x => x.Score)
+                .ThenByDescending(x => x.Coverage)
+                .ToList();
+
+            if (candidates.Count == 0)
+                continue;
+
+            var best = candidates[0];
+            var second = candidates.Count > 1
+                ? candidates[1]
+                : null;
+
+            // Rescue must be more decisive than ordinary assignment because it
+            // exists specifically to avoid restoring artwork false positives.
+            if (second is not null &&
+                (best.Score - second.Score < 1.45 ||
+                 best.Coverage - second.Coverage < 0.10))
+                continue;
+
+            if (!assigned.TryGetValue(
+                    best.Container,
+                    out var neighbors) ||
+                neighbors.Count == 0 ||
+                !neighbors.Any(x => IsCompatibleNeighbor(
+                    line,
+                    x.Line,
+                    best.Container.Candidate.Bounds)))
+                continue;
+
+            neighbors.Add(held.Line);
+
+            int ownershipIndex = ownership.FindIndex(x =>
+                string.Equals(
+                    x.LineId,
+                    held.Line.LineId,
+                    StringComparison.Ordinal));
+
+            if (ownershipIndex >= 0)
+            {
+                ownership[ownershipIndex] = new LineOwnershipDecision(
+                    held.Line.LineId,
+                    best.Container.Candidate.CandidateId,
+                    true,
+                    best.HasContainerEvidence
+                        ? "rescued_container_ocr_evidence"
+                        : "rescued_neighbor_geometry",
+                    best.Coverage,
+                    best.Score);
+            }
+
+            heldLines.RemoveAt(i);
+        }
+
+        // A real speech balloon can occasionally have no single line strong
+        // enough to seed ownership after 0008's stricter candidate-quality
+        // gates. Two or more high-confidence text lines that independently
+        // prefer the same candidate and form a coherent local stack are much
+        // stronger evidence than one isolated artwork fragment.
+        var peerCandidates = new List<(HeldLine Held, OwnershipCandidate Best)>();
+
+        foreach (var held in heldLines)
+        {
+            token.ThrowIfCancellationRequested();
+
+            if (!string.Equals(
+                    held.Reason,
+                    "weak_container_owner",
+                    StringComparison.Ordinal))
+                continue;
+
+            var line = held.Line.Line;
+            if (line.Confidence < 0.78f ||
+                MeaningfulTextLength(line.Text) < 2)
+                continue;
+
+            var evaluated = containers
+                .Select(container => EvaluateOwnership(
+                    line,
+                    container,
+                    acceptedObservations))
+                .Where(x =>
+                    x.Coverage >= 0.80 &&
+                    x.Container.Candidate.Score >= 4.00 &&
+                    x.Container.Candidate.FillRatio >= 0.45 &&
+                    x.CenterPenalty <= 1.05)
+                .OrderByDescending(x => x.Score)
+                .ThenByDescending(x => x.Coverage)
+                .ToList();
+
+            if (evaluated.Count == 0)
+                continue;
+
+            var best = evaluated[0];
+            var second = evaluated.Count > 1
+                ? evaluated[1]
+                : null;
+
+            if (second is not null &&
+                (best.Score - second.Score < 0.75 ||
+                 best.Coverage - second.Coverage < 0.06))
+                continue;
+
+            peerCandidates.Add((held, best));
+        }
+
+        var peerRescued = new HashSet<string>(
+            StringComparer.Ordinal);
+
+        foreach (var group in peerCandidates.GroupBy(x => x.Best.Container))
+        {
+            var items = group.ToList();
+            if (items.Count < 2)
+                continue;
+
+            var coherent = items
+                .Where(item => items.Any(other =>
+                    !ReferenceEquals(
+                        item.Held,
+                        other.Held) &&
+                    IsCompatibleNeighbor(
+                        item.Held.Line.Line,
+                        other.Held.Line.Line,
+                        item.Best.Container.Candidate.Bounds)))
+                .ToList();
+
+            if (coherent.Count < 2)
+                continue;
+
+            foreach (var item in coherent)
+            {
+                if (!peerRescued.Add(
+                        item.Held.Line.LineId))
+                    continue;
+
+                assigned[item.Best.Container].Add(
+                    item.Held.Line);
+
+                int ownershipIndex = ownership.FindIndex(x =>
+                    string.Equals(
+                        x.LineId,
+                        item.Held.Line.LineId,
+                        StringComparison.Ordinal));
+
+                if (ownershipIndex >= 0)
+                {
+                    ownership[ownershipIndex] = new LineOwnershipDecision(
+                        item.Held.Line.LineId,
+                        item.Best.Container.Candidate.CandidateId,
+                        true,
+                        "rescued_peer_cluster",
+                        item.Best.Coverage,
+                        item.Best.Score);
+                }
+            }
+        }
+
+        if (peerRescued.Count > 0)
+        {
+            heldLines.RemoveAll(x =>
+                peerRescued.Contains(
+                    x.Line.LineId));
+        }
+    }
+
+    static bool IsCompatibleNeighbor(
+        OcrLine candidate,
+        OcrLine neighbor,
+        Rect container)
+    {
+        bool candidateVertical = IsVertical(candidate);
+        bool neighborVertical = IsVertical(neighbor);
+
+        if (candidateVertical != neighborVertical)
+            return false;
+
+        double candidateSize = Math.Max(1, Math.Min(candidate.W, candidate.H));
+        double neighborSize = Math.Max(1, Math.Min(neighbor.W, neighbor.H));
+        double sizeRatio = candidateSize / neighborSize;
+        if (sizeRatio < 0.55 || sizeRatio > 1.85)
+            return false;
+
+        double ccx = candidate.X + candidate.W / 2.0;
+        double ccy = candidate.Y + candidate.H / 2.0;
+        double ncx = neighbor.X + neighbor.W / 2.0;
+        double ncy = neighbor.Y + neighbor.H / 2.0;
+
+        if (candidateVertical)
+        {
+            double horizontalGap = Math.Abs(ccx - ncx);
+            double verticalGap = Math.Abs(ccy - ncy);
+
+            return horizontalGap <= Math.Max(12, Math.Max(candidate.W, neighbor.W) * 1.90) &&
+                   verticalGap <= Math.Max(24, container.Height * 0.60);
+        }
+
+        double rowGap = Math.Abs(ccy - ncy);
+        double columnGap = Math.Abs(ccx - ncx);
+
+        return rowGap <= Math.Max(12, Math.Max(candidate.H, neighbor.H) * 2.15) &&
+               columnGap <= Math.Max(30, container.Width * 0.48);
+    }
+
+    static int MeaningfulTextLength(string text)
+        => text.Count(char.IsLetterOrDigit);
 
     static OwnershipCandidate EvaluateOwnership(
         OcrLine line,
