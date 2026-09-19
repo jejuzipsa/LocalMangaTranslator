@@ -20,3 +20,5 @@ jobs:
         run: dotnet restore LocalMangaTranslator.sln
       - name: Build
         run: dotnet build LocalMangaTranslator.sln -c Release --no-restore
+      - name: Pipeline evidence checks
+        run: dotnet run --project tests/PipelineChecks/PipelineChecks.csproj -c Release
