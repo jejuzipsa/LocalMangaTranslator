@@ -85,11 +85,11 @@ Crop failures and empty results are recorded per pass. Cancellation propagates; 
 are removed even when a crop fails. Diagnostics add `00_container_ocr_validation.json` with
 candidate eligibility, pass attempts and per-observation decisions.
 
-Admission currently feeds the existing OCR-seeded unit builder and existing render planning.
-Page candidates do not yet directly own translation units or erase masks. Full canonical line
-provenance/ownership and independent erase decisions are still Stage 3/5 work.
+Admission now feeds the 0007 container-first ownership builder. Page candidates can own OCR
+lines and translation-unit formation, but this still does not grant erase permission. Independent
+erase ownership remains Stage 5 work.
 
-### Stage 3 - line validation and ownership
+### Stage 3 - line validation and ownership (implemented in 0007)
 
 Validate each observation/line using:
 - confidence
@@ -99,7 +99,16 @@ Validate each observation/line using:
 - isolation from neighboring lines
 - optional Vision confirmation
 
-Only validated lines may become erase evidence.
+0007 ownership behavior:
+- Eligible page candidates are canonicalized before OCR grouping.
+- Each merged OCR line receives at most one physical container owner.
+- Validated container OCR is an ownership preference, not erase permission.
+- Near-tie ownership is held as ambiguous instead of being forced.
+- Unowned/ambiguous lines become orphans; only orphan lines use the legacy proximity grouper.
+- A container with owned text produces one OCR translation unit before Vision review.
+- `00_line_ownership.json` records LineId -> CandidateId -> UnitId and orphan reasons.
+
+Only validated lines may eventually become erase evidence; Stage 5 still owns that decision.
 
 ### Stage 4 - container-scoped Vision review
 
@@ -126,7 +135,7 @@ Pages with warnings stay reviewable instead of silently damaging artwork.
 The legacy pipeline remains operational while contracts are introduced.
 
 Current:
-page candidates -> OCR eligibility -> global/focus OCR + container 1x/2x -> container evidence validation -> merged OCR lines -> preliminary grouping -> OCR-seeded container ownership -> Vision -> translation -> render planning -> erase -> layout -> render
+page candidates -> OCR eligibility -> global/focus OCR + container 1x/2x -> container evidence validation -> merged OCR lines -> canonical container ownership -> one unit per owned container + orphan-only legacy grouping -> Vision -> translation -> render planning -> erase -> layout -> render
 
 Target:
 page/container candidates + OCR observations -> validated line ownership -> one translation unit per container -> Vision -> translation -> erase plan + approved layout -> independently validated erase -> render -> post validation
