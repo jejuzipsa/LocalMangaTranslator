@@ -1,0 +1,45 @@
+name: 0010 Test Pic Audit
+
+on:
+  push:
+    branches:
+      - analysis/0010-testpic-audit
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect selected regression images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p audit/0008 audit/0009 audit/debug0009
+          pages=(
+            hard_bw_dark_text_001
+            hard_sfx_colored_001
+            hard_sfx_colored_002
+            hard_dense_dialogue_001
+            hard_long_speech_001
+            core_caption_dense_001
+            core_caption_speech_mixed_001
+            hard_speech_emphasis_sfx_001
+          )
+          for p in "${pages[@]}"; do
+            cp "test pic/0008/${p}.translated.webp" "audit/0008/${p}.webp"
+            cp "test pic/0009/${p}.translated.webp" "audit/0009/${p}.webp"
+            for suffix in               00_region_analysis.webp               01_ocr_raw.webp               02_container_assignment.webp               03_translation_units.webp               04_erase_mask.webp               05_layout_box.webp               06_final_output.webp; do
+              cp "test pic/0009/debug/${p}.translated.${suffix}" "audit/debug0009/${p}.${suffix}"
+            done
+            for suffix in               00_region_analysis.json               00_ocr_observations.json               00_line_ownership.json               00_container_ocr_validation.json               render-plan.json; do
+              cp "test pic/0009/debug/${p}.translated.${suffix}" "audit/debug0009/${p}.${suffix}"
+            done
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lmt-0010-testpic-audit
+          path: audit
+          if-no-files-found: error
+          compression-level: 6
