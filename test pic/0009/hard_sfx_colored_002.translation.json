@@ -1,0 +1,396 @@
+{
+  "SourceFile": "hard_sfx_colored_002.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-20T00:50:40.7070129+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 303,
+        "Y": 81,
+        "W": 84,
+        "H": 84.5,
+        "Text": "FOR MY QUEEN HER HEIR!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 303,
+            "Y": 81,
+            "W": 84,
+            "H": 28,
+            "Text": "FOR MY",
+            "Confidence": 0.9996083,
+            "Language": "en"
+          },
+          {
+            "X": 305,
+            "Y": 102,
+            "W": 78,
+            "H": 27,
+            "Text": "QUEEN",
+            "Confidence": 0.9974993,
+            "Language": "en"
+          },
+          {
+            "X": 340.3333333333333,
+            "Y": 124.33333333333333,
+            "W": 46,
+            "H": 26.66666666666667,
+            "Text": "HER",
+            "Confidence": 0.9996524,
+            "Language": "en"
+          },
+          {
+            "X": 316,
+            "Y": 146,
+            "W": 56,
+            "H": 19.5,
+            "Text": "HEIR!",
+            "Confidence": 0.99949765,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "FOR MY QUEEN\nAND HER HEIR!",
+      "Translation": "\uB098\uC758 \uC5EC\uC655\uACFC\n\uADF8\uB140\uC758 \uD6C4\uACC4\uC790\uB97C\n\uC704\uD558\uC5EC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 542,
+        "Y": 212,
+        "W": 97,
+        "H": 30.333333333333314,
+        "Text": "DEVOUR",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 542,
+            "Y": 212,
+            "W": 97,
+            "H": 30.333333333333314,
+            "Text": "DEVOUR",
+            "Confidence": 0.999696,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "I DEVOUR",
+      "Translation": "\uC0BC\uCF1C\n\uBC84\uB9AC\uB9AC\uB77C",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 555.3333333333334,
+        "Y": 237.66666666666669,
+        "W": 79.33333333333326,
+        "H": 31.999999999999943,
+        "Text": "THEM!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 555.3333333333334,
+            "Y": 237.66666666666669,
+            "W": 79.33333333333326,
+            "H": 31.999999999999943,
+            "Text": "THEM!",
+            "Confidence": 0.9996477,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "THEM!",
+      "Translation": "\uBAA8\uB450!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 439,
+        "Y": 253.33333333333331,
+        "W": 31,
+        "H": 16.000000000000057,
+        "Text": "F",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 439,
+            "Y": 253.33333333333331,
+            "W": 31,
+            "H": 16.000000000000057,
+            "Text": "F",
+            "Confidence": 0.5215838,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "F",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1077,
+        "Y": 891,
+        "W": 90,
+        "H": 98,
+        "Text": "ALL THE LITTLE THINGS.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1092,
+            "Y": 891,
+            "W": 60,
+            "H": 40,
+            "Text": "ALL",
+            "Confidence": 0.99972224,
+            "Language": "en"
+          },
+          {
+            "X": 1096,
+            "Y": 914,
+            "W": 55,
+            "H": 34,
+            "Text": "THE",
+            "Confidence": 0.9835699,
+            "Language": "en"
+          },
+          {
+            "X": 1080,
+            "Y": 932,
+            "W": 87,
+            "H": 38,
+            "Text": "LITTLE",
+            "Confidence": 0.99705505,
+            "Language": "en"
+          },
+          {
+            "X": 1077,
+            "Y": 952,
+            "W": 90,
+            "H": 37,
+            "Text": "THINGS.",
+            "Confidence": 0.9759579,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "ALL THE LITTLE THINGS.",
+      "Translation": "\uADF8 \uBAA8\uB4E0\n\uC791\uC740 \uAC83\uB4E4\uC744.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 113,
+        "Y": 1116.5,
+        "W": 251,
+        "H": 47.5,
+        "Text": "\u0022BLOATED AND BEAUTIFUL BECOME!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 113,
+            "Y": 1116.5,
+            "W": 251,
+            "H": 29,
+            "Text": "\u0022BLOATED AND BEAUTIFUL",
+            "Confidence": 0.9982349,
+            "Language": "en"
+          },
+          {
+            "X": 229.5,
+            "Y": 1141.5,
+            "W": 86.5,
+            "H": 22.5,
+            "Text": "BECOME!",
+            "Confidence": 0.9997808,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "\u0022BLOATED AND BEAUTIFUL I WILL BECOME!\u0022",
+      "Translation": "\u0022\uD48D\uC694\uB86D\uACE0\n\uC544\uB984\uB2F5\uAC8C \uBCC0\uD558\uB9AC\uB77C!\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 175,
+        "Y": 1185,
+        "W": 291,
+        "H": 52,
+        "Text": "\u0022A VESSEL OF PICKLED HUMAN WOE, FOR MY QUEEN!\u0022",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 210,
+            "Y": 1185,
+            "W": 223,
+            "H": 32,
+            "Text": "\u0022A VESSEL OF PICKLED",
+            "Confidence": 0.99916464,
+            "Language": "en"
+          },
+          {
+            "X": 175,
+            "Y": 1210,
+            "W": 291,
+            "H": 27,
+            "Text": "HUMAN WOE, FOR MY QUEEN!\u0022",
+            "Confidence": 0.98956454,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "\u0022A VESSEL OF PICKLED HUMAN WOE, FOR MY QUEEN!\u0022",
+      "Translation": "\u0022\uC5EC\uC655\uC744 \uC704\uD55C,\n[BR]\uC778\uAC04\uC758 \uBE44\uD0C4\uC744 \uB2F4\uC740 \uADF8\uB987\uC774 \uB418\uB9AC\uB77C!\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 710,
+        "Y": 1325,
+        "W": 56,
+        "H": 33,
+        "Text": "LEF",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 710,
+            "Y": 1325,
+            "W": 56,
+            "H": 33,
+            "Text": "LEF",
+            "Confidence": 0.54424506,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "LEF",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 204.66666666666666,
+        "Y": 1429.6666666666667,
+        "W": 124.00000000000003,
+        "H": 71,
+        "Text": "FOR MY QUEEN!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 205.66666666666666,
+            "Y": 1429.6666666666667,
+            "W": 123.00000000000003,
+            "H": 43.666666666666515,
+            "Text": "FOR MY",
+            "Confidence": 0.99540037,
+            "Language": "en"
+          },
+          {
+            "X": 204.66666666666666,
+            "Y": 1457.3333333333333,
+            "W": 122.33333333333334,
+            "H": 43.333333333333485,
+            "Text": "QUEEN!",
+            "Confidence": 0.9931041,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "FOR MY QUEEN!",
+      "Translation": "\uB098\uC758 \uC5EC\uC655\uC744 \uC704\uD558\uC5EC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 159,
+        "Y": 1853,
+        "W": 84.5,
+        "H": 71.5,
+        "Text": "G",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 159,
+            "Y": 1853,
+            "W": 84.5,
+            "H": 71.5,
+            "Text": "G",
+            "Confidence": 0.6182359,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "G",
+      "Translation": "\uCF70\uC559",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 84.66666666666667,
+        "Y": 1931.3333333333333,
+        "W": 42,
+        "H": 45,
+        "Text": "%",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 84.66666666666667,
+            "Y": 1931.3333333333333,
+            "W": 42,
+            "H": 45,
+            "Text": "%",
+            "Confidence": 0.5082451,
+            "Language": "en"
+          }
+        ]
+      },
+      "CorrectedText": "%",
+      "Translation": "!",
+      "Type": "sfx",
+      "Render": false
+    }
+  ]
+}

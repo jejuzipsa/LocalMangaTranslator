@@ -1,0 +1,375 @@
+{
+  "schema": "line-ownership-v1",
+  "lines": [
+    {
+      "LineId": "L0001",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0002",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.5333333333333333,
+      "Score": 6.136557429744383
+    },
+    {
+      "LineId": "L0003",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 13.866347062395398
+    },
+    {
+      "LineId": "L0004",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 13.97387393838177
+    },
+    {
+      "LineId": "L0005",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.074557566129153
+    },
+    {
+      "LineId": "L0006",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.9212324600066
+    },
+    {
+      "LineId": "L0007",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.142034294678357
+    },
+    {
+      "LineId": "L0008",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.935754449655906
+    },
+    {
+      "LineId": "L0009",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.165855433074716
+    },
+    {
+      "LineId": "L0010",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.039068684170852
+    },
+    {
+      "LineId": "L0011",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.5333333333333333,
+      "Score": 6.082233029879009
+    },
+    {
+      "LineId": "L0012",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.130190396021483
+    },
+    {
+      "LineId": "L0013",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.942038514338341
+    },
+    {
+      "LineId": "L0014",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.108718827381459
+    },
+    {
+      "LineId": "L0015",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.062483867581806
+    },
+    {
+      "LineId": "L0016",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.010370589975818
+    },
+    {
+      "LineId": "L0017",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 11.010325838082313
+    },
+    {
+      "LineId": "L0018",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.8,
+      "Score": 9.04737447824994
+    },
+    {
+      "LineId": "L0019",
+      "CandidateId": "PC009",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 13.93880665506342
+    },
+    {
+      "LineId": "L0020",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.6666666666666666,
+      "Score": 7.451017088546178
+    },
+    {
+      "LineId": "L0021",
+      "CandidateId": "PC020",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 13.905787513835978
+    },
+    {
+      "LineId": "L0022",
+      "CandidateId": "PC020",
+      "Assigned": true,
+      "Reason": "rescued_neighbor_geometry",
+      "Coverage": 0.6666666666666666,
+      "Score": 7.839274416882742
+    },
+    {
+      "LineId": "L0023",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "weak_container_owner",
+      "Coverage": 0.4666666666666667,
+      "Score": 5.554104905875251
+    },
+    {
+      "LineId": "L0024",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0025",
+      "CandidateId": null,
+      "Assigned": false,
+      "Reason": "no_container_owner",
+      "Coverage": 0,
+      "Score": 0
+    },
+    {
+      "LineId": "L0026",
+      "CandidateId": "PC072",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.027865191542901
+    },
+    {
+      "LineId": "L0027",
+      "CandidateId": "PC072",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.180438357233156
+    },
+    {
+      "LineId": "L0028",
+      "CandidateId": "PC072",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.312253482700648
+    },
+    {
+      "LineId": "L0029",
+      "CandidateId": "PC072",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.193032006805133
+    },
+    {
+      "LineId": "L0030",
+      "CandidateId": "PC072",
+      "Assigned": true,
+      "Reason": "container_ocr_evidence",
+      "Coverage": 1,
+      "Score": 14.058626561995522
+    }
+  ],
+  "units": [
+    {
+      "UnitId": 0,
+      "CandidateId": null,
+      "LineIds": [
+        "L0001"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 1,
+      "CandidateId": null,
+      "LineIds": [
+        "L0002"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 2,
+      "CandidateId": "PC009",
+      "LineIds": [
+        "L0003",
+        "L0004",
+        "L0005",
+        "L0006",
+        "L0007",
+        "L0008",
+        "L0009",
+        "L0010",
+        "L0013",
+        "L0014",
+        "L0015",
+        "L0016",
+        "L0017"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_clustered"
+    },
+    {
+      "UnitId": 3,
+      "CandidateId": null,
+      "LineIds": [
+        "L0011"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 4,
+      "CandidateId": null,
+      "LineIds": [
+        "L0018"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 5,
+      "CandidateId": "PC009",
+      "LineIds": [
+        "L0019"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_clustered"
+    },
+    {
+      "UnitId": 6,
+      "CandidateId": null,
+      "LineIds": [
+        "L0020"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 7,
+      "CandidateId": "PC020",
+      "LineIds": [
+        "L0021",
+        "L0022"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_owned"
+    },
+    {
+      "UnitId": 8,
+      "CandidateId": null,
+      "LineIds": [
+        "L0023"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_isolated_weak_owner"
+    },
+    {
+      "UnitId": 9,
+      "CandidateId": null,
+      "LineIds": [
+        "L0024"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 10,
+      "CandidateId": null,
+      "LineIds": [
+        "L0025"
+      ],
+      "IsOrphan": true,
+      "Reason": "orphan_legacy_group"
+    },
+    {
+      "UnitId": 11,
+      "CandidateId": "PC072",
+      "LineIds": [
+        "L0026",
+        "L0027",
+        "L0028",
+        "L0029",
+        "L0030"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_owned"
+    }
+  ],
+  "container_count": 30,
+  "assigned_line_count": 22,
+  "orphan_group_count": 8
+}

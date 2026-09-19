@@ -1,0 +1,1512 @@
+{
+  "schema": "container-ocr-v2",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC003",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC004",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC005",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC006",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC007",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC008",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC009",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC010",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC011",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC012",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC013",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC014",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC015",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC016",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC017",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC018",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC019",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC020",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC021",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC022",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC023",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC024",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC025",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC026",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC027",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC028",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC029",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC030",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC031",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC032",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC033",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC034",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC035",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC036",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC037",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC038",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC039",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC040",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC041",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC042",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC043",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC044",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC045",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC046",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC047",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC048",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC049",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC050",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC051",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC052",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC053",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC054",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC055",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC056",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC057",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC058",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC059",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC060",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC061",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC062",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC063",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC064",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC065",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC066",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC067",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC068",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC069",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC070",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC071",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC072",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC073",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC074",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC075",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC076",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC077",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC078",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC079",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC080",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC081",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC001",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC001",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC016",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC016",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC018",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC018",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC023",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC023",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC024",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC024",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC026",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC026",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC027",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC027",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC030",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC030",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC033",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC033",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC034",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC034",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC035",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC035",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC036",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC036",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC037",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC037",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC038",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC038",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC039",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC039",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC040",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC040",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC041",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC041",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC045",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC045",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC047",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC047",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC048",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC048",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC049",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC049",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC052",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC052",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC054",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC054",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC055",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC055",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC056",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC056",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC057",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC057",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC060",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC060",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC062",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC062",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC065",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC065",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC068",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC068",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC069",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC069",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC071",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC071",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC072",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC072",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC073",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC073",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC074",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC074",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC077",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC077",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC079",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC079",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC080",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC080",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC081",
+      "Pass": 5,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC081",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.00411522633744856
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.08990641711229946
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.06212349397590362
+    },
+    {
+      "ObservationId": "CO0005",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0006",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0007",
+      "CandidateId": "PC008",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0008",
+      "CandidateId": "PC008",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0009",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0010",
+      "CandidateId": "PC010",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.21875
+    },
+    {
+      "ObservationId": "CO0011",
+      "CandidateId": "PC010",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0012",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0013",
+      "CandidateId": "PC010",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.20850840336134455
+    },
+    {
+      "ObservationId": "CO0014",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0015",
+      "CandidateId": "PC016",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0016",
+      "CandidateId": "PC016",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0017",
+      "CandidateId": "PC023",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0018",
+      "CandidateId": "PC023",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0019",
+      "CandidateId": "PC026",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0020",
+      "CandidateId": "PC026",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0021",
+      "CandidateId": "PC030",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0022",
+      "CandidateId": "PC037",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0023",
+      "CandidateId": "PC038",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0024",
+      "CandidateId": "PC038",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0025",
+      "CandidateId": "PC039",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0026",
+      "CandidateId": "PC039",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0027",
+      "CandidateId": "PC040",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0028",
+      "CandidateId": "PC040",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0029",
+      "CandidateId": "PC041",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0030",
+      "CandidateId": "PC041",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0031",
+      "CandidateId": "PC049",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0032",
+      "CandidateId": "PC049",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0033",
+      "CandidateId": "PC049",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0034",
+      "CandidateId": "PC054",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0035",
+      "CandidateId": "PC054",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0036",
+      "CandidateId": "PC055",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0037",
+      "CandidateId": "PC055",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0038",
+      "CandidateId": "PC060",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0039",
+      "CandidateId": "PC060",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0040",
+      "CandidateId": "PC062",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0041",
+      "CandidateId": "PC071",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0042",
+      "CandidateId": "PC072",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0043",
+      "CandidateId": "PC072",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0044",
+      "CandidateId": "PC072",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0045",
+      "CandidateId": "PC073",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0046",
+      "CandidateId": "PC073",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0047",
+      "CandidateId": "PC074",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0048",
+      "CandidateId": "PC081",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG002",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG002",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG011",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG011",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0005",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    },
+    {
+      "ObservationId": "RO0006",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0007",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0008",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0009",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0010",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0011",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0012",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    }
+  ]
+}
