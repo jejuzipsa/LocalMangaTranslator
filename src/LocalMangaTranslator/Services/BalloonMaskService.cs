@@ -202,6 +202,213 @@ public static class BalloonMaskService
             sawCandidate ? "candidate_unusable" : "no_mask");
     }
 
+    public static BalloonLayout AnalyzeConfirmedRegion(
+        Mat source,
+        OcrTextBlock block,
+        string type,
+        ContainerCandidate region)
+    {
+        var bounds =
+            ClampRect(
+                region.Bounds.X,
+                region.Bounds.Y,
+                region.Bounds.Width,
+                region.Bounds.Height,
+                source.Cols,
+                source.Rows);
+
+        var blockRect =
+            ClampRect(
+                (int)Math.Floor(block.X),
+                (int)Math.Floor(block.Y),
+                (int)Math.Ceiling(block.W),
+                (int)Math.Ceiling(block.H),
+                source.Cols,
+                source.Rows);
+
+        bool maskValid =
+            bounds.Width > 0 &&
+            bounds.Height > 0 &&
+            region.MaskWidth ==
+                region.Bounds.Width &&
+            region.MaskHeight ==
+                region.Bounds.Height &&
+            region.Mask.Length ==
+                region.MaskWidth *
+                region.MaskHeight;
+
+        if (!maskValid)
+        {
+            return CreateConservativeFallback(
+                source,
+                block,
+                blockRect,
+                type,
+                "region_mask_invalid");
+        }
+
+        using var mask =
+            Mat.Zeros(
+                region.MaskHeight,
+                region.MaskWidth,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        for (int y = 0;
+             y < region.MaskHeight;
+             y++)
+        {
+            for (int x = 0;
+                 x < region.MaskWidth;
+                 x++)
+            {
+                int index =
+                    y *
+                    region.MaskWidth +
+                    x;
+
+                if (region.Mask[index] != 0)
+                {
+                    mask.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        var innerLocal =
+            FindLargestRectangle(
+                mask);
+
+        var inner =
+            ClampRect(
+                region.Bounds.X +
+                    innerLocal.X,
+                region.Bounds.Y +
+                    innerLocal.Y,
+                innerLocal.Width,
+                innerLocal.Height,
+                source.Cols,
+                source.Rows);
+
+        double blockArea =
+            Math.Max(
+                1.0,
+                blockRect.Width *
+                (double)blockRect.Height);
+
+        double maskArea =
+            Cv2.CountNonZero(
+                mask);
+
+        double bboxArea =
+            Math.Max(
+                1.0,
+                bounds.Width *
+                (double)bounds.Height);
+
+        double maskAreaRatio =
+            maskArea /
+            blockArea;
+
+        double bboxAreaRatio =
+            bboxArea /
+            blockArea;
+
+        double coverage =
+            IntersectionArea(
+                bounds,
+                blockRect) /
+            blockArea;
+
+        double innerArea =
+            Math.Max(
+                0.0,
+                innerLocal.Width *
+                (double)innerLocal.Height);
+
+        double innerRatio =
+            maskArea > 0
+                ? innerArea /
+                  maskArea
+                : 0;
+
+        double lineContainment =
+            ComputeLineContainment(
+                mask,
+                region.Bounds,
+                block.Lines);
+
+        double textureStdDev =
+            ComputeTextureStdDev(
+                source,
+                mask,
+                region.Bounds,
+                block.Lines);
+
+        bool usable =
+            maskArea >= 16 &&
+            inner.Width >= 12 &&
+            inner.Height >= 12 &&
+            coverage >= 0.45 &&
+            lineContainment >= 0.45 &&
+            region.BorderTouches < 3;
+
+        if (!usable)
+        {
+            string reason =
+                coverage < 0.45
+                    ? "region_low_coverage"
+                    : lineContainment < 0.45
+                        ? "region_low_line_containment"
+                        : region.BorderTouches >= 3
+                            ? "region_touches_page_border"
+                            : "region_inner_invalid";
+
+            return CreateConservativeFallback(
+                source,
+                block,
+                blockRect,
+                type,
+                reason,
+                maskAreaRatio,
+                bboxAreaRatio,
+                coverage,
+                region.BorderTouches,
+                innerRatio,
+                lineContainment,
+                textureStdDev,
+                rejectedCandidate: true);
+        }
+
+        bool dark =
+            EstimateDarkBackground(
+                source,
+                inner,
+                block.Lines);
+
+        return new BalloonLayout(
+            region.Bounds,
+            inner,
+            true,
+            dark,
+            region.Mask.ToArray(),
+            region.MaskWidth,
+            region.MaskHeight,
+            type,
+            $"region:{region.DetectorMode}",
+            true,
+            "region_confirmed",
+            maskAreaRatio,
+            bboxAreaRatio,
+            coverage,
+            region.BorderTouches,
+            innerRatio,
+            lineContainment,
+            textureStdDev);
+    }
+
     static BalloonLayout? TryAcceptCandidate(
         Mat source,
         OcrTextBlock block,
