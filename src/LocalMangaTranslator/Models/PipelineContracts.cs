@@ -114,8 +114,7 @@ public sealed record ContainerCandidate(
     int MaskHeight)
 {
     public string? RegionId { get; init; }
-};
-
+}
 public sealed record LineOwnershipDecision(
     string LineId,
     string? CandidateId,
