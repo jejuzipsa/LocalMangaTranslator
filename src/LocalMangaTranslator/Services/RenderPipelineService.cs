@@ -687,10 +687,17 @@ public sealed class RenderPipelineService
                     line.Source);
             }
 
+            // 고정 3x3 팽창은 굵은 만화 폰트의 외곽선/안티앨리어싱을
+            // 충분히 덮지 못했다. OCR 글자 크기에 비례해 삭제 마스크를 확장하되,
+            // 아래에서 반드시 SafeMask와 다시 교차해 말풍선 밖으로는 나가지 않는다.
+            int dilationRadius = ComputeEraseDilationRadius(plan);
+
             using var expanded = new Mat();
             using (var kernel = Cv2.GetStructuringElement(
                 MorphShapes.Ellipse,
-                new OpenCvSharp.Size(3, 3)))
+                new OpenCvSharp.Size(
+                    dilationRadius * 2 + 1,
+                    dilationRadius * 2 + 1)))
             {
                 Cv2.Dilate(
                     textMask,
@@ -832,15 +839,65 @@ public sealed class RenderPipelineService
             -1);
     }
 
+    static int ComputeEraseDilationRadius(
+        RenderUnitPlan plan)
+    {
+        var sizes = plan.Lines
+            .Select(x => Math.Max(
+                1.0,
+                Math.Min(
+                    x.Source.W,
+                    x.Source.H)))
+            .OrderBy(x => x)
+            .ToArray();
+
+        double glyphSize;
+
+        if (sizes.Length == 0)
+        {
+            glyphSize = 24;
+        }
+        else
+        {
+            int mid = sizes.Length / 2;
+            glyphSize = sizes.Length % 2 == 1
+                ? sizes[mid]
+                : (sizes[mid - 1] + sizes[mid]) / 2.0;
+        }
+
+        bool caption = string.Equals(
+            plan.Region.Type,
+            "caption",
+            StringComparison.OrdinalIgnoreCase);
+
+        int maxRadius = !plan.Container.Detected
+            ? 4
+            : caption
+                ? 5
+                : 7;
+
+        return (int)Math.Clamp(
+            Math.Round(glyphSize * 0.10),
+            2,
+            maxRadius);
+    }
+
     static void AddTextCandidateMask(
         Mat source,
         Mat textMask,
         Mat allowed,
         OcrLine line)
     {
-        int expand = Math.Max(
-            1,
-            (int)Math.Ceiling(line.H * 0.05));
+        double glyphScale = Math.Max(
+            1.0,
+            Math.Min(line.W, line.H));
+
+        // OCR box 가장자리 밖으로 삐져나온 serif/outline까지 후보 검사에 포함한다.
+        // 실제 삭제는 allowed(SafeMask)로 다시 제한되므로 컨테이너 밖 픽셀은 지워지지 않는다.
+        int expand = (int)Math.Clamp(
+            Math.Ceiling(glyphScale * 0.10),
+            2,
+            10);
 
         var textRect = ClampRect(
             (int)Math.Floor(line.X) - expand,
@@ -851,9 +908,9 @@ public sealed class RenderPipelineService
             source.Rows);
 
         int ringPad = (int)Math.Clamp(
-            line.H * 0.40,
+            glyphScale * 0.45,
             5,
-            18);
+            20);
 
         var sampleRect = ClampRect(
             textRect.X - ringPad,
@@ -897,10 +954,12 @@ public sealed class RenderPipelineService
             distances,
             0.82);
 
+        // 0003에서 옅은 외곽선이 남는 사례가 있어 seed 검출을 약간 넓힌다.
+        // 넓은 영역을 지우는 방식이 아니라 OCR 주변의 실제 색/명도 차이 픽셀만 추가한다.
         double threshold = Math.Clamp(
-            naturalVariation + 16,
-            25,
-            72);
+            naturalVariation + 12,
+            22,
+            66);
 
         int marked = 0;
         int allowedPixels = 0;
