@@ -384,6 +384,116 @@ public sealed class OcrContainerUnitBuilder
 
             heldLines.RemoveAt(i);
         }
+
+        // A real speech balloon can occasionally have no single line strong
+        // enough to seed ownership after 0008's stricter candidate-quality
+        // gates. Two or more high-confidence text lines that independently
+        // prefer the same candidate and form a coherent local stack are much
+        // stronger evidence than one isolated artwork fragment.
+        var peerCandidates = new List<(HeldLine Held, OwnershipCandidate Best)>();
+
+        foreach (var held in heldLines)
+        {
+            token.ThrowIfCancellationRequested();
+
+            if (!string.Equals(
+                    held.Reason,
+                    "weak_container_owner",
+                    StringComparison.Ordinal))
+                continue;
+
+            var line = held.Line.Line;
+            if (line.Confidence < 0.78f ||
+                MeaningfulTextLength(line.Text) < 2)
+                continue;
+
+            var evaluated = containers
+                .Select(container => EvaluateOwnership(
+                    line,
+                    container,
+                    acceptedObservations))
+                .Where(x =>
+                    x.Coverage >= 0.80 &&
+                    x.Container.Candidate.Score >= 4.00 &&
+                    x.Container.Candidate.FillRatio >= 0.45 &&
+                    x.CenterPenalty <= 1.05)
+                .OrderByDescending(x => x.Score)
+                .ThenByDescending(x => x.Coverage)
+                .ToList();
+
+            if (evaluated.Count == 0)
+                continue;
+
+            var best = evaluated[0];
+            var second = evaluated.Count > 1
+                ? evaluated[1]
+                : null;
+
+            if (second is not null &&
+                (best.Score - second.Score < 0.75 ||
+                 best.Coverage - second.Coverage < 0.06))
+                continue;
+
+            peerCandidates.Add((held, best));
+        }
+
+        var peerRescued = new HashSet<string>(
+            StringComparer.Ordinal);
+
+        foreach (var group in peerCandidates.GroupBy(x => x.Best.Container))
+        {
+            var items = group.ToList();
+            if (items.Count < 2)
+                continue;
+
+            var coherent = items
+                .Where(item => items.Any(other =>
+                    !ReferenceEquals(
+                        item.Held,
+                        other.Held) &&
+                    IsCompatibleNeighbor(
+                        item.Held.Line.Line,
+                        other.Held.Line.Line,
+                        item.Best.Container.Candidate.Bounds)))
+                .ToList();
+
+            if (coherent.Count < 2)
+                continue;
+
+            foreach (var item in coherent)
+            {
+                if (!peerRescued.Add(
+                        item.Held.Line.LineId))
+                    continue;
+
+                assigned[item.Best.Container].Add(
+                    item.Held.Line);
+
+                int ownershipIndex = ownership.FindIndex(x =>
+                    string.Equals(
+                        x.LineId,
+                        item.Held.Line.LineId,
+                        StringComparison.Ordinal));
+
+                if (ownershipIndex >= 0)
+                {
+                    ownership[ownershipIndex] = new LineOwnershipDecision(
+                        item.Held.Line.LineId,
+                        item.Best.Container.Candidate.CandidateId,
+                        true,
+                        "rescued_peer_cluster",
+                        item.Best.Coverage,
+                        item.Best.Score);
+                }
+            }
+        }
+
+        if (peerRescued.Count > 0)
+        {
+            heldLines.RemoveAll(x =>
+                peerRescued.Contains(
+                    x.Line.LineId));
+        }
     }
 
     static bool IsCompatibleNeighbor(
