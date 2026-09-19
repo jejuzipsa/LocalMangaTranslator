@@ -1,3 +1,4 @@
+using System.IO;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
 using OpenCvSharp;
