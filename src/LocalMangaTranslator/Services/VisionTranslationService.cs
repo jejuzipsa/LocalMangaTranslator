@@ -52,11 +52,15 @@ public sealed class VisionTranslationService
             all.AddRange(result);
         }
 
-        return all
+        var ordered = all
             .GroupBy(x => x.Id)
             .Select(x => x.First())
             .OrderBy(x => x.Id)
             .ToList();
+
+        return ApplyEvidenceGuard(
+            ordered,
+            progress);
     }
 
     static List<List<BatchItem>> BuildBatches(
@@ -349,6 +353,92 @@ public sealed class VisionTranslationService
             "",
             "other",
             false);
+
+    static List<VisionTranslation> ApplyEvidenceGuard(
+        IReadOnlyList<VisionTranslation> input,
+        IProgress<string>? progress)
+    {
+        var result = new List<VisionTranslation>(
+            input.Count);
+
+        foreach (var item in input)
+        {
+            if (!item.Render ||
+                !IsUnsupportedExpansion(item))
+            {
+                result.Add(item);
+                continue;
+            }
+
+            progress?.Report(
+                $"[vision-keep] id={item.Id} · OCR 근거보다 교정문이 과도하게 확장되어 원문 유지 " +
+                $"('{Compact(item.Source.Text)}' → '{Compact(item.CorrectedText)}')");
+
+            result.Add(new VisionTranslation(
+                item.Id,
+                item.Source,
+                item.Source.Text,
+                "",
+                "other",
+                false));
+        }
+
+        return result;
+    }
+
+    static bool IsUnsupportedExpansion(
+        VisionTranslation item)
+    {
+        var source = item.Source;
+
+        if (source.OriginalRegionCount > 1 ||
+            source.Lines.Count == 0)
+            return false;
+
+        int sourceLength =
+            MeaningfulLength(
+                source.Text);
+
+        int correctedLength =
+            MeaningfulLength(
+                item.CorrectedText);
+
+        double confidence =
+            source.Lines.Average(
+                x => x.Confidence);
+
+        // 한 줄짜리 저신뢰 OCR 한두 글자는 주변 대사의 일부일 가능성이 높다.
+        // Vision이 이를 긴 독립 문장으로 재구성하더라도 공간적 근거가 없으므로
+        // 새 번역 Unit을 만들지 않는다. "NO.", "RUN!" 같은 실제 짧은 대사는
+        // 교정문 길이가 원문과 비슷하므로 이 규칙에 걸리지 않는다.
+        if (sourceLength <= 3 &&
+            confidence < 0.72 &&
+            correctedLength >= Math.Max(
+                8,
+                sourceLength * 3 + 3))
+        {
+            return true;
+        }
+
+        // OCR이 거의 읽지 못한 한 줄을 Vision이 지나치게 크게 확장하는 경우도
+        // 같은 원칙으로 보수적으로 원문을 유지한다.
+        if (sourceLength <= 6 &&
+            confidence < 0.50 &&
+            correctedLength >= Math.Max(
+                18,
+                sourceLength * 4))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    static int MeaningfulLength(
+        string? text)
+        => string.IsNullOrWhiteSpace(text)
+            ? 0
+            : text.Count(char.IsLetterOrDigit);
 
     static bool IsCompleteAndUsable(
         IReadOnlyList<VisionTranslation> result,
