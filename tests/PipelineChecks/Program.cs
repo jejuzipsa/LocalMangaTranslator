@@ -265,9 +265,10 @@ try
         [candidate],
         [learnedBubble],
         fusionImagePath);
-    Check("learned bubble evidence boosts matching geometric container",
+    Check("RT-DETR bubble may reuse matching legacy mask only",
         fusedExisting.Count == 1 &&
-        fusedExisting[0].DetectorMode.StartsWith("rtdetr+", StringComparison.Ordinal) &&
+        fusedExisting[0].DetectorMode == "rtdetr_region+legacy_mask" &&
+        fusedExisting[0].RegionId == "RG010" &&
         fusedExisting[0].Score > candidate.Score);
 
     var newBubble = new PageRegion(
@@ -281,10 +282,20 @@ try
         [],
         [newBubble],
         fusionImagePath);
-    Check("learned bubble can seed OCR container without OCR text",
+    Check("RT-DETR bubble can seed region container without legacy candidate",
         fusedFallback.Count == 1 &&
-        fusedFallback[0].DetectorMode == "rtdetr_bubble" &&
+        fusedFallback[0].DetectorMode == "rtdetr_region_rect" &&
+        fusedFallback[0].RegionId == "RG011" &&
         ContainerOcrValidator.ValidateCandidate(fusedFallback[0]).Eligible);
+
+    var noLegacyLeak = PageAnalysisService.FuseContainers(
+        [candidate],
+        [newBubble],
+        fusionImagePath);
+    Check("unmatched legacy candidate cannot become Architecture 2.0 container",
+        noLegacyLeak.Count == 1 &&
+        noLegacyLeak[0].RegionId == "RG011" &&
+        noLegacyLeak[0].DetectorMode == "rtdetr_region_rect");
 }
 finally
 {
