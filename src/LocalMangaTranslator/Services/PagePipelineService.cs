@@ -44,7 +44,8 @@ public sealed class PagePipelineService
         var ocrStage =
             await ocrPipeline.AnalyzeAsync(
                 sourcePath,
-                token);
+                token,
+                progress);
 
         PipelineDebugWriter.SavePreVisionDiagnostics(
             sourcePath,
@@ -200,3 +201,4 @@ public sealed class PagePipelineService
             imagePath);
     }
 }
+

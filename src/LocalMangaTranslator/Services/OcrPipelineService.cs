@@ -22,8 +22,10 @@ public sealed class OcrPipelineService
 
     public async Task<OcrStageResult> AnalyzeAsync(
         string sourcePath,
-        CancellationToken token = default)
+        CancellationToken token = default,
+        IProgress<PipelineProgress>? progress = null)
     {
+        progress?.Report(new(PipelineStageKind.ContainerDetection, "페이지 전체 컨테이너 후보 검출"));
         var pageCandidates =
             await Task.Run(
                 () => pageContainerDetector.Detect(
@@ -31,27 +33,49 @@ public sealed class OcrPipelineService
                     token),
                 token);
 
+        var candidateDecisions = pageCandidates.Select(ContainerOcrValidator.ValidateCandidate).ToList();
+        var eligibleIds = candidateDecisions.Where(x => x.Eligible).Select(x => x.CandidateId).ToHashSet();
+        var eligible = pageCandidates.Where(x => eligibleIds.Contains(x.CandidateId)).ToList();
+        progress?.Report(new(PipelineStageKind.ContainerValidation,
+            $"컨테이너 후보 검증 · {pageCandidates.Count}개 중 OCR 대상 {eligible.Count}개"));
+        progress?.Report(new(PipelineStageKind.OcrObservation, "전체 1배·2배 / 집중 3배 OCR"));
         var observationBatch =
             await ocr.RecognizeDetailedAsync(
                 sourcePath,
                 token);
 
+        var containerBatch = await ocr.RecognizeContainersAsync(sourcePath, eligible, progress, token);
+        token.ThrowIfCancellationRequested();
+        var lineDecisions = ContainerOcrValidator.ValidateLines(eligible, containerBatch.Observations, token);
+        var acceptedIds = lineDecisions.Where(x => x.Accepted).Select(x => x.ObservationId).ToHashSet();
+        var observations = observationBatch.Observations.Concat(containerBatch.Observations).ToList();
+        progress?.Report(new(PipelineStageKind.OcrValidation,
+            $"컨테이너 관측 검증 · {containerBatch.Observations.Count}개 중 교차 검증 통과 {acceptedIds.Count}개"));
         var lines =
             observationBatch.MergedLines
                 .ToList();
+
+        OcrEngine.MergeLines(lines, containerBatch.Observations
+            .Where(x => acceptedIds.Contains(x.ObservationId)).Select(x => x.ToLine()));
+        lines = lines.OrderBy(x => x.Y).ThenBy(x => x.X).ToList();
 
         if (lines.Count == 0)
         {
             return new OcrStageResult(
                 pageCandidates,
-                observationBatch.Observations,
+                observations,
                 lines,
                 [],
                 new OcrUnitBuildResult(
                     [],
                     0,
                     0,
-                    0));
+                    0))
+            {
+                CandidateDecisions = candidateDecisions,
+                ContainerAttempts = containerBatch.Attempts,
+                ContainerLineDecisions = lineDecisions
+            };
         }
 
         var preliminaryBlocks =
@@ -68,10 +92,15 @@ public sealed class OcrPipelineService
 
         return new OcrStageResult(
             pageCandidates,
-            observationBatch.Observations,
+            observations,
             lines,
             preliminaryBlocks,
-            unitBuild);
+            unitBuild)
+        {
+            CandidateDecisions = candidateDecisions,
+            ContainerAttempts = containerBatch.Attempts,
+            ContainerLineDecisions = lineDecisions
+        };
     }
 
     public static string FormatPassSummary(
@@ -102,3 +131,4 @@ public sealed class OcrPipelineService
             _ => pass.ToString()
         };
 }
+

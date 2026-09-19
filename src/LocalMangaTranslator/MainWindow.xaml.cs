@@ -600,6 +600,10 @@ public partial class MainWindow : System.Windows.Window
         PipelineStageKind stage)
         => stage switch
         {
+            PipelineStageKind.ContainerDetection => "컨테이너 검출",
+            PipelineStageKind.ContainerValidation => "컨테이너 검증",
+            PipelineStageKind.ContainerOcr => "컨테이너 OCR",
+            PipelineStageKind.OcrValidation => "OCR 검증",
             PipelineStageKind.OcrObservation => "OCR 관측",
             PipelineStageKind.OcrUnitFormation => "OCR Unit",
             PipelineStageKind.VisionReview => "Vision 검수",
@@ -650,3 +654,4 @@ public partial class MainWindow : System.Windows.Window
         base.OnClosed(e);
     }
 }
+

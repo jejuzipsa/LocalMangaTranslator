@@ -10,7 +10,7 @@ namespace LocalMangaTranslator.Services;
 
 public sealed record OcrLine(double X, double Y, double W, double H, string Text, float Confidence, string Language);
 
-public sealed class OcrEngine : IDisposable
+public sealed partial class OcrEngine : IDisposable
 {
     const string CacheVersion = "v6-observations";
     const double SecondPassScale = 2.0;
@@ -441,7 +441,7 @@ public sealed class OcrEngine : IDisposable
         encoder.Save(output);
     }
 
-    static void MergeLines(
+    internal static void MergeLines(
         List<OcrLine> target,
         IEnumerable<OcrLine> candidates)
     {

@@ -64,6 +64,16 @@ public static class PipelineDebugWriter
                         WriteIndented = true
                     }));
 
+            File.WriteAllText(
+                Path.Combine(debugDirectory, $"{baseName}.00_container_ocr_validation.json"),
+                JsonSerializer.Serialize(new
+                {
+                    schema = "container-ocr-v1",
+                    candidate_decisions = stage.CandidateDecisions,
+                    attempts = stage.ContainerAttempts,
+                    line_decisions = stage.ContainerLineDecisions
+                }, new JsonSerializerOptions { WriteIndented = true }));
+
             var observationDocument =
                 stage.Observations
                     .Select(x => new
@@ -170,3 +180,4 @@ public static class PipelineDebugWriter
             debug);
     }
 }
+

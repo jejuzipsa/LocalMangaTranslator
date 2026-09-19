@@ -14,7 +14,7 @@ public enum OcrPassKind
     Global2x,
     Focus3x,
 
-    // Reserved for the next container-first phase.
+    // Container passes retain the page candidate ID in SourceKey.
     Container1x,
     Container2x,
     Container3x
@@ -47,6 +47,14 @@ public sealed record OcrObservation(
 public sealed record OcrObservationBatch(
     IReadOnlyList<OcrObservation> Observations,
     IReadOnlyList<OcrLine> MergedLines);
+
+// OCR eligibility is geometry-only; it never grants erase permission.
+public sealed record ContainerOcrDecision(string CandidateId, bool Eligible, string Reason);
+public sealed record ContainerOcrAttempt(string CandidateId, OcrPassKind Pass, string Status, int Count, string? Error = null);
+public sealed record ContainerOcrBatch(
+    IReadOnlyList<OcrObservation> Observations,
+    IReadOnlyList<ContainerOcrAttempt> Attempts);
+public sealed record ContainerLineDecision(string ObservationId, string CandidateId, bool Accepted, string Reason, double MaskCoverage);
 
 
 public enum ContainerCandidateKind
@@ -90,10 +98,19 @@ public sealed record OcrStageResult(
     IReadOnlyList<OcrObservation> Observations,
     IReadOnlyList<OcrLine> MergedLines,
     IReadOnlyList<OcrTextBlock> PreliminaryBlocks,
-    OcrUnitBuildResult UnitBuild);
+    OcrUnitBuildResult UnitBuild)
+{
+    public IReadOnlyList<ContainerOcrDecision> CandidateDecisions { get; init; } = [];
+    public IReadOnlyList<ContainerOcrAttempt> ContainerAttempts { get; init; } = [];
+    public IReadOnlyList<ContainerLineDecision> ContainerLineDecisions { get; init; } = [];
+}
 
 public enum PipelineStageKind
 {
+    ContainerDetection,
+    ContainerValidation,
+    ContainerOcr,
+    OcrValidation,
     OcrObservation,
     OcrUnitFormation,
     VisionReview,
