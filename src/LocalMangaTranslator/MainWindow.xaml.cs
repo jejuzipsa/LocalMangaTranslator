@@ -29,7 +29,7 @@ public partial class MainWindow : System.Windows.Window
     readonly VisionTranslationService vision = new();
     readonly TranslationRefinementService translationRefiner = new();
     readonly OcrBlockGrouper blockGrouper = new();
-    readonly ImageRenderService renderer = new();
+    readonly RenderPipelineService renderer = new();
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
