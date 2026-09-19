@@ -198,6 +198,54 @@ Check("broad container splits distant text clusters", splitResult.Units.Count ==
 Check("split clusters keep one active owner per line", splitResult.LineOwnership.Count == 2 &&
     splitResult.LineOwnership.All(x => x.Assigned && x.CandidateId == "PC010"));
 
+string webpPath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_lossless_{Guid.NewGuid():N}.webp");
+try
+{
+    using var webpSource = Mat.Zeros(3, 4, MatType.CV_8UC3).ToMat();
+    webpSource.Set(0, 0, new Vec3b(3, 17, 251));
+    webpSource.Set(1, 2, new Vec3b(41, 123, 219));
+    webpSource.Set(2, 3, new Vec3b(255, 128, 7));
+
+    bool wroteWebp = Cv2.ImWrite(
+        webpPath,
+        webpSource,
+        new[]
+        {
+            new ImageEncodingParam(
+                ImwriteFlags.WebPQuality,
+                101)
+        });
+
+    Check("lossless WebP encoder writes output", wroteWebp && File.Exists(webpPath));
+
+    using var webpRoundTrip = Cv2.ImRead(
+        webpPath,
+        ImreadModes.Color);
+
+    bool exactWebp =
+        !webpRoundTrip.Empty() &&
+        webpRoundTrip.Rows == webpSource.Rows &&
+        webpRoundTrip.Cols == webpSource.Cols &&
+        webpRoundTrip.At<Vec3b>(0, 0).Equals(webpSource.At<Vec3b>(0, 0)) &&
+        webpRoundTrip.At<Vec3b>(1, 2).Equals(webpSource.At<Vec3b>(1, 2)) &&
+        webpRoundTrip.At<Vec3b>(2, 3).Equals(webpSource.At<Vec3b>(2, 3));
+
+    Check("lossless WebP roundtrip preserves pixels", exactWebp);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(webpPath))
+            File.Delete(webpPath);
+    }
+    catch
+    {
+    }
+}
+
 using var cancellation = new CancellationTokenSource();
 cancellation.Cancel();
 bool cancelled = false;
