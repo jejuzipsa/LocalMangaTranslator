@@ -187,12 +187,27 @@ public static class ExternalModelManager
         }
     }
 
-    public static string BaberuModelRoot =>
-        Path.Combine(
-            AppContext.BaseDirectory,
-            "models",
-            "ocr",
-            "baberu");
+    public static string BaberuModelRoot
+    {
+        get
+        {
+            string? overridePath =
+                Environment.GetEnvironmentVariable(
+                    "LMT_BABERU_MODEL_ROOT");
+
+            if (!string.IsNullOrWhiteSpace(
+                    overridePath))
+            {
+                return overridePath;
+            }
+
+            return Path.Combine(
+                AppContext.BaseDirectory,
+                "models",
+                "ocr",
+                "baberu");
+        }
+    }
 
     public static string BaberuVisionPath =>
         Path.Combine(
