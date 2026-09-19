@@ -243,7 +243,7 @@ public sealed class BaberuOcrEngine : IDisposable
             new List<int>();
 
         int visionTokens =
-            visionTensor.Dimensions.Count >= 2
+            visionTensor.Dimensions.Length >= 2
                 ? visionTensor.Dimensions[1]
                 : 256;
 
