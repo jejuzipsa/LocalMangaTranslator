@@ -505,7 +505,7 @@ public sealed class ErasePipelineV2
                "clean_",
                StringComparison.Ordinal);
 
-    static bool IsResidualAcceptable(
+    public static bool IsResidualAcceptable(
         int initialMaskPixels,
         int residualPixels,
         Rect textBounds)
