@@ -812,21 +812,70 @@ public sealed class RenderPipelineService
                             committedIds.Contains(
                                 region.Id);
 
-                        string status =
-                            committed
-                                ? "translated"
-                                : !bound
-                                    ? "original_preserved:unbound"
-                                    : suppressedIds.Contains(
-                                        region.Id)
-                                        ? "original_preserved:container_duplicate"
-                                        : !planned
-                                            ? "original_preserved:not_planned"
-                                            : !layoutReady
-                                                ? $"original_preserved:{plan!.Reason}"
-                                                : !eraseClean
-                                                    ? "original_preserved:erase_review_failed"
-                                                    : "original_preserved:not_committed";
+                        string? policyReason =
+                            null;
+
+                        if (!bound)
+                        {
+                            selection.PreservationReasons.TryGetValue(
+                                region.Id,
+                                out policyReason);
+                        }
+
+                        bool auditNoise =
+                            !bound &&
+                            IsLikelyAuditOcrNoise(
+                                region);
+
+                        string status;
+
+                        if (committed)
+                        {
+                            status =
+                                "translated";
+                        }
+                        else if (!string.IsNullOrWhiteSpace(
+                                     policyReason))
+                        {
+                            status =
+                                $"original_preserved:{policyReason}";
+                        }
+                        else if (auditNoise)
+                        {
+                            status =
+                                "original_preserved:ocr_noise";
+                        }
+                        else if (!bound)
+                        {
+                            status =
+                                "original_preserved:unbound";
+                        }
+                        else if (suppressedIds.Contains(
+                                     region.Id))
+                        {
+                            status =
+                                "original_preserved:container_duplicate";
+                        }
+                        else if (!planned)
+                        {
+                            status =
+                                "original_preserved:not_planned";
+                        }
+                        else if (!layoutReady)
+                        {
+                            status =
+                                $"original_preserved:{plan!.Reason}";
+                        }
+                        else if (!eraseClean)
+                        {
+                            status =
+                                "original_preserved:erase_review_failed";
+                        }
+                        else
+                        {
+                            status =
+                                "original_preserved:not_committed";
+                        }
 
                         return new
                         {
@@ -928,6 +977,25 @@ public sealed class RenderPipelineService
         {
             // diagnostic failure must not invalidate a finished image.
         }
+    }
+
+    static bool IsLikelyAuditOcrNoise(
+        VisionTranslation region)
+    {
+        string source =
+            region.Source.Text.Trim();
+
+        int meaningful =
+            source.Count(
+                char.IsLetterOrDigit);
+
+        if (meaningful == 0)
+            return true;
+
+        if (meaningful > 1)
+            return false;
+
+        return region.Source.Lines.Count <= 2;
     }
 
     static Dictionary<int, BalloonLayout> AnalyzeContainers(
