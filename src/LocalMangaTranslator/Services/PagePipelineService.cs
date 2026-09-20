@@ -1,5 +1,7 @@
 using System.Text.Json;
 using LocalMangaTranslator.Models;
+using LocalMangaTranslator.PipelineV2.Detection;
+using LocalMangaTranslator.PipelineV2.Erase;
 
 namespace LocalMangaTranslator.Services;
 
@@ -18,6 +20,7 @@ public sealed class PagePipelineService
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
     readonly FinalAuditService finalAudit = new();
+    readonly ErasePipelineV2 erasePipelineV2 = new();
 
     public PagePipelineService(
         PageAnalysisService pageAnalysis,
@@ -60,6 +63,33 @@ public sealed class PagePipelineService
             sourcePath,
             outputDirectory,
             pageAnalysisResult);
+
+        // Pipeline V2 starts here, before OCR/translation can rewrite geometry.
+        // The V2 erase probe consumes only the immutable RT-DETR snapshot and
+        // writes independent detection/mask/cleaned diagnostics.
+        if (pageAnalysisResult.ExternalDetectorUsed)
+        {
+            progress?.Report(new PipelineProgress(
+                PipelineStageKind.PageAnalysis,
+                "Pipeline V2 · RT-DETR geometry 고정 + 독립 erase probe"));
+
+            var v2Snapshot =
+                V2DetectionSnapshot.Create(pageAnalysisResult);
+
+            var v2Erase =
+                await Task.Run(
+                    () => erasePipelineV2.Run(
+                        sourcePath,
+                        outputDirectory,
+                        v2Snapshot,
+                        token),
+                    token);
+
+            progress?.Report(new PipelineProgress(
+                PipelineStageKind.PageAnalysis,
+                $"Pipeline V2 · TextBubble {v2Erase.TargetCount}개 · mask {v2Erase.MaskPixels:N0}px · " +
+                $"debug/{Path.GetFileName(v2Erase.CleanedDebugPath)}"));
+        }
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.PageAnalysis,
