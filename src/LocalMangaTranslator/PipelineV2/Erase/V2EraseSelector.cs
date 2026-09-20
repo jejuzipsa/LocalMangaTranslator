@@ -186,7 +186,7 @@ public static class V2EraseSelector
 
         if (letters.Length < 2 ||
             meaningful < 2 ||
-            meaningful > 24)
+            meaningful > 16)
         {
             return false;
         }
