@@ -2,6 +2,8 @@ using System.IO;
 using System.Reflection;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
+using LocalMangaTranslator.PipelineV2.Detection;
+using LocalMangaTranslator.PipelineV2.Erase;
 using OpenCvSharp;
 
 var candidate = new ContainerCandidate("PC001", ContainerCandidateKind.Speech,
@@ -547,6 +549,94 @@ finally
     {
         if (File.Exists(webpPath))
             File.Delete(webpPath);
+    }
+    catch
+    {
+    }
+}
+
+string v2MaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var v2Source = Mat.Zeros(220, 420, MatType.CV_8UC3).ToMat();
+    v2Source.SetTo(new Scalar(255, 255, 255));
+
+    Cv2.PutText(
+        v2Source,
+        "YOU'RE STILL IN THE MIDDLE",
+        new Point(55, 118),
+        HersheyFonts.HersheySimplex,
+        0.72,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(v2MaskSourcePath, v2Source);
+
+    var v2Bubble = new PageRegion(
+        "V2-B1",
+        PageRegionKind.Bubble,
+        new Rect(25, 55, 360, 105),
+        0.97f,
+        "test-rtdetr");
+
+    var v2Text = new PageRegion(
+        "V2-T1",
+        PageRegionKind.TextBubble,
+        new Rect(45, 82, 330, 52),
+        0.96f,
+        "test-rtdetr");
+
+    var v2Snapshot = V2DetectionSnapshot.Create(
+        new PageAnalysisResult(
+            [v2Bubble, v2Text],
+            [],
+            "v2-test",
+            true));
+
+    Check("V2 snapshot preserves RT-DETR TextBubble geometry",
+        v2Snapshot.TextTargets.Count == 1 &&
+        v2Snapshot.TextTargets[0].TextBounds == v2Text.Bounds &&
+        v2Snapshot.TextTargets[0].BubbleBounds == v2Bubble.Bounds);
+
+    using var v2Mask = ComicTranslateComponentMask.Build(
+        v2Source,
+        v2Text.Bounds,
+        v2Bubble.Bounds);
+
+    Check("V2 text mask finds lettering without OCR canonical lines",
+        Cv2.CountNonZero(v2Mask) > 100);
+
+    bool outsideTouched = false;
+    for (int y = 0; y < v2Mask.Rows && !outsideTouched; y++)
+    {
+        for (int x = 0; x < v2Mask.Cols; x++)
+        {
+            if (v2Mask.At<byte>(y, x) == 0)
+                continue;
+
+            if (x < v2Text.Bounds.Left ||
+                x >= v2Text.Bounds.Right ||
+                y < v2Text.Bounds.Top ||
+                y >= v2Text.Bounds.Bottom)
+            {
+                outsideTouched = true;
+                break;
+            }
+        }
+    }
+
+    Check("V2 text mask cannot escape immutable TextBubble geometry",
+        !outsideTouched);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2MaskSourcePath))
+            File.Delete(v2MaskSourcePath);
     }
     catch
     {
