@@ -197,7 +197,8 @@ public sealed class ErasePipelineV2
                 ComicTranslateComponentMask.Build(
                     firstCleaned,
                     target.TextBounds,
-                    target.BubbleBounds);
+                    target.BubbleBounds,
+                    includeColorRescue: false);
 
             using var reviewZone =
                 new Mat();
@@ -343,7 +344,8 @@ public sealed class ErasePipelineV2
                 ComicTranslateComponentMask.Build(
                     finalCleaned,
                     target.TextBounds,
-                    target.BubbleBounds);
+                    target.BubbleBounds,
+                    includeColorRescue: false);
 
             using var finalReviewZone =
                 new Mat();
