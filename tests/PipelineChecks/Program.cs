@@ -643,6 +643,64 @@ finally
     }
 }
 
+string v2DarkMaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_dark_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var darkSource =
+        Mat.Zeros(180, 360, MatType.CV_8UC3).ToMat();
+
+    darkSource.SetTo(
+        new Scalar(245, 245, 245));
+
+    var darkBubble =
+        new Rect(40, 45, 280, 90);
+
+    var darkText =
+        new Rect(60, 60, 240, 58);
+
+    Cv2.Rectangle(
+        darkSource,
+        darkBubble,
+        new Scalar(8, 8, 8),
+        thickness: -1);
+
+    Cv2.PutText(
+        darkSource,
+        "WHITE ON BLACK",
+        new Point(72, 99),
+        HersheyFonts.HersheySimplex,
+        0.72,
+        new Scalar(245, 245, 245),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2DarkMaskSourcePath,
+        darkSource);
+
+    using var darkMask =
+        ComicTranslateComponentMask.Build(
+            darkSource,
+            darkText,
+            darkBubble);
+
+    Check("V2 text mask supports white lettering on dark captions",
+        Cv2.CountNonZero(darkMask) > 100);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2DarkMaskSourcePath))
+            File.Delete(v2DarkMaskSourcePath);
+    }
+    catch
+    {
+    }
+}
+
 string v2MainRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_v2_main_{Guid.NewGuid():N}");
@@ -753,6 +811,11 @@ try
         selection.TextRegionIds.SetEquals(["VT-A"]) &&
         selection.TranslationRegionIds.SetEquals([2001]));
 
+    Check("V2 selector carries the same TextBubble geometry into layout",
+        selection.Bindings.TryGetValue(2001, out var mainBinding) &&
+        mainBinding.LayoutBounds == textA.Bounds &&
+        mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
+
     var v2MainResult =
         new ErasePipelineV2().Run(
             v2MainSourcePath,
@@ -770,7 +833,9 @@ try
     Check("V2 main erase reports only selected target",
         v2MainResult.DetectedTargetCount == 2 &&
         v2MainResult.TargetCount == 1 &&
-        v2MainResult.MaskPixels > 0);
+        v2MainResult.MaskPixels > 0 &&
+        v2MainResult.TargetAudits.Count == 1 &&
+        v2MainResult.TargetAudits[0].InitialMaskPixels > 0);
 
     using var v2Final =
         Cv2.ImRead(
