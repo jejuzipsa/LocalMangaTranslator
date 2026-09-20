@@ -20,7 +20,6 @@ public sealed class PagePipelineService
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
     readonly FinalAuditService finalAudit = new();
-    readonly ErasePipelineV2 erasePipelineV2 = new();
 
     public PagePipelineService(
         PageAnalysisService pageAnalysis,
@@ -186,12 +185,6 @@ public sealed class PagePipelineService
         V2EraseSelection? v2Selection =
             null;
 
-        ErasePipelineV2Result? v2Erase =
-            null;
-
-        IReadOnlyDictionary<int, OpenCvSharp.Rect>? v2LayoutBounds =
-            null;
-
         if (v2Snapshot is not null)
         {
             v2Selection =
@@ -201,43 +194,8 @@ public sealed class PagePipelineService
 
             progress?.Report(new PipelineProgress(
                 PipelineStageKind.Render,
-                $"Pipeline V2 · 번역과 연결된 TextBubble {v2Selection.TextRegionIds.Count}개 선택"));
-
-            v2Erase =
-                await Task.Run(
-                    () => erasePipelineV2.Run(
-                        sourcePath,
-                        outputDirectory,
-                        v2Snapshot,
-                        v2Selection.TextRegionIds,
-                        token),
-                    token);
-
-            var auditByTarget =
-                v2Erase.TargetAudits.ToDictionary(
-                    x => x.TextRegionId,
-                    StringComparer.Ordinal);
-
-            v2LayoutBounds =
-                v2Selection.Bindings.Values
-                    .Where(binding =>
-                        binding.TextRegionIds.All(id =>
-                            auditByTarget.TryGetValue(id, out var audit) &&
-                            audit.InitialMaskPixels >= 2 &&
-                            audit.ResidualAfterRetryPixels < 2))
-                    .ToDictionary(
-                        binding => binding.TranslationRegionId,
-                        binding => binding.LayoutBounds);
-
-            int blockedByErase =
-                v2Selection.Bindings.Count -
-                v2LayoutBounds.Count;
-
-            progress?.Report(new PipelineProgress(
-                PipelineStageKind.Render,
-                $"Pipeline V2 erase · 1차 잔여 {v2Erase.ResidualBeforeRetryPixels:N0}px · " +
-                $"재처리 {v2Erase.RetryTargetCount}개 · 최종 잔여 {v2Erase.ResidualAfterRetryPixels:N0}px · " +
-                $"조판허용 {v2LayoutBounds.Count} · erase실패차단 {blockedByErase}"));
+                $"Pipeline V2 · TextBubble erase / parent Bubble layout 연결 " +
+                $"{v2Selection.Bindings.Count} Unit · TextBubble {v2Selection.TextRegionIds.Count}개"));
         }
 
         var document =
@@ -277,8 +235,8 @@ public sealed class PagePipelineService
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Render,
-            v2Erase is not null
-                ? "RenderPlan / V2 cleaned image / 조판 시작"
+            v2Selection is not null
+                ? "Pipeline V2 · layout 사전검증 → erase 검수 → 원자적 조판"
                 : "RenderPlan / legacy erase / layout / 조판 시작"));
 
         var renderProgress =
@@ -293,10 +251,10 @@ public sealed class PagePipelineService
             imagePath,
             renderProgress,
             token,
-            precleanedPath:
-                v2Erase?.CleanedDebugPath,
-            v2LayoutBoundsByRegionId:
-                v2LayoutBounds);
+            v2Snapshot:
+                v2Snapshot,
+            v2Selection:
+                v2Selection);
 
         // Final image delivery is complete at this point. Audit is diagnostic
         // only and can never invalidate or remove the finished output.
