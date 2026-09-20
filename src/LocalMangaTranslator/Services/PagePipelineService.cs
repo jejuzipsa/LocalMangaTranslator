@@ -189,6 +189,9 @@ public sealed class PagePipelineService
         ErasePipelineV2Result? v2Erase =
             null;
 
+        IReadOnlyDictionary<int, OpenCvSharp.Rect>? v2LayoutBounds =
+            null;
+
         if (v2Snapshot is not null)
         {
             v2Selection =
@@ -210,10 +213,31 @@ public sealed class PagePipelineService
                         token),
                     token);
 
+            var auditByTarget =
+                v2Erase.TargetAudits.ToDictionary(
+                    x => x.TextRegionId,
+                    StringComparer.Ordinal);
+
+            v2LayoutBounds =
+                v2Selection.Bindings.Values
+                    .Where(binding =>
+                        binding.TextRegionIds.All(id =>
+                            auditByTarget.TryGetValue(id, out var audit) &&
+                            audit.InitialMaskPixels >= 2 &&
+                            audit.ResidualAfterRetryPixels < 2))
+                    .ToDictionary(
+                        binding => binding.TranslationRegionId,
+                        binding => binding.LayoutBounds);
+
+            int blockedByErase =
+                v2Selection.Bindings.Count -
+                v2LayoutBounds.Count;
+
             progress?.Report(new PipelineProgress(
                 PipelineStageKind.Render,
                 $"Pipeline V2 erase · 1차 잔여 {v2Erase.ResidualBeforeRetryPixels:N0}px · " +
-                $"재처리 {v2Erase.RetryTargetCount}개 · 최종 잔여 {v2Erase.ResidualAfterRetryPixels:N0}px"));
+                $"재처리 {v2Erase.RetryTargetCount}개 · 최종 잔여 {v2Erase.ResidualAfterRetryPixels:N0}px · " +
+                $"조판허용 {v2LayoutBounds.Count} · erase실패차단 {blockedByErase}"));
         }
 
         var document =
@@ -271,8 +295,8 @@ public sealed class PagePipelineService
             token,
             precleanedPath:
                 v2Erase?.CleanedDebugPath,
-            v2RenderableRegionIds:
-                v2Selection?.TranslationRegionIds);
+            v2LayoutBoundsByRegionId:
+                v2LayoutBounds);
 
         // Final image delivery is complete at this point. Audit is diagnostic
         // only and can never invalidate or remove the finished output.
