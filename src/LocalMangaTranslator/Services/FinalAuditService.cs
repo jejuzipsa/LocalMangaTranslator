@@ -26,6 +26,26 @@ public sealed class FinalAuditService
         public int SecondaryAccepted { get; set; }
         public int RenderApproved { get; set; }
         public int RenderRejected { get; set; }
+        public int V2RequestedUnits { get; set; }
+        public int V2TranslatedUnits { get; set; }
+        public int V2PreservedOriginalUnits { get; set; }
+        public int V2EraseCommittedUnits { get; set; }
+        public int V2TypesetCommittedUnits { get; set; }
+        public int V2MissingUnits { get; set; }
+        public bool V2CountMatch { get; set; }
+    }
+
+    sealed class V2CommitAuditSummary
+    {
+        public int RequestedUnits { get; set; }
+        public int TranslatedUnits { get; set; }
+        public int PreservedOriginalUnits { get; set; }
+        public int EraseCommittedUnits { get; set; }
+        public int TypesetCommittedUnits { get; set; }
+        public int MissingUnits { get; set; }
+        public int DuplicateUnits { get; set; }
+        public bool EraseTypesetCountMatch { get; set; }
+        public bool SourceToFinalCountMatch { get; set; }
     }
 
     public Task GenerateAsync(
@@ -144,6 +164,16 @@ public sealed class FinalAuditService
         RenderPlanDocument? renderPlan =
             TryLoadPlan(
                 planPath);
+
+        string v2CommitPath =
+            Path.Combine(
+                OutputDirectoryLayout.Debug(
+                    outputRoot),
+                $"{baseName}.v2_commit_audit.json");
+
+        V2CommitAuditSummary? v2Commit =
+            TryLoadV2CommitAudit(
+                v2CommitPath);
 
         SaveCompareImage(
             original,
@@ -285,7 +315,9 @@ public sealed class FinalAuditService
                             renderRejected,
                         rejection_reasons =
                             rejectionReasons
-                    }
+                    },
+                v2_commit =
+                    v2Commit
             };
 
         string auditJsonPath =
@@ -328,8 +360,42 @@ public sealed class FinalAuditService
                 RenderApproved =
                     renderApproved,
                 RenderRejected =
-                    renderRejected
+                    renderRejected,
+                V2RequestedUnits =
+                    v2Commit?.RequestedUnits ?? 0,
+                V2TranslatedUnits =
+                    v2Commit?.TranslatedUnits ?? 0,
+                V2PreservedOriginalUnits =
+                    v2Commit?.PreservedOriginalUnits ?? 0,
+                V2EraseCommittedUnits =
+                    v2Commit?.EraseCommittedUnits ?? 0,
+                V2TypesetCommittedUnits =
+                    v2Commit?.TypesetCommittedUnits ?? 0,
+                V2MissingUnits =
+                    v2Commit?.MissingUnits ?? 0,
+                V2CountMatch =
+                    v2Commit is not null &&
+                    v2Commit.EraseTypesetCountMatch &&
+                    v2Commit.SourceToFinalCountMatch
             });
+    }
+
+    static V2CommitAuditSummary? TryLoadV2CommitAudit(
+        string path)
+    {
+        try
+        {
+            if (!File.Exists(path))
+                return null;
+
+            return JsonSerializer.Deserialize<V2CommitAuditSummary>(
+                File.ReadAllText(
+                    path));
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     static RenderPlanDocument? TryLoadPlan(
