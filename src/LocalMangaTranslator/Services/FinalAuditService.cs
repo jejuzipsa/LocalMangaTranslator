@@ -38,6 +38,23 @@ public sealed class FinalAuditService
         public double EraseChangedRatio { get; set; }
         public long TypesetChangedPixels { get; set; }
         public double TypesetChangedRatio { get; set; }
+        public int V2EraseReviewFailedUnits { get; set; }
+        public int V2UnboundUnits { get; set; }
+        public int V2DuplicateSuppressedUnits { get; set; }
+        public int V2OtherPreservedUnits { get; set; }
+    }
+
+    sealed class V2CommitUnitSummary
+    {
+        public int RegionId { get; set; }
+        public string SourceText { get; set; } = "";
+        public string Translation { get; set; } = "";
+        public string Status { get; set; } = "";
+        public bool Committed { get; set; }
+        public bool Bound { get; set; }
+        public bool LayoutApproved { get; set; }
+        public bool EraseClean { get; set; }
+        public string? LayoutMode { get; set; }
     }
 
     sealed class V2CommitAuditSummary
@@ -51,6 +68,8 @@ public sealed class FinalAuditService
         public int DuplicateUnits { get; set; }
         public bool EraseTypesetCountMatch { get; set; }
         public bool SourceToFinalCountMatch { get; set; }
+        public IReadOnlyList<V2CommitUnitSummary> Units { get; set; } =
+            [];
     }
 
     public Task GenerateAsync(
@@ -414,6 +433,38 @@ public sealed class FinalAuditService
                     WriteIndented = true
                 }));
 
+        int v2EraseReviewFailed =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:erase_review_failed",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2Unbound =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:unbound",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2DuplicateSuppressed =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:container_duplicate",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2OtherPreserved =
+            Math.Max(
+                0,
+                (v2Commit?.PreservedOriginalUnits ?? 0) -
+                v2EraseReviewFailed -
+                v2Unbound -
+                v2DuplicateSuppressed);
+
         UpdateSummary(
             auditDirectory,
             new AuditSummaryEntry
@@ -466,7 +517,15 @@ public sealed class FinalAuditService
                 TypesetChangedPixels =
                     typesetChangedPixels,
                 TypesetChangedRatio =
-                    typesetChangedRatio
+                    typesetChangedRatio,
+                V2EraseReviewFailedUnits =
+                    v2EraseReviewFailed,
+                V2UnboundUnits =
+                    v2Unbound,
+                V2DuplicateSuppressedUnits =
+                    v2DuplicateSuppressed,
+                V2OtherPreservedUnits =
+                    v2OtherPreserved
             });
     }
 
@@ -881,6 +940,12 @@ public sealed class FinalAuditService
         entries =
             entries
                 .OrderByDescending(x =>
+                    x.V2PreservedOriginalUnits)
+                .ThenByDescending(x =>
+                    x.V2EraseReviewFailedUnits)
+                .ThenByDescending(x =>
+                    x.V2UnboundUnits)
+                .ThenByDescending(x =>
                     x.RenderRejected)
                 .ThenByDescending(x =>
                     x.ChangedRatio)
