@@ -159,6 +159,17 @@ public sealed class ErasePipelineV2
                 source,
                 initialMask);
 
+        // TextFree captions on a genuinely flat panel (for example white text
+        // on a solid black narration box) are a poor fit for Telea alone:
+        // the interpolated edge can be re-segmented as "remaining text".
+        // If the ring immediately around the detector box is low-variance,
+        // replace only the already-approved glyph mask with that local panel
+        // color. Detailed artwork never takes this path.
+        ApplyFlatTextFreeBackgroundFill(
+            source,
+            firstCleaned,
+            targets);
+
         SaveLosslessWebp(
             firstCleanedPath,
             firstCleaned);
@@ -228,7 +239,11 @@ public sealed class ErasePipelineV2
                     residualNearOriginal);
 
             bool retry =
-                residualPixels >= 2;
+                !IsResidualAcceptable(
+                    initialPixelsByTarget[
+                        target.TextRegionId],
+                    residualPixels,
+                    target.TextBounds);
 
             int retryPixels = 0;
 
@@ -529,13 +544,13 @@ public sealed class ErasePipelineV2
             Math.Max(
                 12.0,
                 initialMaskPixels *
-                0.08);
+                0.10);
 
         double byDetectorArea =
             Math.Max(
                 12.0,
                 textArea *
-                0.025);
+                0.035);
 
         double allowance =
             Math.Min(
@@ -544,6 +559,187 @@ public sealed class ErasePipelineV2
 
         return residualPixels <=
                allowance;
+    }
+
+    static void ApplyFlatTextFreeBackgroundFill(
+        Mat source,
+        Mat cleaned,
+        IReadOnlyList<V2TextTarget> targets)
+    {
+        foreach (var target in targets)
+        {
+            if (target.Kind !=
+                LocalMangaTranslator.Models.PageRegionKind.TextFree)
+            {
+                continue;
+            }
+
+            if (target.BubbleBounds.HasValue)
+                continue;
+
+            if (!TryEstimateFlatBackground(
+                    source,
+                    target.TextBounds,
+                    out var background))
+            {
+                continue;
+            }
+
+            using var targetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            if (Cv2.CountNonZero(
+                    targetMask) < 2)
+            {
+                continue;
+            }
+
+            cleaned.SetTo(
+                new Scalar(
+                    background.Item0,
+                    background.Item1,
+                    background.Item2),
+                targetMask);
+        }
+    }
+
+    static bool TryEstimateFlatBackground(
+        Mat source,
+        Rect textBounds,
+        out Vec3b background)
+    {
+        background =
+            new Vec3b(
+                0,
+                0,
+                0);
+
+        const int ring = 12;
+
+        int left =
+            Math.Max(
+                0,
+                textBounds.Left - ring);
+
+        int top =
+            Math.Max(
+                0,
+                textBounds.Top - ring);
+
+        int right =
+            Math.Min(
+                source.Cols,
+                textBounds.Right + ring);
+
+        int bottom =
+            Math.Min(
+                source.Rows,
+                textBounds.Bottom + ring);
+
+        var samples =
+            new List<Vec3b>();
+
+        for (int y = top;
+             y < bottom;
+             y += 2)
+        {
+            for (int x = left;
+                 x < right;
+                 x += 2)
+            {
+                bool insideText =
+                    x >= textBounds.Left &&
+                    x < textBounds.Right &&
+                    y >= textBounds.Top &&
+                    y < textBounds.Bottom;
+
+                if (insideText)
+                    continue;
+
+                samples.Add(
+                    source.At<Vec3b>(
+                        y,
+                        x));
+            }
+        }
+
+        if (samples.Count < 24)
+            return false;
+
+        var blues =
+            samples
+                .Select(x =>
+                    x.Item0)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        var greens =
+            samples
+                .Select(x =>
+                    x.Item1)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        var reds =
+            samples
+                .Select(x =>
+                    x.Item2)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        background =
+            new Vec3b(
+                blues[
+                    blues.Length / 2],
+                greens[
+                    greens.Length / 2],
+                reds[
+                    reds.Length / 2]);
+
+        var distances =
+            samples
+                .Select(x =>
+                {
+                    double db =
+                        x.Item0 -
+                        background.Item0;
+
+                    double dg =
+                        x.Item1 -
+                        background.Item1;
+
+                    double dr =
+                        x.Item2 -
+                        background.Item2;
+
+                    return Math.Sqrt(
+                        db * db +
+                        dg * dg +
+                        dr * dr);
+                })
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        double p85 =
+            distances[
+                Math.Clamp(
+                    (int)Math.Round(
+                        (distances.Length - 1) *
+                        0.85),
+                    0,
+                    distances.Length - 1)];
+
+        // Flat enough for a panel-color fill. The threshold is intentionally
+        // strict so free text over artwork, gradients or SFX remains on the
+        // ordinary inpaint/review path.
+        return p85 <= 34.0;
     }
 
     static Mat InpaintOnlyMaskedPixels(
