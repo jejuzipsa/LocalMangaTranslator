@@ -64,31 +64,20 @@ public sealed class PagePipelineService
             outputDirectory,
             pageAnalysisResult);
 
-        // Pipeline V2 starts here, before OCR/translation can rewrite geometry.
-        // The V2 erase probe consumes only the immutable RT-DETR snapshot and
-        // writes independent detection/mask/cleaned diagnostics.
-        if (pageAnalysisResult.ExternalDetectorUsed)
+        // Freeze detector geometry before OCR/translation can reinterpret it.
+        // V2 erase itself runs later, after translation, so untranslated
+        // TextBubble targets are never blanked accidentally.
+        V2DetectionSnapshot? v2Snapshot =
+            pageAnalysisResult.ExternalDetectorUsed
+                ? V2DetectionSnapshot.Create(
+                    pageAnalysisResult)
+                : null;
+
+        if (v2Snapshot is not null)
         {
             progress?.Report(new PipelineProgress(
                 PipelineStageKind.PageAnalysis,
-                "Pipeline V2 · RT-DETR geometry 고정 + 독립 erase probe"));
-
-            var v2Snapshot =
-                V2DetectionSnapshot.Create(pageAnalysisResult);
-
-            var v2Erase =
-                await Task.Run(
-                    () => erasePipelineV2.Run(
-                        sourcePath,
-                        outputDirectory,
-                        v2Snapshot,
-                        token),
-                    token);
-
-            progress?.Report(new PipelineProgress(
-                PipelineStageKind.PageAnalysis,
-                $"Pipeline V2 · TextBubble {v2Erase.TargetCount}개 · mask {v2Erase.MaskPixels:N0}px · " +
-                $"debug/{Path.GetFileName(v2Erase.CleanedDebugPath)}"));
+                $"Pipeline V2 · RT-DETR geometry 고정 · TextBubble {v2Snapshot.TextTargets.Count}개"));
         }
 
         progress?.Report(new PipelineProgress(
@@ -194,6 +183,39 @@ public sealed class PagePipelineService
             PipelineStageKind.Translation,
             $"최종 번역 완료 · {translated.Count(x => x.Render)}개 조판 대상"));
 
+        V2EraseSelection? v2Selection =
+            null;
+
+        ErasePipelineV2Result? v2Erase =
+            null;
+
+        if (v2Snapshot is not null)
+        {
+            v2Selection =
+                V2EraseSelector.Select(
+                    v2Snapshot,
+                    translated);
+
+            progress?.Report(new PipelineProgress(
+                PipelineStageKind.Render,
+                $"Pipeline V2 · 번역과 연결된 TextBubble {v2Selection.TextRegionIds.Count}개 선택"));
+
+            v2Erase =
+                await Task.Run(
+                    () => erasePipelineV2.Run(
+                        sourcePath,
+                        outputDirectory,
+                        v2Snapshot,
+                        v2Selection.TextRegionIds,
+                        token),
+                    token);
+
+            progress?.Report(new PipelineProgress(
+                PipelineStageKind.Render,
+                $"Pipeline V2 erase · 1차 잔여 {v2Erase.ResidualBeforeRetryPixels:N0}px · " +
+                $"재처리 {v2Erase.RetryTargetCount}개 · 최종 잔여 {v2Erase.ResidualAfterRetryPixels:N0}px"));
+        }
+
         var document =
             new VisionTranslationDocument
             {
@@ -231,7 +253,9 @@ public sealed class PagePipelineService
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Render,
-            "RenderPlan / erase / layout / 조판 시작"));
+            v2Erase is not null
+                ? "RenderPlan / V2 cleaned image / 조판 시작"
+                : "RenderPlan / legacy erase / layout / 조판 시작"));
 
         var renderProgress =
             new Progress<string>(message =>
@@ -244,7 +268,11 @@ public sealed class PagePipelineService
             translated,
             imagePath,
             renderProgress,
-            token);
+            token,
+            precleanedPath:
+                v2Erase?.CleanedDebugPath,
+            v2RenderableRegionIds:
+                v2Selection?.TranslationRegionIds);
 
         // Final image delivery is complete at this point. Audit is diagnostic
         // only and can never invalidate or remove the finished output.
