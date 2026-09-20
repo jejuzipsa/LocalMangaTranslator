@@ -1,0 +1,373 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "core_bw_speech_basic_001.png",
+  "output_file": "core_bw_speech_basic_001.translated.webp",
+  "image": {
+    "width": 1295,
+    "height": 1812,
+    "changed_pixels": 40787,
+    "changed_ratio": 0.01738176208374884,
+    "changed_regions": [
+      {
+        "x": 220,
+        "y": 674,
+        "width": 144,
+        "height": 56
+      },
+      {
+        "x": 988,
+        "y": 686,
+        "width": 69,
+        "height": 61
+      },
+      {
+        "x": 180,
+        "y": 183,
+        "width": 150,
+        "height": 27
+      },
+      {
+        "x": 917,
+        "y": 1627,
+        "width": 88,
+        "height": 27
+      },
+      {
+        "x": 937,
+        "y": 686,
+        "width": 38,
+        "height": 61
+      },
+      {
+        "x": 198,
+        "y": 154,
+        "width": 81,
+        "height": 27
+      },
+      {
+        "x": 1064,
+        "y": 686,
+        "width": 57,
+        "height": 31
+      },
+      {
+        "x": 621,
+        "y": 224,
+        "width": 57,
+        "height": 29
+      },
+      {
+        "x": 596,
+        "y": 193,
+        "width": 58,
+        "height": 28
+      },
+      {
+        "x": 1039,
+        "y": 1627,
+        "width": 59,
+        "height": 27
+      },
+      {
+        "x": 185,
+        "y": 1264,
+        "width": 61,
+        "height": 26
+      },
+      {
+        "x": 509,
+        "y": 517,
+        "width": 61,
+        "height": 26
+      },
+      {
+        "x": 443,
+        "y": 517,
+        "width": 58,
+        "height": 26
+      },
+      {
+        "x": 471,
+        "y": 490,
+        "width": 54,
+        "height": 25
+      },
+      {
+        "x": 973,
+        "y": 686,
+        "width": 22,
+        "height": 61
+      },
+      {
+        "x": 869,
+        "y": 689,
+        "width": 47,
+        "height": 28
+      },
+      {
+        "x": 277,
+        "y": 729,
+        "width": 42,
+        "height": 28
+      },
+      {
+        "x": 184,
+        "y": 674,
+        "width": 28,
+        "height": 41
+      },
+      {
+        "x": 259,
+        "y": 1292,
+        "width": 40,
+        "height": 27
+      },
+      {
+        "x": 656,
+        "y": 196,
+        "width": 42,
+        "height": 25
+      },
+      {
+        "x": 526,
+        "y": 490,
+        "width": 40,
+        "height": 26
+      },
+      {
+        "x": 265,
+        "y": 1264,
+        "width": 38,
+        "height": 26
+      },
+      {
+        "x": 211,
+        "y": 674,
+        "width": 30,
+        "height": 29
+      },
+      {
+        "x": 684,
+        "y": 225,
+        "width": 31,
+        "height": 28
+      },
+      {
+        "x": 304,
+        "y": 1265,
+        "width": 33,
+        "height": 25
+      },
+      {
+        "x": 718,
+        "y": 193,
+        "width": 27,
+        "height": 28
+      },
+      {
+        "x": 232,
+        "y": 1292,
+        "width": 27,
+        "height": 27
+      },
+      {
+        "x": 358,
+        "y": 674,
+        "width": 13,
+        "height": 55
+      },
+      {
+        "x": 1012,
+        "y": 1627,
+        "width": 26,
+        "height": 27
+      },
+      {
+        "x": 1057,
+        "y": 723,
+        "width": 33,
+        "height": 21
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 16,
+    "bubbles": 8,
+    "text_regions": 8,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 17,
+      "Global2x": 16,
+      "Focus3x": 41,
+      "Region1x": 16,
+      "Region2x": 16,
+      "Container1x": 17,
+      "Container2x": 18
+    },
+    "canonical_lines": 18,
+    "units": 9,
+    "assigned_lines": 17,
+    "orphan_groups": 1,
+    "secondary_total": 8,
+    "secondary_accepted": 8,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 149,
+          "Bottom": 217,
+          "Left": 151,
+          "Right": 352,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HERE I GOOOOOOOO!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 188,
+          "Bottom": 260,
+          "Left": 582,
+          "Right": 760,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOUR ROOM IS ROOM 43L.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 485,
+          "Bottom": 550,
+          "Left": 431,
+          "Right": 585,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW NOW,\nSLOW DOWN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 668,
+          "Bottom": 766,
+          "Left": 166,
+          "Right": 390,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IN OTHER WORLDS, FROM YOUR CURRENT POSITION,",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 681,
+          "Bottom": 754,
+          "Left": 857,
+          "Right": 1133,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WILL HAVE TO PASS THROUGH HES. ROOMS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1259,
+          "Bottom": 1326,
+          "Left": 175,
+          "Right": 347,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEREN LIES THE PROBLEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 1292,
+          "Bottom": 1335,
+          "Left": 677,
+          "Right": 845,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AS I\u0027VE SAID,",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1622,
+          "Bottom": 1690,
+          "Left": 862,
+          "Right": 1110,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE FURTHER YOU ARE FROM THIS ROOM...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 9,
+    "requested_render": 8
+  },
+  "render": {
+    "total": 8,
+    "approved": 8,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}

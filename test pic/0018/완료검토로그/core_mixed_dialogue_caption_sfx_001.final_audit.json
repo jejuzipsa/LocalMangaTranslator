@@ -1,0 +1,463 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "core_mixed_dialogue_caption_sfx_001.jpg",
+  "output_file": "core_mixed_dialogue_caption_sfx_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 73382,
+    "changed_ratio": 0.02692040171863261,
+    "changed_regions": [
+      {
+        "x": 533,
+        "y": 1409,
+        "width": 204,
+        "height": 46
+      },
+      {
+        "x": 641,
+        "y": 1919,
+        "width": 130,
+        "height": 43
+      },
+      {
+        "x": 663,
+        "y": 1476,
+        "width": 106,
+        "height": 46
+      },
+      {
+        "x": 83,
+        "y": 1235,
+        "width": 71,
+        "height": 66
+      },
+      {
+        "x": 578,
+        "y": 1876,
+        "width": 187,
+        "height": 21
+      },
+      {
+        "x": 1043,
+        "y": 598,
+        "width": 123,
+        "height": 25
+      },
+      {
+        "x": 1098,
+        "y": 1216,
+        "width": 71,
+        "height": 43
+      },
+      {
+        "x": 534,
+        "y": 1496,
+        "width": 62,
+        "height": 43
+      },
+      {
+        "x": 898,
+        "y": 65,
+        "width": 114,
+        "height": 20
+      },
+      {
+        "x": 70,
+        "y": 81,
+        "width": 87,
+        "height": 26
+      },
+      {
+        "x": 564,
+        "y": 1476,
+        "width": 100,
+        "height": 22
+      },
+      {
+        "x": 154,
+        "y": 1235,
+        "width": 51,
+        "height": 43
+      },
+      {
+        "x": 899,
+        "y": 108,
+        "width": 86,
+        "height": 21
+      },
+      {
+        "x": 575,
+        "y": 1517,
+        "width": 64,
+        "height": 28
+      },
+      {
+        "x": 140,
+        "y": 1256,
+        "width": 40,
+        "height": 44
+      },
+      {
+        "x": 1032,
+        "y": 1238,
+        "width": 42,
+        "height": 41
+      },
+      {
+        "x": 69,
+        "y": 110,
+        "width": 85,
+        "height": 19
+      },
+      {
+        "x": 597,
+        "y": 1496,
+        "width": 62,
+        "height": 26
+      },
+      {
+        "x": 225,
+        "y": 1162,
+        "width": 55,
+        "height": 29
+      },
+      {
+        "x": 102,
+        "y": 1148,
+        "width": 75,
+        "height": 21
+      },
+      {
+        "x": 303,
+        "y": 1148,
+        "width": 74,
+        "height": 21
+      },
+      {
+        "x": 989,
+        "y": 1050,
+        "width": 72,
+        "height": 21
+      },
+      {
+        "x": 901,
+        "y": 87,
+        "width": 75,
+        "height": 20
+      },
+      {
+        "x": 1083,
+        "y": 1073,
+        "width": 62,
+        "height": 24
+      },
+      {
+        "x": 156,
+        "y": 60,
+        "width": 59,
+        "height": 25
+      },
+      {
+        "x": 938,
+        "y": 1281,
+        "width": 58,
+        "height": 25
+      },
+      {
+        "x": 534,
+        "y": 1456,
+        "width": 37,
+        "height": 39
+      },
+      {
+        "x": 156,
+        "y": 1170,
+        "width": 65,
+        "height": 22
+      },
+      {
+        "x": 279,
+        "y": 1170,
+        "width": 66,
+        "height": 21
+      },
+      {
+        "x": 207,
+        "y": 1148,
+        "width": 66,
+        "height": 21
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 27,
+    "bubbles": 13,
+    "text_regions": 14,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 45,
+      "Global2x": 42,
+      "Focus3x": 272,
+      "Region1x": 44,
+      "Region2x": 44,
+      "Container1x": 45,
+      "Container2x": 47
+    },
+    "canonical_lines": 56,
+    "units": 18,
+    "assigned_lines": 49,
+    "orphan_groups": 5,
+    "secondary_total": 13,
+    "secondary_accepted": 13,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 56,
+          "Bottom": 131,
+          "Left": 63,
+          "Right": 220,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "In fact, I barely recognize you anymore.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 60,
+          "Bottom": 134,
+          "Left": 893,
+          "Right": 1069,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027m not sure I like this new you, Gotham.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 140,
+          "Bottom": 194,
+          "Left": 1136,
+          "Right": 1246,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "But that\u0027s okay.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 555,
+          "Bottom": 655,
+          "Left": 286,
+          "Right": 436,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I don\u0027t think you\u0027re going to like me much, sither.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG010",
+        "Bounds": {
+          "Top": 571,
+          "Bottom": 624,
+          "Left": 1037,
+          "Right": 1220,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "My name is Alfred Pennyworth.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 1046,
+          "Bottom": 1097,
+          "Left": 985,
+          "Right": 1166,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "And I\u0027m here to do some bad things.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG014",
+        "Bounds": {
+          "Top": 1143,
+          "Bottom": 1219,
+          "Left": 95,
+          "Right": 385,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SO GOOD TO SEE YOU, OLD FRIEND.\nI STILL STOCK YOUR\nFAVORITE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1210,
+          "Bottom": 1307,
+          "Left": 929,
+          "Right": 1176,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "But...he runs the only decent tta shop in Gothan, which is why I",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG018",
+        "Bounds": {
+          "Top": 1230,
+          "Bottom": 1306,
+          "Left": 78,
+          "Right": 212,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU\u0027RE A GIANT AMONG MEN, AMIR.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG020",
+        "Bounds": {
+          "Top": 1255,
+          "Bottom": 1399,
+          "Left": 211,
+          "Right": 411,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "TRUE, TRUE.\nBUT I WOULDN\u0027T\nLEAVE YOUR BIKE OUT\nTHERE UNLESS YOU\u0027RE\nASKING FOR\nER.\nTROUBLE....",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG022",
+        "Bounds": {
+          "Top": 1371,
+          "Bottom": 1402,
+          "Left": 145,
+          "Right": 216,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NEVER.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 1406,
+          "Bottom": 1546,
+          "Left": 526,
+          "Right": 779,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Amir left Kabul during the occupation tuenty years ago. He\u0027s had me over to his arrinert tang. hatost.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG026",
+        "Bounds": {
+          "Top": 1872,
+          "Bottom": 1967,
+          "Left": 571,
+          "Right": 776,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Sometimes I wonder if he\u0027d invite me back if he knew the things",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 18,
+    "requested_render": 14
+  },
+  "render": {
+    "total": 8,
+    "approved": 8,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}

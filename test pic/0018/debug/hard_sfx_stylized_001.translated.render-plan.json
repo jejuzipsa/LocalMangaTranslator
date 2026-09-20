@@ -1,0 +1,33 @@
+{
+  "SourceFile": "hard_sfx_stylized_001.jpg",
+  "CreatedAt": "2026-09-20T22:20:51.6733817+09:00",
+  "Units": [
+    {
+      "UnitId": "U001",
+      "ContainerId": "C001",
+      "RegionId": 4,
+      "LineIds": [
+        "L0001"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_textbubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_container_text_relaxed",
+      "EraseEvidenceLineCount": 1,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 14.25923583984375,
+      "BoxX": 1162,
+      "BoxY": 1136,
+      "BoxWidth": 105,
+      "BoxHeight": 31,
+      "GlyphX": 1191.3065130786133,
+      "GlyphY": 1143.6047308520508,
+      "GlyphWidth": 46.68140743652344,
+      "GlyphHeight": 15.029674038085936
+    }
+  ]
+}

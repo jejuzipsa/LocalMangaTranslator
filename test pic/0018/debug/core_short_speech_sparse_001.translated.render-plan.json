@@ -1,0 +1,62 @@
+{
+  "SourceFile": "core_short_speech_sparse_001.jpg",
+  "CreatedAt": "2026-09-20T22:09:08.3510404+09:00",
+  "Units": [
+    {
+      "UnitId": "U001",
+      "ContainerId": "C001",
+      "RegionId": 2,
+      "LineIds": [
+        "L0001",
+        "L0002"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_textbubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_rtdetr_text_region",
+      "EraseEvidenceLineCount": 2,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 15.831689453125001,
+      "BoxX": 531,
+      "BoxY": 302,
+      "BoxWidth": 55,
+      "BoxHeight": 36,
+      "GlyphX": 531.3380667480469,
+      "GlyphY": 302.42388217773436,
+      "GlyphWidth": 54.877638476562495,
+      "GlyphHeight": 34.30668510742187
+    },
+    {
+      "UnitId": "U002",
+      "ContainerId": "C002",
+      "RegionId": 3,
+      "LineIds": [
+        "L0003",
+        "L0004"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_textbubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_container_text_relaxed",
+      "EraseEvidenceLineCount": 1,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 17.4788427734375,
+      "BoxX": 639,
+      "BoxY": 324,
+      "BoxWidth": 53,
+      "BoxHeight": 38,
+      "GlyphX": 647.8527929345703,
+      "GlyphY": 323.8392736474609,
+      "GlyphWidth": 35.37864264648438,
+      "GlyphHeight": 36.724010078125005
+    }
+  ]
+}
