@@ -9,8 +9,10 @@ public sealed record V2EraseTargetAudit(
     string TextRegionId,
     int InitialMaskPixels,
     int ResidualBeforeRetryPixels,
+    int EffectiveResidualBeforeRetryPixels,
     int RetryMaskPixels,
     int ResidualAfterRetryPixels,
+    int EffectiveResidualAfterRetryPixels,
     bool Retried,
     string Status,
     int SelectedResidualPixels,
@@ -219,7 +221,7 @@ public sealed class ErasePipelineV2
             using (var reviewKernel =
                    Cv2.GetStructuringElement(
                        MorphShapes.Ellipse,
-                       new Size(5, 5)))
+                       new Size(7, 7)))
             {
                 Cv2.Dilate(
                     originalTargetMask,
@@ -240,11 +242,21 @@ public sealed class ErasePipelineV2
                 Cv2.CountNonZero(
                     residualNearOriginal);
 
+            using var effectiveResidual =
+                BuildResidualOutsideOriginalMask(
+                    residualNearOriginal,
+                    originalTargetMask);
+
+            int effectiveResidualPixels =
+                Cv2.CountNonZero(
+                    effectiveResidual);
+
             bool retry =
                 !IsResidualAcceptable(
                     initialPixelsByTarget[
                         target.TextRegionId],
                     residualPixels,
+                    effectiveResidualPixels,
                     target.TextBounds);
 
             int retryPixels = 0;
@@ -284,7 +296,7 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     retryTargetMask,
-                    residualNearOriginal,
+                    effectiveResidual,
                     retryTargetMask);
 
                 Cv2.BitwiseAnd(
@@ -303,7 +315,7 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     residualBefore,
-                    residualNearOriginal,
+                    effectiveResidual,
                     residualBefore);
             }
 
@@ -316,7 +328,9 @@ public sealed class ErasePipelineV2
                     target.TextRegionId,
                     initialTargetPixels,
                     residualPixels,
+                    effectiveResidualPixels,
                     retryPixels,
+                    0,
                     0,
                     retry,
                     initialTargetPixels < 2
@@ -324,7 +338,7 @@ public sealed class ErasePipelineV2
                         : retry
                             ? "retry_scheduled"
                             : "clean_after_first_pass",
-                    residualPixels,
+                    effectiveResidualPixels,
                     retry
                         ? "pending_retry"
                         : "first"));
@@ -374,7 +388,7 @@ public sealed class ErasePipelineV2
             using (var finalKernel =
                    Cv2.GetStructuringElement(
                        MorphShapes.Ellipse,
-                       new Size(5, 5)))
+                       new Size(7, 7)))
             {
                 Cv2.Dilate(
                     originalTargetMask,
@@ -395,13 +409,22 @@ public sealed class ErasePipelineV2
                 Cv2.CountNonZero(
                     finalResidual);
 
+            using var effectiveFinalResidual =
+                BuildResidualOutsideOriginalMask(
+                    finalResidual,
+                    originalTargetMask);
+
+            int effectiveRemainingAfterRetry =
+                Cv2.CountNonZero(
+                    effectiveFinalResidual);
+
             var previous =
                 audits[i];
 
             var selection =
                 SelectBestResidualPass(
-                    previous.ResidualBeforeRetryPixels,
-                    remainingAfterRetry,
+                    previous.EffectiveResidualBeforeRetryPixels,
+                    effectiveRemainingAfterRetry,
                     previous.Retried);
 
             bool selectFirstPass =
@@ -434,7 +457,7 @@ public sealed class ErasePipelineV2
                 using (var firstReviewKernel =
                        Cv2.GetStructuringElement(
                            MorphShapes.Ellipse,
-                           new Size(5, 5)))
+                           new Size(7, 7)))
                 {
                     Cv2.Dilate(
                         originalTargetMask,
@@ -450,6 +473,11 @@ public sealed class ErasePipelineV2
                     firstResidualCandidate,
                     firstReviewZone,
                     firstResidual);
+
+                using var effectiveFirstResidual =
+                    BuildResidualOutsideOriginalMask(
+                        firstResidual,
+                        originalTargetMask);
 
                 using var expanded =
                     new Mat();
@@ -482,7 +510,7 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     retryTargetMask,
-                    firstResidual,
+                    effectiveFirstResidual,
                     retryTargetMask);
 
                 Cv2.BitwiseAnd(
@@ -498,11 +526,18 @@ public sealed class ErasePipelineV2
             residualAfterTotal +=
                 selectedResidual;
 
+            int selectedRawResidual =
+                selectedPass == "retry"
+                    ? remainingAfterRetry
+                    : previous.ResidualBeforeRetryPixels;
+
             audits[i] =
                 previous with
                 {
                     ResidualAfterRetryPixels =
                         remainingAfterRetry,
+                    EffectiveResidualAfterRetryPixels =
+                        effectiveRemainingAfterRetry,
                     SelectedResidualPixels =
                         selectedResidual,
                     SelectedPass =
@@ -512,6 +547,7 @@ public sealed class ErasePipelineV2
                             ? "mask_empty"
                             : IsResidualAcceptable(
                                 previous.InitialMaskPixels,
+                                selectedRawResidual,
                                 selectedResidual,
                                 target.TextBounds)
                                 ? selectedPass == "retry"
@@ -587,8 +623,10 @@ public sealed class ErasePipelineV2
                             target.BubbleScore,
                             audit.InitialMaskPixels,
                             audit.ResidualBeforeRetryPixels,
+                            audit.EffectiveResidualBeforeRetryPixels,
                             audit.RetryMaskPixels,
                             audit.ResidualAfterRetryPixels,
+                            audit.EffectiveResidualAfterRetryPixels,
                             audit.SelectedResidualPixels,
                             audit.SelectedPass,
                             audit.Retried,
@@ -655,8 +693,19 @@ public sealed class ErasePipelineV2
         int initialMaskPixels,
         int residualPixels,
         Rect textBounds)
+        => IsResidualAcceptable(
+            initialMaskPixels,
+            residualPixels,
+            residualPixels,
+            textBounds);
+
+    public static bool IsResidualAcceptable(
+        int initialMaskPixels,
+        int rawResidualPixels,
+        int effectiveResidualPixels,
+        Rect textBounds)
     {
-        if (residualPixels < 2)
+        if (rawResidualPixels < 2)
             return true;
 
         int textArea =
@@ -665,10 +714,11 @@ public sealed class ErasePipelineV2
                 textBounds.Width *
                 textBounds.Height);
 
-        // 0019 showed that a few dozen high-contrast inpaint speckles can be
-        // re-segmented as "text" even when the lettering is visibly gone.
-        // Judge residuals by both original glyph-mask size and detector area
-        // instead of the old absolute <2 pixel rule.
+        // The raw residual detector also re-segments contrast created *inside*
+        // pixels that were already erased/inpainted. Those pixels cannot be
+        // surviving source glyphs, so use them only as a sanity bound.
+        // The decisive signal is text-like residue outside the immutable
+        // original glyph mask but still inside its local review halo.
         double byOriginalMask =
             Math.Max(
                 12.0,
@@ -681,13 +731,68 @@ public sealed class ErasePipelineV2
                 textArea *
                 0.035);
 
-        double allowance =
+        double rawAllowance =
             Math.Min(
                 byOriginalMask,
                 byDetectorArea);
 
-        return residualPixels <=
-               allowance;
+        if (rawResidualPixels <=
+            rawAllowance)
+        {
+            return true;
+        }
+
+        double effectiveAllowance =
+            Math.Max(
+                6.0,
+                rawAllowance *
+                0.25);
+
+        // A visually clean inpaint may still have substantial texture inside
+        // the replaced glyph pixels. Accept that only when the suspicious
+        // residue outside the erase mask is tiny and the raw detector is not
+        // wildly inconsistent. This keeps true missed strokes reviewable.
+        return rawResidualPixels <=
+                   rawAllowance * 2.0 &&
+               effectiveResidualPixels <=
+                   effectiveAllowance;
+    }
+
+    public static int CountResidualOutsideOriginalMask(
+        Mat residualNearOriginal,
+        Mat originalTargetMask)
+    {
+        using var effective =
+            BuildResidualOutsideOriginalMask(
+                residualNearOriginal,
+                originalTargetMask);
+
+        return Cv2.CountNonZero(
+            effective);
+    }
+
+    static Mat BuildResidualOutsideOriginalMask(
+        Mat residualNearOriginal,
+        Mat originalTargetMask)
+    {
+        var inverseOriginal =
+            new Mat();
+
+        Cv2.BitwiseNot(
+            originalTargetMask,
+            inverseOriginal);
+
+        var effective =
+            new Mat();
+
+        Cv2.BitwiseAnd(
+            residualNearOriginal,
+            inverseOriginal,
+            effective);
+
+        inverseOriginal.Dispose();
+
+        return effective;
     }
 
     static void ApplyFlatTextFreeBackgroundFill(
