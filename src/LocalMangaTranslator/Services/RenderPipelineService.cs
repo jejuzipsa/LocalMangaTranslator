@@ -42,23 +42,32 @@ public sealed class RenderPipelineService
         IProgress<string>? progress = null,
         CancellationToken token = default,
         string? precleanedPath = null,
-        IReadOnlySet<int>? v2RenderableRegionIds = null)
+        IReadOnlyDictionary<int, CvRect>? v2LayoutBoundsByRegionId = null)
     {
         bool useV2Erase =
             !string.IsNullOrWhiteSpace(
-                precleanedPath);
+                precleanedPath) &&
+            v2LayoutBoundsByRegionId is not null;
 
         var requested = regions
             .Where(x =>
                 x.Render &&
                 (!useV2Erase ||
-                 v2RenderableRegionIds?.Contains(
-                     x.Id) == true))
+                 v2LayoutBoundsByRegionId!.ContainsKey(
+                     x.Id)))
             .ToList();
 
-        var candidates = SuppressDuplicateRegions(
-            requested,
-            out var legacySuppressed);
+        List<VisionTranslation> legacySuppressed;
+
+        var candidates =
+            useV2Erase
+                ? requested
+                : SuppressDuplicateRegions(
+                    requested,
+                    out legacySuppressed);
+
+        if (useV2Erase)
+            legacySuppressed = [];
 
         if (candidates.Count == 0)
         {
@@ -100,15 +109,24 @@ public sealed class RenderPipelineService
         string finalDebug = Path.Combine(debugDir, $"{baseName}.06_final_output.webp");
         string planJson = Path.Combine(debugDir, $"{baseName}.render-plan.json");
 
-        progress?.Report($"1/5 컨테이너 분석 · {candidates.Count}개 번역 블록");
+        progress?.Report(
+            useV2Erase
+                ? $"1/5 V2 TextBubble 조판영역 고정 · {candidates.Count}개 번역 블록"
+                : $"1/5 컨테이너 분석 · {candidates.Count}개 번역 블록");
 
-        var layouts = await Task.Run(
-            () => AnalyzeContainers(
-                sourcePath,
-                candidates,
-                progress,
-                token),
-            token);
+        var layouts =
+            useV2Erase
+                ? CreateV2TextBubbleLayouts(
+                    candidates,
+                    v2LayoutBoundsByRegionId!,
+                    progress)
+                : await Task.Run(
+                    () => AnalyzeContainers(
+                        sourcePath,
+                        candidates,
+                        progress,
+                        token),
+                    token);
 
         token.ThrowIfCancellationRequested();
 
@@ -283,6 +301,97 @@ public sealed class RenderPipelineService
                 // 임시파일 정리 실패는 결과 저장을 실패 처리하지 않는다.
             }
         }
+    }
+
+    static Dictionary<int, BalloonLayout> CreateV2TextBubbleLayouts(
+        IReadOnlyList<VisionTranslation> regions,
+        IReadOnlyDictionary<int, CvRect> layoutBoundsByRegionId,
+        IProgress<string>? progress)
+    {
+        var result =
+            new Dictionary<int, BalloonLayout>(
+                regions.Count);
+
+        foreach (var region in regions)
+        {
+            if (!layoutBoundsByRegionId.TryGetValue(
+                    region.Id,
+                    out var bounds))
+            {
+                continue;
+            }
+
+            int insetX =
+                Math.Clamp(
+                    (int)Math.Round(bounds.Width * 0.04),
+                    2,
+                    10);
+
+            int insetY =
+                Math.Clamp(
+                    (int)Math.Round(bounds.Height * 0.06),
+                    2,
+                    10);
+
+            var inner =
+                new CvRect(
+                    bounds.X + insetX,
+                    bounds.Y + insetY,
+                    Math.Max(
+                        12,
+                        bounds.Width - insetX * 2),
+                    Math.Max(
+                        12,
+                        bounds.Height - insetY * 2));
+
+            int maskWidth =
+                Math.Max(1, bounds.Width);
+
+            int maskHeight =
+                Math.Max(1, bounds.Height);
+
+            var safeMask =
+                Enumerable.Repeat(
+                    (byte)255,
+                    maskWidth * maskHeight)
+                .ToArray();
+
+            var layout =
+                new BalloonLayout(
+                    bounds,
+                    inner,
+                    true,
+                    false,
+                    safeMask,
+                    maskWidth,
+                    maskHeight,
+                    region.Type,
+                    "v2:rtdetr_textbubble",
+                    true,
+                    "v2_same_textbubble_as_erase",
+                    1.0,
+                    1.0,
+                    1.0,
+                    0,
+                    inner.Width *
+                    (double)inner.Height /
+                    Math.Max(
+                        1.0,
+                        bounds.Width *
+                        (double)bounds.Height),
+                    1.0,
+                    0);
+
+            result[region.Id] =
+                layout;
+
+            progress?.Report(
+                $"[v2-box] id={region.Id} " +
+                $"x={bounds.X} y={bounds.Y} w={bounds.Width} h={bounds.Height} " +
+                $"layout=erase_textbubble");
+        }
+
+        return result;
     }
 
     static Dictionary<int, BalloonLayout> AnalyzeContainers(
