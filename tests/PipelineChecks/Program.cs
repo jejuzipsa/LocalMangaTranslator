@@ -1114,8 +1114,9 @@ try
             "audit_source.final_audit.json");
 
     using var auditCompareImage =
-        Cv2.ImRead(
-            auditCompare,
+        Cv2.ImDecode(
+            File.ReadAllBytes(
+                auditCompare),
             ImreadModes.Color);
 
     string auditJsonText =
