@@ -88,6 +88,22 @@ public sealed class VisionTranslationService
 
         foreach (var item in ordered)
         {
+            // Orphan OCR has no detector-confirmed physical owner. Never let
+            // it share a Vision crop with valid container-owned dialogue:
+            // neighboring text can make a short artifact look like speech,
+            // while the orphan can also contaminate a real bubble's review.
+            if (item.Block.RegionContainer is null)
+            {
+                if (current.Count > 0)
+                {
+                    batches.Add(current);
+                    current = [];
+                }
+
+                batches.Add([item]);
+                continue;
+            }
+
             if (current.Count == 0)
             {
                 current.Add(item);
@@ -301,7 +317,10 @@ public sealed class VisionTranslationService
             if (batch.Count > 1)
                 return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
-            throw new InvalidOperationException("Vision LLM 응답이 비어 있습니다.");
+            progress?.Report(
+                $"[vision-keep] id={batch[0].GlobalId} · 단일 블록 Vision 응답이 비어 있어 원문 유지");
+
+            return [CreateSafeFallback(batch[0])];
         }
 
         var parsed = ParseResult(content, batchBlocks);
@@ -311,8 +330,11 @@ public sealed class VisionTranslationService
             if (batch.Count > 1)
                 return await RetryIndividuallyAsync(imagePath, batch, model, progress, token);
 
-            throw new InvalidOperationException(
-                $"Vision LLM 결과 검증 실패: {Compact(content)}");
+            progress?.Report(
+                $"[vision-keep] id={batch[0].GlobalId} · 단일 블록 Vision 결과 검증 실패 · 원문 유지 · " +
+                $"{Compact(content)}");
+
+            return [CreateSafeFallback(batch[0])];
         }
 
         return parsed.Select(x =>
@@ -624,7 +646,7 @@ NON-NEGOTIABLE RULES:
 11. For render=true, translation MUST be a finished Korean translation, never unchanged source text.
 12. Before finalizing each translation, silently check three things: literal fidelity, natural Korean speech/caption style, and brevity for a speech balloon. Do not output the checks.
 13. Avoid stiff translationese. Use the shortest natural Korean wording that preserves the exact intent, relationship, register, emotion, and emphasis.
-14. Read neighboring input blocks as local page context so recurring names, honorifics, pronouns, and speaker tone stay consistent, but never merge separate ids.
+14. Neighboring input blocks are context-only. They may guide names, honorifics, pronouns, and speaker tone, but their words, facts, numbers, actions, and clauses MUST NOT be copied into another id. Each id owns only the visible text inside its own OCR block/container.
 15. Preserve useful visual line structure with [BR]. Use original_region_count as a guide:
     - 1 line: normally no [BR]
     - 2 lines: normally one [BR]

@@ -222,13 +222,20 @@ public sealed class OcrPipelineService
         }
 
         unitBuild =
+            RecoverRtdetrTextRegionOrphans(
+                unitBuild,
+                pageCandidates,
+                pageAnalysis.Regions);
+
+        unitBuild =
             ConsolidateRegionOwnedUnits(
                 unitBuild);
 
         unitBuild =
             AttachRegionContainers(
                 unitBuild,
-                pageCandidates);
+                pageCandidates,
+                pageAnalysis.Regions);
 
         unitBuild =
             ApplySecondaryEvidence(
@@ -457,7 +464,8 @@ public sealed class OcrPipelineService
 
     static OcrUnitBuildResult AttachRegionContainers(
         OcrUnitBuildResult input,
-        IReadOnlyList<ContainerCandidate> candidates)
+        IReadOnlyList<ContainerCandidate> candidates,
+        IReadOnlyList<PageRegion> regions)
     {
         if (input.Units.Count == 0 ||
             input.UnitOwnership.Count != input.Units.Count)
@@ -491,7 +499,12 @@ public sealed class OcrPipelineService
                         RegionId =
                             candidate.RegionId,
                         RegionContainer =
-                            candidate
+                            candidate,
+                        RegionTextRegion =
+                            FindBestTextRegion(
+                                block,
+                                candidate,
+                                regions)
                     };
                 })
                 .ToList();
@@ -507,6 +520,289 @@ public sealed class OcrPipelineService
             UnitOwnership =
                 input.UnitOwnership
         };
+    }
+
+    static OcrUnitBuildResult RecoverRtdetrTextRegionOrphans(
+        OcrUnitBuildResult input,
+        IReadOnlyList<ContainerCandidate> candidates,
+        IReadOnlyList<PageRegion> regions)
+    {
+        if (input.Units.Count == 0 ||
+            input.UnitOwnership.Count != input.Units.Count ||
+            candidates.Count == 0)
+        {
+            return input;
+        }
+
+        var units =
+            input.Units.ToList();
+
+        var ownership =
+            input.UnitOwnership.ToList();
+
+        var lineOwnership =
+            input.LineOwnership.ToList();
+
+        for (int i = 0; i < units.Count; i++)
+        {
+            var owner = ownership[i];
+
+            if (!owner.IsOrphan ||
+                !string.IsNullOrWhiteSpace(
+                    owner.CandidateId))
+            {
+                continue;
+            }
+
+            var block = units[i];
+
+            if (block.Lines.Count == 0 ||
+                MeaningfulLength(
+                    block.Text) == 0)
+            {
+                continue;
+            }
+
+            double avgConfidence =
+                block.Lines.Average(
+                    x => x.Confidence);
+
+            if (avgConfidence < 0.30)
+                continue;
+
+            var matches =
+                candidates
+                    .Select(candidate =>
+                    {
+                        var textRegion =
+                            FindBestTextRegion(
+                                block,
+                                candidate,
+                                regions);
+
+                        if (textRegion is null)
+                            return null;
+
+                        double coverage =
+                            Coverage(
+                                ToRect(block),
+                                textRegion.Bounds);
+
+                        double score =
+                            coverage * 4.0 +
+                            textRegion.Score * 2.0 +
+                            Math.Clamp(
+                                candidate.Score,
+                                0,
+                                10) * 0.08;
+
+                        return new
+                        {
+                            Candidate = candidate,
+                            TextRegion = textRegion,
+                            Coverage = coverage,
+                            Score = score
+                        };
+                    })
+                    .Where(x =>
+                        x is not null &&
+                        x.Coverage >= 0.52 &&
+                        x.TextRegion.Score >= 0.72f)
+                    .OrderByDescending(x =>
+                        x!.Score)
+                    .ToList();
+
+            if (matches.Count == 0)
+                continue;
+
+            var best = matches[0]!;
+
+            if (matches.Count > 1 &&
+                best.Score - matches[1]!.Score < 0.30)
+            {
+                continue;
+            }
+
+            ownership[i] =
+                owner with
+                {
+                    CandidateId =
+                        best.Candidate.CandidateId,
+                    IsOrphan =
+                        false,
+                    Reason =
+                        "rtdetr_textbubble_recovered"
+                };
+
+            foreach (string lineId in owner.LineIds)
+            {
+                int lineIndex =
+                    lineOwnership.FindIndex(x =>
+                        string.Equals(
+                            x.LineId,
+                            lineId,
+                            StringComparison.Ordinal));
+
+                if (lineIndex < 0 ||
+                    lineOwnership[lineIndex].Assigned)
+                {
+                    continue;
+                }
+
+                lineOwnership[lineIndex] =
+                    new LineOwnershipDecision(
+                        lineId,
+                        best.Candidate.CandidateId,
+                        true,
+                        "rtdetr_textbubble_recovered",
+                        best.Coverage,
+                        best.Score);
+            }
+        }
+
+        return new OcrUnitBuildResult(
+            units,
+            input.ContainerCount,
+            lineOwnership.Count(x =>
+                x.Assigned),
+            ownership.Count(x =>
+                x.IsOrphan))
+        {
+            LineOwnership =
+                lineOwnership,
+            UnitOwnership =
+                ownership
+        };
+    }
+
+    static PageRegion? FindBestTextRegion(
+        OcrTextBlock block,
+        ContainerCandidate candidate,
+        IReadOnlyList<PageRegion> regions)
+    {
+        var bubble =
+            candidate.LearnedBounds ??
+            candidate.Bounds;
+
+        var blockRect =
+            ToRect(
+                block);
+
+        return regions
+            .Where(x =>
+                x.Kind ==
+                    PageRegionKind.TextBubble &&
+                x.Score >= 0.65f)
+            .Select(x => new
+            {
+                Region = x,
+                BubbleCoverage =
+                    Coverage(
+                        x.Bounds,
+                        bubble),
+                BlockCoverage =
+                    Coverage(
+                        blockRect,
+                        x.Bounds)
+            })
+            .Where(x =>
+                x.BubbleCoverage >= 0.60 &&
+                (x.BlockCoverage >= 0.45 ||
+                 ContainsCenter(
+                     x.Region.Bounds,
+                     blockRect)))
+            .OrderByDescending(x =>
+                x.BlockCoverage * 3.0 +
+                x.BubbleCoverage +
+                x.Region.Score)
+            .Select(x =>
+                x.Region)
+            .FirstOrDefault();
+    }
+
+    static OpenCvSharp.Rect ToRect(
+        OcrTextBlock block)
+        => new(
+            (int)Math.Floor(
+                block.X),
+            (int)Math.Floor(
+                block.Y),
+            Math.Max(
+                1,
+                (int)Math.Ceiling(
+                    block.W)),
+            Math.Max(
+                1,
+                (int)Math.Ceiling(
+                    block.H)));
+
+    static double Coverage(
+        OpenCvSharp.Rect subject,
+        OpenCvSharp.Rect container)
+    {
+        double intersection =
+            IntersectionArea(
+                subject,
+                container);
+
+        double area =
+            Math.Max(
+                1.0,
+                subject.Width *
+                (double)subject.Height);
+
+        return intersection /
+               area;
+    }
+
+    static bool ContainsCenter(
+        OpenCvSharp.Rect container,
+        OpenCvSharp.Rect subject)
+    {
+        double cx =
+            subject.X +
+            subject.Width / 2.0;
+
+        double cy =
+            subject.Y +
+            subject.Height / 2.0;
+
+        return cx >= container.Left &&
+               cx <= container.Right &&
+               cy >= container.Top &&
+               cy <= container.Bottom;
+    }
+
+    static double IntersectionArea(
+        OpenCvSharp.Rect a,
+        OpenCvSharp.Rect b)
+    {
+        int left =
+            Math.Max(
+                a.Left,
+                b.Left);
+
+        int top =
+            Math.Max(
+                a.Top,
+                b.Top);
+
+        int right =
+            Math.Min(
+                a.Right,
+                b.Right);
+
+        int bottom =
+            Math.Min(
+                a.Bottom,
+                b.Bottom);
+
+        return Math.Max(
+                   0,
+                   right - left) *
+               (double)Math.Max(
+                   0,
+                   bottom - top);
     }
 
     static OcrUnitBuildResult ApplySecondaryEvidence(

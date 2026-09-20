@@ -189,7 +189,9 @@ public sealed class PageAnalysisService : IDisposable
                                 bestLegacy.Candidate.Score) +
                             bubble.Score * 1.5,
                         RegionId =
-                            bubble.RegionId
+                            bubble.RegionId,
+                        LearnedBounds =
+                            bounds
                     });
 
                 continue;
@@ -218,7 +220,9 @@ public sealed class PageAnalysisService : IDisposable
                     bounds.Height)
                 {
                     RegionId =
-                        bubble.RegionId
+                        bubble.RegionId,
+                    LearnedBounds =
+                        bounds
                 });
         }
 

@@ -79,6 +79,38 @@ using (var regionRenderSource = Mat.Zeros(400, 400, MatType.CV_8UC3).ToMat())
         confirmedLayout.ShouldRender &&
         confirmedLayout.Mode == "region:test" &&
         confirmedLayout.SafeMask is { Length: 8000 });
+
+    var learnedTextRegion = new PageRegion(
+        "RG-TEXT-077",
+        PageRegionKind.TextBubble,
+        new Rect(114, 214, 58, 28),
+        0.95f,
+        "test-rtdetr");
+
+    var invalidLegacyMask = regionRenderBlock.RegionContainer! with
+    {
+        LearnedBounds = new Rect(100, 200, 100, 80),
+        Mask = [],
+        MaskWidth = 0,
+        MaskHeight = 0
+    };
+
+    var textRegionRescueBlock = regionRenderBlock with
+    {
+        RegionContainer = invalidLegacyMask,
+        RegionTextRegion = learnedTextRegion
+    };
+
+    var textRegionRescueLayout = BalloonMaskService.AnalyzeConfirmedRegion(
+        regionRenderSource,
+        textRegionRescueBlock,
+        "dialogue",
+        invalidLegacyMask);
+
+    Check("RT-DETR Bubble plus TextBubble rescues invalid legacy mask",
+        textRegionRescueLayout.Detected &&
+        textRegionRescueLayout.ShouldRender &&
+        textRegionRescueLayout.Mode == "region:rtdetr_textbubble_rect");
 }
 
 var unitBuilder = new OcrContainerUnitBuilder();
@@ -304,6 +336,7 @@ try
         fusedExisting.Count == 1 &&
         fusedExisting[0].DetectorMode == "rtdetr_region+legacy_mask" &&
         fusedExisting[0].RegionId == "RG010" &&
+        fusedExisting[0].LearnedBounds == learnedBubble.Bounds &&
         fusedExisting[0].Score > candidate.Score);
 
     var newBubble = new PageRegion(
