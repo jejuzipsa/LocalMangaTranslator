@@ -12,7 +12,9 @@ public sealed record V2EraseTargetAudit(
     int RetryMaskPixels,
     int ResidualAfterRetryPixels,
     bool Retried,
-    string Status);
+    string Status,
+    int SelectedResidualPixels,
+    string SelectedPass);
 
 public sealed record ErasePipelineV2Result(
     int DetectedTargetCount,
@@ -217,7 +219,7 @@ public sealed class ErasePipelineV2
             using (var reviewKernel =
                    Cv2.GetStructuringElement(
                        MorphShapes.Ellipse,
-                       new Size(7, 7)))
+                       new Size(5, 5)))
             {
                 Cv2.Dilate(
                     originalTargetMask,
@@ -321,7 +323,11 @@ public sealed class ErasePipelineV2
                         ? "mask_empty"
                         : retry
                             ? "retry_scheduled"
-                            : "clean_after_first_pass"));
+                            : "clean_after_first_pass",
+                    residualPixels,
+                    retry
+                        ? "pending_retry"
+                        : "first"));
         }
 
         SaveResidualDebug(
@@ -368,7 +374,7 @@ public sealed class ErasePipelineV2
             using (var finalKernel =
                    Cv2.GetStructuringElement(
                        MorphShapes.Ellipse,
-                       new Size(7, 7)))
+                       new Size(5, 5)))
             {
                 Cv2.Dilate(
                     originalTargetMask,
@@ -385,29 +391,129 @@ public sealed class ErasePipelineV2
                 finalReviewZone,
                 finalResidual);
 
-            int remaining =
+            int remainingAfterRetry =
                 Cv2.CountNonZero(
                     finalResidual);
 
-            residualAfterTotal +=
-                remaining;
-
             var previous =
                 audits[i];
+
+            bool selectFirstPass =
+                previous.Retried &&
+                previous.ResidualBeforeRetryPixels <
+                    remainingAfterRetry;
+
+            int selectedResidual =
+                selectFirstPass
+                    ? previous.ResidualBeforeRetryPixels
+                    : remainingAfterRetry;
+
+            string selectedPass =
+                selectFirstPass ||
+                !previous.Retried
+                    ? "first"
+                    : "retry";
+
+            if (selectFirstPass)
+            {
+                // A retry is only an optional improvement. If it makes the
+                // residual score worse, restore exactly the retry footprint
+                // from the first-pass image instead of committing the
+                // regression.
+                using var firstResidualCandidate =
+                    ComicTranslateComponentMask.Build(
+                        firstCleaned,
+                        target.TextBounds,
+                        target.BubbleBounds,
+                        includeColorRescue: false);
+
+                using var firstReviewZone =
+                    new Mat();
+
+                using (var firstReviewKernel =
+                       Cv2.GetStructuringElement(
+                           MorphShapes.Ellipse,
+                           new Size(5, 5)))
+                {
+                    Cv2.Dilate(
+                        originalTargetMask,
+                        firstReviewZone,
+                        firstReviewKernel,
+                        iterations: 1);
+                }
+
+                using var firstResidual =
+                    new Mat();
+
+                Cv2.BitwiseAnd(
+                    firstResidualCandidate,
+                    firstReviewZone,
+                    firstResidual);
+
+                using var expanded =
+                    new Mat();
+
+                using (var oneMorePixelKernel =
+                       Cv2.GetStructuringElement(
+                           MorphShapes.Rect,
+                           new Size(3, 3)))
+                {
+                    Cv2.Dilate(
+                        originalTargetMask,
+                        expanded,
+                        oneMorePixelKernel,
+                        iterations: 1);
+                }
+
+                using var targetBoundsMask =
+                    BuildBoundsMask(
+                        source.Rows,
+                        source.Cols,
+                        target.TextBounds);
+
+                using var retryTargetMask =
+                    new Mat();
+
+                Cv2.BitwiseAnd(
+                    expanded,
+                    targetBoundsMask,
+                    retryTargetMask);
+
+                Cv2.BitwiseOr(
+                    retryTargetMask,
+                    firstResidual,
+                    retryTargetMask);
+
+                Cv2.BitwiseAnd(
+                    retryTargetMask,
+                    targetBoundsMask,
+                    retryTargetMask);
+
+                firstCleaned.CopyTo(
+                    finalCleaned,
+                    retryTargetMask);
+            }
+
+            residualAfterTotal +=
+                selectedResidual;
 
             audits[i] =
                 previous with
                 {
                     ResidualAfterRetryPixels =
-                        remaining,
+                        remainingAfterRetry,
+                    SelectedResidualPixels =
+                        selectedResidual,
+                    SelectedPass =
+                        selectedPass,
                     Status =
                         previous.InitialMaskPixels < 2
                             ? "mask_empty"
                             : IsResidualAcceptable(
                                 previous.InitialMaskPixels,
-                                remaining,
+                                selectedResidual,
                                 target.TextBounds)
-                                ? previous.Retried
+                                ? selectedPass == "retry"
                                     ? "clean_after_retry"
                                     : "clean_after_first_pass"
                                 : "review_required"
@@ -482,6 +588,8 @@ public sealed class ErasePipelineV2
                             audit.ResidualBeforeRetryPixels,
                             audit.RetryMaskPixels,
                             audit.ResidualAfterRetryPixels,
+                            audit.SelectedResidualPixels,
+                            audit.SelectedPass,
                             audit.Retried,
                             audit.Status
                         };
