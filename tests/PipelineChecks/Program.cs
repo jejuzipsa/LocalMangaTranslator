@@ -859,6 +859,26 @@ Check("V2 residual review still rejects substantial remaining lettering",
         587,
         new Rect(1061, 1671, 163, 52)));
 
+var firstPassSelection =
+    ErasePipelineV2.SelectBestResidualPass(
+        433,
+        587,
+        true);
+
+Check("V2 0023 keeps first erase pass when retry is worse",
+    firstPassSelection.SelectedPass == "first" &&
+    firstPassSelection.SelectedResidualPixels == 433);
+
+var retryPassSelection =
+    ErasePipelineV2.SelectBestResidualPass(
+        587,
+        279,
+        true);
+
+Check("V2 0023 keeps retry erase pass when it improves residual",
+    retryPassSelection.SelectedPass == "retry" &&
+    retryPassSelection.SelectedResidualPixels == 279);
+
 string v2MainRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_v2_main_{Guid.NewGuid():N}");
@@ -1026,6 +1046,49 @@ try
             "어둠 속에서 길을 잃었군.",
             "caption",
             true);
+
+    Check("Translation 0023 rejects placeholder output",
+        !TranslationRefinementService.IsUsableTranslation(
+            freeTranslation,
+            "...[여기에 번역된 내용이 들어갑니다]"));
+
+    var cantBlock =
+        new OcrTextBlock(
+            2006,
+            74,
+            160,
+            205,
+            30,
+            "I CAN'T.",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "I CAN'T.",
+                0.99f,
+                "en")]);
+
+    var cantTranslation =
+        new VisionTranslation(
+            2006,
+            cantBlock,
+            "I CAN'T.",
+            "난 못 해.",
+            "dialogue",
+            true);
+
+    Check("Translation 0023 rejects lost English negation",
+        !TranslationRefinementService.IsUsableTranslation(
+            cantTranslation,
+            "난 할 수 있어."));
+
+    Check("Translation 0023 accepts preserved English negation",
+        TranslationRefinementService.IsUsableTranslation(
+            cantTranslation,
+            "난 할 수 없어."));
 
     var freeSelection =
         V2EraseSelector.Select(
