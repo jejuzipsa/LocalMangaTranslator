@@ -1029,6 +1029,45 @@ try
         freeBinding.LayoutMode == "rtdetr_textfree" &&
         freeBinding.LayoutBounds == freeTextRegion.Bounds);
 
+    var stylizedTranslation =
+        new VisionTranslation(
+            2003,
+            freeBlock,
+            "BRUCE!",
+            "브루스!",
+            "dialogue",
+            true);
+
+    var stylizedSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [stylizedTranslation]);
+
+    Check("V2 selector preserves free-standing stylized shout text",
+        !stylizedSelection.Bindings.ContainsKey(2003) &&
+        stylizedSelection.PreservationReasons.TryGetValue(
+            2003,
+            out var stylizedReason) &&
+        stylizedReason == "stylized_graphic");
+
+    var shortCaptionTranslation =
+        new VisionTranslation(
+            2004,
+            freeBlock,
+            "THAT'S ALL.",
+            "그게 전부야.",
+            "caption",
+            true);
+
+    var shortCaptionSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [shortCaptionTranslation]);
+
+    Check("V2 selector still translates short TextFree captions",
+        shortCaptionSelection.Bindings.ContainsKey(2004) &&
+        !shortCaptionSelection.PreservationReasons.ContainsKey(2004));
+
     var v2MainResult =
         new ErasePipelineV2().Run(
             v2MainSourcePath,
