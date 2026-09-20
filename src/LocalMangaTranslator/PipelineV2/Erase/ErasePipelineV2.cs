@@ -398,21 +398,22 @@ public sealed class ErasePipelineV2
             var previous =
                 audits[i];
 
+            var selection =
+                SelectBestResidualPass(
+                    previous.ResidualBeforeRetryPixels,
+                    remainingAfterRetry,
+                    previous.Retried);
+
             bool selectFirstPass =
-                previous.Retried &&
-                previous.ResidualBeforeRetryPixels <
-                    remainingAfterRetry;
+                selection.SelectedPass ==
+                "first" &&
+                previous.Retried;
 
             int selectedResidual =
-                selectFirstPass
-                    ? previous.ResidualBeforeRetryPixels
-                    : remainingAfterRetry;
+                selection.SelectedResidualPixels;
 
             string selectedPass =
-                selectFirstPass ||
-                !previous.Retried
-                    ? "first"
-                    : "retry";
+                selection.SelectedPass;
 
             if (selectFirstPass)
             {
@@ -621,6 +622,26 @@ public sealed class ErasePipelineV2
             cleanedPath,
             jsonPath,
             audits.ToArray());
+    }
+
+    public static (int SelectedResidualPixels, string SelectedPass)
+        SelectBestResidualPass(
+            int firstResidualPixels,
+            int retryResidualPixels,
+            bool retried)
+    {
+        if (!retried ||
+            firstResidualPixels <=
+                retryResidualPixels)
+        {
+            return (
+                firstResidualPixels,
+                "first");
+        }
+
+        return (
+            retryResidualPixels,
+            "retry");
     }
 
     public static bool IsAuditClean(
