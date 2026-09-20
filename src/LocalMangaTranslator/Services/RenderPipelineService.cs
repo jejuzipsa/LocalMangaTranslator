@@ -40,10 +40,20 @@ public sealed class RenderPipelineService
         IReadOnlyList<VisionTranslation> regions,
         string outputPath,
         IProgress<string>? progress = null,
-        CancellationToken token = default)
+        CancellationToken token = default,
+        string? precleanedPath = null,
+        IReadOnlySet<int>? v2RenderableRegionIds = null)
     {
+        bool useV2Erase =
+            !string.IsNullOrWhiteSpace(
+                precleanedPath);
+
         var requested = regions
-            .Where(x => x.Render)
+            .Where(x =>
+                x.Render &&
+                (!useV2Erase ||
+                 v2RenderableRegionIds?.Contains(
+                     x.Id) == true))
             .ToList();
 
         var candidates = SuppressDuplicateRegions(
@@ -51,7 +61,22 @@ public sealed class RenderPipelineService
             out var legacySuppressed);
 
         if (candidates.Count == 0)
-            throw new InvalidOperationException("조판할 번역 영역이 없습니다.");
+        {
+            if (useV2Erase)
+            {
+                SaveSourceAsOutput(
+                    sourcePath,
+                    outputPath);
+
+                progress?.Report(
+                    "Pipeline V2 · 삭제/조판 연결 가능한 번역 영역이 없어 원문을 유지했습니다.");
+
+                return;
+            }
+
+            throw new InvalidOperationException(
+                "조판할 번역 영역이 없습니다.");
+        }
 
         if (legacySuppressed.Count > 0)
         {
@@ -93,7 +118,9 @@ public sealed class RenderPipelineService
             candidates,
             layouts,
             out var containerSuppressed,
-            progress);
+            progress,
+            requireLegacyErase:
+                !useV2Erase);
 
         if (containerSuppressed.Count > 0)
         {
@@ -118,6 +145,77 @@ public sealed class RenderPipelineService
                 layoutDebug,
                 token),
             token);
+
+        if (useV2Erase)
+        {
+            if (!File.Exists(precleanedPath))
+            {
+                throw new InvalidOperationException(
+                    "Pipeline V2 cleaned 이미지를 찾을 수 없습니다.");
+            }
+
+            // V2 owns source-text removal. Do not invoke the legacy
+            // AddTextCandidateMask / no_safe_text_line erase path again.
+            try
+            {
+                if (File.Exists(eraseDebug))
+                    File.Delete(eraseDebug);
+            }
+            catch
+            {
+                // A stale legacy debug image must not fail final rendering.
+            }
+
+            var finalPlans = plans
+                .Where(x => x.Approved)
+                .ToList();
+
+            if (finalPlans.Count == 0)
+            {
+                SaveSourceAsOutput(
+                    sourcePath,
+                    outputPath);
+
+                SaveDebugCopy(
+                    outputPath,
+                    finalDebug);
+
+                WritePlanJson(
+                    sourcePath,
+                    plans,
+                    planJson);
+
+                progress?.Report(
+                    "Pipeline V2 · 조판 가능한 Unit이 없어 원문을 유지했습니다.");
+
+                return;
+            }
+
+            token.ThrowIfCancellationRequested();
+
+            progress?.Report(
+                $"3/4 Pipeline V2 cleaned image 사용 · 기존 erase 건너뜀 · 승인 Unit {finalPlans.Count}개");
+
+            TypesetAndSave(
+                precleanedPath!,
+                finalPlans,
+                outputPath,
+                token);
+
+            SaveDebugCopy(
+                outputPath,
+                finalDebug);
+
+            WritePlanJson(
+                sourcePath,
+                plans,
+                planJson);
+
+            progress?.Report(
+                $"4/4 완료 · V2 erase + RenderPlan {finalPlans.Count}개 · {Path.GetFileName(outputPath)}");
+
+            return;
+        }
 
         string cleanedPath = Path.Combine(
             Path.GetTempPath(),
@@ -226,7 +324,8 @@ public sealed class RenderPipelineService
         IReadOnlyList<VisionTranslation> regions,
         IReadOnlyDictionary<int, BalloonLayout> layouts,
         out List<VisionTranslation> containerSuppressed,
-        IProgress<string>? progress)
+        IProgress<string>? progress,
+        bool requireLegacyErase = true)
     {
         containerSuppressed = [];
 
@@ -352,7 +451,8 @@ public sealed class RenderPipelineService
                             semanticSafe &&
                             textLayout.Fits &&
                             !allLinesConflict &&
-                            erase.Approved;
+                            (!requireLegacyErase ||
+                             erase.Approved);
 
             string reason;
             if (!item.Layout.ShouldRender)
@@ -363,10 +463,13 @@ public sealed class RenderPipelineService
                 reason = $"line_ownership_conflict_all:{string.Join("+", conflicts)}";
             else if (!textLayout.Fits)
                 reason = $"layout_rejected:{textLayout.Reason}";
-            else if (!erase.Approved)
+            else if (requireLegacyErase &&
+                     !erase.Approved)
                 reason = $"erase_rejected:{erase.Reason}";
             else
-                reason = "ok";
+                reason = requireLegacyErase
+                    ? "ok"
+                    : "ok_v2_erase";
 
             if (approved)
             {
