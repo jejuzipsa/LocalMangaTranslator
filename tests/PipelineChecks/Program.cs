@@ -643,6 +643,157 @@ finally
     }
 }
 
+string v2MainRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_main_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(v2MainRoot);
+
+    string v2MainSourcePath =
+        Path.Combine(v2MainRoot, "v2_main.png");
+
+    using var v2MainSource =
+        Mat.Zeros(220, 420, MatType.CV_8UC3).ToMat();
+
+    v2MainSource.SetTo(
+        new Scalar(255, 255, 255));
+
+    Cv2.PutText(
+        v2MainSource,
+        "HELLO",
+        new Point(70, 105),
+        HersheyFonts.HersheySimplex,
+        0.9,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.PutText(
+        v2MainSource,
+        "KEEP",
+        new Point(250, 105),
+        HersheyFonts.HersheySimplex,
+        0.9,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2MainSourcePath,
+        v2MainSource);
+
+    var bubbleA = new PageRegion(
+        "VB-A",
+        PageRegionKind.Bubble,
+        new Rect(35, 55, 155, 85),
+        0.97f,
+        "test-rtdetr");
+
+    var textA = new PageRegion(
+        "VT-A",
+        PageRegionKind.TextBubble,
+        new Rect(55, 75, 120, 48),
+        0.96f,
+        "test-rtdetr");
+
+    var bubbleB = new PageRegion(
+        "VB-B",
+        PageRegionKind.Bubble,
+        new Rect(220, 55, 165, 85),
+        0.97f,
+        "test-rtdetr");
+
+    var textB = new PageRegion(
+        "VT-B",
+        PageRegionKind.TextBubble,
+        new Rect(240, 75, 125, 48),
+        0.96f,
+        "test-rtdetr");
+
+    var mainSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [bubbleA, textA, bubbleB, textB],
+                [],
+                "v2-main-test",
+                true));
+
+    var translatedBlock =
+        new OcrTextBlock(
+            2001,
+            55,
+            75,
+            120,
+            48,
+            "HELLO",
+            1,
+            "en",
+            [new OcrLine(65, 82, 90, 28, "HELLO", 0.99f, "en")])
+        {
+            RegionId = "VB-A",
+            RegionTextRegion = textA
+        };
+
+    var translatedRegion =
+        new VisionTranslation(
+            2001,
+            translatedBlock,
+            "HELLO",
+            "안녕",
+            "dialogue",
+            true);
+
+    var selection =
+        V2EraseSelector.Select(
+            mainSnapshot,
+            [translatedRegion]);
+
+    Check("V2 selector erases only translated immutable target",
+        selection.TextRegionIds.SetEquals(["VT-A"]) &&
+        selection.TranslationRegionIds.SetEquals([2001]));
+
+    var v2MainResult =
+        new ErasePipelineV2().Run(
+            v2MainSourcePath,
+            v2MainRoot,
+            mainSnapshot,
+            selection.TextRegionIds);
+
+    Check("V2 main erase writes first residual and final debug stages",
+        File.Exists(v2MainResult.MaskDebugPath) &&
+        File.Exists(v2MainResult.FirstCleanedDebugPath) &&
+        File.Exists(v2MainResult.ResidualDebugPath) &&
+        File.Exists(v2MainResult.CleanedDebugPath) &&
+        File.Exists(v2MainResult.DetectionJsonPath));
+
+    Check("V2 main erase reports only selected target",
+        v2MainResult.DetectedTargetCount == 2 &&
+        v2MainResult.TargetCount == 1 &&
+        v2MainResult.MaskPixels > 0);
+
+    using var v2Final =
+        Cv2.ImRead(
+            v2MainResult.CleanedDebugPath,
+            ImreadModes.Color);
+
+    Check("V2 main erase preserves unselected TextBubble pixels",
+        !v2Final.Empty() &&
+        v2Final.At<Vec3b>(104, 258).Equals(
+            v2MainSource.At<Vec3b>(104, 258)));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(v2MainRoot))
+            Directory.Delete(v2MainRoot, true);
+    }
+    catch
+    {
+    }
+}
+
 string auditRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_audit_{Guid.NewGuid():N}");
