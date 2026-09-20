@@ -41,6 +41,8 @@ public sealed class FinalAuditService
         public int V2EraseReviewFailedUnits { get; set; }
         public int V2UnboundUnits { get; set; }
         public int V2DuplicateSuppressedUnits { get; set; }
+        public int V2StylizedGraphicUnits { get; set; }
+        public int V2OcrNoiseUnits { get; set; }
         public int V2OtherPreservedUnits { get; set; }
     }
 
@@ -457,13 +459,31 @@ public sealed class FinalAuditService
                     StringComparison.Ordinal)) ??
             0;
 
+        int v2StylizedGraphic =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:stylized_graphic",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2OcrNoise =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:ocr_noise",
+                    StringComparison.Ordinal)) ??
+            0;
+
         int v2OtherPreserved =
             Math.Max(
                 0,
                 (v2Commit?.PreservedOriginalUnits ?? 0) -
                 v2EraseReviewFailed -
                 v2Unbound -
-                v2DuplicateSuppressed);
+                v2DuplicateSuppressed -
+                v2StylizedGraphic -
+                v2OcrNoise);
 
         UpdateSummary(
             auditDirectory,
@@ -524,6 +544,10 @@ public sealed class FinalAuditService
                     v2Unbound,
                 V2DuplicateSuppressedUnits =
                     v2DuplicateSuppressed,
+                V2StylizedGraphicUnits =
+                    v2StylizedGraphic,
+                V2OcrNoiseUnits =
+                    v2OcrNoise,
                 V2OtherPreservedUnits =
                     v2OtherPreserved
             });
