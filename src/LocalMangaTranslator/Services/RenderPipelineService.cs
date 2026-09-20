@@ -349,8 +349,8 @@ public sealed class RenderPipelineService
                     auditByTarget.TryGetValue(
                         id,
                         out var audit) &&
-                    audit.InitialMaskPixels >= 2 &&
-                    audit.ResidualAfterRetryPixels < 2);
+                    ErasePipelineV2.IsAuditClean(
+                        audit));
             }
 
             var finalPlans =
@@ -805,8 +805,8 @@ public sealed class RenderPipelineService
                                 auditByTarget.TryGetValue(
                                     id,
                                     out var audit) &&
-                                audit.InitialMaskPixels >= 2 &&
-                                audit.ResidualAfterRetryPixels < 2);
+                                ErasePipelineV2.IsAuditClean(
+                                    audit));
 
                         bool committed =
                             committedIds.Contains(
