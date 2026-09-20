@@ -3,13 +3,12 @@ using OpenCvSharp;
 namespace LocalMangaTranslator.PipelineV2.Erase;
 
 /// <summary>
-/// C# adaptation of Comic Translate's Apache-2.0 content-mask idea:
-/// inside an already detected text bbox, use Otsu black/white masks and keep
-/// text-sized connected components while rejecting border/background fills.
+/// Text-pixel mask inside an immutable RT-DETR TextBubble.
 ///
-/// This code deliberately has no OCR, translation, ownership, or canonical-line
-/// dependency. RT-DETR decides where text is; this class only decides which
-/// pixels inside that detected area look like source lettering.
+/// Important safety rules:
+/// - choose ONE foreground polarity, never OR black/white masks together;
+/// - reject masks that consume most of the TextBubble;
+/// - keep all pixels clamped to the original TextBubble geometry.
 /// </summary>
 public static class ComicTranslateComponentMask
 {
@@ -18,225 +17,210 @@ public static class ComicTranslateComponentMask
         Rect textBounds,
         Rect? bubbleBounds = null)
     {
-        var cropBounds = ClampRect(
-            textBounds.X - 10,
-            textBounds.Y - 10,
-            textBounds.Width + 20,
-            textBounds.Height + 20,
-            source.Cols,
-            source.Rows);
+        var cropBounds =
+            ClampRect(
+                textBounds.X - 10,
+                textBounds.Y - 10,
+                textBounds.Width + 20,
+                textBounds.Height + 20,
+                source.Cols,
+                source.Rows);
 
         if (bubbleBounds.HasValue)
         {
-            var clipped = Intersect(cropBounds, bubbleBounds.Value);
-            if (clipped.Width > 0 && clipped.Height > 0)
+            var clipped =
+                Intersect(
+                    cropBounds,
+                    bubbleBounds.Value);
+
+            if (clipped.Width > 0 &&
+                clipped.Height > 0)
+            {
                 cropBounds = clipped;
+            }
         }
 
-        var full = Mat.Zeros(
-            source.Rows,
-            source.Cols,
-            MatType.CV_8UC1).ToMat();
+        var full =
+            Mat.Zeros(
+                    source.Rows,
+                    source.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
 
-        if (cropBounds.Width <= 0 || cropBounds.Height <= 0)
-            return full;
-
-        using var crop = new Mat(source, cropBounds);
-        using var gray = new Mat();
-        using var black = new Mat();
-        using var white = new Mat();
-        using var local = Mat.Zeros(
-            cropBounds.Height,
-            cropBounds.Width,
-            MatType.CV_8UC1).ToMat();
-
-        Cv2.CvtColor(crop, gray, ColorConversionCodes.BGR2GRAY);
-
-        Cv2.Threshold(
-            gray,
-            black,
-            0,
-            255,
-            ThresholdTypes.BinaryInv | ThresholdTypes.Otsu);
-
-        Cv2.Threshold(
-            gray,
-            white,
-            0,
-            255,
-            ThresholdTypes.Binary | ThresholdTypes.Otsu);
-
-        AddTextSizedComponents(black, local);
-        AddTextSizedComponents(white, local);
-
-        // Restrict the result back to the detector's TextBubble extent.
-        var textLocal = new Rect(
-            Math.Max(0, textBounds.X - cropBounds.X),
-            Math.Max(0, textBounds.Y - cropBounds.Y),
-            Math.Min(textBounds.Right, cropBounds.Right) -
-                Math.Max(textBounds.Left, cropBounds.Left),
-            Math.Min(textBounds.Bottom, cropBounds.Bottom) -
-                Math.Max(textBounds.Top, cropBounds.Top));
-
-        using var restricted = Mat.Zeros(
-            local.Rows,
-            local.Cols,
-            MatType.CV_8UC1).ToMat();
-
-        if (textLocal.Width > 0 && textLocal.Height > 0)
+        if (cropBounds.Width <= 0 ||
+            cropBounds.Height <= 0)
         {
-            using var srcRoi = new Mat(local, textLocal);
-            using var dstRoi = new Mat(restricted, textLocal);
-            srcRoi.CopyTo(dstRoi);
+            return full;
         }
 
-        // A dark caption with white lettering can legitimately produce no
-        // connected component after the conservative component filters.
-        // Zero mask is NOT proof that the box is clean. Use the surrounding
-        // detector crop to estimate background polarity and recover only
-        // high-contrast pixels inside the same immutable TextBubble.
-        if (Cv2.CountNonZero(restricted) < 2 &&
-            textLocal.Width > 0 &&
-            textLocal.Height > 0)
+        using var crop =
+            new Mat(
+                source,
+                cropBounds);
+
+        using var gray =
+            new Mat();
+
+        Cv2.CvtColor(
+            crop,
+            gray,
+            ColorConversionCodes.BGR2GRAY);
+
+        var textLocal =
+            new Rect(
+                Math.Max(
+                    0,
+                    textBounds.X -
+                    cropBounds.X),
+                Math.Max(
+                    0,
+                    textBounds.Y -
+                    cropBounds.Y),
+                Math.Min(
+                    textBounds.Right,
+                    cropBounds.Right) -
+                Math.Max(
+                    textBounds.Left,
+                    cropBounds.Left),
+                Math.Min(
+                    textBounds.Bottom,
+                    cropBounds.Bottom) -
+                Math.Max(
+                    textBounds.Top,
+                    cropBounds.Top));
+
+        if (textLocal.Width <= 0 ||
+            textLocal.Height <= 0)
+        {
+            return full;
+        }
+
+        using var blackBinary =
+            new Mat();
+
+        using var whiteBinary =
+            new Mat();
+
+        Cv2.Threshold(
+            gray,
+            blackBinary,
+            0,
+            255,
+            ThresholdTypes.BinaryInv |
+            ThresholdTypes.Otsu);
+
+        Cv2.Threshold(
+            gray,
+            whiteBinary,
+            0,
+            255,
+            ThresholdTypes.Binary |
+            ThresholdTypes.Otsu);
+
+        using var blackCandidate =
+            BuildComponentCandidate(
+                blackBinary,
+                textLocal);
+
+        using var whiteCandidate =
+            BuildComponentCandidate(
+                whiteBinary,
+                textLocal);
+
+        double background =
+            EstimateBackgroundMedian(
+                gray,
+                textLocal);
+
+        using var chosen =
+            ChoosePolarity(
+                blackCandidate,
+                whiteCandidate,
+                textLocal,
+                background);
+
+        if (Cv2.CountNonZero(chosen) < 2)
         {
             AddPolarityContrastFallback(
                 gray,
-                restricted,
-                textLocal);
+                chosen,
+                textLocal,
+                background);
         }
 
-        using (var kernel = Cv2.GetStructuringElement(
-            MorphShapes.Ellipse,
-            new Size(3, 3)))
+        // Ambiguous segmentation must never erase most of the detector box.
+        int textArea =
+            Math.Max(
+                1,
+                textLocal.Width *
+                textLocal.Height);
+
+        int chosenPixels =
+            Cv2.CountNonZero(
+                chosen);
+
+        if (chosenPixels >
+            textArea * 0.48)
+        {
+            chosen.SetTo(
+                Scalar.Black);
+        }
+
+        using (var kernel =
+               Cv2.GetStructuringElement(
+                   MorphShapes.Ellipse,
+                   new Size(3, 3)))
         {
             Cv2.Dilate(
-                restricted,
-                restricted,
+                chosen,
+                chosen,
                 kernel,
                 iterations: 1);
         }
 
-        // Dilation may grow one pixel beyond TextBubble. Clamp it again so
-        // downstream processing can never enlarge the detector's geometry.
-        using var finalLocal = Mat.Zeros(
-            local.Rows,
-            local.Cols,
-            MatType.CV_8UC1).ToMat();
+        // Dilation can grow outside TextBubble, so clamp once more.
+        using var clamped =
+            Mat.Zeros(
+                    gray.Rows,
+                    gray.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
 
-        if (textLocal.Width > 0 && textLocal.Height > 0)
+        using (var srcRoi =
+               new Mat(
+                   chosen,
+                   textLocal))
+        using (var dstRoi =
+               new Mat(
+                   clamped,
+                   textLocal))
         {
-            using var srcRoi = new Mat(restricted, textLocal);
-            using var dstRoi = new Mat(finalLocal, textLocal);
-            srcRoi.CopyTo(dstRoi);
+            srcRoi.CopyTo(
+                dstRoi);
         }
 
-        using var destination = new Mat(full, cropBounds);
-        finalLocal.CopyTo(destination);
+        using var destination =
+            new Mat(
+                full,
+                cropBounds);
+
+        clamped.CopyTo(
+            destination);
 
         return full;
     }
 
-    static void AddPolarityContrastFallback(
-        Mat gray,
-        Mat destination,
+    static Mat BuildComponentCandidate(
+        Mat binary,
         Rect textLocal)
     {
-        var samples =
-            new List<byte>();
+        var candidate =
+            Mat.Zeros(
+                    binary.Rows,
+                    binary.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
 
-        for (int y = 0; y < gray.Rows; y += 2)
-        {
-            for (int x = 0; x < gray.Cols; x += 2)
-            {
-                if (x >= textLocal.Left &&
-                    x < textLocal.Right &&
-                    y >= textLocal.Top &&
-                    y < textLocal.Bottom)
-                {
-                    continue;
-                }
-
-                samples.Add(
-                    gray.At<byte>(y, x));
-            }
-        }
-
-        if (samples.Count < 12)
-        {
-            for (int x = textLocal.Left;
-                 x < textLocal.Right;
-                 x += 2)
-            {
-                samples.Add(
-                    gray.At<byte>(
-                        textLocal.Top,
-                        x));
-
-                samples.Add(
-                    gray.At<byte>(
-                        textLocal.Bottom - 1,
-                        x));
-            }
-
-            for (int y = textLocal.Top;
-                 y < textLocal.Bottom;
-                 y += 2)
-            {
-                samples.Add(
-                    gray.At<byte>(
-                        y,
-                        textLocal.Left));
-
-                samples.Add(
-                    gray.At<byte>(
-                        y,
-                        textLocal.Right - 1));
-            }
-        }
-
-        if (samples.Count == 0)
-            return;
-
-        samples.Sort();
-
-        double background =
-            samples[samples.Count / 2];
-
-        const double threshold = 28.0;
-
-        for (int y = textLocal.Top;
-             y < textLocal.Bottom;
-             y++)
-        {
-            for (int x = textLocal.Left;
-                 x < textLocal.Right;
-                 x++)
-            {
-                double value =
-                    gray.At<byte>(y, x);
-
-                bool likelyText =
-                    background <= 110
-                        ? value >= background + threshold
-                        : background >= 145
-                            ? value <= background - threshold
-                            : Math.Abs(value - background) >= 40;
-
-                if (likelyText)
-                {
-                    destination.Set(
-                        y,
-                        x,
-                        (byte)255);
-                }
-            }
-        }
-    }
-
-    static void AddTextSizedComponents(
-        Mat binary,
-        Mat destination)
-    {
         Cv2.FindContours(
             binary,
             out Point[][] contours,
@@ -245,54 +229,356 @@ public static class ComicTranslateComponentMask
             ContourApproximationModes.ApproxSimple);
 
         double cropArea =
-            Math.Max(1.0, binary.Rows * (double)binary.Cols);
+            Math.Max(
+                1.0,
+                binary.Rows *
+                (double)binary.Cols);
 
         foreach (var contour in contours)
         {
             if (contour.Length == 0)
                 continue;
 
-            var bounds = Cv2.BoundingRect(contour);
+            var bounds =
+                Cv2.BoundingRect(
+                    contour);
+
+            double overlap =
+                IntersectionArea(
+                    bounds,
+                    textLocal);
+
+            if (overlap <= 0)
+                continue;
+
+            double boundsArea =
+                Math.Max(
+                    1.0,
+                    bounds.Width *
+                    (double)bounds.Height);
+
+            if (overlap /
+                boundsArea <
+                0.35)
+            {
+                continue;
+            }
 
             using var componentRoi =
-                new Mat(binary, bounds);
+                new Mat(
+                    binary,
+                    bounds);
 
             int pixelArea =
-                Cv2.CountNonZero(componentRoi);
+                Cv2.CountNonZero(
+                    componentRoi);
 
             bool ordinary =
                 pixelArea > 10;
 
             bool punctuation =
                 pixelArea >= 2 &&
-                bounds.Width <= 7 &&
-                bounds.Height <= 7;
+                bounds.Width <= 8 &&
+                bounds.Height <= 8;
 
-            if (!ordinary && !punctuation)
+            if (!ordinary &&
+                !punctuation)
+            {
                 continue;
+            }
 
             const int margin = 1;
-            bool touchesBorder =
+
+            bool touchesCropBorder =
                 bounds.Left < margin ||
                 bounds.Top < margin ||
-                bounds.Right > binary.Cols - margin ||
-                bounds.Bottom > binary.Rows - margin;
+                bounds.Right >
+                    binary.Cols - margin ||
+                bounds.Bottom >
+                    binary.Rows - margin;
 
-            if (touchesBorder)
+            if (touchesCropBorder)
                 continue;
 
-            // A component occupying half the crop is normally the bubble or
-            // narration-box background, not lettering.
-            if (pixelArea >= cropArea * 0.50)
+            // Large connected backgrounds are not text.
+            if (pixelArea >=
+                cropArea * 0.35)
+            {
                 continue;
+            }
 
             Cv2.DrawContours(
-                destination,
+                candidate,
                 [contour],
                 -1,
                 Scalar.White,
                 thickness: -1);
         }
+
+        using var restricted =
+            Mat.Zeros(
+                    binary.Rows,
+                    binary.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+        using (var srcRoi =
+               new Mat(
+                   candidate,
+                   textLocal))
+        using (var dstRoi =
+               new Mat(
+                   restricted,
+                   textLocal))
+        {
+            srcRoi.CopyTo(
+                dstRoi);
+        }
+
+        candidate.Dispose();
+
+        return restricted.Clone();
+    }
+
+    static Mat ChoosePolarity(
+        Mat blackCandidate,
+        Mat whiteCandidate,
+        Rect textLocal,
+        double background)
+    {
+        int textArea =
+            Math.Max(
+                1,
+                textLocal.Width *
+                textLocal.Height);
+
+        int blackPixels =
+            Cv2.CountNonZero(
+                blackCandidate);
+
+        int whitePixels =
+            Cv2.CountNonZero(
+                whiteCandidate);
+
+        bool blackValid =
+            blackPixels >= 2 &&
+            blackPixels <=
+                textArea * 0.45;
+
+        bool whiteValid =
+            whitePixels >= 2 &&
+            whitePixels <=
+                textArea * 0.45;
+
+        Mat? selected = null;
+
+        if (background >= 145)
+        {
+            if (blackValid)
+                selected = blackCandidate;
+            else if (whiteValid)
+                selected = whiteCandidate;
+        }
+        else if (background <= 110)
+        {
+            if (whiteValid)
+                selected = whiteCandidate;
+            else if (blackValid)
+                selected = blackCandidate;
+        }
+        else
+        {
+            if (blackValid &&
+                whiteValid)
+            {
+                selected =
+                    blackPixels <=
+                    whitePixels
+                        ? blackCandidate
+                        : whiteCandidate;
+            }
+            else if (blackValid)
+            {
+                selected =
+                    blackCandidate;
+            }
+            else if (whiteValid)
+            {
+                selected =
+                    whiteCandidate;
+            }
+        }
+
+        return selected is null
+            ? Mat.Zeros(
+                    blackCandidate.Rows,
+                    blackCandidate.Cols,
+                    MatType.CV_8UC1)
+                .ToMat()
+            : selected.Clone();
+    }
+
+    static void AddPolarityContrastFallback(
+        Mat gray,
+        Mat destination,
+        Rect textLocal,
+        double background)
+    {
+        using var raw =
+            Mat.Zeros(
+                    gray.Rows,
+                    gray.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+        double threshold =
+            background <= 110 ||
+            background >= 145
+                ? 30
+                : 42;
+
+        for (int y =
+                 textLocal.Top;
+             y <
+             textLocal.Bottom;
+             y++)
+        {
+            for (int x =
+                     textLocal.Left;
+                 x <
+                 textLocal.Right;
+                 x++)
+            {
+                double value =
+                    gray.At<byte>(
+                        y,
+                        x);
+
+                bool likelyText =
+                    background <= 110
+                        ? value >=
+                          background +
+                          threshold
+                        : background >= 145
+                            ? value <=
+                              background -
+                              threshold
+                            : Math.Abs(
+                                  value -
+                                  background) >=
+                              threshold;
+
+                if (likelyText)
+                {
+                    raw.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        using var filtered =
+            BuildComponentCandidate(
+                raw,
+                textLocal);
+
+        int textArea =
+            Math.Max(
+                1,
+                textLocal.Width *
+                textLocal.Height);
+
+        int pixels =
+            Cv2.CountNonZero(
+                filtered);
+
+        if (pixels < 2 ||
+            pixels >
+            textArea * 0.45)
+        {
+            return;
+        }
+
+        Cv2.BitwiseOr(
+            destination,
+            filtered,
+            destination);
+    }
+
+    static double EstimateBackgroundMedian(
+        Mat gray,
+        Rect textLocal)
+    {
+        var samples =
+            new List<byte>(
+                Math.Max(
+                    16,
+                    textLocal.Width *
+                    textLocal.Height /
+                    4));
+
+        for (int y =
+                 textLocal.Top;
+             y <
+             textLocal.Bottom;
+             y += 2)
+        {
+            for (int x =
+                     textLocal.Left;
+                 x <
+                 textLocal.Right;
+                 x += 2)
+            {
+                samples.Add(
+                    gray.At<byte>(
+                        y,
+                        x));
+            }
+        }
+
+        if (samples.Count == 0)
+            return 127;
+
+        samples.Sort();
+
+        return samples[
+            samples.Count /
+            2];
+    }
+
+    static double IntersectionArea(
+        Rect a,
+        Rect b)
+    {
+        int left =
+            Math.Max(
+                a.Left,
+                b.Left);
+
+        int top =
+            Math.Max(
+                a.Top,
+                b.Top);
+
+        int right =
+            Math.Min(
+                a.Right,
+                b.Right);
+
+        int bottom =
+            Math.Min(
+                a.Bottom,
+                b.Bottom);
+
+        return Math.Max(
+                   0,
+                   right -
+                   left) *
+               (double)Math.Max(
+                   0,
+                   bottom -
+                   top);
     }
 
     static Rect ClampRect(
@@ -303,29 +589,83 @@ public static class ComicTranslateComponentMask
         int imageWidth,
         int imageHeight)
     {
-        int left = Math.Clamp(x, 0, imageWidth);
-        int top = Math.Clamp(y, 0, imageHeight);
-        int right = Math.Clamp(x + Math.Max(0, width), 0, imageWidth);
-        int bottom = Math.Clamp(y + Math.Max(0, height), 0, imageHeight);
+        int left =
+            Math.Clamp(
+                x,
+                0,
+                imageWidth);
+
+        int top =
+            Math.Clamp(
+                y,
+                0,
+                imageHeight);
+
+        int right =
+            Math.Clamp(
+                x +
+                Math.Max(
+                    0,
+                    width),
+                0,
+                imageWidth);
+
+        int bottom =
+            Math.Clamp(
+                y +
+                Math.Max(
+                    0,
+                    height),
+                0,
+                imageHeight);
 
         return new Rect(
             left,
             top,
-            Math.Max(0, right - left),
-            Math.Max(0, bottom - top));
+            Math.Max(
+                0,
+                right -
+                left),
+            Math.Max(
+                0,
+                bottom -
+                top));
     }
 
-    static Rect Intersect(Rect a, Rect b)
+    static Rect Intersect(
+        Rect a,
+        Rect b)
     {
-        int left = Math.Max(a.Left, b.Left);
-        int top = Math.Max(a.Top, b.Top);
-        int right = Math.Min(a.Right, b.Right);
-        int bottom = Math.Min(a.Bottom, b.Bottom);
+        int left =
+            Math.Max(
+                a.Left,
+                b.Left);
+
+        int top =
+            Math.Max(
+                a.Top,
+                b.Top);
+
+        int right =
+            Math.Min(
+                a.Right,
+                b.Right);
+
+        int bottom =
+            Math.Min(
+                a.Bottom,
+                b.Bottom);
 
         return new Rect(
             left,
             top,
-            Math.Max(0, right - left),
-            Math.Max(0, bottom - top));
+            Math.Max(
+                0,
+                right -
+                left),
+            Math.Max(
+                0,
+                bottom -
+                top));
     }
 }
