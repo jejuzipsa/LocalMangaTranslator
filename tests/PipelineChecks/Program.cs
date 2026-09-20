@@ -686,8 +686,15 @@ try
             darkText,
             darkBubble);
 
+    int darkMaskPixels =
+        Cv2.CountNonZero(darkMask);
+
     Check("V2 text mask supports white lettering on dark captions",
-        Cv2.CountNonZero(darkMask) > 100);
+        darkMaskPixels > 100);
+
+    Check("V2 dark text mask never degenerates into full-box erase",
+        darkMaskPixels <
+        darkText.Width * darkText.Height * 0.48);
 }
 finally
 {
