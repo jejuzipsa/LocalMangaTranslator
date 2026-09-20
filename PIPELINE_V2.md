@@ -59,3 +59,19 @@ The first V2 milestone intentionally does not replace the final renderer yet. It
 This lets the 22-page regression set answer one question first: **can we reliably empty the detected text regions without losing text that RT-DETR already found?**
 
 Only after that is stable will V2 cleaned output become the input to typesetting.
+
+
+## 0019 atomic source/final invariant
+
+The V2 rendering path now treats erase + typeset as one commit.
+
+- TextBubble owns source-text pixels and erase review.
+- The already-associated parent Bubble owns layout/font fitting.
+- Layout is validated before erase is attempted.
+- Only units whose erase review passes are copied into the committed cleaned image.
+- Units that fail binding, layout, mask generation, or residual review keep the original pixels and receive no Korean overlay.
+- The commit audit must satisfy `EraseCommittedUnits == TypesetCommittedUnits`.
+- `v2_05_committed_cleaned.webp` is built from the original image plus only committed TextBubble edits, so a failed unit cannot leave an empty balloon.
+- `v2_commit_audit.json` records every requested unit as either `translated` or `original_preserved:...`.
+
+OCR line consolidation also prefers a more complete overlapping observation when confidence is comparable, preventing a high-confidence fragment such as `THE MIDDLE` from replacing `YOU'RE STILL IN THE MIDDLE`.
