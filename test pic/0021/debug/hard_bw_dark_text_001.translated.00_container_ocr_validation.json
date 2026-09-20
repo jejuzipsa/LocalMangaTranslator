@@ -1,0 +1,949 @@
+{
+  "schema": "ocr-evidence-v3",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC003",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC004",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC005",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC006",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC001",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC001",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC005",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC005",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 7,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.5512345679012346
+    },
+    {
+      "ObservationId": "CO0005",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.6285072951739619
+    },
+    {
+      "ObservationId": "CO0006",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.5562678062678063
+    },
+    {
+      "ObservationId": "CO0007",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.6285072951739619
+    },
+    {
+      "ObservationId": "CO0008",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0009",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0010",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0011",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0012",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0013",
+      "CandidateId": "PC004",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0014",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0015",
+      "CandidateId": "PC004",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0016",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0017",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0018",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0019",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0020",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0021",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0022",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0023",
+      "CandidateId": "PC005",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0024",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0025",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0026",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0027",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0028",
+      "CandidateId": "PC005",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0029",
+      "CandidateId": "PC005",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0030",
+      "CandidateId": "PC005",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0031",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0032",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0033",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0034",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG002",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG002",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG003",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG003",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG007",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG007",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG011",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG011",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0005",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0006",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0007",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0008",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0009",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0010",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0011",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0012",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0013",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0014",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0015",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    },
+    {
+      "ObservationId": "RO0016",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0017",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0018",
+      "RegionId": "RG004",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0019",
+      "RegionId": "RG004",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0020",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0021",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0022",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    },
+    {
+      "ObservationId": "RO0023",
+      "RegionId": "RG007",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0024",
+      "RegionId": "RG007",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0025",
+      "RegionId": "RG007",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0026",
+      "RegionId": "RG007",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0027",
+      "RegionId": "RG007",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0028",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0029",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0030",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0031",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0032",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0033",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0034",
+      "RegionId": "RG011",
+      "Accepted": false,
+      "Reason": "weak_ocr"
+    },
+    {
+      "ObservationId": "RO0035",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0036",
+      "RegionId": "RG011",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0037",
+      "RegionId": "RG011",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0038",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0039",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0040",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0041",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0042",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0043",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0044",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0045",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0046",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0047",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0048",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0049",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0050",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0051",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0052",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0053",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0054",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0055",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    }
+  ],
+  "secondary_ocr": [
+    {
+      "EvidenceId": "BO0001",
+      "RegionId": "RG001",
+      "Bounds": {
+        "Top": 330,
+        "Bottom": 393,
+        "Left": 456,
+        "Right": 515,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "THAT DETITE YOU\u0027RE YOUR WILL CRUMBLE...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0002",
+      "RegionId": "RG005",
+      "Bounds": {
+        "Top": 330,
+        "Bottom": 393,
+        "Left": 456,
+        "Right": 515,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "HEE\nHEE.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0003",
+      "RegionId": "RG006",
+      "Bounds": {
+        "Top": 328,
+        "Bottom": 394,
+        "Left": 759,
+        "Right": 831,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "GAME OVER.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0004",
+      "RegionId": "RG009",
+      "Bounds": {
+        "Top": 654,
+        "Bottom": 740,
+        "Left": 778,
+        "Right": 1067,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "TO TANTAMOUNT TO SUCIDE!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0005",
+      "RegionId": "RG010",
+      "Bounds": {
+        "Top": 656,
+        "Bottom": 724,
+        "Left": 245,
+        "Right": 490,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "HAMAMAMAHA...\nIF I MAY BE FRANK...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0006",
+      "RegionId": "RG013",
+      "Bounds": {
+        "Top": 1403,
+        "Bottom": 1553,
+        "Left": 167,
+        "Right": 427,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "FURTHERMORE...\nYOU CAN\u0027T DISCOUNT\nTHE POSSIBILITY OF\nTHE MANUR R",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0007",
+      "RegionId": "RG015",
+      "Bounds": {
+        "Top": 1558,
+        "Bottom": 1627,
+        "Left": 876,
+        "Right": 1105,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "BEFORE KOU REACH ROCMY COOL...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    }
+  ]
+}

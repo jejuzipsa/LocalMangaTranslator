@@ -1,0 +1,340 @@
+{
+  "Schema": "pipeline-v2-erase-audit-v2",
+  "SourceFile": "core_caption_speech_mixed_001.jpg",
+  "SourceMode": "hybrid_rtdetr",
+  "DetectedTargetCount": 13,
+  "SelectedTargetCount": 13,
+  "InitialMaskPixels": 86237,
+  "ResidualBeforeRetryPixels": 3709,
+  "RetryMaskPixels": 105357,
+  "ResidualAfterRetryPixels": 5103,
+  "RetryTargetCount": 10,
+  "Clean": false,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 51,
+        "Y": 269,
+        "Width": 264,
+        "Height": 44
+      },
+      "TextScore": 0.9221506,
+      "BubbleRegionId": "RG001",
+      "BubbleBounds": {
+        "X": 46,
+        "Y": 262,
+        "Width": 279,
+        "Height": 59
+      },
+      "BubbleScore": 0.93180406,
+      "InitialMaskPixels": 5863,
+      "ResidualBeforeRetryPixels": 142,
+      "RetryMaskPixels": 7783,
+      "ResidualAfterRetryPixels": 162,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 299,
+        "Y": 325,
+        "Width": 242,
+        "Height": 47
+      },
+      "TextScore": 0.9199014,
+      "BubbleRegionId": "RG003",
+      "BubbleBounds": {
+        "X": 289,
+        "Y": 317,
+        "Width": 265,
+        "Height": 65
+      },
+      "BubbleScore": 0.90913904,
+      "InitialMaskPixels": 4910,
+      "ResidualBeforeRetryPixels": 75,
+      "RetryMaskPixels": 6624,
+      "ResidualAfterRetryPixels": 160,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 190,
+        "Y": 421,
+        "Width": 164,
+        "Height": 70
+      },
+      "TextScore": 0.9454837,
+      "BubbleRegionId": "RG005",
+      "BubbleBounds": {
+        "X": 179,
+        "Y": 411,
+        "Width": 187,
+        "Height": 94
+      },
+      "BubbleScore": 0.9612335,
+      "InitialMaskPixels": 4553,
+      "ResidualBeforeRetryPixels": 54,
+      "RetryMaskPixels": 6441,
+      "ResidualAfterRetryPixels": 54,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG008",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 333,
+        "Y": 501,
+        "Width": 183,
+        "Height": 107
+      },
+      "TextScore": 0.95222443,
+      "BubbleRegionId": "RG007",
+      "BubbleBounds": {
+        "X": 321,
+        "Y": 490,
+        "Width": 209,
+        "Height": 124
+      },
+      "BubbleScore": 0.95705676,
+      "InitialMaskPixels": 7041,
+      "ResidualBeforeRetryPixels": 1061,
+      "RetryMaskPixels": 10472,
+      "ResidualAfterRetryPixels": 1062,
+      "Retried": true,
+      "Status": "review_required"
+    },
+    {
+      "TextRegionId": "RG010",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 52,
+        "Y": 692,
+        "Width": 231,
+        "Height": 61
+      },
+      "TextScore": 0.94513845,
+      "BubbleRegionId": "RG009",
+      "BubbleBounds": {
+        "X": 46,
+        "Y": 685,
+        "Width": 247,
+        "Height": 74
+      },
+      "BubbleScore": 0.9422746,
+      "InitialMaskPixels": 7809,
+      "ResidualBeforeRetryPixels": 200,
+      "RetryMaskPixels": 10269,
+      "ResidualAfterRetryPixels": 256,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG012",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 273,
+        "Y": 759,
+        "Width": 249,
+        "Height": 48
+      },
+      "TextScore": 0.92179835,
+      "BubbleRegionId": "RG011",
+      "BubbleBounds": {
+        "X": 269,
+        "Y": 753,
+        "Width": 262,
+        "Height": 62
+      },
+      "BubbleScore": 0.92307603,
+      "InitialMaskPixels": 5711,
+      "ResidualBeforeRetryPixels": 491,
+      "RetryMaskPixels": 7600,
+      "ResidualAfterRetryPixels": 567,
+      "Retried": true,
+      "Status": "review_required"
+    },
+    {
+      "TextRegionId": "RG014",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 878,
+        "Y": 924,
+        "Width": 404,
+        "Height": 80
+      },
+      "TextScore": 0.9511238,
+      "BubbleRegionId": "RG013",
+      "BubbleBounds": {
+        "X": 874,
+        "Y": 915,
+        "Width": 415,
+        "Height": 96
+      },
+      "BubbleScore": 0.9476187,
+      "InitialMaskPixels": 14516,
+      "ResidualBeforeRetryPixels": 1085,
+      "RetryMaskPixels": 20947,
+      "ResidualAfterRetryPixels": 723,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG016",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 915,
+        "Y": 1073,
+        "Width": 129,
+        "Height": 87
+      },
+      "TextScore": 0.94201374,
+      "BubbleRegionId": "RG015",
+      "BubbleBounds": {
+        "X": 902,
+        "Y": 1060,
+        "Width": 156,
+        "Height": 110
+      },
+      "BubbleScore": 0.9520073,
+      "InitialMaskPixels": 3575,
+      "ResidualBeforeRetryPixels": 52,
+      "RetryMaskPixels": 5361,
+      "ResidualAfterRetryPixels": 51,
+      "Retried": true,
+      "Status": "clean_after_retry"
+    },
+    {
+      "TextRegionId": "RG018",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 749,
+        "Y": 1195,
+        "Width": 163,
+        "Height": 28
+      },
+      "TextScore": 0.8647848,
+      "BubbleRegionId": "RG017",
+      "BubbleBounds": {
+        "X": 736,
+        "Y": 1172,
+        "Width": 192,
+        "Height": 74
+      },
+      "BubbleScore": 0.9435058,
+      "InitialMaskPixels": 1902,
+      "ResidualBeforeRetryPixels": 0,
+      "RetryMaskPixels": 0,
+      "ResidualAfterRetryPixels": 0,
+      "Retried": false,
+      "Status": "clean_after_first_pass"
+    },
+    {
+      "TextRegionId": "RG020",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 156,
+        "Y": 1547,
+        "Width": 288,
+        "Height": 63
+      },
+      "TextScore": 0.9503648,
+      "BubbleRegionId": "RG019",
+      "BubbleBounds": {
+        "X": 150,
+        "Y": 1542,
+        "Width": 302,
+        "Height": 73
+      },
+      "BubbleScore": 0.9493433,
+      "InitialMaskPixels": 9051,
+      "ResidualBeforeRetryPixels": 541,
+      "RetryMaskPixels": 12085,
+      "ResidualAfterRetryPixels": 621,
+      "Retried": true,
+      "Status": "review_required"
+    },
+    {
+      "TextRegionId": "RG022",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 851,
+        "Y": 1565,
+        "Width": 343,
+        "Height": 81
+      },
+      "TextScore": 0.9485817,
+      "BubbleRegionId": "RG021",
+      "BubbleBounds": {
+        "X": 843,
+        "Y": 1556,
+        "Width": 359,
+        "Height": 94
+      },
+      "BubbleScore": 0.95493114,
+      "InitialMaskPixels": 12902,
+      "ResidualBeforeRetryPixels": 8,
+      "RetryMaskPixels": 17775,
+      "ResidualAfterRetryPixels": 1447,
+      "Retried": true,
+      "Status": "review_required"
+    },
+    {
+      "TextRegionId": "RG024",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 105,
+        "Y": 1763,
+        "Width": 195,
+        "Height": 126
+      },
+      "TextScore": 0.95455325,
+      "BubbleRegionId": "RG023",
+      "BubbleBounds": {
+        "X": 95,
+        "Y": 1755,
+        "Width": 218,
+        "Height": 144
+      },
+      "BubbleScore": 0.95902264,
+      "InitialMaskPixels": 7141,
+      "ResidualBeforeRetryPixels": 0,
+      "RetryMaskPixels": 0,
+      "ResidualAfterRetryPixels": 0,
+      "Retried": false,
+      "Status": "clean_after_first_pass"
+    },
+    {
+      "TextRegionId": "RG026",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 792,
+        "Y": 1912,
+        "Width": 72,
+        "Height": 47
+      },
+      "TextScore": 0.8317207,
+      "BubbleRegionId": "RG025",
+      "BubbleBounds": {
+        "X": 777,
+        "Y": 1896,
+        "Width": 102,
+        "Height": 78
+      },
+      "BubbleScore": 0.8777658,
+      "InitialMaskPixels": 1263,
+      "ResidualBeforeRetryPixels": 0,
+      "RetryMaskPixels": 0,
+      "ResidualAfterRetryPixels": 0,
+      "Retried": false,
+      "Status": "clean_after_first_pass"
+    }
+  ]
+}

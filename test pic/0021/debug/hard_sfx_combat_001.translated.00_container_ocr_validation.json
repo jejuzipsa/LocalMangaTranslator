@@ -1,0 +1,169 @@
+{
+  "schema": "ocr-evidence-v3",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC001",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC001",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.836128364389234
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9333238757270534
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG002",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG002",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    }
+  ],
+  "secondary_ocr": [
+    {
+      "EvidenceId": "BO0001",
+      "RegionId": "RG001",
+      "Bounds": {
+        "Top": 1084,
+        "Bottom": 1133,
+        "Left": 107,
+        "Right": 159,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "\uFF0E\uFF0E\uFF0E",
+      "Source": "baberu",
+      "Accepted": false,
+      "Reason": "empty_result"
+    },
+    {
+      "EvidenceId": "BO0002",
+      "RegionId": "RG003",
+      "Bounds": {
+        "Top": 1831,
+        "Bottom": 1873,
+        "Left": 747,
+        "Right": 874,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "SONOFA--!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    }
+  ]
+}

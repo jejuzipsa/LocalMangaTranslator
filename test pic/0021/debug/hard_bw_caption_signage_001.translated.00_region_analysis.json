@@ -1,0 +1,103 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=6; legacy_mask_candidates=80; active_region_containers=3",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "Bubble",
+      "x": 303,
+      "y": 205,
+      "width": 362,
+      "height": 74,
+      "score": 0.9017669,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "TextBubble",
+      "x": 316,
+      "y": 220,
+      "width": 338,
+      "height": 41,
+      "score": 0.8688606,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG003",
+      "kind": "Bubble",
+      "x": 139,
+      "y": 581,
+      "width": 164,
+      "height": 109,
+      "score": 0.9637301,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG004",
+      "kind": "Bubble",
+      "x": 823,
+      "y": 583,
+      "width": 161,
+      "height": 91,
+      "score": 0.953316,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG005",
+      "kind": "TextBubble",
+      "x": 865,
+      "y": 591,
+      "width": 76,
+      "height": 63,
+      "score": 0.8433801,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG006",
+      "kind": "TextBubble",
+      "x": 169,
+      "y": 613,
+      "width": 116,
+      "height": 36,
+      "score": 0.88599074,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": [
+    {
+      "id": "PC001",
+      "kind": "Speech",
+      "x": 309,
+      "y": 212,
+      "width": 350,
+      "height": 62,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 7.2337296503704565,
+      "fill_ratio": 0.9436405529953917
+    },
+    {
+      "id": "PC002",
+      "kind": "Speech",
+      "x": 823,
+      "y": 583,
+      "width": 161,
+      "height": 91,
+      "mode": "rtdetr_region_rect",
+      "score": 6.906631946563721,
+      "fill_ratio": 0.899256023479626
+    },
+    {
+      "id": "PC003",
+      "kind": "Speech",
+      "x": 133,
+      "y": 584,
+      "width": 167,
+      "height": 325,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 7.345635547258514,
+      "fill_ratio": 0.9834638415476739
+    }
+  ]
+}
