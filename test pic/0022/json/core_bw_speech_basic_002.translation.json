@@ -1,0 +1,358 @@
+{
+  "SourceFile": "core_bw_speech_basic_002.png",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-21T03:23:35.763151+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 185.66666666666666,
+        "Y": 176,
+        "W": 216.00000000000003,
+        "H": 63.5,
+        "Text": "THE MORE MY BODY WILL ROT?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 185.66666666666666,
+            "Y": 176,
+            "W": 216.00000000000003,
+            "H": 37.66666666666666,
+            "Text": "THE MORE MY BODY",
+            "Confidence": 0.9983467,
+            "Language": "en"
+          },
+          {
+            "X": 235,
+            "Y": 205,
+            "W": 121.5,
+            "H": 34.5,
+            "Text": "WILL ROT?",
+            "Confidence": 0.97713083,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THE MORE MY BODY WILL ROT?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "THE MORE MY BODY WILL ROT?",
+      "Translation": "\uB0B4 \uBAB8\uC774 \uB354 \uC369\uC5B4\uAC08\uC218\uB85D?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 399.3333333333333,
+        "Y": 265.66666666666663,
+        "W": 140.66666666666669,
+        "H": 74.66666666666669,
+        "Text": "BINGO!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 399.3333333333333,
+            "Y": 265.66666666666663,
+            "W": 140.66666666666669,
+            "H": 74.66666666666669,
+            "Text": "BINGO!",
+            "Confidence": 0.9992273,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "BINGO!",
+      "Translation": "\uBE59\uACE0!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 207.66666666666666,
+        "Y": 325.33333333333337,
+        "W": 10.666666666666686,
+        "H": 9,
+        "Text": "ii",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 207.66666666666666,
+            "Y": 325.33333333333337,
+            "W": 10.666666666666686,
+            "H": 9,
+            "Text": "ii",
+            "Confidence": 0.55193,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ii",
+      "Translation": "ii",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 425.66666666666663,
+        "Y": 422,
+        "W": 122.33333333333337,
+        "H": 40.33333333333337,
+        "Text": "PRECISELY.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 425.66666666666663,
+            "Y": 422,
+            "W": 122.33333333333337,
+            "H": 40.33333333333337,
+            "Text": "PRECISELY.",
+            "Confidence": 0.99965674,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PRECISELY.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG004"
+      },
+      "CorrectedText": "PRECISELY.",
+      "Translation": "\uC815\uD655\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 177.33333333333334,
+        "Y": 570.3333333333334,
+        "W": 258.66666666666663,
+        "H": 182.33333333333326,
+        "Text": "LOOK AT YOUR HAND. IT\u0027S BACK TO NORMAL, IS IT NOT?",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 177.33333333333334,
+            "Y": 570.3333333333334,
+            "W": 228.66666666666666,
+            "H": 38,
+            "Text": "LOOK AT YOUR HAND.",
+            "Confidence": 0.9687732,
+            "Language": "en"
+          },
+          {
+            "X": 194.5,
+            "Y": 688.5,
+            "W": 241.5,
+            "H": 38,
+            "Text": "IT\u0027S BACK TO NORMAL,",
+            "Confidence": 0.9940433,
+            "Language": "en"
+          },
+          {
+            "X": 257,
+            "Y": 717.3333333333334,
+            "W": 117.33333333333331,
+            "H": 35.33333333333326,
+            "Text": "IS IT NOT?",
+            "Confidence": 0.9580376,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LOOK AT YOUR HAND.\nIT\u0027S BKCK TO KINARA...\nIS IT NOTE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "LOOK AT YOUR HAND.\nIT\u0027S BACK TO NORMAL,\nIS IT NOT?",
+      "Translation": "\uB124 \uC190\uC744 \uBD10.\n\uB2E4\uC2DC \uC6D0\uB798\uB300\uB85C\n\uB3CC\uC544\uC654\uC9C0, \uC548 \uADF8\uB798?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 955.3333333333333,
+        "Y": 828.6666666666666,
+        "W": 164.66666666666674,
+        "H": 38.66666666666674,
+        "Text": "IT REALLY IS.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 955.3333333333333,
+            "Y": 828.6666666666666,
+            "W": 164.66666666666674,
+            "H": 38.66666666666674,
+            "Text": "IT REALLY IS.",
+            "Confidence": 0.99512875,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT REALLY IS.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "IT REALLY IS.",
+      "Translation": "\uC815\uB9D0 \uADF8\uB807\uB124.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 136,
+        "Y": 998.3333333333334,
+        "W": 301,
+        "H": 61.66666666666663,
+        "Text": "IT IS OF NO ISSUE IF YOU REMAIN IN YOUR ROOM.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 180.33333333333334,
+            "Y": 998.3333333333334,
+            "W": 214.33333333333334,
+            "H": 31.999999999999886,
+            "Text": "IT IS OF NO ISSUE IF",
+            "Confidence": 0.9944788,
+            "Language": "en"
+          },
+          {
+            "X": 136,
+            "Y": 1020.5,
+            "W": 301,
+            "H": 39.5,
+            "Text": "YOU REMAIN IN YOUR ROOM.",
+            "Confidence": 0.99817634,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT IS OF NO ISSUE IF YOU REMAIN IN YOUR ROOM.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "IT IS OF NO ISSUE IF YOU REMAIN IN YOUR ROOM.",
+      "Translation": "\uBC29\uC5D0\uB9CC \uACC4\uC2E0\uB2E4\uBA74[BR]\uBB38\uC81C\uC5C6\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1075,
+        "Y": 1225,
+        "W": 32.66666666666674,
+        "H": 29.666666666666742,
+        "Text": "ep",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1075,
+            "Y": 1225,
+            "W": 32.66666666666674,
+            "H": 29.666666666666742,
+            "Text": "ep",
+            "Confidence": 0.95456403,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ep",
+      "Translation": "\uD654",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 871,
+        "Y": 1521,
+        "W": 242.66666666666674,
+        "H": 121,
+        "Text": "IF THE ROT SPREADS THROUGHOUT YOUR ENTIRE BODY HOWEVER...",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 926,
+            "Y": 1521,
+            "W": 135.5,
+            "H": 37.5,
+            "Text": "IF THE ROT",
+            "Confidence": 0.99202645,
+            "Language": "en"
+          },
+          {
+            "X": 871,
+            "Y": 1549.6666666666667,
+            "W": 242.66666666666674,
+            "H": 34,
+            "Text": "SPREADS THROUGHOUT",
+            "Confidence": 0.99898434,
+            "Language": "en"
+          },
+          {
+            "X": 875.6666666666667,
+            "Y": 1578,
+            "W": 235.33333333333326,
+            "H": 35.33333333333326,
+            "Text": "YOUR ENTIRE BODY",
+            "Confidence": 0.9991016,
+            "Language": "en"
+          },
+          {
+            "X": 921,
+            "Y": 1600,
+            "W": 138,
+            "H": 42,
+            "Text": "HOWEVER...",
+            "Confidence": 0.98907286,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IF THE ROT\nSPREADS THROUGHOUT\nYOUR ENTIRE BODY,\nHOWEVER...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG014"
+      },
+      "CorrectedText": "IF THE ROT\nSPREADS THROUGHOUT\nYOUR ENTIRE BODY,\nHOWEVER...",
+      "Translation": "\uD558\uC9C0\uB9CC\n\uBD80\uD328\uAC00\n\uC628\uBAB8\uC73C\uB85C\n\uD37C\uC9C4\uB2E4\uBA74...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

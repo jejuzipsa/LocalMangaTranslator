@@ -1,0 +1,206 @@
+{
+  "Schema": "pipeline-v2-atomic-commit-v1",
+  "SourceFile": "core_many_speech_001.jpg",
+  "RequestedUnits": 9,
+  "TranslatedUnits": 8,
+  "PreservedOriginalUnits": 1,
+  "EraseCommittedUnits": 8,
+  "TypesetCommittedUnits": 8,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "Yor NOTT Alffred. Hoo ArE yu?!! WH--",
+      "Translation": "\uB108\uB294 \uC54C\uD504\uB808\uB4DC\uAC00 \uC544\uB2C8\uC57C. [BR]\uB108\uB294 \uB300\uCCB4 \uB204\uAD6C\uB0D0?! [BR]\uBB50--",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 781,
+        "Y": 184,
+        "Width": 193,
+        "Height": 131
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "STOP IT!",
+      "Translation": "\uADF8\uB9CC\uD574!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 798,
+        "Y": 327,
+        "Width": 206,
+        "Height": 143
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "JUST STOP GOD DAMN IT!",
+      "Translation": "\uC81C\uBC1C \uC880 \uADF8\uB9CC\uD574, \uBE4C\uC5B4\uBA39\uC744!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 197,
+        "Y": 576,
+        "Width": 157,
+        "Height": 106
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "LOOK AROUND YOU! AT EVERYONE YOU\u0027RE HURTING THIS! WITH",
+      "Translation": "\uC8FC\uBCC0\uC744 \uBD10! [BR]\uC774\uAC78\uB85C \uB124\uAC00 [BR]\uC0C1\uCC98 \uC785\uD788\uACE0 \uC788\uB294 [BR]\uBAA8\uB4E0 \uC0AC\uB78C\uB4E4\uC744!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 706,
+        "Y": 605,
+        "Width": 225,
+        "Height": 144
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "y",
+      "Translation": "\uC751",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "ALL YEARS... THESE ENOUGH. WILL LOOK, YO\u00FA?!",
+      "Translation": "\uBAA8\uB450\n\uC774 \uC138\uC6D4\uC774...\n\uC774\uC81C \uB410\uC5B4.\n\uBD10, \uD560\n\uAC70\uB0D0?!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 202,
+        "Y": 706,
+        "Width": 195,
+        "Height": 139
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 10,
+      "SourceText": "THAT\u0027S RIGHT, LOOK. SEE SEE REALLY LOOK. THEY FOR WHO PEOPLE ARE. THE HELP TO TRYING you.",
+      "Translation": "\uB9DE\uC544, \uBD10.\n\uC81C\uB300\uB85C \uBD10.\n\uADF8\uB4E4\uC774 \uB204\uAD6C\uC778\uC9C0\n\uB611\uBC14\uB85C \uBCF4\uB77C\uACE0.\n\uB108\uB97C \uB3C4\uC6B0\uB824\uB294\n\uC0AC\uB78C\uB4E4\uC774\uC57C.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "BubbleRegionId": "RG013",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 562,
+        "Y": 1242,
+        "Width": 245,
+        "Height": 173
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 13,
+      "SourceText": "No... nnno s\u0027not tru...",
+      "Translation": "\uC544\uB2C8...\n\uC544, \uC548\n\uB3FC...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG016"
+      ],
+      "BubbleRegionId": "RG015",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 898,
+        "Y": 1750,
+        "Width": 165,
+        "Height": 114
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 14,
+      "SourceText": "WHAT TRUE IS THIS...",
+      "Translation": "\uC9C4\uC2E4\uC740\n\uC774\uAC70\uC57C...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG018"
+      ],
+      "BubbleRegionId": "RG017",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1044,
+        "Y": 1831,
+        "Width": 127,
+        "Height": 105
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

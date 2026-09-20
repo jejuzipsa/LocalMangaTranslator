@@ -1,0 +1,163 @@
+{
+  "Schema": "pipeline-v2-atomic-commit-v1",
+  "SourceFile": "core_bw_speech_basic_002.png",
+  "RequestedUnits": 7,
+  "TranslatedUnits": 6,
+  "PreservedOriginalUnits": 1,
+  "EraseCommittedUnits": 6,
+  "TypesetCommittedUnits": 6,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "THE MORE MY BODY WILL ROT?",
+      "Translation": "\uB0B4 \uBAB8\uC774 \uB354 \uC369\uC5B4\uAC08\uC218\uB85D?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 122,
+        "Y": 126,
+        "Width": 364,
+        "Height": 165
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "BINGO!",
+      "Translation": "\uBE59\uACE0!",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:stylized_graphic"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "PRECISELY.",
+      "Translation": "\uC815\uD655\uD574.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG005"
+      ],
+      "BubbleRegionId": "RG004",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 341,
+        "Y": 372,
+        "Width": 295,
+        "Height": 141
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "LOOK AT YOUR HAND. IT\u0027S BACK TO NORMAL, IS IT NOT?",
+      "Translation": "\uB124 \uC190\uC744 \uBD10.\n\uB2E4\uC2DC \uC6D0\uB798\uB300\uB85C\n\uB3CC\uC544\uC654\uC9C0, \uC548 \uADF8\uB798?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008",
+        "RG009"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 125,
+        "Y": 541,
+        "Width": 387,
+        "Height": 280
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "IT REALLY IS.",
+      "Translation": "\uC815\uB9D0 \uADF8\uB807\uB124.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG011"
+      ],
+      "BubbleRegionId": "RG010",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 886,
+        "Y": 769,
+        "Width": 288,
+        "Height": 146
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "IT IS OF NO ISSUE IF YOU REMAIN IN YOUR ROOM.",
+      "Translation": "\uBC29\uC5D0\uB9CC \uACC4\uC2E0\uB2E4\uBA74[BR]\uBB38\uC81C\uC5C6\uC2B5\uB2C8\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG013"
+      ],
+      "BubbleRegionId": "RG012",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 130,
+        "Y": 957,
+        "Width": 336,
+        "Height": 163
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 8,
+      "SourceText": "IF THE ROT SPREADS THROUGHOUT YOUR ENTIRE BODY HOWEVER...",
+      "Translation": "\uD558\uC9C0\uB9CC\n\uBD80\uD328\uAC00\n\uC628\uBAB8\uC73C\uB85C\n\uD37C\uC9C4\uB2E4\uBA74...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG015"
+      ],
+      "BubbleRegionId": "RG014",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 810,
+        "Y": 1475,
+        "Width": 363,
+        "Height": 213
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}
