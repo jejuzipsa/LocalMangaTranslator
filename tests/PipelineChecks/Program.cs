@@ -140,6 +140,42 @@ Check("container unit keeps both canonical line ids", oneContainer.UnitOwnership
     oneContainer.UnitOwnership[0].LineIds.Count == 2 &&
     oneContainer.UnitOwnership[0].CandidateId == "PC001");
 
+var fullerLine = new OcrLine(
+    108,
+    220,
+    84,
+    16,
+    "YOU'RE STILL IN THE MIDDLE",
+    0.985f,
+    "en");
+
+var fragmentLine = new OcrLine(
+    145,
+    220,
+    46,
+    16,
+    "THE MIDDLE",
+    0.999f,
+    "en");
+
+var completeRepresentative =
+    unitBuilder.Build(
+        [fragmentLine, fullerLine],
+        [candidate],
+        [eligibleA],
+        [],
+        []);
+
+Check("overlapping OCR keeps complete line instead of tiny confidence fragment",
+    completeRepresentative.Units.Count == 1 &&
+    completeRepresentative.Units[0].Text.Contains(
+        "YOU'RE STILL IN THE MIDDLE",
+        StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(
+        completeRepresentative.Units[0].Text.Trim(),
+        "THE MIDDLE",
+        StringComparison.OrdinalIgnoreCase));
+
 var outsideLine = new OcrLine(20, 20, 30, 10, "OUTSIDE", 0.9f, "en");
 var orphanResult = unitBuilder.Build(
     [outsideLine],
