@@ -1,0 +1,330 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "core_bw_speech_sfx_001.png",
+  "output_file": "core_bw_speech_sfx_001.translated.webp",
+  "image": {
+    "width": 1295,
+    "height": 1812,
+    "changed_pixels": 37895,
+    "changed_ratio": 0.016149309195666813,
+    "changed_regions": [
+      {
+        "x": 174,
+        "y": 171,
+        "width": 183,
+        "height": 69
+      },
+      {
+        "x": 864,
+        "y": 1480,
+        "width": 111,
+        "height": 106
+      },
+      {
+        "x": 762,
+        "y": 1480,
+        "width": 97,
+        "height": 106
+      },
+      {
+        "x": 124,
+        "y": 986,
+        "width": 75,
+        "height": 79
+      },
+      {
+        "x": 364,
+        "y": 171,
+        "width": 69,
+        "height": 69
+      },
+      {
+        "x": 199,
+        "y": 992,
+        "width": 40,
+        "height": 113
+      },
+      {
+        "x": 236,
+        "y": 1000,
+        "width": 40,
+        "height": 105
+      },
+      {
+        "x": 294,
+        "y": 241,
+        "width": 96,
+        "height": 36
+      },
+      {
+        "x": 433,
+        "y": 171,
+        "width": 50,
+        "height": 69
+      },
+      {
+        "x": 1047,
+        "y": 1484,
+        "width": 37,
+        "height": 56
+      },
+      {
+        "x": 275,
+        "y": 1017,
+        "width": 30,
+        "height": 48
+      },
+      {
+        "x": 86,
+        "y": 1030,
+        "width": 39,
+        "height": 36
+      },
+      {
+        "x": 990,
+        "y": 1508,
+        "width": 40,
+        "height": 33
+      },
+      {
+        "x": 101,
+        "y": 968,
+        "width": 38,
+        "height": 30
+      },
+      {
+        "x": 985,
+        "y": 1541,
+        "width": 41,
+        "height": 24
+      },
+      {
+        "x": 288,
+        "y": 208,
+        "width": 29,
+        "height": 32
+      },
+      {
+        "x": 463,
+        "y": 211,
+        "width": 33,
+        "height": 25
+      },
+      {
+        "x": 987,
+        "y": 1482,
+        "width": 34,
+        "height": 24
+      },
+      {
+        "x": 1082,
+        "y": 1480,
+        "width": 17,
+        "height": 48
+      },
+      {
+        "x": 799,
+        "y": 1542,
+        "width": 26,
+        "height": 31
+      },
+      {
+        "x": 265,
+        "y": 966,
+        "width": 26,
+        "height": 29
+      },
+      {
+        "x": 230,
+        "y": 1067,
+        "width": 25,
+        "height": 28
+      },
+      {
+        "x": 287,
+        "y": 962,
+        "width": 16,
+        "height": 43
+      },
+      {
+        "x": 899,
+        "y": 1480,
+        "width": 14,
+        "height": 48
+      },
+      {
+        "x": 242,
+        "y": 215,
+        "width": 32,
+        "height": 21
+      },
+      {
+        "x": 186,
+        "y": 1067,
+        "width": 22,
+        "height": 29
+      },
+      {
+        "x": 413,
+        "y": 174,
+        "width": 18,
+        "height": 35
+      },
+      {
+        "x": 357,
+        "y": 171,
+        "width": 16,
+        "height": 38
+      },
+      {
+        "x": 308,
+        "y": 1013,
+        "width": 13,
+        "height": 42
+      },
+      {
+        "x": 769,
+        "y": 1491,
+        "width": 32,
+        "height": 17
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 10,
+    "bubbles": 5,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 10,
+      "Global2x": 9,
+      "Focus3x": 26,
+      "Region2x": 9,
+      "Region1x": 8,
+      "Container1x": 9,
+      "Container2x": 9
+    },
+    "canonical_lines": 11,
+    "units": 7,
+    "assigned_lines": 8,
+    "orphan_groups": 3,
+    "secondary_total": 5,
+    "secondary_accepted": 4,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 174,
+          "Bottom": 275,
+          "Left": 173,
+          "Right": 515,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...\n...STARTING THE DARTY WHILE YOU\u0027RE STILL IN THE MIDDLE OF Y",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 174,
+          "Bottom": 250,
+          "Left": 631,
+          "Right": 752,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "KLAK",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 156,
+          "Bottom": 222,
+          "Left": 971,
+          "Right": 1041,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "no_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 986,
+          "Bottom": 1076,
+          "Left": 92,
+          "Right": 307,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MEANS I GOTTA HURRY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1499,
+          "Bottom": 1588,
+          "Left": 753,
+          "Right": 1111,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WILL REGRET THIS, ALICE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 7,
+    "requested_render": 4
+  },
+  "render": {
+    "total": 3,
+    "approved": 3,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 4,
+    "TranslatedUnits": 3,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 3,
+    "TypesetCommittedUnits": 3,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true
+  }
+}

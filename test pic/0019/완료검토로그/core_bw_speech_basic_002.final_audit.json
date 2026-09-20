@@ -1,0 +1,366 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "core_bw_speech_basic_002.png",
+  "output_file": "core_bw_speech_basic_002.translated.webp",
+  "image": {
+    "width": 1295,
+    "height": 1812,
+    "changed_pixels": 43973,
+    "changed_ratio": 0.01873950582559854,
+    "changed_regions": [
+      {
+        "x": 941,
+        "y": 1530,
+        "width": 130,
+        "height": 50
+      },
+      {
+        "x": 283,
+        "y": 1002,
+        "width": 76,
+        "height": 72
+      },
+      {
+        "x": 204,
+        "y": 1002,
+        "width": 78,
+        "height": 59
+      },
+      {
+        "x": 870,
+        "y": 1584,
+        "width": 75,
+        "height": 49
+      },
+      {
+        "x": 946,
+        "y": 1584,
+        "width": 72,
+        "height": 50
+      },
+      {
+        "x": 194,
+        "y": 171,
+        "width": 91,
+        "height": 36
+      },
+      {
+        "x": 875,
+        "y": 1532,
+        "width": 67,
+        "height": 47
+      },
+      {
+        "x": 307,
+        "y": 699,
+        "width": 61,
+        "height": 48
+      },
+      {
+        "x": 427,
+        "y": 423,
+        "width": 77,
+        "height": 37
+      },
+      {
+        "x": 354,
+        "y": 1003,
+        "width": 52,
+        "height": 51
+      },
+      {
+        "x": 1015,
+        "y": 1584,
+        "width": 73,
+        "height": 33
+      },
+      {
+        "x": 270,
+        "y": 699,
+        "width": 38,
+        "height": 48
+      },
+      {
+        "x": 962,
+        "y": 823,
+        "width": 49,
+        "height": 37
+      },
+      {
+        "x": 144,
+        "y": 1021,
+        "width": 43,
+        "height": 33
+      },
+      {
+        "x": 1007,
+        "y": 827,
+        "width": 43,
+        "height": 33
+      },
+      {
+        "x": 504,
+        "y": 423,
+        "width": 38,
+        "height": 37
+      },
+      {
+        "x": 297,
+        "y": 171,
+        "width": 38,
+        "height": 36
+      },
+      {
+        "x": 1072,
+        "y": 1544,
+        "width": 37,
+        "height": 35
+      },
+      {
+        "x": 372,
+        "y": 171,
+        "width": 34,
+        "height": 36
+      },
+      {
+        "x": 1051,
+        "y": 823,
+        "width": 33,
+        "height": 37
+      },
+      {
+        "x": 1085,
+        "y": 824,
+        "width": 29,
+        "height": 36
+      },
+      {
+        "x": 342,
+        "y": 171,
+        "width": 29,
+        "height": 36
+      },
+      {
+        "x": 262,
+        "y": 212,
+        "width": 32,
+        "height": 32
+      },
+      {
+        "x": 298,
+        "y": 211,
+        "width": 31,
+        "height": 33
+      },
+      {
+        "x": 444,
+        "y": 620,
+        "width": 32,
+        "height": 29
+      },
+      {
+        "x": 407,
+        "y": 1022,
+        "width": 28,
+        "height": 32
+      },
+      {
+        "x": 229,
+        "y": 666,
+        "width": 32,
+        "height": 27
+      },
+      {
+        "x": 296,
+        "y": 624,
+        "width": 24,
+        "height": 27
+      },
+      {
+        "x": 408,
+        "y": 1002,
+        "width": 26,
+        "height": 23
+      },
+      {
+        "x": 198,
+        "y": 579,
+        "width": 28,
+        "height": 21
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 15,
+    "bubbles": 7,
+    "text_regions": 8,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 15,
+      "Global2x": 15,
+      "Focus3x": 40,
+      "Region1x": 14,
+      "Region2x": 14,
+      "Container1x": 13,
+      "Container2x": 15
+    },
+    "canonical_lines": 16,
+    "units": 9,
+    "assigned_lines": 13,
+    "orphan_groups": 3,
+    "secondary_total": 7,
+    "secondary_accepted": 7,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 175,
+          "Bottom": 245,
+          "Left": 180,
+          "Right": 413,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE MORE MY BODY WILL ROT?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG004",
+        "Bounds": {
+          "Top": 422,
+          "Bottom": 464,
+          "Left": 417,
+          "Right": 556,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PRECISELY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG006",
+        "Bounds": {
+          "Top": 566,
+          "Bottom": 611,
+          "Left": 172,
+          "Right": 412,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOOK AT YOUR HAND.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 566,
+          "Bottom": 757,
+          "Left": 172,
+          "Right": 445,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOOK AT YOUR HAND.\nIT\u0027S BKCK TO KINARA...\nIS IT NOTE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG010",
+        "Bounds": {
+          "Top": 826,
+          "Bottom": 872,
+          "Left": 947,
+          "Right": 1130,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT REALLY IS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 993,
+          "Bottom": 1065,
+          "Left": 132,
+          "Right": 438,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT IS OF NO ISSUE IF YOU REMAIN IN YOUR ROOM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG014",
+        "Bounds": {
+          "Top": 1518,
+          "Bottom": 1643,
+          "Left": 861,
+          "Right": 1123,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IF THE ROT\nSPREADS THROUGHOUT\nYOUR ENTIRE BODY,\nHOWEVER...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 9,
+    "requested_render": 7
+  },
+  "render": {
+    "total": 6,
+    "approved": 6,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 7,
+    "TranslatedUnits": 6,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 6,
+    "TypesetCommittedUnits": 6,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true
+  }
+}

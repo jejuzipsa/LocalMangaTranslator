@@ -1,0 +1,39 @@
+{
+  "Schema": "pipeline-v2-erase-audit-v2",
+  "SourceFile": "hard_sfx_combat_001.jpg",
+  "SourceMode": "hybrid_rtdetr",
+  "DetectedTargetCount": 2,
+  "SelectedTargetCount": 1,
+  "InitialMaskPixels": 2151,
+  "ResidualBeforeRetryPixels": 0,
+  "RetryMaskPixels": 0,
+  "ResidualAfterRetryPixels": 0,
+  "RetryTargetCount": 0,
+  "Clean": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG004",
+      "TextBounds": {
+        "X": 747,
+        "Y": 1831,
+        "Width": 127,
+        "Height": 42
+      },
+      "TextScore": 0.88739717,
+      "BubbleRegionId": "RG003",
+      "BubbleBounds": {
+        "X": 736,
+        "Y": 1803,
+        "Width": 152,
+        "Height": 102
+      },
+      "BubbleScore": 0.9324567,
+      "InitialMaskPixels": 2151,
+      "ResidualBeforeRetryPixels": 0,
+      "RetryMaskPixels": 0,
+      "ResidualAfterRetryPixels": 0,
+      "Retried": false,
+      "Status": "clean_after_first_pass"
+    }
+  ]
+}
