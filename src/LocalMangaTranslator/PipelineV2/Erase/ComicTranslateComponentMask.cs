@@ -16,7 +16,8 @@ public static class ComicTranslateComponentMask
     public static Mat Build(
         Mat source,
         Rect textBounds,
-        Rect? bubbleBounds = null)
+        Rect? bubbleBounds = null,
+        bool includeColorRescue = true)
     {
         var cropBounds =
             ClampRect(
@@ -149,56 +150,58 @@ public static class ComicTranslateComponentMask
                 background);
         }
 
-        // Colored comic lettering (for example red NONONO on white) can have
-        // a mid luminance and therefore escape both black/white Otsu masks.
-        // Add only compact, chromatic components whose color differs strongly
-        // from the local median. Parent-bubble targets may use a slightly
-        // looser threshold; free-text targets stay more conservative.
-        using var colorCandidate =
-            BuildColorContrastCandidate(
-                crop,
-                textLocal,
-                conservative:
-                    !bubbleBounds.HasValue);
-
-        int colorPixels =
-            Cv2.CountNonZero(
-                colorCandidate);
-
-        int preColorPixels =
-            Cv2.CountNonZero(
-                chosen);
-
-        int preColorArea =
-            Math.Max(
-                1,
-                textLocal.Width *
-                textLocal.Height);
-
-        if (colorPixels >= 2 &&
-            colorPixels <=
-                preColorArea *
-                (bubbleBounds.HasValue
-                    ? 0.30
-                    : 0.20))
+        // Colored comic lettering can have a mid luminance and therefore
+        // escape both black/white Otsu masks. This rescue is useful for the
+        // FIRST erase mask, but must not be reused for residual review:
+        // Telea can introduce harmless local chroma variation that the color
+        // detector would otherwise reinterpret as surviving text.
+        //
+        // Residual review therefore calls Build(..., includeColorRescue: false)
+        // and only asks whether normal high-contrast glyph structure remains.
+        if (includeColorRescue)
         {
-            using var merged =
-                new Mat();
+            using var colorCandidate =
+                BuildColorContrastCandidate(
+                    crop,
+                    textLocal,
+                    conservative:
+                        !bubbleBounds.HasValue);
 
-            Cv2.BitwiseOr(
-                chosen,
-                colorCandidate,
-                merged);
-
-            int mergedPixels =
+            int colorPixels =
                 Cv2.CountNonZero(
+                    colorCandidate);
+
+            int preColorArea =
+                Math.Max(
+                    1,
+                    textLocal.Width *
+                    textLocal.Height);
+
+            if (colorPixels >= 2 &&
+                colorPixels <=
+                    preColorArea *
+                    (bubbleBounds.HasValue
+                        ? 0.30
+                        : 0.20))
+            {
+                using var merged =
+                    new Mat();
+
+                Cv2.BitwiseOr(
+                    chosen,
+                    colorCandidate,
                     merged);
 
-            if (mergedPixels <=
-                preColorArea * 0.45)
-            {
-                merged.CopyTo(
-                    chosen);
+                int mergedPixels =
+                    Cv2.CountNonZero(
+                        merged);
+
+                if (mergedPixels <=
+                    preColorArea * 0.45)
+                {
+                    merged.CopyTo(
+                        chosen);
+                }
             }
         }
 
