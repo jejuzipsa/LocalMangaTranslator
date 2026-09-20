@@ -1748,7 +1748,8 @@ public sealed class RenderPipelineService
                     factor,
                     alignment,
                     box,
-                    caption);
+                    caption,
+                    shortWideCaption);
 
                 if (candidate.Fits)
                 {
@@ -1785,7 +1786,8 @@ public sealed class RenderPipelineService
                 1.0,
                 alignment,
                 box,
-                caption);
+                caption,
+                shortWideCaption);
 
             if (candidate.Fits)
                 return candidate;
@@ -1809,7 +1811,8 @@ public sealed class RenderPipelineService
         double lineHeightFactor,
         TextAlignment alignment,
         WpfRect box,
-        bool caption)
+        bool caption,
+        bool centerShortWideCaption)
     {
         var formatted = MakeFormattedText(
             text,
@@ -1820,9 +1823,16 @@ public sealed class RenderPipelineService
             lineHeightFactor,
             alignment);
 
-        double originY = caption
-            ? box.Y
-            : box.Y + Math.Max(0, (box.Height - formatted.Height) / 2.0);
+        double originY =
+            caption &&
+            !centerShortWideCaption
+                ? box.Y
+                : box.Y +
+                  Math.Max(
+                      0,
+                      (box.Height -
+                       formatted.Height) /
+                      2.0);
 
         double originX = box.X;
         var origin = new System.Windows.Point(originX, originY);
