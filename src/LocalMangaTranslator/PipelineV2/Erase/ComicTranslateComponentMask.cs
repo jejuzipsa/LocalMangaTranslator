@@ -101,8 +101,22 @@ public static class ComicTranslateComponentMask
                 iterations: 1);
         }
 
+        // Dilation may grow one pixel beyond TextBubble. Clamp it again so
+        // downstream processing can never enlarge the detector's geometry.
+        using var finalLocal = Mat.Zeros(
+            local.Rows,
+            local.Cols,
+            MatType.CV_8UC1).ToMat();
+
+        if (textLocal.Width > 0 && textLocal.Height > 0)
+        {
+            using var srcRoi = new Mat(restricted, textLocal);
+            using var dstRoi = new Mat(finalLocal, textLocal);
+            srcRoi.CopyTo(dstRoi);
+        }
+
         using var destination = new Mat(full, cropBounds);
-        restricted.CopyTo(destination);
+        finalLocal.CopyTo(destination);
 
         return full;
     }
