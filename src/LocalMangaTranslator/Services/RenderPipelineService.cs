@@ -57,7 +57,7 @@ public sealed class RenderPipelineService
                      x.Id)))
             .ToList();
 
-        List<VisionTranslation> legacySuppressed;
+        List<VisionTranslation> legacySuppressed = [];
 
         var candidates =
             useV2Erase
@@ -66,8 +66,6 @@ public sealed class RenderPipelineService
                     requested,
                     out legacySuppressed);
 
-        if (useV2Erase)
-            legacySuppressed = [];
 
         if (candidates.Count == 0)
         {
