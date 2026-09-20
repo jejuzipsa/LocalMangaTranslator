@@ -386,7 +386,10 @@ public sealed class ErasePipelineV2
                     Status =
                         previous.InitialMaskPixels < 2
                             ? "mask_empty"
-                            : remaining < 2
+                            : IsResidualAcceptable(
+                                previous.InitialMaskPixels,
+                                remaining,
+                                target.TextBounds)
                                 ? previous.Retried
                                     ? "clean_after_retry"
                                     : "clean_after_first_pass"
@@ -422,9 +425,7 @@ public sealed class ErasePipelineV2
                 RetryTargetCount =
                     retryTargetCount,
                 Clean =
-                    audits.All(x =>
-                        x.InitialMaskPixels >= 2 &&
-                        x.ResidualAfterRetryPixels < 2),
+                    audits.All(IsAuditClean),
                 Targets =
                     targets.Select(target =>
                     {
@@ -438,6 +439,7 @@ public sealed class ErasePipelineV2
                         return new
                         {
                             target.TextRegionId,
+                            target.Kind,
                             TextBounds =
                                 new
                                 {
@@ -494,6 +496,52 @@ public sealed class ErasePipelineV2
             cleanedPath,
             jsonPath,
             audits.ToArray());
+    }
+
+    public static bool IsAuditClean(
+        V2EraseTargetAudit audit)
+        => audit.InitialMaskPixels >= 2 &&
+           audit.Status.StartsWith(
+               "clean_",
+               StringComparison.Ordinal);
+
+    static bool IsResidualAcceptable(
+        int initialMaskPixels,
+        int residualPixels,
+        Rect textBounds)
+    {
+        if (residualPixels < 2)
+            return true;
+
+        int textArea =
+            Math.Max(
+                1,
+                textBounds.Width *
+                textBounds.Height);
+
+        // 0019 showed that a few dozen high-contrast inpaint speckles can be
+        // re-segmented as "text" even when the lettering is visibly gone.
+        // Judge residuals by both original glyph-mask size and detector area
+        // instead of the old absolute <2 pixel rule.
+        double byOriginalMask =
+            Math.Max(
+                12.0,
+                initialMaskPixels *
+                0.08);
+
+        double byDetectorArea =
+            Math.Max(
+                12.0,
+                textArea *
+                0.025);
+
+        double allowance =
+            Math.Min(
+                byOriginalMask,
+                byDetectorArea);
+
+        return residualPixels <=
+               allowance;
     }
 
     static Mat InpaintOnlyMaskedPixels(
@@ -588,8 +636,9 @@ public sealed class ErasePipelineV2
         foreach (var region in snapshot.RawRegions)
         {
             bool selected =
-                region.Kind ==
-                    LocalMangaTranslator.Models.PageRegionKind.TextBubble &&
+                region.Kind is
+                    LocalMangaTranslator.Models.PageRegionKind.TextBubble or
+                    LocalMangaTranslator.Models.PageRegionKind.TextFree &&
                 (selectedTextRegionIds is null ||
                  selectedTextRegionIds.Contains(
                      region.RegionId));
@@ -604,8 +653,15 @@ public sealed class ErasePipelineV2
                         when selected =>
                         new Scalar(0, 0, 255),
 
+                    LocalMangaTranslator.Models.PageRegionKind.TextFree
+                        when selected =>
+                        new Scalar(255, 80, 0),
+
                     LocalMangaTranslator.Models.PageRegionKind.TextBubble =>
                         new Scalar(110, 110, 110),
+
+                    LocalMangaTranslator.Models.PageRegionKind.TextFree =>
+                        new Scalar(160, 110, 60),
 
                     _ =>
                         new Scalar(130, 130, 130)
