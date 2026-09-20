@@ -7,7 +7,10 @@ namespace LocalMangaTranslator.PipelineV2.Erase;
 public sealed record V2RegionBinding(
     int TranslationRegionId,
     IReadOnlyList<string> TextRegionIds,
-    Rect LayoutBounds);
+    Rect TextBounds,
+    string? BubbleRegionId,
+    Rect LayoutBounds,
+    string LayoutMode);
 
 public sealed record V2EraseSelection(
     IReadOnlySet<string> TextRegionIds,
@@ -15,12 +18,12 @@ public sealed record V2EraseSelection(
     IReadOnlyDictionary<int, V2RegionBinding> Bindings);
 
 /// <summary>
-/// Chooses immutable RT-DETR TextBubble targets for translated units.
+/// Binds translation units to immutable RT-DETR geometry.
 ///
-/// Important V2 invariant:
-/// the exact same matched TextBubble geometry is carried forward for BOTH
-/// erase and typesetting. A later legacy balloon/container search is never
-/// allowed to replace the layout box.
+/// V2 rule:
+/// - TextBubble geometry owns OCR/erase/review.
+/// - the already-associated parent Bubble owns layout/font fitting.
+/// - downstream code may not rediscover or replace either rectangle.
 /// </summary>
 public static class V2EraseSelector
 {
@@ -56,6 +59,37 @@ public static class V2EraseSelector
                     target.TextRegionId);
             }
 
+            var textBounds =
+                UnionBounds(
+                    matched.Select(x =>
+                        x.TextBounds));
+
+            var bubbleIds =
+                matched
+                    .Select(x => x.BubbleRegionId)
+                    .Where(x =>
+                        !string.IsNullOrWhiteSpace(x))
+                    .Distinct(StringComparer.Ordinal)
+                    .ToArray();
+
+            var bubbleBounds =
+                matched
+                    .Where(x =>
+                        x.BubbleBounds.HasValue)
+                    .Select(x =>
+                        x.BubbleBounds!.Value)
+                    .Distinct()
+                    .ToArray();
+
+            bool oneParentBubble =
+                bubbleIds.Length == 1 &&
+                bubbleBounds.Length == 1;
+
+            Rect layoutBounds =
+                oneParentBubble
+                    ? bubbleBounds[0]
+                    : textBounds;
+
             regionIds.Add(
                 region.Id);
 
@@ -63,11 +97,18 @@ public static class V2EraseSelector
                 new V2RegionBinding(
                     region.Id,
                     matched
-                        .Select(x => x.TextRegionId)
+                        .Select(x =>
+                            x.TextRegionId)
                         .Distinct(StringComparer.Ordinal)
                         .ToArray(),
-                    UnionBounds(
-                        matched.Select(x => x.TextBounds)));
+                    textBounds,
+                    oneParentBubble
+                        ? bubbleIds[0]
+                        : null,
+                    layoutBounds,
+                    oneParentBubble
+                        ? "rtdetr_parent_bubble"
+                        : "textbubble_fallback");
         }
 
         return new V2EraseSelection(
@@ -80,7 +121,7 @@ public static class V2EraseSelector
         IReadOnlyList<V2TextTarget> targets,
         VisionTranslation region)
     {
-        // Best case: the runtime RT-DETR text-region link survived OCR/Vision.
+        // Best case: OCR/Vision still carries the exact RT-DETR TextBubble id.
         if (region.Source.RegionTextRegion is { } linked)
         {
             var direct =
@@ -95,9 +136,7 @@ public static class V2EraseSelector
                 return direct;
         }
 
-        // A recovered OCR unit may only retain the learned Bubble id.
-        // Every matched TextBubble still remains immutable; layout uses the
-        // union of those exact detector boxes instead of a new container box.
+        // A recovered unit may only retain the learned Bubble id.
         if (!string.IsNullOrWhiteSpace(
                 region.Source.RegionId))
         {
@@ -114,7 +153,7 @@ public static class V2EraseSelector
         }
 
         // Last resort: OCR geometry may SELECT a detector target, but can
-        // never replace its geometry.
+        // never redefine that target's TextBubble/Bubble geometry.
         var source =
             new Rect2d(
                 region.Source.X,
@@ -145,7 +184,8 @@ public static class V2EraseSelector
             .ThenByDescending(x =>
                 x.Coverage)
             .Take(2)
-            .Select(x => x.Target)
+            .Select(x =>
+                x.Target)
             .ToList();
     }
 
@@ -159,16 +199,20 @@ public static class V2EraseSelector
             return new Rect();
 
         int left =
-            list.Min(x => x.Left);
+            list.Min(x =>
+                x.Left);
 
         int top =
-            list.Min(x => x.Top);
+            list.Min(x =>
+                x.Top);
 
         int right =
-            list.Max(x => x.Right);
+            list.Max(x =>
+                x.Right);
 
         int bottom =
-            list.Max(x => x.Bottom);
+            list.Max(x =>
+                x.Bottom);
 
         return new Rect(
             left,
