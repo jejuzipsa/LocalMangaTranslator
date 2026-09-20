@@ -346,7 +346,7 @@ INPUT:
     static bool IsRenderableType(string? type)
         => type is "dialogue" or "thought" or "caption";
 
-    static bool IsUsableTranslation(
+    public static bool IsUsableTranslation(
         VisionTranslation source,
         string? translation)
     {
