@@ -6,9 +6,10 @@ namespace LocalMangaTranslator.PipelineV2.Erase;
 /// Text-pixel mask inside an immutable RT-DETR TextBubble.
 ///
 /// Important safety rules:
-/// - choose ONE foreground polarity, never OR black/white masks together;
-/// - reject masks that consume most of the TextBubble;
-/// - keep all pixels clamped to the original TextBubble geometry.
+/// - choose ONE grayscale foreground polarity, never OR black/white masks together;
+/// - optionally add a tightly filtered chroma-contrast rescue for colored glyphs;
+/// - reject masks that consume most of the detector text box;
+/// - keep all pixels clamped to immutable detector geometry.
 /// </summary>
 public static class ComicTranslateComponentMask
 {
@@ -146,6 +147,59 @@ public static class ComicTranslateComponentMask
                 chosen,
                 textLocal,
                 background);
+        }
+
+        // Colored comic lettering (for example red NONONO on white) can have
+        // a mid luminance and therefore escape both black/white Otsu masks.
+        // Add only compact, chromatic components whose color differs strongly
+        // from the local median. Parent-bubble targets may use a slightly
+        // looser threshold; free-text targets stay more conservative.
+        using var colorCandidate =
+            BuildColorContrastCandidate(
+                crop,
+                textLocal,
+                conservative:
+                    !bubbleBounds.HasValue);
+
+        int colorPixels =
+            Cv2.CountNonZero(
+                colorCandidate);
+
+        int preColorPixels =
+            Cv2.CountNonZero(
+                chosen);
+
+        int preColorArea =
+            Math.Max(
+                1,
+                textLocal.Width *
+                textLocal.Height);
+
+        if (colorPixels >= 2 &&
+            colorPixels <=
+                preColorArea *
+                (bubbleBounds.HasValue
+                    ? 0.30
+                    : 0.20))
+        {
+            using var merged =
+                new Mat();
+
+            Cv2.BitwiseOr(
+                chosen,
+                colorCandidate,
+                merged);
+
+            int mergedPixels =
+                Cv2.CountNonZero(
+                    merged);
+
+            if (mergedPixels <=
+                preColorArea * 0.45)
+            {
+                merged.CopyTo(
+                    chosen);
+            }
         }
 
         // Ambiguous segmentation must never erase most of the detector box.
@@ -504,6 +558,165 @@ public static class ComicTranslateComponentMask
             destination,
             filtered,
             destination);
+    }
+
+    static Mat BuildColorContrastCandidate(
+        Mat color,
+        Rect textLocal,
+        bool conservative)
+    {
+        var raw =
+            Mat.Zeros(
+                    color.Rows,
+                    color.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+        var blue =
+            new List<byte>();
+
+        var green =
+            new List<byte>();
+
+        var red =
+            new List<byte>();
+
+        for (int y =
+                 textLocal.Top;
+             y <
+             textLocal.Bottom;
+             y += 2)
+        {
+            for (int x =
+                     textLocal.Left;
+                 x <
+                 textLocal.Right;
+                 x += 2)
+            {
+                var pixel =
+                    color.At<Vec3b>(
+                        y,
+                        x);
+
+                blue.Add(
+                    pixel.Item0);
+
+                green.Add(
+                    pixel.Item1);
+
+                red.Add(
+                    pixel.Item2);
+            }
+        }
+
+        if (blue.Count == 0)
+            return raw;
+
+        blue.Sort();
+        green.Sort();
+        red.Sort();
+
+        double bgB =
+            blue[
+                blue.Count / 2];
+
+        double bgG =
+            green[
+                green.Count / 2];
+
+        double bgR =
+            red[
+                red.Count / 2];
+
+        double distanceThreshold =
+            conservative
+                ? 105
+                : 72;
+
+        double chromaThreshold =
+            conservative
+                ? 52
+                : 34;
+
+        for (int y =
+                 textLocal.Top;
+             y <
+             textLocal.Bottom;
+             y++)
+        {
+            for (int x =
+                     textLocal.Left;
+                 x <
+                 textLocal.Right;
+                 x++)
+            {
+                var pixel =
+                    color.At<Vec3b>(
+                        y,
+                        x);
+
+                double b =
+                    pixel.Item0;
+
+                double g =
+                    pixel.Item1;
+
+                double r =
+                    pixel.Item2;
+
+                double db =
+                    b - bgB;
+
+                double dg =
+                    g - bgG;
+
+                double dr =
+                    r - bgR;
+
+                double distance =
+                    Math.Sqrt(
+                        db * db +
+                        dg * dg +
+                        dr * dr);
+
+                double max =
+                    Math.Max(
+                        r,
+                        Math.Max(
+                            g,
+                            b));
+
+                double min =
+                    Math.Min(
+                        r,
+                        Math.Min(
+                            g,
+                            b));
+
+                double chroma =
+                    max - min;
+
+                if (distance >=
+                        distanceThreshold &&
+                    chroma >=
+                        chromaThreshold)
+                {
+                    raw.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        using var filtered =
+            BuildComponentCandidate(
+                raw,
+                textLocal);
+
+        raw.Dispose();
+
+        return filtered.Clone();
     }
 
     static double EstimateBackgroundMedian(
