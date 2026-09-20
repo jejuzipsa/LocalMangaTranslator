@@ -1,0 +1,1048 @@
+{
+  "SourceFile": "core_caption_speech_mixed_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-20T19:15:08.6337554+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 49.333333333333336,
+        "Y": 266.3333333333333,
+        "W": 266,
+        "H": 47.33333333333337,
+        "Text": "We\u0027ve had many adventures together, Batman and I.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 49.333333333333336,
+            "Y": 266.3333333333333,
+            "W": 266,
+            "H": 28.33333333333337,
+            "Text": "We\u0027ve had many adventures",
+            "Confidence": 0.9981865,
+            "Language": "en"
+          },
+          {
+            "X": 51.333333333333336,
+            "Y": 287.3333333333333,
+            "W": 238.33333333333334,
+            "H": 26.33333333333337,
+            "Text": "together, Batman and I.",
+            "Confidence": 0.98180926,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "We\u0027ve had many adventures together, Batman and I.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "We\u0027ve had many adventures together, Batman and I.",
+      "Translation": "\uBC30\uD2B8\uB9E8\uACFC \uB098, [BR]\uC6B0\uB9B0 \uD568\uAED8 \uB9CE\uC740 \uBAA8\uD5D8\uC744 \uD574\uC654\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 299,
+        "Y": 325,
+        "W": 243,
+        "H": 47,
+        "Text": "I\u0027ve been at his side practically his whole life.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 302,
+            "Y": 325,
+            "W": 186,
+            "H": 27,
+            "Text": "I\u0027ve been at his side",
+            "Confidence": 0.9951369,
+            "Language": "en"
+          },
+          {
+            "X": 299,
+            "Y": 343.33333333333337,
+            "W": 243,
+            "H": 28.66666666666663,
+            "Text": "practically his whole life.",
+            "Confidence": 0.98514295,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027ve been at his side practically his whole life.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "I\u0027ve been at his side practically his whole life.",
+      "Translation": "\uB09C \uAC70\uC758 \uD3C9\uC0DD\uC744[BR]\uADF8\uC758 \uACC1\uC5D0\uC11C \uD568\uAED8\uD574 \uC654\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 358.6666666666667,
+        "Y": 408,
+        "W": 127.33333333333331,
+        "H": 34,
+        "Text": "N",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 358.6666666666667,
+            "Y": 408,
+            "W": 127.33333333333331,
+            "H": 34,
+            "Text": "N",
+            "Confidence": 0.84053963,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "N",
+      "Translation": "\uC548 \uB3FC.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 755,
+        "Y": 415,
+        "W": 100.33333333333337,
+        "H": 25.66666666666663,
+        "Text": "olM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 755,
+            "Y": 415,
+            "W": 100.33333333333337,
+            "H": 25.66666666666663,
+            "Text": "olM",
+            "Confidence": 0.49798954,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 194.66666666666666,
+        "Y": 424.3333333333333,
+        "W": 154.33333333333334,
+        "H": 63.666666666666686,
+        "Text": "FINAL NEARING DESTINATION, ALFRED.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 284.33333333333337,
+            "Y": 424.3333333333333,
+            "W": 64.66666666666663,
+            "H": 22.666666666666686,
+            "Text": "FINAL",
+            "Confidence": 0.9997966,
+            "Language": "en"
+          },
+          {
+            "X": 194.66666666666666,
+            "Y": 424.6666666666667,
+            "W": 97.33333333333334,
+            "H": 22,
+            "Text": "NEARING",
+            "Confidence": 0.99936354,
+            "Language": "en"
+          },
+          {
+            "X": 197,
+            "Y": 445,
+            "W": 150.66666666666669,
+            "H": 26,
+            "Text": "DESTINATION,",
+            "Confidence": 0.9998299,
+            "Language": "en"
+          },
+          {
+            "X": 225.66666666666669,
+            "Y": 463.6666666666667,
+            "W": 92.33333333333331,
+            "H": 24.333333333333314,
+            "Text": "ALFRED.",
+            "Confidence": 0.999685,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NEARING FINAL DESTINATION, ALFRED.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "NEARING FINAL DESTINATION, ALFRED.",
+      "Translation": "\uBAA9\uC801\uC9C0\uC5D0 \uAC70\uC758 \uB2E4 \uC654\uC5B4, \uC54C\uD504\uB808\uB4DC.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 336.3333333333333,
+        "Y": 501.6666666666667,
+        "W": 177.99999999999994,
+        "H": 105.99999999999994,
+        "Text": "HERE. I\u0027M SHOW SENSORS NO MOVEMENT SITE, THE SIR.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 413,
+            "Y": 501.6666666666667,
+            "W": 66.33333333333331,
+            "H": 28.999999999999943,
+            "Text": "HERE.",
+            "Confidence": 0.99846894,
+            "Language": "en"
+          },
+          {
+            "X": 371.66666666666663,
+            "Y": 504.3333333333333,
+            "W": 44.00000000000006,
+            "H": 22.666666666666686,
+            "Text": "I\u0027M",
+            "Confidence": 0.9992018,
+            "Language": "en"
+          },
+          {
+            "X": 443.6666666666667,
+            "Y": 522.6666666666666,
+            "W": 70.66666666666657,
+            "H": 24.666666666666742,
+            "Text": "SHOW",
+            "Confidence": 0.9919585,
+            "Language": "en"
+          },
+          {
+            "X": 336.3333333333333,
+            "Y": 523,
+            "W": 108.33333333333337,
+            "H": 23.66666666666663,
+            "Text": "SENSORS",
+            "Confidence": 0.99978876,
+            "Language": "en"
+          },
+          {
+            "X": 343.33333333333337,
+            "Y": 543.6666666666666,
+            "W": 40,
+            "H": 22.33333333333337,
+            "Text": "NO",
+            "Confidence": 0.99991345,
+            "Language": "en"
+          },
+          {
+            "X": 382,
+            "Y": 543.6666666666666,
+            "W": 123.66666666666669,
+            "H": 19.33333333333337,
+            "Text": "MOVEMENT",
+            "Confidence": 0.99990267,
+            "Language": "en"
+          },
+          {
+            "X": 435.6666666666667,
+            "Y": 563.3333333333334,
+            "W": 56.333333333333314,
+            "H": 23.333333333333258,
+            "Text": "SITE,",
+            "Confidence": 0.99886996,
+            "Language": "en"
+          },
+          {
+            "X": 392.66666666666663,
+            "Y": 564,
+            "W": 45.00000000000006,
+            "H": 21.66666666666663,
+            "Text": "THE",
+            "Confidence": 0.9998107,
+            "Language": "en"
+          },
+          {
+            "X": 401,
+            "Y": 581.3333333333334,
+            "W": 46,
+            "H": 26.333333333333258,
+            "Text": "SIR.",
+            "Confidence": 0.9981934,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027M HERE.\nSENSORS SHOW\nNO MOVEMENT\nAT THE SITE,\nSIR.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "I\u0027M HERE.\nSENSORS SHOW\nNO MOVEMENT\nAT THE SITE,\nSIR.",
+      "Translation": "\uB3C4\uCC29\uD588\uC2B5\uB2C8\uB2E4.\n\uD604\uC7A5 \uB0B4\uC5D0\n\uC6C0\uC9C1\uC784\uC740\n\uAC10\uC9C0\uB418\uC9C0\n\uC54A\uC2B5\uB2C8\uB2E4,\n\uB300\uC7A5.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 53.5,
+        "Y": 687.5,
+        "W": 226.5,
+        "H": 68.16666666666663,
+        "Text": "From the start, though, something about this case felt different.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 53.5,
+            "Y": 687.5,
+            "W": 226.5,
+            "H": 29.5,
+            "Text": "From the start, though,",
+            "Confidence": 0.9983939,
+            "Language": "en"
+          },
+          {
+            "X": 56,
+            "Y": 709,
+            "W": 223,
+            "H": 26.5,
+            "Text": "something about this",
+            "Confidence": 0.99637604,
+            "Language": "en"
+          },
+          {
+            "X": 54,
+            "Y": 724,
+            "W": 205,
+            "H": 31.66666666666663,
+            "Text": "case felt different.",
+            "Confidence": 0.99804026,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "From the start, though, something about this case felt different.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "From the start, though, something about this case felt different.",
+      "Translation": "\uD558\uC9C0\uB9CC \uCC98\uC74C\uBD80\uD130[BR]\uC774 \uC0AC\uAC74\uC740 \uBB54\uAC00[BR]\uBB18\uD55C \uB290\uB08C\uC774 \uC788\uC5C8\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 275.3333333333333,
+        "Y": 755.6666666666666,
+        "W": 246.33333333333331,
+        "H": 50.66666666666674,
+        "Text": "He\u0027d been following it for almost exactly a year.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 275.3333333333333,
+            "Y": 755.6666666666666,
+            "W": 246.33333333333331,
+            "H": 30.33333333333337,
+            "Text": "He\u0027d been following it for",
+            "Confidence": 0.99233824,
+            "Language": "en"
+          },
+          {
+            "X": 275.3333333333333,
+            "Y": 777.3333333333334,
+            "W": 211.66666666666669,
+            "H": 29,
+            "Text": "almost exactly a year.",
+            "Confidence": 0.9980467,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "He\u0027d been following it for almost exactly a year.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "He\u0027d been following it for almost exactly a year.",
+      "Translation": "\uADF8\uB294 \uAC70\uC758 \uC815\uD655\uD788 1\uB144 \uB3D9\uC548[BR]\uADF8\uAC83\uC744 \uCAD3\uACE0 \uC788\uC5C8\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1193,
+        "Y": 820,
+        "W": 96,
+        "H": 72,
+        "Text": "EH",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1193,
+            "Y": 820,
+            "W": 96,
+            "H": 72,
+            "Text": "EH",
+            "Confidence": 0.34764874,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "EH",
+      "Translation": "\uC5B4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 873,
+        "Y": 881.3333333333334,
+        "W": 55,
+        "H": 20.66666666666663,
+        "Text": "RP",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 873,
+            "Y": 881.3333333333334,
+            "W": 55,
+            "H": 20.66666666666663,
+            "Text": "RP",
+            "Confidence": 0.52281433,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "RP",
+      "Translation": "RP",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 878,
+        "Y": 921.5,
+        "W": 401.33333333333326,
+        "H": 84,
+        "Text": "The most unsettling thing about it was that there was no grandstanding villain, no corpse, no real victim at all. It shouldn\u0027t have alarmed him so. And yet...",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 882.5,
+            "Y": 921.5,
+            "W": 361.5,
+            "H": 28,
+            "Text": "The most unsettling thing about it was",
+            "Confidence": 0.9992878,
+            "Language": "en"
+          },
+          {
+            "X": 882,
+            "Y": 940.6666666666666,
+            "W": 397.33333333333326,
+            "H": 27.33333333333337,
+            "Text": "that there was no grandstanding villain, no",
+            "Confidence": 0.9846133,
+            "Language": "en"
+          },
+          {
+            "X": 878,
+            "Y": 958,
+            "W": 379,
+            "H": 26,
+            "Text": "corpse, no real victim at all. It shouldn\u0027t",
+            "Confidence": 0.99245864,
+            "Language": "en"
+          },
+          {
+            "X": 879.5,
+            "Y": 976.5,
+            "W": 307.5,
+            "H": 29,
+            "Text": "have alarmed him so. And yet...",
+            "Confidence": 0.97373086,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "The most unsettling thing about it was their there\u0027s was to girldnediation withing wita tore touretatatata tatat tanda tatatatat",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "The most unsettling thing about it was that there was no grandstanding villain, no corpse, no real victim at all. It shouldn\u0027t have alarmed him so. And yet...",
+      "Translation": "\uAC00\uC7A5 \uC18C\uB984 \uB07C\uCE58\uB294 \uC810\uC740[BR]\uAC70\uCC3D\uD55C \uC545\uB2F9\uB3C4, \uC2DC\uCCB4\uB3C4, \uBA85\uBC31\uD55C \uD53C\uD574\uC790\uB3C4 \uC804\uD600 \uC5C6\uB2E4\uB294 \uAC83\uC774\uC5C8\uB2E4. \uC774 \uC815\uB3C4\uB85C \uACBD\uACC4\uD560 \uC77C\uC740 \uC544\uB2C8\uC5C8\uB2E4. \uADF8\uB7F0\uB370\uB3C4...",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 918.6666666666666,
+        "Y": 1076.3333333333333,
+        "W": 121.33333333333337,
+        "H": 82.33333333333348,
+        "Text": "NO HEAT SIGNATURE EITHER, SIR.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 929.6666666666666,
+            "Y": 1076.3333333333333,
+            "W": 35.66666666666674,
+            "H": 19.666666666666742,
+            "Text": "NO",
+            "Confidence": 0.99990565,
+            "Language": "en"
+          },
+          {
+            "X": 968.3333333333334,
+            "Y": 1076.3333333333333,
+            "W": 58.33333333333337,
+            "H": 20,
+            "Text": "HEAT",
+            "Confidence": 0.99870133,
+            "Language": "en"
+          },
+          {
+            "X": 918.6666666666666,
+            "Y": 1095.6666666666667,
+            "W": 121.33333333333337,
+            "H": 21.666666666666515,
+            "Text": "SIGNATURE",
+            "Confidence": 0.99981034,
+            "Language": "en"
+          },
+          {
+            "X": 937.6666666666667,
+            "Y": 1115,
+            "W": 80,
+            "H": 22.333333333333258,
+            "Text": "EITHER,",
+            "Confidence": 0.9991074,
+            "Language": "en"
+          },
+          {
+            "X": 954.6666666666666,
+            "Y": 1132,
+            "W": 47.66666666666674,
+            "H": 26.666666666666742,
+            "Text": "SIR.",
+            "Confidence": 0.99757797,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO HEAT SIGNATURE EITHER, SIR.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "NO HEAT SIGNATURE EITHER, SIR.",
+      "Translation": "\uC5F4 \uC2E0\uD638\uB3C4 \uAC10\uC9C0\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4, \uB300\uC7A5.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 1121,
+        "Y": 1148,
+        "W": 61.5,
+        "H": 44.5,
+        "Text": "L",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1121,
+            "Y": 1148,
+            "W": 61.5,
+            "H": 44.5,
+            "Text": "L",
+            "Confidence": 0.46884036,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "L",
+      "Translation": "L",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 750,
+        "Y": 1194.3333333333333,
+        "W": 158,
+        "H": 27,
+        "Text": "UNDERSTOOD.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 750,
+            "Y": 1194.3333333333333,
+            "W": 158,
+            "H": 27,
+            "Text": "UNDERSTOOD.",
+            "Confidence": 0.99860734,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "UNDERSTOOD.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "UNDERSTOOD.",
+      "Translation": "\uC54C\uC558\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1181.6666666666665,
+        "Y": 1480.3333333333333,
+        "W": 100,
+        "H": 20.333333333333485,
+        "Text": "WEE812N",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1181.6666666666665,
+            "Y": 1480.3333333333333,
+            "W": 100,
+            "H": 20.333333333333485,
+            "Text": "WEE812N",
+            "Confidence": 0.5126765,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WEE812N",
+      "Translation": "WEE812N",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 219.66666666666666,
+        "Y": 1492,
+        "W": 52.66666666666666,
+        "H": 30.666666666666742,
+        "Text": "6",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 219.66666666666666,
+            "Y": 1492,
+            "W": 52.66666666666666,
+            "H": 30.666666666666742,
+            "Text": "6",
+            "Confidence": 0.5380061,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "6",
+      "Translation": "6",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 162,
+        "Y": 1542.6666666666667,
+        "W": 281,
+        "H": 66.83333333333326,
+        "Text": "secret about him. About Batman. You know where he feels alarm?",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 287,
+            "Y": 1542.6666666666667,
+            "W": 137,
+            "H": 33,
+            "Text": "secret about",
+            "Confidence": 0.9989274,
+            "Language": "en"
+          },
+          {
+            "X": 163,
+            "Y": 1565,
+            "W": 280,
+            "H": 26,
+            "Text": "him. About Batman. You know",
+            "Confidence": 0.9955084,
+            "Language": "en"
+          },
+          {
+            "X": 162,
+            "Y": 1584.5,
+            "W": 209,
+            "H": 25,
+            "Text": "where he feels alarm?",
+            "Confidence": 0.9976901,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027ll tell you a secret about him. About Batman, You know where h",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "I\u0027ll tell you a secret about him. About Batman. You know where he feels alarm?",
+      "Translation": "\uADF8\uC5D0 \uB300\uD574 \uBE44\uBC00 \uD558\uB098 \uB9D0\uD574\uC904\uAC8C.[BR] \uBC30\uD2B8\uB9E8\uC5D0 \uB300\uD574\uC11C \uB9D0\uC774\uC57C.[BR] \uADF8\uAC00 \uC5B8\uC81C \uACBD\uACC4\uC2EC\uC744 \uB290\uB07C\uB294\uC9C0 \uC54C\uC544?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 853,
+        "Y": 1564.5,
+        "W": 310.5,
+        "H": 83.83333333333326,
+        "Text": "In his scar tissue. A grim warning system hypertrophic...scars I often feel responsible for.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 855,
+            "Y": 1564.5,
+            "W": 308.5,
+            "H": 27,
+            "Text": "In his scar tissue. A grim warning",
+            "Confidence": 0.9955964,
+            "Language": "en"
+          },
+          {
+            "X": 853,
+            "Y": 1580,
+            "W": 73,
+            "H": 30.333333333333258,
+            "Text": "system",
+            "Confidence": 0.9989332,
+            "Language": "en"
+          },
+          {
+            "X": 855,
+            "Y": 1602,
+            "W": 303.5,
+            "H": 25,
+            "Text": "hypertrophic...scars I often feel",
+            "Confidence": 0.97988135,
+            "Language": "en"
+          },
+          {
+            "X": 853.3333333333334,
+            "Y": 1618.6666666666667,
+            "W": 154,
+            "H": 29.666666666666515,
+            "Text": "responsible for.",
+            "Confidence": 0.998304,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "In his scar tissue. A gritin warring system carved into his body kelod, Keld, ryert-tohic......fata... ford...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "In his scar tissue. A grim warning system carved into his body. Keloid, hypertrophic...scars I often feel responsible for.",
+      "Translation": "\uD749\uD130 \uC870\uC9C1\uC5D0.[BR]\uBAB8\uC5D0 \uC0C8\uACA8\uC9C4[BR]\uC5C4\uC911\uD55C \uACBD\uACE0 \uCCB4\uACC4.[BR]\uCF08\uB85C\uC774\uB4DC, \uBE44\uD6C4\uC131...[BR]\uB0B4\uAC00 \uCC45\uC784\uC774 \uC788\uB294[BR]\uD749\uD130\uB4E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 107.66666666666667,
+        "Y": 1762.3333333333333,
+        "W": 187.66666666666663,
+        "H": 125,
+        "Text": "SIR JUST I\u0027M SUGGESTING 16 THERE NEED NO SPEED. TO I SEE NO--",
+        "OriginalRegionCount": 13,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 177,
+            "Y": 1762.3333333333333,
+            "W": 48.66666666666666,
+            "H": 29,
+            "Text": "SIR",
+            "Confidence": 0.99843705,
+            "Language": "en"
+          },
+          {
+            "X": 190.33333333333334,
+            "Y": 1784,
+            "W": 65.66666666666666,
+            "H": 25,
+            "Text": "JUST",
+            "Confidence": 0.99837303,
+            "Language": "en"
+          },
+          {
+            "X": 148,
+            "Y": 1784.6666666666667,
+            "W": 46.33333333333334,
+            "H": 23.666666666666515,
+            "Text": "I\u0027M",
+            "Confidence": 0.9990244,
+            "Language": "en"
+          },
+          {
+            "X": 131.33333333333331,
+            "Y": 1805.3333333333333,
+            "W": 140.00000000000006,
+            "H": 21,
+            "Text": "SUGGESTING",
+            "Confidence": 0.99977875,
+            "Language": "en"
+          },
+          {
+            "X": 167.66666666666666,
+            "Y": 1822.6666666666667,
+            "W": 29,
+            "H": 24.333333333333258,
+            "Text": "16",
+            "Confidence": 0.40424442,
+            "Language": "en"
+          },
+          {
+            "X": 107.66666666666667,
+            "Y": 1824.3333333333333,
+            "W": 70.33333333333333,
+            "H": 23.333333333333485,
+            "Text": "THERE",
+            "Confidence": 0.9986817,
+            "Language": "en"
+          },
+          {
+            "X": 235.66666666666666,
+            "Y": 1824.3333333333333,
+            "W": 59.66666666666666,
+            "H": 23.333333333333485,
+            "Text": "NEED",
+            "Confidence": 0.9995619,
+            "Language": "en"
+          },
+          {
+            "X": 198.66666666666666,
+            "Y": 1826.3333333333333,
+            "W": 37.666666666666686,
+            "H": 18,
+            "Text": "NO",
+            "Confidence": 0.99985737,
+            "Language": "en"
+          },
+          {
+            "X": 171,
+            "Y": 1842.3333333333333,
+            "W": 79.33333333333334,
+            "H": 26,
+            "Text": "SPEED.",
+            "Confidence": 0.9992016,
+            "Language": "en"
+          },
+          {
+            "X": 133.33333333333331,
+            "Y": 1843.6666666666667,
+            "W": 36.666666666666686,
+            "H": 24,
+            "Text": "TO",
+            "Confidence": 0.99993956,
+            "Language": "en"
+          },
+          {
+            "X": 247.33333333333334,
+            "Y": 1846,
+            "W": 20.666666666666657,
+            "H": 18,
+            "Text": "I",
+            "Confidence": 0.9874817,
+            "Language": "en"
+          },
+          {
+            "X": 151,
+            "Y": 1862.3333333333333,
+            "W": 44,
+            "H": 25,
+            "Text": "SEE",
+            "Confidence": 0.99897647,
+            "Language": "en"
+          },
+          {
+            "X": 194.66666666666666,
+            "Y": 1863,
+            "W": 55.666666666666686,
+            "H": 23.333333333333258,
+            "Text": "NO--",
+            "Confidence": 0.9957597,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SIR,\nI\u0027M JUST\nSUGGESTING\nTHERE\u0027S NO NEED\nTO SPEED. I\nSEE NO--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "SIR, I\u0027M JUST SUGGESTING THERE\u0027S NO NEED TO SPEED. I SEE NO--",
+      "Translation": "\uAC01\uD558, \uC11C\uB450\uB974\uC2E4 \uD544\uC694\uB294 \uC5C6\uB2E4\uACE0 \uB9D0\uC500\uB4DC\uB9AC\uB294 \uAC81\uB2C8\uB2E4. \uC81C\uAC00 \uBCF4\uAE30\uC5D4\u2014",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 914,
+        "Y": 1900.3333333333333,
+        "W": 63.66666666666674,
+        "H": 65.33333333333348,
+        "Text": "*",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 914,
+            "Y": 1900.3333333333333,
+            "W": 63.66666666666674,
+            "H": 65.33333333333348,
+            "Text": "*",
+            "Confidence": 0.5507648,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "*",
+      "Translation": "*",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 793,
+        "Y": 1912,
+        "W": 71,
+        "H": 45,
+        "Text": "OKAY THEN.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 797.6666666666666,
+            "Y": 1912,
+            "W": 66.33333333333337,
+            "H": 25,
+            "Text": "OKAY",
+            "Confidence": 0.99482584,
+            "Language": "en"
+          },
+          {
+            "X": 793,
+            "Y": 1930,
+            "W": 68.5,
+            "H": 27,
+            "Text": "THEN.",
+            "Confidence": 0.9963872,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OKAY THEN.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG025"
+      },
+      "CorrectedText": "OKAY THEN.",
+      "Translation": "\uC88B\uC544, \uADF8\uB7FC.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
