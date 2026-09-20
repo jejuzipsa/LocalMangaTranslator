@@ -403,9 +403,29 @@ public sealed class RenderPipelineService
                 outputPath,
                 finalDebug);
 
+            var committedUnitIds =
+                finalPlans
+                    .Select(x => x.UnitId)
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
+            var finalizedPlans =
+                plans
+                    .Select(plan =>
+                        plan.Approved &&
+                        !committedUnitIds.Contains(
+                            plan.UnitId)
+                            ? plan with
+                            {
+                                Approved = false,
+                                Reason = "v2_commit_preserved_original"
+                            }
+                            : plan)
+                    .ToList();
+
             WritePlanJson(
                 sourcePath,
-                plans,
+                finalizedPlans,
                 planJson);
 
             WriteV2CommitAudit(
