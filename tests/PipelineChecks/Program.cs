@@ -811,9 +811,12 @@ try
         selection.TextRegionIds.SetEquals(["VT-A"]) &&
         selection.TranslationRegionIds.SetEquals([2001]));
 
-    Check("V2 selector carries the same TextBubble geometry into layout",
+    Check("V2 selector keeps TextBubble for erase and parent Bubble for layout",
         selection.Bindings.TryGetValue(2001, out var mainBinding) &&
-        mainBinding.LayoutBounds == textA.Bounds &&
+        mainBinding.TextBounds == textA.Bounds &&
+        mainBinding.LayoutBounds == bubbleA.Bounds &&
+        mainBinding.BubbleRegionId == "VB-A" &&
+        mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
         mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
 
     var v2MainResult =
