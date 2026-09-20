@@ -75,3 +75,24 @@ The V2 rendering path now treats erase + typeset as one commit.
 - `v2_commit_audit.json` records every requested unit as either `translated` or `original_preserved:...`.
 
 OCR line consolidation also prefers a more complete overlapping observation when confidence is comparable, preventing a high-confidence fragment such as `THE MIDDLE` from replacing `YOU'RE STILL IN THE MIDDLE`.
+
+
+## 0020 free-text / colored-glyph / four-stage audit
+
+0019 output review exposed three remaining structural gaps:
+
+1. RT-DETR `TextFree` detections were visible in region analysis but excluded from the V2 immutable target snapshot.
+2. colored comic lettering such as red `NONONO` could survive while grayscale residual review incorrectly reported the target as clean.
+3. the final audit only showed `ORIGINAL | FINAL | DIFF`, which hid whether a failure happened during erase or during commit/typesetting.
+
+0020 changes:
+
+- `V2DetectionSnapshot` now carries both `TextBubble` and `TextFree`.
+- `TextBubble` keeps the original parent-Bubble layout rule.
+- `TextFree` has no invented parent Bubble; its immutable detector rectangle is the erase target and conservative local layout anchor.
+- colored glyph rescue adds filtered chroma-contrast components without OR-ing both grayscale polarities or allowing full-box erase.
+- residual review is adaptive: tiny post-inpaint speckles are tolerated by density while substantial remaining lettering is still rejected.
+- observed 0019 residual cases are locked as regression checks.
+- completion audit is now four-stage when V2 committed-cleaned output exists:
+  `1 ORIGINAL | 2 ERASE COMMIT | 3 FINAL | 4 DIFF`.
+- audit summary now records V2 preservation reasons (erase review, unbound, duplicate suppression, other) and sorts pages with preserved originals first.
