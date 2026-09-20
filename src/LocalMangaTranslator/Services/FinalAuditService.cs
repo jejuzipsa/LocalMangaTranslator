@@ -33,6 +33,11 @@ public sealed class FinalAuditService
         public int V2TypesetCommittedUnits { get; set; }
         public int V2MissingUnits { get; set; }
         public bool V2CountMatch { get; set; }
+        public bool HasCommittedCleaned { get; set; }
+        public long EraseChangedPixels { get; set; }
+        public double EraseChangedRatio { get; set; }
+        public long TypesetChangedPixels { get; set; }
+        public double TypesetChangedRatio { get; set; }
     }
 
     sealed class V2CommitAuditSummary
@@ -155,10 +160,13 @@ public sealed class FinalAuditService
                 changedMask,
                 token);
 
+        string debugDirectory =
+            OutputDirectoryLayout.Debug(
+                outputRoot);
+
         string planPath =
             Path.Combine(
-                OutputDirectoryLayout.Debug(
-                    outputRoot),
+                debugDirectory,
                 $"{baseName}.translated.render-plan.json");
 
         RenderPlanDocument? renderPlan =
@@ -167,16 +175,73 @@ public sealed class FinalAuditService
 
         string v2CommitPath =
             Path.Combine(
-                OutputDirectoryLayout.Debug(
-                    outputRoot),
+                debugDirectory,
                 $"{baseName}.v2_commit_audit.json");
 
         V2CommitAuditSummary? v2Commit =
             TryLoadV2CommitAudit(
                 v2CommitPath);
 
+        string committedCleanedPath =
+            Path.Combine(
+                debugDirectory,
+                $"{baseName}.v2_05_committed_cleaned.webp");
+
+        using var committedCleaned =
+            File.Exists(
+                committedCleanedPath)
+                ? Cv2.ImRead(
+                    committedCleanedPath,
+                    ImreadModes.Color)
+                : new Mat();
+
+        bool hasCommittedCleaned =
+            !committedCleaned.Empty() &&
+            committedCleaned.Size() ==
+                original.Size();
+
+        using var eraseChangedMask =
+            hasCommittedCleaned
+                ? BuildChangedMask(
+                    original,
+                    committedCleaned)
+                : Mat.Zeros(
+                        original.Rows,
+                        original.Cols,
+                        MatType.CV_8UC1)
+                    .ToMat();
+
+        using var typesetChangedMask =
+            hasCommittedCleaned
+                ? BuildChangedMask(
+                    committedCleaned,
+                    final)
+                : Mat.Zeros(
+                        original.Rows,
+                        original.Cols,
+                        MatType.CV_8UC1)
+                    .ToMat();
+
+        long eraseChangedPixels =
+            Cv2.CountNonZero(
+                eraseChangedMask);
+
+        long typesetChangedPixels =
+            Cv2.CountNonZero(
+                typesetChangedMask);
+
+        double eraseChangedRatio =
+            eraseChangedPixels /
+            (double)totalPixels;
+
+        double typesetChangedRatio =
+            typesetChangedPixels /
+            (double)totalPixels;
+
         SaveCompareImage(
             original,
+            committedCleaned,
+            hasCommittedCleaned,
             final,
             changedMask,
             Path.Combine(
@@ -238,7 +303,7 @@ public sealed class FinalAuditService
             new
             {
                 schema =
-                    "final-audit-v1",
+                    "final-audit-v2",
                 source_file =
                     Path.GetFileName(
                         sourcePath),
@@ -257,7 +322,22 @@ public sealed class FinalAuditService
                         changed_ratio =
                             changedRatio,
                         changed_regions =
-                            changedRegions
+                            changedRegions,
+                        committed_cleaned_available =
+                            hasCommittedCleaned,
+                        committed_cleaned_file =
+                            hasCommittedCleaned
+                                ? Path.GetFileName(
+                                    committedCleanedPath)
+                                : null,
+                        erase_changed_pixels =
+                            eraseChangedPixels,
+                        erase_changed_ratio =
+                            eraseChangedRatio,
+                        typeset_changed_pixels =
+                            typesetChangedPixels,
+                        typeset_changed_ratio =
+                            typesetChangedRatio
                     },
                 region_analysis =
                     new
@@ -376,7 +456,17 @@ public sealed class FinalAuditService
                 V2CountMatch =
                     v2Commit is not null &&
                     v2Commit.EraseTypesetCountMatch &&
-                    v2Commit.SourceToFinalCountMatch
+                    v2Commit.SourceToFinalCountMatch,
+                HasCommittedCleaned =
+                    hasCommittedCleaned,
+                EraseChangedPixels =
+                    eraseChangedPixels,
+                EraseChangedRatio =
+                    eraseChangedRatio,
+                TypesetChangedPixels =
+                    typesetChangedPixels,
+                TypesetChangedRatio =
+                    typesetChangedRatio
             });
     }
 
@@ -455,8 +545,43 @@ public sealed class FinalAuditService
             .ToList();
     }
 
+    static Mat BuildChangedMask(
+        Mat first,
+        Mat second)
+    {
+        using var difference =
+            new Mat();
+
+        Cv2.Absdiff(
+            first,
+            second,
+            difference);
+
+        using var gray =
+            new Mat();
+
+        Cv2.CvtColor(
+            difference,
+            gray,
+            ColorConversionCodes.BGR2GRAY);
+
+        var mask =
+            new Mat();
+
+        Cv2.Threshold(
+            gray,
+            mask,
+            8,
+            255,
+            ThresholdTypes.Binary);
+
+        return mask;
+    }
+
     static void SaveCompareImage(
         Mat original,
+        Mat committedCleaned,
+        bool hasCommittedCleaned,
         Mat final,
         Mat changedMask,
         string outputPath)
@@ -484,6 +609,9 @@ public sealed class FinalAuditService
         using var originalPreview =
             new Mat();
 
+        using var cleanedPreview =
+            new Mat();
+
         using var finalPreview =
             new Mat();
 
@@ -499,6 +627,19 @@ public sealed class FinalAuditService
             0,
             0,
             InterpolationFlags.Area);
+
+        if (hasCommittedCleaned)
+        {
+            Cv2.Resize(
+                committedCleaned,
+                cleanedPreview,
+                new Size(
+                    width,
+                    height),
+                0,
+                0,
+                InterpolationFlags.Area);
+        }
 
         Cv2.Resize(
             final,
@@ -547,10 +688,16 @@ public sealed class FinalAuditService
             diffPreview,
             maskPreview);
 
+        int columns =
+            hasCommittedCleaned
+                ? 4
+                : 3;
+
         using var sheet =
             new Mat(
                 height,
-                width * 3,
+                width *
+                    columns,
                 MatType.CV_8UC3,
                 new Scalar(
                     20,
@@ -566,11 +713,34 @@ public sealed class FinalAuditService
                     width,
                     height)));
 
+        int finalColumn =
+            hasCommittedCleaned
+                ? 2
+                : 1;
+
+        int diffColumn =
+            hasCommittedCleaned
+                ? 3
+                : 2;
+
+        if (hasCommittedCleaned)
+        {
+            cleanedPreview.CopyTo(
+                new Mat(
+                    sheet,
+                    new Rect(
+                        width,
+                        0,
+                        width,
+                        height)));
+        }
+
         finalPreview.CopyTo(
             new Mat(
                 sheet,
                 new Rect(
-                    width,
+                    width *
+                        finalColumn,
                     0,
                     width,
                     height)));
@@ -579,25 +749,46 @@ public sealed class FinalAuditService
             new Mat(
                 sheet,
                 new Rect(
-                    width * 2,
+                    width *
+                        diffColumn,
                     0,
                     width,
                     height)));
 
         DrawLabel(
             sheet,
-            "ORIGINAL",
+            "1 ORIGINAL",
             12);
 
-        DrawLabel(
-            sheet,
-            "FINAL",
-            width + 12);
+        if (hasCommittedCleaned)
+        {
+            DrawLabel(
+                sheet,
+                "2 ERASE COMMIT",
+                width + 12);
 
-        DrawLabel(
-            sheet,
-            "DIFF",
-            width * 2 + 12);
+            DrawLabel(
+                sheet,
+                "3 FINAL",
+                width * 2 + 12);
+
+            DrawLabel(
+                sheet,
+                "4 DIFF",
+                width * 3 + 12);
+        }
+        else
+        {
+            DrawLabel(
+                sheet,
+                "2 FINAL",
+                width + 12);
+
+            DrawLabel(
+                sheet,
+                "3 DIFF",
+                width * 2 + 12);
+        }
 
         Cv2.ImEncode(
             ".webp",
