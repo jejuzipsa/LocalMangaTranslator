@@ -21,9 +21,9 @@ public sealed record V2EraseSelection(
 /// Binds translation units to immutable RT-DETR geometry.
 ///
 /// V2 rule:
-/// - TextBubble geometry owns OCR/erase/review.
-/// - the already-associated parent Bubble owns layout/font fitting.
-/// - downstream code may not rediscover or replace either rectangle.
+/// - TextBubble geometry owns OCR/erase/review and its parent Bubble owns layout.
+/// - TextFree owns both erase and a conservative local layout rectangle.
+/// - downstream code may not rediscover or replace detector geometry.
 /// </summary>
 public static class V2EraseSelector
 {
@@ -85,10 +85,22 @@ public static class V2EraseSelector
                 bubbleIds.Length == 1 &&
                 bubbleBounds.Length == 1;
 
+            bool allTextFree =
+                matched.All(x =>
+                    x.Kind ==
+                    PageRegionKind.TextFree);
+
             Rect layoutBounds =
                 oneParentBubble
                     ? bubbleBounds[0]
                     : textBounds;
+
+            string layoutMode =
+                oneParentBubble
+                    ? "rtdetr_parent_bubble"
+                    : allTextFree
+                        ? "rtdetr_textfree"
+                        : "textbubble_fallback";
 
             regionIds.Add(
                 region.Id);
@@ -106,9 +118,7 @@ public static class V2EraseSelector
                         ? bubbleIds[0]
                         : null,
                     layoutBounds,
-                    oneParentBubble
-                        ? "rtdetr_parent_bubble"
-                        : "textbubble_fallback");
+                    layoutMode);
         }
 
         return new V2EraseSelection(
