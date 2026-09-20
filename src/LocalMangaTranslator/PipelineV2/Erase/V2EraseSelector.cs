@@ -15,7 +15,11 @@ public sealed record V2RegionBinding(
 public sealed record V2EraseSelection(
     IReadOnlySet<string> TextRegionIds,
     IReadOnlySet<int> TranslationRegionIds,
-    IReadOnlyDictionary<int, V2RegionBinding> Bindings);
+    IReadOnlyDictionary<int, V2RegionBinding> Bindings)
+{
+    public IReadOnlyDictionary<int, string> PreservationReasons { get; init; } =
+        new Dictionary<int, string>();
+}
 
 /// <summary>
 /// Binds translation units to immutable RT-DETR geometry.
@@ -41,6 +45,9 @@ public static class V2EraseSelector
         var bindings =
             new Dictionary<int, V2RegionBinding>();
 
+        var preservationReasons =
+            new Dictionary<int, string>();
+
         foreach (var region in translations.Where(x =>
                      x.Render &&
                      !string.IsNullOrWhiteSpace(x.Translation)))
@@ -52,6 +59,15 @@ public static class V2EraseSelector
 
             if (matched.Count == 0)
                 continue;
+
+            if (ShouldPreserveStylizedGraphic(
+                    region,
+                    matched))
+            {
+                preservationReasons[region.Id] =
+                    "stylized_graphic";
+                continue;
+            }
 
             foreach (var target in matched)
             {
@@ -124,7 +140,76 @@ public static class V2EraseSelector
         return new V2EraseSelection(
             targetIds,
             regionIds,
-            bindings);
+            bindings)
+        {
+            PreservationReasons =
+                preservationReasons
+        };
+    }
+
+    static bool ShouldPreserveStylizedGraphic(
+        VisionTranslation region,
+        IReadOnlyList<V2TextTarget> matched)
+    {
+        // Large outlined/colored shout lettering is part of the artwork.
+        // Preserve only free-standing dialogue without a detected parent
+        // Bubble. Captions/narration and ordinary Bubble dialogue stay on the
+        // translation path.
+        if (matched.Any(x =>
+                x.BubbleBounds.HasValue))
+        {
+            return false;
+        }
+
+        if (!string.Equals(
+                region.Type,
+                "dialogue",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        string text =
+            string.IsNullOrWhiteSpace(
+                region.CorrectedText)
+                ? region.Source.Text
+                : region.CorrectedText;
+
+        var letters =
+            text
+                .Where(char.IsLetter)
+                .ToArray();
+
+        int meaningful =
+            text.Count(
+                char.IsLetterOrDigit);
+
+        if (letters.Length < 2 ||
+            meaningful < 2 ||
+            meaningful > 24)
+        {
+            return false;
+        }
+
+        int upper =
+            letters.Count(
+                char.IsUpper);
+
+        double upperRatio =
+            upper /
+            (double)letters.Length;
+
+        bool emphaticPunctuation =
+            text.Contains('!') ||
+            text.Contains('?');
+
+        bool compactShout =
+            !text.Any(char.IsWhiteSpace) &&
+            meaningful <= 12;
+
+        return upperRatio >= 0.85 &&
+               (emphaticPunctuation ||
+                compactShout);
     }
 
     static List<V2TextTarget> MatchTargets(
