@@ -1,0 +1,211 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "hard_sfx_combat_002.jpg",
+  "output_file": "hard_sfx_combat_002.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 7539,
+    "changed_ratio": 0.0027657042402329077,
+    "changed_regions": [
+      {
+        "x": 805,
+        "y": 1226,
+        "width": 104,
+        "height": 35
+      },
+      {
+        "x": 809,
+        "y": 83,
+        "width": 75,
+        "height": 39
+      },
+      {
+        "x": 1057,
+        "y": 861,
+        "width": 73,
+        "height": 35
+      },
+      {
+        "x": 783,
+        "y": 461,
+        "width": 60,
+        "height": 25
+      },
+      {
+        "x": 1026,
+        "y": 861,
+        "width": 35,
+        "height": 35
+      },
+      {
+        "x": 1133,
+        "y": 866,
+        "width": 7,
+        "height": 19
+      },
+      {
+        "x": 786,
+        "y": 480,
+        "width": 20,
+        "height": 3
+      },
+      {
+        "x": 1133,
+        "y": 886,
+        "width": 7,
+        "height": 7
+      },
+      {
+        "x": 831,
+        "y": 480,
+        "width": 5,
+        "height": 4
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 11,
+    "bubbles": 6,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 6,
+      "Global2x": 8,
+      "Focus3x": 8,
+      "Region1x": 6,
+      "Region2x": 6,
+      "Container1x": 6,
+      "Container2x": 5
+    },
+    "canonical_lines": 11,
+    "units": 9,
+    "assigned_lines": 7,
+    "orphan_groups": 4,
+    "secondary_total": 6,
+    "secondary_accepted": 5,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 78,
+          "Bottom": 125,
+          "Left": 804,
+          "Right": 888,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "GIMME BACK...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 454,
+          "Bottom": 485,
+          "Left": 777,
+          "Right": 846,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "URGH!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 862,
+          "Bottom": 894,
+          "Left": 1036,
+          "Right": 1129,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ULTRA!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1223,
+          "Bottom": 1266,
+          "Left": 802,
+          "Right": 911,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MEGA!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1549,
+          "Bottom": 1628,
+          "Left": 630,
+          "Right": 784,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BEAM!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG010",
+        "Bounds": {
+          "Top": 1532,
+          "Bottom": 1615,
+          "Left": 65,
+          "Right": 157,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "no_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 9,
+    "requested_render": 4
+  },
+  "render": {
+    "total": 4,
+    "approved": 4,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}

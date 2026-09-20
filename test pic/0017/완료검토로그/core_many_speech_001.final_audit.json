@@ -1,0 +1,391 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "core_many_speech_001.jpg",
+  "output_file": "core_many_speech_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 40337,
+    "changed_ratio": 0.014797746642561983,
+    "changed_regions": [
+      {
+        "x": 806,
+        "y": 210,
+        "width": 138,
+        "height": 76
+      },
+      {
+        "x": 615,
+        "y": 1283,
+        "width": 138,
+        "height": 57
+      },
+      {
+        "x": 248,
+        "y": 765,
+        "width": 110,
+        "height": 58
+      },
+      {
+        "x": 875,
+        "y": 367,
+        "width": 87,
+        "height": 68
+      },
+      {
+        "x": 777,
+        "y": 665,
+        "width": 131,
+        "height": 39
+      },
+      {
+        "x": 283,
+        "y": 727,
+        "width": 98,
+        "height": 37
+      },
+      {
+        "x": 214,
+        "y": 619,
+        "width": 74,
+        "height": 37
+      },
+      {
+        "x": 951,
+        "y": 1772,
+        "width": 53,
+        "height": 48
+      },
+      {
+        "x": 1067,
+        "y": 1874,
+        "width": 58,
+        "height": 37
+      },
+      {
+        "x": 650,
+        "y": 1341,
+        "width": 107,
+        "height": 18
+      },
+      {
+        "x": 847,
+        "y": 366,
+        "width": 34,
+        "height": 41
+      },
+      {
+        "x": 759,
+        "y": 647,
+        "width": 75,
+        "height": 17
+      },
+      {
+        "x": 613,
+        "y": 1361,
+        "width": 66,
+        "height": 18
+      },
+      {
+        "x": 1068,
+        "y": 1854,
+        "width": 55,
+        "height": 20
+      },
+      {
+        "x": 957,
+        "y": 1814,
+        "width": 33,
+        "height": 31
+      },
+      {
+        "x": 979,
+        "y": 1797,
+        "width": 43,
+        "height": 23
+      },
+      {
+        "x": 212,
+        "y": 744,
+        "width": 47,
+        "height": 20
+      },
+      {
+        "x": 283,
+        "y": 619,
+        "width": 52,
+        "height": 18
+      },
+      {
+        "x": 801,
+        "y": 627,
+        "width": 51,
+        "height": 18
+      },
+      {
+        "x": 250,
+        "y": 600,
+        "width": 51,
+        "height": 17
+      },
+      {
+        "x": 728,
+        "y": 685,
+        "width": 48,
+        "height": 18
+      },
+      {
+        "x": 600,
+        "y": 1341,
+        "width": 46,
+        "height": 18
+      },
+      {
+        "x": 878,
+        "y": 367,
+        "width": 25,
+        "height": 32
+      },
+      {
+        "x": 835,
+        "y": 647,
+        "width": 46,
+        "height": 17
+      },
+      {
+        "x": 660,
+        "y": 1381,
+        "width": 42,
+        "height": 18
+      },
+      {
+        "x": 741,
+        "y": 1322,
+        "width": 35,
+        "height": 18
+      },
+      {
+        "x": 743,
+        "y": 1303,
+        "width": 37,
+        "height": 17
+      },
+      {
+        "x": 259,
+        "y": 743,
+        "width": 26,
+        "height": 21
+      },
+      {
+        "x": 782,
+        "y": 705,
+        "width": 30,
+        "height": 18
+      },
+      {
+        "x": 651,
+        "y": 1263,
+        "width": 25,
+        "height": 18
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 18,
+    "bubbles": 9,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 25,
+      "Global2x": 16,
+      "Focus3x": 167,
+      "Region1x": 36,
+      "Region2x": 42,
+      "Container1x": 35,
+      "Container2x": 38
+    },
+    "canonical_lines": 52,
+    "units": 15,
+    "assigned_lines": 45,
+    "orphan_groups": 7,
+    "secondary_total": 9,
+    "secondary_accepted": 8,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 201,
+          "Bottom": 292,
+          "Left": 797,
+          "Right": 953,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Yor NOT AIFFred. Hoo Are yu?! WH--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 357,
+          "Bottom": 444,
+          "Left": 836,
+          "Right": 971,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "STOP IT!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 592,
+          "Bottom": 662,
+          "Left": 208,
+          "Right": 343,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUST STOP, GOD DAMN IT!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 618,
+          "Bottom": 729,
+          "Left": 721,
+          "Right": 915,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOOK\nAROUND YOU!\nAT EVERYONE\nYOU\u0027RE HURTING\nWITH THIS!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 720,
+          "Bottom": 830,
+          "Left": 218,
+          "Right": 379,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALL\nTHESE YEARS...\nENOUGH.\nLOOK, WILL\nYOU?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1163,
+          "Bottom": 1184,
+          "Left": 655,
+          "Right": 691,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "empty_result"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1255,
+          "Bottom": 1403,
+          "Left": 575,
+          "Right": 794,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THAT\u0027S RIGHT, LOOK. REALLY LOOK, SEE THEM FOR WHO THEY ARE. THE P",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1773,
+          "Bottom": 1843,
+          "Left": 920,
+          "Right": 1039,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "No...\nnnno s\u0027not\ntru...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1848,
+          "Bottom": 1918,
+          "Left": 1060,
+          "Right": 1153,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT\u0027S TRUE IS THIS...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 15,
+    "requested_render": 9
+  },
+  "render": {
+    "total": 8,
+    "approved": 8,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}

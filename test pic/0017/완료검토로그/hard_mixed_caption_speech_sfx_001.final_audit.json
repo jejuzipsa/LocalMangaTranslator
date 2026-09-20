@@ -1,0 +1,391 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "hard_mixed_caption_speech_sfx_001.jpg",
+  "output_file": "hard_mixed_caption_speech_sfx_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 55927,
+    "changed_ratio": 0.020516983823253194,
+    "changed_regions": [
+      {
+        "x": 368,
+        "y": 858,
+        "width": 171,
+        "height": 96
+      },
+      {
+        "x": 633,
+        "y": 203,
+        "width": 129,
+        "height": 97
+      },
+      {
+        "x": 927,
+        "y": 1328,
+        "width": 154,
+        "height": 64
+      },
+      {
+        "x": 832,
+        "y": 281,
+        "width": 124,
+        "height": 56
+      },
+      {
+        "x": 540,
+        "y": 111,
+        "width": 98,
+        "height": 55
+      },
+      {
+        "x": 614,
+        "y": 111,
+        "width": 136,
+        "height": 36
+      },
+      {
+        "x": 911,
+        "y": 1381,
+        "width": 151,
+        "height": 32
+      },
+      {
+        "x": 779,
+        "y": 281,
+        "width": 84,
+        "height": 56
+      },
+      {
+        "x": 711,
+        "y": 969,
+        "width": 83,
+        "height": 54
+      },
+      {
+        "x": 347,
+        "y": 1252,
+        "width": 74,
+        "height": 37
+      },
+      {
+        "x": 803,
+        "y": 357,
+        "width": 104,
+        "height": 20
+      },
+      {
+        "x": 566,
+        "y": 1284,
+        "width": 75,
+        "height": 26
+      },
+      {
+        "x": 727,
+        "y": 130,
+        "width": 93,
+        "height": 20
+      },
+      {
+        "x": 576,
+        "y": 1258,
+        "width": 65,
+        "height": 26
+      },
+      {
+        "x": 350,
+        "y": 1271,
+        "width": 62,
+        "height": 18
+      },
+      {
+        "x": 1017,
+        "y": 1359,
+        "width": 31,
+        "height": 34
+      },
+      {
+        "x": 634,
+        "y": 148,
+        "width": 57,
+        "height": 18
+      },
+      {
+        "x": 799,
+        "y": 339,
+        "width": 55,
+        "height": 18
+      },
+      {
+        "x": 441,
+        "y": 937,
+        "width": 57,
+        "height": 17
+      },
+      {
+        "x": 487,
+        "y": 860,
+        "width": 27,
+        "height": 35
+      },
+      {
+        "x": 877,
+        "y": 339,
+        "width": 52,
+        "height": 18
+      },
+      {
+        "x": 1054,
+        "y": 1359,
+        "width": 27,
+        "height": 33
+      },
+      {
+        "x": 734,
+        "y": 148,
+        "width": 45,
+        "height": 18
+      },
+      {
+        "x": 561,
+        "y": 111,
+        "width": 43,
+        "height": 18
+      },
+      {
+        "x": 752,
+        "y": 111,
+        "width": 40,
+        "height": 18
+      },
+      {
+        "x": 693,
+        "y": 148,
+        "width": 39,
+        "height": 18
+      },
+      {
+        "x": 821,
+        "y": 261,
+        "width": 38,
+        "height": 17
+      },
+      {
+        "x": 797,
+        "y": 116,
+        "width": 44,
+        "height": 13
+      },
+      {
+        "x": 694,
+        "y": 130,
+        "width": 31,
+        "height": 17
+      },
+      {
+        "x": 908,
+        "y": 358,
+        "width": 27,
+        "height": 18
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 19,
+    "bubbles": 9,
+    "text_regions": 10,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 28,
+      "Global2x": 33,
+      "Focus3x": 338,
+      "Region1x": 31,
+      "Region2x": 36,
+      "Container1x": 32,
+      "Container2x": 32
+    },
+    "canonical_lines": 68,
+    "units": 17,
+    "assigned_lines": 58,
+    "orphan_groups": 8,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 96,
+          "Bottom": 142,
+          "Left": 93,
+          "Right": 210,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "And then I felt it, too.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 107,
+          "Bottom": 169,
+          "Left": 540,
+          "Right": 850,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I was wrong, About this case. Maybe about a lot of things. But n",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 158,
+          "Bottom": 254,
+          "Left": 104,
+          "Right": 367,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Alarm. I\u0027ve learned to smile in company to hide it. So often that I now feel thes watr watest totheatet tefetet tatatatat featat",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 197,
+          "Bottom": 304,
+          "Left": 628,
+          "Right": 770,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIR, I THINK YOU SHOULD GET OUT OF THERE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 255,
+          "Bottom": 380,
+          "Left": 766,
+          "Right": 961,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIGNAL JIM.\nVICTIM APPEARS\nTO BE TEN, MAYBE\nELEVEN YEARS\nOLD. BADLY\nDECOMPOSED.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 850,
+          "Bottom": 959,
+          "Left": 343,
+          "Right": 544,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HE\u0027S\nBEEN POSED BY\nMEANS OF A PROP,\nSOME KIND OF\nMECHANICAL--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 972,
+          "Bottom": 1020,
+          "Left": 706,
+          "Right": 798,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIR, HIS ARM!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1245,
+          "Bottom": 1294,
+          "Left": 341,
+          "Right": 426,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE, MOVE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1257,
+          "Bottom": 1306,
+          "Left": 560,
+          "Right": 656,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW, BRUCE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 17,
+    "requested_render": 13
+  },
+  "render": {
+    "total": 10,
+    "approved": 10,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}

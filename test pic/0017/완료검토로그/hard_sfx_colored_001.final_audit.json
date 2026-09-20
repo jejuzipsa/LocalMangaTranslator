@@ -1,0 +1,301 @@
+{
+  "schema": "final-audit-v1",
+  "source_file": "hard_sfx_colored_001.jpg",
+  "output_file": "hard_sfx_colored_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 20118,
+    "changed_ratio": 0.007380347248309542,
+    "changed_regions": [
+      {
+        "x": 301,
+        "y": 631,
+        "width": 98,
+        "height": 117
+      },
+      {
+        "x": 372,
+        "y": 873,
+        "width": 74,
+        "height": 56
+      },
+      {
+        "x": 1150,
+        "y": 1865,
+        "width": 93,
+        "height": 43
+      },
+      {
+        "x": 409,
+        "y": 757,
+        "width": 63,
+        "height": 57
+      },
+      {
+        "x": 1160,
+        "y": 1910,
+        "width": 74,
+        "height": 43
+      },
+      {
+        "x": 387,
+        "y": 732,
+        "width": 99,
+        "height": 23
+      },
+      {
+        "x": 1139,
+        "y": 1910,
+        "width": 57,
+        "height": 20
+      },
+      {
+        "x": 390,
+        "y": 843,
+        "width": 37,
+        "height": 29
+      },
+      {
+        "x": 379,
+        "y": 758,
+        "width": 41,
+        "height": 23
+      },
+      {
+        "x": 1222,
+        "y": 1910,
+        "width": 36,
+        "height": 20
+      },
+      {
+        "x": 365,
+        "y": 843,
+        "width": 25,
+        "height": 26
+      },
+      {
+        "x": 278,
+        "y": 662,
+        "width": 25,
+        "height": 26
+      },
+      {
+        "x": 429,
+        "y": 843,
+        "width": 24,
+        "height": 26
+      },
+      {
+        "x": 378,
+        "y": 663,
+        "width": 25,
+        "height": 24
+      },
+      {
+        "x": 284,
+        "y": 631,
+        "width": 22,
+        "height": 27
+      },
+      {
+        "x": 378,
+        "y": 631,
+        "width": 18,
+        "height": 27
+      },
+      {
+        "x": 463,
+        "y": 784,
+        "width": 21,
+        "height": 23
+      },
+      {
+        "x": 474,
+        "y": 758,
+        "width": 21,
+        "height": 23
+      },
+      {
+        "x": 385,
+        "y": 784,
+        "width": 21,
+        "height": 22
+      },
+      {
+        "x": 1220,
+        "y": 1865,
+        "width": 17,
+        "height": 20
+      },
+      {
+        "x": 1153,
+        "y": 1867,
+        "width": 18,
+        "height": 16
+      },
+      {
+        "x": 285,
+        "y": 693,
+        "width": 13,
+        "height": 18
+      },
+      {
+        "x": 375,
+        "y": 632,
+        "width": 15,
+        "height": 13
+      },
+      {
+        "x": 351,
+        "y": 741,
+        "width": 6,
+        "height": 5
+      },
+      {
+        "x": 485,
+        "y": 800,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "x": 369,
+        "y": 728,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "x": 460,
+        "y": 808,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "x": 407,
+        "y": 775,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "x": 401,
+        "y": 775,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "x": 414,
+        "y": 775,
+        "width": 4,
+        "height": 4
+      }
+    ]
+  },
+  "region_analysis": {
+    "total": 9,
+    "bubbles": 4,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 11,
+      "Global2x": 13,
+      "Focus3x": 94,
+      "Region1x": 14,
+      "Region2x": 3,
+      "Container1x": 12,
+      "Container2x": 1
+    },
+    "canonical_lines": 22,
+    "units": 10,
+    "assigned_lines": 16,
+    "orphan_groups": 6,
+    "secondary_total": 4,
+    "secondary_accepted": 4,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 629,
+          "Bottom": 743,
+          "Left": 296,
+          "Right": 385,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MUST MAKE READY FOR MY QUEEN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 729,
+          "Bottom": 823,
+          "Left": 386,
+          "Right": 483,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LITTLE THINGS... EAT THEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 847,
+          "Bottom": 919,
+          "Left": 374,
+          "Right": 442,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EAT THEM ALL!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 1863,
+          "Bottom": 1952,
+          "Left": 1134,
+          "Right": 1260,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EAT THEM ALL FOR YOU, MY QUEEN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 10,
+    "requested_render": 5
+  },
+  "render": {
+    "total": 4,
+    "approved": 4,
+    "rejected": 0,
+    "rejection_reasons": {}
+  }
+}
