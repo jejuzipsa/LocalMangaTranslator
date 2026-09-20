@@ -859,6 +859,69 @@ Check("V2 residual review still rejects substantial remaining lettering",
         587,
         new Rect(1061, 1671, 163, 52)));
 
+Check("V2 0024 accepts inpaint texture when outside-mask residue is tiny",
+    ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        433,
+        40,
+        new Rect(1061, 1671, 163, 52)));
+
+Check("V2 0024 still rejects real outside-mask lettering",
+    !ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        433,
+        180,
+        new Rect(1061, 1671, 163, 52)));
+
+using (var originalMask =
+       Mat.Zeros(
+           20,
+           20,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var residualMask =
+       Mat.Zeros(
+           20,
+           20,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    Cv2.Rectangle(
+        originalMask,
+        new Rect(
+            5,
+            5,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            7,
+            7,
+            4,
+            4),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            15,
+            8,
+            2,
+            3),
+        Scalar.White,
+        thickness: -1);
+
+    Check("V2 0024 residual review ignores re-segmented pixels inside erased glyph mask",
+        ErasePipelineV2.CountResidualOutsideOriginalMask(
+            residualMask,
+            originalMask) == 6);
+}
+
 var firstPassSelection =
     ErasePipelineV2.SelectBestResidualPass(
         433,
