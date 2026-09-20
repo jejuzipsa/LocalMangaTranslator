@@ -442,12 +442,31 @@ INPUT:
     static bool HasExplicitEnglishNegation(
         string source)
     {
+        var normalized =
+            new StringBuilder(
+                source.Length + 2);
+
+        normalized.Append(' ');
+
+        foreach (char raw in source)
+        {
+            char ch =
+                char.ToLowerInvariant(
+                    raw == '’'
+                        ? '\''
+                        : raw);
+
+            normalized.Append(
+                char.IsLetter(ch) ||
+                ch == '\''
+                    ? ch
+                    : ' ');
+        }
+
+        normalized.Append(' ');
+
         string lower =
-            " " +
-            source
-                .ToLowerInvariant()
-                .Replace('’', '\'') +
-            " ";
+            normalized.ToString();
 
         string[] cues =
         [
@@ -470,7 +489,11 @@ INPUT:
             " hadn't ",
             " never ",
             " not ",
-            " no longer "
+            " no longer ",
+            " no one ",
+            " nobody ",
+            " nothing ",
+            " none "
         ];
 
         return cues.Any(x =>
@@ -495,6 +518,10 @@ INPUT:
             "않",
             "없",
             "말",
+            "지마",
+            "마라",
+            "말라",
+            "말고",
             "절대",
             "싫",
             "금지",
