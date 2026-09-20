@@ -702,21 +702,24 @@ public sealed class ErasePipelineV2
                 reds[
                     reds.Length / 2]);
 
+        var backgroundValue =
+            background;
+
         var distances =
             samples
                 .Select(x =>
                 {
                     double db =
                         x.Item0 -
-                        background.Item0;
+                        backgroundValue.Item0;
 
                     double dg =
                         x.Item1 -
-                        background.Item1;
+                        backgroundValue.Item1;
 
                     double dr =
                         x.Item2 -
-                        background.Item2;
+                        backgroundValue.Item2;
 
                     return Math.Sqrt(
                         db * db +
