@@ -5,6 +5,7 @@ namespace LocalMangaTranslator.PipelineV2.Detection;
 
 public sealed record V2TextTarget(
     string TextRegionId,
+    PageRegionKind Kind,
     Rect TextBounds,
     float TextScore,
     string? BubbleRegionId,
@@ -26,27 +27,38 @@ public sealed record V2DetectionSnapshot(
             .ToArray();
 
         var targets = raw
-            .Where(x => x.Kind == PageRegionKind.TextBubble)
+            .Where(x =>
+                x.Kind is
+                    PageRegionKind.TextBubble or
+                    PageRegionKind.TextFree)
             .OrderBy(x => x.Bounds.Y)
             .ThenBy(x => x.Bounds.X)
             .Select(text =>
             {
-                var bubble = bubbles
-                    .Select(candidate => new
-                    {
-                        Region = candidate,
-                        Coverage = Coverage(text.Bounds, candidate.Bounds),
-                        CenterInside = ContainsCenter(text.Bounds, candidate.Bounds)
-                    })
-                    .Where(x => x.CenterInside || x.Coverage >= 0.45)
-                    .OrderByDescending(x => x.CenterInside)
-                    .ThenByDescending(x => x.Coverage)
-                    .ThenByDescending(x => x.Region.Score)
-                    .Select(x => x.Region)
-                    .FirstOrDefault();
+                // TextBubble inherits its already-detected parent Bubble.
+                // TextFree is intentionally left parentless: its own immutable
+                // detector rectangle is both erase evidence and layout anchor.
+                PageRegion? bubble =
+                    text.Kind ==
+                    PageRegionKind.TextBubble
+                        ? bubbles
+                            .Select(candidate => new
+                            {
+                                Region = candidate,
+                                Coverage = Coverage(text.Bounds, candidate.Bounds),
+                                CenterInside = ContainsCenter(text.Bounds, candidate.Bounds)
+                            })
+                            .Where(x => x.CenterInside || x.Coverage >= 0.45)
+                            .OrderByDescending(x => x.CenterInside)
+                            .ThenByDescending(x => x.Coverage)
+                            .ThenByDescending(x => x.Region.Score)
+                            .Select(x => x.Region)
+                            .FirstOrDefault()
+                        : null;
 
                 return new V2TextTarget(
                     text.RegionId,
+                    text.Kind,
                     text.Bounds,
                     text.Score,
                     bubble?.RegionId,
