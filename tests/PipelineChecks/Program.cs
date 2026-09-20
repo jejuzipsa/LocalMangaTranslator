@@ -797,6 +797,17 @@ try
     Check("V2 colored rescue stays local instead of consuming detector box",
         coloredMaskPixels <
         coloredText.Width * coloredText.Height * 0.35);
+
+    using var coloredReviewMask =
+        ComicTranslateComponentMask.Build(
+            coloredSource,
+            coloredText,
+            coloredBubble,
+            includeColorRescue: false);
+
+    Check("V2 residual review can disable chroma rescue",
+        Cv2.CountNonZero(coloredReviewMask) <
+        coloredMaskPixels);
 }
 finally
 {
@@ -809,6 +820,14 @@ finally
     {
     }
 }
+
+// 0020 regression: initial erase may use chroma rescue, but post-inpaint
+// residual review must not reinterpret harmless color variation as lettering.
+Check("V2 residual policy remains density based after chroma review split",
+    ErasePipelineV2.IsResidualAcceptable(
+        3780,
+        278,
+        new Rect(63, 56, 157, 75)));
 
 Check("V2 residual review tolerates tiny post-inpaint speckles",
     ErasePipelineV2.IsResidualAcceptable(
