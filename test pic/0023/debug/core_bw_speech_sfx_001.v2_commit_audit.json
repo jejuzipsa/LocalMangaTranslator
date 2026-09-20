@@ -1,0 +1,81 @@
+{
+  "Schema": "pipeline-v2-atomic-commit-v1",
+  "SourceFile": "core_bw_speech_sfx_001.png",
+  "RequestedUnits": 3,
+  "TranslatedUnits": 3,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 3,
+  "TypesetCommittedUnits": 3,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 1,
+      "SourceText": "...STARTING THE PARTY WHILE THE MIDDLE OF YOUR JOURNEY, CAN YOU?",
+      "Translation": "...\uC544\uC9C1 \uC5EC\uC815\uC758 \uD55C\uAC00\uC6B4\uB370\n\uC788\uB294\uB370 \uD30C\uD2F0\uB97C\n\uC2DC\uC791\uD574\uB3C4 \uB420\uAE4C?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG005"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 128,
+        "Y": 121,
+        "Width": 460,
+        "Height": 208
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "MEANS I GOTTA HURRY.",
+      "Translation": "\uC11C\uB458\uB7EC\uC57C \uD55C\uB2E4\uB294 \uC18C\uB9AC\uC57C.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 58,
+        "Y": 916,
+        "Width": 289,
+        "Height": 239
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "YOU WILL REGRET THIS, ALICE...",
+      "Translation": "\uD6C4\uD68C\uD558\uAC8C \uB420 \uAC70\uB2E4, \uC568\uB9AC\uC2A4...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 712,
+        "Y": 1413,
+        "Width": 441,
+        "Height": 243
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

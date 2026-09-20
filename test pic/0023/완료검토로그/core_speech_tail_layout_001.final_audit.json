@@ -1,0 +1,393 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "core_speech_tail_layout_001.jpg",
+  "output_file": "core_speech_tail_layout_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 35783,
+    "changed_ratio": 0.01312709839876033,
+    "changed_regions": [
+      {
+        "x": 915,
+        "y": 349,
+        "width": 202,
+        "height": 155
+      },
+      {
+        "x": 413,
+        "y": 431,
+        "width": 117,
+        "height": 90
+      },
+      {
+        "x": 1148,
+        "y": 1829,
+        "width": 117,
+        "height": 87
+      },
+      {
+        "x": 1119,
+        "y": 535,
+        "width": 109,
+        "height": 57
+      },
+      {
+        "x": 1114,
+        "y": 516,
+        "width": 77,
+        "height": 37
+      },
+      {
+        "x": 1177,
+        "y": 1917,
+        "width": 52,
+        "height": 27
+      },
+      {
+        "x": 917,
+        "y": 426,
+        "width": 29,
+        "height": 47
+      },
+      {
+        "x": 1007,
+        "y": 266,
+        "width": 40,
+        "height": 28
+      },
+      {
+        "x": 1192,
+        "y": 515,
+        "width": 42,
+        "height": 22
+      },
+      {
+        "x": 1039,
+        "y": 237,
+        "width": 31,
+        "height": 28
+      },
+      {
+        "x": 1010,
+        "y": 238,
+        "width": 28,
+        "height": 27
+      },
+      {
+        "x": 982,
+        "y": 235,
+        "width": 23,
+        "height": 28
+      },
+      {
+        "x": 1144,
+        "y": 1918,
+        "width": 24,
+        "height": 25
+      },
+      {
+        "x": 1132,
+        "y": 1829,
+        "width": 24,
+        "height": 25
+      },
+      {
+        "x": 966,
+        "y": 427,
+        "width": 30,
+        "height": 20
+      },
+      {
+        "x": 1253,
+        "y": 1830,
+        "width": 23,
+        "height": 25
+      },
+      {
+        "x": 1048,
+        "y": 267,
+        "width": 30,
+        "height": 19
+      },
+      {
+        "x": 1095,
+        "y": 352,
+        "width": 21,
+        "height": 22
+      },
+      {
+        "x": 919,
+        "y": 448,
+        "width": 18,
+        "height": 23
+      },
+      {
+        "x": 1233,
+        "y": 1919,
+        "width": 17,
+        "height": 24
+      },
+      {
+        "x": 1076,
+        "y": 237,
+        "width": 17,
+        "height": 19
+      },
+      {
+        "x": 467,
+        "y": 418,
+        "width": 21,
+        "height": 12
+      },
+      {
+        "x": 1246,
+        "y": 1918,
+        "width": 9,
+        "height": 26
+      },
+      {
+        "x": 416,
+        "y": 418,
+        "width": 18,
+        "height": 13
+      },
+      {
+        "x": 508,
+        "y": 417,
+        "width": 16,
+        "height": 14
+      },
+      {
+        "x": 1095,
+        "y": 235,
+        "width": 8,
+        "height": 28
+      },
+      {
+        "x": 1135,
+        "y": 1860,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 919,
+        "y": 353,
+        "width": 18,
+        "height": 12
+      },
+      {
+        "x": 443,
+        "y": 417,
+        "width": 17,
+        "height": 12
+      },
+      {
+        "x": 1244,
+        "y": 1859,
+        "width": 13,
+        "height": 12
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "core_speech_tail_layout_001.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 21199,
+    "erase_changed_ratio": 0.0077769152657776106,
+    "typeset_changed_pixels": 21550,
+    "typeset_changed_ratio": 0.007905680644252441
+  },
+  "region_analysis": {
+    "total": 10,
+    "bubbles": 5,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 9,
+      "Global2x": 6,
+      "Focus3x": 62,
+      "Region1x": 26,
+      "Region2x": 30,
+      "Container1x": 22,
+      "Container2x": 21
+    },
+    "canonical_lines": 26,
+    "units": 8,
+    "assigned_lines": 24,
+    "orphan_groups": 3,
+    "secondary_total": 5,
+    "secondary_accepted": 5,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 239,
+          "Bottom": 290,
+          "Left": 998,
+          "Right": 1087,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DR. HUDD?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 341,
+          "Bottom": 508,
+          "Left": 910,
+          "Right": 1119,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE SCANS SHOW FULL ENGREMENT, MR. PENNYWORTH. HE\u0027S STILL WAKING UP, SURE, BUT HE\u0027S BACK WITH",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 422,
+          "Bottom": 515,
+          "Left": 411,
+          "Right": 529,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE, IS IT...IS IT REALLY... YOU?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 507,
+          "Bottom": 597,
+          "Left": 1123,
+          "Right": 1224,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE? BRUCE, TALK TO ME.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1831,
+          "Bottom": 1942,
+          "Left": 1143,
+          "Right": 1268,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Alfrid, pleazzz. PLeeze jus tak mmme hOm.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 8,
+    "requested_render": 5
+  },
+  "render": {
+    "total": 5,
+    "approved": 5,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 5,
+    "TranslatedUnits": 5,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 5,
+    "TypesetCommittedUnits": 5,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "DR. HUDD?",
+        "Translation": "\uD5C8\uB4DC \uBC15\uC0AC\uB2D8?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "THE SCANS SHOW FULL ENGAGEMENT, MR. PENNYWORTH. STILL WAKING UP, SURE, BUT HE\u0027S HE\u0027S BUT WITH BACK us.",
+        "Translation": "\uC2A4\uCE94 \uACB0\uACFC \uC804\uC2E0 \uBC18\uC751\uC774 \uD655\uC778\uB418\uC5C8\uC2B5\uB2C8\uB2E4, \uD398\uB2C8\uC6CC\uC2A4 \uC528. \uC544\uC9C1 \uAE68\uC5B4\uB098\uB294 \uC911\uC774\uAE34 \uD558\uC9C0\uB9CC, \uC758\uC2DD\uC740 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "BRUCE? TALK TO",
+        "Translation": "\uBE0C\uB8E8\uC2A4? [BR]\uBE0C\uB8E8\uC2A4, \uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "Alfrid, Pleazzz. PLeeeze jus tak mmme hOm.",
+        "Translation": "\uC54C\uD504\uB9AC\uB4DC, \uC81C\uBC14\uC54C...[BR]\uC81C\uBC1C, \uADF8\uB0E5 \uB098\uB97C \uC880 \uBCF4\uB0B4\uC918.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "BRUCE, IS IT...IS IT REALLY... YOU?",
+        "Translation": "\uBE0C\uB8E8\uC2A4, \uC815\uB9D0... \uC815\uB9D0 \uB124\uAC00 \uB9DE\uB294 \uAC70\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
