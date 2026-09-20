@@ -96,3 +96,9 @@ OCR line consolidation also prefers a more complete overlapping observation when
 - completion audit is now four-stage when V2 committed-cleaned output exists:
   `1 ORIGINAL | 2 ERASE COMMIT | 3 FINAL | 4 DIFF`.
 - audit summary now records V2 preservation reasons (erase review, unbound, duplicate suppression, other) and sorts pages with preserved originals first.
+
+## 0021 regression fix
+
+0020's colored-glyph rescue improved initial erase coverage, but reusing the same chroma detector on the inpainted image created false residuals: Telea color variation could be segmented as if source lettering survived. 0021 keeps chroma rescue for the initial erase mask, but residual review deliberately disables it and checks only normal high-contrast glyph structure near the original mask. This preserves the 0020 colored-text improvement without rejecting ordinary dialogue that 0019 already handled.
+
+Short, wide caption/sign boxes also receive a narrowly scoped font-scale adjustment so confirmed parent-Bubble geometry is used more naturally instead of rendering a tiny label inside a wide caption. Dense narration keeps the previous conservative scale.
