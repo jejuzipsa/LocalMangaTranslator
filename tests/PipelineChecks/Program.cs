@@ -829,6 +829,18 @@ Check("V2 residual policy remains density based after chroma review split",
         278,
         new Rect(63, 56, 157, 75)));
 
+Check("V2 0022 accepts ten-percent low-density post-inpaint residue",
+    ErasePipelineV2.IsResidualAcceptable(
+        3780,
+        378,
+        new Rect(63, 56, 157, 75)));
+
+Check("V2 0022 accepts sparse caption texture without retry inflation",
+    ErasePipelineV2.IsResidualAcceptable(
+        7233,
+        379,
+        new Rect(1046, 243, 223, 64)));
+
 Check("V2 residual review tolerates tiny post-inpaint speckles",
     ErasePipelineV2.IsResidualAcceptable(
         2303,
@@ -1050,6 +1062,24 @@ try
             out var stylizedReason) &&
         stylizedReason == "stylized_graphic");
 
+    var ordinaryUppercaseTranslation =
+        new VisionTranslation(
+            2005,
+            freeBlock,
+            "AND DEATH WILL BE UPON YOU!",
+            "죽음이 닥칠 것이다!",
+            "dialogue",
+            true);
+
+    var ordinaryUppercaseSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [ordinaryUppercaseTranslation]);
+
+    Check("V2 selector does not misclassify long uppercase TextFree dialogue as graphic",
+        ordinaryUppercaseSelection.Bindings.ContainsKey(2005) &&
+        !ordinaryUppercaseSelection.PreservationReasons.ContainsKey(2005));
+
     var shortCaptionTranslation =
         new VisionTranslation(
             2004,
@@ -1105,6 +1135,102 @@ finally
     {
         if (Directory.Exists(v2MainRoot))
             Directory.Delete(v2MainRoot, true);
+    }
+    catch
+    {
+    }
+}
+
+string flatTextFreeRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_flat_textfree_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(
+        flatTextFreeRoot);
+
+    string flatSourcePath =
+        Path.Combine(
+            flatTextFreeRoot,
+            "flat_textfree.png");
+
+    using var flatSource =
+        Mat.Zeros(
+            220,
+            480,
+            MatType.CV_8UC3)
+        .ToMat();
+
+    flatSource.SetTo(
+        new Scalar(
+            12,
+            12,
+            12));
+
+    Cv2.PutText(
+        flatSource,
+        "THAT PETITE BODY WILL CRUMBLE",
+        new Point(
+            60,
+            120),
+        HersheyFonts.HersheySimplex,
+        0.65,
+        new Scalar(
+            245,
+            245,
+            245),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        flatSourcePath,
+        flatSource);
+
+    var flatTextRegion =
+        new PageRegion(
+            "VT-FLAT-DARK",
+            PageRegionKind.TextFree,
+            new Rect(
+                50,
+                82,
+                365,
+                55),
+            0.95f,
+            "test-rtdetr");
+
+    var flatSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [flatTextRegion],
+                [],
+                "v2-flat-dark-test",
+                true));
+
+    var flatResult =
+        new ErasePipelineV2().Run(
+            flatSourcePath,
+            flatTextFreeRoot,
+            flatSnapshot,
+            new HashSet<string>(
+                ["VT-FLAT-DARK"],
+                StringComparer.Ordinal));
+
+    Check("V2 0022 flat TextFree dark panel erases cleanly",
+        flatResult.TargetAudits.Count == 1 &&
+        ErasePipelineV2.IsAuditClean(
+            flatResult.TargetAudits[0]));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(
+                flatTextFreeRoot))
+        {
+            Directory.Delete(
+                flatTextFreeRoot,
+                true);
+        }
     }
     catch
     {
