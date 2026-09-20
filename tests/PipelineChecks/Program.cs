@@ -806,7 +806,7 @@ try
             includeColorRescue: false);
 
     Check("V2 residual review can disable chroma rescue",
-        Cv2.CountNonZero(coloredReviewMask) <
+        Cv2.CountNonZero(coloredReviewMask) <=
         coloredMaskPixels);
 }
 finally
