@@ -632,15 +632,25 @@ public sealed class RenderPipelineService
                     maskWidth,
                     maskHeight,
                     region.Type,
-                    binding.LayoutMode ==
-                        "rtdetr_parent_bubble"
-                            ? "v2:rtdetr_parent_bubble"
-                            : "v2:textbubble_layout_fallback",
+                    binding.LayoutMode switch
+                    {
+                        "rtdetr_parent_bubble" =>
+                            "v2:rtdetr_parent_bubble",
+                        "rtdetr_textfree" =>
+                            "v2:rtdetr_textfree",
+                        _ =>
+                            "v2:textbubble_layout_fallback"
+                    },
                     true,
-                    binding.LayoutMode ==
-                        "rtdetr_parent_bubble"
-                            ? "v2_parent_bubble_for_layout"
-                            : "v2_no_parent_bubble",
+                    binding.LayoutMode switch
+                    {
+                        "rtdetr_parent_bubble" =>
+                            "v2_parent_bubble_for_layout",
+                        "rtdetr_textfree" =>
+                            "v2_textfree_local_layout",
+                        _ =>
+                            "v2_no_parent_bubble"
+                    },
                     1.0,
                     1.0,
                     1.0,
