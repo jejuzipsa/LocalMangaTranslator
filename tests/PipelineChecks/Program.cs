@@ -810,6 +810,24 @@ finally
     }
 }
 
+Check("V2 residual review tolerates tiny post-inpaint speckles",
+    ErasePipelineV2.IsResidualAcceptable(
+        2303,
+        10,
+        new Rect(540, 193, 102, 77)));
+
+Check("V2 residual review tolerates low-density textured caption noise",
+    ErasePipelineV2.IsResidualAcceptable(
+        5944,
+        343,
+        new Rect(179, 1187, 288, 52)));
+
+Check("V2 residual review still rejects substantial remaining lettering",
+    !ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        587,
+        new Rect(1061, 1671, 163, 52)));
+
 string v2MainRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_v2_main_{Guid.NewGuid():N}");
