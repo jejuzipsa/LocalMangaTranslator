@@ -90,6 +90,21 @@ public static class ComicTranslateComponentMask
             srcRoi.CopyTo(dstRoi);
         }
 
+        // A dark caption with white lettering can legitimately produce no
+        // connected component after the conservative component filters.
+        // Zero mask is NOT proof that the box is clean. Use the surrounding
+        // detector crop to estimate background polarity and recover only
+        // high-contrast pixels inside the same immutable TextBubble.
+        if (Cv2.CountNonZero(restricted) < 2 &&
+            textLocal.Width > 0 &&
+            textLocal.Height > 0)
+        {
+            AddPolarityContrastFallback(
+                gray,
+                restricted,
+                textLocal);
+        }
+
         using (var kernel = Cv2.GetStructuringElement(
             MorphShapes.Ellipse,
             new Size(3, 3)))
@@ -119,6 +134,103 @@ public static class ComicTranslateComponentMask
         finalLocal.CopyTo(destination);
 
         return full;
+    }
+
+    static void AddPolarityContrastFallback(
+        Mat gray,
+        Mat destination,
+        Rect textLocal)
+    {
+        var samples =
+            new List<byte>();
+
+        for (int y = 0; y < gray.Rows; y += 2)
+        {
+            for (int x = 0; x < gray.Cols; x += 2)
+            {
+                if (x >= textLocal.Left &&
+                    x < textLocal.Right &&
+                    y >= textLocal.Top &&
+                    y < textLocal.Bottom)
+                {
+                    continue;
+                }
+
+                samples.Add(
+                    gray.At<byte>(y, x));
+            }
+        }
+
+        if (samples.Count < 12)
+        {
+            for (int x = textLocal.Left;
+                 x < textLocal.Right;
+                 x += 2)
+            {
+                samples.Add(
+                    gray.At<byte>(
+                        textLocal.Top,
+                        x));
+
+                samples.Add(
+                    gray.At<byte>(
+                        textLocal.Bottom - 1,
+                        x));
+            }
+
+            for (int y = textLocal.Top;
+                 y < textLocal.Bottom;
+                 y += 2)
+            {
+                samples.Add(
+                    gray.At<byte>(
+                        y,
+                        textLocal.Left));
+
+                samples.Add(
+                    gray.At<byte>(
+                        y,
+                        textLocal.Right - 1));
+            }
+        }
+
+        if (samples.Count == 0)
+            return;
+
+        samples.Sort();
+
+        double background =
+            samples[samples.Count / 2];
+
+        const double threshold = 28.0;
+
+        for (int y = textLocal.Top;
+             y < textLocal.Bottom;
+             y++)
+        {
+            for (int x = textLocal.Left;
+                 x < textLocal.Right;
+                 x++)
+            {
+                double value =
+                    gray.At<byte>(y, x);
+
+                bool likelyText =
+                    background <= 110
+                        ? value >= background + threshold
+                        : background >= 145
+                            ? value <= background - threshold
+                            : Math.Abs(value - background) >= 40;
+
+                if (likelyText)
+                {
+                    destination.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
     }
 
     static void AddTextSizedComponents(
