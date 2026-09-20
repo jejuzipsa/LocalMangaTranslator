@@ -737,6 +737,11 @@ public sealed class OcrContainerUnitBuilder
     static List<CanonicalLine> DeduplicateLines(
         IReadOnlyList<CanonicalLine> input)
     {
+        // Confidence-only ordering used to keep a tiny high-confidence
+        // fragment such as "THE MIDDLE" and discard the wider
+        // "YOU'RE STILL IN THE MIDDLE" observation at the same location.
+        // Keep the geometrically/textually more complete representative when
+        // confidence is still comparable.
         var ordered = input
             .OrderByDescending(x => x.Line.Confidence)
             .ToList();
@@ -745,15 +750,85 @@ public sealed class OcrContainerUnitBuilder
 
         foreach (var candidate in ordered)
         {
-            if (!kept.Any(x => IsSameLine(
-                    x.Line,
-                    candidate.Line)))
+            int duplicateIndex =
+                kept.FindIndex(x =>
+                    IsSameLine(
+                        x.Line,
+                        candidate.Line));
+
+            if (duplicateIndex < 0)
             {
-                kept.Add(candidate);
+                kept.Add(
+                    candidate);
+
+                continue;
+            }
+
+            if (PreferMoreCompleteLine(
+                    candidate.Line,
+                    kept[duplicateIndex].Line))
+            {
+                kept[duplicateIndex] =
+                    candidate;
             }
         }
 
-        return OrderLines(kept);
+        return OrderLines(
+            kept);
+    }
+
+    static bool PreferMoreCompleteLine(
+        OcrLine candidate,
+        OcrLine current)
+    {
+        string candidateText =
+            Normalize(
+                candidate.Text);
+
+        string currentText =
+            Normalize(
+                current.Text);
+
+        int candidateLength =
+            candidateText.Length;
+
+        int currentLength =
+            currentText.Length;
+
+        double candidateArea =
+            Math.Max(
+                1.0,
+                candidate.W *
+                candidate.H);
+
+        double currentArea =
+            Math.Max(
+                1.0,
+                current.W *
+                current.H);
+
+        bool textContainsCurrent =
+            currentLength > 0 &&
+            candidateLength >
+                currentLength &&
+            candidateText.Contains(
+                currentText,
+                StringComparison.OrdinalIgnoreCase);
+
+        bool clearlyMoreComplete =
+            candidateLength >=
+                currentLength + 3 &&
+            candidateArea >=
+                currentArea * 1.20;
+
+        bool confidenceComparable =
+            candidate.Confidence >=
+                current.Confidence -
+                0.08f;
+
+        return confidenceComparable &&
+               (textContainsCurrent ||
+                clearlyMoreComplete);
     }
 
     static List<CanonicalLine> MatchCanonicalLines(
