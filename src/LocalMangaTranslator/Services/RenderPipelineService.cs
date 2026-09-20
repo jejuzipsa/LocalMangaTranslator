@@ -1602,12 +1602,32 @@ public sealed class RenderPipelineService
             8,
             13);
 
+        int meaningfulTranslation =
+            text.Count(char.IsLetterOrDigit);
+
+        bool shortWideCaption =
+            caption &&
+            meaningfulTranslation > 0 &&
+            meaningfulTranslation <= 24 &&
+            box.Width >= box.Height * 3.0;
+
         double containerMaxFont = Math.Clamp(
             caption
-                ? Math.Min(box.Height * 0.34, 48)
+                ? Math.Min(
+                    box.Height *
+                    (shortWideCaption
+                        ? 0.46
+                        : 0.34),
+                    shortWideCaption
+                        ? 52
+                        : 48)
                 : Math.Min(box.Height * 0.46, 56),
             Math.Max(minFont, 12),
-            caption ? 48 : 56);
+            caption
+                ? shortWideCaption
+                    ? 52
+                    : 48
+                : 56);
 
         double sourceGlyphHint = ComputeSourceGlyphHint(
             region.Source,
@@ -1618,8 +1638,19 @@ public sealed class RenderPipelineService
             pageFontReference * 0.78,
             pageFontReference * 1.22);
 
+        // Short single-line sign/caption text such as
+        // "ALICE - FOUR DAYS UNTIL ENTRY" already owns a wide parent
+        // rectangle. Keeping it at 0.92x the OCR glyph hint leaves the Korean
+        // translation looking like a tiny label inside that box. Let those
+        // captions use more of the confirmed parent geometry, while dense
+        // narration keeps the conservative scale.
         double sourceDrivenMax =
-            normalizedGlyph * (caption ? 0.92 : 0.98);
+            normalizedGlyph *
+            (caption
+                ? shortWideCaption
+                    ? 1.18
+                    : 0.92
+                : 0.98);
 
         double maxFont = Math.Min(
             containerMaxFont,
