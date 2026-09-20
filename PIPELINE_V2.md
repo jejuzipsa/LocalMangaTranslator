@@ -104,3 +104,32 @@ OCR line consolidation also prefers a more complete overlapping observation when
 Short, wide caption/sign boxes also receive a narrowly scoped font-scale adjustment so confirmed parent-Bubble geometry is used more naturally instead of rendering a tiny label inside a wide caption. Dense narration keeps the previous conservative scale.
 
 Free-standing, short, uppercase/emphatic dialogue without a detected parent Bubble is now treated as artwork-style graphic lettering and preserved (`stylized_graphic`) rather than erased and re-typeset with a plain font. This covers cases such as BRUCE!, NONONO and LET ME OUTTT! while leaving normal Bubble dialogue and TextFree captions on the translation path. Unbound single-character OCR fragments are reported separately as `ocr_noise` so they no longer inflate the real missed-dialogue count.
+
+
+## 0022 targeted tuning
+
+0022 narrowed the remaining failures without changing the stable core speech-bubble path.
+
+- residual review no longer schedules a retry when the first pass is already within the accepted density range.
+- flat TextFree captions on genuinely low-variance backgrounds may replace only the approved glyph mask with the local panel color, avoiding Telea edge artifacts on black narration boxes.
+- the stylized_graphic heuristic was narrowed so short artwork-style shouts such as BRUCE!, BINGO! and LET ME OUTTT! remain preserved while long uppercase dialogue stays translatable.
+- short wide captions use more of their confirmed parent geometry and are vertically centered instead of hugging the top edge.
+
+On the 23-page regression set this moved committed translations from 149/190 to 158/190 and reduced erase-review failures from 14 to 6.
+
+## 0023 best-pass erase and translation safety
+
+0023 treats erase retry as an optional candidate, never as an unconditional replacement.
+
+- residual review uses a tighter 2 px halo around the immutable original glyph mask.
+- after a retry, the pipeline compares first-pass and retry residual scores and selects the better result per target.
+- if retry is worse, only that retry footprint is restored from the first-pass cleaned image before commit.
+- v2_erase_audit.json now records both raw retry residual and the selected residual/pass (SelectedResidualPixels, SelectedPass).
+
+Translation output also gains two final safety gates:
+
+- punctuation/noise-only corrected text such as ..., ** or _ is not sent to the final translator and cannot create invented placeholder text.
+- placeholder/template responses are rejected and retried once in repair mode.
+- explicit English negation such as NOT, CAN'T, DON'T, WON'T and NEVER must retain an identifiable Korean negation cue; otherwise the unit is retried once. If both the final model result and Vision draft fail validation, the unit keeps the original pixels instead of committing an unsafe translation.
+
+These changes are intentionally scoped so the already-stable ordinary speech-bubble, colored-bubble, and graphic-SFX behavior remains unchanged.
