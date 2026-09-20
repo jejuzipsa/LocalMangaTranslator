@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reflection;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
 using OpenCvSharp;
@@ -295,6 +296,75 @@ var regionEvidence = TextEvidenceFusionService.Validate(
 Check("independent text region cross-scale evidence accepted",
     regionEvidence.Count == 2 &&
     regionEvidence.All(x => x.Accepted && x.Reason == "region_cross_scale"));
+
+var secondaryCandidate = candidate with
+{
+    CandidateId = "PC-SECONDARY",
+    RegionId = "RG900",
+    LearnedBounds = new Rect(100, 200, 100, 80)
+};
+
+var secondaryRecoveredBlock = new OcrTextBlock(
+    901,
+    120,
+    220,
+    40,
+    12,
+    "HELLO",
+    1,
+    "en",
+    [new OcrLine(120, 220, 40, 12, "HELLO", 0.82f, "en")]);
+
+var secondaryRecoveredBuild = new OcrUnitBuildResult(
+    [secondaryRecoveredBlock],
+    1,
+    1,
+    0)
+{
+    UnitOwnership =
+    [
+        new UnitOwnershipDecision(
+            0,
+            "PC-SECONDARY",
+            ["B0001"],
+            false,
+            "secondary_baberu_recovery")
+    ]
+};
+
+var secondaryBubbleRegion = new PageRegion(
+    "RG900",
+    PageRegionKind.Bubble,
+    new Rect(100, 200, 100, 80),
+    0.96f,
+    "test-rtdetr");
+
+var secondaryTextRegion = new PageRegion(
+    "RG901",
+    PageRegionKind.TextBubble,
+    new Rect(112, 212, 76, 44),
+    0.95f,
+    "test-rtdetr");
+
+var attachRegionMethod = typeof(OcrPipelineService).GetMethod(
+    "AttachRegionContainers",
+    BindingFlags.Static | BindingFlags.NonPublic)
+    ?? throw new Exception("AttachRegionContainers reflection lookup failed");
+
+var secondaryReattached = (OcrUnitBuildResult)(
+    attachRegionMethod.Invoke(
+        null,
+        [
+            secondaryRecoveredBuild,
+            new[] { secondaryCandidate },
+            new[] { secondaryBubbleRegion, secondaryTextRegion }
+        ])
+    ?? throw new Exception("AttachRegionContainers returned null"));
+
+Check("Baberu recovery can receive RT-DETR TextBubble on second attachment pass",
+    secondaryReattached.Units.Count == 1 &&
+    secondaryReattached.Units[0].RegionContainer?.CandidateId == "PC-SECONDARY" &&
+    secondaryReattached.Units[0].RegionTextRegion?.RegionId == "RG901");
 
 var weakRegionOnly = TextEvidenceFusionService.Validate(
     [textRegion with { Score = 0.50f }],

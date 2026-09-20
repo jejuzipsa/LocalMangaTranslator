@@ -243,6 +243,16 @@ public sealed class OcrPipelineService
                 pageCandidates,
                 secondaryEvidence);
 
+        // ApplySecondaryEvidence can create a brand-new Baberu-only unit after
+        // the first region attachment pass. Re-attach learned Bubble/TextBubble
+        // evidence so those recovered units can use the same RT-DETR render
+        // safety path as primary OCR units.
+        unitBuild =
+            AttachRegionContainers(
+                unitBuild,
+                pageCandidates,
+                pageAnalysis.Regions);
+
         return new OcrStageResult(
             pageCandidates,
             observations,
