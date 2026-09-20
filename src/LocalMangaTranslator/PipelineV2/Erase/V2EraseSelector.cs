@@ -4,14 +4,23 @@ using OpenCvSharp;
 
 namespace LocalMangaTranslator.PipelineV2.Erase;
 
+public sealed record V2RegionBinding(
+    int TranslationRegionId,
+    IReadOnlyList<string> TextRegionIds,
+    Rect LayoutBounds);
+
 public sealed record V2EraseSelection(
     IReadOnlySet<string> TextRegionIds,
-    IReadOnlySet<int> TranslationRegionIds);
+    IReadOnlySet<int> TranslationRegionIds,
+    IReadOnlyDictionary<int, V2RegionBinding> Bindings);
 
 /// <summary>
-/// Chooses which immutable RT-DETR TextBubble targets may be erased for the
-/// current translated page. Translation/OCR can decide whether a target is
-/// needed, but never changes the target geometry itself.
+/// Chooses immutable RT-DETR TextBubble targets for translated units.
+///
+/// Important V2 invariant:
+/// the exact same matched TextBubble geometry is carried forward for BOTH
+/// erase and typesetting. A later legacy balloon/container search is never
+/// allowed to replace the layout box.
 /// </summary>
 public static class V2EraseSelector
 {
@@ -19,29 +28,52 @@ public static class V2EraseSelector
         V2DetectionSnapshot snapshot,
         IReadOnlyList<VisionTranslation> translations)
     {
-        var targetIds = new HashSet<string>(StringComparer.Ordinal);
-        var regionIds = new HashSet<int>();
+        var targetIds =
+            new HashSet<string>(
+                StringComparer.Ordinal);
+
+        var regionIds =
+            new HashSet<int>();
+
+        var bindings =
+            new Dictionary<int, V2RegionBinding>();
 
         foreach (var region in translations.Where(x =>
                      x.Render &&
                      !string.IsNullOrWhiteSpace(x.Translation)))
         {
-            var matched = MatchTargets(
-                snapshot.TextTargets,
-                region);
+            var matched =
+                MatchTargets(
+                    snapshot.TextTargets,
+                    region);
 
             if (matched.Count == 0)
                 continue;
 
             foreach (var target in matched)
-                targetIds.Add(target.TextRegionId);
+            {
+                targetIds.Add(
+                    target.TextRegionId);
+            }
 
-            regionIds.Add(region.Id);
+            regionIds.Add(
+                region.Id);
+
+            bindings[region.Id] =
+                new V2RegionBinding(
+                    region.Id,
+                    matched
+                        .Select(x => x.TextRegionId)
+                        .Distinct(StringComparer.Ordinal)
+                        .ToArray(),
+                    UnionBounds(
+                        matched.Select(x => x.TextBounds)));
         }
 
         return new V2EraseSelection(
             targetIds,
-            regionIds);
+            regionIds,
+            bindings);
     }
 
     static List<V2TextTarget> MatchTargets(
@@ -51,40 +83,44 @@ public static class V2EraseSelector
         // Best case: the runtime RT-DETR text-region link survived OCR/Vision.
         if (region.Source.RegionTextRegion is { } linked)
         {
-            var direct = targets
-                .Where(x => string.Equals(
-                    x.TextRegionId,
-                    linked.RegionId,
-                    StringComparison.Ordinal))
-                .ToList();
+            var direct =
+                targets
+                    .Where(x => string.Equals(
+                        x.TextRegionId,
+                        linked.RegionId,
+                        StringComparison.Ordinal))
+                    .ToList();
 
             if (direct.Count > 0)
                 return direct;
         }
 
-        // A recovered OCR unit may only retain the learned Bubble id. In that
-        // case all TextBubble targets belonging to the same Bubble are the
-        // immutable erase targets for that translated bubble.
-        if (!string.IsNullOrWhiteSpace(region.Source.RegionId))
+        // A recovered OCR unit may only retain the learned Bubble id.
+        // Every matched TextBubble still remains immutable; layout uses the
+        // union of those exact detector boxes instead of a new container box.
+        if (!string.IsNullOrWhiteSpace(
+                region.Source.RegionId))
         {
-            var sameBubble = targets
-                .Where(x => string.Equals(
-                    x.BubbleRegionId,
-                    region.Source.RegionId,
-                    StringComparison.Ordinal))
-                .ToList();
+            var sameBubble =
+                targets
+                    .Where(x => string.Equals(
+                        x.BubbleRegionId,
+                        region.Source.RegionId,
+                        StringComparison.Ordinal))
+                    .ToList();
 
             if (sameBubble.Count > 0)
                 return sameBubble;
         }
 
-        // Last resort: use the translation block only to select a detector
-        // target. The selected target's RT-DETR bounds remain unchanged.
-        var source = new Rect2d(
-            region.Source.X,
-            region.Source.Y,
-            Math.Max(1.0, region.Source.W),
-            Math.Max(1.0, region.Source.H));
+        // Last resort: OCR geometry may SELECT a detector target, but can
+        // never replace its geometry.
+        var source =
+            new Rect2d(
+                region.Source.X,
+                region.Source.Y,
+                Math.Max(1.0, region.Source.W),
+                Math.Max(1.0, region.Source.H));
 
         return targets
             .Select(target => new
@@ -104,21 +140,66 @@ public static class V2EraseSelector
             .Where(x =>
                 x.CenterRelated ||
                 x.Coverage >= 0.18)
-            .OrderByDescending(x => x.CenterRelated)
-            .ThenByDescending(x => x.Coverage)
+            .OrderByDescending(x =>
+                x.CenterRelated)
+            .ThenByDescending(x =>
+                x.Coverage)
             .Take(2)
             .Select(x => x.Target)
             .ToList();
+    }
+
+    static Rect UnionBounds(
+        IEnumerable<Rect> bounds)
+    {
+        var list =
+            bounds.ToList();
+
+        if (list.Count == 0)
+            return new Rect();
+
+        int left =
+            list.Min(x => x.Left);
+
+        int top =
+            list.Min(x => x.Top);
+
+        int right =
+            list.Max(x => x.Right);
+
+        int bottom =
+            list.Max(x => x.Bottom);
+
+        return new Rect(
+            left,
+            top,
+            Math.Max(1, right - left),
+            Math.Max(1, bottom - top));
     }
 
     static double OverlapOverSmaller(
         Rect2d a,
         Rect b)
     {
-        double left = Math.Max(a.Left, b.Left);
-        double top = Math.Max(a.Top, b.Top);
-        double right = Math.Min(a.Right, b.Right);
-        double bottom = Math.Min(a.Bottom, b.Bottom);
+        double left =
+            Math.Max(
+                a.Left,
+                b.Left);
+
+        double top =
+            Math.Max(
+                a.Top,
+                b.Top);
+
+        double right =
+            Math.Min(
+                a.Right,
+                b.Right);
+
+        double bottom =
+            Math.Min(
+                a.Bottom,
+                b.Bottom);
 
         double intersection =
             Math.Max(0, right - left) *
@@ -131,15 +212,21 @@ public static class V2EraseSelector
                     a.Width * a.Height,
                     b.Width * (double)b.Height));
 
-        return intersection / smaller;
+        return intersection /
+               smaller;
     }
 
     static bool ContainsCenter(
         Rect2d inner,
         Rect outer)
     {
-        double cx = inner.X + inner.Width / 2.0;
-        double cy = inner.Y + inner.Height / 2.0;
+        double cx =
+            inner.X +
+            inner.Width / 2.0;
+
+        double cy =
+            inner.Y +
+            inner.Height / 2.0;
 
         return cx >= outer.Left &&
                cx <= outer.Right &&
@@ -151,8 +238,13 @@ public static class V2EraseSelector
         Rect inner,
         Rect2d outer)
     {
-        double cx = inner.X + inner.Width / 2.0;
-        double cy = inner.Y + inner.Height / 2.0;
+        double cx =
+            inner.X +
+            inner.Width / 2.0;
+
+        double cy =
+            inner.Y +
+            inner.Height / 2.0;
 
         return cx >= outer.Left &&
                cx <= outer.Right &&
