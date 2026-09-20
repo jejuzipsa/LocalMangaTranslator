@@ -133,3 +133,19 @@ Translation output also gains two final safety gates:
 - explicit English negation such as NOT, CAN'T, DON'T, WON'T and NEVER must retain an identifiable Korean negation cue; otherwise the unit is retried once. If both the final model result and Vision draft fail validation, the unit keeps the original pixels instead of committing an unsafe translation.
 
 These changes are intentionally scoped so the already-stable ordinary speech-bubble, colored-bubble, and graphic-SFX behavior remains unchanged.
+
+
+## 0024 residual-review correction
+
+0023 full-page review showed that several remaining failures were not erase failures at all: the cleaned debug image was already visually empty, but residual review re-segmented inpaint texture and atomic commit restored the original text.
+
+0024 therefore leaves translation and typesetting policy untouched and changes only erase verification:
+
+- restore the 7x7 local review halo used before 0023, because the smaller 5x5 halo weakened retry coverage on a previously successful bubble.
+- keep raw residual pixels for diagnostics, but distinguish an effective residual: text-like pixels inside the original erase mask are not treated as surviving source text, because those pixels were already replaced by inpaint.
+- retry is driven by suspicious residual outside the immutable original glyph mask.
+- raw residual remains a sanity bound, so a wildly inconsistent target is still rejected instead of being accepted solely because its outside-mask count is low.
+- best-pass selection remains in place: retry can improve a target, but can never replace a cleaner first pass.
+- v2_erase_audit.json records raw and effective residual counts before and after retry for direct diagnosis.
+
+The goal is to stop visually clean balloons/captions from being restored by a false-positive residual check while preserving the atomic erase+typeset invariant.
