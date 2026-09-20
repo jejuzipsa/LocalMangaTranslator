@@ -636,9 +636,9 @@ public sealed class ErasePipelineV2
         foreach (var region in snapshot.RawRegions)
         {
             bool selected =
-                region.Kind is
+                (region.Kind is
                     LocalMangaTranslator.Models.PageRegionKind.TextBubble or
-                    LocalMangaTranslator.Models.PageRegionKind.TextFree &&
+                    LocalMangaTranslator.Models.PageRegionKind.TextFree) &&
                 (selectedTextRegionIds is null ||
                  selectedTextRegionIds.Contains(
                      region.RegionId));
