@@ -141,13 +141,20 @@ public static class ComicTranslateComponentMask
                 continue;
 
             var bounds = Cv2.BoundingRect(contour);
-            double area = Math.Abs(Cv2.ContourArea(contour));
 
-            bool ordinary = area > 10;
+            using var componentRoi =
+                new Mat(binary, bounds);
+
+            int pixelArea =
+                Cv2.CountNonZero(componentRoi);
+
+            bool ordinary =
+                pixelArea > 10;
+
             bool punctuation =
-                area >= 4 &&
-                bounds.Width <= 6 &&
-                bounds.Height <= 6;
+                pixelArea >= 2 &&
+                bounds.Width <= 7 &&
+                bounds.Height <= 7;
 
             if (!ordinary && !punctuation)
                 continue;
@@ -164,7 +171,7 @@ public static class ComicTranslateComponentMask
 
             // A component occupying half the crop is normally the bubble or
             // narration-box background, not lettering.
-            if (area >= cropArea * 0.50)
+            if (pixelArea >= cropArea * 0.50)
                 continue;
 
             Cv2.DrawContours(
