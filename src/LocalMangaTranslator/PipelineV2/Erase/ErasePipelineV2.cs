@@ -27,7 +27,8 @@ public sealed record ErasePipelineV2Result(
     string FirstCleanedDebugPath,
     string ResidualDebugPath,
     string CleanedDebugPath,
-    string DetectionJsonPath);
+    string DetectionJsonPath,
+    IReadOnlyList<V2EraseTargetAudit> TargetAudits);
 
 /// <summary>
 /// Main Pipeline V2 erase stage.
@@ -288,18 +289,23 @@ public sealed class ErasePipelineV2
                     residualBefore);
             }
 
+            int initialTargetPixels =
+                initialPixelsByTarget.GetValueOrDefault(
+                    target.TextRegionId);
+
             audits.Add(
                 new V2EraseTargetAudit(
                     target.TextRegionId,
-                    initialPixelsByTarget.GetValueOrDefault(
-                        target.TextRegionId),
+                    initialTargetPixels,
                     residualPixels,
                     retryPixels,
                     0,
                     retry,
-                    retry
-                        ? "retry_scheduled"
-                        : "clean_after_first_pass"));
+                    initialTargetPixels < 2
+                        ? "mask_empty"
+                        : retry
+                            ? "retry_scheduled"
+                            : "clean_after_first_pass"));
         }
 
         SaveResidualDebug(
@@ -378,11 +384,13 @@ public sealed class ErasePipelineV2
                     ResidualAfterRetryPixels =
                         remaining,
                     Status =
-                        remaining < 2
-                            ? previous.Retried
-                                ? "clean_after_retry"
-                                : "clean_after_first_pass"
-                            : "review_required"
+                        previous.InitialMaskPixels < 2
+                            ? "mask_empty"
+                            : remaining < 2
+                                ? previous.Retried
+                                    ? "clean_after_retry"
+                                    : "clean_after_first_pass"
+                                : "review_required"
                 };
         }
 
@@ -414,7 +422,9 @@ public sealed class ErasePipelineV2
                 RetryTargetCount =
                     retryTargetCount,
                 Clean =
-                    residualAfterTotal < 2,
+                    audits.All(x =>
+                        x.InitialMaskPixels >= 2 &&
+                        x.ResidualAfterRetryPixels < 2),
                 Targets =
                     targets.Select(target =>
                     {
@@ -482,7 +492,8 @@ public sealed class ErasePipelineV2
             firstCleanedPath,
             residualPath,
             cleanedPath,
-            jsonPath);
+            jsonPath,
+            audits.ToArray());
     }
 
     static Mat InpaintOnlyMaskedPixels(
