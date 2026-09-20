@@ -744,6 +744,72 @@ finally
     }
 }
 
+string v2ColoredMaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_colored_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var coloredSource =
+        Mat.Zeros(190, 420, MatType.CV_8UC3).ToMat();
+
+    coloredSource.SetTo(
+        new Scalar(235, 235, 235));
+
+    var coloredBubble =
+        new Rect(40, 38, 340, 112);
+
+    var coloredText =
+        new Rect(58, 56, 304, 76);
+
+    Cv2.Rectangle(
+        coloredSource,
+        coloredBubble,
+        new Scalar(252, 252, 252),
+        thickness: -1);
+
+    Cv2.PutText(
+        coloredSource,
+        "NONONO",
+        new Point(90, 112),
+        HersheyFonts.HersheySimplex,
+        1.45,
+        new Scalar(30, 30, 220),
+        4,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2ColoredMaskSourcePath,
+        coloredSource);
+
+    using var coloredMask =
+        ComicTranslateComponentMask.Build(
+            coloredSource,
+            coloredText,
+            coloredBubble);
+
+    int coloredMaskPixels =
+        Cv2.CountNonZero(
+            coloredMask);
+
+    Check("V2 mask rescues colored comic lettering",
+        coloredMaskPixels > 250);
+
+    Check("V2 colored rescue stays local instead of consuming detector box",
+        coloredMaskPixels <
+        coloredText.Width * coloredText.Height * 0.35);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2ColoredMaskSourcePath))
+            File.Delete(v2ColoredMaskSourcePath);
+    }
+    catch
+    {
+    }
+}
+
 string v2MainRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_v2_main_{Guid.NewGuid():N}");
@@ -862,6 +928,70 @@ try
         mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
         mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
 
+    var freeTextRegion =
+        new PageRegion(
+            "VT-FREE",
+            PageRegionKind.TextFree,
+            new Rect(72, 158, 210, 34),
+            0.94f,
+            "test-rtdetr");
+
+    var freeSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [freeTextRegion],
+                [],
+                "v2-free-test",
+                true));
+
+    Check("V2 snapshot carries RT-DETR TextFree geometry",
+        freeSnapshot.TextTargets.Count == 1 &&
+        freeSnapshot.TextTargets[0].Kind == PageRegionKind.TextFree &&
+        freeSnapshot.TextTargets[0].TextBounds == freeTextRegion.Bounds &&
+        freeSnapshot.TextTargets[0].BubbleBounds is null);
+
+    var freeBlock =
+        new OcrTextBlock(
+            2002,
+            74,
+            160,
+            205,
+            30,
+            "YOU'VE BEEN LOST IN THE DARK",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "YOU'VE BEEN LOST IN THE DARK",
+                0.98f,
+                "en")]);
+
+    var freeTranslation =
+        new VisionTranslation(
+            2002,
+            freeBlock,
+            freeBlock.Text,
+            "어둠 속에서 길을 잃었군.",
+            "caption",
+            true);
+
+    var freeSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [freeTranslation]);
+
+    Check("V2 selector binds approved free text without inventing a Bubble",
+        freeSelection.Bindings.TryGetValue(
+            2002,
+            out var freeBinding) &&
+        freeBinding.TextRegionIds.SequenceEqual(["VT-FREE"]) &&
+        freeBinding.BubbleRegionId is null &&
+        freeBinding.LayoutMode == "rtdetr_textfree" &&
+        freeBinding.LayoutBounds == freeTextRegion.Bounds);
+
     var v2MainResult =
         new ErasePipelineV2().Run(
             v2MainSourcePath,
@@ -943,6 +1073,29 @@ try
         PageAnalysis = new PageAnalysisResult([], [], "test", false)
     };
 
+    string auditCommitted =
+        Path.Combine(
+            OutputDirectoryLayout.Debug(auditRoot),
+            "audit_source.v2_05_committed_cleaned.webp");
+
+    using (var committed = Cv2.ImRead(
+               auditSource,
+               ImreadModes.Color))
+    {
+        Cv2.Rectangle(
+            committed,
+            new Rect(10, 10, 10, 8),
+            new Scalar(255, 255, 255),
+            -1);
+
+        Cv2.ImWrite(
+            auditCommitted,
+            committed,
+            [new ImageEncodingParam(
+                ImwriteFlags.WebPQuality,
+                101)]);
+    }
+
     await new FinalAuditService().GenerateAsync(
         auditSource,
         auditFinal,
@@ -950,13 +1103,35 @@ try
         emptyStage,
         []);
 
-    Check("final audit writes compare json and summary after output",
-        File.Exists(Path.Combine(
+    string auditCompare =
+        Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
-            "audit_source.final_compare.webp")) &&
-        File.Exists(Path.Combine(
+            "audit_source.final_compare.webp");
+
+    string auditJson =
+        Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
-            "audit_source.final_audit.json")) &&
+            "audit_source.final_audit.json");
+
+    using var auditCompareImage =
+        Cv2.ImRead(
+            auditCompare,
+            ImreadModes.Color);
+
+    string auditJsonText =
+        File.ReadAllText(
+            auditJson);
+
+    Check("final audit writes four-stage original erase final diff sheet",
+        File.Exists(auditCompare) &&
+        !auditCompareImage.Empty() &&
+        auditCompareImage.Cols == 200 &&
+        auditJsonText.Contains(
+            "\"schema\": \"final-audit-v2\"",
+            StringComparison.Ordinal) &&
+        auditJsonText.Contains(
+            "\"committed_cleaned_available\": true",
+            StringComparison.Ordinal) &&
         File.Exists(Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
             "audit_summary.json")));
