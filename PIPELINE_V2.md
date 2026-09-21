@@ -261,3 +261,28 @@ Debug separation:
 Commit audit schema is now pipeline-v2-cleaned-state-commit-v2. It records both LegacyEraseReviewClean and CleanedStateEmpty. If the cleaned verifier is unavailable unexpectedly, the pipeline falls back to the legacy reviewer rather than weakening safety.
 
 0028 intentionally does not yet make the whole cleaned raster immutable for every downstream failure and does not yet add the erase-only UI mode. Those are the next structural steps after the 23-page regression run confirms that semantic cleaned verification fixes the two known false restores without creating new misses.
+
+
+## 0029 glyph-topology-preserving erase masks
+
+0028 fixed false source restoration by separating cleaned-state verification from the legacy pixel reviewer. The 23-page regression then exposed a different failure class in stylized American-comic lettering: RT-DETR could correctly identify the TextBubble while the pixel mask itself damaged the wrong pixels.
+
+The root cause was the mask component filter using an external contour and filling that contour solid. For outlined glyphs such as O/P/R, a solid contour fill converts the glyph's white counter into an erase pixel. Closely spaced display letters can suffer the same problem in their negative space. Telea then pulls nearby black outline pixels into those incorrectly masked white areas, producing black fills/blotches even though detector geometry was correct.
+
+0029 changes mask construction rather than reviewer thresholds:
+
+- accepted contours are still used to reject large/background components, but the output copies only foreground pixels that actually existed in the threshold mask.
+- glyph holes and inter-letter negative space are therefore preserved.
+- color rescue now keeps its real chroma seed pixels and adds only nearby high-contrast outline pixels, bounded to a small radius around the accepted color seed.
+- the normal final 3x3 erase dilation remains, but it now expands a topology-correct foreground mask instead of an already flood-filled silhouette.
+- RT-DETR geometry and the 0028 independent cleaned-state verifier remain unchanged.
+
+New debug evidence:
+
+- v2_01a_grayscale_mask.webp: grayscale/Otsu erase contribution.
+- v2_01c_color_rescue_mask.webp: chroma + local outline rescue contribution.
+- v2_01_text_mask.webp: final merged erase mask.
+
+v2_erase_audit.json now records aggregate and per-target GrayscaleMaskPixels and ColorRescueMaskPixels. This makes cases such as a color-only stylized target explicit instead of hiding them behind InitialMaskPixels.
+
+0029 is intended as a general American-comic display-lettering fix, not a word-specific NONONO exception.
