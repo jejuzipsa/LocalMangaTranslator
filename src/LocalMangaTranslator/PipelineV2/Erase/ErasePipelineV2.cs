@@ -110,6 +110,16 @@ public sealed class ErasePipelineV2
                 debugDir,
                 $"{name}.v2_02_cleaned_first.webp");
 
+        string reconstructionDebugPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_02a_reconstruction_strategy.webp");
+
+        string backgroundAuditPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_background_audit.json");
+
         string residualPath =
             Path.Combine(
                 debugDir,
@@ -293,24 +303,27 @@ public sealed class ErasePipelineV2
             Cv2.CountNonZero(initialMask);
 
         using var firstCleaned =
-            InpaintOnlyMaskedPixels(
+            ReconstructFirstPass(
                 source,
-                initialMask);
-
-        // TextFree captions on a genuinely flat panel (for example white text
-        // on a solid black narration box) are a poor fit for Telea alone:
-        // the interpolated edge can be re-segmented as "remaining text".
-        // If the ring immediately around the detector box is low-variance,
-        // replace only the already-approved glyph mask with that local panel
-        // color. Detailed artwork never takes this path.
-        ApplyFlatTextFreeBackgroundFill(
-            source,
-            firstCleaned,
-            targets);
+                targets,
+                out var backgroundAudits,
+                out var backgroundQualityP85);
 
         SaveLosslessWebp(
             firstCleanedPath,
             firstCleaned);
+
+        SaveBackgroundStrategyDebug(
+            firstCleaned,
+            backgroundAudits,
+            backgroundQualityP85,
+            reconstructionDebugPath);
+
+        WriteBackgroundAudit(
+            sourcePath,
+            backgroundAudits,
+            backgroundQualityP85,
+            backgroundAuditPath);
 
         using var residualBefore =
             Mat.Zeros(
@@ -1006,6 +1019,49 @@ public sealed class ErasePipelineV2
                     retryTargetCount,
                 Clean =
                     audits.All(IsAuditClean),
+                BackgroundReconstruction =
+                    new
+                    {
+                        FlatFillTargets =
+                            backgroundAudits.Count(x =>
+                                x.FlatAccepted),
+                        TeleaTargets =
+                            backgroundAudits.Count(x =>
+                                !x.FlatAccepted),
+                        BackgroundQualityFailures =
+                            backgroundAudits.Count(x =>
+                                x.FlatAccepted &&
+                                backgroundQualityP85.GetValueOrDefault(
+                                    x.TextRegionId,
+                                    double.MaxValue) >
+                                18.0),
+                        Items =
+                            backgroundAudits.Select(x =>
+                                new
+                                {
+                                    x.TextRegionId,
+                                    x.Kind,
+                                    x.Strategy,
+                                    x.MaskPixels,
+                                    x.SampleCount,
+                                    Background =
+                                        new
+                                        {
+                                            B = x.BackgroundB,
+                                            G = x.BackgroundG,
+                                            R = x.BackgroundR
+                                        },
+                                    x.DominantMatchRatio,
+                                    x.P75ColorDistance,
+                                    x.P90ColorDistance,
+                                    x.FlatAccepted,
+                                    x.Reason,
+                                    PostReconstructionP85 =
+                                        backgroundQualityP85.GetValueOrDefault(
+                                            x.TextRegionId,
+                                            -1)
+                                })
+                    },
                 LegacyReviewerCheckpoint =
                     new
                     {
