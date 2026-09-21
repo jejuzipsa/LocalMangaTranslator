@@ -1188,6 +1188,168 @@ using (var retryFlatMask =
         retriedPixel.Item2 == 241);
 }
 
+// 0033 regression: the post-retry chromatic quality failure becomes a
+// constrained cleanup mask. Colored residue seeds the cleanup and may pull in
+// its directly attached neutral outline, while an unrelated neutral line in
+// the same review zone must remain untouched.
+using (var cleanupImage =
+       Mat.Zeros(
+           140,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var cleanupOriginalMask =
+       Mat.Zeros(
+           140,
+           180,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    cleanupImage.SetTo(
+        new Scalar(
+            246,
+            242,
+            241));
+
+    Cv2.Rectangle(
+        cleanupOriginalMask,
+        new Rect(
+            60,
+            45,
+            34,
+            30),
+        Scalar.White,
+        thickness: -1);
+
+    // Simulate surviving glyph ink immediately outside the mask: black
+    // outline with a colored fill.
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            94,
+            49,
+            10,
+            22),
+        new Scalar(
+            8,
+            8,
+            8),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            95,
+            52,
+            6,
+            16),
+        new Scalar(
+            25,
+            35,
+            225),
+        thickness: -1);
+
+    // A nearby neutral feature is deliberately separated by flat background.
+    // It represents bubble/artwork structure that cleanup must not consume.
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            52,
+            50,
+            2,
+            20),
+        new Scalar(
+            10,
+            10,
+            10),
+        thickness: -1);
+
+    var cleanupAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0033-FLAT-CLEANUP",
+            PageRegionKind.TextBubble.ToString(),
+            new Rect(
+                40,
+                30,
+                100,
+                80),
+            "FLAT_FILL",
+            Cv2.CountNonZero(
+                cleanupOriginalMask),
+            100,
+            246,
+            242,
+            241,
+            0.88,
+            16,
+            19.5,
+            0.625,
+            7,
+            true,
+            "dominant_purified_background_cluster");
+
+    using var cleanupSeed =
+        ErasePipelineV2.BuildFlatChromaticOutlierMask(
+            cleanupImage,
+            cleanupOriginalMask,
+            cleanupAudit.Bounds,
+            cleanupAudit);
+
+    using var cleanupMask0033 =
+        ErasePipelineV2.BuildFlatResidualCleanupMask(
+            cleanupImage,
+            cleanupOriginalMask,
+            cleanupAudit.Bounds,
+            cleanupAudit);
+
+    Check("V2 0033 chromatic residual seeds flat cleanup",
+        cleanupSeed.At<byte>(
+            58,
+            98) != 0);
+
+    Check("V2 0033 flat cleanup pulls in attached neutral outline only",
+        cleanupMask0033.At<byte>(
+            58,
+            98) != 0 &&
+        cleanupMask0033.At<byte>(
+            50,
+            103) != 0 &&
+        cleanupMask0033.At<byte>(
+            58,
+            52) == 0);
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        cleanupImage,
+        cleanupMask0033,
+        cleanupAudit);
+
+    var cleanedColor0033 =
+        cleanupImage.At<Vec3b>(
+            58,
+            98);
+
+    var cleanedOutline0033 =
+        cleanupImage.At<Vec3b>(
+            50,
+            103);
+
+    var preservedNeutral0033 =
+        cleanupImage.At<Vec3b>(
+            58,
+            52);
+
+    Check("V2 0033 cleanup repaints linked residue from stored flat background",
+        cleanedColor0033.Item0 == 246 &&
+        cleanedColor0033.Item1 == 242 &&
+        cleanedColor0033.Item2 == 241 &&
+        cleanedOutline0033.Item0 == 246 &&
+        cleanedOutline0033.Item1 == 242 &&
+        cleanedOutline0033.Item2 == 241 &&
+        preservedNeutral0033.Item0 == 10 &&
+        preservedNeutral0033.Item1 == 10 &&
+        preservedNeutral0033.Item2 == 10);
+}
+
 using (var artworkSource =
        Mat.Zeros(
            160,
