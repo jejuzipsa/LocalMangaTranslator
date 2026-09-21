@@ -95,6 +95,16 @@ public sealed class ErasePipelineV2
                 debugDir,
                 $"{name}.v2_01_text_mask.webp");
 
+        string grayscaleMaskPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_01a_grayscale_mask.webp");
+
+        string colorRescueMaskPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_01c_color_rescue_mask.webp");
+
         string firstCleanedPath =
             Path.Combine(
                 debugDir,
@@ -161,6 +171,28 @@ public sealed class ErasePipelineV2
                 MatType.CV_8UC1)
             .ToMat();
 
+        using var grayscaleMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var colorRescueMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        var grayscalePixelsByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
+        var colorPixelsByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
         var initialPixelsByTarget =
             new Dictionary<string, int>(
                 StringComparer.Ordinal);
@@ -175,16 +207,57 @@ public sealed class ErasePipelineV2
                     target.TextBounds,
                     target.BubbleBounds);
 
+            using var targetGrayscaleMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds,
+                    layer:
+                        ComicTranslateMaskLayer.Grayscale);
+
+            using var targetColorMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds,
+                    layer:
+                        ComicTranslateMaskLayer.ColorRescue);
+
             int targetPixels =
-                Cv2.CountNonZero(targetMask);
+                Cv2.CountNonZero(
+                    targetMask);
+
+            int grayscalePixels =
+                Cv2.CountNonZero(
+                    targetGrayscaleMask);
+
+            int colorPixels =
+                Cv2.CountNonZero(
+                    targetColorMask);
 
             initialPixelsByTarget[target.TextRegionId] =
                 targetPixels;
+
+            grayscalePixelsByTarget[target.TextRegionId] =
+                grayscalePixels;
+
+            colorPixelsByTarget[target.TextRegionId] =
+                colorPixels;
 
             Cv2.BitwiseOr(
                 initialMask,
                 targetMask,
                 initialMask);
+
+            Cv2.BitwiseOr(
+                grayscaleMask,
+                targetGrayscaleMask,
+                grayscaleMask);
+
+            Cv2.BitwiseOr(
+                colorRescueMask,
+                targetColorMask,
+                colorRescueMask);
         }
 
         SaveDetectionDebug(
@@ -197,6 +270,24 @@ public sealed class ErasePipelineV2
             source,
             initialMask,
             maskPath);
+
+        SaveColoredMaskDebug(
+            source,
+            grayscaleMask,
+            new Scalar(
+                0,
+                255,
+                255),
+            grayscaleMaskPath);
+
+        SaveColoredMaskDebug(
+            source,
+            colorRescueMask,
+            new Scalar(
+                255,
+                0,
+                255),
+            colorRescueMaskPath);
 
         int initialPixels =
             Cv2.CountNonZero(initialMask);
@@ -898,6 +989,12 @@ public sealed class ErasePipelineV2
                     targets.Count,
                 InitialMaskPixels =
                     initialPixels,
+                GrayscaleMaskPixels =
+                    Cv2.CountNonZero(
+                        grayscaleMask),
+                ColorRescueMaskPixels =
+                    Cv2.CountNonZero(
+                        colorRescueMask),
                 ResidualBeforeRetryPixels =
                     audits.Sum(x =>
                         x.ResidualBeforeRetryPixels),
@@ -1003,6 +1100,12 @@ public sealed class ErasePipelineV2
                                     }
                                     : null,
                             target.BubbleScore,
+                            GrayscaleMaskPixels =
+                                grayscalePixelsByTarget.GetValueOrDefault(
+                                    target.TextRegionId),
+                            ColorRescueMaskPixels =
+                                colorPixelsByTarget.GetValueOrDefault(
+                                    target.TextRegionId),
                             audit.InitialMaskPixels,
                             audit.CoreMaskPixels,
                             audit.ResidualBeforeRetryPixels,
