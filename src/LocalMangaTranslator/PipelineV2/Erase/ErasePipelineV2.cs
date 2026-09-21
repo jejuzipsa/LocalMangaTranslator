@@ -656,50 +656,6 @@ public sealed class ErasePipelineV2
 
         retryMasksByTarget.Clear();
 
-        var flatChromaticResidualByTarget =
-            new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
-                StringComparer.Ordinal);
-
-        foreach (var target in targets)
-        {
-            if (!backgroundAuditByTarget.TryGetValue(
-                    target.TextRegionId,
-                    out var backgroundAudit) ||
-                !backgroundAudit.FlatAccepted)
-            {
-                continue;
-            }
-
-            using var originalTargetMask =
-                ComicTranslateComponentMask.Build(
-                    source,
-                    target.TextBounds,
-                    target.BubbleBounds);
-
-            flatChromaticResidualByTarget[
-                target.TextRegionId] =
-                MeasureFlatChromaticResidual(
-                    finalCleaned,
-                    originalTargetMask,
-                    target.TextBounds,
-                    backgroundAudit);
-        }
-
-        var backgroundQualityFailedTextRegionIds =
-            flatChromaticResidualByTarget
-                .Where(x =>
-                    x.Value.OutlierPixels >=
-                        Math.Max(
-                            16,
-                            (int)Math.Ceiling(
-                                x.Value.ReviewPixels *
-                                0.015)) &&
-                    x.Value.Ratio >= 0.015)
-                .Select(x =>
-                    x.Key)
-                .OrderBy(x => x)
-                .ToArray();
-
         int residualAfterTotal = 0;
 
         using var secondaryCoreDebug =
@@ -1050,6 +1006,50 @@ public sealed class ErasePipelineV2
                                 : "review_required"
                 };
         }
+
+        var flatChromaticResidualByTarget =
+            new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
+                StringComparer.Ordinal);
+
+        foreach (var target in targets)
+        {
+            if (!backgroundAuditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var backgroundAudit) ||
+                !backgroundAudit.FlatAccepted)
+            {
+                continue;
+            }
+
+            using var originalTargetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            flatChromaticResidualByTarget[
+                target.TextRegionId] =
+                MeasureFlatChromaticResidual(
+                    finalCleaned,
+                    originalTargetMask,
+                    target.TextBounds,
+                    backgroundAudit);
+        }
+
+        var backgroundQualityFailedTextRegionIds =
+            flatChromaticResidualByTarget
+                .Where(x =>
+                    x.Value.OutlierPixels >=
+                        Math.Max(
+                            16,
+                            (int)Math.Ceiling(
+                                x.Value.ReviewPixels *
+                                0.015)) &&
+                    x.Value.Ratio >= 0.015)
+                .Select(x =>
+                    x.Key)
+                .OrderBy(x => x)
+                .ToArray();
 
         SaveColoredMaskDebug(
             source,
