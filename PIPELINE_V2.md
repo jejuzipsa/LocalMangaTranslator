@@ -149,3 +149,23 @@ These changes are intentionally scoped so the already-stable ordinary speech-bub
 - v2_erase_audit.json records raw and effective residual counts before and after retry for direct diagnosis.
 
 The goal is to stop visually clean balloons/captions from being restored by a false-positive residual check while preserving the atomic erase+typeset invariant.
+
+
+## 0025 source-glyph persistence review
+
+0024 regression output showed that the five remaining erase-review failures shared one mechanism: the source text was already visually erased, but nearby high-contrast structures (bubble borders, panel/artwork lines, or inpaint texture) were re-segmented as residual text and atomic commit restored the original pixels.
+
+0025 keeps OCR, translation, layout, erase geometry, and atomic commit policy unchanged and replaces only the residual decision signal:
+
+- the mask builder can now expose an undilated source-glyph core separately from the dilated erase mask.
+- the 7x7 halo remains available for finding retry candidates, but presence anywhere in the halo is no longer sufficient to reject a target.
+- residual connected components must genuinely intersect the immutable source-glyph core before they can influence review.
+- the reviewer then compares the original and cleaned pixels only at those core-linked locations. A target fails only when source-like glyph pixels actually persist after erase.
+- nearby bubble borders or artwork that merely pass through the halo are diagnostic noise and no longer trigger restore.
+- retry is driven by core-linked residual components; best-pass selection compares source-glyph persistence and can still keep the cleaner first pass.
+- audit JSON retains the 0024 raw/outside-mask metrics for diagnosis and adds core-mask size, core overlap, persistent-core counts, selected persistence ratio, and an explicit ReviewReason.
+
+This specifically targets the observed sequence:
+erase succeeds -> reviewer sees unrelated contrast -> review fails -> atomic commit restores English.
+
+Graphic/emphasis dialogue such as NONONO remains a separate policy question and is intentionally unchanged in 0025.
