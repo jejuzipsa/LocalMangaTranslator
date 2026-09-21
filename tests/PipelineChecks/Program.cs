@@ -1093,6 +1093,21 @@ using (var glyphResidual =
             survivingPersistence));
 }
 
+Check("V2 0027 cleaned checkpoint requires exact detector ID set match",
+    ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B003", "B001", "B002"]));
+
+Check("V2 0027 cleaned checkpoint catches a missing bubble ID",
+    !ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B001", "B003"]));
+
+Check("V2 0027 cleaned checkpoint catches an unexpected replacement ID",
+    !ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B001", "B002", "B004"]));
+
 var primaryPassDecision =
     ErasePipelineV2.ResolveReviewDecision(
         primaryClean: true,
