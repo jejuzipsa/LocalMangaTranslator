@@ -1,0 +1,37 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "hard_sfx_combat_001.jpg",
+  "TargetCount": 1,
+  "FlatFillTargets": 1,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 747,
+        "Y": 1831,
+        "Width": 127,
+        "Height": 42
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 2241,
+      "SampleCount": 297,
+      "Background": {
+        "B": 254,
+        "G": 254,
+        "R": 254
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 3.4641016151377544,
+      "P90ColorDistance": 5.196152422706632,
+      "SpatialCoverage": 0.75,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "core_speech_tail_layout_001.jpg",
+  "RequestedUnits": 5,
+  "TranslatedUnits": 5,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 5,
+  "TypesetCommittedUnits": 5,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "DR. HUDD?",
+      "Translation": "\uD5C8\uB4DC \uBC15\uC0AC\uB2D8?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 965,
+        "Y": 212,
+        "Width": 153,
+        "Height": 107
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "THE SCANS SHOW FULL ENGAGEMENT, MR. PENNYWORTH. STILL WAKING UP, SURE, BUT HE\u0027S HE\u0027S BUT WITH BACK us.",
+      "Translation": "\uC2A4\uCE94 \uACB0\uACFC \uC804\uC2E0 \uBC18\uC751\uC774 \uD655\uC778\uB418\uC5C8\uC2B5\uB2C8\uB2E4, \uD398\uB2C8\uC6CC\uC2A4 \uC528. \uC544\uC9C1 \uAE68\uC5B4\uB098\uB294 \uC911\uC774\uAE34 \uD558\uC9C0\uB9CC, \uC758\uC2DD\uC740 \uB3CC\uC544\uC654\uC2B5\uB2C8\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 893,
+        "Y": 331,
+        "Width": 247,
+        "Height": 188
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "BRUCE? TALK TO",
+      "Translation": "\uBE0C\uB8E8\uC2A4? [BR]\uBE0C\uB8E8\uC2A4, \uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1098,
+        "Y": 489,
+        "Width": 151,
+        "Height": 123
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "Alfrid, Pleazzz. PLeeeze jus tak mmme hOm.",
+      "Translation": "\uC54C\uD504\uB9AC\uB4DC, \uC81C\uBC14\uC54C...[BR]\uC81C\uBC1C, \uADF8\uB0E5 \uB098\uB97C \uC880...[BR]\uD55C \uBC88\uB9CC\uC774\uB77C\uB3C4...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1115,
+        "Y": 1812,
+        "Width": 178,
+        "Height": 150
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "BRUCE, IS IT...IS IT REALLY... YOU?",
+      "Translation": "\uBE0C\uB8E8\uC2A4, \uC815\uB9D0... \uC815\uB9D0 \uB108\uC57C?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 391,
+        "Y": 403,
+        "Width": 163,
+        "Height": 134
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "hard_sfx_colored_001.jpg",
+  "RequestedUnits": 4,
+  "TranslatedUnits": 4,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 4,
+  "TypesetCommittedUnits": 4,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 2,
+      "SourceText": "MUST MAKE READY FOR MY QUEEN.",
+      "Translation": "\uB0B4 \uC5EC\uC655\uB2D8\uC744\n\uC704\uD574\n\uC900\uBE44\uD574\uC57C \uD55C\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 265,
+        "Y": 607,
+        "Width": 151,
+        "Height": 167
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "LITTLE THINGS.. EAT THEM.",
+      "Translation": "\uC0AC\uC18C\uD55C \uAC83\uB4E4...[BR]\uBC15\uC0B4 \uB0B4\uBC84\uB824.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 366,
+        "Y": 704,
+        "Width": 142,
+        "Height": 132
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "EAT THEM ALL!",
+      "Translation": "\uBABD\uB545 \uB2E4 \uBA39\uC5B4\uCE58\uC6CC!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 350,
+        "Y": 831,
+        "Width": 118,
+        "Height": 111
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "EAT THEM ALL FOR YOU, MY QUEEN!",
+      "Translation": "\uBAA8\uB450 \uBA39\uC5B4\uCE58\uC6B0\uACA0\uC2B5\uB2C8\uB2E4,[BR]\uB098\uC758 \uC5EC\uC655\uB2D8!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG009"
+      ],
+      "BubbleRegionId": "RG008",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1116,
+        "Y": 1837,
+        "Width": 162,
+        "Height": 146
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}
