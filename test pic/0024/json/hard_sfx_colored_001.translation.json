@@ -1,0 +1,435 @@
+{
+  "SourceFile": "hard_sfx_colored_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-21T14:40:43.7353549+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 861.5,
+        "Y": 186.5,
+        "W": 337.5,
+        "H": 245,
+        "Text": "GURG",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 861.5,
+            "Y": 186.5,
+            "W": 337.5,
+            "H": 245,
+            "Text": "GURG",
+            "Confidence": 0.6964792,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "GLURG!",
+      "Translation": "\uAFC0\uB7ED!",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 148,
+        "Y": 602,
+        "W": 136.66666666666663,
+        "H": 206,
+        "Text": "CIM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 148,
+            "Y": 602,
+            "W": 136.66666666666663,
+            "H": 206,
+            "Text": "CIM",
+            "Confidence": 0.3579507,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "CIM",
+      "Translation": "CIM",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 297.6666666666667,
+        "Y": 635,
+        "W": 82.66666666666669,
+        "H": 104.66666666666663,
+        "Text": "MUST MAKE READY FOR MY QUEEN.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 310.66666666666663,
+            "Y": 635,
+            "W": 58,
+            "H": 23.33333333333337,
+            "Text": "MUST",
+            "Confidence": 0.9968151,
+            "Language": "en"
+          },
+          {
+            "X": 309.33333333333337,
+            "Y": 654.3333333333334,
+            "W": 61.66666666666663,
+            "H": 25,
+            "Text": "MAKE",
+            "Confidence": 0.9995763,
+            "Language": "en"
+          },
+          {
+            "X": 304.5,
+            "Y": 671,
+            "W": 70.5,
+            "H": 29,
+            "Text": "READY",
+            "Confidence": 0.99927,
+            "Language": "en"
+          },
+          {
+            "X": 301.3333333333333,
+            "Y": 691,
+            "W": 79.00000000000006,
+            "H": 27.33333333333337,
+            "Text": "FOR MY",
+            "Confidence": 0.99888974,
+            "Language": "en"
+          },
+          {
+            "X": 297.6666666666667,
+            "Y": 708,
+            "W": 82,
+            "H": 31.66666666666663,
+            "Text": "QUEEN.",
+            "Confidence": 0.99741167,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MUST MAKE READY FOR MY QUEEN.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "MUST MAKE READY\nFOR MY QUEEN.",
+      "Translation": "\uB0B4 \uC5EC\uC655\uB2D8\uC744\n\uC704\uD574\n\uC900\uBE44\uD574\uC57C \uD55C\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 442.6666666666667,
+        "Y": 700,
+        "W": 107.33333333333331,
+        "H": 169,
+        "Text": "RM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 442.6666666666667,
+            "Y": 700,
+            "W": 107.33333333333331,
+            "H": 169,
+            "Text": "RM",
+            "Confidence": 0.4592278,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "RM",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 393,
+        "Y": 734,
+        "W": 86.33333333333337,
+        "H": 80,
+        "Text": "LITTLE THINGS.. EAT THEM.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 399.3333333333333,
+            "Y": 734,
+            "W": 74.66666666666669,
+            "H": 23.66666666666663,
+            "Text": "LITTLE",
+            "Confidence": 0.99996924,
+            "Language": "en"
+          },
+          {
+            "X": 393,
+            "Y": 750.3333333333334,
+            "W": 86.33333333333337,
+            "H": 28,
+            "Text": "THINGS..",
+            "Confidence": 0.98980427,
+            "Language": "en"
+          },
+          {
+            "X": 415.3333333333333,
+            "Y": 773.3333333333334,
+            "W": 41.666666666666686,
+            "H": 23.333333333333258,
+            "Text": "EAT",
+            "Confidence": 0.99843246,
+            "Language": "en"
+          },
+          {
+            "X": 406,
+            "Y": 792,
+            "W": 61,
+            "H": 22,
+            "Text": "THEM.",
+            "Confidence": 0.9992261,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LITTLE THINGS... EAT THEM.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "LITTLE THINGS...[BR]EAT THEM.",
+      "Translation": "\uC0AC\uC18C\uD55C \uAC83\uB4E4...[BR]\uBC15\uC0B4 \uB0B4\uBC84\uB824.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 296,
+        "Y": 772.3333333333334,
+        "W": 65.33333333333337,
+        "H": 49.33333333333326,
+        "Text": "m",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 296,
+            "Y": 772.3333333333334,
+            "W": 65.33333333333337,
+            "H": 49.33333333333326,
+            "Text": "m",
+            "Confidence": 0.3446029,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "m",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 377,
+        "Y": 849,
+        "W": 60.66666666666663,
+        "H": 68.66666666666663,
+        "Text": "EAT THEM ALL!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 381.3333333333333,
+            "Y": 849,
+            "W": 53.333333333333314,
+            "H": 27,
+            "Text": "EAT",
+            "Confidence": 0.9976219,
+            "Language": "en"
+          },
+          {
+            "X": 377,
+            "Y": 868.6666666666666,
+            "W": 59.66666666666663,
+            "H": 20.33333333333337,
+            "Text": "THEM",
+            "Confidence": 0.9996466,
+            "Language": "en"
+          },
+          {
+            "X": 377.3333333333333,
+            "Y": 880.6666666666666,
+            "W": 60.333333333333314,
+            "H": 37,
+            "Text": "ALL!",
+            "Confidence": 0.9315307,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "EAT THEM ALL!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "EAT THEM ALL!",
+      "Translation": "\uBABD\uB545 \uB2E4 \uBA39\uC5B4\uCE58\uC6CC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1135.3333333333333,
+        "Y": 1867.6666666666667,
+        "W": 120.66666666666674,
+        "H": 81.66666666666652,
+        "Text": "EAT THEM ALL FOR YOU, MY QUEEN!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1175,
+            "Y": 1867.6666666666667,
+            "W": 41.66666666666674,
+            "H": 22.333333333333258,
+            "Text": "EAT",
+            "Confidence": 0.99899805,
+            "Language": "en"
+          },
+          {
+            "X": 1146.6666666666667,
+            "Y": 1886,
+            "W": 99,
+            "H": 24.666666666666742,
+            "Text": "THEM ALL",
+            "Confidence": 0.9987789,
+            "Language": "en"
+          },
+          {
+            "X": 1135.3333333333333,
+            "Y": 1905,
+            "W": 120.66666666666674,
+            "H": 24.666666666666742,
+            "Text": "FOR YOU, MY",
+            "Confidence": 0.99685615,
+            "Language": "en"
+          },
+          {
+            "X": 1157.6666666666667,
+            "Y": 1925.3333333333333,
+            "W": 78,
+            "H": 24,
+            "Text": "QUEEN!",
+            "Confidence": 0.99796855,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "EAT THEM ALL FOR YOU, MY QUEEN!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG008"
+      },
+      "CorrectedText": "EAT THEM ALL FOR YOU, MY QUEEN!",
+      "Translation": "\uBAA8\uB450 \uBA39\uC5B4\uCE58\uC6B0\uACA0\uC2B5\uB2C8\uB2E4,[BR]\uB098\uC758 \uC5EC\uC655\uB2D8!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1195,
+        "Y": 1940.3333333333333,
+        "W": 33,
+        "H": 33,
+        "Text": "eN.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1195,
+            "Y": 1940.3333333333333,
+            "W": 33,
+            "H": 33,
+            "Text": "eN.",
+            "Confidence": 0.3944106,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "eN.",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1180,
+        "Y": 1993,
+        "W": 8,
+        "H": 6.3333333333332575,
+        "Text": "d",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1180,
+            "Y": 1993,
+            "W": 8,
+            "H": 6.3333333333332575,
+            "Text": "d",
+            "Confidence": 0.30719665,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "d",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

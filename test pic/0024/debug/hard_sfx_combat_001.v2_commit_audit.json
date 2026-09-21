@@ -1,0 +1,37 @@
+{
+  "Schema": "pipeline-v2-atomic-commit-v1",
+  "SourceFile": "hard_sfx_combat_001.jpg",
+  "RequestedUnits": 1,
+  "TranslatedUnits": 1,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 1,
+  "TypesetCommittedUnits": 1,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 1,
+      "SourceText": "SONOFA--!",
+      "Translation": "\uC800\uB9AC \uBE44\uCF1C--!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 736,
+        "Y": 1803,
+        "Width": 152,
+        "Height": 102
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

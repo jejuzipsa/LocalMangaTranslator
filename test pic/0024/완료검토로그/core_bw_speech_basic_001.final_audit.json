@@ -1,0 +1,480 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "core_bw_speech_basic_001.png",
+  "output_file": "core_bw_speech_basic_001.translated.webp",
+  "image": {
+    "width": 1295,
+    "height": 1812,
+    "changed_pixels": 49399,
+    "changed_ratio": 0.02105184654853529,
+    "changed_regions": [
+      {
+        "x": 206,
+        "y": 682,
+        "width": 119,
+        "height": 75
+      },
+      {
+        "x": 180,
+        "y": 185,
+        "width": 176,
+        "height": 37
+      },
+      {
+        "x": 456,
+        "y": 473,
+        "width": 103,
+        "height": 42
+      },
+      {
+        "x": 897,
+        "y": 1621,
+        "width": 108,
+        "height": 33
+      },
+      {
+        "x": 304,
+        "y": 682,
+        "width": 36,
+        "height": 75
+      },
+      {
+        "x": 509,
+        "y": 516,
+        "width": 71,
+        "height": 36
+      },
+      {
+        "x": 1059,
+        "y": 679,
+        "width": 67,
+        "height": 38
+      },
+      {
+        "x": 577,
+        "y": 186,
+        "width": 71,
+        "height": 35
+      },
+      {
+        "x": 621,
+        "y": 226,
+        "width": 57,
+        "height": 37
+      },
+      {
+        "x": 1030,
+        "y": 720,
+        "width": 60,
+        "height": 34
+      },
+      {
+        "x": 681,
+        "y": 226,
+        "width": 53,
+        "height": 37
+      },
+      {
+        "x": 898,
+        "y": 683,
+        "width": 56,
+        "height": 34
+      },
+      {
+        "x": 988,
+        "y": 679,
+        "width": 43,
+        "height": 38
+      },
+      {
+        "x": 726,
+        "y": 1293,
+        "width": 44,
+        "height": 37
+      },
+      {
+        "x": 233,
+        "y": 1295,
+        "width": 54,
+        "height": 30
+      },
+      {
+        "x": 456,
+        "y": 516,
+        "width": 45,
+        "height": 36
+      },
+      {
+        "x": 926,
+        "y": 1660,
+        "width": 49,
+        "height": 31
+      },
+      {
+        "x": 197,
+        "y": 149,
+        "width": 44,
+        "height": 33
+      },
+      {
+        "x": 259,
+        "y": 1258,
+        "width": 44,
+        "height": 32
+      },
+      {
+        "x": 771,
+        "y": 1293,
+        "width": 36,
+        "height": 38
+      },
+      {
+        "x": 905,
+        "y": 721,
+        "width": 40,
+        "height": 34
+      },
+      {
+        "x": 976,
+        "y": 1659,
+        "width": 41,
+        "height": 32
+      },
+      {
+        "x": 983,
+        "y": 721,
+        "width": 38,
+        "height": 34
+      },
+      {
+        "x": 691,
+        "y": 1293,
+        "width": 35,
+        "height": 36
+      },
+      {
+        "x": 656,
+        "y": 191,
+        "width": 42,
+        "height": 30
+      },
+      {
+        "x": 1012,
+        "y": 1621,
+        "width": 38,
+        "height": 33
+      },
+      {
+        "x": 304,
+        "y": 1260,
+        "width": 41,
+        "height": 30
+      },
+      {
+        "x": 859,
+        "y": 1621,
+        "width": 37,
+        "height": 33
+      },
+      {
+        "x": 194,
+        "y": 1258,
+        "width": 37,
+        "height": 32
+      },
+      {
+        "x": 237,
+        "y": 149,
+        "width": 35,
+        "height": 33
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "core_bw_speech_basic_001.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 29958,
+    "erase_changed_ratio": 0.012766882303306144,
+    "typeset_changed_pixels": 29492,
+    "typeset_changed_ratio": 0.012568292038490714
+  },
+  "region_analysis": {
+    "total": 16,
+    "bubbles": 8,
+    "text_regions": 8,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 17,
+      "Global2x": 16,
+      "Focus3x": 41,
+      "Region1x": 16,
+      "Region2x": 16,
+      "Container1x": 17,
+      "Container2x": 18
+    },
+    "canonical_lines": 18,
+    "units": 9,
+    "assigned_lines": 17,
+    "orphan_groups": 1,
+    "secondary_total": 8,
+    "secondary_accepted": 8,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 149,
+          "Bottom": 217,
+          "Left": 151,
+          "Right": 352,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HERE I GOOOOOOOO!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 188,
+          "Bottom": 260,
+          "Left": 582,
+          "Right": 760,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOUR ROOM IS ROOM 43L.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 485,
+          "Bottom": 550,
+          "Left": 431,
+          "Right": 585,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW NOW,\nSLOW DOWN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 668,
+          "Bottom": 766,
+          "Left": 166,
+          "Right": 390,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IN OTHER WORLDS, FROM YOUR CURRENT POSITION,",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 681,
+          "Bottom": 754,
+          "Left": 857,
+          "Right": 1133,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WILL HAVE TO PASS THROUGH HES. ROOMS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1259,
+          "Bottom": 1326,
+          "Left": 175,
+          "Right": 347,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEREN LIES THE PROBLEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 1292,
+          "Bottom": 1335,
+          "Left": 677,
+          "Right": 845,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AS I\u0027VE SAID,",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1622,
+          "Bottom": 1690,
+          "Left": 862,
+          "Right": 1110,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE FURTHER YOU ARE FROM THIS ROOM...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 9,
+    "requested_render": 8
+  },
+  "render": {
+    "total": 8,
+    "approved": 8,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 8,
+    "TranslatedUnits": 8,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 8,
+    "TypesetCommittedUnits": 8,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "HERE I G000000000!",
+        "Translation": "\uC5EC\uAE30 \uB0B4\uAC00\n\uC788\uC5B4\uC5B4\uC5B4\uC5B4\uC5B4\uC5B4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "YOUR ROOM IS ROOM 431.",
+        "Translation": "\uBC29\uC740\n431\uD638\uC785\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "NOW NOW. SLOW DOWN.",
+        "Translation": "\uC9C4\uC815\uD574,\n\uCC9C\uCC9C\uD788 \uB9D0\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "IN OTHER WORDS, FROM YOUR CURRENT POSITION,",
+        "Translation": "\uB2E4\uC2DC \uB9D0\uD574\uC11C,\n\uC9C0\uAE08 \uB124 \uC704\uCE58\uC5D0\uC11C \uBCF4\uBA74,",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "YOU WILL HAVE TO PASS THROUGH 431 ROOMS.",
+        "Translation": "\uCD1D 431\uAC1C\uC758 \uBC29\uC744\n\uD1B5\uACFC\uD574\uC57C \uD55C\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "THEREIN LIES PROBLEM. THE",
+        "Translation": "\uADF8\uAC8C \uBC14\uB85C \uBB38\uC81C\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "AS I\u0027VE SAID,",
+        "Translation": "\uB9D0\uD588\uC796\uC544,",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "THE FURTHER YOU ARE FROM THIS ROOM...",
+        "Translation": "\uC774 \uBC29\uC5D0\uC11C \uBA40\uC5B4\uC9C8\uC218\uB85D...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
