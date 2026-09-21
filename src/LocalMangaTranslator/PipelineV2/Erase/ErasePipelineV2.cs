@@ -1054,6 +1054,10 @@ public sealed class ErasePipelineV2
                                     x.DominantMatchRatio,
                                     x.P75ColorDistance,
                                     x.P90ColorDistance,
+
+                                    x.SpatialCoverage,
+
+                                    x.ExclusionRadius,
                                     x.FlatAccepted,
                                     x.Reason,
                                     PostReconstructionP85 =
@@ -2091,6 +2095,10 @@ public sealed class ErasePipelineV2
                             x.DominantMatchRatio,
                             x.P75ColorDistance,
                             x.P90ColorDistance,
+
+                            x.SpatialCoverage,
+
+                            x.ExclusionRadius,
                             x.FlatAccepted,
                             x.Reason,
                             PostReconstructionP85 =
