@@ -17,7 +17,8 @@ public static class ComicTranslateComponentMask
         Mat source,
         Rect textBounds,
         Rect? bubbleBounds = null,
-        bool includeColorRescue = true)
+        bool includeColorRescue = true,
+        bool dilateMask = true)
     {
         var cropBounds =
             ClampRect(
@@ -223,11 +224,13 @@ public static class ComicTranslateComponentMask
                 Scalar.Black);
         }
 
-        using (var kernel =
-               Cv2.GetStructuringElement(
-                   MorphShapes.Ellipse,
-                   new Size(3, 3)))
+        if (dilateMask)
         {
+            using var kernel =
+                Cv2.GetStructuringElement(
+                    MorphShapes.Ellipse,
+                    new Size(3, 3));
+
             Cv2.Dilate(
                 chosen,
                 chosen,
@@ -235,7 +238,9 @@ public static class ComicTranslateComponentMask
                 iterations: 1);
         }
 
-        // Dilation can grow outside TextBubble, so clamp once more.
+        // Erase dilation can grow outside TextBubble, so clamp once more.
+        // Residual review asks for dilateMask:false to keep an undilated
+        // glyph core that represents where source lettering actually lived.
         using var clamped =
             Mat.Zeros(
                     gray.Rows,
