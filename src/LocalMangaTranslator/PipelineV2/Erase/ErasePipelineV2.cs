@@ -339,6 +339,29 @@ public sealed class ErasePipelineV2
                 MatType.CV_8UC1)
             .ToMat();
 
+        using var flatRetryMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var teleaRetryMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        var backgroundAuditByTarget =
+            backgroundAudits.ToDictionary(
+                x => x.TextRegionId,
+                StringComparer.Ordinal);
+
+        var retryMasksByTarget =
+            new Dictionary<string, Mat>(
+                StringComparer.Ordinal);
+
         var audits =
             new List<V2EraseTargetAudit>(
                 targets.Count);
@@ -467,6 +490,10 @@ public sealed class ErasePipelineV2
                     retryTargetMask,
                     retryMask);
 
+                retryMasksByTarget[
+                    target.TextRegionId] =
+                    retryTargetMask.Clone();
+
                 Cv2.BitwiseOr(
                     residualBefore,
                     effectiveResidual,
@@ -522,12 +549,111 @@ public sealed class ErasePipelineV2
             Cv2.CountNonZero(
                 retryMask);
 
+        int flatRetryTargetCount = 0;
+        int teleaRetryTargetCount = 0;
+
         using var finalCleaned =
-            retryMaskPixels > 0
-                ? InpaintOnlyMaskedPixels(
-                    firstCleaned,
-                    retryMask)
-                : firstCleaned.Clone();
+            firstCleaned.Clone();
+
+        foreach (var target in targets)
+        {
+            if (!retryMasksByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var targetRetryMask))
+            {
+                continue;
+            }
+
+            if (!backgroundAuditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var backgroundAudit))
+            {
+                Cv2.BitwiseOr(
+                    teleaRetryMask,
+                    targetRetryMask,
+                    teleaRetryMask);
+
+                teleaRetryTargetCount++;
+
+                continue;
+            }
+
+            if (backgroundAudit.FlatAccepted)
+            {
+                // 0032: retry must preserve the reconstruction strategy chosen
+                // for this immutable TextRegionId. In particular, a flat
+                // balloon must never fall back to Telea, because surviving
+                // colored glyph pixels would become inpaint source material.
+                BackgroundReconstructionV2.ApplyFlatFill(
+                    finalCleaned,
+                    targetRetryMask,
+                    backgroundAudit);
+
+                Cv2.BitwiseOr(
+                    flatRetryMask,
+                    targetRetryMask,
+                    flatRetryMask);
+
+                flatRetryTargetCount++;
+            }
+            else
+            {
+                Cv2.BitwiseOr(
+                    teleaRetryMask,
+                    targetRetryMask,
+                    teleaRetryMask);
+
+                teleaRetryTargetCount++;
+            }
+        }
+
+        // If detector boxes ever overlap, FLAT_FILL owns its pixels. Do not
+        // let a neighboring TELEA retry sample or overwrite an already
+        // reconstructed flat background.
+        if (Cv2.CountNonZero(
+                flatRetryMask) > 0 &&
+            Cv2.CountNonZero(
+                teleaRetryMask) > 0)
+        {
+            using var notFlatRetryMask =
+                new Mat();
+
+            Cv2.BitwiseNot(
+                flatRetryMask,
+                notFlatRetryMask);
+
+            Cv2.BitwiseAnd(
+                teleaRetryMask,
+                notFlatRetryMask,
+                teleaRetryMask);
+        }
+
+        int teleaRetryMaskPixels =
+            Cv2.CountNonZero(
+                teleaRetryMask);
+
+        if (teleaRetryMaskPixels > 0)
+        {
+            using var teleaRetryCleaned =
+                InpaintOnlyMaskedPixels(
+                    finalCleaned,
+                    teleaRetryMask);
+
+            teleaRetryCleaned.CopyTo(
+                finalCleaned);
+        }
+
+        int flatRetryMaskPixels =
+            Cv2.CountNonZero(
+                flatRetryMask);
+
+        foreach (var targetRetryMask in
+                 retryMasksByTarget.Values)
+        {
+            targetRetryMask.Dispose();
+        }
+
+        retryMasksByTarget.Clear();
 
         int residualAfterTotal = 0;
 
@@ -1013,6 +1139,18 @@ public sealed class ErasePipelineV2
                         x.ResidualBeforeRetryPixels),
                 RetryMaskPixels =
                     retryMaskPixels,
+                RetryReconstruction =
+                    new
+                    {
+                        FlatFillRetryTargets =
+                            flatRetryTargetCount,
+                        FlatFillRetryMaskPixels =
+                            flatRetryMaskPixels,
+                        TeleaRetryTargets =
+                            teleaRetryTargetCount,
+                        TeleaRetryMaskPixels =
+                            teleaRetryMaskPixels
+                    },
                 ResidualAfterRetryPixels =
                     residualAfterTotal,
                 RetryTargetCount =
@@ -1173,6 +1311,16 @@ public sealed class ErasePipelineV2
                             audit.CoreOverlapBeforeRetryPixels,
                             audit.PersistentCoreBeforeRetryPixels,
                             audit.RetryMaskPixels,
+                            RetryStrategy =
+                                audit.Retried
+                                    ? backgroundAuditByTarget.TryGetValue(
+                                          target.TextRegionId,
+                                          out var retryBackgroundAudit)
+                                        ? retryBackgroundAudit.FlatAccepted
+                                            ? "FLAT_FILL"
+                                            : "TELEA"
+                                        : "TELEA_FALLBACK"
+                                    : "not_run",
                             audit.ResidualAfterRetryPixels,
                             audit.EffectiveResidualAfterRetryPixels,
                             audit.CoreOverlapAfterRetryPixels,
