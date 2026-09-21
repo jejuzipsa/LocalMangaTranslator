@@ -1,0 +1,674 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page016.jpg",
+  "output_file": "page016.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 116339,
+    "changed_ratio": 0.042073426970477466,
+    "changed_regions": [
+      {
+        "x": 359,
+        "y": 107,
+        "width": 398,
+        "height": 85
+      },
+      {
+        "x": 561,
+        "y": 227,
+        "width": 337,
+        "height": 97
+      },
+      {
+        "x": 88,
+        "y": 102,
+        "width": 222,
+        "height": 119
+      },
+      {
+        "x": 999,
+        "y": 1593,
+        "width": 181,
+        "height": 119
+      },
+      {
+        "x": 663,
+        "y": 897,
+        "width": 182,
+        "height": 78
+      },
+      {
+        "x": 1121,
+        "y": 853,
+        "width": 163,
+        "height": 82
+      },
+      {
+        "x": 628,
+        "y": 1017,
+        "width": 176,
+        "height": 67
+      },
+      {
+        "x": 568,
+        "y": 1791,
+        "width": 111,
+        "height": 88
+      },
+      {
+        "x": 225,
+        "y": 1484,
+        "width": 127,
+        "height": 58
+      },
+      {
+        "x": 54,
+        "y": 981,
+        "width": 126,
+        "height": 52
+      },
+      {
+        "x": 242,
+        "y": 1446,
+        "width": 111,
+        "height": 56
+      },
+      {
+        "x": 87,
+        "y": 931,
+        "width": 118,
+        "height": 51
+      },
+      {
+        "x": 654,
+        "y": 1897,
+        "width": 104,
+        "height": 36
+      },
+      {
+        "x": 1121,
+        "y": 1654,
+        "width": 49,
+        "height": 46
+      },
+      {
+        "x": 676,
+        "y": 1932,
+        "width": 63,
+        "height": 29
+      },
+      {
+        "x": 605,
+        "y": 846,
+        "width": 73,
+        "height": 24
+      },
+      {
+        "x": 605,
+        "y": 872,
+        "width": 70,
+        "height": 24
+      },
+      {
+        "x": 155,
+        "y": 982,
+        "width": 63,
+        "height": 25
+      },
+      {
+        "x": 1158,
+        "y": 1875,
+        "width": 70,
+        "height": 19
+      },
+      {
+        "x": 567,
+        "y": 845,
+        "width": 38,
+        "height": 24
+      },
+      {
+        "x": 90,
+        "y": 958,
+        "width": 40,
+        "height": 22
+      },
+      {
+        "x": 1145,
+        "y": 936,
+        "width": 32,
+        "height": 25
+      },
+      {
+        "x": 1170,
+        "y": 853,
+        "width": 33,
+        "height": 24
+      },
+      {
+        "x": 680,
+        "y": 1822,
+        "width": 30,
+        "height": 26
+      },
+      {
+        "x": 1178,
+        "y": 936,
+        "width": 31,
+        "height": 25
+      },
+      {
+        "x": 1121,
+        "y": 1873,
+        "width": 37,
+        "height": 20
+      },
+      {
+        "x": 692,
+        "y": 997,
+        "width": 33,
+        "height": 21
+      },
+      {
+        "x": 577,
+        "y": 873,
+        "width": 26,
+        "height": 23
+      },
+      {
+        "x": 67,
+        "y": 957,
+        "width": 23,
+        "height": 25
+      },
+      {
+        "x": 1113,
+        "y": 909,
+        "width": 22,
+        "height": 25
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page016.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 71748,
+    "erase_changed_ratio": 0.025947311204994175,
+    "typeset_changed_pixels": 69733,
+    "typeset_changed_ratio": 0.025218596368649423
+  },
+  "region_analysis": {
+    "total": 26,
+    "bubbles": 12,
+    "text_regions": 14,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 38,
+      "Global2x": 44,
+      "Focus3x": 306,
+      "Region1x": 54,
+      "Region2x": 106,
+      "Container1x": 42,
+      "Container2x": 60
+    },
+    "canonical_lines": 72,
+    "units": 16,
+    "assigned_lines": 61,
+    "orphan_groups": 5,
+    "secondary_total": 12,
+    "secondary_accepted": 11,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 98,
+          "Bottom": 228,
+          "Left": 85,
+          "Right": 314,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022ALL YOUR DOCTORS HERE... FROM YOUR BEHAVIORAL COACH TO YOUR PHY",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 107,
+          "Bottom": 199,
+          "Left": 352,
+          "Right": 764,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022THEY TRY ADVY AND DAY OF AY OUT OUT. AND ALL YOU DO IS CAST THEM AS YULI-AN IN THIS BLOOD TAN THALA THALA THATA TATATATA TATATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 220,
+          "Bottom": 331,
+          "Left": 555,
+          "Right": 901,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022BUT THE TRUTH IS YOU ARE NOT BATHMAN, BRUCE. AND DR. HUDDI IS NOT THE JOKER AND JUST... DEAS TELD FOVE FOR FORE FOVE FOF F FOF",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 850,
+          "Bottom": 960,
+          "Left": 1113,
+          "Right": 1278,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "No...\nNooo, Afffered\ndurt go!\nDon\u0027t leev me!\nPleeaz!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 845,
+          "Bottom": 896,
+          "Left": 568,
+          "Right": 693,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I...I CAN\u0027T.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 886,
+          "Bottom": 914,
+          "Left": 85,
+          "Right": 125,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "empty_result"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 889,
+          "Bottom": 979,
+          "Left": 657,
+          "Right": 854,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ANYT.\nIT\u0027LL\nJUST TAKE TIME,\nMR. PENNYWORTH.\nTHAT\u0027S ALL.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 933,
+          "Bottom": 1023,
+          "Left": 58,
+          "Right": 212,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Maddl hattur. Jervis. Or Scerecraw. Did thinkis...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 995,
+          "Bottom": 1083,
+          "Left": 607,
+          "Right": 813,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OF\nCOURSE, DOCTOR.\nTHANK YOU. FOR\nEVERYTHING.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1442,
+          "Bottom": 1548,
+          "Left": 219,
+          "Right": 375,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I LOVE YOU, MY BOY. I\u0027LL... I\u0027LL BE BACK SOON.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG022",
+        "Bounds": {
+          "Top": 1785,
+          "Bottom": 1881,
+          "Left": 550,
+          "Right": 711,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "please!!! don\u0027t go!!!! Don\u0027t go!Don\u0027t GOOD!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 1906,
+          "Bottom": 1956,
+          "Left": 650,
+          "Right": 764,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S OKAY, BRUCE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 16,
+    "requested_render": 14
+  },
+  "render": {
+    "total": 13,
+    "approved": 13,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 14,
+    "TranslatedUnits": 13,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 13,
+    "TypesetCommittedUnits": 13,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "DOCTORS HERE... FROM YOUR BEHAVIORAL COACH TO YOUR PHYSICAL THERAPIST.. THEY CARE ABOUT YOU.\u0022",
+        "Translation": "\u0022\uC5EC\uAE30 \uC788\uB294 \uBAA8\uB4E0 \uC758\uC0AC\uBD84\uB4E4\uC774...[BR]\uD589\uB3D9 \uAD50\uC815 \uCF54\uCE58\uBD80\uD130 \uBB3C\uB9AC \uCE58\uB8CC\uC0AC\uAE4C\uC9C0...[BR]\uBAA8\uB450 \uB2F9\uC2E0\uC744 \uC9C4\uC2EC\uC73C\uB85C \uC544\uB07C\uACE0 \uC788\uC5B4\uC694.\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "\u0022THEY TRY, DAY IN AND DAY OUT, AS VILLAINS IS CAST THEM ALL YOU D\u00D3 STAGE DRAM IN THIS BLOODY STAGE \u0027BATMAN.\u0027 CALL YOUR HEAD",
+        "Translation": "\u0022\uADF8\uB4E4\uC740 \uB9E4\uC77C\uAC19\uC774 \uB178\uB825\uD558\uB294\uB370, \uB10C \uADF8\uC800 \uB124 \uBA38\uB9BF\uC18D \u0027\uBC30\uD2B8\uB9E8\u0027\uC774\uB77C\uB294 \uD53C\uBE44\uB9B0\uB0B4 \uB098\uB294 \uC5F0\uADF9 \uC18D\uC5D0\uC11C \uADF8\uB4E4\uC744 \uC545\uB2F9\uC73C\uB85C\uB9CC \uBAB0\uC544\uC138\uC6B0\uACE0 \uC788\uC5B4.\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "\u0022BUT THE TRUTH IS, YOU ARE NOT THE JOKER. AND HUDD IS NOT THE JOKER. AND JUST..PLEASE. FOR THE LOVE OF GOD TELL ME YOU SEE NOW.\u0022",
+        "Translation": "\u0022\uD558\uC9C0\uB9CC \uC9C4\uC2E4\uC740, \uB124\uAC00 \uBC30\uD2B8\uB9E8\uC774 \uC544\uB2C8\uB77C\uB294 \uAC70\uC57C, \uBE0C\uB8E8\uC2A4. \uADF8\uB9AC\uACE0 \uD5C8\uB4DC \uBC15\uC0AC\uB3C4 \uC870\uCEE4\uAC00 \uC544\uB2C8\uB77C\uACE0. \uC81C\uBC1C... \uC2E0\uC744 \uBBFF\uB294\uB2E4\uBA74 \uC774\uC81C \uC880 \uC54C\uC544\uCC58\uC73C\uBA74 \uC88B\uACA0\uC5B4.\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "SIGH I..I CAN\u0027T.",
+        "Translation": "\uD558\uC544... \uBABB\uD574. \uBABB\uD55C\uB2E4\uACE0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "No... Nooo, Afffred dun\u0027t go! Don\u0027t leeev me! Pleea",
+        "Translation": "\uC548 \uB3FC...\n\uC548 \uB3FC, \uC560\uD504\uB808\uB4DC \uAC00\uC9C0 \uB9C8!\n\uB098\uB97C \uBC84\uB9AC\uACE0 \uAC00\uC9C0 \uB9C8!\n\uC81C\uBC1C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "IT\u0027LL IT\u0027LL TIME, TAKE MR. PENNYWORTH. THAT\u0027S ALL.",
+        "Translation": "\uC2DC\uAC04\uC774 \uC880\n\uAC78\uB9B4 \uBFD0\uC785\uB2C8\uB2E4,\n\uD398\uB2C8\uC6CC\uC2A4 \uC528.\n\uADF8\uAC8C \uC804\uBD80\uC608\uC694.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "M",
+        "Translation": "\uC73D",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "Madd hattur. Jervis. Or Scerecraw. Did thhhis..",
+        "Translation": "\uB9E4\uB4DC \uD574\uD130. \uC800\uBE44\uC2A4. \uC544\uB2C8\uBA74 \uC2A4\uD06C\uB9AD\uB85C. \n\uC774\uAC78 \uC0DD\uAC01\uD558\uAE34...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "OF COURSE, DOCTOR. THANK YOU. FOR EVERYTHING.",
+        "Translation": "\uB2F9\uC5F0\uD558\uC8E0, \uC120\uC0DD\uB2D8. \uAC10\uC0AC\uD569\uB2C8\uB2E4.\n\uBAA8\uB4E0 \uAC83\uC5D0\n\uC9C4\uC2EC\uC73C\uB85C\n\uAC10\uC0AC\uB4DC\uB824\uC694.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "I yOu, LOVE I\u0027LL.. MY BOY. BE BACK SOON.",
+        "Translation": "\uC0AC\uB791\uD55C\uB2E4, \uB0B4 \uC544\uB4E4\uC544. \uAE08\uBC29... \uAE08\uBC29 \uB3CC\uC544\uC62C\uAC8C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": ".YOU\u0027VE BEEN LOST IN IN KALONG TIME. YOUR EYES JUST NEED TO ADJUST.",
+        "Translation": "...\uC624\uB7AB\uB3D9\uC548 \uC5B4\uB460 \uC18D\uC5D0 \uC788\uC5C8\uC744 \uBFD0\uC774\uC57C.[BR]\uB208\uC774 \uC801\uC751\uD560 \uC2DC\uAC04\uC774 \uD544\uC694\uD560 \uBFD0\uC774\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_textfree"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "Please!!! don\u0027t go!!!! Don\u0027t go!Don\u0027t GO00",
+        "Translation": "\uC81C\uBC1C!!!\n\uAC00\uC9C0 \uB9C8!!!!\n\uAC00\uC9C0 \uB9C8! \uAC00\uC9C0\n\uB9C8\uC544\uC544\uC544",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "THAT\u0027S ALL.",
+        "Translation": "\uADF8\uAC8C \uC804\uBD80\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_textfree"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "IT\u0027S OKAY, BRUCE..",
+        "Translation": "\uAD1C\uCC2E\uC544, \uBE0C\uB8E8\uC2A4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

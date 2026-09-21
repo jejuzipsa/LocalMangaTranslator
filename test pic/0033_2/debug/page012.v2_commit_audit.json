@@ -1,0 +1,307 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page012.jpg",
+  "RequestedUnits": 12,
+  "TranslatedUnits": 7,
+  "PreservedOriginalUnits": 5,
+  "EraseCommittedUnits": 7,
+  "TypesetCommittedUnits": 7,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "RU LETT ME OUTTT!",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC, \uC548 \uB3FC...[BR]\uC548 \uB3FC...[BR]\uB0B4\uBCF4\uB0B4 \uC918\uC5B4\uC5B4!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002",
+        "RG003"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 884,
+        "Y": 73,
+        "Width": 187,
+        "Height": 103
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": true,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:cleaned_text_redetected"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "Nononono.. no...",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC, \uC548 \uB3FC...[BR]\uC548 \uB3FC...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 884,
+        "Y": 73,
+        "Width": 187,
+        "Height": 103
+      },
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": false,
+      "Status": "original_preserved:container_duplicate"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "LOOK, I UNDERSTAND THIS IS A LOT. WE ALL DO. AND BEHIND THAT DOOR ARE A BEEN LOT OF I WAITING TO MEET YOU-- THE A VERY LONG TIME.",
+      "Translation": "\uC798 \uB4E4\uC73C\uC138\uC694, \uC774\uAC8C \uAC10\uB2F9\uD558\uAE30 \uD798\uB4E4\uB2E4\uB294 \uAC70[BR]\uC6B0\uB9AC \uBAA8\uB450 \uC54C\uACE0 \uC788\uC2B5\uB2C8\uB2E4.[BR]\uADF8\uB9AC\uACE0 \uC800 \uBB38 \uB108\uBA38\uC5D0\uB294[BR]\uB2F9\uC2E0\uC744 \uB9CC\uB098\uAE38 \uACE0\uB300\uD574 \uC628[BR]\uC218\uB9CE\uC740 \uC0AC\uB78C\uB4E4\uC774 \uC788\uC5B4\uC694.[BR]\uC9C4\uC9DC \uB2F9\uC2E0\uC744[BR]\uC544\uC8FC \uC624\uB7AB\uB3D9\uC548 \uB9D0\uC774\uC8E0.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG005"
+      ],
+      "BubbleRegionId": "RG004",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 501,
+        "Y": 687,
+        "Width": 342,
+        "Height": 169
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "SHHH. BRUCE, PLEASE. THE OF-- START",
+      "Translation": "\uC27F. \uBE0C\uB8E8\uC2A4, \uC81C\uBC1C. \uC9C0\uAE08\uC740\n\uC2DC\uC791\uD558\uB294\n\uC911\uC774\uC57C\u2014",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG006",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 82,
+        "Y": 710,
+        "Width": 204,
+        "Height": 120
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "F",
+      "Translation": "\uD5C9!",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": ".. no",
+      "Translation": "...\uC544\uB2C8.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG009"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1103,
+        "Y": 714,
+        "Width": 119,
+        "Height": 82
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "BRUCE?",
+      "Translation": "\uBE0C\uB8E8\uC2A4?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG011"
+      ],
+      "BubbleRegionId": "RG010",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 931,
+        "Y": 751,
+        "Width": 134,
+        "Height": 86
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 8,
+      "SourceText": "Don\u0027t tuch mE!",
+      "Translation": "\uAC74\uB4DC\uB9AC\uC9C0 \uB9C8!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG013"
+      ],
+      "BubbleRegionId": "RG012",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 256,
+        "Y": 796,
+        "Width": 158,
+        "Height": 103
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 9,
+      "SourceText": "BUT FIRST...YOU SHOULD MEET THE PERSON WHO\u0027S BEEN WAITING LONGEST OF ALL.",
+      "Translation": "\uD558\uC9C0\uB9CC \uBA3C\uC800...[BR]\uAC00\uC7A5 \uC624\uB798 \uAE30\uB2E4\uB824 \uC628 \uC0AC\uB78C\uC744[BR]\uB9CC\uB098\uC57C \uD574.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG015"
+      ],
+      "BubbleRegionId": "RG014",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 548,
+        "Y": 858,
+        "Width": 218,
+        "Height": 162
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 12,
+      "SourceText": "HERE, LET ME GET YOU UP",
+      "Translation": "\uC790, \uB0B4\uAC00 \uC77C\uC73C\uCF1C \uC904\uAC8C.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG017"
+      ],
+      "BubbleRegionId": "RG016",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 736,
+        "Y": 952,
+        "Width": 134,
+        "Height": 113
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 13,
+      "SourceText": "I",
+      "Translation": "\uB098",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 14,
+      "SourceText": "M",
+      "Translation": "\uC73D",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page027.jpg",
+  "output_file": "page027.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 58135,
+    "changed_ratio": 0.021024236729976255,
+    "changed_regions": [
+      {
+        "x": 995,
+        "y": 1572,
+        "width": 273,
+        "height": 117
+      },
+      {
+        "x": 884,
+        "y": 925,
+        "width": 212,
+        "height": 104
+      },
+      {
+        "x": 852,
+        "y": 790,
+        "width": 145,
+        "height": 58
+      },
+      {
+        "x": 641,
+        "y": 791,
+        "width": 132,
+        "height": 57
+      },
+      {
+        "x": 907,
+        "y": 1030,
+        "width": 154,
+        "height": 37
+      },
+      {
+        "x": 892,
+        "y": 850,
+        "width": 93,
+        "height": 56
+      },
+      {
+        "x": 788,
+        "y": 791,
+        "width": 62,
+        "height": 57
+      },
+      {
+        "x": 819,
+        "y": 850,
+        "width": 74,
+        "height": 46
+      },
+      {
+        "x": 818,
+        "y": 351,
+        "width": 82,
+        "height": 37
+      },
+      {
+        "x": 790,
+        "y": 312,
+        "width": 75,
+        "height": 37
+      },
+      {
+        "x": 978,
+        "y": 912,
+        "width": 64,
+        "height": 37
+      },
+      {
+        "x": 196,
+        "y": 298,
+        "width": 77,
+        "height": 26
+      },
+      {
+        "x": 893,
+        "y": 925,
+        "width": 80,
+        "height": 24
+      },
+      {
+        "x": 218,
+        "y": 269,
+        "width": 59,
+        "height": 29
+      },
+      {
+        "x": 775,
+        "y": 351,
+        "width": 42,
+        "height": 37
+      },
+      {
+        "x": 1075,
+        "y": 979,
+        "width": 22,
+        "height": 46
+      },
+      {
+        "x": 686,
+        "y": 848,
+        "width": 37,
+        "height": 25
+      },
+      {
+        "x": 881,
+        "y": 324,
+        "width": 27,
+        "height": 25
+      },
+      {
+        "x": 194,
+        "y": 269,
+        "width": 22,
+        "height": 29
+      },
+      {
+        "x": 798,
+        "y": 850,
+        "width": 24,
+        "height": 20
+      },
+      {
+        "x": 659,
+        "y": 851,
+        "width": 23,
+        "height": 18
+      },
+      {
+        "x": 870,
+        "y": 888,
+        "width": 21,
+        "height": 19
+      },
+      {
+        "x": 970,
+        "y": 874,
+        "width": 18,
+        "height": 22
+      },
+      {
+        "x": 888,
+        "y": 952,
+        "width": 16,
+        "height": 23
+      },
+      {
+        "x": 730,
+        "y": 853,
+        "width": 23,
+        "height": 12
+      },
+      {
+        "x": 901,
+        "y": 351,
+        "width": 15,
+        "height": 17
+      },
+      {
+        "x": 1264,
+        "y": 1573,
+        "width": 14,
+        "height": 17
+      },
+      {
+        "x": 1061,
+        "y": 1031,
+        "width": 14,
+        "height": 16
+      },
+      {
+        "x": 884,
+        "y": 1007,
+        "width": 14,
+        "height": 16
+      },
+      {
+        "x": 922,
+        "y": 1050,
+        "width": 13,
+        "height": 17
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page027.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 38395,
+    "erase_changed_ratio": 0.013885362849358188,
+    "typeset_changed_pixels": 32450,
+    "typeset_changed_ratio": 0.011735382848331116
+  },
+  "region_analysis": {
+    "total": 12,
+    "bubbles": 6,
+    "text_regions": 6,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 23,
+      "Global2x": 25,
+      "Focus3x": 214,
+      "Region1x": 31,
+      "Region2x": 34,
+      "Container1x": 31,
+      "Container2x": 34
+    },
+    "canonical_lines": 43,
+    "units": 7,
+    "assigned_lines": 42,
+    "orphan_groups": 1,
+    "secondary_total": 6,
+    "secondary_accepted": 6,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 273,
+          "Bottom": 323,
+          "Left": 190,
+          "Right": 280,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027M SO SORRY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 304,
+          "Bottom": 393,
+          "Left": 770,
+          "Right": 922,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S GOOD TO SEE YOU, OLD FRIEND.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 785,
+          "Bottom": 913,
+          "Left": 782,
+          "Right": 1004,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YES. WHEN I FELT YOUR PULSE I KNEW YOU WERE MUCH OLDER THAN YOU",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG006",
+        "Bounds": {
+          "Top": 785,
+          "Bottom": 871,
+          "Left": 640,
+          "Right": 776,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT WAS MY HEARTBEAT, WASN\u0027T IT? Heh.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 904,
+          "Bottom": 1071,
+          "Left": 882,
+          "Right": 1100,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ON,\nTHE\nFUNNY THING IS,\nI HAVE THE BLOODY\nCOVERINGS BUT\nTHEY\u0027RE S",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1568,
+          "Bottom": 1694,
+          "Left": 989,
+          "Right": 1285,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S ALL JUST...NOT FINISHED YET. YOU WOKE UP BEFORE IT WAS READY, YOU SEE--WO YERS ERRELY FRERERY------NTRERER -F MOF THAT---T-",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 7,
+    "requested_render": 6
+  },
+  "render": {
+    "total": 6,
+    "approved": 6,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 6,
+    "TranslatedUnits": 6,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 6,
+    "TypesetCommittedUnits": 6,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "I\u0027M SO SORRY.",
+        "Translation": "\uC815\uB9D0 \uBBF8\uC548\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "IT\u0027S TO GOOD SEE YOU, OLD FRIEND.",
+        "Translation": "\uBC18\uAC00\uC6CC, \uC624\uB79C \uCE5C\uAD6C\uC5EC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "IT WAS MY HEARTBEAT WASN\u0027T IT? Heh.",
+        "Translation": "\uB0B4 \uC2EC\uC7A5 \uC18C\uB9AC\uC600\uC9C0, \uC548 \uADF8\uB798?[BR]\uD6D7.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "YES. WHEN I FELT YOUR PULSE I KNEW YOU WERE MUCH OLDER 2 THAN YOU WERE LETTING ON.",
+        "Translation": "\uADF8\uB798. \uB124 \uB9E5\uBC15\uC744 \uB290\uAF08\uC744 \uB54C[BR]\uB124\uAC00 \uC228\uAE30\uACE0 \uC788\uB294 \uAC83\uBCF4\uB2E4 \uD6E8\uC52C \uB098\uC774\uAC00 \uB9CE\uB2E4\uB294 \uAC78 \uC54C\uC558\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "THE FUNNY THING IS, BLOODY I HAVE THE HAVE COVERINGS BUT THEY\u0027RE STILL A BIT OFF AND I WAS WORRIED YOU\u0027D NOTICE THEM.",
+        "Translation": "\uC6C3\uAE34 \uAC74 \uB9D0\uC774\uC57C, \uAECD\uB370\uAE30\uB294 \uC81C\uB300\uB85C \uAD6C\uD588\uB294\uB370[BR]\uC544\uC9C1 \uC880 \uC5B4\uC0C9\uD574\uC11C \uB124\uAC00 \uC54C\uC544\uCC4C\uAE4C \uBD10 \uAC71\uC815\uD588\uAC70\uB4E0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "IT\u0027S ALL JUST...NOT FINISHED YET. YOU WOKE UP BEFORE IT WAS READY, YOU SEE--TWO YEARS EARLY IN FACT--BUT THERE\u0027S SO MUCH MORE TO IT, BRUCE.",
+        "Translation": "\uC774\uAC74 \uC804\uBD80... \uC544\uC9C1 \uC548 \uB05D\uB0AC\uC5B4.[BR] \uC900\uBE44\uAC00 \uB418\uAE30\uB3C4 \uC804\uC5D0 \uAE68\uC5B4\uB09C \uAC70\uC57C.[BR] \uC0AC\uC2E4 2\uB144\uC774\uB098 \uC77C\uCC0D \uB9D0\uC774\uC9C0.[BR] \uD558\uC9C0\uB9CC \uD6E8\uC52C \uB354 \uB9CE\uC740 \uAC8C \uC788\uC5B4, \uBE0C\uB8E8\uC2A4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

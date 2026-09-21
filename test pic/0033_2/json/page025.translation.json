@@ -1,0 +1,773 @@
+{
+  "SourceFile": "page025.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T02:11:52.9109953+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 157.33333333333334,
+        "Y": 198,
+        "W": 195.99999999999997,
+        "H": 84,
+        "Text": "BECAUSE, THERE\u0027S NOTHING LEFT FOR YOU, MY BOY.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 202,
+            "Y": 198,
+            "W": 104.33333333333331,
+            "H": 23.666666666666657,
+            "Text": "BECAUSE,",
+            "Confidence": 0.99751115,
+            "Language": "en"
+          },
+          {
+            "X": 157.33333333333334,
+            "Y": 217.33333333333331,
+            "W": 195.99999999999997,
+            "H": 24.33333333333337,
+            "Text": "THERE\u0027S NOTHING",
+            "Confidence": 0.9978149,
+            "Language": "en"
+          },
+          {
+            "X": 175.33333333333334,
+            "Y": 235.66666666666666,
+            "W": 157.66666666666666,
+            "H": 26.666666666666657,
+            "Text": "LEFT FOR YOU,",
+            "Confidence": 0.99615896,
+            "Language": "en"
+          },
+          {
+            "X": 209.33333333333334,
+            "Y": 256.3333333333333,
+            "W": 91.33333333333334,
+            "H": 25.666666666666686,
+            "Text": "MY BOY.",
+            "Confidence": 0.9855085,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BECAUSE, THERE\u0027S NOTHING LEFT FOR YOU, MY BOY.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "BECAUSE, THERE\u0027S NOTHING LEFT FOR YOU, MY BOY.",
+      "Translation": "\uC65C\uB0D0\uD558\uBA74, \uB124\uAC8C \uB0A8\uC740 \uAC8C \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC73C\uB2C8\uAE4C, \uAF2C\uB9F9\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 833.6666666666666,
+        "Y": 220.33333333333334,
+        "W": 231.66666666666663,
+        "H": 82.66666666666666,
+        "Text": "WANT THE THIS TRUTH? BEYOND WINDOW, THERE\u0027S NOTHING.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 921,
+            "Y": 220.33333333333334,
+            "W": 63,
+            "H": 22,
+            "Text": "WANT",
+            "Confidence": 0.9994757,
+            "Language": "en"
+          },
+          {
+            "X": 984,
+            "Y": 220.33333333333334,
+            "W": 39,
+            "H": 21.333333333333314,
+            "Text": "THE",
+            "Confidence": 0.99985826,
+            "Language": "en"
+          },
+          {
+            "X": 1013.3333333333333,
+            "Y": 238,
+            "W": 52,
+            "H": 26.333333333333314,
+            "Text": "THIS",
+            "Confidence": 0.99994963,
+            "Language": "en"
+          },
+          {
+            "X": 833.6666666666666,
+            "Y": 238.66666666666666,
+            "W": 80.66666666666674,
+            "H": 24.333333333333343,
+            "Text": "TRUTH?",
+            "Confidence": 0.997926,
+            "Language": "en"
+          },
+          {
+            "X": 922.3333333333334,
+            "Y": 238.66666666666666,
+            "W": 90.99999999999989,
+            "H": 24.333333333333343,
+            "Text": "BEYOND",
+            "Confidence": 0.99942,
+            "Language": "en"
+          },
+          {
+            "X": 852,
+            "Y": 254.66666666666669,
+            "W": 194.33333333333348,
+            "H": 30.666666666666686,
+            "Text": "WINDOW, THERE\u0027S",
+            "Confidence": 0.99523443,
+            "Language": "en"
+          },
+          {
+            "X": 894,
+            "Y": 277.33333333333337,
+            "W": 107.66666666666674,
+            "H": 25.66666666666663,
+            "Text": "NOTHING.",
+            "Confidence": 0.99909085,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU WANT THE TRUTH? BEYOND THIS WINDOW, THERE\u0027S NOTHING.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "YOU WANT THE TRUTH? BEYOND THIS WINDOW, THERE\u0027S NOTHING.",
+      "Translation": "\uC9C4\uC2E4\uC744 \uC6D0\uD574? \uC774 \uCC3D\uBB38 \uB108\uBA38\uC5D4[BR]\uC544\uBB34\uAC83\uB3C4 \uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 856.6666666666667,
+        "Y": 319,
+        "W": 7.3333333333332575,
+        "H": 14.333333333333371,
+        "Text": "D",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 856.6666666666667,
+            "Y": 319,
+            "W": 7.3333333333332575,
+            "H": 14.333333333333371,
+            "Text": "D",
+            "Confidence": 0.39058813,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "D",
+      "Translation": "D",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 949,
+        "Y": 346.66666666666663,
+        "W": 117.5,
+        "H": 64.33333333333337,
+        "Text": "WHAT DO YOU MEAN, NOTHING?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 956,
+            "Y": 346.66666666666663,
+            "W": 61.33333333333326,
+            "H": 24,
+            "Text": "WHAT",
+            "Confidence": 0.9997661,
+            "Language": "en"
+          },
+          {
+            "X": 1019,
+            "Y": 348,
+            "W": 37.66666666666674,
+            "H": 21,
+            "Text": "DO",
+            "Confidence": 0.99993634,
+            "Language": "en"
+          },
+          {
+            "X": 949,
+            "Y": 364.5,
+            "W": 115,
+            "H": 27,
+            "Text": "YOU MEAN,",
+            "Confidence": 0.97971284,
+            "Language": "en"
+          },
+          {
+            "X": 949.5,
+            "Y": 384,
+            "W": 117,
+            "H": 27,
+            "Text": "NOTHING?",
+            "Confidence": 0.99907213,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT DO YOU MEAN, NOTHING?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "WHAT DO YOU MEAN, NOTHING?",
+      "Translation": "\uBB50\uAC00 \uC5C6\uB2E4\uB294 \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 619.6666666666666,
+        "Y": 1124.6666666666667,
+        "W": 124.00000000000011,
+        "H": 84.33333333333326,
+        "Text": "os I...FAILED. HOW? WHAT HAPPENED?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 661,
+            "Y": 1124.6666666666667,
+            "W": 39.66666666666674,
+            "H": 25,
+            "Text": "os",
+            "Confidence": 0.99483705,
+            "Language": "en"
+          },
+          {
+            "X": 625.3333333333333,
+            "Y": 1144.6666666666667,
+            "W": 113.33333333333348,
+            "H": 24.666666666666515,
+            "Text": "I...FAILED.",
+            "Confidence": 0.9285392,
+            "Language": "en"
+          },
+          {
+            "X": 620,
+            "Y": 1165,
+            "W": 123,
+            "H": 23.333333333333258,
+            "Text": "HOW? WHAT",
+            "Confidence": 0.9960986,
+            "Language": "en"
+          },
+          {
+            "X": 619.6666666666666,
+            "Y": 1185.6666666666667,
+            "W": 124.00000000000011,
+            "H": 23.333333333333258,
+            "Text": "HAPPENED?",
+            "Confidence": 0.99965143,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SO\nI...FAILED.\nHOW? WHAT\nHAPPENED?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "SO I...FAILED. HOW? WHAT HAPPENED?",
+      "Translation": "\uADF8\uB7EC\uB2C8\uAE4C... \uC2E4\uD328\uD55C \uAC70\uC57C.[BR]\uC5B4\uB5BB\uAC8C? [BR]\uBB34\uC2A8 \uC77C\uC774[BR]\uC77C\uC5B4\uB09C \uAC70\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 289.6666666666667,
+        "Y": 1408,
+        "W": 134.66666666666669,
+        "H": 123,
+        "Text": "NO GOTHAM, FRIEND\u0027S, NO NO WORLD. IT\u0027S ALL GONE.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 336.33333333333337,
+            "Y": 1408,
+            "W": 39.66666666666663,
+            "H": 24,
+            "Text": "NO",
+            "Confidence": 0.9999187,
+            "Language": "en"
+          },
+          {
+            "X": 307,
+            "Y": 1427,
+            "W": 101,
+            "H": 24.666666666666742,
+            "Text": "GOTHAM,",
+            "Confidence": 0.99938095,
+            "Language": "en"
+          },
+          {
+            "X": 322,
+            "Y": 1446.6666666666667,
+            "W": 102.33333333333337,
+            "H": 25.333333333333258,
+            "Text": "FRIEND\u0027S,",
+            "Confidence": 0.9891695,
+            "Language": "en"
+          },
+          {
+            "X": 289.6666666666667,
+            "Y": 1448.3333333333333,
+            "W": 40,
+            "H": 21,
+            "Text": "NO",
+            "Confidence": 0.99974525,
+            "Language": "en"
+          },
+          {
+            "X": 293.5,
+            "Y": 1467,
+            "W": 126.5,
+            "H": 24,
+            "Text": "NO WORLD.",
+            "Confidence": 0.99945325,
+            "Language": "en"
+          },
+          {
+            "X": 309.6666666666667,
+            "Y": 1484.6666666666667,
+            "W": 93,
+            "H": 27.666666666666515,
+            "Text": "IT\u0027S ALL",
+            "Confidence": 0.9905703,
+            "Language": "en"
+          },
+          {
+            "X": 319.5,
+            "Y": 1505,
+            "W": 74.5,
+            "H": 26,
+            "Text": "GONE.",
+            "Confidence": 0.9988549,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO GOTHAM, NO FRIENDS, NO WORLD. IT\u0027S ALL GONE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "NO GOTHAM,\nNO FRIENDS,\nNO WORLD.\nIT\u0027S ALL\nGONE.",
+      "Translation": "\uACE0\uB2F4\uB3C4,\n\uCE5C\uAD6C\uB3C4,\n\uC138\uC0C1\uB3C4.\n\uBAA8\uB4E0 \uAC8C\n\uC0AC\uB77C\uC84C\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 713.6666666666666,
+        "Y": 1472.3333333333333,
+        "W": 123.66666666666663,
+        "H": 84,
+        "Text": "PLEASE, BRUCE, DON\u0027T YOU SEE?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 734.3333333333334,
+            "Y": 1472.3333333333333,
+            "W": 81.66666666666663,
+            "H": 22.666666666666742,
+            "Text": "PLEASE,",
+            "Confidence": 0.99956656,
+            "Language": "en"
+          },
+          {
+            "X": 734.6666666666666,
+            "Y": 1496,
+            "W": 82,
+            "H": 18.666666666666742,
+            "Text": "BRUCE,",
+            "Confidence": 0.99797755,
+            "Language": "en"
+          },
+          {
+            "X": 713.6666666666666,
+            "Y": 1507.6666666666667,
+            "W": 123.66666666666663,
+            "H": 30.333333333333258,
+            "Text": "DON\u0027T YOU",
+            "Confidence": 0.98134166,
+            "Language": "en"
+          },
+          {
+            "X": 747,
+            "Y": 1529.3333333333333,
+            "W": 59,
+            "H": 27,
+            "Text": "SEE?",
+            "Confidence": 0.99897534,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PLEASE, BRUCE, DON\u0027T YOU SEE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "PLEASE, BRUCE, DON\u0027T YOU SEE?",
+      "Translation": "\uC81C\uBC1C, \uBE0C\uB8E8\uC2A4, \uC548 \uBCF4\uC5EC?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 832.3333333333334,
+        "Y": 1504,
+        "W": 295.9999999999999,
+        "H": 204.33333333333326,
+        "Text": "YOU\u0027RE FINALLY FREE. DID TH THIS FOR YOU, FOR US! IN THIS LIFE, FE, HERE..THERE IS NO JOE CH\u00CDLL. THE INFECTION INFECTION BITE BAT WAS THE DO IT SICKNESS. THERE ST NO JUSTICE, NO CURSED NOISSIW",
+        "OriginalRegionCount": 22,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 897.3333333333334,
+            "Y": 1504,
+            "W": 167.33333333333314,
+            "H": 29,
+            "Text": "YOU\u0027RE FINALLY",
+            "Confidence": 0.9953863,
+            "Language": "en"
+          },
+          {
+            "X": 875,
+            "Y": 1527.3333333333333,
+            "W": 62,
+            "H": 24.666666666666742,
+            "Text": "FREE.",
+            "Confidence": 0.99653584,
+            "Language": "en"
+          },
+          {
+            "X": 862.3333333333334,
+            "Y": 1546.3333333333333,
+            "W": 74.66666666666663,
+            "H": 26,
+            "Text": "DID TH",
+            "Confidence": 0.9983855,
+            "Language": "en"
+          },
+          {
+            "X": 843.3333333333333,
+            "Y": 1566.6666666666667,
+            "W": 276.0000000000002,
+            "H": 24.333333333333258,
+            "Text": "THIS FOR YOU, FOR US! IN",
+            "Confidence": 0.9952054,
+            "Language": "en"
+          },
+          {
+            "X": 832.3333333333334,
+            "Y": 1586.3333333333333,
+            "W": 98.99999999999989,
+            "H": 23.666666666666742,
+            "Text": "THIS LIFE,",
+            "Confidence": 0.9996075,
+            "Language": "en"
+          },
+          {
+            "X": 906,
+            "Y": 1586.6666666666667,
+            "W": 188.66666666666674,
+            "H": 23.333333333333258,
+            "Text": "FE, HERE..THERE IS",
+            "Confidence": 0.98636377,
+            "Language": "en"
+          },
+          {
+            "X": 1093,
+            "Y": 1588,
+            "W": 35.33333333333326,
+            "H": 20,
+            "Text": "NO",
+            "Confidence": 0.999869,
+            "Language": "en"
+          },
+          {
+            "X": 847,
+            "Y": 1606,
+            "W": 268.66666666666674,
+            "H": 24,
+            "Text": "JOE CH\u00CDLL. THE INFECTION",
+            "Confidence": 0.99397665,
+            "Language": "en"
+          },
+          {
+            "X": 1002.6666666666666,
+            "Y": 1607,
+            "W": 111.00000000000011,
+            "H": 21.333333333333258,
+            "Text": "INFECTION",
+            "Confidence": 0.9996728,
+            "Language": "en"
+          },
+          {
+            "X": 992.3333333333334,
+            "Y": 1625.6666666666667,
+            "W": 51.999999999999886,
+            "H": 23.333333333333258,
+            "Text": "BITE",
+            "Confidence": 0.99971133,
+            "Language": "en"
+          },
+          {
+            "X": 943,
+            "Y": 1626.6666666666667,
+            "W": 51.33333333333337,
+            "H": 22,
+            "Text": "BAT",
+            "Confidence": 0.9996167,
+            "Language": "en"
+          },
+          {
+            "X": 1073,
+            "Y": 1626.6666666666667,
+            "W": 51,
+            "H": 22,
+            "Text": "WAS",
+            "Confidence": 0.99525934,
+            "Language": "en"
+          },
+          {
+            "X": 906,
+            "Y": 1627,
+            "W": 41,
+            "H": 21,
+            "Text": "THE",
+            "Confidence": 0.99989295,
+            "Language": "en"
+          },
+          {
+            "X": 849.3333333333334,
+            "Y": 1628.6666666666667,
+            "W": 41.999999999999886,
+            "H": 7.3333333333332575,
+            "Text": "DO",
+            "Confidence": 0.61765563,
+            "Language": "en"
+          },
+          {
+            "X": 1049.6666666666667,
+            "Y": 1629.3333333333333,
+            "W": 27.666666666666515,
+            "H": 17.666666666666742,
+            "Text": "IT",
+            "Confidence": 0.9993063,
+            "Language": "en"
+          },
+          {
+            "X": 912,
+            "Y": 1646.6666666666667,
+            "W": 116,
+            "H": 21.666666666666515,
+            "Text": "SICKNESS.",
+            "Confidence": 0.9989848,
+            "Language": "en"
+          },
+          {
+            "X": 1038.3333333333333,
+            "Y": 1646.6666666666667,
+            "W": 66,
+            "H": 21.333333333333258,
+            "Text": "THERE",
+            "Confidence": 0.998196,
+            "Language": "en"
+          },
+          {
+            "X": 889,
+            "Y": 1647,
+            "W": 24,
+            "H": 21.333333333333258,
+            "Text": "ST",
+            "Confidence": 0.99744225,
+            "Language": "en"
+          },
+          {
+            "X": 908.6666666666666,
+            "Y": 1665,
+            "W": 133.0000000000001,
+            "H": 24.666666666666742,
+            "Text": "NO JUSTICE,",
+            "Confidence": 0.99888074,
+            "Language": "en"
+          },
+          {
+            "X": 1039,
+            "Y": 1665.3333333333333,
+            "W": 39.33333333333326,
+            "H": 22.666666666666742,
+            "Text": "NO",
+            "Confidence": 0.9998911,
+            "Language": "en"
+          },
+          {
+            "X": 889,
+            "Y": 1685.6666666666667,
+            "W": 88,
+            "H": 22.666666666666515,
+            "Text": "CURSED",
+            "Confidence": 0.99902797,
+            "Language": "en"
+          },
+          {
+            "X": 975,
+            "Y": 1685.6666666666667,
+            "W": 101,
+            "H": 22.333333333333258,
+            "Text": "NOISSIW",
+            "Confidence": 0.91227067,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU\u0027RE FINALLY FROM THAT\u0027S WHY I DID THIS, WHY I MADE THIS FOR Y",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "YOU\u0027RE FINALLY FREE. THAT\u0027S WHY I DID THIS, WHY I MADE THIS FOR YOU, FOR US! IN THIS LIFE, HERE... THERE IS NO JOE CHILL. THE INFECTION FROM THE BAT BITE, IT WAS JUST SICKNESS. THERE IS NO JUSTICE, NO CURSED MISSION.",
+      "Translation": "\uB4DC\uB514\uC5B4 \uC790\uC720\uC57C. \uADF8\uB798\uC11C \uB0B4\uAC00 \uC774\uAC78 \uD55C \uAC70\uC57C, \uB108\uB97C \uC704\uD574, \uC6B0\uB9AC\uB97C \uC704\uD574! \uC774 \uC0DD\uC560, \uC774\uACF3\uC5D0... \uC870 \uCE60\uC740 \uC5C6\uC5B4. \uBC15\uC950\uC5D0\uAC8C \uBB3C\uB9B0 \uB4A4\uC758 \uAC10\uC5FC\uB3C4 \uADF8\uC800 \uBCD1\uC774\uC5C8\uC744 \uBFD0\uC774\uC57C. \uC815\uC758\uB3C4, \uC800\uC8FC\uBC1B\uC740 \uC784\uBB34\uB3C4 \uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1156.6666666666667,
+        "Y": 1564,
+        "W": 97.33333333333326,
+        "H": 187,
+        "Text": "K",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1156.6666666666667,
+            "Y": 1564,
+            "W": 97.33333333333326,
+            "H": 187,
+            "Text": "K",
+            "Confidence": 0.33738902,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "K",
+      "Translation": "K",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1111,
+        "Y": 1654.6666666666667,
+        "W": 58.5,
+        "H": 42.33333333333326,
+        "Text": "A VZA",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1111,
+            "Y": 1654.6666666666667,
+            "W": 29,
+            "H": 42.33333333333326,
+            "Text": "A",
+            "Confidence": 0.49810854,
+            "Language": "en"
+          },
+          {
+            "X": 1133,
+            "Y": 1668,
+            "W": 36.5,
+            "H": 28,
+            "Text": "VZA",
+            "Confidence": 0.86619174,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ACTION\nWAS THERE",
+      "Translation": "\uC561\uC158\n\uC788\uC5C8\uB098?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 894,
+        "Y": 1727.3333333333333,
+        "W": 36.66666666666663,
+        "H": 18,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 894,
+            "Y": 1727.3333333333333,
+            "W": 36.66666666666663,
+            "H": 18,
+            "Text": "A",
+            "Confidence": 0.6485971,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "CURSED",
+      "Translation": "\uC800\uC8FC\uBC1B\uC740",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

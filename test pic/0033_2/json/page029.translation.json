@@ -1,0 +1,395 @@
+{
+  "SourceFile": "page029.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T02:16:34.1894259+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 590,
+        "Y": 47,
+        "W": 17,
+        "H": 18,
+        "Text": "\u00E0",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 590,
+            "Y": 47,
+            "W": 17,
+            "H": 18,
+            "Text": "\u00E0",
+            "Confidence": 0.61647445,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "\u00E0",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 468.5,
+        "Y": 106,
+        "W": 177,
+        "H": 47,
+        "Text": ".AND THEN I\u0027LL SAY GOOD-BYE.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 490,
+            "Y": 106,
+            "W": 153,
+            "H": 28,
+            "Text": ".AND THEN I\u0027LL",
+            "Confidence": 0.99183226,
+            "Language": "en"
+          },
+          {
+            "X": 468.5,
+            "Y": 129,
+            "W": 177,
+            "H": 24,
+            "Text": "SAY GOOD-BYE.",
+            "Confidence": 0.9898752,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022...AND THEN I\u0027LL SAY GOOD-BYE.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "\u0022...AND THEN I\u0027LL SAY GOOD-BYE.\u0022",
+      "Translation": "...\uADF8\uB9AC\uACE0 \uC548\uB155\uC774\uB77C\uACE0 \uB9D0\uD560 \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 306,
+        "Y": 271,
+        "W": 34,
+        "H": 22,
+        "Text": "D",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 306,
+            "Y": 271,
+            "W": 34,
+            "H": 22,
+            "Text": "D",
+            "Confidence": 0.31443498,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "D",
+      "Translation": "D",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 938,
+        "Y": 466,
+        "W": 64,
+        "H": 44,
+        "Text": "he us",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 938,
+            "Y": 466,
+            "W": 64,
+            "H": 44,
+            "Text": "he us",
+            "Confidence": 0.45039117,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "he us",
+      "Translation": "\uADF8\uB294",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 581,
+        "Y": 476,
+        "W": 37,
+        "H": 18,
+        "Text": "30",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 581,
+            "Y": 476,
+            "W": 37,
+            "H": 18,
+            "Text": "30",
+            "Confidence": 0.4403289,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "30",
+      "Translation": "30",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 405,
+        "Y": 764,
+        "W": 103,
+        "H": 40.66666666666663,
+        "Text": "GASP!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 405,
+            "Y": 764,
+            "W": 103,
+            "H": 40.66666666666663,
+            "Text": "GASP!",
+            "Confidence": 0.999608,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "GASP!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "GASP!",
+      "Translation": "\uD5C9!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 451,
+        "Y": 809.3333333333334,
+        "W": 72,
+        "H": 50.66666666666663,
+        "Text": "-huf huff",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 453.6666666666667,
+            "Y": 809.3333333333334,
+            "W": 69.33333333333331,
+            "H": 29.66666666666663,
+            "Text": "-huf",
+            "Confidence": 0.83326924,
+            "Language": "en"
+          },
+          {
+            "X": 451,
+            "Y": 830,
+            "W": 72,
+            "H": 30,
+            "Text": "huff",
+            "Confidence": 0.91659683,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "-huff huff",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "huff\nhuff",
+      "Translation": "\uD5C8\uC5B5\n\uD5C8\uC5B5",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 456.66666666666663,
+        "Y": 884,
+        "W": 132.33333333333337,
+        "H": 30.33333333333337,
+        "Text": "MNE E",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 456.66666666666663,
+            "Y": 884,
+            "W": 107.66666666666663,
+            "H": 30.33333333333337,
+            "Text": "MNE",
+            "Confidence": 0.34565732,
+            "Language": "en"
+          },
+          {
+            "X": 564,
+            "Y": 890.3333333333334,
+            "W": 25,
+            "H": 18,
+            "Text": "E",
+            "Confidence": 0.7404849,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "huff...",
+      "Translation": "\uD5C8\uC5B5...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1088.3333333333333,
+        "Y": 1514.3333333333333,
+        "W": 161.66666666666674,
+        "H": 156.66666666666674,
+        "Text": "TNG TING",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1088.3333333333333,
+            "Y": 1514.3333333333333,
+            "W": 114.33333333333348,
+            "H": 79.33333333333348,
+            "Text": "TNG",
+            "Confidence": 0.89727634,
+            "Language": "en"
+          },
+          {
+            "X": 1113,
+            "Y": 1573,
+            "W": 137,
+            "H": 98,
+            "Text": "TING",
+            "Confidence": 0.9728294,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "TING\nTING",
+      "Translation": "\uB775\n\uB775",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 850.6666666666666,
+        "Y": 1585,
+        "W": 64.33333333333337,
+        "H": 68.66666666666674,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 850.6666666666666,
+            "Y": 1585,
+            "W": 64.33333333333337,
+            "H": 68.66666666666674,
+            "Text": "A",
+            "Confidence": 0.5161461,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 789.6666666666666,
+        "Y": 1736.6666666666667,
+        "W": 76,
+        "H": 62.33333333333326,
+        "Text": "TING",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 789.6666666666666,
+            "Y": 1736.6666666666667,
+            "W": 76,
+            "H": 62.33333333333326,
+            "Text": "TING",
+            "Confidence": 0.9255664,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "TING",
+      "Translation": "\uD305",
+      "Type": "sfx",
+      "Render": false
+    }
+  ]
+}

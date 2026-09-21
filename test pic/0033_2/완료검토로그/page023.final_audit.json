@@ -1,0 +1,643 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page023.jpg",
+  "output_file": "page023.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 64010,
+    "changed_ratio": 0.023148901575398298,
+    "changed_regions": [
+      {
+        "x": 1045,
+        "y": 144,
+        "width": 144,
+        "height": 96
+      },
+      {
+        "x": 566,
+        "y": 1741,
+        "width": 181,
+        "height": 58
+      },
+      {
+        "x": 412,
+        "y": 1741,
+        "width": 151,
+        "height": 58
+      },
+      {
+        "x": 77,
+        "y": 77,
+        "width": 185,
+        "height": 43
+      },
+      {
+        "x": 1015,
+        "y": 68,
+        "width": 160,
+        "height": 40
+      },
+      {
+        "x": 616,
+        "y": 73,
+        "width": 136,
+        "height": 42
+      },
+      {
+        "x": 478,
+        "y": 1831,
+        "width": 152,
+        "height": 37
+      },
+      {
+        "x": 611,
+        "y": 1832,
+        "width": 150,
+        "height": 35
+      },
+      {
+        "x": 979,
+        "y": 590,
+        "width": 73,
+        "height": 57
+      },
+      {
+        "x": 565,
+        "y": 1764,
+        "width": 79,
+        "height": 35
+      },
+      {
+        "x": 171,
+        "y": 1300,
+        "width": 144,
+        "height": 17
+      },
+      {
+        "x": 645,
+        "y": 1973,
+        "width": 121,
+        "height": 19
+      },
+      {
+        "x": 703,
+        "y": 1952,
+        "width": 109,
+        "height": 19
+      },
+      {
+        "x": 909,
+        "y": 1970,
+        "width": 98,
+        "height": 21
+      },
+      {
+        "x": 682,
+        "y": 1869,
+        "width": 106,
+        "height": 18
+      },
+      {
+        "x": 505,
+        "y": 1887,
+        "width": 92,
+        "height": 18
+      },
+      {
+        "x": 582,
+        "y": 1952,
+        "width": 82,
+        "height": 19
+      },
+      {
+        "x": 1100,
+        "y": 144,
+        "width": 38,
+        "height": 36
+      },
+      {
+        "x": 187,
+        "y": 1318,
+        "width": 74,
+        "height": 17
+      },
+      {
+        "x": 577,
+        "y": 1973,
+        "width": 62,
+        "height": 19
+      },
+      {
+        "x": 611,
+        "y": 1869,
+        "width": 67,
+        "height": 17
+      },
+      {
+        "x": 267,
+        "y": 1319,
+        "width": 69,
+        "height": 16
+      },
+      {
+        "x": 676,
+        "y": 1906,
+        "width": 55,
+        "height": 19
+      },
+      {
+        "x": 1007,
+        "y": 1971,
+        "width": 50,
+        "height": 20
+      },
+      {
+        "x": 516,
+        "y": 1869,
+        "width": 62,
+        "height": 16
+      },
+      {
+        "x": 1038,
+        "y": 684,
+        "width": 45,
+        "height": 20
+      },
+      {
+        "x": 767,
+        "y": 1973,
+        "width": 47,
+        "height": 19
+      },
+      {
+        "x": 1150,
+        "y": 89,
+        "width": 52,
+        "height": 17
+      },
+      {
+        "x": 1084,
+        "y": 684,
+        "width": 44,
+        "height": 20
+      },
+      {
+        "x": 640,
+        "y": 1887,
+        "width": 51,
+        "height": 17
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page023.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 43718,
+    "erase_changed_ratio": 0.01581039961058058,
+    "typeset_changed_pixels": 34882,
+    "typeset_changed_ratio": 0.012614903683065825
+  },
+  "region_analysis": {
+    "total": 22,
+    "bubbles": 11,
+    "text_regions": 11,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 30,
+      "Global2x": 30,
+      "Focus3x": 209,
+      "Region1x": 31,
+      "Region2x": 34,
+      "Container1x": 31,
+      "Container2x": 33
+    },
+    "canonical_lines": 52,
+    "units": 18,
+    "assigned_lines": 43,
+    "orphan_groups": 7,
+    "secondary_total": 11,
+    "secondary_accepted": 11,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 66,
+          "Bottom": 109,
+          "Left": 982,
+          "Right": 1206,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "The police arrive as he\u0027s reaching the ninth.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 73,
+          "Bottom": 119,
+          "Left": 610,
+          "Right": 756,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "In seven, he\u0027s on the fifth.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG004",
+        "Bounds": {
+          "Top": 77,
+          "Bottom": 143,
+          "Left": 71,
+          "Right": 269,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "In less than five minutes he\u0027s made it to the third floor.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 136,
+          "Bottom": 245,
+          "Left": 1042,
+          "Right": 1193,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MR.\nWAYNE, THERE\nARE TEN OF\nUS AND ONE\nOF YOU.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 583,
+          "Bottom": 650,
+          "Left": 973,
+          "Right": 1055,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOT GOOD ODDS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 659,
+          "Bottom": 708,
+          "Left": 1032,
+          "Right": 1139,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "RIGHT.\nFOR YOU.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1294,
+          "Bottom": 1339,
+          "Left": 139,
+          "Right": 370,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1740,
+          "Bottom": 1805,
+          "Left": 405,
+          "Right": 763,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "The bolt the gets from Sergent Bulldock on the terth floor. It\u0027s big, so he wrapst around hit and totat.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1827,
+          "Bottom": 1927,
+          "Left": 470,
+          "Right": 792,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Captain Gordom, a longtine advocate, makes an effort to talk to him on elever \u0022Remente te temetet \u0022\u0022thene temethe \u0022\u0022ameteneateme",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1948,
+          "Bottom": 1995,
+          "Left": 571,
+          "Right": 823,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "He takes Gordon\u0027s boots before the sentence ends.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1969,
+          "Bottom": 2015,
+          "Left": 902,
+          "Right": 1063,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "In moments he\u0027s on twelve...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 18,
+    "requested_render": 13
+  },
+  "render": {
+    "total": 12,
+    "approved": 11,
+    "rejected": 1,
+    "rejection_reasons": {
+      "vision_expansion_untrusted": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 13,
+    "TranslatedUnits": 11,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 11,
+    "TypesetCommittedUnits": 11,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "he police arrive as he\u0027s reaching the ninth. ninth.",
+        "Translation": "\uADF8\uAC00 \uC544\uD649 \uBC88\uC9F8\uC5D0 \uB3C4\uB2EC\uD560 \uB54C[BR]\uACBD\uCC30\uC774 \uB4E4\uC774\uB2E5\uCCE4\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "In seven, he\u0027s on",
+        "Translation": "7\uCD08 \uB0A8\uC558\uACE0,[BR]\uADF8\uB294 \uBC8C\uC368 5\uBC88\uC9F8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "In less than five minutes he\u0027s made it to the third floor.",
+        "Translation": "5\uBD84\uB3C4 \uC548 \uB3FC\uC11C[BR]\uBC8C\uC368 3\uCE35\uAE4C\uC9C0 \uB3C4\uB2EC\uD588\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "MR. THERE WAYNE, TEN OF ARE AND ONE us OF vou",
+        "Translation": "\uC6E8\uC778 \uC528, \uC6B0\uB9AC \uC5F4 \uBA85\uC5D0[BR]\uB2F9\uC2E0\uC740 \uB2E8 \uD55C \uBA85\uBFD0\uC785\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "3 A",
+        "Translation": "\uC2B9\uC0B0\uC774\n\uC5C6\uC5B4.",
+        "Status": "original_preserved:vision_expansion_untrusted",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "textbubble_fallback"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "NOT NOT GOOD ODDS.",
+        "Translation": "\uC2B9\uC0B0\uC774 \uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "a",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "RIGHT. FOR you.",
+        "Translation": "\uB9DE\uC544.\n\uB108\uB97C \uC704\uD574\uC11C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "Translation": "\uADF8\uB294 9\uCD08 \uB9CC\uC5D0[BR]\uADF8\uB4E4 \uC911 \uD55C \uBA85\uC5D0\uAC8C\uC11C \u0027\uBAA8\uC790\u0027\uB97C \uBE7C\uC557\uB294\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "The belt he gets from Sergeant Bullock on the tenthfloor. It\u0027s big, so he wraps it around his waist twice.",
+        "Translation": "10\uCE35\uC5D0\uC11C \uBD88\uB85D \uBCD1\uC7A5\uC5D0\uAC8C \uC5BB\uC740 \uBCA8\uD2B8. \uD06C\uAE30\uAC00 \uCEE4\uC11C \uD5C8\uB9AC\uC5D0 \uB450 \uBC88 \uAC10\uC558\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+        "Translation": "\uC624\uB79C \uC9C0\uC9C0\uC790\uC600\uB358 \uACE0\uB4E0 \uB300\uC704\uAC00 11\uC5D0\uC11C \uADF8\uC640 \uB300\uD654\uD558\uB824\uACE0 \uC560\uB97C \uC4F4\uB2E4. \u0022\uB098 \uAE30\uC5B5\uB098\uB098, \uC544\uB4E4\uC544?\u0022 \uADF8\uAC00 \uB9D0\uD55C\uB2E4. \u0022\uC625\uC0C1\uC5D0\uC11C \uB098\uB234\uB358 \uB300\uD654 \uB9D0\uC774\uC57C. \uCC9C\uC7A5\uCC3D \uADFC\uCC98\uC5D0\uC11C...\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "He takes Gordon\u0027s boots sentence ends.",
+        "Translation": "\uBB38\uC7A5\uC774 \uB05D\uB098\uAE30\uB3C4 \uC804\uC5D0[BR]\uADF8\uB294 \uACE0\uB4E0\uC758 \uBD80\uCE20\uB97C \uB09A\uC544\uCC58\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "In moments he\u0027s on twelve.",
+        "Translation": "\uC21C\uC2DD\uAC04\uC5D0[BR]\uADF8\uB294 \uC5F4\uB450 \uBA85\uC744...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

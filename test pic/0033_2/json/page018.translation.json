@@ -1,0 +1,554 @@
+{
+  "SourceFile": "page018.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T02:03:33.6871157+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 765.5,
+        "Y": 168.5,
+        "W": 159,
+        "H": 105.5,
+        "Text": "NO!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 765.5,
+            "Y": 168.5,
+            "W": 159,
+            "H": 105.5,
+            "Text": "NO!",
+            "Confidence": 0.9970108,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "NO!",
+      "Translation": "\uC548 \uB3FC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 499.6666666666667,
+        "Y": 623,
+        "W": 112.33333333333331,
+        "H": 220,
+        "Text": "DA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 499.6666666666667,
+            "Y": 623,
+            "W": 112.33333333333331,
+            "H": 220,
+            "Text": "DA",
+            "Confidence": 0.68128127,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "DA",
+      "Translation": "\uB2E4",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 711,
+        "Y": 625,
+        "W": 86.33333333333337,
+        "H": 87.33333333333337,
+        "Text": "I\u0027LL NEVER BELIEVE You!!!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 729.6666666666666,
+            "Y": 625,
+            "W": 50.33333333333337,
+            "H": 28,
+            "Text": "I\u0027LL",
+            "Confidence": 0.9919721,
+            "Language": "en"
+          },
+          {
+            "X": 715.6666666666666,
+            "Y": 652,
+            "W": 79,
+            "H": 19.66666666666663,
+            "Text": "NEVER",
+            "Confidence": 0.9998789,
+            "Language": "en"
+          },
+          {
+            "X": 711,
+            "Y": 667,
+            "W": 86.33333333333337,
+            "H": 24.33333333333337,
+            "Text": "BELIEVE",
+            "Confidence": 0.9995161,
+            "Language": "en"
+          },
+          {
+            "X": 715.6666666666666,
+            "Y": 685.3333333333334,
+            "W": 78,
+            "H": 27,
+            "Text": "You!!!",
+            "Confidence": 0.89591855,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027LL NEVER BELIEVE YOU!!!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "I\u0027LL NEVER BELIEVE YOU!!!",
+      "Translation": "\uC808\uB300 \uBABB \uBBFF\uC5B4!!!\n\uB124 \uB9D0\uC744!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 336,
+        "Y": 703.3333333333334,
+        "W": 87.33333333333337,
+        "H": 64.66666666666663,
+        "Text": "I DON\u0027T BELIEVE you!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 336,
+            "Y": 703.3333333333334,
+            "W": 87.33333333333337,
+            "H": 22,
+            "Text": "I DON\u0027T",
+            "Confidence": 0.99551326,
+            "Language": "en"
+          },
+          {
+            "X": 337.3333333333333,
+            "Y": 721.6666666666666,
+            "W": 85.00000000000006,
+            "H": 23.666666666666742,
+            "Text": "BELIEVE",
+            "Confidence": 0.9995126,
+            "Language": "en"
+          },
+          {
+            "X": 343,
+            "Y": 738,
+            "W": 69,
+            "H": 30,
+            "Text": "you!",
+            "Confidence": 0.88093716,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I DON\u0027T BELIEVE YOU!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "I DON\u0027T BELIEVE YOU!",
+      "Translation": "\uBBFF\uC744 \uC218\uAC00 \uC5C6\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1030,
+        "Y": 730.6666666666666,
+        "W": 186,
+        "H": 183.33333333333337,
+        "Text": "26",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1030,
+            "Y": 730.6666666666666,
+            "W": 186,
+            "H": 183.33333333333337,
+            "Text": "26",
+            "Confidence": 0.4478807,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "26",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 942.6666666666666,
+        "Y": 746.3333333333334,
+        "W": 106.00000000000011,
+        "H": 85.33333333333326,
+        "Text": "DO YOU HEAR ME?! NEVER!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 974.3333333333334,
+            "Y": 746.3333333333334,
+            "W": 42.66666666666663,
+            "H": 26,
+            "Text": "DO",
+            "Confidence": 0.9999506,
+            "Language": "en"
+          },
+          {
+            "X": 942.6666666666666,
+            "Y": 767.3333333333334,
+            "W": 106.00000000000011,
+            "H": 25,
+            "Text": "YOU HEAR",
+            "Confidence": 0.9599504,
+            "Language": "en"
+          },
+          {
+            "X": 967.3333333333334,
+            "Y": 786.6666666666666,
+            "W": 56.66666666666663,
+            "H": 25.33333333333337,
+            "Text": "ME?!",
+            "Confidence": 0.9991864,
+            "Language": "en"
+          },
+          {
+            "X": 953,
+            "Y": 807,
+            "W": 84,
+            "H": 24.66666666666663,
+            "Text": "NEVER!",
+            "Confidence": 0.9994127,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DO YOU HEAR ME?! NEVER!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "DO YOU HEAR ME?! NEVER!",
+      "Translation": "\uB0B4 \uB9D0 \uB4E4\uB824?! \uC808\uB300 \uC548 \uB3FC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 854.6666666666666,
+        "Y": 785,
+        "W": 8.666666666666742,
+        "H": 11.666666666666629,
+        "Text": "a",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 854.6666666666666,
+            "Y": 785,
+            "W": 8.666666666666742,
+            "H": 11.666666666666629,
+            "Text": "a",
+            "Confidence": 0.40123013,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "a",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 871,
+        "Y": 856.6666666666666,
+        "W": 22.33333333333337,
+        "H": 15.333333333333371,
+        "Text": "a",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 871,
+            "Y": 856.6666666666666,
+            "W": 22.33333333333337,
+            "H": 15.333333333333371,
+            "Text": "a",
+            "Confidence": 0.3902313,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "a",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 59.5,
+        "Y": 1277.5,
+        "W": 350,
+        "H": 137,
+        "Text": "NEVERRU",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 59.5,
+            "Y": 1277.5,
+            "W": 350,
+            "H": 137,
+            "Text": "NEVERRU",
+            "Confidence": 0.8890165,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "NEVER!!",
+      "Translation": "\uC808\uB300 \uC548 \uB3FC!!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1063.3333333333333,
+        "Y": 1308,
+        "W": 185,
+        "H": 48,
+        "Text": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1063.3333333333333,
+            "Y": 1308,
+            "W": 185,
+            "H": 26.666666666666742,
+            "Text": "\u0022MORE THAN YOU",
+            "Confidence": 0.9921652,
+            "Language": "en"
+          },
+          {
+            "X": 1077,
+            "Y": 1327,
+            "W": 159,
+            "H": 29,
+            "Text": "CAN IMAGINE.\u0022",
+            "Confidence": 0.99720985,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+      "Translation": "\u0022\uC0C1\uC0C1\uD558\uB294 \uAC83\uBCF4\uB2E4 \uD6E8\uC52C \uB354.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 467.3333333333333,
+        "Y": 1313,
+        "W": 215.00000000000006,
+        "H": 51.33333333333326,
+        "Text": "E TO SEE YOU THIS WAY, SIR.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 587.6666666666667,
+            "Y": 1313,
+            "W": 94.66666666666663,
+            "H": 28,
+            "Text": "E TO SEE",
+            "Confidence": 0.9993202,
+            "Language": "en"
+          },
+          {
+            "X": 467.3333333333333,
+            "Y": 1331.6666666666667,
+            "W": 207.66666666666669,
+            "H": 32.666666666666515,
+            "Text": "YOU THIS WAY, SIR.",
+            "Confidence": 0.9535795,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.\u0022",
+      "Translation": "\u0022\uC774\uB7F0 \uBAA8\uC2B5\uC73C\uB85C \uACC4\uC2DC\uB294 \uAC78 \uBCF4\uB2C8[BR]\uB9C8\uC74C\uC774 \uC544\uD515\uB2C8\uB2E4, \uC8FC\uC778\uB2D8.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 933.6666666666667,
+        "Y": 1357,
+        "W": 61.999999999999886,
+        "H": 41,
+        "Text": "Ley",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 933.6666666666667,
+            "Y": 1357,
+            "W": 61.999999999999886,
+            "H": 41,
+            "Text": "Ley",
+            "Confidence": 0.43935943,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "Ley",
+      "Translation": "\uB808\uC774",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 664,
+        "Y": 1432,
+        "W": 121,
+        "H": 49.66666666666674,
+        "Text": "\u0022PAINS US ALL. TRULY.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 664,
+            "Y": 1432,
+            "W": 119,
+            "H": 34,
+            "Text": "\u0022PAINS US",
+            "Confidence": 0.94406307,
+            "Language": "en"
+          },
+          {
+            "X": 665.3333333333334,
+            "Y": 1456.3333333333333,
+            "W": 119.66666666666663,
+            "H": 25.333333333333485,
+            "Text": "ALL. TRULY.",
+            "Confidence": 0.9959052,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022PAINS US ALL. TRULY.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "\u0022PAINS US ALL. TRULY.\u0022",
+      "Translation": "\u0022\uC6B0\uB9AC \uBAA8\uB450\uB97C \uC544\uD504\uAC8C \uD558\uC9C0. \uC815\uB9D0\uB85C.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 974.5,
+        "Y": 1768.5,
+        "W": 43.5,
+        "H": 48.5,
+        "Text": "2",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 974.5,
+            "Y": 1768.5,
+            "W": 43.5,
+            "H": 48.5,
+            "Text": "2",
+            "Confidence": 0.47005174,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "2",
+      "Translation": "2",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

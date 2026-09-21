@@ -1,0 +1,1379 @@
+{
+  "schema": "ocr-evidence-v3",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC003",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC004",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC005",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC006",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC007",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC008",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC009",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC010",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC011",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC012",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC001",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC001",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC005",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC005",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC009",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 0,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC009",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC012",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC012",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC001",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0005",
+      "CandidateId": "PC001",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0006",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0007",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9624378109452736
+    },
+    {
+      "ObservationId": "CO0008",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9793233082706767
+    },
+    {
+      "ObservationId": "CO0009",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0010",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0011",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9962971534367044
+    },
+    {
+      "ObservationId": "CO0012",
+      "CandidateId": "PC002",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0013",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.8761061946902655
+    },
+    {
+      "ObservationId": "CO0014",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9872248427672956
+    },
+    {
+      "ObservationId": "CO0015",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0016",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9929065743944636
+    },
+    {
+      "ObservationId": "CO0017",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.961755485893417
+    },
+    {
+      "ObservationId": "CO0018",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9902912621359223
+    },
+    {
+      "ObservationId": "CO0019",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0020",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0021",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0022",
+      "CandidateId": "PC003",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9832647462277092
+    },
+    {
+      "ObservationId": "CO0023",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.7344924812030075
+    },
+    {
+      "ObservationId": "CO0024",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.8345588235294118
+    },
+    {
+      "ObservationId": "CO0025",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.6557539682539683
+    },
+    {
+      "ObservationId": "CO0026",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.7344924812030075
+    },
+    {
+      "ObservationId": "CO0027",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.8524844720496895
+    },
+    {
+      "ObservationId": "CO0028",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.6282219309742245
+    },
+    {
+      "ObservationId": "CO0029",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0030",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0031",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0032",
+      "CandidateId": "PC005",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0033",
+      "CandidateId": "PC006",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.8911819887429644
+    },
+    {
+      "ObservationId": "CO0034",
+      "CandidateId": "PC006",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.8911819887429644
+    },
+    {
+      "ObservationId": "CO0035",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0036",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0037",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0038",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0039",
+      "CandidateId": "PC007",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0040",
+      "CandidateId": "PC008",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0041",
+      "CandidateId": "PC008",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9293981481481481
+    },
+    {
+      "ObservationId": "CO0042",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0043",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9391233766233766
+    },
+    {
+      "ObservationId": "CO0044",
+      "CandidateId": "PC008",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0045",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0046",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9750384024577573
+    },
+    {
+      "ObservationId": "CO0047",
+      "CandidateId": "PC009",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0048",
+      "CandidateId": "PC010",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0049",
+      "CandidateId": "PC010",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0050",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0051",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0052",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0053",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0054",
+      "CandidateId": "PC011",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0055",
+      "CandidateId": "PC012",
+      "Accepted": false,
+      "Reason": "weak_text_evidence",
+      "MaskCoverage": 0
+    },
+    {
+      "ObservationId": "CO0056",
+      "CandidateId": "PC012",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.7511238985793922
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG003",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG003",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 5,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG010",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG010",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG018",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG018",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG020",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG020",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG022",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG022",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG024",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG024",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG003",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0005",
+      "RegionId": "RG003",
+      "Accepted": false,
+      "Reason": "weak_ocr"
+    },
+    {
+      "ObservationId": "RO0006",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0007",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0008",
+      "RegionId": "RG003",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0009",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0010",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0011",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0012",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0013",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0014",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0015",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0016",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0017",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0018",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0019",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0020",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0021",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0022",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0023",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0024",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0025",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0026",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0027",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0028",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0029",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0030",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    },
+    {
+      "ObservationId": "RO0031",
+      "RegionId": "RG008",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0032",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0033",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0034",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0035",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0036",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0037",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0038",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0039",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0040",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0041",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0042",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0043",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0044",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0045",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0046",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0047",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0048",
+      "RegionId": "RG018",
+      "Accepted": false,
+      "Reason": "weak_ocr"
+    },
+    {
+      "ObservationId": "RO0049",
+      "RegionId": "RG018",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0050",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0051",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0052",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0053",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0054",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0055",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0056",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0057",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0058",
+      "RegionId": "RG022",
+      "Accepted": false,
+      "Reason": "uncorroborated_region_ocr"
+    },
+    {
+      "ObservationId": "RO0059",
+      "RegionId": "RG024",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0060",
+      "RegionId": "RG024",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    }
+  ],
+  "secondary_ocr": [
+    {
+      "EvidenceId": "BO0001",
+      "RegionId": "RG001",
+      "Bounds": {
+        "Top": 75,
+        "Bottom": 145,
+        "Left": 604,
+        "Right": 765,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "BRUCE, PLEASE! STOP THIS!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0002",
+      "RegionId": "RG002",
+      "Bounds": {
+        "Top": 80,
+        "Bottom": 143,
+        "Left": 193,
+        "Right": 345,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "...And there\u0027s nowhere left to go.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0003",
+      "RegionId": "RG005",
+      "Bounds": {
+        "Top": 127,
+        "Bottom": 235,
+        "Left": 1046,
+        "Right": 1209,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "NEVER! I FIGURED OUT YOUR SECRET, ALFRED. WHY\u0027D YOU DO IT?!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0004",
+      "RegionId": "RG007",
+      "Bounds": {
+        "Top": 660,
+        "Bottom": 728,
+        "Left": 80,
+        "Right": 206,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "JUST CALM DOWN! I\u0027M BEGGIN--",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0005",
+      "RegionId": "RG009",
+      "Bounds": {
+        "Top": 714,
+        "Bottom": 763,
+        "Left": 238,
+        "Right": 324,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "TELL ME WHY!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0006",
+      "RegionId": "RG011",
+      "Bounds": {
+        "Top": 782,
+        "Bottom": 821,
+        "Left": 417,
+        "Right": 531,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "WHY?!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0007",
+      "RegionId": "RG013",
+      "Bounds": {
+        "Top": 801,
+        "Bottom": 850,
+        "Left": 279,
+        "Right": 369,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "WE CAN STILL--",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0008",
+      "RegionId": "RG015",
+      "Bounds": {
+        "Top": 1029,
+        "Bottom": 1089,
+        "Left": 162,
+        "Right": 288,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "TAKE THE SHOT, MR. PENNYWORTH?",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0009",
+      "RegionId": "RG017",
+      "Bounds": {
+        "Top": 1320,
+        "Bottom": 1345,
+        "Left": 206,
+        "Right": 236,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "\u2026",
+      "Source": "baberu",
+      "Accepted": false,
+      "Reason": "empty_result"
+    },
+    {
+      "EvidenceId": "BO0010",
+      "RegionId": "RG019",
+      "Bounds": {
+        "Top": 1369,
+        "Bottom": 1398,
+        "Left": 224,
+        "Right": 274,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "NO.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0011",
+      "RegionId": "RG021",
+      "Bounds": {
+        "Top": 1418,
+        "Bottom": 1487,
+        "Left": 271,
+        "Right": 348,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "JUST...\nLEAVE\nUS.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0012",
+      "RegionId": "RG023",
+      "Bounds": {
+        "Top": 1925,
+        "Bottom": 1955,
+        "Left": 1049,
+        "Right": 1116,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "WHY?",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    }
+  ]
+}

@@ -1,0 +1,871 @@
+{
+  "SourceFile": "page023.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T02:09:23.3532075+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 983.6666666666667,
+        "Y": 68,
+        "W": 221.33333333333326,
+        "H": 42,
+        "Text": "he police arrive as he\u0027s reaching the ninth. ninth.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1000,
+            "Y": 68,
+            "W": 25.333333333333258,
+            "H": 19.66666666666667,
+            "Text": "he",
+            "Confidence": 0.9992336,
+            "Language": "en"
+          },
+          {
+            "X": 1023.6666666666666,
+            "Y": 68,
+            "W": 65.33333333333337,
+            "H": 20.66666666666667,
+            "Text": "police",
+            "Confidence": 0.9994594,
+            "Language": "en"
+          },
+          {
+            "X": 1085.3333333333333,
+            "Y": 68,
+            "W": 63.333333333333485,
+            "H": 20.33333333333333,
+            "Text": "arrive",
+            "Confidence": 0.999948,
+            "Language": "en"
+          },
+          {
+            "X": 1146.6666666666667,
+            "Y": 69.33333333333333,
+            "W": 26.333333333333258,
+            "H": 19,
+            "Text": "as",
+            "Confidence": 0.99998593,
+            "Language": "en"
+          },
+          {
+            "X": 983.6666666666667,
+            "Y": 82.66666666666667,
+            "W": 221.33333333333326,
+            "H": 27.33333333333333,
+            "Text": "he\u0027s reaching the ninth.",
+            "Confidence": 0.9972695,
+            "Language": "en"
+          },
+          {
+            "X": 1146,
+            "Y": 83.66666666666667,
+            "W": 58,
+            "H": 24.33333333333333,
+            "Text": "ninth.",
+            "Confidence": 0.9982049,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "The police arrive as he\u0027s reaching the ninth.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "The police arrive as he\u0027s reaching the ninth.",
+      "Translation": "\uADF8\uAC00 \uC544\uD649 \uBC88\uC9F8\uC5D0 \uB3C4\uB2EC\uD560 \uB54C[BR]\uACBD\uCC30\uC774 \uB4E4\uC774\uB2E5\uCCE4\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 611.6666666666667,
+        "Y": 73,
+        "W": 142.66666666666652,
+        "H": 45,
+        "Text": "In seven, he\u0027s on",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 611.6666666666667,
+            "Y": 73,
+            "W": 142.66666666666652,
+            "H": 26.66666666666667,
+            "Text": "In seven, he\u0027s",
+            "Confidence": 0.9975818,
+            "Language": "en"
+          },
+          {
+            "X": 613.3333333333334,
+            "Y": 93.66666666666666,
+            "W": 26.66666666666663,
+            "H": 24.333333333333343,
+            "Text": "on",
+            "Confidence": 0.99814475,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "In seven, he\u0027s on the fifth.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG002"
+      },
+      "CorrectedText": "In seven, he\u0027s on the fifth.",
+      "Translation": "7\uCD08 \uB0A8\uC558\uACE0,[BR]\uADF8\uB294 \uBC8C\uC368 5\uBC88\uC9F8\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 71,
+        "Y": 74,
+        "W": 195.66666666666669,
+        "H": 67.66666666666669,
+        "Text": "In less than five minutes he\u0027s made it to the third floor.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 71,
+            "Y": 74,
+            "W": 166,
+            "H": 32,
+            "Text": "In less than five",
+            "Confidence": 0.9937531,
+            "Language": "en"
+          },
+          {
+            "X": 74,
+            "Y": 97,
+            "W": 189.66666666666669,
+            "H": 24.33333333333333,
+            "Text": "minutes he\u0027s made",
+            "Confidence": 0.99485475,
+            "Language": "en"
+          },
+          {
+            "X": 72.33333333333333,
+            "Y": 116,
+            "W": 194.33333333333337,
+            "H": 25.666666666666686,
+            "Text": "it to the third floor.",
+            "Confidence": 0.9979531,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "In less than five minutes he\u0027s made it to the third floor.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG004"
+      },
+      "CorrectedText": "In less than five minutes he\u0027s made it to the third floor.",
+      "Translation": "5\uBD84\uB3C4 \uC548 \uB3FC\uC11C[BR]\uBC8C\uC368 3\uCE35\uAE4C\uC9C0 \uB3C4\uB2EC\uD588\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 783,
+        "Y": 113,
+        "W": 54.33333333333337,
+        "H": 98.66666666666669,
+        "Text": "WII",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 783,
+            "Y": 113,
+            "W": 54.33333333333337,
+            "H": 98.66666666666669,
+            "Text": "WII",
+            "Confidence": 0.55242,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WII",
+      "Translation": "\uC704\uC774",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1044,
+        "Y": 139,
+        "W": 147,
+        "H": 101.66666666666666,
+        "Text": "MR. THERE WAYNE, TEN OF ARE AND ONE us OF vou",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1095.3333333333333,
+            "Y": 139,
+            "W": 44.66666666666674,
+            "H": 25,
+            "Text": "MR.",
+            "Confidence": 0.9995516,
+            "Language": "en"
+          },
+          {
+            "X": 1118.6666666666667,
+            "Y": 158.66666666666669,
+            "W": 72.33333333333326,
+            "H": 23.333333333333314,
+            "Text": "THERE",
+            "Confidence": 0.9993285,
+            "Language": "en"
+          },
+          {
+            "X": 1044,
+            "Y": 159.33333333333331,
+            "W": 81.33333333333326,
+            "H": 23,
+            "Text": "WAYNE,",
+            "Confidence": 0.99916613,
+            "Language": "en"
+          },
+          {
+            "X": 1096.3333333333333,
+            "Y": 179.66666666666666,
+            "W": 86,
+            "H": 22.333333333333343,
+            "Text": "TEN OF",
+            "Confidence": 0.99572843,
+            "Language": "en"
+          },
+          {
+            "X": 1055.3333333333333,
+            "Y": 180.33333333333334,
+            "W": 45,
+            "H": 19.99999999999997,
+            "Text": "ARE",
+            "Confidence": 0.99973845,
+            "Language": "en"
+          },
+          {
+            "X": 1081,
+            "Y": 197.66666666666666,
+            "W": 106,
+            "H": 25.333333333333343,
+            "Text": "AND ONE",
+            "Confidence": 0.9970411,
+            "Language": "en"
+          },
+          {
+            "X": 1051.6666666666667,
+            "Y": 199.66666666666669,
+            "W": 34.33333333333326,
+            "H": 20.66666666666663,
+            "Text": "us",
+            "Confidence": 0.9671489,
+            "Language": "en"
+          },
+          {
+            "X": 1074.3333333333333,
+            "Y": 218.66666666666666,
+            "W": 34.66666666666674,
+            "H": 22,
+            "Text": "OF",
+            "Confidence": 0.9998131,
+            "Language": "en"
+          },
+          {
+            "X": 1108.6666666666667,
+            "Y": 219.33333333333334,
+            "W": 46.33333333333326,
+            "H": 10.666666666666657,
+            "Text": "vou",
+            "Confidence": 0.8765954,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MR.\nWAYNE, THERE\nARE TEN OF\nUS AND ONE\nOF YOU.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "MR. WAYNE, THERE ARE TEN OF US AND ONE OF YOU.",
+      "Translation": "\uC6E8\uC778 \uC528, \uC6B0\uB9AC \uC5F4 \uBA85\uC5D0[BR]\uB2F9\uC2E0\uC740 \uB2E8 \uD55C \uBA85\uBFD0\uC785\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1190.3333333333333,
+        "Y": 147.33333333333331,
+        "W": 44.66666666666674,
+        "H": 82.66666666666669,
+        "Text": "P",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1190.3333333333333,
+            "Y": 147.33333333333331,
+            "W": 44.66666666666674,
+            "H": 82.66666666666669,
+            "Text": "P",
+            "Confidence": 0.3227467,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "P",
+      "Translation": "P",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1022,
+        "Y": 531,
+        "W": 156,
+        "H": 151,
+        "Text": "3 A",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1022,
+            "Y": 531,
+            "W": 92,
+            "H": 113.66666666666663,
+            "Text": "3",
+            "Confidence": 0.711409,
+            "Language": "en"
+          },
+          {
+            "X": 1094.6666666666667,
+            "Y": 550,
+            "W": 83.33333333333326,
+            "H": 132,
+            "Text": "A",
+            "Confidence": 0.90660465,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "NOT GOOD\nODDS.",
+      "Translation": "\uC2B9\uC0B0\uC774\n\uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 976.3333333333334,
+        "Y": 583,
+        "W": 75.66666666666663,
+        "H": 65.66666666666663,
+        "Text": "NOT NOT GOOD ODDS.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 983,
+            "Y": 583,
+            "W": 55,
+            "H": 28,
+            "Text": "NOT",
+            "Confidence": 0.99997187,
+            "Language": "en"
+          },
+          {
+            "X": 987.6666666666666,
+            "Y": 589,
+            "W": 51.66666666666663,
+            "H": 20.33333333333337,
+            "Text": "NOT",
+            "Confidence": 0.9999617,
+            "Language": "en"
+          },
+          {
+            "X": 976.3333333333334,
+            "Y": 605.3333333333334,
+            "W": 74.99999999999989,
+            "H": 23.333333333333258,
+            "Text": "GOOD",
+            "Confidence": 0.99954927,
+            "Language": "en"
+          },
+          {
+            "X": 976.6666666666666,
+            "Y": 624.6666666666666,
+            "W": 75.33333333333337,
+            "H": 24,
+            "Text": "ODDS.",
+            "Confidence": 0.9988049,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NOT GOOD ODDS.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "NOT GOOD ODDS.",
+      "Translation": "\uC2B9\uC0B0\uC774 \uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 819.3333333333334,
+        "Y": 651.3333333333334,
+        "W": 7,
+        "H": 19.66666666666663,
+        "Text": "a",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 819.3333333333334,
+            "Y": 651.3333333333334,
+            "W": 7,
+            "H": 19.66666666666663,
+            "Text": "a",
+            "Confidence": 0.6613414,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "a",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1034.6666666666667,
+        "Y": 661.3333333333334,
+        "W": 99.66666666666652,
+        "H": 40.66666666666663,
+        "Text": "RIGHT. FOR you.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1048,
+            "Y": 661.3333333333334,
+            "W": 74.66666666666674,
+            "H": 24,
+            "Text": "RIGHT.",
+            "Confidence": 0.9995425,
+            "Language": "en"
+          },
+          {
+            "X": 1034.6666666666667,
+            "Y": 681.6666666666666,
+            "W": 56.33333333333326,
+            "H": 20.33333333333337,
+            "Text": "FOR",
+            "Confidence": 0.99991643,
+            "Language": "en"
+          },
+          {
+            "X": 1080,
+            "Y": 682,
+            "W": 54.33333333333326,
+            "H": 20,
+            "Text": "you.",
+            "Confidence": 0.8975588,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "RIGHT.\nFOR YOU.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "RIGHT.\nFOR YOU.",
+      "Translation": "\uB9DE\uC544.\n\uB108\uB97C \uC704\uD574\uC11C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 842,
+        "Y": 1021,
+        "W": 171,
+        "H": 212,
+        "Text": "N2 E",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 919.3333333333334,
+            "Y": 1021,
+            "W": 93.66666666666663,
+            "H": 212,
+            "Text": "N2",
+            "Confidence": 0.47209316,
+            "Language": "en"
+          },
+          {
+            "X": 842,
+            "Y": 1041,
+            "W": 61,
+            "H": 60,
+            "Text": "E",
+            "Confidence": 0.5126526,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "N2 E",
+      "Translation": "N2 E",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 222.5,
+        "Y": 1117.5,
+        "W": 77,
+        "H": 76.5,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 222.5,
+            "Y": 1117.5,
+            "W": 77,
+            "H": 76.5,
+            "Text": "E",
+            "Confidence": 0.36653897,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "E",
+      "Translation": "E",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 735.6666666666666,
+        "Y": 1181.3333333333333,
+        "W": 90.66666666666674,
+        "H": 50.66666666666674,
+        "Text": ")Dy",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 735.6666666666666,
+            "Y": 1181.3333333333333,
+            "W": 90.66666666666674,
+            "H": 50.66666666666674,
+            "Text": ")Dy",
+            "Confidence": 0.54990155,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": ")Dy",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 140.33333333333334,
+        "Y": 1293,
+        "W": 227.99999999999997,
+        "H": 46,
+        "Text": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 140.33333333333334,
+            "Y": 1293,
+            "W": 227.99999999999997,
+            "H": 26.333333333333258,
+            "Text": "He takes the \u0022bat\u0022 from",
+            "Confidence": 0.9753106,
+            "Language": "en"
+          },
+          {
+            "X": 142,
+            "Y": 1313.3333333333333,
+            "W": 200.66666666666669,
+            "H": 25.666666666666742,
+            "Text": "one of them on nine.",
+            "Confidence": 0.9844507,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "He takes the \u0022bat\u0022 from one of them on nine.",
+      "Translation": "\uADF8\uB294 9\uCD08 \uB9CC\uC5D0[BR]\uADF8\uB4E4 \uC911 \uD55C \uBA85\uC5D0\uAC8C\uC11C \u0027\uBAA8\uC790\u0027\uB97C \uBE7C\uC557\uB294\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 407,
+        "Y": 1739.5,
+        "W": 355,
+        "H": 64.5,
+        "Text": "The belt he gets from Sergeant Bullock on the tenthfloor. It\u0027s big, so he wraps it around his waist twice.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 409,
+            "Y": 1739.5,
+            "W": 318,
+            "H": 26.5,
+            "Text": "The belt he gets from Sergeant",
+            "Confidence": 0.9982934,
+            "Language": "en"
+          },
+          {
+            "X": 409,
+            "Y": 1759.5,
+            "W": 340.5,
+            "H": 24.5,
+            "Text": "Bullock on the tenthfloor. It\u0027s big,",
+            "Confidence": 0.97638786,
+            "Language": "en"
+          },
+          {
+            "X": 407,
+            "Y": 1775,
+            "W": 355,
+            "H": 29,
+            "Text": "so he wraps it around his waist twice.",
+            "Confidence": 0.99287087,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "The bolt the gets from Sergent Bulldock on the terth floor. It\u0027s big, so he wrapst around hit and totat.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "The belt he gets from Sergeant Bullock on the tenth floor. It\u0027s big, so he wraps it around his waist twice.",
+      "Translation": "10\uCE35\uC5D0\uC11C \uBD88\uB85D \uBCD1\uC7A5\uC5D0\uAC8C \uC5BB\uC740 \uBCA8\uD2B8. \uD06C\uAE30\uAC00 \uCEE4\uC11C \uD5C8\uB9AC\uC5D0 \uB450 \uBC88 \uAC10\uC558\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 471.3333333333333,
+        "Y": 1823,
+        "W": 319.6666666666667,
+        "H": 106.5,
+        "Text": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 474.6666666666667,
+            "Y": 1823,
+            "W": 290.3333333333333,
+            "H": 30.666666666666742,
+            "Text": "Captain Gordon, a longtime",
+            "Confidence": 0.9989187,
+            "Language": "en"
+          },
+          {
+            "X": 471.3333333333333,
+            "Y": 1845,
+            "W": 279.3333333333333,
+            "H": 26.333333333333258,
+            "Text": "advocate, makes an effort to",
+            "Confidence": 0.9935984,
+            "Language": "en"
+          },
+          {
+            "X": 472,
+            "Y": 1862,
+            "W": 319,
+            "H": 27,
+            "Text": "talk to him on eleven. \u0022Remember",
+            "Confidence": 0.9949561,
+            "Language": "en"
+          },
+          {
+            "X": 473.3333333333333,
+            "Y": 1880.3333333333333,
+            "W": 272.6666666666667,
+            "H": 30.666666666666742,
+            "Text": "me, son?\u0022 he says, \u0022The talks",
+            "Confidence": 0.97680545,
+            "Language": "en"
+          },
+          {
+            "X": 471.5,
+            "Y": 1899.5,
+            "W": 286.5,
+            "H": 30,
+            "Text": "on the roof? By the skyligh--\u0022",
+            "Confidence": 0.9910858,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Captain Gordom, a longtine advocate, makes an effort to talk to him on elever \u0022Remente te temetet \u0022\u0022thene temethe \u0022\u0022ameteneateme",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+      "Translation": "\uC624\uB79C \uC9C0\uC9C0\uC790\uC600\uB358 \uACE0\uB4E0 \uB300\uC704\uAC00 11\uC5D0\uC11C \uADF8\uC640 \uB300\uD654\uD558\uB824\uACE0 \uC560\uB97C \uC4F4\uB2E4. \u0022\uB098 \uAE30\uC5B5\uB098\uB098, \uC544\uB4E4\uC544?\u0022 \uADF8\uAC00 \uB9D0\uD55C\uB2E4. \u0022\uC625\uC0C1\uC5D0\uC11C \uB098\uB234\uB358 \uB300\uD654 \uB9D0\uC774\uC57C. \uCC9C\uC7A5\uCC3D \uADFC\uCC98\uC5D0\uC11C...\u0022",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 572,
+        "Y": 1943,
+        "W": 249,
+        "H": 48,
+        "Text": "He takes Gordon\u0027s boots sentence ends.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 572,
+            "Y": 1943,
+            "W": 249,
+            "H": 33,
+            "Text": "He takes Gordon\u0027s boots",
+            "Confidence": 0.99931437,
+            "Language": "en"
+          },
+          {
+            "X": 677.6666666666666,
+            "Y": 1969.6666666666667,
+            "W": 141,
+            "H": 21.333333333333258,
+            "Text": "sentence ends.",
+            "Confidence": 0.99946344,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "He takes Gordon\u0027s boots before the sentence ends.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "He takes Gordon\u0027s boots before the sentence ends.",
+      "Translation": "\uBB38\uC7A5\uC774 \uB05D\uB098\uAE30\uB3C4 \uC804\uC5D0[BR]\uADF8\uB294 \uACE0\uB4E0\uC758 \uBD80\uCE20\uB97C \uB09A\uC544\uCC58\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 895.5,
+        "Y": 1962.5,
+        "W": 176,
+        "H": 54.5,
+        "Text": "In moments he\u0027s on twelve.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 895.5,
+            "Y": 1962.5,
+            "W": 176,
+            "H": 39,
+            "Text": "In moments he\u0027s",
+            "Confidence": 0.9960843,
+            "Language": "en"
+          },
+          {
+            "X": 902.3333333333334,
+            "Y": 1986.6666666666667,
+            "W": 100,
+            "H": 30.333333333333258,
+            "Text": "on twelve.",
+            "Confidence": 0.97627205,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "In moments he\u0027s on twelve...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "In moments he\u0027s on twelve...",
+      "Translation": "\uC21C\uC2DD\uAC04\uC5D0[BR]\uADF8\uB294 \uC5F4\uB450 \uBA85\uC744...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
