@@ -16,6 +16,8 @@ public sealed record V2BackgroundReconstructionAudit(
     double DominantMatchRatio,
     double P75ColorDistance,
     double P90ColorDistance,
+    double SpatialCoverage,
+    int ExclusionRadius,
     bool FlatAccepted,
     string Reason);
 
@@ -24,17 +26,33 @@ public sealed record V2BackgroundReconstructionAudit(
 ///
 /// A text mask describes foreground ink. It does not describe what should
 /// replace that ink. For locally flat Bubble/Caption backgrounds we restore
-/// the robust local background color directly. Complex artwork remains on the
-/// ordinary inpaint path.
+/// the dominant local background cluster directly. Complex artwork remains on
+/// the ordinary inpaint path.
 ///
-/// Sampling deliberately uses pixels INSIDE the immutable detector text box
-/// but OUTSIDE the accepted glyph mask. This is important for large display
-/// lettering whose TextBubble nearly fills its parent Bubble: an outside ring
-/// would mostly see the balloon border instead of the background behind text.
+/// 0031 intentionally purifies background candidates before classifying them:
+/// the accepted glyph mask is expanded to exclude antialias/outline/color
+/// contamination, then the largest compact color cluster is selected instead
+/// of taking the median of every remaining pixel.
 /// </summary>
 public static class BackgroundReconstructionV2
 {
-    const double MatchDistance = 28.0;
+    const double SeedDistance = 54.0;
+    const double MatchDistance = 34.0;
+    const int QuantizationStep = 32;
+    const int CandidateBinCount = 8;
+
+    readonly record struct SamplePoint(
+        int X,
+        int Y,
+        Vec3b Color);
+
+    sealed record ClusterCandidate(
+        Vec3b Background,
+        int SupportCount,
+        double DominantRatio,
+        double P75,
+        double P90,
+        double SpatialCoverage);
 
     public static V2BackgroundReconstructionAudit Analyze(
         Mat source,
@@ -98,41 +116,46 @@ public static class BackgroundReconstructionV2
                 bounds;
         }
 
+        int exclusionRadius =
+            Math.Clamp(
+                (int)Math.Round(
+                    Math.Min(
+                        bounds.Width,
+                        bounds.Height) *
+                    0.035),
+                3,
+                9);
+
         var samples =
-            new List<Vec3b>();
-
-        for (int y =
-                 sampleBounds.Top;
-             y <
-             sampleBounds.Bottom;
-             y += 2)
-        {
-            for (int x =
-                     sampleBounds.Left;
-                 x <
-                 sampleBounds.Right;
-                 x += 2)
-            {
-                if (glyphMask.At<byte>(
-                        y,
-                        x) != 0)
-                {
-                    continue;
-                }
-
-                samples.Add(
-                    source.At<Vec3b>(
-                        y,
-                        x));
-            }
-        }
+            CollectPurifiedSamples(
+                source,
+                glyphMask,
+                sampleBounds,
+                exclusionRadius);
 
         int minimumSamples =
             Math.Max(
                 32,
                 (sampleBounds.Width *
                  sampleBounds.Height) /
-                160);
+                180);
+
+        if (samples.Count <
+            minimumSamples &&
+            exclusionRadius > 2)
+        {
+            exclusionRadius =
+                Math.Max(
+                    2,
+                    exclusionRadius / 2);
+
+            samples =
+                CollectPurifiedSamples(
+                    source,
+                    glyphMask,
+                    sampleBounds,
+                    exclusionRadius);
+        }
 
         if (samples.Count <
             minimumSamples)
@@ -141,84 +164,31 @@ public static class BackgroundReconstructionV2
                 target,
                 maskPixels,
                 "TELEA",
-                "insufficient_background_samples",
-                samples.Count);
+                "insufficient_purified_background_samples",
+                samples.Count,
+                exclusionRadius);
         }
 
-        var blues =
-            samples
-                .Select(x =>
-                    x.Item0)
-                .OrderBy(x =>
-                    x)
-                .ToArray();
+        var cluster =
+            FindDominantCluster(
+                samples,
+                sampleBounds);
 
-        var greens =
-            samples
-                .Select(x =>
-                    x.Item1)
-                .OrderBy(x =>
-                    x)
-                .ToArray();
+        if (cluster is null)
+        {
+            return EmptyAudit(
+                target,
+                maskPixels,
+                "TELEA",
+                "no_background_cluster",
+                samples.Count,
+                exclusionRadius);
+        }
 
-        var reds =
-            samples
-                .Select(x =>
-                    x.Item2)
-                .OrderBy(x =>
-                    x)
-                .ToArray();
-
-        int medianIndex =
-            samples.Count /
-            2;
-
-        var background =
-            new Vec3b(
-                blues[medianIndex],
-                greens[medianIndex],
-                reds[medianIndex]);
-
-        var distances =
-            samples
-                .Select(x =>
-                    ColorDistance(
-                        x,
-                        background))
-                .OrderBy(x =>
-                    x)
-                .ToArray();
-
-        double p75 =
-            Percentile(
-                distances,
-                0.75);
-
-        double p90 =
-            Percentile(
-                distances,
-                0.90);
-
-        double dominantRatio =
-            distances.Count(x =>
-                x <=
-                MatchDistance) /
-            (double)Math.Max(
-                1,
-                distances.Length);
-
-        // Conservative flat decision:
-        // - at least roughly 70% of the visible, non-glyph pixels belong to
-        //   one local color cluster;
-        // - the central 75% is genuinely tight;
-        // - the 90th percentile may contain anti-aliasing, balloon borders,
-        //   or a little artwork, but must not be wildly different.
-        //
-        // Ambiguous targets always fall back to Telea.
         bool flat =
-            dominantRatio >= 0.70 &&
-            p75 <= 24.0 &&
-            p90 <= 64.0;
+            cluster.DominantRatio >= 0.60 &&
+            cluster.P90 <= 30.0 &&
+            cluster.SpatialCoverage >= 0.50;
 
         string strategy =
             flat
@@ -227,12 +197,12 @@ public static class BackgroundReconstructionV2
 
         string reason =
             flat
-                ? "dominant_local_background"
-                : dominantRatio < 0.70
-                    ? "background_not_dominant"
-                    : p75 > 24.0
-                        ? "background_variance"
-                        : "background_outliers";
+                ? "dominant_purified_background_cluster"
+                : cluster.DominantRatio < 0.60
+                    ? "background_cluster_weak"
+                    : cluster.P90 > 30.0
+                        ? "background_cluster_variance"
+                        : "background_cluster_not_spatial";
 
         return new V2BackgroundReconstructionAudit(
             target.TextRegionId,
@@ -241,12 +211,14 @@ public static class BackgroundReconstructionV2
             strategy,
             maskPixels,
             samples.Count,
-            background.Item0,
-            background.Item1,
-            background.Item2,
-            dominantRatio,
-            p75,
-            p90,
+            cluster.Background.Item0,
+            cluster.Background.Item1,
+            cluster.Background.Item2,
+            cluster.DominantRatio,
+            cluster.P75,
+            cluster.P90,
+            cluster.SpatialCoverage,
+            exclusionRadius,
             flat,
             reason);
     }
@@ -303,7 +275,7 @@ public static class BackgroundReconstructionV2
             for (int x =
                      bounds.Left;
                  x <
-             bounds.Right;
+                 bounds.Right;
                  x++)
             {
                 if (glyphMask.At<byte>(
@@ -332,12 +304,348 @@ public static class BackgroundReconstructionV2
             0.85);
     }
 
+    static List<SamplePoint> CollectPurifiedSamples(
+        Mat source,
+        Mat glyphMask,
+        Rect sampleBounds,
+        int exclusionRadius)
+    {
+        using var exclusion =
+            new Mat();
+
+        using (var kernel =
+               Cv2.GetStructuringElement(
+                   MorphShapes.Ellipse,
+                   new Size(
+                       exclusionRadius * 2 + 1,
+                       exclusionRadius * 2 + 1)))
+        {
+            Cv2.Dilate(
+                glyphMask,
+                exclusion,
+                kernel,
+                iterations: 1);
+        }
+
+        var samples =
+            new List<SamplePoint>();
+
+        for (int y =
+                 sampleBounds.Top;
+             y <
+             sampleBounds.Bottom;
+             y += 2)
+        {
+            for (int x =
+                     sampleBounds.Left;
+                 x <
+                 sampleBounds.Right;
+                 x += 2)
+            {
+                if (exclusion.At<byte>(
+                        y,
+                        x) != 0)
+                {
+                    continue;
+                }
+
+                samples.Add(
+                    new SamplePoint(
+                        x,
+                        y,
+                        source.At<Vec3b>(
+                            y,
+                            x)));
+            }
+        }
+
+        return samples;
+    }
+
+    static ClusterCandidate? FindDominantCluster(
+        IReadOnlyList<SamplePoint> samples,
+        Rect sampleBounds)
+    {
+        var bins =
+            new Dictionary<int, List<SamplePoint>>();
+
+        foreach (var sample in samples)
+        {
+            int key =
+                QuantizedKey(
+                    sample.Color);
+
+            if (!bins.TryGetValue(
+                    key,
+                    out var bucket))
+            {
+                bucket =
+                    new List<SamplePoint>();
+
+                bins[key] =
+                    bucket;
+            }
+
+            bucket.Add(
+                sample);
+        }
+
+        var seedBins =
+            bins.Values
+                .OrderByDescending(x =>
+                    x.Count)
+                .Take(
+                    CandidateBinCount)
+                .ToArray();
+
+        ClusterCandidate? best =
+            null;
+
+        foreach (var seedBin in seedBins)
+        {
+            var seed =
+                ChannelMedian(
+                    seedBin.Select(x =>
+                        x.Color));
+
+            var broadSupport =
+                samples
+                    .Where(x =>
+                        ColorDistance(
+                            x.Color,
+                            seed) <=
+                        SeedDistance)
+                    .ToArray();
+
+            if (broadSupport.Length < 8)
+                continue;
+
+            var refined =
+                ChannelMedian(
+                    broadSupport.Select(x =>
+                        x.Color));
+
+            var support =
+                samples
+                    .Where(x =>
+                        ColorDistance(
+                            x.Color,
+                            refined) <=
+                        MatchDistance)
+                    .ToArray();
+
+            if (support.Length < 8)
+                continue;
+
+            refined =
+                ChannelMedian(
+                    support.Select(x =>
+                        x.Color));
+
+            var distances =
+                support
+                    .Select(x =>
+                        ColorDistance(
+                            x.Color,
+                            refined))
+                    .OrderBy(x =>
+                        x)
+                    .ToArray();
+
+            double ratio =
+                support.Length /
+                (double)Math.Max(
+                    1,
+                    samples.Count);
+
+            double spatial =
+                ComputeSpatialCoverage(
+                    support,
+                    sampleBounds);
+
+            var candidate =
+                new ClusterCandidate(
+                    refined,
+                    support.Length,
+                    ratio,
+                    Percentile(
+                        distances,
+                        0.75),
+                    Percentile(
+                        distances,
+                        0.90),
+                    spatial);
+
+            if (best is null ||
+                candidate.SupportCount >
+                best.SupportCount ||
+                candidate.SupportCount ==
+                best.SupportCount &&
+                candidate.SpatialCoverage >
+                best.SpatialCoverage ||
+                candidate.SupportCount ==
+                best.SupportCount &&
+                Math.Abs(
+                    candidate.SpatialCoverage -
+                    best.SpatialCoverage) <
+                0.0001 &&
+                candidate.P90 <
+                best.P90)
+            {
+                best =
+                    candidate;
+            }
+        }
+
+        return best;
+    }
+
+    static double ComputeSpatialCoverage(
+        IReadOnlyList<SamplePoint> support,
+        Rect bounds)
+    {
+        const int grid =
+            4;
+
+        var occupied =
+            new bool[
+                grid,
+                grid];
+
+        foreach (var sample in support)
+        {
+            int gx =
+                Math.Clamp(
+                    (int)(
+                        (sample.X -
+                         bounds.Left) /
+                        (double)Math.Max(
+                            1,
+                            bounds.Width) *
+                        grid),
+                    0,
+                    grid - 1);
+
+            int gy =
+                Math.Clamp(
+                    (int)(
+                        (sample.Y -
+                         bounds.Top) /
+                        (double)Math.Max(
+                            1,
+                            bounds.Height) *
+                        grid),
+                    0,
+                    grid - 1);
+
+            occupied[
+                gx,
+                gy] =
+                true;
+        }
+
+        int count =
+            0;
+
+        for (int y = 0;
+             y < grid;
+             y++)
+        {
+            for (int x = 0;
+                 x < grid;
+                 x++)
+            {
+                if (occupied[
+                        x,
+                        y])
+                {
+                    count++;
+                }
+            }
+        }
+
+        return count /
+               (double)(
+                   grid *
+                   grid);
+    }
+
+    static Vec3b ChannelMedian(
+        IEnumerable<Vec3b> values)
+    {
+        var colors =
+            values.ToArray();
+
+        if (colors.Length == 0)
+        {
+            return new Vec3b(
+                0,
+                0,
+                0);
+        }
+
+        var blues =
+            colors
+                .Select(x =>
+                    x.Item0)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        var greens =
+            colors
+                .Select(x =>
+                    x.Item1)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        var reds =
+            colors
+                .Select(x =>
+                    x.Item2)
+                .OrderBy(x =>
+                    x)
+                .ToArray();
+
+        int middle =
+            colors.Length /
+            2;
+
+        return new Vec3b(
+            blues[middle],
+            greens[middle],
+            reds[middle]);
+    }
+
+    static int QuantizedKey(
+        Vec3b color)
+    {
+        int b =
+            color.Item0 /
+            QuantizationStep;
+
+        int g =
+            color.Item1 /
+            QuantizationStep;
+
+        int r =
+            color.Item2 /
+            QuantizationStep;
+
+        return
+            b |
+            g << 4 |
+            r << 8;
+    }
+
     static V2BackgroundReconstructionAudit EmptyAudit(
         V2TextTarget target,
         int maskPixels,
         string strategy,
         string reason,
-        int sampleCount = 0)
+        int sampleCount = 0,
+        int exclusionRadius = 0)
         => new(
             target.TextRegionId,
             target.Kind.ToString(),
@@ -351,6 +659,8 @@ public static class BackgroundReconstructionV2
             0,
             0,
             0,
+            0,
+            exclusionRadius,
             false,
             reason);
 
