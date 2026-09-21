@@ -189,3 +189,39 @@ Graphic/emphasis dialogue such as NONONO remains a separate policy question and 
   - v2_03b_persistent_core.webp (red)
 
 The design goal is monotonic safety relative to 0024: existing primary-pass units cannot regress because of the experimental secondary reviewer, while known 0024 false positives can still be rescued.
+
+
+## 0027 cleaned checkpoint audit
+
+0027 does not change erase, OCR, translation, layout, primary review, or secondary rescue policy. It adds the missing structural checkpoint between erase and typesetting so the pipeline can explicitly answer: did every detector-owned erase target produce a verified empty result before Korean text is placed?
+
+The checkpoint is grouped by immutable detector identity rather than by OCR fragments:
+
+- TextBubble targets that share the same parent BubbleRegionId are counted as one Bubble checkpoint.
+- TextFree targets are counted independently.
+- an unparented TextBubble is retained as a separate diagnostic item instead of being silently dropped.
+- a Bubble checkpoint is EMPTY_OK only when every selected TextRegionId owned by that Bubble has a clean erase audit.
+- verification uses exact ID-set equality, not count equality alone, so replacing one missing Bubble with another cannot accidentally pass.
+
+New debug output:
+
+- v2_04b_cleaned_checkpoint.webp
+  - thin gray boxes: RT-DETR Bubble detections that are not erase targets.
+  - green boxes: erase-target Bubble/TextFree checkpoints verified EMPTY_OK.
+  - red boxes: erase-target checkpoints still marked ERASE_CHECK.
+  - the top summary shows verified/target counts separately for Bubble and TextFree.
+
+v2_erase_audit.json now also records:
+
+- DetectedBubbleCount
+- EraseTargetBubbleCount
+- EmptyVerifiedBubbleCount
+- EraseTargetBubbleIds
+- EmptyVerifiedBubbleIds
+- CheckpointMissingBubbleIds
+- EraseTargetTextFreeCount
+- EmptyVerifiedTextFreeCount
+- the corresponding TextFree ID sets
+- per-checkpoint bounds, owned TextRegionIds, EMPTY_OK/ERASE_CHECK status, and OverallPass
+
+This is diagnostic-only in 0027. A checkpoint result does not yet override the 0026 restore/commit behavior. The purpose is to verify the cleaned stage independently and determine whether later restore logic is undoing a visually complete erase.
