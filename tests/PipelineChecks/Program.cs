@@ -1102,6 +1102,92 @@ using (var partialGlyphMask =
         contaminatedAudit.DominantMatchRatio >= 0.60);
 }
 
+// 0032 regression: a target that was classified FLAT_FILL must keep that
+// strategy during retry. Expanding the retry mask over surviving colored ink
+// should repaint it from the already-estimated flat background, never use the
+// colored residue itself as Telea source material.
+using (var retryFlatImage =
+       Mat.Zeros(
+           120,
+           160,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var retryFlatMask =
+       Mat.Zeros(
+           120,
+           160,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    retryFlatImage.SetTo(
+        new Scalar(
+            246,
+            242,
+            241));
+
+    Cv2.Rectangle(
+        retryFlatImage,
+        new Rect(
+            55,
+            42,
+            50,
+            28),
+        new Scalar(
+            35,
+            45,
+            225),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        retryFlatMask,
+        new Rect(
+            48,
+            36,
+            64,
+            40),
+        Scalar.White,
+        thickness: -1);
+
+    var retryFlatAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0032-FLAT-RETRY",
+            PageRegionKind.TextBubble.ToString(),
+            new Rect(
+                30,
+                24,
+                100,
+                72),
+            "FLAT_FILL",
+            Cv2.CountNonZero(
+                retryFlatMask),
+            100,
+            246,
+            242,
+            241,
+            0.88,
+            16,
+            20,
+            0.625,
+            7,
+            true,
+            "dominant_purified_background_cluster");
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        retryFlatImage,
+        retryFlatMask,
+        retryFlatAudit);
+
+    var retriedPixel =
+        retryFlatImage.At<Vec3b>(
+            58,
+            78);
+
+    Check("V2 0032 flat retry removes colored residue with stored background instead of Telea",
+        retriedPixel.Item0 == 246 &&
+        retriedPixel.Item1 == 242 &&
+        retriedPixel.Item2 == 241);
+}
+
 using (var artworkSource =
        Mat.Zeros(
            160,
