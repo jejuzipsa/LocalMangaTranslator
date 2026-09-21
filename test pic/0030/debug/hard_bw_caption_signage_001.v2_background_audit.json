@@ -1,0 +1,85 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "hard_bw_caption_signage_001.png",
+  "TargetCount": 3,
+  "FlatFillTargets": 3,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 316,
+        "Y": 220,
+        "Width": 338,
+        "Height": 41
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4040,
+      "SampleCount": 2163,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 0,
+      "FlatAccepted": true,
+      "Reason": "dominant_local_background",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG005",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 865,
+        "Y": 591,
+        "Width": 76,
+        "Height": 63
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 1785,
+      "SampleCount": 628,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 0,
+      "FlatAccepted": true,
+      "Reason": "dominant_local_background",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 169,
+        "Y": 613,
+        "Width": 116,
+        "Height": 36
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 1392,
+      "SampleCount": 553,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 0,
+      "FlatAccepted": true,
+      "Reason": "dominant_local_background",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

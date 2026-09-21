@@ -1,0 +1,603 @@
+{
+  "SourceFile": "hard_bw_dark_text_001.png",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-21T22:38:27.4412102+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 187.33333333333334,
+        "Y": 289.6666666666667,
+        "W": 197.66666666666666,
+        "H": 134.33333333333331,
+        "Text": "THAT PETITE BODY OF YOURS WILL CRUMBLE..",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 187.33333333333334,
+            "Y": 289.6666666666667,
+            "W": 197.66666666666666,
+            "H": 39.333333333333314,
+            "Text": "THAT PETITE",
+            "Confidence": 0.9993178,
+            "Language": "en"
+          },
+          {
+            "X": 204.33333333333334,
+            "Y": 321.3333333333333,
+            "W": 162.99999999999997,
+            "H": 39,
+            "Text": "BODY OF",
+            "Confidence": 0.9990746,
+            "Language": "en"
+          },
+          {
+            "X": 188.66666666666666,
+            "Y": 353,
+            "W": 192.33333333333334,
+            "H": 41,
+            "Text": "YOURS WILL",
+            "Confidence": 0.9924816,
+            "Language": "en"
+          },
+          {
+            "X": 190,
+            "Y": 387.33333333333337,
+            "W": 171.66666666666669,
+            "H": 36.66666666666663,
+            "Text": "CRUMBLE..",
+            "Confidence": 0.9899199,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "THAT PETITE BODY OF YOURS WILL CRUMBLE...",
+      "Translation": "\uADF8 \uAC00\uB0D8\uD508 \uBAB8\uC774\n\uBD80\uC11C\uC838 \uBC84\uB9B4 \uAC70\uC57C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 915.6666666666666,
+        "Y": 304.6666666666667,
+        "W": 196.66666666666663,
+        "H": 104.99999999999994,
+        "Text": "AND DEATH WILL BE UPON YOU!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 915.6666666666666,
+            "Y": 304.6666666666667,
+            "W": 196.66666666666663,
+            "H": 39,
+            "Text": "AND DEATH",
+            "Confidence": 0.99980366,
+            "Language": "en"
+          },
+          {
+            "X": 946.3333333333333,
+            "Y": 336.33333333333337,
+            "W": 136.00000000000023,
+            "H": 40,
+            "Text": "WILL BE",
+            "Confidence": 0.99429,
+            "Language": "en"
+          },
+          {
+            "X": 918.6666666666667,
+            "Y": 366,
+            "W": 193.33333333333326,
+            "H": 43.66666666666663,
+            "Text": "UPON YOU!",
+            "Confidence": 0.96427786,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "AND DEATH WILL BE UPON YOU!",
+      "Translation": "\uADF8\uB9AC\uACE0 \uC8FD\uC74C\uC774\n\uB108\uB97C \uB36E\uCE58\uB9AC\uB77C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 758,
+        "Y": 320,
+        "W": 75.66666666666663,
+        "H": 75,
+        "Text": "GAME OVER.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 758,
+            "Y": 320,
+            "W": 74.5,
+            "H": 49,
+            "Text": "GAME",
+            "Confidence": 0.99926114,
+            "Language": "en"
+          },
+          {
+            "X": 759.6666666666666,
+            "Y": 352.33333333333337,
+            "W": 74,
+            "H": 42.66666666666663,
+            "Text": "OVER.",
+            "Confidence": 0.9969025,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "GAME OVER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG006"
+      },
+      "CorrectedText": "GAME\nOVER.",
+      "Translation": "\uAC8C\uC784\n\uC624\uBC84.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 458.6666666666667,
+        "Y": 329.6666666666667,
+        "W": 54.333333333333314,
+        "H": 63.666666666666686,
+        "Text": "HEE HEE,",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 461,
+            "Y": 329.6666666666667,
+            "W": 47.666666666666686,
+            "H": 36,
+            "Text": "HEE",
+            "Confidence": 0.9913953,
+            "Language": "en"
+          },
+          {
+            "X": 458.6666666666667,
+            "Y": 356.33333333333337,
+            "W": 54.333333333333314,
+            "H": 37,
+            "Text": "HEE,",
+            "Confidence": 0.8980744,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HEE\nHEE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "HEE\nHEE.",
+      "Translation": "\uD788\n\uD788.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 622.6666666666666,
+        "Y": 337.5,
+        "W": 57.83333333333337,
+        "H": 57.5,
+        "Text": "1N 0",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 636.5,
+            "Y": 337.5,
+            "W": 44,
+            "H": 25.5,
+            "Text": "1N",
+            "Confidence": 0.48944134,
+            "Language": "en"
+          },
+          {
+            "X": 622.6666666666666,
+            "Y": 357.6666666666667,
+            "W": 32,
+            "H": 37.333333333333314,
+            "Text": "0",
+            "Confidence": 0.8235249,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "1N 0",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 619,
+        "Y": 432.33333333333337,
+        "W": 61.33333333333337,
+        "H": 69.66666666666663,
+        "Text": "Y ZITT",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 623,
+            "Y": 432.33333333333337,
+            "W": 56.33333333333337,
+            "H": 44.66666666666663,
+            "Text": "Y",
+            "Confidence": 0.9338623,
+            "Language": "en"
+          },
+          {
+            "X": 619,
+            "Y": 474.33333333333337,
+            "W": 61.33333333333337,
+            "H": 27.66666666666663,
+            "Text": "ZITT",
+            "Confidence": 0.52039826,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "Y ZITT",
+      "Translation": "\uC774 \uC790\uC2DD!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 781.6666666666667,
+        "Y": 649.6666666666666,
+        "W": 280.66666666666674,
+        "H": 89.83333333333337,
+        "Text": "\u0027TIS TANTAMOUNT TO SUICIDE!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 781.6666666666667,
+            "Y": 649.6666666666666,
+            "W": 280.66666666666674,
+            "H": 54,
+            "Text": "\u0027TIS TANTAMOUNT",
+            "Confidence": 0.9922111,
+            "Language": "en"
+          },
+          {
+            "X": 819,
+            "Y": 686.5,
+            "W": 205,
+            "H": 53,
+            "Text": "TO SUICIDE!",
+            "Confidence": 0.99909943,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "TO TANTAMOUNT TO SUCIDE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "\u0027TIS TANTAMOUNT TO SUICIDE!",
+      "Translation": "\uADF8\uAC74 \uC790\uC0B4\uC774\uB098 \uB2E4\uB984\uC5C6\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 255.66666666666666,
+        "Y": 660.3333333333334,
+        "W": 220.00000000000003,
+        "H": 60.33333333333326,
+        "Text": "HMMMMMM. IF I MAY BE FRANK..",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 294.3333333333333,
+            "Y": 660.3333333333334,
+            "W": 135.33333333333337,
+            "H": 32.66666666666663,
+            "Text": "HMMMMMM.",
+            "Confidence": 0.99832106,
+            "Language": "en"
+          },
+          {
+            "X": 255.66666666666666,
+            "Y": 688.3333333333334,
+            "W": 102.33333333333334,
+            "H": 32.33333333333326,
+            "Text": "IF I MAY",
+            "Confidence": 0.9881818,
+            "Language": "en"
+          },
+          {
+            "X": 348.6666666666667,
+            "Y": 689.6666666666666,
+            "W": 127,
+            "H": 31,
+            "Text": "BE FRANK..",
+            "Confidence": 0.9388084,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HAMAMAMAHA...\nIF I MAY BE FRANK...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "HMMMMMMMM...\nIF I MAY BE FRANK...",
+      "Translation": "\uD760...[BR]\uC194\uC9C1\uD788 \uB9D0\uD558\uC790\uBA74...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 249.33333333333334,
+        "Y": 809.3333333333334,
+        "W": 126.66666666666666,
+        "H": 28.66666666666663,
+        "Text": "DAO",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 249.33333333333334,
+            "Y": 809.3333333333334,
+            "W": 126.66666666666666,
+            "H": 28.66666666666663,
+            "Text": "DAO",
+            "Confidence": 0.75266856,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "DAO",
+      "Translation": "\uB2E4\uC624",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 822.3333333333334,
+        "Y": 816,
+        "W": 53,
+        "H": 17,
+        "Text": "ana",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 822.3333333333334,
+            "Y": 816,
+            "W": 53,
+            "H": 17,
+            "Text": "ana",
+            "Confidence": 0.5384007,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ana",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 560.3333333333334,
+        "Y": 1288,
+        "W": 135.66666666666663,
+        "H": 57.33333333333326,
+        "Text": "L",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 560.3333333333334,
+            "Y": 1288,
+            "W": 135.66666666666663,
+            "H": 57.33333333333326,
+            "Text": "L",
+            "Confidence": 0.988732,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "L",
+      "Translation": "L",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 178.33333333333334,
+        "Y": 1406,
+        "W": 239.99999999999997,
+        "H": 143.33333333333326,
+        "Text": "FURTHERMORE... CAN\u0027T DISCOUNT THE POSSIBILITY OF RECEIVING 666... NUMBER GUEST",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 205.66666666666666,
+            "Y": 1406,
+            "W": 181.66666666666666,
+            "H": 32.33333333333326,
+            "Text": "FURTHERMORE...",
+            "Confidence": 0.99374986,
+            "Language": "en"
+          },
+          {
+            "X": 228.66666666666666,
+            "Y": 1435,
+            "W": 69.00000000000003,
+            "H": 30,
+            "Text": "CAN\u0027T",
+            "Confidence": 0.99695647,
+            "Language": "en"
+          },
+          {
+            "X": 297.3333333333333,
+            "Y": 1435,
+            "W": 107.66666666666669,
+            "H": 30,
+            "Text": "DISCOUNT",
+            "Confidence": 0.99943477,
+            "Language": "en"
+          },
+          {
+            "X": 190.66666666666666,
+            "Y": 1462.6666666666667,
+            "W": 209.66666666666666,
+            "H": 29.666666666666515,
+            "Text": "THE POSSIBILITY OF",
+            "Confidence": 0.9997629,
+            "Language": "en"
+          },
+          {
+            "X": 300,
+            "Y": 1489,
+            "W": 118.33333333333331,
+            "H": 32.33333333333326,
+            "Text": "RECEIVING",
+            "Confidence": 0.9998551,
+            "Language": "en"
+          },
+          {
+            "X": 342.6666666666667,
+            "Y": 1516.6666666666667,
+            "W": 71.33333333333331,
+            "H": 32.666666666666515,
+            "Text": "666...",
+            "Confidence": 0.96667415,
+            "Language": "en"
+          },
+          {
+            "X": 251,
+            "Y": 1517,
+            "W": 92.33333333333331,
+            "H": 30.666666666666742,
+            "Text": "NUMBER",
+            "Confidence": 0.99988735,
+            "Language": "en"
+          },
+          {
+            "X": 178.33333333333334,
+            "Y": 1518.3333333333333,
+            "W": 71,
+            "H": 27.666666666666742,
+            "Text": "GUEST",
+            "Confidence": 0.9997379,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "FURTHERMORE...\nYOU CAN\u0027T DISCOUNT\nTHE POSSIBILITY OF\nTHE MANUR R",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "FURTHERMORE...\nYOU CAN\u0027T DISCOUNT\nTHE POSSIBILITY OF\nTHE MANOR RECEIVING\nGUEST NUMBER 666...",
+      "Translation": "\uAC8C\uB2E4\uAC00...[BR]\uC800 \uC800\uD0DD\uC5D0[BR]666\uBC88 \uC190\uB2D8\uC774[BR]\uBC29\uBB38\uD560[BR]\uAC00\uB2A5\uC131\uC744[BR]\uBC30\uC81C\uD560[BR]\uC218[BR]\uC5C6\uC73C\uB2C8\uAE4C\uC694...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 886,
+        "Y": 1561.3333333333333,
+        "W": 207,
+        "H": 68.66666666666674,
+        "Text": "BEFORE YOU REACH ROOM 0..",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 886,
+            "Y": 1561.3333333333333,
+            "W": 207,
+            "H": 32.66666666666674,
+            "Text": "BEFORE YOU REACH",
+            "Confidence": 0.9994735,
+            "Language": "en"
+          },
+          {
+            "X": 911,
+            "Y": 1580,
+            "W": 155.5,
+            "H": 50,
+            "Text": "ROOM 0..",
+            "Confidence": 0.92118955,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BEFORE KOU REACH ROCMY COOL...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "BEFORE YOU REACH\nROOM 000...",
+      "Translation": "000\uD638\uC5D0\n\uB3C4\uCC29\uD558\uAE30 \uC804\uC5D0...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "core_short_speech_sparse_001.jpg",
+  "TargetCount": 2,
+  "FlatFillTargets": 2,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 529,
+        "Y": 299,
+        "Width": 59,
+        "Height": 42
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 634,
+      "SampleCount": 377,
+      "Background": {
+        "B": 254,
+        "G": 254,
+        "R": 253
+      },
+      "DominantMatchRatio": 0.986737400530504,
+      "P75ColorDistance": 4.69041575982343,
+      "P90ColorDistance": 9.848857801796104,
+      "FlatAccepted": true,
+      "Reason": "dominant_local_background",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 637,
+        "Y": 321,
+        "Width": 57,
+        "Height": 44
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 584,
+      "SampleCount": 398,
+      "Background": {
+        "B": 254,
+        "G": 254,
+        "R": 254
+      },
+      "DominantMatchRatio": 0.9798994974874372,
+      "P75ColorDistance": 3.4641016151377544,
+      "P90ColorDistance": 10.392304845413264,
+      "FlatAccepted": true,
+      "Reason": "dominant_local_background",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}
