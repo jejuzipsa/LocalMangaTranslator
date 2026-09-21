@@ -157,9 +157,23 @@ public sealed class PagePipelineService
         int skipped =
             reviewed.Count(x => !x.Render);
 
+        var detectorRecovered =
+            RecoverDetectorOwnedRenderableUnits(
+                reviewed);
+
+        int detectorRecoveredCount =
+            detectorRecovered.Count(x =>
+                x.Render) -
+            reviewed.Count(x =>
+                x.Render);
+
+        reviewed =
+            detectorRecovered;
+
         progress?.Report(new PipelineProgress(
             PipelineStageKind.VisionReview,
-            $"Vision 검수 완료 · {reviewed.Count}개 블록 · OCR 교정 {corrected}개 · 조판 제외 {skipped}개"));
+            $"Vision 검수 완료 · {reviewed.Count}개 블록 · OCR 교정 {corrected}개 · " +
+            $"조판 제외 {skipped}개 · detector-owned 대사 복구 {detectorRecoveredCount}개"));
 
         progress?.Report(new PipelineProgress(
             PipelineStageKind.Translation,
@@ -301,6 +315,82 @@ public sealed class PagePipelineService
             translated,
             jsonPath,
             imagePath);
+    }
+
+    static List<VisionTranslation> RecoverDetectorOwnedRenderableUnits(
+        IReadOnlyList<VisionTranslation> reviewed)
+    {
+        return reviewed
+            .Select(region =>
+            {
+                if (region.Render)
+                    return region;
+
+                if (region.Source.RegionTextRegion is not { } textRegion ||
+                    textRegion.Kind !=
+                        PageRegionKind.TextBubble ||
+                    region.Source.RegionContainer is null)
+                {
+                    return region;
+                }
+
+                bool renderableType =
+                    region.Type is
+                        "dialogue" or
+                        "thought" or
+                        "caption";
+
+                if (!renderableType)
+                    return region;
+
+                string corrected =
+                    string.IsNullOrWhiteSpace(
+                        region.CorrectedText)
+                        ? region.Source.Text
+                        : region.CorrectedText;
+
+                int meaningful =
+                    corrected.Count(
+                        char.IsLetterOrDigit);
+
+                if (meaningful < 2)
+                    return region;
+
+                bool secondaryEvidence =
+                    !string.IsNullOrWhiteSpace(
+                        region.Source.SecondaryOcrText) &&
+                    region.Source.SecondaryOcrText.Count(
+                        char.IsLetterOrDigit) >= 2;
+
+                double averageConfidence =
+                    region.Source.Lines.Count == 0
+                        ? 0
+                        : region.Source.Lines.Average(x =>
+                            x.Confidence);
+
+                bool strongPrimary =
+                    region.Source.Lines.Count > 0 &&
+                    averageConfidence >= 0.80;
+
+                if (!secondaryEvidence &&
+                    !strongPrimary)
+                {
+                    return region;
+                }
+
+                // 0034: an immutable RT-DETR TextBubble with meaningful OCR
+                // and independent/strong text evidence may not disappear only
+                // because one Vision review returned Render=false. Re-arm it
+                // for the isolated final translator; erase/layout still remain
+                // detector-owned and must pass their own safety gates later.
+                return region with
+                {
+                    Render = true
+                };
+            })
+            .OrderBy(x =>
+                x.Id)
+            .ToList();
     }
 }
 
