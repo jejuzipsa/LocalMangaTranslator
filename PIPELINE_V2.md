@@ -169,3 +169,23 @@ This specifically targets the observed sequence:
 erase succeeds -> reviewer sees unrelated contrast -> review fails -> atomic commit restores English.
 
 Graphic/emphasis dialogue such as NONONO remains a separate policy question and is intentionally unchanged in 0025.
+
+
+## 0026 primary-gate / secondary-rescue review
+
+0025 proved that source-glyph persistence can rescue some real false positives (for example small text that was already visibly erased), but using it as the primary reviewer caused broad regressions on pages that 0024 already handled correctly.
+
+0026 therefore restores the proven 0024 residual-density review as the primary gate and makes the 0025 glyph-persistence logic secondary-only:
+
+- if the 0024 primary review passes, the unit commits immediately and the secondary reviewer is not allowed to overturn it.
+- if the primary review still fails after the normal retry/best-pass selection, only then run the undilated glyph-core persistence check.
+- a clean secondary result rescues the primary failure and commits the erase/typeset atomically.
+- only targets that fail both layers keep the original pixels.
+- retry geometry and best-pass selection stay on the 0024 residual signal, preventing the 0025 persistence metric from destabilizing already-good pages.
+- v2_erase_audit.json now records PrimaryReview, SecondaryReview, RescuedBySecondary, and ReviewReason.
+- three extra debug overlays are written for primary failures only:
+  - v2_01b_glyph_core.webp (green)
+  - v2_03a_core_linked_residual.webp (yellow)
+  - v2_03b_persistent_core.webp (red)
+
+The design goal is monotonic safety relative to 0024: existing primary-pass units cannot regress because of the experimental secondary reviewer, while known 0024 false positives can still be rescued.
