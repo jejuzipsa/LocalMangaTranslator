@@ -229,7 +229,9 @@ public sealed class OcrPipelineService
 
         unitBuild =
             ConsolidateRegionOwnedUnits(
-                unitBuild);
+                unitBuild,
+                pageCandidates,
+                pageAnalysis.Regions);
 
         unitBuild =
             AttachRegionContainers(
@@ -271,7 +273,9 @@ public sealed class OcrPipelineService
     }
 
     static OcrUnitBuildResult ConsolidateRegionOwnedUnits(
-        OcrUnitBuildResult input)
+        OcrUnitBuildResult input,
+        IReadOnlyList<ContainerCandidate> candidates,
+        IReadOnlyList<PageRegion> regions)
     {
         if (input.Units.Count == 0 ||
             input.UnitOwnership.Count != input.Units.Count)
@@ -279,12 +283,42 @@ public sealed class OcrPipelineService
             return input;
         }
 
+        var candidateById =
+            candidates.ToDictionary(
+                x => x.CandidateId,
+                StringComparer.Ordinal);
+
         var entries =
             input.Units
-                .Select((block, index) => new
+                .Select((block, index) =>
                 {
-                    Block = block,
-                    Ownership = input.UnitOwnership[index]
+                    var ownership =
+                        input.UnitOwnership[index];
+
+                    PageRegion? detectorTextRegion =
+                        null;
+
+                    if (!ownership.IsOrphan &&
+                        !string.IsNullOrWhiteSpace(
+                            ownership.CandidateId) &&
+                        candidateById.TryGetValue(
+                            ownership.CandidateId,
+                            out var candidate))
+                    {
+                        detectorTextRegion =
+                            FindBestTextRegion(
+                                block,
+                                candidate,
+                                regions);
+                    }
+
+                    return new
+                    {
+                        Block = block,
+                        Ownership = ownership,
+                        DetectorTextRegion =
+                            detectorTextRegion
+                    };
                 })
                 .ToList();
 
@@ -296,20 +330,29 @@ public sealed class OcrPipelineService
                 bool IsOrphan,
                 string Reason)>();
 
-        // A learned speech-bubble region owns one dialogue unit. Older
-        // clustering may split distant line stacks inside that bubble; merge
-        // those pieces before Vision so the external region map remains the
-        // structural source of truth.
+        // 0034: a broad container candidate is no longer a commit-unit
+        // boundary.  Two independent RT-DETR TextBubble regions may overlap
+        // the same legacy/container candidate, and consolidating only by
+        // CandidateId merged adjacent balloons (page017/page028 regression).
+        //
+        // Consolidation is therefore allowed only inside the same immutable
+        // detector text region.  If detector ownership is still unresolved,
+        // keep the original unit isolated rather than guessing and merging.
         foreach (var group in
                  entries
                      .Where(x =>
                          !x.Ownership.IsOrphan &&
                          !string.IsNullOrWhiteSpace(
-                             x.Ownership.CandidateId))
+                             x.Ownership.CandidateId) &&
+                         x.DetectorTextRegion is not null)
                      .GroupBy(
-                         x => x.Ownership.CandidateId!,
+                         x =>
+                             $"{x.Ownership.CandidateId}|{x.DetectorTextRegion!.RegionId}",
                          StringComparer.Ordinal))
         {
+            var first =
+                group.First();
+
             var lines =
                 group
                     .SelectMany(x =>
@@ -343,12 +386,31 @@ public sealed class OcrPipelineService
                 BuildBlockFromLines(
                     -1,
                     lines),
-                group.Key,
+                first.Ownership.CandidateId,
                 lineIds,
                 false,
                 group.Count() > 1
-                    ? "region_owned_consolidated"
-                    : group.First().Ownership.Reason));
+                    ? "detector_textregion_consolidated"
+                    : first.Ownership.Reason));
+        }
+
+        // Candidate-owned entries without a confident RT-DETR text-region
+        // owner stay separate.  This is deliberately conservative: later
+        // attachment/recovery may still bind them, but they cannot drag a
+        // neighboring balloon into the same translation/commit unit.
+        foreach (var entry in
+                 entries.Where(x =>
+                     !x.Ownership.IsOrphan &&
+                     !string.IsNullOrWhiteSpace(
+                         x.Ownership.CandidateId) &&
+                     x.DetectorTextRegion is null))
+        {
+            drafts.Add((
+                entry.Block,
+                entry.Ownership.CandidateId,
+                entry.Ownership.LineIds,
+                false,
+                entry.Ownership.Reason));
         }
 
         foreach (var entry in
