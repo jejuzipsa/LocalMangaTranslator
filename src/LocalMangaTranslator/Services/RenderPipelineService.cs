@@ -1141,13 +1141,15 @@ public sealed class RenderPipelineService
 
                         int? committedRegionId =
                             boundRegionIds
-                                .FirstOrDefault(id =>
+                                .Where(id =>
                                     committedRegionIds.Contains(
-                                        id));
+                                        id))
+                                .Select(id =>
+                                    (int?)id)
+                                .FirstOrDefault();
 
                         bool committed =
-                            committedRegionId.HasValue &&
-                            committedRegionId.Value != 0;
+                            committedRegionId.HasValue;
 
                         string status;
                         int? bestRegionId =
