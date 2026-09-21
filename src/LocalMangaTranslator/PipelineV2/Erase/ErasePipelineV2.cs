@@ -50,7 +50,7 @@ public sealed record ErasePipelineV2Result(
     string FirstCleanedDebugPath,
     string ResidualDebugPath,
     string CleanedDebugPath,
-    string CleanedCheckpointDebugPath,
+    string LegacyReviewerCheckpointDebugPath,
     string DetectionJsonPath,
     IReadOnlyList<V2EraseTargetAudit> TargetAudits,
     IReadOnlyList<V2CleanedCheckpointAudit> CleanedCheckpointAudits);
@@ -125,10 +125,10 @@ public sealed class ErasePipelineV2
                 debugDir,
                 $"{name}.v2_04_cleaned_final.webp");
 
-        string cleanedCheckpointPath =
+        string legacyCheckpointPath =
             Path.Combine(
                 debugDir,
-                $"{name}.v2_04b_cleaned_checkpoint.webp");
+                $"{name}.v2_04a_legacy_reviewer_checkpoint.webp");
 
         string jsonPath =
             Path.Combine(
@@ -808,7 +808,7 @@ public sealed class ErasePipelineV2
             finalCleaned,
             snapshot,
             checkpointAudits,
-            cleanedCheckpointPath);
+            legacyCheckpointPath);
 
         var detectedBubbleIds =
             snapshot.RawRegions
@@ -909,7 +909,7 @@ public sealed class ErasePipelineV2
                     retryTargetCount,
                 Clean =
                     audits.All(IsAuditClean),
-                CleanedCheckpoint =
+                LegacyReviewerCheckpoint =
                     new
                     {
                         DetectedBubbleCount =
@@ -1051,7 +1051,7 @@ public sealed class ErasePipelineV2
             firstCleanedPath,
             residualPath,
             cleanedPath,
-            cleanedCheckpointPath,
+            legacyCheckpointPath,
             jsonPath,
             audits.ToArray(),
             checkpointAudits);
