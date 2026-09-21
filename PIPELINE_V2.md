@@ -286,3 +286,53 @@ New debug evidence:
 v2_erase_audit.json now records aggregate and per-target GrayscaleMaskPixels and ColorRescueMaskPixels. This makes cases such as a color-only stylized target explicit instead of hiding them behind InitialMaskPixels.
 
 0029 is intended as a general American-comic display-lettering fix, not a word-specific NONONO exception.
+
+
+## 0030 background reconstruction strategy
+
+0029 showed that a correct foreground glyph mask is not enough. Large colored display lettering could be segmented correctly while Telea still reconstructed the erased pixels from nearby red/black ink, producing colored blotches. The problem is therefore split explicitly into two stages:
+
+1. foreground segmentation: which pixels belong to lettering?
+2. background reconstruction: what should replace those pixels?
+
+0030 keeps the 0029 topology-preserving mask and the 0028 independent cleaned-state verifier. It adds a conservative reconstruction router per immutable TextRegionId.
+
+### FLAT_FILL
+
+For a target whose visible non-glyph pixels inside the original detector text box form one dominant local color cluster, the target is classified as FLAT_FILL. The background color is estimated robustly from non-mask pixels inside the text box rather than from an outside ring. This matters for large display lettering whose TextBubble nearly fills the parent Bubble.
+
+The accepted glyph mask is then replaced directly with that estimated background color. This prevents Telea from pulling colored glyph fill or black outline pixels back into a flat speech balloon or caption panel.
+
+### TELEA
+
+If the local background is not confidently flat, the target stays on the existing Telea path. Artwork, gradients, textured panels, and ambiguous targets therefore do not receive a solid-color fill.
+
+The initial reconstruction pass may contain both strategies on one page. Flat targets are filled first; only masks assigned to TELEA are passed to inpainting.
+
+### Flat classifier evidence
+
+For each target the audit records:
+
+- Strategy: FLAT_FILL or TELEA
+- mask pixel count
+- non-glyph background sample count
+- estimated B/G/R background color
+- dominant color match ratio
+- 75th and 90th percentile color distance
+- decision reason
+- post-reconstruction masked-pixel background distance
+
+The flat decision is intentionally conservative. Ambiguous backgrounds fall back to TELEA.
+
+### New debug outputs
+
+- v2_02a_reconstruction_strategy.webp
+  - green: FLAT_FILL
+  - orange: TELEA
+  - header counts each strategy and flat-background quality failures.
+- v2_background_audit.json
+  - per-target reconstruction evidence and post-reconstruction quality result.
+
+The same information is also embedded in v2_erase_audit.json under BackgroundReconstruction.
+
+0030 does not special-case NONONO or any literal word. The intended regression is general: colored/outlined lettering on a flat balloon should restore the balloon background, while text over real artwork should remain on the inpainting path.
