@@ -2,6 +2,13 @@ using OpenCvSharp;
 
 namespace LocalMangaTranslator.PipelineV2.Erase;
 
+public enum ComicTranslateMaskLayer
+{
+    Merged,
+    Grayscale,
+    ColorRescue
+}
+
 /// <summary>
 /// Text-pixel mask inside an immutable RT-DETR TextBubble.
 ///
@@ -18,7 +25,9 @@ public static class ComicTranslateComponentMask
         Rect textBounds,
         Rect? bubbleBounds = null,
         bool includeColorRescue = true,
-        bool dilateMask = true)
+        bool dilateMask = true,
+        ComicTranslateMaskLayer layer =
+            ComicTranslateMaskLayer.Merged)
     {
         var cropBounds =
             ClampRect(
@@ -152,25 +161,36 @@ public static class ComicTranslateComponentMask
         }
 
         // Colored comic lettering can have a mid luminance and therefore
-        // escape both black/white Otsu masks. This rescue is useful for the
-        // FIRST erase mask, but must not be reused for residual review:
-        // Telea can introduce harmless local chroma variation that the color
-        // detector would otherwise reinterpret as surviving text.
+        // escape both black/white Otsu masks. Keep the actual foreground
+        // pixels instead of filling their external contour; comic lettering
+        // such as O/P/R contains meaningful white holes that must never become
+        // erase pixels. A small dark-outline rescue grows only from accepted
+        // colored seed pixels, which captures black ink around red lettering
+        // without flood-filling the white negative space.
         //
-        // Residual review therefore calls Build(..., includeColorRescue: false)
+        // Residual review still calls Build(..., includeColorRescue: false)
         // and only asks whether normal high-contrast glyph structure remains.
+        using var colorCandidate =
+            Mat.Zeros(
+                    crop.Rows,
+                    crop.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
         if (includeColorRescue)
         {
-            using var colorCandidate =
+            using var detectedColor =
                 BuildColorContrastCandidate(
                     crop,
+                    gray,
                     textLocal,
+                    background,
                     conservative:
                         !bubbleBounds.HasValue);
 
             int colorPixels =
                 Cv2.CountNonZero(
-                    colorCandidate);
+                    detectedColor);
 
             int preColorArea =
                 Math.Max(
@@ -185,24 +205,48 @@ public static class ComicTranslateComponentMask
                         ? 0.30
                         : 0.20))
             {
-                using var merged =
-                    new Mat();
+                detectedColor.CopyTo(
+                    colorCandidate);
+            }
+        }
 
-                Cv2.BitwiseOr(
-                    chosen,
-                    colorCandidate,
+        using var selected =
+            layer switch
+            {
+                ComicTranslateMaskLayer.Grayscale =>
+                    chosen.Clone(),
+                ComicTranslateMaskLayer.ColorRescue =>
+                    colorCandidate.Clone(),
+                _ =>
+                    chosen.Clone()
+            };
+
+        if (layer ==
+            ComicTranslateMaskLayer.Merged)
+        {
+            using var merged =
+                new Mat();
+
+            Cv2.BitwiseOr(
+                selected,
+                colorCandidate,
+                merged);
+
+            int mergedPixels =
+                Cv2.CountNonZero(
                     merged);
 
-                int mergedPixels =
-                    Cv2.CountNonZero(
-                        merged);
+            int preColorArea =
+                Math.Max(
+                    1,
+                    textLocal.Width *
+                    textLocal.Height);
 
-                if (mergedPixels <=
-                    preColorArea * 0.45)
-                {
-                    merged.CopyTo(
-                        chosen);
-                }
+            if (mergedPixels <=
+                preColorArea * 0.45)
+            {
+                merged.CopyTo(
+                    selected);
             }
         }
 
@@ -215,12 +259,12 @@ public static class ComicTranslateComponentMask
 
         int chosenPixels =
             Cv2.CountNonZero(
-                chosen);
+                selected);
 
         if (chosenPixels >
             textArea * 0.48)
         {
-            chosen.SetTo(
+            selected.SetTo(
                 Scalar.Black);
         }
 
@@ -232,8 +276,8 @@ public static class ComicTranslateComponentMask
                     new Size(3, 3));
 
             Cv2.Dilate(
-                chosen,
-                chosen,
+                selected,
+                selected,
                 kernel,
                 iterations: 1);
         }
@@ -250,7 +294,7 @@ public static class ComicTranslateComponentMask
 
         using (var srcRoi =
                new Mat(
-                   chosen,
+                   selected,
                    textLocal))
         using (var dstRoi =
                new Mat(
@@ -369,12 +413,33 @@ public static class ComicTranslateComponentMask
                 continue;
             }
 
+            // 0029: select this connected shape, but copy only the
+            // foreground pixels that were actually present in the binary
+            // source. Filling an external contour turned O/P/R holes and
+            // narrow inter-letter gaps into erase pixels.
+            using var componentShape =
+                Mat.Zeros(
+                        binary.Rows,
+                        binary.Cols,
+                        MatType.CV_8UC1)
+                    .ToMat();
+
             Cv2.DrawContours(
-                candidate,
+                componentShape,
                 [contour],
                 -1,
                 Scalar.White,
                 thickness: -1);
+
+            Cv2.BitwiseAnd(
+                componentShape,
+                binary,
+                componentShape);
+
+            Cv2.BitwiseOr(
+                candidate,
+                componentShape,
+                candidate);
         }
 
         using var restricted =
@@ -570,7 +635,9 @@ public static class ComicTranslateComponentMask
 
     static Mat BuildColorContrastCandidate(
         Mat color,
+        Mat gray,
         Rect textLocal,
+        double grayBackground,
         bool conservative)
     {
         var raw =
@@ -722,9 +789,125 @@ public static class ComicTranslateComponentMask
                 raw,
                 textLocal);
 
+        using var outlineCandidate =
+            BuildAdjacentOutlineCandidate(
+                gray,
+                filtered,
+                textLocal,
+                grayBackground);
+
+        using var combined =
+            new Mat();
+
+        Cv2.BitwiseOr(
+            filtered,
+            outlineCandidate,
+            combined);
+
         raw.Dispose();
 
-        return filtered.Clone();
+        return combined.Clone();
+    }
+
+    static Mat BuildAdjacentOutlineCandidate(
+        Mat gray,
+        Mat colorSeed,
+        Rect textLocal,
+        double background)
+    {
+        var contrast =
+            Mat.Zeros(
+                    gray.Rows,
+                    gray.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+        double threshold =
+            background >= 145
+                ? 34
+                : background <= 110
+                    ? 34
+                    : 42;
+
+        for (int y =
+                 textLocal.Top;
+             y <
+             textLocal.Bottom;
+             y++)
+        {
+            for (int x =
+                     textLocal.Left;
+                 x <
+                 textLocal.Right;
+                 x++)
+            {
+                double value =
+                    gray.At<byte>(
+                        y,
+                        x);
+
+                bool outlineLike =
+                    background >= 145
+                        ? value <=
+                          background -
+                          threshold
+                        : background <= 110
+                            ? value >=
+                              background +
+                              threshold
+                            : Math.Abs(
+                                  value -
+                                  background) >=
+                              threshold;
+
+                if (outlineLike)
+                {
+                    contrast.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        int radius =
+            Math.Clamp(
+                (int)Math.Round(
+                    Math.Min(
+                        textLocal.Width,
+                        textLocal.Height) /
+                    60.0),
+                1,
+                3);
+
+        using var neighborhood =
+            new Mat();
+
+        using (var kernel =
+               Cv2.GetStructuringElement(
+                   MorphShapes.Ellipse,
+                   new Size(
+                       radius * 2 + 1,
+                       radius * 2 + 1)))
+        {
+            Cv2.Dilate(
+                colorSeed,
+                neighborhood,
+                kernel,
+                iterations: 1);
+        }
+
+        var outline =
+            new Mat();
+
+        Cv2.BitwiseAnd(
+            contrast,
+            neighborhood,
+            outline);
+
+        contrast.Dispose();
+
+        return outline;
     }
 
     static double EstimateBackgroundMedian(
