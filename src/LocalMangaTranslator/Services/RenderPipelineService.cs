@@ -141,6 +141,11 @@ public sealed class RenderPipelineService
                 debugDir,
                 $"{sourceBaseName}.v2_commit_audit.json");
 
+        string v2TargetCoverageAudit =
+            Path.Combine(
+                debugDir,
+                $"{sourceBaseName}.v2_target_coverage_audit.json");
+
         if (candidates.Count == 0)
         {
             SaveSourceAsOutput(
@@ -163,6 +168,15 @@ public sealed class RenderPipelineService
                     [],
                     [],
                     v2CommitAudit);
+
+                WriteV2TargetCoverageAudit(
+                    sourcePath,
+                    regions,
+                    v2Snapshot!,
+                    v2Selection!,
+                    [],
+                    [],
+                    v2TargetCoverageAudit);
             }
 
             progress?.Report(
@@ -308,6 +322,15 @@ public sealed class RenderPipelineService
                     [],
                     [],
                     v2CommitAudit);
+
+                WriteV2TargetCoverageAudit(
+                    sourcePath,
+                    regions,
+                    v2Snapshot!,
+                    v2Selection!,
+                    plans,
+                    [],
+                    v2TargetCoverageAudit);
 
                 progress?.Report(
                     "Pipeline V2 · 조판 가능한 Unit이 없어 원문을 유지했습니다.");
@@ -476,6 +499,15 @@ public sealed class RenderPipelineService
                 cleanedState.Targets,
                 finalPlans,
                 v2CommitAudit);
+
+            WriteV2TargetCoverageAudit(
+                sourcePath,
+                regions,
+                v2Snapshot!,
+                v2Selection!,
+                plans,
+                finalPlans,
+                v2TargetCoverageAudit);
 
             progress?.Report(
                 $"5/5 완료 · 원본 Unit 보존/교체 1:1 · " +
@@ -1058,6 +1090,322 @@ public sealed class RenderPipelineService
         {
             // diagnostic failure must not invalidate a finished image.
         }
+    }
+
+    static void WriteV2TargetCoverageAudit(
+        string sourcePath,
+        IReadOnlyList<VisionTranslation> regions,
+        V2DetectionSnapshot snapshot,
+        V2EraseSelection selection,
+        IReadOnlyList<RenderUnitPlan> plans,
+        IReadOnlyList<RenderUnitPlan> finalPlans,
+        string path)
+    {
+        try
+        {
+            var committedRegionIds =
+                finalPlans
+                    .Select(x =>
+                        x.Region.Id)
+                    .ToHashSet();
+
+            var plansByRegion =
+                plans
+                    .GroupBy(x =>
+                        x.Region.Id)
+                    .ToDictionary(
+                        x => x.Key,
+                        x => x
+                            .OrderByDescending(y =>
+                                y.Approved)
+                            .ThenBy(y =>
+                                y.UnitId)
+                            .First());
+
+            var targets =
+                snapshot.TextTargets
+                    .Select(target =>
+                    {
+                        var boundRegionIds =
+                            selection.Bindings
+                                .Where(x =>
+                                    x.Value.TextRegionIds.Contains(
+                                        target.TextRegionId,
+                                        StringComparer.Ordinal))
+                                .Select(x =>
+                                    x.Key)
+                                .Distinct()
+                                .OrderBy(x =>
+                                    x)
+                                .ToArray();
+
+                        int? committedRegionId =
+                            boundRegionIds
+                                .FirstOrDefault(id =>
+                                    committedRegionIds.Contains(
+                                        id));
+
+                        bool committed =
+                            committedRegionId.HasValue &&
+                            committedRegionId.Value != 0;
+
+                        string status;
+                        int? bestRegionId =
+                            null;
+                        string? planReason =
+                            null;
+
+                        if (committed)
+                        {
+                            status =
+                                "translated_committed";
+
+                            bestRegionId =
+                                committedRegionId;
+                        }
+                        else if (selection.PreservationTargetReasons.TryGetValue(
+                                     target.TextRegionId,
+                                     out var policyReason))
+                        {
+                            status =
+                                $"preserved_policy:{policyReason}";
+                        }
+                        else if (boundRegionIds.Length > 0)
+                        {
+                            var boundPlans =
+                                boundRegionIds
+                                    .Where(id =>
+                                        plansByRegion.ContainsKey(
+                                            id))
+                                    .Select(id =>
+                                        plansByRegion[id])
+                                    .OrderByDescending(x =>
+                                        x.Approved)
+                                    .ThenByDescending(x =>
+                                        V2CandidateKeepScore(
+                                            x.Region))
+                                    .ToList();
+
+                            if (boundPlans.Count == 0)
+                            {
+                                status =
+                                    "unresolved_bound_without_plan";
+
+                                bestRegionId =
+                                    boundRegionIds[0];
+                            }
+                            else
+                            {
+                                var bestPlan =
+                                    boundPlans[0];
+
+                                bestRegionId =
+                                    bestPlan.Region.Id;
+
+                                planReason =
+                                    bestPlan.Reason;
+
+                                status =
+                                    bestPlan.Approved
+                                        ? "preserved_cleaned_state_or_background_quality"
+                                        : $"preserved_plan:{bestPlan.Reason}";
+                            }
+                        }
+                        else
+                        {
+                            var bestRegion =
+                                regions
+                                    .Select(region => new
+                                    {
+                                        Region = region,
+                                        Score =
+                                            TargetAffinityScore(
+                                                region,
+                                                target)
+                                    })
+                                    .Where(x =>
+                                        x.Score > 0)
+                                    .OrderByDescending(x =>
+                                        x.Score)
+                                    .ThenBy(x =>
+                                        x.Region.Id)
+                                    .FirstOrDefault();
+
+                            if (bestRegion is null)
+                            {
+                                status =
+                                    "unresolved_detected_no_translation_unit";
+                            }
+                            else
+                            {
+                                bestRegionId =
+                                    bestRegion.Region.Id;
+
+                                if (!bestRegion.Region.Render ||
+                                    string.IsNullOrWhiteSpace(
+                                        bestRegion.Region.Translation))
+                                {
+                                    status =
+                                        $"preserved_render_false:{bestRegion.Region.Type}";
+                                }
+                                else
+                                {
+                                    status =
+                                        "unresolved_detected_unbound_translation";
+                                }
+                            }
+                        }
+
+                        bool unresolved =
+                            status.StartsWith(
+                                "unresolved_",
+                                StringComparison.Ordinal);
+
+                        return new
+                        {
+                            TextRegionId =
+                                target.TextRegionId,
+                            Kind =
+                                target.Kind.ToString(),
+                            target.TextScore,
+                            BubbleRegionId =
+                                target.BubbleRegionId,
+                            TextBounds =
+                                new
+                                {
+                                    target.TextBounds.X,
+                                    target.TextBounds.Y,
+                                    target.TextBounds.Width,
+                                    target.TextBounds.Height
+                                },
+                            BoundTranslationRegionIds =
+                                boundRegionIds,
+                            BestTranslationRegionId =
+                                bestRegionId,
+                            Status =
+                                status,
+                            PlanReason =
+                                planReason,
+                            Unresolved =
+                                unresolved
+                        };
+                    })
+                    .ToArray();
+
+            var document =
+                new
+                {
+                    Schema =
+                        "pipeline-v2-target-coverage-v1",
+                    SourceFile =
+                        Path.GetFileName(
+                            sourcePath),
+                    DetectedTextTargets =
+                        targets.Length,
+                    CommittedTargets =
+                        targets.Count(x =>
+                            x.Status ==
+                            "translated_committed"),
+                    PreservedTargets =
+                        targets.Count(x =>
+                            x.Status.StartsWith(
+                                "preserved_",
+                                StringComparison.Ordinal)),
+                    UnresolvedTargets =
+                        targets.Count(x =>
+                            x.Unresolved),
+                    CoverageComplete =
+                        targets.All(x =>
+                            !x.Unresolved),
+                    Targets =
+                        targets
+                };
+
+            File.WriteAllText(
+                path,
+                JsonSerializer.Serialize(
+                    document,
+                    new JsonSerializerOptions
+                    {
+                        WriteIndented =
+                            true
+                    }));
+        }
+        catch
+        {
+            // Coverage diagnostics must never invalidate a finished page.
+        }
+    }
+
+    static double TargetAffinityScore(
+        VisionTranslation region,
+        V2TextTarget target)
+    {
+        if (region.Source.RegionTextRegion is { } linked &&
+            string.Equals(
+                linked.RegionId,
+                target.TextRegionId,
+                StringComparison.Ordinal))
+        {
+            return 1000;
+        }
+
+        if (!string.IsNullOrWhiteSpace(
+                region.Source.RegionId) &&
+            !string.IsNullOrWhiteSpace(
+                target.BubbleRegionId) &&
+            string.Equals(
+                region.Source.RegionId,
+                target.BubbleRegionId,
+                StringComparison.Ordinal))
+        {
+            return 600;
+        }
+
+        var source =
+            new Rect2d(
+                region.Source.X,
+                region.Source.Y,
+                Math.Max(
+                    1.0,
+                    region.Source.W),
+                Math.Max(
+                    1.0,
+                    region.Source.H));
+
+        double overlap =
+            IntersectionArea(
+                source,
+                new Rect2d(
+                    target.TextBounds.X,
+                    target.TextBounds.Y,
+                    target.TextBounds.Width,
+                    target.TextBounds.Height));
+
+        if (overlap <= 0)
+            return 0;
+
+        double sourceArea =
+            Math.Max(
+                1.0,
+                source.Width *
+                source.Height);
+
+        double targetArea =
+            Math.Max(
+                1.0,
+                target.TextBounds.Width *
+                (double)target.TextBounds.Height);
+
+        double containment =
+            overlap /
+            Math.Min(
+                sourceArea,
+                targetArea);
+
+        return containment >= 0.18
+            ? 100 + containment * 100
+            : 0;
     }
 
     static bool IsLikelyAuditOcrNoise(
