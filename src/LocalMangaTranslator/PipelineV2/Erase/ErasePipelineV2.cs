@@ -761,19 +761,22 @@ public sealed class ErasePipelineV2
                 };
         }
 
-        SaveMaskDebug(
+        SaveColoredMaskDebug(
             source,
             secondaryCoreDebug,
+            new Scalar(0, 255, 0),
             glyphCorePath);
 
-        SaveResidualDebug(
+        SaveColoredMaskDebug(
             finalCleaned,
             secondaryLinkedDebug,
+            new Scalar(0, 255, 255),
             coreLinkedResidualPath);
 
-        SaveResidualDebug(
+        SaveColoredMaskDebug(
             finalCleaned,
             secondaryPersistentDebug,
+            new Scalar(0, 0, 255),
             persistentCorePath);
 
         SaveLosslessWebp(
@@ -1660,6 +1663,31 @@ public sealed class ErasePipelineV2
                 new Scalar(0, 0, 255));
 
         red.CopyTo(
+            debug,
+            mask);
+
+        SaveLosslessWebp(
+            path,
+            debug);
+    }
+
+    static void SaveColoredMaskDebug(
+        Mat baseImage,
+        Mat mask,
+        Scalar color,
+        string path)
+    {
+        using var debug =
+            baseImage.Clone();
+
+        using var overlay =
+            new Mat(
+                baseImage.Rows,
+                baseImage.Cols,
+                MatType.CV_8UC3,
+                color);
+
+        overlay.CopyTo(
             debug,
             mask);
 
