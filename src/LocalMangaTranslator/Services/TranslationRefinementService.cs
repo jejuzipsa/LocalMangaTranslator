@@ -173,7 +173,10 @@ public sealed class TranslationRefinementService
             format = "json",
             options = new
             {
-                temperature = 0.08,
+                // 0034 reproducibility: identical corrected source should
+                // produce a stable final translation candidate.
+                temperature = 0.0,
+                seed = 34034,
                 num_ctx = 8192,
                 num_predict = 1800
             },
