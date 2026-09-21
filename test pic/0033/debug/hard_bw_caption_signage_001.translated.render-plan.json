@@ -1,0 +1,89 @@
+{
+  "SourceFile": "hard_bw_caption_signage_001.png",
+  "CreatedAt": "2026-09-22T01:33:30.1416559+09:00",
+  "Units": [
+    {
+      "UnitId": "U001",
+      "ContainerId": "C003",
+      "RegionId": 2,
+      "LineIds": [
+        "L0001"
+      ],
+      "Type": "caption",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_parent_bubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_rtdetr_text_region",
+      "EraseEvidenceLineCount": 1,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 27.597607421875,
+      "BoxX": 327,
+      "BoxY": 212,
+      "BoxWidth": 314,
+      "BoxHeight": 60,
+      "GlyphX": 327.68573955078125,
+      "GlyphY": 227.1903171875,
+      "GlyphWidth": 274.3393058105469,
+      "GlyphHeight": 28.153133325195313
+    },
+    {
+      "UnitId": "U002",
+      "ContainerId": "C002",
+      "RegionId": 4,
+      "LineIds": [
+        "L0002",
+        "L0003"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_parent_bubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_container_text",
+      "EraseEvidenceLineCount": 2,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 33.576877441406246,
+      "BoxX": 836,
+      "BoxY": 592,
+      "BoxWidth": 135,
+      "BoxHeight": 73,
+      "GlyphX": 855.1580447534179,
+      "GlyphY": 592.1534060815429,
+      "GlyphWidth": 95.00855648925781,
+      "GlyphHeight": 69.62617123535156
+    },
+    {
+      "UnitId": "U003",
+      "ContainerId": "C001",
+      "RegionId": 5,
+      "LineIds": [
+        "L0004",
+        "L0005"
+      ],
+      "Type": "dialogue",
+      "ContainerDetected": true,
+      "ContainerMode": "v2:rtdetr_parent_bubble",
+      "Approved": true,
+      "Reason": "ok_v2_erase",
+      "EraseApproved": true,
+      "EraseReason": "safe_container_text_relaxed",
+      "EraseEvidenceLineCount": 1,
+      "LayoutFits": true,
+      "LayoutReason": "ok",
+      "FontSize": 34.29678955078125,
+      "BoxX": 152,
+      "BoxY": 592,
+      "BoxWidth": 138,
+      "BoxHeight": 87,
+      "GlyphX": 164.4667333618164,
+      "GlyphY": 597.4575628295898,
+      "GlyphWidth": 113.08241767578124,
+      "GlyphHeight": 73.7103626220703
+    }
+  ]
+}

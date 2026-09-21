@@ -1,0 +1,287 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "hard_bw_caption_signage_001.png",
+  "output_file": "hard_bw_caption_signage_001.translated.webp",
+  "image": {
+    "width": 1152,
+    "height": 1612,
+    "changed_pixels": 9834,
+    "changed_ratio": 0.0052955696856906535,
+    "changed_regions": [
+      {
+        "x": 384,
+        "y": 228,
+        "width": 130,
+        "height": 27
+      },
+      {
+        "x": 166,
+        "y": 614,
+        "width": 62,
+        "height": 42
+      },
+      {
+        "x": 225,
+        "y": 614,
+        "width": 54,
+        "height": 42
+      },
+      {
+        "x": 875,
+        "y": 594,
+        "width": 66,
+        "height": 31
+      },
+      {
+        "x": 873,
+        "y": 626,
+        "width": 51,
+        "height": 35
+      },
+      {
+        "x": 579,
+        "y": 228,
+        "width": 67,
+        "height": 26
+      },
+      {
+        "x": 515,
+        "y": 228,
+        "width": 61,
+        "height": 27
+      },
+      {
+        "x": 326,
+        "y": 228,
+        "width": 55,
+        "height": 27
+      },
+      {
+        "x": 856,
+        "y": 595,
+        "width": 17,
+        "height": 23
+      },
+      {
+        "x": 200,
+        "y": 601,
+        "width": 21,
+        "height": 16
+      },
+      {
+        "x": 212,
+        "y": 657,
+        "width": 22,
+        "height": 13
+      },
+      {
+        "x": 250,
+        "y": 605,
+        "width": 22,
+        "height": 8
+      },
+      {
+        "x": 170,
+        "y": 605,
+        "width": 22,
+        "height": 8
+      },
+      {
+        "x": 219,
+        "y": 599,
+        "width": 9,
+        "height": 19
+      },
+      {
+        "x": 944,
+        "y": 594,
+        "width": 5,
+        "height": 31
+      },
+      {
+        "x": 249,
+        "y": 599,
+        "width": 25,
+        "height": 5
+      },
+      {
+        "x": 169,
+        "y": 599,
+        "width": 24,
+        "height": 5
+      },
+      {
+        "x": 926,
+        "y": 626,
+        "width": 6,
+        "height": 15
+      },
+      {
+        "x": 918,
+        "y": 653,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "x": 925,
+        "y": 643,
+        "width": 6,
+        "height": 4
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "hard_bw_caption_signage_001.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 5943,
+    "erase_changed_ratio": 0.003200281741108354,
+    "typeset_changed_pixels": 5888,
+    "typeset_changed_ratio": 0.0031706644609870416
+  },
+  "region_analysis": {
+    "total": 6,
+    "bubbles": 3,
+    "text_regions": 3,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 5,
+      "Global2x": 8,
+      "Focus3x": 17,
+      "Region1x": 4,
+      "Region2x": 4,
+      "Container1x": 4,
+      "Container2x": 4
+    },
+    "canonical_lines": 16,
+    "units": 13,
+    "assigned_lines": 5,
+    "orphan_groups": 10,
+    "secondary_total": 3,
+    "secondary_accepted": 3,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 220,
+          "Bottom": 261,
+          "Left": 316,
+          "Right": 654,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALICE - FOUR DAYS UNTIL ENTRY",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 613,
+          "Bottom": 649,
+          "Left": 169,
+          "Right": 285,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SNIF SNIF",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG004",
+        "Bounds": {
+          "Top": 591,
+          "Bottom": 654,
+          "Left": 865,
+          "Right": 941,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OVER HERE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 13,
+    "requested_render": 3
+  },
+  "render": {
+    "total": 3,
+    "approved": 3,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 3,
+    "TranslatedUnits": 3,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 3,
+    "TypesetCommittedUnits": 3,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 2,
+        "SourceText": "ALICE - FOUR DAYS UNTIL ENTRY",
+        "Translation": "\uC568\uB9AC\uC2A4 - \uC785\uC131\uAE4C\uC9C0 4\uC77C",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "OVER HERE!",
+        "Translation": "\uC774\uCABD\uC774\uC57C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "SNIF SNIF On",
+        "Translation": "\uD6CC\uCA4D \uD6CC\uCA4D",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
