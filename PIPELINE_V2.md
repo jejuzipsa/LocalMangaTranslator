@@ -225,3 +225,39 @@ v2_erase_audit.json now also records:
 - per-checkpoint bounds, owned TextRegionIds, EMPTY_OK/ERASE_CHECK status, and OverallPass
 
 This is diagnostic-only in 0027. A checkpoint result does not yet override the 0026 restore/commit behavior. The purpose is to verify the cleaned stage independently and determine whether later restore logic is undoing a visually complete erase.
+
+
+## 0028 independent cleaned-state verification
+
+0028 separates the question "did the pixel reviewer like the erase?" from the question "does the cleaned image still contain detector-visible text?".
+
+The 0026 residual-density + glyph-persistence reviewer remains unchanged as diagnostic evidence. It no longer owns the normal V2 commit decision when the independent cleaned verifier is available.
+
+New flow:
+
+1. freeze the original RT-DETR Bubble/TextBubble/TextFree IDs and geometry.
+2. erase only the selected immutable text targets exactly as before.
+3. save v2_04_cleaned_final.webp.
+4. run RT-DETR again on that cleaned image.
+5. compare only cleaned TextBubble/TextFree detections against the original selected TextRegion bounds.
+6. if no cleaned text detection matches an original target, that target is EMPTY_OK.
+7. a translation unit is committed only when every immutable TextRegionId it owns is EMPTY_OK.
+8. the old pixel reviewer result is retained beside the semantic result so false-positive reviewer failures are visible.
+
+The second RT-DETR pass is evidence only. It never replaces the original target IDs, never moves the erase geometry, and never creates a new translation/layout target.
+
+Debug separation:
+
+- v2_04a_legacy_reviewer_checkpoint.webp
+  - the 0027-style visualization driven by the old pixel reviewer.
+- v2_04b_cleaned_checkpoint.webp
+  - the independent cleaned-image RT-DETR verification.
+  - green: EMPTY_OK.
+  - red: TEXT_REDETECTED.
+  - magenta: text regions detected on the cleaned image.
+- v2_cleaned_state_audit.json
+  - original target IDs, cleaned detections, target-level matches, Bubble/TextFree checkpoint counts, ID-set equality, and legacy-reviewer disagreements.
+
+Commit audit schema is now pipeline-v2-cleaned-state-commit-v2. It records both LegacyEraseReviewClean and CleanedStateEmpty. If the cleaned verifier is unavailable unexpectedly, the pipeline falls back to the legacy reviewer rather than weakening safety.
+
+0028 intentionally does not yet make the whole cleaned raster immutable for every downstream failure and does not yet add the erase-only UI mode. Those are the next structural steps after the 23-page regression run confirms that semantic cleaned verification fixes the two known false restores without creating new misses.
