@@ -24,6 +24,9 @@ public sealed record V2EraseTargetAudit(
     int SelectedPersistentCorePixels,
     double SelectedPersistenceRatio,
     string SelectedPass,
+    string PrimaryReview,
+    string SecondaryReview,
+    bool RescuedBySecondary,
     string ReviewReason);
 
 public sealed record ErasePipelineV2Result(
@@ -47,10 +50,10 @@ public sealed record ErasePipelineV2Result(
 ///
 /// Geometry comes only from the immutable RT-DETR snapshot. OCR/translation
 /// decide which detector targets are needed, but never redefine their bounds.
-/// The erase pass then performs one source-glyph persistence review and, when
-/// necessary, one tightly-clamped +1 px retry around the original erase mask.
-/// Nearby bubble borders/artwork are diagnostic only unless they intersect the
-/// immutable undilated source glyph core and still resemble the source pixels.
+/// 0026 keeps the proven 0024 density review as the primary gate. Only a
+/// target that still fails that gate after best-pass selection is allowed into
+/// the 0025 source-glyph persistence review as a rescue check. A primary pass
+/// can never be overturned by the secondary reviewer.
 /// </summary>
 public sealed class ErasePipelineV2
 {
@@ -91,6 +94,21 @@ public sealed class ErasePipelineV2
             Path.Combine(
                 debugDir,
                 $"{name}.v2_03_residual_check.webp");
+
+        string glyphCorePath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_01b_glyph_core.webp");
+
+        string coreLinkedResidualPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03a_core_linked_residual.webp");
+
+        string persistentCorePath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03b_persistent_core.webp");
 
         string cleanedPath =
             Path.Combine(
@@ -218,25 +236,12 @@ public sealed class ErasePipelineV2
                     target.TextBounds,
                     target.BubbleBounds);
 
-            using var originalCoreMask =
-                ComicTranslateComponentMask.Build(
-                    source,
-                    target.TextBounds,
-                    target.BubbleBounds,
-                    includeColorRescue: true,
-                    dilateMask: false);
-
-            int coreMaskPixels =
-                Cv2.CountNonZero(
-                    originalCoreMask);
-
             using var residualCandidate =
                 ComicTranslateComponentMask.Build(
                     firstCleaned,
                     target.TextBounds,
                     target.BubbleBounds,
-                    includeColorRescue: false,
-                    dilateMask: false);
+                    includeColorRescue: false);
 
             using var reviewZone =
                 new Mat();
@@ -247,7 +252,7 @@ public sealed class ErasePipelineV2
                        new Size(7, 7)))
             {
                 Cv2.Dilate(
-                    originalCoreMask,
+                    originalTargetMask,
                     reviewZone,
                     reviewKernel,
                     iterations: 1);
@@ -265,41 +270,29 @@ public sealed class ErasePipelineV2
                 Cv2.CountNonZero(
                     residualNearOriginal);
 
-            // 0024 kept this metric for diagnosis, but it is no longer a
-            // commit criterion. Bubble borders and artwork live outside the
-            // source glyph core and can otherwise look like false residue.
             using var effectiveResidual =
                 BuildResidualOutsideOriginalMask(
                     residualNearOriginal,
-                    originalCoreMask);
+                    originalTargetMask);
 
             int effectiveResidualPixels =
                 Cv2.CountNonZero(
                     effectiveResidual);
 
-            using var coreLinkedResidual =
-                BuildCoreLinkedResidual(
-                    residualNearOriginal,
-                    originalCoreMask);
+            int initialTargetPixels =
+                initialPixelsByTarget.GetValueOrDefault(
+                    target.TextRegionId);
 
-            int coreOverlapPixels =
-                CountMaskOverlap(
-                    coreLinkedResidual,
-                    originalCoreMask);
-
-            int persistentCorePixels =
-                CountOriginalGlyphPersistence(
-                    source,
-                    firstCleaned,
-                    originalCoreMask,
-                    coreLinkedResidual,
+            bool primaryClean =
+                IsResidualAcceptable(
+                    initialTargetPixels,
+                    residualPixels,
+                    effectiveResidualPixels,
                     target.TextBounds);
 
             bool retry =
-                !IsCorePersistenceAcceptable(
-                    coreMaskPixels,
-                    coreOverlapPixels,
-                    persistentCorePixels);
+                initialTargetPixels >= 2 &&
+                !primaryClean;
 
             int retryPixels = 0;
 
@@ -338,7 +331,7 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     retryTargetMask,
-                    coreLinkedResidual,
+                    effectiveResidual,
                     retryTargetMask);
 
                 Cv2.BitwiseAnd(
@@ -357,51 +350,48 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     residualBefore,
-                    coreLinkedResidual,
+                    effectiveResidual,
                     residualBefore);
             }
-
-            int initialTargetPixels =
-                initialPixelsByTarget.GetValueOrDefault(
-                    target.TextRegionId);
 
             audits.Add(
                 new V2EraseTargetAudit(
                     target.TextRegionId,
                     initialTargetPixels,
-                    coreMaskPixels,
+                    0,
                     residualPixels,
                     effectiveResidualPixels,
-                    coreOverlapPixels,
-                    persistentCorePixels,
+                    0,
+                    0,
                     retryPixels,
                     0,
                     0,
                     0,
                     0,
                     retry,
-                    initialTargetPixels < 2 ||
-                    coreMaskPixels < 2
+                    initialTargetPixels < 2
                         ? "mask_empty"
                         : retry
                             ? "retry_scheduled"
                             : "clean_after_first_pass",
-                    residualPixels,
-                    persistentCorePixels,
-                    PersistenceRatio(
-                        persistentCorePixels,
-                        coreMaskPixels),
+                    effectiveResidualPixels,
+                    0,
+                    0,
                     retry
                         ? "pending_retry"
                         : "first",
-                    initialTargetPixels < 2 ||
-                    coreMaskPixels < 2
+                    initialTargetPixels < 2
                         ? "mask_empty"
-                        : retry
-                            ? "original_glyph_persistence"
-                            : ReviewReason(
-                                coreOverlapPixels,
-                                persistentCorePixels)));
+                        : primaryClean
+                            ? "pass"
+                            : "fail",
+                    "not_run",
+                    false,
+                    initialTargetPixels < 2
+                        ? "mask_empty"
+                        : primaryClean
+                            ? "primary_residual_clean"
+                            : "primary_residual_retry"));
         }
 
         SaveResidualDebug(
@@ -422,6 +412,27 @@ public sealed class ErasePipelineV2
 
         int residualAfterTotal = 0;
 
+        using var secondaryCoreDebug =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var secondaryLinkedDebug =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var secondaryPersistentDebug =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
         for (int i = 0; i < targets.Count; i++)
         {
             token.ThrowIfCancellationRequested();
@@ -435,21 +446,12 @@ public sealed class ErasePipelineV2
                     target.TextBounds,
                     target.BubbleBounds);
 
-            using var originalCoreMask =
-                ComicTranslateComponentMask.Build(
-                    source,
-                    target.TextBounds,
-                    target.BubbleBounds,
-                    includeColorRescue: true,
-                    dilateMask: false);
-
             using var finalResidualCandidate =
                 ComicTranslateComponentMask.Build(
                     finalCleaned,
                     target.TextBounds,
                     target.BubbleBounds,
-                    includeColorRescue: false,
-                    dilateMask: false);
+                    includeColorRescue: false);
 
             using var finalReviewZone =
                 new Mat();
@@ -460,7 +462,7 @@ public sealed class ErasePipelineV2
                        new Size(7, 7)))
             {
                 Cv2.Dilate(
-                    originalCoreMask,
+                    originalTargetMask,
                     finalReviewZone,
                     finalKernel,
                     iterations: 1);
@@ -481,37 +483,19 @@ public sealed class ErasePipelineV2
             using var effectiveFinalResidual =
                 BuildResidualOutsideOriginalMask(
                     finalResidual,
-                    originalCoreMask);
+                    originalTargetMask);
 
             int effectiveRemainingAfterRetry =
                 Cv2.CountNonZero(
                     effectiveFinalResidual);
-
-            using var finalCoreLinkedResidual =
-                BuildCoreLinkedResidual(
-                    finalResidual,
-                    originalCoreMask);
-
-            int finalCoreOverlapPixels =
-                CountMaskOverlap(
-                    finalCoreLinkedResidual,
-                    originalCoreMask);
-
-            int finalPersistentCorePixels =
-                CountOriginalGlyphPersistence(
-                    source,
-                    finalCleaned,
-                    originalCoreMask,
-                    finalCoreLinkedResidual,
-                    target.TextBounds);
 
             var previous =
                 audits[i];
 
             var selection =
                 SelectBestResidualPass(
-                    previous.PersistentCoreBeforeRetryPixels,
-                    finalPersistentCorePixels,
+                    previous.EffectiveResidualBeforeRetryPixels,
+                    effectiveRemainingAfterRetry,
                     previous.Retried);
 
             bool selectFirstPass =
@@ -519,7 +503,7 @@ public sealed class ErasePipelineV2
                 "first" &&
                 previous.Retried;
 
-            int selectedResidual =
+            int selectedEffectiveResidual =
                 selection.SelectedResidualPixels;
 
             string selectedPass =
@@ -527,17 +511,12 @@ public sealed class ErasePipelineV2
 
             if (selectFirstPass)
             {
-                // A retry is only an optional improvement. If it makes the
-                // residual score worse, restore exactly the retry footprint
-                // from the first-pass image instead of committing the
-                // regression.
                 using var firstResidualCandidate =
                     ComicTranslateComponentMask.Build(
                         firstCleaned,
                         target.TextBounds,
                         target.BubbleBounds,
-                        includeColorRescue: false,
-                        dilateMask: false);
+                        includeColorRescue: false);
 
                 using var firstReviewZone =
                     new Mat();
@@ -548,7 +527,7 @@ public sealed class ErasePipelineV2
                            new Size(7, 7)))
                 {
                     Cv2.Dilate(
-                        originalCoreMask,
+                        originalTargetMask,
                         firstReviewZone,
                         firstReviewKernel,
                         iterations: 1);
@@ -562,10 +541,10 @@ public sealed class ErasePipelineV2
                     firstReviewZone,
                     firstResidual);
 
-                using var firstCoreLinkedResidual =
-                    BuildCoreLinkedResidual(
+                using var effectiveFirstResidual =
+                    BuildResidualOutsideOriginalMask(
                         firstResidual,
-                        originalCoreMask);
+                        originalTargetMask);
 
                 using var expanded =
                     new Mat();
@@ -598,7 +577,7 @@ public sealed class ErasePipelineV2
 
                 Cv2.BitwiseOr(
                     retryTargetMask,
-                    firstCoreLinkedResidual,
+                    effectiveFirstResidual,
                     retryTargetMask);
 
                 Cv2.BitwiseAnd(
@@ -616,66 +595,186 @@ public sealed class ErasePipelineV2
                     ? remainingAfterRetry
                     : previous.ResidualBeforeRetryPixels;
 
-            int selectedCoreOverlap =
-                selectedPass == "retry"
-                    ? finalCoreOverlapPixels
-                    : previous.CoreOverlapBeforeRetryPixels;
+            bool primaryClean =
+                previous.InitialMaskPixels >= 2 &&
+                IsResidualAcceptable(
+                    previous.InitialMaskPixels,
+                    selectedRawResidual,
+                    selectedEffectiveResidual,
+                    target.TextBounds);
 
-            int selectedPersistentCore =
-                selectedPass == "retry"
-                    ? finalPersistentCorePixels
-                    : previous.PersistentCoreBeforeRetryPixels;
+            int coreMaskPixels = 0;
+            int coreOverlapPixels = 0;
+            int persistentCorePixels = 0;
+            bool secondaryClean = false;
+            string secondaryReview =
+                "not_run";
 
-            bool selectedClean =
-                IsCorePersistenceAcceptable(
-                    previous.CoreMaskPixels,
-                    selectedCoreOverlap,
-                    selectedPersistentCore);
+            if (!primaryClean &&
+                previous.InitialMaskPixels >= 2)
+            {
+                using var originalCoreMask =
+                    ComicTranslateComponentMask.Build(
+                        source,
+                        target.TextBounds,
+                        target.BubbleBounds,
+                        includeColorRescue: true,
+                        dilateMask: false);
+
+                coreMaskPixels =
+                    Cv2.CountNonZero(
+                        originalCoreMask);
+
+                using var secondaryResidualCandidate =
+                    ComicTranslateComponentMask.Build(
+                        finalCleaned,
+                        target.TextBounds,
+                        target.BubbleBounds,
+                        includeColorRescue: false,
+                        dilateMask: false);
+
+                using var secondaryReviewZone =
+                    new Mat();
+
+                using (var secondaryKernel =
+                       Cv2.GetStructuringElement(
+                           MorphShapes.Ellipse,
+                           new Size(7, 7)))
+                {
+                    Cv2.Dilate(
+                        originalCoreMask,
+                        secondaryReviewZone,
+                        secondaryKernel,
+                        iterations: 1);
+                }
+
+                using var secondaryResidual =
+                    new Mat();
+
+                Cv2.BitwiseAnd(
+                    secondaryResidualCandidate,
+                    secondaryReviewZone,
+                    secondaryResidual);
+
+                using var coreLinkedResidual =
+                    BuildCoreLinkedResidual(
+                        secondaryResidual,
+                        originalCoreMask);
+
+                coreOverlapPixels =
+                    CountMaskOverlap(
+                        coreLinkedResidual,
+                        originalCoreMask);
+
+                using var persistentCoreMask =
+                    BuildOriginalGlyphPersistenceMask(
+                        source,
+                        finalCleaned,
+                        originalCoreMask,
+                        coreLinkedResidual,
+                        target.TextBounds);
+
+                persistentCorePixels =
+                    Cv2.CountNonZero(
+                        persistentCoreMask);
+
+                secondaryClean =
+                    IsCorePersistenceAcceptable(
+                        coreMaskPixels,
+                        coreOverlapPixels,
+                        persistentCorePixels);
+
+                secondaryReview =
+                    secondaryClean
+                        ? "pass"
+                        : "fail";
+
+                Cv2.BitwiseOr(
+                    secondaryCoreDebug,
+                    originalCoreMask,
+                    secondaryCoreDebug);
+
+                Cv2.BitwiseOr(
+                    secondaryLinkedDebug,
+                    coreLinkedResidual,
+                    secondaryLinkedDebug);
+
+                Cv2.BitwiseOr(
+                    secondaryPersistentDebug,
+                    persistentCoreMask,
+                    secondaryPersistentDebug);
+            }
+
+            var reviewDecision =
+                ResolveReviewDecision(
+                    primaryClean,
+                    secondaryClean);
 
             residualAfterTotal +=
-                selectedRawResidual;
+                selectedEffectiveResidual;
 
             audits[i] =
                 previous with
                 {
+                    CoreMaskPixels =
+                        coreMaskPixels,
                     ResidualAfterRetryPixels =
                         remainingAfterRetry,
                     EffectiveResidualAfterRetryPixels =
                         effectiveRemainingAfterRetry,
                     CoreOverlapAfterRetryPixels =
-                        finalCoreOverlapPixels,
+                        coreOverlapPixels,
                     PersistentCoreAfterRetryPixels =
-                        finalPersistentCorePixels,
+                        persistentCorePixels,
                     SelectedResidualPixels =
-                        selectedRawResidual,
+                        selectedEffectiveResidual,
                     SelectedPersistentCorePixels =
-                        selectedPersistentCore,
+                        persistentCorePixels,
                     SelectedPersistenceRatio =
                         PersistenceRatio(
-                            selectedPersistentCore,
-                            previous.CoreMaskPixels),
+                            persistentCorePixels,
+                            coreMaskPixels),
                     SelectedPass =
                         selectedPass,
+                    PrimaryReview =
+                        primaryClean
+                            ? "pass"
+                            : "fail",
+                    SecondaryReview =
+                        secondaryReview,
+                    RescuedBySecondary =
+                        reviewDecision.RescuedBySecondary,
                     ReviewReason =
-                        previous.InitialMaskPixels < 2 ||
-                        previous.CoreMaskPixels < 2
+                        previous.InitialMaskPixels < 2
                             ? "mask_empty"
-                            : selectedClean
-                                ? ReviewReason(
-                                    selectedCoreOverlap,
-                                    selectedPersistentCore)
-                                : "original_glyph_persistence",
+                            : reviewDecision.Reason,
                     Status =
-                        previous.InitialMaskPixels < 2 ||
-                        previous.CoreMaskPixels < 2
+                        previous.InitialMaskPixels < 2
                             ? "mask_empty"
-                            : selectedClean
-                                ? selectedPass == "retry"
-                                    ? "clean_after_retry"
-                                    : "clean_after_first_pass"
+                            : reviewDecision.Clean
+                                ? reviewDecision.RescuedBySecondary
+                                    ? "clean_after_secondary"
+                                    : selectedPass == "retry"
+                                        ? "clean_after_retry"
+                                        : "clean_after_first_pass"
                                 : "review_required"
                 };
         }
+
+        SaveMaskDebug(
+            source,
+            secondaryCoreDebug,
+            glyphCorePath);
+
+        SaveResidualDebug(
+            finalCleaned,
+            secondaryLinkedDebug,
+            coreLinkedResidualPath);
+
+        SaveResidualDebug(
+            finalCleaned,
+            secondaryPersistentDebug,
+            persistentCorePath);
 
         SaveLosslessWebp(
             cleanedPath,
@@ -757,6 +856,9 @@ public sealed class ErasePipelineV2
                             audit.SelectedPersistenceRatio,
                             audit.SelectedPass,
                             audit.Retried,
+                            audit.PrimaryReview,
+                            audit.SecondaryReview,
+                            audit.RescuedBySecondary,
                             audit.ReviewReason,
                             audit.Status
                         };
@@ -808,6 +910,40 @@ public sealed class ErasePipelineV2
         return (
             retryResidualPixels,
             "retry");
+    }
+
+    public static (
+        bool Clean,
+        bool SecondaryRan,
+        bool RescuedBySecondary,
+        string Reason)
+        ResolveReviewDecision(
+            bool primaryClean,
+            bool secondaryClean)
+    {
+        if (primaryClean)
+        {
+            return (
+                true,
+                false,
+                false,
+                "primary_residual_clean");
+        }
+
+        if (secondaryClean)
+        {
+            return (
+                true,
+                true,
+                true,
+                "secondary_glyph_rescue");
+        }
+
+        return (
+            false,
+            true,
+            false,
+            "original_glyph_persistence");
     }
 
     public static bool IsAuditClean(
@@ -867,6 +1003,32 @@ public sealed class ErasePipelineV2
         Mat coreLinkedResidual,
         Rect textBounds)
     {
+        using var persistent =
+            BuildOriginalGlyphPersistenceMask(
+                source,
+                cleaned,
+                originalCoreMask,
+                coreLinkedResidual,
+                textBounds);
+
+        return Cv2.CountNonZero(
+            persistent);
+    }
+
+    public static Mat BuildOriginalGlyphPersistenceMask(
+        Mat source,
+        Mat cleaned,
+        Mat originalCoreMask,
+        Mat coreLinkedResidual,
+        Rect textBounds)
+    {
+        var persistentMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
         int left =
             Math.Clamp(
                 textBounds.Left,
@@ -890,9 +1052,6 @@ public sealed class ErasePipelineV2
                 textBounds.Bottom,
                 top,
                 source.Rows);
-
-        int persistent =
-            0;
 
         const double sameGlyphDistance =
             28.0;
@@ -946,12 +1105,15 @@ public sealed class ErasePipelineV2
                 if (distance <=
                     sameGlyphDistance)
                 {
-                    persistent++;
+                    persistentMask.Set(
+                        y,
+                        x,
+                        (byte)255);
                 }
             }
         }
 
-        return persistent;
+        return persistentMask;
     }
 
     public static Mat BuildCoreLinkedResidual(
