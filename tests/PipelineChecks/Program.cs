@@ -1108,6 +1108,45 @@ Check("V2 0027 cleaned checkpoint catches an unexpected replacement ID",
         ["B001", "B002", "B003"],
         ["B001", "B002", "B004"]));
 
+Check("V2 0028 cleaned verifier matches residual text inside original target",
+    CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            130,
+            120,
+            120,
+            35)));
+
+Check("V2 0028 cleaned verifier allows nearby text outside original target",
+    !CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            315,
+            110,
+            100,
+            35)));
+
+Check("V2 0028 cleaned verifier accepts a partially clipped surviving detection",
+    CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            275,
+            120,
+            55,
+            35)));
+
 var primaryPassDecision =
     ErasePipelineV2.ResolveReviewDecision(
         primaryClean: true,
