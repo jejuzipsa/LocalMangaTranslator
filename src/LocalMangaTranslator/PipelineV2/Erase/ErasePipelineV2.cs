@@ -1810,6 +1810,312 @@ public sealed class ErasePipelineV2
         return effective;
     }
 
+    static Mat ReconstructFirstPass(
+        Mat source,
+        IReadOnlyList<V2TextTarget> targets,
+        out IReadOnlyList<V2BackgroundReconstructionAudit> audits,
+        out IReadOnlyDictionary<string, double> qualityP85)
+    {
+        using var working =
+            source.Clone();
+
+        using var teleaMask =
+            Mat.Zeros(
+                    source.Rows,
+                    source.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+        var auditList =
+            new List<V2BackgroundReconstructionAudit>(
+                targets.Count);
+
+        foreach (var target in targets)
+        {
+            using var targetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            var audit =
+                BackgroundReconstructionV2.Analyze(
+                    source,
+                    target,
+                    targetMask);
+
+            auditList.Add(
+                audit);
+
+            if (audit.FlatAccepted)
+            {
+                BackgroundReconstructionV2.ApplyFlatFill(
+                    working,
+                    targetMask,
+                    audit);
+            }
+            else
+            {
+                Cv2.BitwiseOr(
+                    teleaMask,
+                    targetMask,
+                    teleaMask);
+            }
+        }
+
+        Mat reconstructed;
+
+        if (Cv2.CountNonZero(
+                teleaMask) > 0)
+        {
+            reconstructed =
+                InpaintOnlyMaskedPixels(
+                    working,
+                    teleaMask);
+        }
+        else
+        {
+            reconstructed =
+                working.Clone();
+        }
+
+        var quality =
+            new Dictionary<string, double>(
+                StringComparer.Ordinal);
+
+        foreach (var target in targets)
+        {
+            var audit =
+                auditList.First(x =>
+                    string.Equals(
+                        x.TextRegionId,
+                        target.TextRegionId,
+                        StringComparison.Ordinal));
+
+            if (!audit.FlatAccepted)
+            {
+                quality[
+                    target.TextRegionId] =
+                    -1;
+
+                continue;
+            }
+
+            using var targetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            quality[
+                target.TextRegionId] =
+                BackgroundReconstructionV2
+                    .MeasureFilledBackgroundP85(
+                        reconstructed,
+                        targetMask,
+                        audit);
+        }
+
+        audits =
+            auditList;
+
+        qualityP85 =
+            quality;
+
+        return reconstructed;
+    }
+
+    static void SaveBackgroundStrategyDebug(
+        Mat reconstructed,
+        IReadOnlyList<V2BackgroundReconstructionAudit> audits,
+        IReadOnlyDictionary<string, double> qualityP85,
+        string path)
+    {
+        using var debug =
+            reconstructed.Clone();
+
+        foreach (var audit in audits)
+        {
+            Scalar color =
+                audit.FlatAccepted
+                    ? new Scalar(
+                        0,
+                        220,
+                        0)
+                    : new Scalar(
+                        0,
+                        165,
+                        255);
+
+            Cv2.Rectangle(
+                debug,
+                audit.Bounds,
+                color,
+                2);
+
+            double quality =
+                qualityP85.GetValueOrDefault(
+                    audit.TextRegionId,
+                    -1);
+
+            string label =
+                audit.FlatAccepted
+                    ? $"{audit.TextRegionId} FLAT_FILL bg={audit.BackgroundR},{audit.BackgroundG},{audit.BackgroundB} q={quality:0.0}"
+                    : $"{audit.TextRegionId} TELEA";
+
+            Cv2.PutText(
+                debug,
+                label,
+                new Point(
+                    Math.Max(
+                        2,
+                        audit.Bounds.X),
+                    Math.Max(
+                        16,
+                        audit.Bounds.Y - 5)),
+                HersheyFonts.HersheySimplex,
+                0.42,
+                color,
+                1,
+                LineTypes.AntiAlias);
+        }
+
+        int flat =
+            audits.Count(x =>
+                x.FlatAccepted);
+
+        int telea =
+            audits.Count -
+            flat;
+
+        int failed =
+            audits.Count(x =>
+                x.FlatAccepted &&
+                qualityP85.GetValueOrDefault(
+                    x.TextRegionId,
+                    double.MaxValue) >
+                18.0);
+
+        string summary =
+            $"Background reconstruction | FLAT_FILL {flat} | TELEA {telea} | quality fail {failed}";
+
+        Cv2.Rectangle(
+            debug,
+            new Rect(
+                0,
+                0,
+                Math.Min(
+                    debug.Cols,
+                    Math.Max(
+                        520,
+                        summary.Length * 10)),
+                Math.Min(
+                    debug.Rows,
+                    34)),
+            new Scalar(
+                20,
+                20,
+                20),
+            thickness: -1);
+
+        Cv2.PutText(
+            debug,
+            summary,
+            new Point(
+                8,
+                23),
+            HersheyFonts.HersheySimplex,
+            0.55,
+            Scalar.White,
+            1,
+            LineTypes.AntiAlias);
+
+        SaveLosslessWebp(
+            path,
+            debug);
+    }
+
+    static void WriteBackgroundAudit(
+        string sourcePath,
+        IReadOnlyList<V2BackgroundReconstructionAudit> audits,
+        IReadOnlyDictionary<string, double> qualityP85,
+        string path)
+    {
+        var document =
+            new
+            {
+                Schema =
+                    "pipeline-v2-background-reconstruction-v1",
+                SourceFile =
+                    Path.GetFileName(
+                        sourcePath),
+                TargetCount =
+                    audits.Count,
+                FlatFillTargets =
+                    audits.Count(x =>
+                        x.FlatAccepted),
+                TeleaTargets =
+                    audits.Count(x =>
+                        !x.FlatAccepted),
+                BackgroundQualityFailures =
+                    audits.Count(x =>
+                        x.FlatAccepted &&
+                        qualityP85.GetValueOrDefault(
+                            x.TextRegionId,
+                            double.MaxValue) >
+                        18.0),
+                Items =
+                    audits.Select(x =>
+                        new
+                        {
+                            x.TextRegionId,
+                            x.Kind,
+                            Bounds =
+                                new
+                                {
+                                    x.Bounds.X,
+                                    x.Bounds.Y,
+                                    x.Bounds.Width,
+                                    x.Bounds.Height
+                                },
+                            x.Strategy,
+                            x.MaskPixels,
+                            x.SampleCount,
+                            Background =
+                                new
+                                {
+                                    B = x.BackgroundB,
+                                    G = x.BackgroundG,
+                                    R = x.BackgroundR
+                                },
+                            x.DominantMatchRatio,
+                            x.P75ColorDistance,
+                            x.P90ColorDistance,
+                            x.FlatAccepted,
+                            x.Reason,
+                            PostReconstructionP85 =
+                                qualityP85.GetValueOrDefault(
+                                    x.TextRegionId,
+                                    -1),
+                            BackgroundQualityPass =
+                                !x.FlatAccepted ||
+                                qualityP85.GetValueOrDefault(
+                                    x.TextRegionId,
+                                    double.MaxValue) <=
+                                18.0
+                        })
+            };
+
+        File.WriteAllText(
+            path,
+            JsonSerializer.Serialize(
+                document,
+                new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                }));
+    }
+
     static void ApplyFlatTextFreeBackgroundFill(
         Mat source,
         Mat cleaned,
