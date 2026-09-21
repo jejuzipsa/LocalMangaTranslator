@@ -922,6 +922,177 @@ using (var residualMask =
             originalMask) == 6);
 }
 
+// 0025 regression: review must follow source-glyph persistence, not any
+// high-contrast structure that happens to be near the detector text box.
+using (var coreMask =
+       Mat.Zeros(
+           40,
+           40,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var residualMask =
+       Mat.Zeros(
+           40,
+           40,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    Cv2.Rectangle(
+        coreMask,
+        new Rect(
+            14,
+            14,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    // Nearby bubble/artwork edge: inside the halo but never touching the
+    // source glyph core.
+    Cv2.Line(
+        residualMask,
+        new Point(
+            8,
+            10),
+        new Point(
+            30,
+            10),
+        Scalar.White,
+        2);
+
+    // Actual source-glyph residue.
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            17,
+            17,
+            4,
+            4),
+        Scalar.White,
+        thickness: -1);
+
+    using var linked =
+        ErasePipelineV2.BuildCoreLinkedResidual(
+            residualMask,
+            coreMask);
+
+    Check("V2 0025 ignores nearby border components that do not touch glyph core",
+        Cv2.CountNonZero(
+            linked) == 16);
+}
+
+using (var sourceGlyph =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var cleanedGlyph =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var glyphCore =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var glyphResidual =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    sourceGlyph.SetTo(
+        new Scalar(
+            255,
+            255,
+            255));
+
+    cleanedGlyph.SetTo(
+        new Scalar(
+            255,
+            255,
+            255));
+
+    Cv2.Rectangle(
+        sourceGlyph,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        new Scalar(
+            0,
+            0,
+            0),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        glyphCore,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        glyphResidual,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    int erasedPersistence =
+        ErasePipelineV2.CountOriginalGlyphPersistence(
+            sourceGlyph,
+            cleanedGlyph,
+            glyphCore,
+            glyphResidual,
+            new Rect(
+                8,
+                8,
+                14,
+                14));
+
+    Check("V2 0025 accepts a fully changed source glyph core",
+        erasedPersistence == 0 &&
+        ErasePipelineV2.IsCorePersistenceAcceptable(
+            100,
+            100,
+            erasedPersistence));
+
+    sourceGlyph.CopyTo(
+        cleanedGlyph);
+
+    int survivingPersistence =
+        ErasePipelineV2.CountOriginalGlyphPersistence(
+            sourceGlyph,
+            cleanedGlyph,
+            glyphCore,
+            glyphResidual,
+            new Rect(
+                8,
+                8,
+                14,
+                14));
+
+    Check("V2 0025 rejects genuinely surviving source glyph pixels",
+        survivingPersistence == 100 &&
+        !ErasePipelineV2.IsCorePersistenceAcceptable(
+            100,
+            100,
+            survivingPersistence));
+}
+
 var firstPassSelection =
     ErasePipelineV2.SelectBestResidualPass(
         433,
