@@ -28,6 +28,9 @@ public sealed class RenderPipelineService
     const int FinalWebpLosslessQuality = 101;
     const int DebugWebpQuality = 82;
 
+    readonly CleanedStateVerifier cleanedStateVerifier =
+        new();
+
     sealed record ContainerSelection(
         VisionTranslation Region,
         BalloonLayout Layout,
@@ -154,6 +157,7 @@ public sealed class RenderPipelineService
                     sourcePath,
                     allRequested,
                     v2Selection!,
+                    [],
                     [],
                     [],
                     [],
@@ -302,6 +306,7 @@ public sealed class RenderPipelineService
                     containerSuppressed,
                     [],
                     [],
+                    [],
                     v2CommitAudit);
 
                 progress?.Report(
@@ -328,13 +333,39 @@ public sealed class RenderPipelineService
                         token),
                     token);
 
-            var auditByTarget =
-                v2Erase.TargetAudits
+            progress?.Report(
+                "3/5 erase 완료 · cleaned 이미지에서 RT-DETR 텍스트 재검출");
+
+            var cleanedState =
+                await Task.Run(
+                    () => cleanedStateVerifier.Verify(
+                        sourcePath,
+                        v2Erase.CleanedDebugPath,
+                        outputDirectory,
+                        v2Snapshot!,
+                        eraseTargetIds,
+                        v2Erase.TargetAudits,
+                        token),
+                    token);
+
+            var cleanedByTarget =
+                cleanedState.Targets
                     .ToDictionary(
                         x => x.TextRegionId,
                         StringComparer.Ordinal);
 
-            bool EraseCleanFor(
+            int legacyDisagreements =
+                cleanedState.Targets.Count(x =>
+                    x.EmptyVerified !=
+                    x.LegacyReviewerClean);
+
+            progress?.Report(
+                $"Cleaned checkpoint · mode={cleanedState.VerifierMode} · " +
+                $"target={cleanedState.Targets.Count} · " +
+                $"empty={cleanedState.Targets.Count(x => x.EmptyVerified)} · " +
+                $"legacy disagreement={legacyDisagreements}");
+
+            bool CleanedStateEmptyFor(
                 RenderUnitPlan plan)
             {
                 if (!v2Selection!.Bindings.TryGetValue(
@@ -346,17 +377,16 @@ public sealed class RenderPipelineService
                 }
 
                 return binding.TextRegionIds.All(id =>
-                    auditByTarget.TryGetValue(
+                    cleanedByTarget.TryGetValue(
                         id,
-                        out var audit) &&
-                    ErasePipelineV2.IsAuditClean(
-                        audit));
+                        out var check) &&
+                    check.EmptyVerified);
             }
 
             var finalPlans =
                 layoutApprovedPlans
                     .Where(
-                        EraseCleanFor)
+                        CleanedStateEmptyFor)
                     .ToList();
 
             var committedTargetIds =
@@ -380,8 +410,8 @@ public sealed class RenderPipelineService
                 finalPlans.Count;
 
             progress?.Report(
-                $"4/5 원자적 commit · erase 성공 {finalPlans.Count} · " +
-                $"erase 실패 원문복구 {eraseRejected} · " +
+                $"4/5 cleaned-state commit · empty 확인 {finalPlans.Count} · " +
+                $"텍스트 재검출/검수실패 {eraseRejected} · " +
                 $"지운 Unit={finalPlans.Count} / 채울 Unit={finalPlans.Count}");
 
             if (finalPlans.Count == 0)
@@ -435,6 +465,7 @@ public sealed class RenderPipelineService
                 plans,
                 containerSuppressed,
                 v2Erase.TargetAudits,
+                cleanedState.Targets,
                 finalPlans,
                 v2CommitAudit);
 
@@ -755,6 +786,7 @@ public sealed class RenderPipelineService
         IReadOnlyList<RenderUnitPlan> plans,
         IReadOnlyList<VisionTranslation> containerSuppressed,
         IReadOnlyList<V2EraseTargetAudit> targetAudits,
+        IReadOnlyList<V2CleanedTargetVerification> cleanedVerifications,
         IReadOnlyList<RenderUnitPlan> committedPlans,
         string path)
     {
@@ -771,6 +803,12 @@ public sealed class RenderPipelineService
 
             var auditByTarget =
                 targetAudits
+                    .ToDictionary(
+                        x => x.TextRegionId,
+                        StringComparer.Ordinal);
+
+            var cleanedByTarget =
+                cleanedVerifications
                     .ToDictionary(
                         x => x.TextRegionId,
                         StringComparer.Ordinal);
@@ -798,7 +836,7 @@ public sealed class RenderPipelineService
                             planned &&
                             plan!.Approved;
 
-                        bool eraseClean =
+                        bool legacyEraseClean =
                             bound &&
                             binding!.TextRegionIds.Count > 0 &&
                             binding.TextRegionIds.All(id =>
@@ -807,6 +845,22 @@ public sealed class RenderPipelineService
                                     out var audit) &&
                                 ErasePipelineV2.IsAuditClean(
                                     audit));
+
+                        bool cleanedStateEmpty =
+                            bound &&
+                            binding!.TextRegionIds.Count > 0 &&
+                            binding.TextRegionIds.All(id =>
+                                cleanedByTarget.TryGetValue(
+                                    id,
+                                    out var cleaned) &&
+                                cleaned.EmptyVerified);
+
+                        bool cleanedVerifierAvailable =
+                            bound &&
+                            binding!.TextRegionIds.Count > 0 &&
+                            binding.TextRegionIds.All(id =>
+                                cleanedByTarget.ContainsKey(
+                                    id));
 
                         bool committed =
                             committedIds.Contains(
@@ -866,7 +920,14 @@ public sealed class RenderPipelineService
                             status =
                                 $"original_preserved:{plan!.Reason}";
                         }
-                        else if (!eraseClean)
+                        else if (cleanedVerifierAvailable &&
+                                 !cleanedStateEmpty)
+                        {
+                            status =
+                                "original_preserved:cleaned_text_redetected";
+                        }
+                        else if (!cleanedVerifierAvailable &&
+                                 !legacyEraseClean)
                         {
                             status =
                                 "original_preserved:erase_review_failed";
@@ -913,8 +974,20 @@ public sealed class RenderPipelineService
                                 planned,
                             LayoutApproved =
                                 layoutReady,
+                            LegacyEraseReviewClean =
+                                legacyEraseClean,
+                            CleanedStateVerifierAvailable =
+                                cleanedVerifierAvailable,
+                            CleanedStateEmpty =
+                                cleanedStateEmpty,
+                            ReviewerDisagreement =
+                                cleanedVerifierAvailable &&
+                                legacyEraseClean !=
+                                cleanedStateEmpty,
                             EraseClean =
-                                eraseClean,
+                                cleanedVerifierAvailable
+                                    ? cleanedStateEmpty
+                                    : legacyEraseClean,
                             Committed =
                                 committed,
                             Status =
@@ -935,7 +1008,7 @@ public sealed class RenderPipelineService
                 new
                 {
                     Schema =
-                        "pipeline-v2-atomic-commit-v1",
+                        "pipeline-v2-cleaned-state-commit-v2",
                     SourceFile =
                         Path.GetFileName(
                             sourcePath),
