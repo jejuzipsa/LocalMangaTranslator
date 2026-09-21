@@ -1922,6 +1922,63 @@ try
         mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
         mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
 
+    var detectorOwnedCandidate =
+        new ContainerCandidate(
+            "PC-0034",
+            ContainerCandidateKind.Speech,
+            bubbleA.Bounds,
+            "test-rtdetr",
+            false,
+            6.0,
+            0.88,
+            0,
+            Enumerable.Repeat(
+                    (byte)255,
+                    bubbleA.Bounds.Width *
+                    bubbleA.Bounds.Height)
+                .ToArray(),
+            bubbleA.Bounds.Width,
+            bubbleA.Bounds.Height)
+        {
+            RegionId = "VB-A",
+            LearnedBounds = bubbleA.Bounds
+        };
+
+    var renderDroppedBlock =
+        translatedBlock with
+        {
+            SecondaryOcrText =
+                "I DON'T KNOW ANYMORE. I DON'T--",
+            SecondaryOcrSource =
+                "baberu",
+            SecondaryOcrAgreement =
+                "agree",
+            RegionContainer =
+                detectorOwnedCandidate,
+            RegionTextRegion =
+                textA
+        };
+
+    var renderDroppedDialogue =
+        new VisionTranslation(
+            2035,
+            renderDroppedBlock,
+            "I DON'T KNOW ANYMORE. I DON'T--",
+            "",
+            "dialogue",
+            false);
+
+    Check("V2 0034 recovers detector-owned dialogue from one Vision Render=false",
+        PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedDialogue));
+
+    Check("V2 0034 does not force non-dialogue detector content to render",
+        !PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedDialogue with
+            {
+                Type = "logo"
+            }));
+
     // 0034 regression: a broad orphan OCR block can overlap a normal
     // TextBubble and nearby free-standing stylized text. Geometry fallback may
     // choose one immutable owner, but it must never bind both owners into one
