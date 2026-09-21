@@ -53,7 +53,8 @@ public sealed record ErasePipelineV2Result(
     string LegacyReviewerCheckpointDebugPath,
     string DetectionJsonPath,
     IReadOnlyList<V2EraseTargetAudit> TargetAudits,
-    IReadOnlyList<V2CleanedCheckpointAudit> CleanedCheckpointAudits);
+    IReadOnlyList<V2CleanedCheckpointAudit> CleanedCheckpointAudits,
+    IReadOnlyList<string> BackgroundQualityFailedTextRegionIds);
 
 /// <summary>
 /// Main Pipeline V2 erase stage.
@@ -655,6 +656,50 @@ public sealed class ErasePipelineV2
 
         retryMasksByTarget.Clear();
 
+        var flatChromaticResidualByTarget =
+            new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
+                StringComparer.Ordinal);
+
+        foreach (var target in targets)
+        {
+            if (!backgroundAuditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var backgroundAudit) ||
+                !backgroundAudit.FlatAccepted)
+            {
+                continue;
+            }
+
+            using var originalTargetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            flatChromaticResidualByTarget[
+                target.TextRegionId] =
+                MeasureFlatChromaticResidual(
+                    finalCleaned,
+                    originalTargetMask,
+                    target.TextBounds,
+                    backgroundAudit);
+        }
+
+        var backgroundQualityFailedTextRegionIds =
+            flatChromaticResidualByTarget
+                .Where(x =>
+                    x.Value.OutlierPixels >=
+                        Math.Max(
+                            16,
+                            (int)Math.Ceiling(
+                                x.Value.ReviewPixels *
+                                0.015)) &&
+                    x.Value.Ratio >= 0.015)
+                .Select(x =>
+                    x.Key)
+                .OrderBy(x => x)
+                .ToArray();
+
         int residualAfterTotal = 0;
 
         using var secondaryCoreDebug =
@@ -1167,12 +1212,9 @@ public sealed class ErasePipelineV2
                             backgroundAudits.Count(x =>
                                 !x.FlatAccepted),
                         BackgroundQualityFailures =
-                            backgroundAudits.Count(x =>
-                                x.FlatAccepted &&
-                                backgroundQualityP85.GetValueOrDefault(
-                                    x.TextRegionId,
-                                    double.MaxValue) >
-                                18.0),
+                            backgroundQualityFailedTextRegionIds.Length,
+                        BackgroundQualityFailedTextRegionIds =
+                            backgroundQualityFailedTextRegionIds,
                         Items =
                             backgroundAudits.Select(x =>
                                 new
@@ -1201,7 +1243,29 @@ public sealed class ErasePipelineV2
                                     PostReconstructionP85 =
                                         backgroundQualityP85.GetValueOrDefault(
                                             x.TextRegionId,
-                                            -1)
+                                            -1),
+                                    PostRetryChromaticReviewPixels =
+                                        flatChromaticResidualByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticResidual)
+                                            ? chromaticResidual.ReviewPixels
+                                            : 0,
+                                    PostRetryChromaticOutlierPixels =
+                                        flatChromaticResidualByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticOutlier)
+                                            ? chromaticOutlier.OutlierPixels
+                                            : 0,
+                                    PostRetryChromaticOutlierRatio =
+                                        flatChromaticResidualByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticRatio)
+                                            ? chromaticRatio.Ratio
+                                            : 0,
+                                    BackgroundQualityPass =
+                                        !backgroundQualityFailedTextRegionIds.Contains(
+                                            x.TextRegionId,
+                                            StringComparer.Ordinal)
                                 })
                     },
                 LegacyReviewerCheckpoint =
@@ -1365,7 +1429,8 @@ public sealed class ErasePipelineV2
             legacyCheckpointPath,
             jsonPath,
             audits.ToArray(),
-            checkpointAudits);
+            checkpointAudits,
+            backgroundQualityFailedTextRegionIds);
     }
 
     public static bool CheckpointIdsMatch(
@@ -2270,6 +2335,172 @@ public sealed class ErasePipelineV2
                 {
                     WriteIndented = true
                 }));
+    }
+
+    static (int ReviewPixels, int OutlierPixels, double Ratio)
+        MeasureFlatChromaticResidual(
+            Mat image,
+            Mat originalGlyphMask,
+            Rect textBounds,
+            V2BackgroundReconstructionAudit audit)
+    {
+        int radius =
+            Math.Clamp(
+                audit.ExclusionRadius + 3,
+                6,
+                12);
+
+        using var expanded =
+            new Mat();
+
+        using (var kernel =
+               Cv2.GetStructuringElement(
+                   MorphShapes.Ellipse,
+                   new Size(
+                       radius * 2 + 1,
+                       radius * 2 + 1)))
+        {
+            Cv2.Dilate(
+                originalGlyphMask,
+                expanded,
+                kernel,
+                iterations: 1);
+        }
+
+        using var originalInverse =
+            new Mat();
+
+        Cv2.BitwiseNot(
+            originalGlyphMask,
+            originalInverse);
+
+        using var reviewZone =
+            new Mat();
+
+        Cv2.BitwiseAnd(
+            expanded,
+            originalInverse,
+            reviewZone);
+
+        using var boundsMask =
+            BuildBoundsMask(
+                image.Rows,
+                image.Cols,
+                textBounds);
+
+        Cv2.BitwiseAnd(
+            reviewZone,
+            boundsMask,
+            reviewZone);
+
+        int reviewPixels = 0;
+        int outlierPixels = 0;
+
+        double expectedChroma =
+            Math.Max(
+                audit.BackgroundB,
+                Math.Max(
+                    audit.BackgroundG,
+                    audit.BackgroundR)) -
+            Math.Min(
+                audit.BackgroundB,
+                Math.Min(
+                    audit.BackgroundG,
+                    audit.BackgroundR));
+
+        for (int y =
+                 Math.Max(
+                     0,
+                     textBounds.Top);
+             y <
+             Math.Min(
+                 image.Rows,
+                 textBounds.Bottom);
+             y++)
+        {
+            for (int x =
+                     Math.Max(
+                         0,
+                         textBounds.Left);
+                 x <
+                 Math.Min(
+                     image.Cols,
+                     textBounds.Right);
+                 x++)
+            {
+                if (reviewZone.At<byte>(
+                        y,
+                        x) == 0)
+                {
+                    continue;
+                }
+
+                reviewPixels++;
+
+                var pixel =
+                    image.At<Vec3b>(
+                        y,
+                        x);
+
+                double db =
+                    pixel.Item0 -
+                    audit.BackgroundB;
+
+                double dg =
+                    pixel.Item1 -
+                    audit.BackgroundG;
+
+                double dr =
+                    pixel.Item2 -
+                    audit.BackgroundR;
+
+                double distance =
+                    Math.Sqrt(
+                        db * db +
+                        dg * dg +
+                        dr * dr);
+
+                int pixelMax =
+                    Math.Max(
+                        pixel.Item0,
+                        Math.Max(
+                            pixel.Item1,
+                            pixel.Item2));
+
+                int pixelMin =
+                    Math.Min(
+                        pixel.Item0,
+                        Math.Min(
+                            pixel.Item1,
+                            pixel.Item2));
+
+                double pixelChroma =
+                    pixelMax -
+                    pixelMin;
+
+                // Bubble outlines are usually neutral black/gray and should
+                // not be mistaken for failed cleanup. This check specifically
+                // catches colored glyph residue (red, blue, etc.) that RT-DETR
+                // may no longer recognize as readable text.
+                if (distance >= 70.0 &&
+                    pixelChroma -
+                    expectedChroma >= 40.0)
+                {
+                    outlierPixels++;
+                }
+            }
+        }
+
+        double ratio =
+            reviewPixels == 0
+                ? 0
+                : outlierPixels /
+                  (double)reviewPixels;
+
+        return (
+            reviewPixels,
+            outlierPixels,
+            ratio);
     }
 
     static void ApplyFlatTextFreeBackgroundFill(
