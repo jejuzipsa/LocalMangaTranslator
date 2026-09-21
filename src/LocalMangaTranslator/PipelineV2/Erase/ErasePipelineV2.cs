@@ -29,6 +29,14 @@ public sealed record V2EraseTargetAudit(
     bool RescuedBySecondary,
     string ReviewReason);
 
+public sealed record V2CleanedCheckpointAudit(
+    string CheckpointId,
+    string Kind,
+    Rect Bounds,
+    IReadOnlyList<string> TextRegionIds,
+    bool EmptyVerified,
+    string Status);
+
 public sealed record ErasePipelineV2Result(
     int DetectedTargetCount,
     int TargetCount,
@@ -42,8 +50,10 @@ public sealed record ErasePipelineV2Result(
     string FirstCleanedDebugPath,
     string ResidualDebugPath,
     string CleanedDebugPath,
+    string CleanedCheckpointDebugPath,
     string DetectionJsonPath,
-    IReadOnlyList<V2EraseTargetAudit> TargetAudits);
+    IReadOnlyList<V2EraseTargetAudit> TargetAudits,
+    IReadOnlyList<V2CleanedCheckpointAudit> CleanedCheckpointAudits);
 
 /// <summary>
 /// Main Pipeline V2 erase stage.
@@ -114,6 +124,11 @@ public sealed class ErasePipelineV2
             Path.Combine(
                 debugDir,
                 $"{name}.v2_04_cleaned_final.webp");
+
+        string cleanedCheckpointPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_04b_cleaned_checkpoint.webp");
 
         string jsonPath =
             Path.Combine(
@@ -783,6 +798,92 @@ public sealed class ErasePipelineV2
             cleanedPath,
             finalCleaned);
 
+        var checkpointAudits =
+            BuildCleanedCheckpointAudits(
+                snapshot,
+                targets,
+                audits);
+
+        SaveCleanedCheckpointDebug(
+            finalCleaned,
+            snapshot,
+            checkpointAudits,
+            cleanedCheckpointPath);
+
+        var detectedBubbleIds =
+            snapshot.RawRegions
+                .Where(x =>
+                    x.Kind ==
+                    LocalMangaTranslator.Models.PageRegionKind.Bubble)
+                .Select(x =>
+                    x.RegionId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var eraseTargetBubbleIds =
+            checkpointAudits
+                .Where(x =>
+                    x.Kind == "Bubble")
+                .Select(x =>
+                    x.CheckpointId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var emptyVerifiedBubbleIds =
+            checkpointAudits
+                .Where(x =>
+                    x.Kind == "Bubble" &&
+                    x.EmptyVerified)
+                .Select(x =>
+                    x.CheckpointId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var eraseTargetTextFreeIds =
+            checkpointAudits
+                .Where(x =>
+                    x.Kind == "TextFree")
+                .Select(x =>
+                    x.CheckpointId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var emptyVerifiedTextFreeIds =
+            checkpointAudits
+                .Where(x =>
+                    x.Kind == "TextFree" &&
+                    x.EmptyVerified)
+                .Select(x =>
+                    x.CheckpointId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var checkpointMissingBubbleIds =
+            eraseTargetBubbleIds
+                .Except(
+                    emptyVerifiedBubbleIds,
+                    StringComparer.Ordinal)
+                .OrderBy(x => x)
+                .ToArray();
+
+        var checkpointMissingTextFreeIds =
+            eraseTargetTextFreeIds
+                .Except(
+                    emptyVerifiedTextFreeIds,
+                    StringComparer.Ordinal)
+                .OrderBy(x => x)
+                .ToArray();
+
+        bool bubbleCheckpointPass =
+            CheckpointIdsMatch(
+                eraseTargetBubbleIds,
+                emptyVerifiedBubbleIds);
+
+        bool textFreeCheckpointPass =
+            CheckpointIdsMatch(
+                eraseTargetTextFreeIds,
+                emptyVerifiedTextFreeIds);
+
         var diagnostic =
             new
             {
@@ -808,6 +909,65 @@ public sealed class ErasePipelineV2
                     retryTargetCount,
                 Clean =
                     audits.All(IsAuditClean),
+                CleanedCheckpoint =
+                    new
+                    {
+                        DetectedBubbleCount =
+                            detectedBubbleIds.Count,
+                        EraseTargetBubbleCount =
+                            eraseTargetBubbleIds.Count,
+                        EmptyVerifiedBubbleCount =
+                            emptyVerifiedBubbleIds.Count,
+                        BubbleCheckpointPass =
+                            bubbleCheckpointPass,
+                        EraseTargetBubbleIds =
+                            eraseTargetBubbleIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        EmptyVerifiedBubbleIds =
+                            emptyVerifiedBubbleIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        CheckpointMissingBubbleIds =
+                            checkpointMissingBubbleIds,
+                        EraseTargetTextFreeCount =
+                            eraseTargetTextFreeIds.Count,
+                        EmptyVerifiedTextFreeCount =
+                            emptyVerifiedTextFreeIds.Count,
+                        TextFreeCheckpointPass =
+                            textFreeCheckpointPass,
+                        EraseTargetTextFreeIds =
+                            eraseTargetTextFreeIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        EmptyVerifiedTextFreeIds =
+                            emptyVerifiedTextFreeIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        CheckpointMissingTextFreeIds =
+                            checkpointMissingTextFreeIds,
+                        OverallPass =
+                            bubbleCheckpointPass &&
+                            textFreeCheckpointPass,
+                        Items =
+                            checkpointAudits.Select(x =>
+                                new
+                                {
+                                    x.CheckpointId,
+                                    x.Kind,
+                                    Bounds =
+                                        new
+                                        {
+                                            x.Bounds.X,
+                                            x.Bounds.Y,
+                                            x.Bounds.Width,
+                                            x.Bounds.Height
+                                        },
+                                    x.TextRegionIds,
+                                    x.EmptyVerified,
+                                    x.Status
+                                })
+                    },
                 Targets =
                     targets.Select(target =>
                     {
@@ -891,8 +1051,179 @@ public sealed class ErasePipelineV2
             firstCleanedPath,
             residualPath,
             cleanedPath,
+            cleanedCheckpointPath,
             jsonPath,
-            audits.ToArray());
+            audits.ToArray(),
+            checkpointAudits);
+    }
+
+    public static bool CheckpointIdsMatch(
+        IEnumerable<string> expectedIds,
+        IEnumerable<string> verifiedIds)
+    {
+        var expected =
+            expectedIds.ToHashSet(
+                StringComparer.Ordinal);
+
+        var verified =
+            verifiedIds.ToHashSet(
+                StringComparer.Ordinal);
+
+        return expected.SetEquals(
+            verified);
+    }
+
+    static IReadOnlyList<V2CleanedCheckpointAudit>
+        BuildCleanedCheckpointAudits(
+            V2DetectionSnapshot snapshot,
+            IReadOnlyList<V2TextTarget> targets,
+            IReadOnlyList<V2EraseTargetAudit> audits)
+    {
+        var auditByTarget =
+            audits.ToDictionary(
+                x => x.TextRegionId,
+                StringComparer.Ordinal);
+
+        var items =
+            new List<V2CleanedCheckpointAudit>();
+
+        foreach (var group in targets
+                     .Where(x =>
+                         x.BubbleRegionId is not null)
+                     .GroupBy(
+                         x => x.BubbleRegionId!,
+                         StringComparer.Ordinal))
+        {
+            var ids =
+                group.Select(x =>
+                        x.TextRegionId)
+                    .Distinct(
+                        StringComparer.Ordinal)
+                    .OrderBy(x => x)
+                    .ToArray();
+
+            bool verified =
+                ids.Length > 0 &&
+                ids.All(id =>
+                    auditByTarget.TryGetValue(
+                        id,
+                        out var audit) &&
+                    IsAuditClean(
+                        audit));
+
+            var bubbleBounds =
+                group.Select(x =>
+                        x.BubbleBounds)
+                    .FirstOrDefault(x =>
+                        x.HasValue);
+
+            Rect bounds =
+                bubbleBounds ??
+                UnionBounds(
+                    group.Select(x =>
+                        x.TextBounds));
+
+            items.Add(
+                new V2CleanedCheckpointAudit(
+                    group.Key,
+                    "Bubble",
+                    bounds,
+                    ids,
+                    verified,
+                    verified
+                        ? "EMPTY_OK"
+                        : "ERASE_CHECK"));
+        }
+
+        foreach (var target in targets.Where(x =>
+                     x.Kind ==
+                     LocalMangaTranslator.Models.PageRegionKind.TextFree))
+        {
+            bool verified =
+                auditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var audit) &&
+                IsAuditClean(
+                    audit);
+
+            items.Add(
+                new V2CleanedCheckpointAudit(
+                    target.TextRegionId,
+                    "TextFree",
+                    target.TextBounds,
+                    [target.TextRegionId],
+                    verified,
+                    verified
+                        ? "EMPTY_OK"
+                        : "ERASE_CHECK"));
+        }
+
+        foreach (var target in targets.Where(x =>
+                     x.Kind ==
+                         LocalMangaTranslator.Models.PageRegionKind.TextBubble &&
+                     x.BubbleRegionId is null))
+        {
+            bool verified =
+                auditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var audit) &&
+                IsAuditClean(
+                    audit);
+
+            items.Add(
+                new V2CleanedCheckpointAudit(
+                    target.TextRegionId,
+                    "UnparentedTextBubble",
+                    target.TextBounds,
+                    [target.TextRegionId],
+                    verified,
+                    verified
+                        ? "EMPTY_OK"
+                        : "ERASE_CHECK"));
+        }
+
+        return items
+            .OrderBy(x =>
+                x.Bounds.Y)
+            .ThenBy(x =>
+                x.Bounds.X)
+            .ToArray();
+    }
+
+    static Rect UnionBounds(
+        IEnumerable<Rect> bounds)
+    {
+        var all =
+            bounds.ToArray();
+
+        if (all.Length == 0)
+            return default;
+
+        int left =
+            all.Min(x =>
+                x.Left);
+
+        int top =
+            all.Min(x =>
+                x.Top);
+
+        int right =
+            all.Max(x =>
+                x.Right);
+
+        int bottom =
+            all.Max(x =>
+                x.Bottom);
+
+        return new Rect(
+            left,
+            top,
+            Math.Max(
+                0,
+                right - left),
+            Math.Max(
+                0,
+                bottom - top));
     }
 
     public static (int SelectedResidualPixels, string SelectedPass)
@@ -1582,6 +1913,204 @@ public sealed class ErasePipelineV2
         }
 
         return mask;
+    }
+
+    static void SaveCleanedCheckpointDebug(
+        Mat cleaned,
+        V2DetectionSnapshot snapshot,
+        IReadOnlyList<V2CleanedCheckpointAudit> checkpoints,
+        string path)
+    {
+        using var debug =
+            cleaned.Clone();
+
+        var selectedBubbleIds =
+            checkpoints
+                .Where(x =>
+                    x.Kind == "Bubble")
+                .Select(x =>
+                    x.CheckpointId)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        foreach (var region in snapshot.RawRegions.Where(x =>
+                     x.Kind ==
+                     LocalMangaTranslator.Models.PageRegionKind.Bubble &&
+                     !selectedBubbleIds.Contains(
+                         x.RegionId)))
+        {
+            Cv2.Rectangle(
+                debug,
+                region.Bounds,
+                new Scalar(
+                    110,
+                    110,
+                    110),
+                1);
+        }
+
+        foreach (var checkpoint in checkpoints)
+        {
+            Scalar color =
+                checkpoint.EmptyVerified
+                    ? new Scalar(
+                        0,
+                        220,
+                        0)
+                    : new Scalar(
+                        0,
+                        0,
+                        255);
+
+            Cv2.Rectangle(
+                debug,
+                checkpoint.Bounds,
+                color,
+                3);
+
+            string label =
+                $"{checkpoint.CheckpointId} {checkpoint.Status}";
+
+            int baseline;
+            var labelSize =
+                Cv2.GetTextSize(
+                    label,
+                    HersheyFonts.HersheySimplex,
+                    0.45,
+                    1,
+                    out baseline);
+
+            int labelX =
+                Math.Clamp(
+                    checkpoint.Bounds.X,
+                    0,
+                    Math.Max(
+                        0,
+                        debug.Cols -
+                        labelSize.Width -
+                        6));
+
+            int labelY =
+                Math.Clamp(
+                    checkpoint.Bounds.Y - 5,
+                    labelSize.Height + 4,
+                    debug.Rows - 2);
+
+            var labelRect =
+                new Rect(
+                    labelX,
+                    labelY -
+                    labelSize.Height -
+                    4,
+                    Math.Min(
+                        debug.Cols - labelX,
+                        labelSize.Width + 6),
+                    Math.Min(
+                        debug.Rows -
+                        (labelY -
+                         labelSize.Height -
+                         4),
+                        labelSize.Height +
+                        baseline +
+                        6));
+
+            if (labelRect.Width > 0 &&
+                labelRect.Height > 0)
+            {
+                Cv2.Rectangle(
+                    debug,
+                    labelRect,
+                    new Scalar(
+                        20,
+                        20,
+                        20),
+                    thickness: -1);
+            }
+
+            Cv2.PutText(
+                debug,
+                label,
+                new Point(
+                    labelX + 3,
+                    labelY),
+                HersheyFonts.HersheySimplex,
+                0.45,
+                color,
+                1,
+                LineTypes.AntiAlias);
+        }
+
+        int eraseTargetBubbles =
+            checkpoints.Count(x =>
+                x.Kind == "Bubble");
+
+        int verifiedBubbles =
+            checkpoints.Count(x =>
+                x.Kind == "Bubble" &&
+                x.EmptyVerified);
+
+        int eraseTargetTextFree =
+            checkpoints.Count(x =>
+                x.Kind == "TextFree");
+
+        int verifiedTextFree =
+            checkpoints.Count(x =>
+                x.Kind == "TextFree" &&
+                x.EmptyVerified);
+
+        string summary =
+            $"Bubble {verifiedBubbles}/{eraseTargetBubbles} EMPTY  |  " +
+            $"TextFree {verifiedTextFree}/{eraseTargetTextFree} EMPTY";
+
+        int summaryBaseline;
+        var summarySize =
+            Cv2.GetTextSize(
+                summary,
+                HersheyFonts.HersheySimplex,
+                0.6,
+                2,
+                out summaryBaseline);
+
+        int summaryWidth =
+            Math.Min(
+                debug.Cols,
+                summarySize.Width + 18);
+
+        Cv2.Rectangle(
+            debug,
+            new Rect(
+                0,
+                0,
+                summaryWidth,
+                Math.Min(
+                    debug.Rows,
+                    summarySize.Height +
+                    summaryBaseline +
+                    14)),
+            new Scalar(
+                20,
+                20,
+                20),
+            thickness: -1);
+
+        Cv2.PutText(
+            debug,
+            summary,
+            new Point(
+                8,
+                summarySize.Height + 6),
+            HersheyFonts.HersheySimplex,
+            0.6,
+            new Scalar(
+                255,
+                255,
+                255),
+            2,
+            LineTypes.AntiAlias);
+
+        SaveLosslessWebp(
+            path,
+            debug);
     }
 
     static void SaveDetectionDebug(
