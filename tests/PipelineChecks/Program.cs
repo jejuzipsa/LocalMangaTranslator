@@ -1093,6 +1093,42 @@ using (var glyphResidual =
             survivingPersistence));
 }
 
+var primaryPassDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: true,
+        secondaryClean: false);
+
+Check("V2 0026 primary pass cannot be overturned by secondary reviewer",
+    primaryPassDecision.Clean &&
+    !primaryPassDecision.SecondaryRan &&
+    !primaryPassDecision.RescuedBySecondary &&
+    primaryPassDecision.Reason ==
+        "primary_residual_clean");
+
+var secondaryRescueDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: false,
+        secondaryClean: true);
+
+Check("V2 0026 secondary glyph review only rescues primary failures",
+    secondaryRescueDecision.Clean &&
+    secondaryRescueDecision.SecondaryRan &&
+    secondaryRescueDecision.RescuedBySecondary &&
+    secondaryRescueDecision.Reason ==
+        "secondary_glyph_rescue");
+
+var doubleFailDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: false,
+        secondaryClean: false);
+
+Check("V2 0026 keeps original when both review layers fail",
+    !doubleFailDecision.Clean &&
+    doubleFailDecision.SecondaryRan &&
+    !doubleFailDecision.RescuedBySecondary &&
+    doubleFailDecision.Reason ==
+        "original_glyph_persistence");
+
 var firstPassSelection =
     ErasePipelineV2.SelectBestResidualPass(
         433,
