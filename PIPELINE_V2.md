@@ -366,3 +366,26 @@ New audit evidence:
 The 0030 23-page regression also showed that only four selected targets used TELEA: hard_long_speech_001/RG012 and three targets in core_mixed_dialogue_caption_sfx_001. The latter three already had strong dominant gray backgrounds but were rejected only by outlier pixels, so 0031 is expected to cleanly classify them without changing OCR, translation, or detector geometry.
 
 The regression target remains general: large colored/outlined lettering over a flat balloon must resolve to the actual balloon background; complex artwork must remain on TELEA.
+
+
+## 0032 strategy-stable retry and flat-background residual gate
+
+0031 fixed the background classifier for large colored display lettering: the NONONO target now resolves to FLAT_FILL with a bright balloon background. The remaining failure came from retry behavior, not classification.
+
+Before 0032, every retry mask was merged into one page-level mask and passed through Telea regardless of the target's original reconstruction strategy. A target could therefore be classified FLAT_FILL on the first pass, leave some colored ink outside the initial mask, then feed that surviving red/black ink back into Telea during retry. The result was a colored blotch even though the correct flat background had already been estimated.
+
+0032 makes retry strategy-stable per immutable TextRegionId:
+
+- FLAT_FILL target -> FLAT_FILL retry using the already-estimated background color.
+- TELEA target -> TELEA retry.
+- overlapping retry pixels are owned by FLAT_FILL so a neighboring TELEA retry cannot resample or overwrite a reconstructed flat region.
+- retry audit records FLAT_FILL/TELEA retry target counts, mask-pixel counts, and a per-target RetryStrategy.
+
+For a FLAT_FILL retry, no surrounding colored glyph pixel is used as reconstruction source material. The expanded retry mask is repainted directly from the stored local background color.
+
+0032 also adds a second flat-background quality signal after retry. Around the original glyph mask, an expanded review ring checks for strongly chromatic pixels that are far from the estimated flat background color. Neutral black/gray balloon outlines are excluded from this signal so they do not look like colored cleanup residue. Targets that exceed the conservative chromatic-residual threshold are added to BackgroundQualityFailedTextRegionIds and are blocked from commit even if cleaned RT-DETR no longer recognizes the artifact as text.
+
+The key regression remains hard_long_speech_001 / RG012:
+- 0031 classification: FLAT_FILL, background approximately B246/G242/R241.
+- 0031 first-pass residual: large enough to trigger retry.
+- 0032 expectation: retry remains FLAT_FILL, TeleaRetryTargets=0 for that page, and no red blotch is created.
