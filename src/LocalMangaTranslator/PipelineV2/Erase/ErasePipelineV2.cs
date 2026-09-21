@@ -141,6 +141,16 @@ public sealed class ErasePipelineV2
                 debugDir,
                 $"{name}.v2_03b_persistent_core.webp");
 
+        string flatResidualOutlierPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03c_flat_residual_outlier.webp");
+
+        string flatCleanupMaskPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03d_flat_cleanup_mask.webp");
+
         string cleanedPath =
             Path.Combine(
                 debugDir,
@@ -1007,6 +1017,135 @@ public sealed class ErasePipelineV2
                 };
         }
 
+        // 0033: A flat background can still contain colored glyph fragments
+        // just outside the accepted foreground mask. The 0032 quality gate
+        // already detects those fragments; use the same evidence to build a
+        // tightly constrained cleanup mask instead of merely preserving the
+        // original. Cleanup is allowed only for FLAT_FILL targets that fail
+        // the chromatic residual gate, and it always reuses the stored flat
+        // background color.
+        using var flatResidualOutlierDebugMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var flatCleanupDebugMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var preFlatCleanup =
+            finalCleaned.Clone();
+
+        var flatChromaticResidualBeforeCleanupByTarget =
+            new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
+                StringComparer.Ordinal);
+
+        var flatCleanupPixelsByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
+        int flatResidualCleanupTargetCount = 0;
+
+        foreach (var target in targets)
+        {
+            if (!backgroundAuditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var backgroundAudit) ||
+                !backgroundAudit.FlatAccepted)
+            {
+                continue;
+            }
+
+            using var originalTargetMask =
+                ComicTranslateComponentMask.Build(
+                    source,
+                    target.TextBounds,
+                    target.BubbleBounds);
+
+            var beforeCleanup =
+                MeasureFlatChromaticResidual(
+                    preFlatCleanup,
+                    originalTargetMask,
+                    target.TextBounds,
+                    backgroundAudit);
+
+            flatChromaticResidualBeforeCleanupByTarget[
+                target.TextRegionId] =
+                beforeCleanup;
+
+            using var chromaticOutlierMask =
+                BuildFlatChromaticOutlierMask(
+                    preFlatCleanup,
+                    originalTargetMask,
+                    target.TextBounds,
+                    backgroundAudit);
+
+            Cv2.BitwiseOr(
+                flatResidualOutlierDebugMask,
+                chromaticOutlierMask,
+                flatResidualOutlierDebugMask);
+
+            if (!IsFlatBackgroundQualityFailure(
+                    beforeCleanup.ReviewPixels,
+                    beforeCleanup.OutlierPixels,
+                    beforeCleanup.Ratio))
+            {
+                flatCleanupPixelsByTarget[
+                    target.TextRegionId] = 0;
+
+                continue;
+            }
+
+            using var cleanupMask =
+                BuildFlatResidualCleanupMask(
+                    preFlatCleanup,
+                    originalTargetMask,
+                    target.TextBounds,
+                    backgroundAudit);
+
+            int cleanupPixels =
+                Cv2.CountNonZero(
+                    cleanupMask);
+
+            flatCleanupPixelsByTarget[
+                target.TextRegionId] =
+                cleanupPixels;
+
+            if (cleanupPixels < 2)
+            {
+                continue;
+            }
+
+            BackgroundReconstructionV2.ApplyFlatFill(
+                finalCleaned,
+                cleanupMask,
+                backgroundAudit);
+
+            Cv2.BitwiseOr(
+                flatCleanupDebugMask,
+                cleanupMask,
+                flatCleanupDebugMask);
+
+            flatResidualCleanupTargetCount++;
+        }
+
+        SaveColoredMaskDebug(
+            preFlatCleanup,
+            flatResidualOutlierDebugMask,
+            new Scalar(0, 0, 255),
+            flatResidualOutlierPath);
+
+        SaveColoredMaskDebug(
+            preFlatCleanup,
+            flatCleanupDebugMask,
+            new Scalar(255, 255, 0),
+            flatCleanupMaskPath);
+
         var flatChromaticResidualByTarget =
             new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
                 StringComparer.Ordinal);
@@ -1039,13 +1178,10 @@ public sealed class ErasePipelineV2
         var backgroundQualityFailedTextRegionIds =
             flatChromaticResidualByTarget
                 .Where(x =>
-                    x.Value.OutlierPixels >=
-                        Math.Max(
-                            16,
-                            (int)Math.Ceiling(
-                                x.Value.ReviewPixels *
-                                0.015)) &&
-                    x.Value.Ratio >= 0.015)
+                    IsFlatBackgroundQualityFailure(
+                        x.Value.ReviewPixels,
+                        x.Value.OutlierPixels,
+                        x.Value.Ratio))
                 .Select(x =>
                     x.Key)
                 .OrderBy(x => x)
@@ -1196,6 +1332,20 @@ public sealed class ErasePipelineV2
                         TeleaRetryMaskPixels =
                             teleaRetryMaskPixels
                     },
+                FlatResidualCleanup =
+                    new
+                    {
+                        AppliedTargets =
+                            flatResidualCleanupTargetCount,
+                        CleanupMaskPixels =
+                            flatCleanupPixelsByTarget.Values.Sum(),
+                        OutlierDebugFile =
+                            Path.GetFileName(
+                                flatResidualOutlierPath),
+                        CleanupMaskDebugFile =
+                            Path.GetFileName(
+                                flatCleanupMaskPath)
+                    },
                 ResidualAfterRetryPixels =
                     residualAfterTotal,
                 RetryTargetCount =
@@ -1244,23 +1394,49 @@ public sealed class ErasePipelineV2
                                         backgroundQualityP85.GetValueOrDefault(
                                             x.TextRegionId,
                                             -1),
+                                    // 0032-compatible aliases describe the state
+                                    // immediately after retry, before 0033 cleanup.
                                     PostRetryChromaticReviewPixels =
-                                        flatChromaticResidualByTarget.TryGetValue(
+                                        flatChromaticResidualBeforeCleanupByTarget.TryGetValue(
                                             x.TextRegionId,
-                                            out var chromaticResidual)
-                                            ? chromaticResidual.ReviewPixels
+                                            out var chromaticResidualBefore)
+                                            ? chromaticResidualBefore.ReviewPixels
                                             : 0,
                                     PostRetryChromaticOutlierPixels =
-                                        flatChromaticResidualByTarget.TryGetValue(
+                                        flatChromaticResidualBeforeCleanupByTarget.TryGetValue(
                                             x.TextRegionId,
-                                            out var chromaticOutlier)
-                                            ? chromaticOutlier.OutlierPixels
+                                            out var chromaticOutlierBefore)
+                                            ? chromaticOutlierBefore.OutlierPixels
                                             : 0,
                                     PostRetryChromaticOutlierRatio =
+                                        flatChromaticResidualBeforeCleanupByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticRatioBefore)
+                                            ? chromaticRatioBefore.Ratio
+                                            : 0,
+                                    FlatResidualCleanupApplied =
+                                        flatCleanupPixelsByTarget.GetValueOrDefault(
+                                            x.TextRegionId) > 0,
+                                    FlatResidualCleanupMaskPixels =
+                                        flatCleanupPixelsByTarget.GetValueOrDefault(
+                                            x.TextRegionId),
+                                    PostCleanupChromaticReviewPixels =
                                         flatChromaticResidualByTarget.TryGetValue(
                                             x.TextRegionId,
-                                            out var chromaticRatio)
-                                            ? chromaticRatio.Ratio
+                                            out var chromaticResidualAfter)
+                                            ? chromaticResidualAfter.ReviewPixels
+                                            : 0,
+                                    PostCleanupChromaticOutlierPixels =
+                                        flatChromaticResidualByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticOutlierAfter)
+                                            ? chromaticOutlierAfter.OutlierPixels
+                                            : 0,
+                                    PostCleanupChromaticOutlierRatio =
+                                        flatChromaticResidualByTarget.TryGetValue(
+                                            x.TextRegionId,
+                                            out var chromaticRatioAfter)
+                                            ? chromaticRatioAfter.Ratio
                                             : 0,
                                     BackgroundQualityPass =
                                         !backgroundQualityFailedTextRegionIds.Contains(
@@ -2337,12 +2513,24 @@ public sealed class ErasePipelineV2
                 }));
     }
 
-    static (int ReviewPixels, int OutlierPixels, double Ratio)
-        MeasureFlatChromaticResidual(
-            Mat image,
-            Mat originalGlyphMask,
-            Rect textBounds,
-            V2BackgroundReconstructionAudit audit)
+    public static bool IsFlatBackgroundQualityFailure(
+        int reviewPixels,
+        int outlierPixels,
+        double ratio)
+        =>
+            outlierPixels >=
+                Math.Max(
+                    16,
+                    (int)Math.Ceiling(
+                        reviewPixels *
+                        0.015)) &&
+            ratio >= 0.015;
+
+    static Mat BuildFlatReviewZone(
+        Mat image,
+        Mat originalGlyphMask,
+        Rect textBounds,
+        V2BackgroundReconstructionAudit audit)
     {
         int radius =
             Math.Clamp(
@@ -2374,7 +2562,7 @@ public sealed class ErasePipelineV2
             originalGlyphMask,
             originalInverse);
 
-        using var reviewZone =
+        var reviewZone =
             new Mat();
 
         Cv2.BitwiseAnd(
@@ -2393,8 +2581,33 @@ public sealed class ErasePipelineV2
             boundsMask,
             reviewZone);
 
-        int reviewPixels = 0;
-        int outlierPixels = 0;
+        return reviewZone;
+    }
+
+    public static Mat BuildFlatChromaticOutlierMask(
+        Mat image,
+        Mat originalGlyphMask,
+        Rect textBounds,
+        V2BackgroundReconstructionAudit audit)
+    {
+        var outlierMask =
+            Mat.Zeros(
+                image.Rows,
+                image.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        if (!audit.FlatAccepted)
+        {
+            return outlierMask;
+        }
+
+        using var reviewZone =
+            BuildFlatReviewZone(
+                image,
+                originalGlyphMask,
+                textBounds,
+                audit);
 
         double expectedChroma =
             Math.Max(
@@ -2434,8 +2647,6 @@ public sealed class ErasePipelineV2
                 {
                     continue;
                 }
-
-                reviewPixels++;
 
                 var pixel =
                     image.At<Vec3b>(
@@ -2478,18 +2689,212 @@ public sealed class ErasePipelineV2
                     pixelMax -
                     pixelMin;
 
-                // Bubble outlines are usually neutral black/gray and should
-                // not be mistaken for failed cleanup. This check specifically
-                // catches colored glyph residue (red, blue, etc.) that RT-DETR
-                // may no longer recognize as readable text.
                 if (distance >= 70.0 &&
                     pixelChroma -
                     expectedChroma >= 40.0)
                 {
-                    outlierPixels++;
+                    outlierMask.Set(
+                        y,
+                        x,
+                        (byte)255);
                 }
             }
         }
+
+        return outlierMask;
+    }
+
+    /// <summary>
+    /// 0033 flat residual cleanup. Colored residual pixels are the seed. The
+    /// mask may grow only through pixels that are still strongly inconsistent
+    /// with the estimated flat background and only inside the immutable
+    /// TextBounds / glyph-adjacent review zone. This lets a red/blue glyph seed
+    /// pull in its attached neutral black outline without sweeping up an
+    /// unrelated bubble border.
+    /// </summary>
+    public static Mat BuildFlatResidualCleanupMask(
+        Mat image,
+        Mat originalGlyphMask,
+        Rect textBounds,
+        V2BackgroundReconstructionAudit audit)
+    {
+        var empty =
+            Mat.Zeros(
+                image.Rows,
+                image.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        if (!audit.FlatAccepted)
+        {
+            return empty;
+        }
+
+        using var reviewZone =
+            BuildFlatReviewZone(
+                image,
+                originalGlyphMask,
+                textBounds,
+                audit);
+
+        using var seed =
+            BuildFlatChromaticOutlierMask(
+                image,
+                originalGlyphMask,
+                textBounds,
+                audit);
+
+        if (Cv2.CountNonZero(
+                seed) < 1)
+        {
+            return empty;
+        }
+
+        using var candidate =
+            Mat.Zeros(
+                image.Rows,
+                image.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        double candidateDistanceThreshold =
+            Math.Clamp(
+                audit.P90ColorDistance + 24.0,
+                42.0,
+                60.0);
+
+        for (int y =
+                 Math.Max(
+                     0,
+                     textBounds.Top);
+             y <
+             Math.Min(
+                 image.Rows,
+                 textBounds.Bottom);
+             y++)
+        {
+            for (int x =
+                     Math.Max(
+                         0,
+                         textBounds.Left);
+                 x <
+                 Math.Min(
+                     image.Cols,
+                     textBounds.Right);
+                 x++)
+            {
+                if (reviewZone.At<byte>(
+                        y,
+                        x) == 0)
+                {
+                    continue;
+                }
+
+                var pixel =
+                    image.At<Vec3b>(
+                        y,
+                        x);
+
+                double db =
+                    pixel.Item0 -
+                    audit.BackgroundB;
+
+                double dg =
+                    pixel.Item1 -
+                    audit.BackgroundG;
+
+                double dr =
+                    pixel.Item2 -
+                    audit.BackgroundR;
+
+                double distance =
+                    Math.Sqrt(
+                        db * db +
+                        dg * dg +
+                        dr * dr);
+
+                if (distance >=
+                    candidateDistanceThreshold)
+                {
+                    candidate.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        using var kernel =
+            Cv2.GetStructuringElement(
+                MorphShapes.Rect,
+                new Size(3, 3));
+
+        var linked =
+            seed.Clone();
+
+        int growthSteps =
+            Math.Clamp(
+                audit.ExclusionRadius + 3,
+                6,
+                12);
+
+        for (int i = 0;
+             i < growthSteps;
+             i++)
+        {
+            using var dilated =
+                new Mat();
+
+            Cv2.Dilate(
+                linked,
+                dilated,
+                kernel,
+                iterations: 1);
+
+            Cv2.BitwiseAnd(
+                dilated,
+                candidate,
+                dilated);
+
+            Cv2.BitwiseOr(
+                linked,
+                dilated,
+                linked);
+        }
+
+        empty.Dispose();
+
+        return linked;
+    }
+
+    static (int ReviewPixels, int OutlierPixels, double Ratio)
+        MeasureFlatChromaticResidual(
+            Mat image,
+            Mat originalGlyphMask,
+            Rect textBounds,
+            V2BackgroundReconstructionAudit audit)
+    {
+        using var reviewZone =
+            BuildFlatReviewZone(
+                image,
+                originalGlyphMask,
+                textBounds,
+                audit);
+
+        using var outlierMask =
+            BuildFlatChromaticOutlierMask(
+                image,
+                originalGlyphMask,
+                textBounds,
+                audit);
+
+        int reviewPixels =
+            Cv2.CountNonZero(
+                reviewZone);
+
+        int outlierPixels =
+            Cv2.CountNonZero(
+                outlierMask);
 
         double ratio =
             reviewPixels == 0
