@@ -821,6 +821,81 @@ finally
     }
 }
 
+// 0029 regression: comic display lettering often uses red fill + thick
+// black outline. The erase mask must select the ink, not flood-fill the white
+// counter inside O/P/R or the negative space between letters.
+using (var outlinedGlyphSource =
+       Mat.Zeros(
+           180,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+{
+    outlinedGlyphSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var outlinedBubble =
+        new Rect(
+            20,
+            20,
+            140,
+            140);
+
+    var outlinedText =
+        new Rect(
+            38,
+            38,
+            84,
+            84);
+
+    Cv2.Circle(
+        outlinedGlyphSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            10,
+            10,
+            10),
+        12,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        outlinedGlyphSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            30,
+            30,
+            220),
+        6,
+        LineTypes.AntiAlias);
+
+    using var outlinedGlyphMask =
+        ComicTranslateComponentMask.Build(
+            outlinedGlyphSource,
+            outlinedText,
+            outlinedBubble);
+
+    Check("V2 0029 outlined comic glyph keeps O counter empty",
+        outlinedGlyphMask.At<byte>(
+            80,
+            80) == 0);
+
+    Check("V2 0029 outlined comic glyph still selects colored/outlined ink",
+        Cv2.CountNonZero(
+            outlinedGlyphMask) > 250 &&
+        outlinedGlyphMask.At<byte>(
+            50,
+            80) != 0);
+}
+
 // 0020 regression: initial erase may use chroma rescue, but post-inpaint
 // residual review must not reinterpret harmless color variation as lettering.
 Check("V2 residual policy remains density based after chroma review split",
