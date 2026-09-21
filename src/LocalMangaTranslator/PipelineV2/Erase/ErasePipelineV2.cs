@@ -972,12 +972,6 @@ public sealed class ErasePipelineV2
             RetrievalModes.External,
             ContourApproximationModes.ApproxSimple);
 
-        int corePixels =
-            Math.Max(
-                1,
-                Cv2.CountNonZero(
-                    originalCoreMask));
-
         foreach (var contour in contours)
         {
             if (contour.Length == 0)
@@ -1018,19 +1012,12 @@ public sealed class ErasePipelineV2
                     1,
                     componentPixels);
 
-            double coreOverlapRatio =
-                overlapPixels /
-                (double)corePixels;
-
             // A bubble border or artwork line may enter the review halo.
-            // Keep it only when it genuinely intersects the source glyph
-            // core, rather than merely passing close to the text.
-            if (componentOverlapRatio < 0.08 &&
-                coreOverlapRatio < 0.01 &&
-                overlapPixels < 12)
-            {
+            // It must place a meaningful share of its own component on the
+            // immutable glyph core; a large border that only brushes the core
+            // is not surviving source text.
+            if (componentOverlapRatio < 0.08)
                 continue;
-            }
 
             Cv2.BitwiseOr(
                 linked,
