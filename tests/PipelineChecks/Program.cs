@@ -1006,6 +1006,102 @@ using (var flatBackgroundSource =
             80).Item0 >= 240);
 }
 
+// 0031 regression: background candidates immediately adjacent to a
+// stylized colored glyph are not trustworthy. Excluding a halo around the
+// accepted glyph mask must recover the actual flat balloon background even
+// when the mask itself does not cover the full black/red display lettering.
+using (var contaminatedFlatSource =
+       Mat.Zeros(
+           180,
+           220,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var partialGlyphMask =
+       Mat.Zeros(
+           180,
+           220,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    contaminatedFlatSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var contaminatedTextBounds =
+        new Rect(
+            30,
+            30,
+            160,
+            120);
+
+    Cv2.Circle(
+        contaminatedFlatSource,
+        new Point(
+            110,
+            88),
+        38,
+        new Scalar(
+            8,
+            8,
+            8),
+        14,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        contaminatedFlatSource,
+        new Point(
+            110,
+            88),
+        38,
+        new Scalar(
+            25,
+            35,
+            225),
+        7,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        partialGlyphMask,
+        new Point(
+            110,
+            88),
+        38,
+        Scalar.White,
+        7,
+        LineTypes.AntiAlias);
+
+    var contaminatedTarget =
+        new V2TextTarget(
+            "V2-0031-CONTAMINATED-FLAT",
+            PageRegionKind.TextBubble,
+            contaminatedTextBounds,
+            0.95f,
+            "V2-0031-BUBBLE",
+            new Rect(
+                24,
+                24,
+                172,
+                132),
+            0.96f);
+
+    var contaminatedAudit =
+        BackgroundReconstructionV2.Analyze(
+            contaminatedFlatSource,
+            contaminatedTarget,
+            partialGlyphMask);
+
+    Check("V2 0031 excludes glyph-adjacent color contamination before background clustering",
+        contaminatedAudit.FlatAccepted &&
+        contaminatedAudit.Strategy == "FLAT_FILL" &&
+        contaminatedAudit.BackgroundB >= 240 &&
+        contaminatedAudit.BackgroundG >= 240 &&
+        contaminatedAudit.BackgroundR >= 240 &&
+        contaminatedAudit.ExclusionRadius >= 3 &&
+        contaminatedAudit.DominantMatchRatio >= 0.60);
+}
+
 using (var artworkSource =
        Mat.Zeros(
            160,
