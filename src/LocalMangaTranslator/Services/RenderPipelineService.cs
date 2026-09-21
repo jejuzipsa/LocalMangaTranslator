@@ -1139,19 +1139,29 @@ public sealed class RenderPipelineService
             if (!layouts.TryGetValue(region.Id, out var layout))
                 continue;
 
-            ContainerSelection? same = null;
-
-            if (layout.Detected)
+            // Legacy rendering still suppresses duplicate physical containers
+            // up front.  Pipeline V2 must not: 0033_2 showed that a weak OCR
+            // candidate can be selected first, fail semantic validation, and
+            // permanently suppress a later exact/secondary-backed candidate
+            // (page032 AM I RIGHT?).  V2 evaluates every candidate first and
+            // arbitrates only among candidates that are actually renderable.
+            if (requireLegacyErase &&
+                layout.Detected)
             {
-                same = selected.FirstOrDefault(x =>
-                    x.Layout.Detected &&
-                    IsSamePhysicalContainer(x.Layout, layout));
-            }
+                var same =
+                    selected.FirstOrDefault(x =>
+                        x.Layout.Detected &&
+                        IsSamePhysicalContainer(
+                            x.Layout,
+                            layout));
 
-            if (same is not null)
-            {
-                containerSuppressed.Add(region);
-                continue;
+                if (same is not null)
+                {
+                    containerSuppressed.Add(
+                        region);
+
+                    continue;
+                }
             }
 
             selected.Add(new ContainerSelection(
@@ -1197,20 +1207,31 @@ public sealed class RenderPipelineService
                     line));
             }
 
-            var conflicts = plannedLines
-                .Where(x => lineOwners.ContainsKey(x.LineId))
-                .Select(x => x.LineId)
-                .Distinct(StringComparer.Ordinal)
-                .ToList();
+            var conflicts =
+                requireLegacyErase
+                    ? plannedLines
+                        .Where(x =>
+                            lineOwners.ContainsKey(
+                                x.LineId))
+                        .Select(x =>
+                            x.LineId)
+                        .Distinct(
+                            StringComparer.Ordinal)
+                        .ToList()
+                    : [];
 
-            // A duplicated canonical line must not invalidate an otherwise
-            // independent translation unit. The earlier unit keeps ownership
-            // of the physical OCR line; this unit simply cannot erase that
-            // line again. If every line is already owned, the unit is still
-            // rejected because it has no independent source-text ownership.
-            var ownedLines = plannedLines
-                .Where(x => !lineOwners.ContainsKey(x.LineId))
-                .ToList();
+            // Canonical-line ownership is a legacy erase safety rule.  V2
+            // erase ownership is the immutable RT-DETR TextRegion, so two OCR
+            // candidates for the same detector target must both survive long
+            // enough for evidence arbitration.
+            var ownedLines =
+                requireLegacyErase
+                    ? plannedLines
+                        .Where(x =>
+                            !lineOwners.ContainsKey(
+                                x.LineId))
+                        .ToList()
+                    : plannedLines.ToList();
 
             if (conflicts.Count > 0 &&
                 ownedLines.Count > 0)
@@ -1265,11 +1286,12 @@ public sealed class RenderPipelineService
                     ? "ok"
                     : "ok_v2_erase";
 
-            if (approved)
+            if (approved &&
+                requireLegacyErase)
             {
-                // Only an actually renderable unit may claim canonical lines.
-                // A rejected unit must not block a later valid unit that shares
-                // one OCR observation.
+                // Only legacy rendering claims canonical OCR lines here.
+                // V2 arbitrates candidates by detector-owned physical target
+                // after semantic/layout validation.
                 foreach (var line in ownedLines)
                     lineOwners[line.LineId] = unitId;
             }
@@ -1291,7 +1313,134 @@ public sealed class RenderPipelineService
                 reason));
         }
 
+        if (!requireLegacyErase)
+        {
+            var approved =
+                plans
+                    .Where(x =>
+                        x.Approved)
+                    .OrderByDescending(x =>
+                        V2CandidateKeepScore(
+                            x.Region))
+                    .ThenBy(x =>
+                        x.Region.Id)
+                    .ToList();
+
+            var kept =
+                new List<RenderUnitPlan>();
+
+            var suppressedRegionIds =
+                new HashSet<int>();
+
+            foreach (var candidate in approved)
+            {
+                bool duplicate =
+                    kept.Any(existing =>
+                        existing.Container.Detected &&
+                        candidate.Container.Detected &&
+                        IsSamePhysicalContainer(
+                            existing.Container,
+                            candidate.Container));
+
+                if (!duplicate)
+                {
+                    kept.Add(
+                        candidate);
+
+                    continue;
+                }
+
+                suppressedRegionIds.Add(
+                    candidate.Region.Id);
+
+                containerSuppressed.Add(
+                    candidate.Region);
+            }
+
+            if (suppressedRegionIds.Count > 0)
+            {
+                plans =
+                    plans
+                        .Select(plan =>
+                            suppressedRegionIds.Contains(
+                                plan.Region.Id)
+                                ? plan with
+                                {
+                                    Approved = false,
+                                    Reason =
+                                        "container_duplicate_after_v2_candidate_arbitration"
+                                }
+                                : plan)
+                        .ToList();
+            }
+        }
+
         return plans;
+    }
+
+    static double V2CandidateKeepScore(
+        VisionTranslation region)
+    {
+        double score =
+            DuplicateKeepScore(
+                region);
+
+        if (region.Source.RegionTextRegion is not null)
+            score += 40000;
+
+        if (!string.IsNullOrWhiteSpace(
+                region.Source.RegionId))
+        {
+            score += 20000;
+        }
+
+        string agreement =
+            region.Source.SecondaryOcrAgreement ??
+            "";
+
+        if (string.Equals(
+                agreement,
+                "agree",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            score += 50000;
+        }
+        else if (string.Equals(
+                     agreement,
+                     "partial",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            score += 20000;
+        }
+        else if (string.Equals(
+                     agreement,
+                     "secondary_only",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            score += 15000;
+        }
+
+        if (region.Source.Lines.Count > 0)
+        {
+            double confidence =
+                region.Source.Lines.Average(x =>
+                    Math.Clamp(
+                        x.Confidence,
+                        0,
+                        1));
+
+            score +=
+                confidence *
+                25000;
+        }
+
+        if (RenderSafetyPolicy.IsSuspiciousVisionExpansion(
+                region))
+        {
+            score -= 100000;
+        }
+
+        return score;
     }
 
     static ErasePlan CreateErasePlan(
