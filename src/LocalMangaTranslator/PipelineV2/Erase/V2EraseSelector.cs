@@ -19,6 +19,11 @@ public sealed record V2EraseSelection(
 {
     public IReadOnlyDictionary<int, string> PreservationReasons { get; init; } =
         new Dictionary<int, string>();
+
+    // 0034 coverage audit: preservation is tracked against immutable detector
+    // targets as well as translation-unit ids.
+    public IReadOnlyDictionary<string, string> PreservationTargetReasons { get; init; } =
+        new Dictionary<string, string>(StringComparer.Ordinal);
 }
 
 /// <summary>
@@ -48,6 +53,10 @@ public static class V2EraseSelector
         var preservationReasons =
             new Dictionary<int, string>();
 
+        var preservationTargetReasons =
+            new Dictionary<string, string>(
+                StringComparer.Ordinal);
+
         foreach (var region in translations.Where(x =>
                      x.Render &&
                      !string.IsNullOrWhiteSpace(x.Translation)))
@@ -66,6 +75,14 @@ public static class V2EraseSelector
             {
                 preservationReasons[region.Id] =
                     "stylized_graphic";
+
+                foreach (var target in matched)
+                {
+                    preservationTargetReasons[
+                        target.TextRegionId] =
+                        "stylized_graphic";
+                }
+
                 continue;
             }
 
@@ -143,7 +160,9 @@ public static class V2EraseSelector
             bindings)
         {
             PreservationReasons =
-                preservationReasons
+                preservationReasons,
+            PreservationTargetReasons =
+                preservationTargetReasons
         };
     }
 
@@ -256,32 +275,73 @@ public static class V2EraseSelector
                 Math.Max(1.0, region.Source.W),
                 Math.Max(1.0, region.Source.H));
 
-        return targets
-            .Select(target => new
-            {
-                Target = target,
-                Coverage = OverlapOverSmaller(
-                    source,
-                    target.TextBounds),
-                CenterRelated =
-                    ContainsCenter(
+        var scored =
+            targets
+                .Select(target => new
+                {
+                    Target = target,
+                    Coverage = OverlapOverSmaller(
                         source,
-                        target.TextBounds) ||
-                    ContainsCenter(
-                        target.TextBounds,
-                        source)
-            })
-            .Where(x =>
-                x.CenterRelated ||
-                x.Coverage >= 0.18)
-            .OrderByDescending(x =>
-                x.CenterRelated)
-            .ThenByDescending(x =>
-                x.Coverage)
-            .Take(2)
-            .Select(x =>
-                x.Target)
-            .ToList();
+                        target.TextBounds),
+                    CenterRelated =
+                        ContainsCenter(
+                            source,
+                            target.TextBounds) ||
+                        ContainsCenter(
+                            target.TextBounds,
+                            source)
+                })
+                .Where(x =>
+                    x.CenterRelated ||
+                    x.Coverage >= 0.18)
+                .OrderByDescending(x =>
+                    x.CenterRelated)
+                .ThenByDescending(x =>
+                    x.Coverage)
+                .ThenByDescending(x =>
+                    x.Target.TextScore)
+                .ToList();
+
+        if (scored.Count == 0)
+            return [];
+
+        var best =
+            scored[0];
+
+        // 0034 hard ownership boundary:
+        // geometry fallback may select an immutable detector ownership domain,
+        // but it may never join two independent physical owners.  In
+        // particular a nearby TextBubble and TextFree (page012) or two
+        // neighboring speech balloons cannot become one erase/layout unit.
+        if (best.Target.Kind ==
+            PageRegionKind.TextFree)
+        {
+            return [best.Target];
+        }
+
+        if (!string.IsNullOrWhiteSpace(
+                best.Target.BubbleRegionId))
+        {
+            var sameBubble =
+                scored
+                    .Where(x =>
+                        string.Equals(
+                            x.Target.BubbleRegionId,
+                            best.Target.BubbleRegionId,
+                            StringComparison.Ordinal) &&
+                        x.Target.Kind ==
+                            PageRegionKind.TextBubble)
+                    .Select(x =>
+                        x.Target)
+                    .DistinctBy(x =>
+                        x.TextRegionId)
+                    .ToList();
+
+            if (sameBubble.Count > 0)
+                return sameBubble;
+        }
+
+        return [best.Target];
     }
 
     static Rect UnionBounds(
