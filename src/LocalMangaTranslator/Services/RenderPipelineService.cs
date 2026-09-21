@@ -354,6 +354,11 @@ public sealed class RenderPipelineService
                         x => x.TextRegionId,
                         StringComparer.Ordinal);
 
+            var backgroundQualityFailedIds =
+                v2Erase.BackgroundQualityFailedTextRegionIds
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
             int legacyDisagreements =
                 cleanedState.Targets.Count(x =>
                     x.EmptyVerified !=
@@ -363,6 +368,7 @@ public sealed class RenderPipelineService
                 $"Cleaned checkpoint · mode={cleanedState.VerifierMode} · " +
                 $"target={cleanedState.Targets.Count} · " +
                 $"empty={cleanedState.Targets.Count(x => x.EmptyVerified)} · " +
+                $"background quality fail={backgroundQualityFailedIds.Count} · " +
                 $"legacy disagreement={legacyDisagreements}");
 
             bool CleanedStateEmptyFor(
@@ -380,7 +386,9 @@ public sealed class RenderPipelineService
                     cleanedByTarget.TryGetValue(
                         id,
                         out var check) &&
-                    check.EmptyVerified);
+                    check.EmptyVerified &&
+                    !backgroundQualityFailedIds.Contains(
+                        id));
             }
 
             var finalPlans =
