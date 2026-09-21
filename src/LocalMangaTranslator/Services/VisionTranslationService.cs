@@ -176,12 +176,11 @@ public sealed class VisionTranslationService
             format = "json",
             options = new
             {
-                temperature = recoveryAttempt switch
-                {
-                    0 => 0.05,
-                    1 => 0.10,
-                    _ => 0.16
-                },
+                // 0034 reproducibility: structural review decisions must be
+                // stable for identical image/model input. Recovery attempts
+                // keep distinct deterministic seeds but no sampling heat.
+                temperature = 0.0,
+                seed = 34034 + recoveryAttempt,
                 num_ctx = 8192,
                 num_predict = recoveryAttempt switch
                 {
