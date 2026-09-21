@@ -39,6 +39,7 @@ public sealed class FinalAuditService
         public long TypesetChangedPixels { get; set; }
         public double TypesetChangedRatio { get; set; }
         public int V2EraseReviewFailedUnits { get; set; }
+        public int V2CleanedTextRedetectedUnits { get; set; }
         public int V2UnboundUnits { get; set; }
         public int V2DuplicateSuppressedUnits { get; set; }
         public int V2StylizedGraphicUnits { get; set; }
@@ -56,6 +57,10 @@ public sealed class FinalAuditService
         public bool Bound { get; set; }
         public bool LayoutApproved { get; set; }
         public bool EraseClean { get; set; }
+        public bool LegacyEraseReviewClean { get; set; }
+        public bool CleanedStateVerifierAvailable { get; set; }
+        public bool CleanedStateEmpty { get; set; }
+        public bool ReviewerDisagreement { get; set; }
         public string? LayoutMode { get; set; }
     }
 
@@ -443,6 +448,14 @@ public sealed class FinalAuditService
                     StringComparison.Ordinal)) ??
             0;
 
+        int v2CleanedTextRedetected =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:cleaned_text_redetected",
+                    StringComparison.Ordinal)) ??
+            0;
+
         int v2Unbound =
             v2Commit?.Units.Count(x =>
                 string.Equals(
@@ -480,6 +493,7 @@ public sealed class FinalAuditService
                 0,
                 (v2Commit?.PreservedOriginalUnits ?? 0) -
                 v2EraseReviewFailed -
+                v2CleanedTextRedetected -
                 v2Unbound -
                 v2DuplicateSuppressed -
                 v2StylizedGraphic -
@@ -540,6 +554,8 @@ public sealed class FinalAuditService
                     typesetChangedRatio,
                 V2EraseReviewFailedUnits =
                     v2EraseReviewFailed,
+                V2CleanedTextRedetectedUnits =
+                    v2CleanedTextRedetected,
                 V2UnboundUnits =
                     v2Unbound,
                 V2DuplicateSuppressedUnits =
