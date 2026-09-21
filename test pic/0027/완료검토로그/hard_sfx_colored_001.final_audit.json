@@ -1,0 +1,346 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "hard_sfx_colored_001.jpg",
+  "output_file": "hard_sfx_colored_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 19522,
+    "changed_ratio": 0.007161702901953419,
+    "changed_regions": [
+      {
+        "x": 1134,
+        "y": 1868,
+        "width": 130,
+        "height": 84
+      },
+      {
+        "x": 378,
+        "y": 738,
+        "width": 99,
+        "height": 57
+      },
+      {
+        "x": 299,
+        "y": 676,
+        "width": 79,
+        "height": 59
+      },
+      {
+        "x": 372,
+        "y": 873,
+        "width": 73,
+        "height": 55
+      },
+      {
+        "x": 313,
+        "y": 639,
+        "width": 59,
+        "height": 37
+      },
+      {
+        "x": 389,
+        "y": 844,
+        "width": 38,
+        "height": 28
+      },
+      {
+        "x": 409,
+        "y": 797,
+        "width": 52,
+        "height": 17
+      },
+      {
+        "x": 1238,
+        "y": 1863,
+        "width": 22,
+        "height": 32
+      },
+      {
+        "x": 366,
+        "y": 844,
+        "width": 25,
+        "height": 26
+      },
+      {
+        "x": 278,
+        "y": 677,
+        "width": 25,
+        "height": 26
+      },
+      {
+        "x": 429,
+        "y": 843,
+        "width": 24,
+        "height": 27
+      },
+      {
+        "x": 378,
+        "y": 678,
+        "width": 25,
+        "height": 24
+      },
+      {
+        "x": 285,
+        "y": 646,
+        "width": 21,
+        "height": 27
+      },
+      {
+        "x": 1131,
+        "y": 1924,
+        "width": 22,
+        "height": 24
+      },
+      {
+        "x": 378,
+        "y": 646,
+        "width": 17,
+        "height": 27
+      },
+      {
+        "x": 375,
+        "y": 647,
+        "width": 15,
+        "height": 13
+      },
+      {
+        "x": 1161,
+        "y": 1872,
+        "width": 16,
+        "height": 10
+      },
+      {
+        "x": 386,
+        "y": 816,
+        "width": 7,
+        "height": 7
+      },
+      {
+        "x": 419,
+        "y": 921,
+        "width": 6,
+        "height": 5
+      },
+      {
+        "x": 378,
+        "y": 726,
+        "width": 6,
+        "height": 5
+      },
+      {
+        "x": 460,
+        "y": 808,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "x": 469,
+        "y": 787,
+        "width": 5,
+        "height": 5
+      },
+      {
+        "x": 474,
+        "y": 769,
+        "width": 4,
+        "height": 5
+      },
+      {
+        "x": 468,
+        "y": 769,
+        "width": 4,
+        "height": 5
+      },
+      {
+        "x": 491,
+        "y": 762,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "x": 485,
+        "y": 762,
+        "width": 5,
+        "height": 4
+      },
+      {
+        "x": 479,
+        "y": 762,
+        "width": 5,
+        "height": 4
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "hard_sfx_colored_001.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 10234,
+    "erase_changed_ratio": 0.0037543728869271226,
+    "typeset_changed_pixels": 13162,
+    "typeset_changed_ratio": 0.004828518266341097
+  },
+  "region_analysis": {
+    "total": 9,
+    "bubbles": 4,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 11,
+      "Global2x": 13,
+      "Focus3x": 94,
+      "Region1x": 14,
+      "Region2x": 3,
+      "Container1x": 12,
+      "Container2x": 1
+    },
+    "canonical_lines": 22,
+    "units": 10,
+    "assigned_lines": 16,
+    "orphan_groups": 6,
+    "secondary_total": 4,
+    "secondary_accepted": 4,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 629,
+          "Bottom": 743,
+          "Left": 296,
+          "Right": 385,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MUST MAKE READY FOR MY QUEEN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 729,
+          "Bottom": 823,
+          "Left": 386,
+          "Right": 483,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LITTLE THINGS... EAT THEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 847,
+          "Bottom": 919,
+          "Left": 374,
+          "Right": 442,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EAT THEM ALL!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 1863,
+          "Bottom": 1952,
+          "Left": 1134,
+          "Right": 1260,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EAT THEM ALL FOR YOU, MY QUEEN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 10,
+    "requested_render": 4
+  },
+  "render": {
+    "total": 4,
+    "approved": 4,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 4,
+    "TranslatedUnits": 4,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 4,
+    "TypesetCommittedUnits": 4,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 2,
+        "SourceText": "MUST MAKE READY FOR MY QUEEN.",
+        "Translation": "\uB0B4 \uC5EC\uC655\uB2D8\uC744\n\uC704\uD574\n\uC900\uBE44\uD574\uB77C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "LITTLE THINGS.. EAT THEM.",
+        "Translation": "\uC791\uC740 \uAC83\uB4E4...\n\uBA39\uC5B4\uB77C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "EAT THEM ALL!",
+        "Translation": "\uBABD\uB545 \uB2E4 \uBA39\uC5B4\uCE58\uC6CC!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "EAT THEM ALL FOR YOU, MY QUEEN!",
+        "Translation": "\uBAA8\uB450 \uBA39\uC5B4\uCE58\uC6B0\uACA0\uC2B5\uB2C8\uB2E4,[BR]\uB098\uC758 \uC5EC\uC655\uB2D8!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
