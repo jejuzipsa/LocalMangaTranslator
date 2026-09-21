@@ -1,0 +1,869 @@
+LocalMangaTranslator - 누적 패치 노트 / 작업 인수인계
+============================================================
+
+문서 목적
+------------------------------------------------------------
+이 파일은 LocalMangaTranslator의 장기 작업 기록과 다음 채팅/작업 세션 인수인계를 위한
+누적 패치 노트다.
+
+앞으로 새 버전을 작업할 때마다 이 파일 하나에 버전 번호를 추가하고,
+아래 항목을 가능한 한 상세히 기록한다.
+
+- 왜 수정했는가
+- 실제로 어떤 문제가 관찰되었는가
+- 원인을 어떻게 판단했는가
+- 어떤 코드/파이프라인을 변경했는가
+- 무엇은 의도적으로 변경하지 않았는가
+- 어떤 디버그 파일/audit 필드가 추가되었는가
+- 어떤 테스트로 회귀를 잠갔는가
+- 실제 이미지 테스트 결과는 어땠는가
+- 아직 남은 문제와 다음 우선순위는 무엇인가
+
+새 채팅에서 작업을 이어갈 때는 이 파일, PIPELINE_V2.md,
+docs/PIPELINE_REFACTOR.md를 먼저 읽으면 현재 상태를 빠르게 복원할 수 있다.
+
+
+프로젝트
+------------------------------------------------------------
+프로젝트명: LocalMangaTranslator
+GitHub: https://github.com/jejuzipsa/LocalMangaTranslator
+주 작업 브랜치: rewrite/pipeline-v2
+
+목표:
+Windows용 로컬 만화 이미지 번역기.
+OCR -> Vision OCR 검수 -> 번역 -> 말풍선/캡션 검출 -> 원문 삭제 ->
+배경복원 -> 검수 -> 한국어 조판까지 자동 처리한다.
+
+현재 개발 우선순위:
+번역 문장 품질 자체보다 이미지 처리 파이프라인의 정확도와 안전성이 우선이다.
+특히 OCR/검출 -> 원문 삭제 -> 배경복원 -> 검수 -> 조판의 구조적 안정성을 먼저 확보한다.
+
+
+핵심 불변 원칙
+------------------------------------------------------------
+1. RT-DETR Bubble / TextBubble / TextFree geometry는 immutable evidence로 취급한다.
+2. OCR/번역/후처리는 RT-DETR이 만든 erase geometry를 이동하거나 새로 만들지 않는다.
+3. OCR output은 observation이지 authority가 아니다.
+4. Translation approval과 erase approval은 같은 의미가 아니다.
+5. 잘 지운 원문을 검수 오판으로 다시 살리지 않는다.
+6. Layout 실패 또는 erase 검수 실패 시 해당 unit은 원본 픽셀을 보존한다.
+7. erase + typeset은 atomic commit으로 묶는다.
+8. 글자를 단순히 지우는 것보다 글자 뒤에 원래 있어야 할 배경을 복원하는 것이 핵심이다.
+9. Flat Bubble/Caption과 Artwork/복잡 배경은 복원 전략을 분리한다.
+10. 일반 대사/캡션 안정성을 깨면서 stylized text 하나에 과적합하지 않는다.
+11. RapidOCR 영역진단 및 보조 OCR evidence는 계속 유지한다.
+12. 애매한 경우에는 artwork 손상보다 원본 보존을 우선한다.
+13. 디버그/audit 결과가 실제 최종 commit 상태와 분리되지 않도록 한다.
+
+
+============================================================
+이전 작업 요약 - 0001 ~ 0018
+============================================================
+
+초기 문제
+------------------------------------------------------------
+초기 테스트에서는 다음 문제가 반복되었다.
+
+- OCR이 말풍선 전체를 놓치면 번역/erase 자체가 시작되지 않음.
+- OCR이 artwork를 text로 오인하면 잘못된 erase 후보로 전파될 수 있음.
+- Vision OCR 보정이 주변 대사를 빌려오거나 지나치게 확장할 수 있음.
+- OCR line geometry와 erase geometry가 너무 밀접하게 결합되어 있었음.
+- 하나의 실제 말풍선이 여러 OCR fragment/unit로 쪼개지거나,
+  반대로 먼 문장들이 하나의 unit으로 합쳐지는 문제가 있었음.
+
+리팩터링 방향
+------------------------------------------------------------
+파이프라인을 다음 evidence stage로 분리하는 방향을 확정했다.
+
+Page analysis
+-> page-wide container candidate detection
+-> candidate validation
+-> global/focus/container OCR
+-> OCR observation merge
+-> line validation
+-> line-to-container ownership
+-> reading order
+-> translation unit creation
+-> Vision OCR review
+-> final translation
+-> erase decision
+-> layout planning
+-> erase/inpaint
+-> typeset
+-> post-render validation
+
+핵심 구조 변화
+------------------------------------------------------------
+- OCR observation을 pass별로 보존.
+- page-wide container candidate를 OCR seed 없이 생성.
+- container 1x/2x OCR을 도입하고 cross-scale agreement를 evidence로 사용.
+- line ownership을 explicit하게 기록.
+- one canonical line = one active owner 원칙 도입.
+- ambiguous/weak ownership은 강제로 배정하지 않고 orphan 또는 held 상태로 둠.
+- container-first grouping과 legacy fallback grouping을 분리.
+- Vision correction은 번역 보조이지만 erase 권한을 직접 주지 않음.
+- 실제 detector/safe-mask 근거가 없는 fallback rectangle은 erase 권한을 주지 않음.
+- short/low-confidence OCR fragment가 Vision에서 긴 문장으로 과도하게 확장되는 경우 차단.
+- lossless WebP 기반 결과/디버그 출력 구조를 정리.
+
+관련 설계 문서:
+- docs/PIPELINE_REFACTOR.md
+- ARCHITECTURE.md
+- docs/ARCHITECTURE_2.md
+
+
+============================================================
+0019 - Atomic erase + typeset commit
+============================================================
+
+문제
+------------------------------------------------------------
+erase는 성공했지만 layout/typeset이 실패하거나,
+반대로 검수 실패가 뒤늦게 발생하면 말풍선이 빈 채로 남는 문제가 있었다.
+
+변경
+------------------------------------------------------------
+- TextBubble이 source-text pixel과 erase review를 소유.
+- 이미 연결된 parent Bubble이 layout/font fitting을 소유.
+- layout validation을 erase보다 먼저 수행.
+- erase review까지 통과한 unit만 committed cleaned image에 복사.
+- binding/layout/mask/residual review 중 하나라도 실패하면
+  해당 unit은 원본 픽셀을 유지하고 한국어 overlay도 하지 않음.
+- v2_05_committed_cleaned.webp를 원본 + 승인된 TextBubble edit만으로 구성.
+- v2_commit_audit.json에 각 requested unit을
+  translated 또는 original_preserved:* 상태로 기록.
+
+핵심 invariant
+------------------------------------------------------------
+EraseCommittedUnits == TypesetCommittedUnits
+
+추가 안정화
+------------------------------------------------------------
+OCR line consolidation에서 confidence가 비슷하면 더 완전한 line을 우선하도록 하여
+THE MIDDLE 같은 fragment가
+YOU'RE STILL IN THE MIDDLE 같은 완전 문장을 덮어쓰지 않도록 함.
+
+
+============================================================
+0020 - TextFree / colored glyph / 4-stage audit
+============================================================
+
+관찰된 문제
+------------------------------------------------------------
+1. RT-DETR TextFree detection이 region analysis에는 있지만 V2 immutable target에는 빠짐.
+2. 빨간 NONONO 같은 colored lettering이 grayscale residual review를 통과해 남을 수 있음.
+3. 완료검토가 ORIGINAL | FINAL | DIFF뿐이라 erase 단계 문제와 typeset 문제를 구분하기 어려움.
+
+변경
+------------------------------------------------------------
+- V2DetectionSnapshot에 TextBubble + TextFree를 모두 포함.
+- TextBubble은 parent Bubble을 layout anchor로 유지.
+- TextFree는 parent Bubble을 새로 만들지 않고 detector rect 자체를 conservative anchor로 사용.
+- colored glyph rescue에서 chroma-contrast component를 제한적으로 추가.
+- final audit를 가능한 경우 4단계로 변경:
+  1 ORIGINAL
+  2 ERASE COMMIT
+  3 FINAL
+  4 DIFF
+- audit summary에 preserve reason을 기록.
+
+의도
+------------------------------------------------------------
+erase와 typeset failure를 분리해 볼 수 있게 하고,
+color text를 grayscale-only assumption에서 벗어나 처리.
+
+
+============================================================
+0021 - Chroma residual false-positive 회귀 수정
+============================================================
+
+문제
+------------------------------------------------------------
+0020의 chroma rescue를 cleaned image residual review에도 그대로 재사용하면서,
+Telea가 만든 색 변화까지 source glyph 잔재로 오판하는 문제가 생김.
+
+변경
+------------------------------------------------------------
+- chroma rescue는 initial erase mask에만 사용.
+- post-inpaint residual review에서는 chroma detector를 끄고
+  원래 glyph 주변의 일반 high-contrast 구조만 검토.
+- ordinary dialogue가 colored cleanup 때문에 회귀하지 않도록 범위를 분리.
+
+추가
+------------------------------------------------------------
+짧고 넓은 caption/sign box의 font-scale/layout을 제한적으로 보정.
+
+
+============================================================
+0022 - Targeted tuning
+============================================================
+
+변경
+------------------------------------------------------------
+- 첫 pass가 허용 density 안에 있으면 불필요한 retry를 하지 않음.
+- genuinely flat한 TextFree dark caption은 local panel color로 직접 채우는 path 허용.
+- stylized_graphic heuristic을 좁혀 BRUCE!, BINGO!, LET ME OUTTT! 같은
+  짧은 graphic text는 보존하고 긴 uppercase dialogue는 번역 가능하게 유지.
+- short wide caption을 parent geometry 안에서 더 자연스럽게 사용.
+
+당시 23-page 결과
+------------------------------------------------------------
+committed translations: 149/190 -> 158/190
+erase-review failures: 14 -> 6
+
+
+============================================================
+0023 - Best-pass erase + translation safety
+============================================================
+
+문제
+------------------------------------------------------------
+retry가 항상 first pass보다 낫지 않은데도 retry 결과를 최종으로 쓰는 경우가 있었음.
+
+변경
+------------------------------------------------------------
+- retry는 optional candidate로 취급.
+- first-pass와 retry residual score를 target별 비교.
+- retry가 나쁘면 해당 footprint만 first-pass cleaned image에서 복구.
+- SelectedResidualPixels / SelectedPass audit 추가.
+
+번역 safety gate
+------------------------------------------------------------
+- punctuation/noise-only corrected text는 translator로 보내지 않음.
+- placeholder/template response reject + 1회 repair.
+- NOT/CAN'T/DON'T/WON'T/NEVER 같은 영어 negation이 한국어 negation cue를 잃으면 retry.
+- final result와 Vision draft 모두 실패하면 원본 보존.
+
+
+============================================================
+0024 - Residual review correction
+============================================================
+
+관찰된 문제
+------------------------------------------------------------
+실제 cleaned image는 이미 비어 있는데,
+reviewer가 inpaint texture나 주변 contrast를 다시 text처럼 잡아서
+atomic commit이 영어 원문을 되살리는 false-positive가 발생.
+
+변경
+------------------------------------------------------------
+- 7x7 local review halo 복원.
+- raw residual과 effective residual 분리.
+- original erase mask 안의 재-segmented pixel은 surviving source text로 보지 않음.
+- retry는 immutable glyph mask 밖의 suspicious residual을 중심으로 판단.
+- raw residual은 sanity bound로 유지.
+- best-pass selection 유지.
+- raw/effective residual before/after retry를 audit에 기록.
+
+
+============================================================
+0025 - Source-glyph persistence review
+============================================================
+
+문제
+------------------------------------------------------------
+bubble border, panel line, inpaint texture가 review halo 안에 있다는 이유만으로
+erase 실패로 판정되는 경우가 남음.
+
+변경
+------------------------------------------------------------
+- undilated source-glyph core를 별도 추출.
+- residual component가 source-glyph core와 실제로 연결되는지 확인.
+- original과 cleaned pixel을 core-linked location에서 비교.
+- 주변 구조는 diagnostic noise로 보고 reject 근거에서 제외.
+- core-mask size / overlap / persistence ratio / ReviewReason audit 추가.
+
+주의
+------------------------------------------------------------
+이 persistence reviewer를 primary로 쓰면 기존 안정 페이지 회귀가 생길 가능성이 있었음.
+
+
+============================================================
+0026 - Primary gate + secondary rescue
+============================================================
+
+결정
+------------------------------------------------------------
+0024 reviewer를 primary gate로 유지하고,
+0025 glyph-persistence reviewer는 primary가 실패한 경우에만 secondary rescue로 사용.
+
+동작
+------------------------------------------------------------
+- primary pass -> 즉시 commit 가능.
+- primary fail -> secondary glyph persistence 실행.
+- secondary clean -> rescue.
+- 둘 다 fail -> 원본 보존.
+- secondary reviewer는 primary-pass unit을 뒤집지 못함.
+
+추가 audit
+------------------------------------------------------------
+PrimaryReview
+SecondaryReview
+RescuedBySecondary
+ReviewReason
+
+추가 debug
+------------------------------------------------------------
+v2_01b_glyph_core.webp
+v2_03a_core_linked_residual.webp
+v2_03b_persistent_core.webp
+
+
+============================================================
+0027 - Cleaned checkpoint audit
+============================================================
+
+목적
+------------------------------------------------------------
+erase와 typeset 사이에
+"detector-owned erase target이 실제로 모두 비워졌는가?"
+를 독립적으로 확인하는 checkpoint가 필요했음.
+
+변경
+------------------------------------------------------------
+- immutable detector identity 기준 checkpoint 생성.
+- 같은 parent Bubble의 TextBubble은 하나의 Bubble checkpoint로 묶음.
+- TextFree는 독립 checkpoint.
+- ID-set equality로 target/verified set 비교.
+- diagnostic-only로 도입하고 0026 commit 정책은 아직 바꾸지 않음.
+
+추가 debug
+------------------------------------------------------------
+v2_04b_cleaned_checkpoint.webp
+
+
+============================================================
+0028 - Independent CleanedStateVerifier
+============================================================
+
+핵심 문제
+------------------------------------------------------------
+pixel reviewer가 false-negative/false-positive를 내며
+이미 잘 지운 영어를 원본 복구로 다시 살리는 문제가 남아 있었음.
+
+변경
+------------------------------------------------------------
+1. 원본 RT-DETR Bubble/TextBubble/TextFree ID + geometry freeze.
+2. selected immutable target erase.
+3. v2_04_cleaned_final.webp 저장.
+4. cleaned image에 RT-DETR을 다시 실행.
+5. cleaned TextBubble/TextFree detection과 original selected TextRegion 비교.
+6. cleaned text detection이 없으면 EMPTY_OK.
+7. translation unit이 가진 모든 immutable TextRegionId가 EMPTY_OK일 때만 commit.
+8. legacy pixel reviewer 결과는 diagnostic evidence로 유지.
+
+중요
+------------------------------------------------------------
+cleaned RT-DETR은 evidence만 제공한다.
+새 target을 만들거나 기존 erase geometry를 움직이지 않는다.
+
+추가 파일
+------------------------------------------------------------
+v2_04a_legacy_reviewer_checkpoint.webp
+v2_04b_cleaned_checkpoint.webp
+v2_cleaned_state_audit.json
+
+당시 핵심 결과
+------------------------------------------------------------
+기존 문제 페이지:
+- core_caption_speech_mixed_001
+- core_mixed_dialogue_caption_sfx_001
+
+두 페이지 모두 rescue 성공.
+
+23-page 기준:
+Requested 184
+translated/commit 162
+preserved 22
+erase/typeset 162
+missing 0
+erase fail 0
+cleaned text redetected 0
+
+남은 blind spot
+------------------------------------------------------------
+RT-DETR이 readable text로 재검출하지 못할 정도로 글자가 망가지면,
+사람 눈에는 얼룩/잔재가 보여도 EMPTY_OK가 될 수 있음.
+
+
+============================================================
+0029 - Glyph-topology-preserving erase mask
+============================================================
+
+관찰된 문제
+------------------------------------------------------------
+NONONO 같은 빨간 fill + 검은 outline에서 external contour를 solid fill하던 방식이
+O/P/R 내부 hole과 글자 사이 negative space까지 erase pixel로 먹음.
+이후 Telea가 검정/빨강을 잘못 끌어와 blotch를 생성.
+
+변경
+------------------------------------------------------------
+- contour는 component selection에만 사용.
+- 실제 threshold foreground pixel만 output mask로 복사.
+- glyph hole / inter-letter negative space 보존.
+- color rescue는 실제 chroma seed + 가까운 high-contrast outline만 추가.
+- final 3x3 dilation은 topology-correct foreground mask에 적용.
+
+추가 debug
+------------------------------------------------------------
+v2_01a_grayscale_mask.webp
+v2_01c_color_rescue_mask.webp
+v2_01_text_mask.webp
+
+추가 audit
+------------------------------------------------------------
+GrayscaleMaskPixels
+ColorRescueMaskPixels
+
+결과
+------------------------------------------------------------
+23-page 전체 큰 회귀는 없었음.
+하지만 mask가 좋아져도 Telea가 주변 red/black ink를 source material로 사용해
+colored blotch를 만드는 문제는 남음.
+
+
+============================================================
+0030 - Background reconstruction strategy 분리
+============================================================
+
+핵심 판단
+------------------------------------------------------------
+Text Removal =
+Foreground segmentation
++
+Background reconstruction
+
+즉 "어떤 pixel이 글자인가"와
+"그 pixel 뒤에 무엇을 복원해야 하는가"를 분리해야 함.
+
+변경
+------------------------------------------------------------
+TextRegionId별 reconstruction strategy 도입.
+
+FLAT_FILL
+- flat Bubble/Caption의 dominant background color를 추정.
+- accepted glyph mask pixel을 해당 background color로 직접 채움.
+
+TELEA
+- artwork / gradient / texture / ambiguous background에 사용.
+
+추가 debug
+------------------------------------------------------------
+v2_02a_reconstruction_strategy.webp
+v2_background_audit.json
+
+추가 audit
+------------------------------------------------------------
+Strategy
+MaskPixels
+SampleCount
+Background B/G/R
+DominantMatchRatio
+P75ColorDistance
+P90ColorDistance
+Reason
+PostReconstructionP85
+
+NONONO RG012 결과
+------------------------------------------------------------
+0030에서는 TELEA로 분류.
+Reason = background_not_dominant 계열.
+
+원인
+------------------------------------------------------------
+TextBounds 내부 non-mask pixel median이
+mask 바깥의 red/black anti-alias 및 outline에 오염되어
+실제 밝은 말풍선 background를 제대로 추정하지 못함.
+
+
+============================================================
+0031 - Purified background candidate clustering
+============================================================
+
+목표
+------------------------------------------------------------
+background sample에서 glyph-adjacent contamination을 제거하고
+실제 dominant flat background를 선택.
+
+변경
+------------------------------------------------------------
+1. glyph mask adaptive dilation으로 주변 오염 sample 제외.
+2. 남은 pixel을 coarse color bin으로 분류.
+3. 강한 cluster 후보 생성.
+4. purified samples 전체에서 strongest compact cluster 선택.
+5. 4x4 grid spatial coverage 검사.
+6. flat 판정에 dominant ratio + P90 distance + spatial coverage 사용.
+
+추가 audit
+------------------------------------------------------------
+SpatialCoverage
+ExclusionRadius
+Reason:
+- dominant_purified_background_cluster
+- background_cluster_weak
+- background_cluster_variance
+- background_cluster_not_spatial
+
+NONONO RG012 결과
+------------------------------------------------------------
+Strategy = FLAT_FILL
+Background approx B246 G242 R241
+DominantMatchRatio approx 0.8845
+SpatialCoverage approx 0.625
+
+즉 "뒤는 밝은 flat balloon" 판정 자체는 성공.
+
+새로 드러난 실패
+------------------------------------------------------------
+첫 복원 뒤 colored glyph 일부가 남음.
+retry 단계가 모든 retryMask를 page-level Telea로 보내면서
+첫 pass에서 선택한 FLAT_FILL strategy를 버림.
+
+실제 흐름:
+FLAT_FILL
+-> residual
+-> retry
+-> Telea
+-> 남은 red/black ink를 source로 사용
+-> colored blotch
+
+또한 당시 BackgroundQualityCheck는
+"우리가 채운 mask pixel이 background color와 비슷한가"만 봐서
+mask 밖에 남은 colored glyph는 놓칠 수 있었음.
+
+
+============================================================
+0032 - Strategy-stable retry + flat residual quality gate
+============================================================
+
+목표
+------------------------------------------------------------
+FLAT_FILL target은 retry에서도 FLAT_FILL.
+TELEA target은 retry에서도 TELEA.
+
+변경
+------------------------------------------------------------
+- page-level retryMask 외에 flatRetryMask / teleaRetryMask 분리.
+- backgroundAudits를 TextRegionId dictionary로 유지.
+- target별 retryTargetMask 보존.
+- FlatAccepted=true이면 저장된 Background RGB로 ApplyFlatFill retry.
+- FLAT_FILL retry pixel은 Telea retry mask에서 제외.
+- TELEA target만 InpaintOnlyMaskedPixels 사용.
+- detector box overlap이 있어도 FLAT_FILL pixel ownership 우선.
+
+추가 audit
+------------------------------------------------------------
+RetryReconstruction:
+- FlatFillRetryTargets
+- FlatFillRetryMaskPixels
+- TeleaRetryTargets
+- TeleaRetryMaskPixels
+
+target:
+RetryStrategy =
+- FLAT_FILL
+- TELEA
+- TELEA_FALLBACK
+- not_run
+
+추가 quality gate
+------------------------------------------------------------
+FLAT_FILL retry 이후 original glyph 주변 expanded review ring에서
+estimated background와 멀리 떨어진 strongly chromatic pixel을 검사.
+neutral black/gray bubble outline은 colored residual로 오인하지 않도록 분리.
+
+실제 0032 hard_long_speech_001 / RG012
+------------------------------------------------------------
+RetryStrategy = FLAT_FILL
+FlatFillRetryTargets = 1
+TeleaRetryTargets = 0
+ResidualBeforeRetry approx 13073
+ResidualAfterRetry approx 2001
+
+PostRetryChromaticReviewPixels = 22676
+PostRetryChromaticOutlierPixels = 3822
+OutlierRatio approx 0.168548 (16.85%)
+BackgroundQualityPass = false
+
+따라서 최종 commit은
+original_preserved:not_committed
+
+의미
+------------------------------------------------------------
+0031의 "retry가 Telea로 돌아가 빨간 덩어리를 생성"하는 문제는 해결.
+하지만 NONONO 자체를 완전히 깨끗하게 지우는 데는 아직 실패.
+대신 품질 실패를 감지하고 원본을 안전하게 보존하는 데 성공.
+
+
+============================================================
+0033 - Flat residual cleanup
+============================================================
+
+목표
+------------------------------------------------------------
+0032가 이미 정확히 찾아낸 flat-background chromatic residual을
+단순 fail signal로만 쓰지 않고 실제 constrained cleanup mask로 활용.
+
+설계 원칙
+------------------------------------------------------------
+- FLAT_FILL target에만 적용.
+- TELEA target에는 적용하지 않음.
+- quality gate를 통과한 정상 flat target은 건드리지 않음.
+- cleanup geometry는 immutable TextBounds와 original glyph-adjacent review zone 안으로 제한.
+- 특정 색(red)이나 특정 문자열(NONONO)에 하드코딩하지 않음.
+- colored residual을 seed로 사용.
+- seed와 직접 연결된 neutral dark outline은 같이 cleanup 가능.
+- 떨어져 있는 neutral bubble/artwork line은 보존.
+- cleanup도 Telea를 쓰지 않고 저장된 flat Background RGB로 직접 복원.
+- cleanup 후 같은 BackgroundQualityCheck를 다시 실행.
+- 그래도 fail이면 기존처럼 original preserve.
+
+코드 변경
+------------------------------------------------------------
+ErasePipelineV2.cs
+
+추가 단계:
+FLAT_FILL
+-> retry FLAT_FILL
+-> chromatic residual 검사
+-> linked flat residual cleanup
+-> same Background RGB로 repaint
+-> background quality 재검사
+-> commit 또는 preserve
+
+추가 public/helper logic
+------------------------------------------------------------
+IsFlatBackgroundQualityFailure(...)
+BuildFlatChromaticOutlierMask(...)
+BuildFlatResidualCleanupMask(...)
+
+cleanup candidate는 estimated background에서 충분히 멀리 떨어진 pixel만 허용하고,
+colored seed에서 제한된 거리만 region-growing 하도록 구성.
+이 방식으로 colored fill에 붙은 검정 outline은 포함할 수 있지만
+분리된 bubble border는 잡지 않도록 함.
+
+추가 debug
+------------------------------------------------------------
+v2_03c_flat_residual_outlier.webp
+- colored residual seed 표시
+
+v2_03d_flat_cleanup_mask.webp
+- 실제 마지막 FLAT_FILL cleanup 영역 표시
+
+추가 audit
+------------------------------------------------------------
+FlatResidualCleanup:
+- AppliedTargets
+- CleanupMaskPixels
+- OutlierDebugFile
+- CleanupMaskDebugFile
+
+각 BackgroundReconstruction item:
+- 기존 PostRetryChromaticReviewPixels
+- 기존 PostRetryChromaticOutlierPixels
+- 기존 PostRetryChromaticOutlierRatio
+- FlatResidualCleanupApplied
+- FlatResidualCleanupMaskPixels
+- PostCleanupChromaticReviewPixels
+- PostCleanupChromaticOutlierPixels
+- PostCleanupChromaticOutlierRatio
+- BackgroundQualityPass
+
+회귀 테스트
+------------------------------------------------------------
+PipelineChecks에 다음 케이스 추가.
+
+- colored residual은 cleanup seed가 되어야 함.
+- seed에 붙은 neutral black outline은 cleanup mask에 포함되어야 함.
+- 같은 review zone에 있어도 flat background로 분리된 unrelated neutral line은 보존되어야 함.
+- cleanup pixel은 저장된 Background RGB로 정확히 repaint되어야 함.
+
+관련 커밋
+------------------------------------------------------------
+52fec6591cb7b87c820dcdcac5289aea63626455
+V2 0033: clean linked residual ink on flat backgrounds
+
+48745f7c41c57db7b649d29e293d62566d026977
+Tests: lock 0033 flat residual cleanup
+
+실제 0033 hard_long_speech_001 / RG012 결과
+------------------------------------------------------------
+Strategy = FLAT_FILL
+RetryStrategy = FLAT_FILL
+TeleaRetryTargets = 0
+
+cleanup 전:
+PostRetryChromaticReviewPixels = 22676
+PostRetryChromaticOutlierPixels = 3822
+PostRetryChromaticOutlierRatio = 0.16854824484035985
+
+cleanup:
+FlatResidualCleanupApplied = true
+FlatResidualCleanupMaskPixels = 3822
+
+cleanup 후:
+PostCleanupChromaticReviewPixels = 22676
+PostCleanupChromaticOutlierPixels = 0
+PostCleanupChromaticOutlierRatio = 0
+BackgroundQualityPass = true
+
+최종 commit:
+RequestedUnits = 8
+TranslatedUnits = 8
+PreservedOriginalUnits = 0
+EraseCommittedUnits = 8
+TypesetCommittedUnits = 8
+MissingUnits = 0
+DuplicateUnits = 0
+
+시각 결과:
+- NONONO red fill 제거 성공.
+- black outline 잔재 제거 성공.
+- 0031에서 보이던 red blotch 없음.
+- 0032처럼 원본으로 rollback하지 않음.
+- Korean typeset 정상 commit.
+
+0033 전체 23-page regression
+------------------------------------------------------------
+Requested = 184
+Translated/Committed = 162
+PreservedOriginal = 22
+EraseCommitted = 162
+TypesetCommitted = 162
+Missing = 0
+Duplicate = 0
+BackgroundQualityFailures = 0
+EraseReviewFailedUnits = 0
+CleanedTextRedetectedUnits = 0
+
+retry:
+총 retry target = 4
+FLAT_FILL retry = 4
+TELEA retry = 0
+
+0033 FlatResidualCleanup:
+AppliedTargets = 1
+CleanupMaskPixels = 3822
+
+중요 해석
+------------------------------------------------------------
+cleanup이 전체 페이지에 무분별하게 퍼지지 않았다.
+23-page regression에서 실제 cleanup이 발동한 것은
+hard_long_speech_001 / RG012 한 target뿐이었다.
+
+따라서 현재 테스트 범위에서는
+NONONO 한 케이스를 해결하기 위해 일반 대사/캡션 erase 안정성이 회귀한 징후가 없음.
+
+0033은 현재 이미지 삭제/flat-background reconstruction 기준 baseline으로 사용한다.
+
+
+============================================================
+0033 이후 실전 챕터 테스트
+============================================================
+
+다음 검증 단계
+------------------------------------------------------------
+이제 개별 regression page가 아니라
+지금까지 테스트에 사용한 Batman 한 챕터 전체 28장을 0033으로 번역하여
+실제 연속 페이지에서 pipeline 편차를 확인한다.
+
+이번 28-page 챕터에서 분류할 문제
+------------------------------------------------------------
+1. Detection / OCR omission
+2. Canonical source-text loss
+3. Erase / background reconstruction
+4. Cleaned-state verification
+5. Layout / typesetting
+6. Translation/context quality
+7. Stylized/SFX preservation policy
+
+현재 처음 관찰된 실전 이슈
+------------------------------------------------------------
+page032 완료검토에서 작은 녹색/회색 대사
+"AM I RIGHT?"
+가 ORIGINAL에서 존재하지만 ERASE COMMIT에서도 그대로 남고
+FINAL에서도 번역되지 않은 사례가 발견됨.
+
+같은 주변의 "BATS?"는 erase + 번역되어 "박쥐?"로 정상 commit.
+
+현재 이미지 증거만으로 확정할 수 있는 것:
+- "AM I RIGHT?"는 erase 단계에서 지워진 뒤 복구된 것이 아님.
+- ERASE COMMIT 단계부터 원본 그대로 존재하므로
+  erase target/translation binding 이전 upstream에서 제외된 것으로 보임.
+
+아직 확정하지 않은 것:
+- RT-DETR TextBubble 자체 미검출인지
+- OCR observation 누락인지
+- OCR은 있었지만 confidence/ownership에서 탈락했는지
+- translation unit은 있었지만 TextRegion binding이 실패했는지
+
+다음 조사 시 확인할 파일:
+- page032.translated.00_page_candidates.json
+- page032.translated.00_ocr_observations.json
+- page032.v2_commit_audit.json
+- page032.v2_erase_audit.json
+- 필요 시 container OCR validation / line ownership / final audit
+
+중요:
+"AM I RIGHT?"는 일반 말풍선 대사로 보이므로
+stylized/SFX 보존 정책으로 숨길 대상이 아니다.
+원인은 evidence chain을 확인한 뒤 일반화 가능한 방식으로 수정해야 한다.
+
+
+============================================================
+앞으로 PATCH_NOTES.txt 업데이트 규칙
+============================================================
+
+새 버전마다 아래 형식을 추가한다.
+
+------------------------------------------------------------
+00XX - 버전 제목
+
+목표
+- 왜 이 버전이 필요한지.
+
+관찰된 문제
+- 실제 이미지/audit에서 무엇이 실패했는지.
+- 재현 page / RegionId / 핵심 수치.
+
+원인
+- 코드/파이프라인상 실제 원인.
+- 추정일 경우 "추정"이라고 명시.
+
+변경
+- 수정한 파일.
+- 바꾼 algorithm / threshold / stage / invariant.
+- 일부러 바꾸지 않은 부분.
+
+Debug / Audit
+- 새 파일명.
+- 새 JSON field.
+- 기존 field 의미 변경 여부.
+
+Regression tests
+- 어떤 실패를 고정했는지.
+- 정상 케이스가 어떻게 보존되는지.
+
+실제 테스트 결과
+- single-page 결과.
+- full regression 결과.
+- before/after 수치.
+
+남은 문제
+- 아직 해결하지 않은 것.
+- 다음 버전 후보.
+
+관련 커밋
+- SHA
+- commit message
+------------------------------------------------------------
+
+운영 원칙
+------------------------------------------------------------
+- 버전별 TXT를 여러 개 만들지 않는다.
+- 이 PATCH_NOTES.txt 한 파일에 계속 누적한다.
+- 새 채팅에서는 최신 section과 "남은 문제"를 먼저 읽는다.
+- 테스트 결과가 GitHub에 push되면 코드 변경 전 먼저 audit을 읽고 원인을 확정한다.
+- 단순 증상 패치보다 전체 pipeline invariant를 우선한다.
+- 특정 단어/특정 페이지 하드코딩은 피한다.
+- 일반 대사 안정성을 깨는 수정은 허용하지 않는다.
