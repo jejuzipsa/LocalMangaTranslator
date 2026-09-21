@@ -896,6 +896,188 @@ using (var outlinedGlyphSource =
             80) != 0);
 }
 
+// 0030 regression: foreground segmentation and background reconstruction
+// are separate decisions. A stylized colored glyph on a flat balloon should
+// restore from the balloon background instead of feeding colored ink to Telea.
+using (var flatBackgroundSource =
+       Mat.Zeros(
+           180,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+{
+    flatBackgroundSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var flatBubble =
+        new Rect(
+            20,
+            20,
+            140,
+            140);
+
+    var flatTextBounds =
+        new Rect(
+            38,
+            38,
+            84,
+            84);
+
+    Cv2.Circle(
+        flatBackgroundSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            10,
+            10,
+            10),
+        12,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        flatBackgroundSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            30,
+            30,
+            220),
+        6,
+        LineTypes.AntiAlias);
+
+    var flatTarget =
+        new V2TextTarget(
+            "V2-0030-FLAT",
+            PageRegionKind.TextBubble,
+            flatTextBounds,
+            0.95f,
+            "V2-0030-BUBBLE",
+            flatBubble,
+            0.96f);
+
+    using var flatGlyphMask =
+        ComicTranslateComponentMask.Build(
+            flatBackgroundSource,
+            flatTextBounds,
+            flatBubble);
+
+    var flatAudit =
+        BackgroundReconstructionV2.Analyze(
+            flatBackgroundSource,
+            flatTarget,
+            flatGlyphMask);
+
+    Check("V2 0030 classifies dominant balloon background as flat",
+        flatAudit.FlatAccepted &&
+        flatAudit.Strategy == "FLAT_FILL" &&
+        flatAudit.DominantMatchRatio >= 0.70);
+
+    using var flatReconstructed =
+        flatBackgroundSource.Clone();
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        flatReconstructed,
+        flatGlyphMask,
+        flatAudit);
+
+    var restoredInkPixel =
+        flatReconstructed.At<Vec3b>(
+            50,
+            80);
+
+    Check("V2 0030 flat fill restores colored glyph ink to balloon background",
+        restoredInkPixel.Item0 >= 240 &&
+        restoredInkPixel.Item1 >= 240 &&
+        restoredInkPixel.Item2 >= 240);
+
+    Check("V2 0030 flat fill keeps O counter unmasked",
+        flatGlyphMask.At<byte>(
+            80,
+            80) == 0 &&
+        flatReconstructed.At<Vec3b>(
+            80,
+            80).Item0 >= 240);
+}
+
+using (var artworkSource =
+       Mat.Zeros(
+           160,
+           200,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var artworkMask =
+       Mat.Zeros(
+           160,
+           200,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    for (int y = 20; y < 140; y++)
+    {
+        for (int x = 20; x < 180; x++)
+        {
+            bool alternate =
+                ((x / 12) +
+                 (y / 12)) %
+                2 == 0;
+
+            artworkSource.Set(
+                y,
+                x,
+                alternate
+                    ? new Vec3b(
+                        30,
+                        50,
+                        200)
+                    : new Vec3b(
+                        210,
+                        180,
+                        40));
+        }
+    }
+
+    Cv2.Rectangle(
+        artworkMask,
+        new Rect(
+            80,
+            60,
+            40,
+            35),
+        Scalar.White,
+        thickness: -1);
+
+    var artworkTarget =
+        new V2TextTarget(
+            "V2-0030-ART",
+            PageRegionKind.TextFree,
+            new Rect(
+                20,
+                20,
+                160,
+                120),
+            0.95f,
+            null,
+            null,
+            null);
+
+    var artworkAudit =
+        BackgroundReconstructionV2.Analyze(
+            artworkSource,
+            artworkTarget,
+            artworkMask);
+
+    Check("V2 0030 keeps complex artwork on Telea path",
+        !artworkAudit.FlatAccepted &&
+        artworkAudit.Strategy == "TELEA");
+}
+
 // 0020 regression: initial erase may use chroma rescue, but post-inpaint
 // residual review must not reinterpret harmless color variation as lettering.
 Check("V2 residual policy remains density based after chroma review split",
