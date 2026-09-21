@@ -867,3 +867,425 @@ Regression tests
 - 단순 증상 패치보다 전체 pipeline invariant를 우선한다.
 - 특정 단어/특정 페이지 하드코딩은 피한다.
 - 일반 대사 안정성을 깨는 수정은 허용하지 않는다.
+
+
+============================================================
+0034 - Detector-owned Commit Units + Target Coverage
+============================================================
+
+배경 / 실전 29-page 챕터 감사
+------------------------------------------------------------
+0033_2에서 Batman page004~page032 총 29장을 연속 처리한 결과,
+erase/background reconstruction 자체보다 앞단의 ownership/unit 구조에서
+여러 종류의 실제 누락과 오병합이 확인되었다.
+
+0033_2 전체 audit:
+Requested = 261
+Translated = 223
+Preserved = 38
+EraseCommitted = 223
+TypesetCommitted = 223
+Missing = 0
+CleanedTextRedetected = 3
+Unbound = 8
+DuplicateSuppressed = 4
+OcrNoise = 20
+OtherPreserved = 2
+
+중요:
+Missing=0이지만 실제 결과에는 영어가 남은 말풍선이 존재했다.
+기존 Missing은 이미 requested translation unit까지 올라온 항목만 보므로
+detector target -> OCR -> unit -> binding -> final commit 전체 coverage를
+나타내지 못했다.
+
+
+관찰된 대표 회귀
+------------------------------------------------------------
+1. page012
+상단 작은 말풍선:
+  Nononono... no...
+옆 free-standing graphic:
+  LET ME OUTTT!
+
+RT-DETR은 정상적으로 분리:
+RG002 = TextBubble (작은 말풍선)
+RG003 = TextFree (빨간 graphic text)
+
+하지만 broad orphan OCR unit:
+  "RU LETT ME OUTTT!"
+를 Vision이
+  "Nononono... no... / LET ME OUTTT!"
+로 확장했고,
+기존 V2 geometry fallback이 RG002 + RG003을 동시에 잡아
+하나의 commit unit으로 만들었다.
+
+이 combined unit이 cleaned-state fail하면서 두 owner가 같이 rollback.
+별도로 정확히 읽힌 "Nononono.. no..." unit은
+container_duplicate로 억제되어 정상 말풍선까지 번역되지 않았다.
+
+
+2. page017
+2번째 컷의 서로 다른 두 말풍선:
+  "COME ON, COME ON."
+  "IT HAS TO BE HERE SOMEWHERE, BRUCE..."
+
+OcrContainerUnitBuilder 이후 ConsolidateRegionOwnedUnits가
+같은 CandidateId라는 이유만으로 두 OCR line stack을 하나로 합쳤다.
+
+결과:
+- 두 말풍선 원문이 하나의 Vision/translation unit이 됨.
+- 번역문 전체가 한쪽 작은 말풍선에 들어감.
+- 다른 물리 말풍선은 원문이 남음.
+
+
+3. page021
+중간:
+  "I DON'T KNOW ANYMORE. I DON'T--"
+
+RT-DETR / OCR / Baberu 모두 evidence 존재.
+Vision result:
+  Type = dialogue
+  Render = false
+  Translation = ""
+
+즉 detector/OCR 누락이 아니라,
+확실한 TextBubble dialogue 하나가 Vision의 Render=false 한 번으로
+최종 번역 경로에서 사라졌다.
+
+
+4. page028
+"So first..." 주변 두 물리 말풍선이 하나의 번역/조판 unit으로 섞여
+두 문장의 번역이 위쪽 말풍선에 몰리고 아래쪽 영어가 남음.
+page017과 같은 CandidateId 중심 consolidation 계열로 판단.
+
+또한 왼쪽 일부 일반 대사는 별도 dropout이 관찰됨.
+
+
+5. page032
+"AM I RIGHT?"
+
+두 후보가 같은 RG013을 두고 경쟁:
+- 약한 OCR "1 La" -> Vision expansion "AM I RIGHT?" -> semantic unsafe
+- 정확한 OCR "AMI RIGHT?" + Baberu agree -> 정상 후보
+
+기존 flow는 동일 물리 container 후보를 planning 전에 먼저 억제했기 때문에
+약한 후보가 먼저 선택된 뒤 실패하면 정상 후보를 다시 시도할 수 없었다.
+
+
+6. page014 NONONO
+0033 단일 regression image와 챕터 page014는 시각적으로 같은 페이지지만
+디지털 입력 크기가 달랐다.
+
+기존 regression: 1331 x 2048
+chapter page014: 1341 x 2062
+
+chapter page014에서는 OCR은 NONONO를 읽었지만
+RT-DETR Bubble/TextBubble detector target 자체가 생성되지 않아
+RegionId=null, original_preserved:unbound가 됨.
+
+이 문제는 0034 ownership 수정과 별개의 detector scale/resize 민감성 문제로 남긴다.
+
+
+0034 핵심 원칙
+------------------------------------------------------------
+Translation context와 physical commit ownership을 분리한다.
+
+문맥은 여러 말풍선을 함께 참조할 수 있지만,
+erase / layout / review / rollback은 immutable detector owner별로 독립해야 한다.
+
+Hard rule:
+- 서로 다른 RT-DETR TextRegion owner는 하나의 physical commit unit이 될 수 없음.
+- TextBubble과 TextFree는 geometry fallback에서 같이 묶지 않음.
+- 서로 다른 parent Bubble은 하나의 commit unit으로 묶지 않음.
+- 같은 candidate rectangle만으로 두 TextRegion을 합치지 않음.
+- rejected candidate가 valid duplicate candidate를 미리 제거하지 못함.
+
+
+변경 1 - detector TextRegion 기준 consolidation
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/OcrPipelineService.cs
+
+기존:
+ConsolidateRegionOwnedUnits는 CandidateId만 같으면 unit들을 하나로 합침.
+
+문제:
+한 candidate가 인접한 여러 text region을 품으면 서로 다른 물리 말풍선까지
+하나의 Vision input/translation unit으로 병합.
+
+0034:
+ConsolidateRegionOwnedUnits에 pageCandidates + PageRegion evidence를 전달.
+각 block의 best immutable TextBubble RegionId를 먼저 확인한 뒤:
+
+CandidateId + DetectorTextRegionId
+
+가 모두 같은 경우에만 consolidation 허용.
+
+detector text-region ownership을 확정하지 못한 candidate-owned unit은
+합치지 않고 원래 unit으로 격리 유지.
+
+목표:
+page017 / page028의 multi-balloon translation collapse 차단.
+
+관련 커밋:
+ae5be5393212557a891ab99e573c49a86bef17ff
+V2 0034: keep detector text regions as commit-unit boundaries
+
+
+변경 2 - geometry fallback은 한 detector ownership domain만 선택
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/PipelineV2/Erase/V2EraseSelector.cs
+
+기존:
+geometry fallback 후보를 score 순으로 .Take(2) 하여
+인접 TextBubble + TextFree 또는 서로 다른 bubble target이
+하나의 V2 binding에 들어갈 수 있었음.
+
+0034:
+- exact TextRegion link 우선.
+- BubbleRegionId link 우선.
+- 마지막 geometry fallback에서는 best ownership domain 하나만 선택.
+- best가 TextFree이면 그 TextFree 하나만.
+- best가 TextBubble이면 같은 parent Bubble의 TextBubble만 허용.
+- TextBubble + TextFree cross-domain binding 금지.
+- 서로 다른 parent Bubble cross-domain binding 금지.
+
+Stylized preserve의 경우 translation region id뿐 아니라
+immutable target id 기준 PreservationTargetReasons도 기록.
+
+목표:
+page012 RG002 + RG003 오병합 차단.
+
+관련 커밋:
+461c12cea628046a3065c0652cddf13e6b0d7c02
+V2 0034: constrain fallback binding to one detector owner
+
+
+변경 3 - V2 duplicate candidate arbitration을 safety check 이후로 이동
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/RenderPipelineService.cs
+
+기존:
+같은 physical container라고 판단된 후보는 BuildRenderPlans 시작 전에
+ContainerKeepScore 순서로 하나만 남김.
+
+문제:
+약한 후보가 먼저 선택되고 나중에 semantic/layout fail하면,
+이미 제거된 정상 OCR 후보는 다시 시도할 수 없었음.
+
+0034:
+Pipeline V2에서는 동일 container 후보를 planning 전에 제거하지 않음.
+모든 candidate에 대해 먼저:
+- semantic safety
+- layout feasibility
+를 계산.
+
+V2에서는 canonical OCR line conflict를 erase ownership으로 사용하지 않음.
+V2의 erase ownership authority는 immutable RT-DETR TextRegion.
+
+승인 가능한 후보들 사이에서만 최종 duplicate arbitration 수행.
+
+V2CandidateKeepScore 우선 근거:
+- exact RegionTextRegion evidence
+- RegionId structural link
+- Secondary OCR agreement
+- primary OCR average confidence
+- existing completeness score
+- suspicious Vision expansion에는 큰 penalty
+
+목표:
+page032에서
+"1 La" expansion 후보가 실패해도
+"AMI RIGHT?" + Baberu agree 후보가 살아서 commit 가능하도록 함.
+
+관련 커밋:
+cb7e286bce2577617f831c536c7f29ae30723781
+V2 0034: arbitrate duplicate candidates after safety checks
+
+
+변경 4 - detector target coverage audit
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/RenderPipelineService.cs
+
+신규 debug JSON:
+<page>.v2_target_coverage_audit.json
+
+모든 V2DetectionSnapshot.TextTargets를 기준으로 최종 상태를 기록.
+
+대표 Status:
+- translated_committed
+- preserved_policy:<reason>
+- preserved_render_false:<type>
+- preserved_plan:<reason>
+- preserved_cleaned_state_or_background_quality
+- unresolved_bound_without_plan
+- unresolved_detected_no_translation_unit
+- unresolved_detected_unbound_translation
+
+summary:
+DetectedTextTargets
+CommittedTargets
+PreservedTargets
+UnresolvedTargets
+CoverageComplete
+
+목적:
+화면에는 영어가 남았는데 기존 commit audit의 MissingUnits=0으로 보이는
+blind spot을 제거.
+
+관련 커밋:
+65ce5ceacdc96eab658708071409747501db4634
+V2 0034: add detector target coverage audit
+
+42bbff4f48b43830f6ca8b1dabbf596f79b473c7
+Fix 0034 target coverage for region id zero
+
+
+변경 5 - 확실한 detector-owned dialogue의 Vision Render=false 복구
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/PagePipelineService.cs
+
+조건:
+- Vision Render=false
+- immutable RegionTextRegion이 TextBubble
+- RegionContainer 존재
+- Type = dialogue / thought / caption
+- corrected/source가 meaningful text
+- Baberu/secondary OCR evidence가 있거나
+  primary OCR 평균 confidence >= 0.80
+
+위 조건이면 Render=true로 재활성화한 뒤
+기존 isolated final TranslationRefinementService에 보내어 번역을 다시 시도.
+
+중요:
+이 recovery는 곧바로 erase 권한을 주지 않는다.
+이후에도 V2 selector / layout / erase / cleaned-state gate를 모두 통과해야 commit.
+
+목표:
+page021
+"I DON'T KNOW ANYMORE. I DON'T--"
+처럼 detector/OCR evidence가 충분한 일반 대사가
+Vision의 단일 Render=false 판단만으로 사라지지 않게 함.
+
+관련 커밋:
+a83810ee4775e5134430d9a404b287250bc73c2d
+V2 0034: recover detector-owned dialogue from Vision render drops
+
+86be56035e10732a96e4f4aeccc276892a676b70
+Refactor 0034 detector-owned render recovery into testable policy
+
+
+변경 6 - 동일 입력에 대한 LLM 결정성 고정
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/VisionTranslationService.cs
+src/LocalMangaTranslator/Services/TranslationRefinementService.cs
+
+Vision review:
+temperature = 0.0
+seed = 34034 + recoveryAttempt
+
+Final translation:
+temperature = 0.0
+seed = 34034
+
+목적:
+동일 image bytes + 동일 model + 동일 prompt일 때
+Type / Render / corrected text / translation 결과가 sampling noise로 흔들리는 것을 최소화.
+
+주의:
+page014 NONONO의 이번 차이는 실제 input resolution이 달랐으므로
+그 케이스 자체는 LLM nondeterminism으로 판정하지 않는다.
+
+관련 커밋:
+27d267af238c43be1d9269115e57292d5b63fc6f
+V2 0034: make Vision review decisions deterministic
+
+7b2456875347c1094d663771005f15eadd81d10a
+V2 0034: make final translation deterministic
+
+
+Regression tests
+------------------------------------------------------------
+1. broad orphan geometry가 TextBubble + TextFree를 동시에 덮어도
+   V2 binding은 detector owner 하나만 선택해야 함.
+
+2. free-standing stylized text preservation reason을
+   translation id뿐 아니라 detector TextRegionId에도 기록.
+
+3. detector-owned TextBubble dialogue가 Render=false라도
+   secondary/strong OCR evidence가 있으면 recovery policy가 true.
+
+4. 같은 조건이라도 Type=logo 같은 non-dialogue content는 강제로 복구하지 않음.
+
+관련 커밋:
+e8e164546b47529a4a1361f336fccebba5163ad5
+Tests: lock 0034 detector-owner binding boundary
+
+5bdb4e821dc227916b320c4d930e56bb627ea0ae
+Tests: lock 0034 detector-owned render recovery
+
+
+0034에서 의도적으로 건드리지 않은 것
+------------------------------------------------------------
+- 0033 FLAT_FILL / TELEA reconstruction algorithm
+- 0033 chromatic residual cleanup
+- CleanedStateVerifier detector logic
+- RT-DETR model 자체 threshold / input preprocessing
+- 번역 문장 스타일/말투 품질
+
+이 버전의 목적은 erase 품질 재조정이 아니라
+physical text ownership과 coverage의 안정화다.
+
+
+0034 검증 우선 페이지
+------------------------------------------------------------
+전체 29장을 바로 다시 돌리기 전에 다음 페이지부터 재검증.
+
+1. page012
+기대:
+- 작은 "Nononono... no..."와 TextFree "LET ME OUTTT!"가 하나 unit으로 묶이지 않음.
+- 작은 말풍선은 독립 번역/commit 가능.
+- TextFree는 별도 정책 적용.
+
+2. page017
+기대:
+- "COME ON, COME ON."과
+  "IT HAS TO BE HERE SOMEWHERE, BRUCE..."가 서로 다른 detector text owner로 유지.
+- 한쪽 말풍선에 두 번역이 몰리지 않음.
+
+3. page021
+기대:
+- "I DON'T KNOW ANYMORE. I DON'T--"가 detector-owned recovery로 final translator에 들어감.
+- 정상 번역 후 독립 erase/typeset.
+
+4. page028
+기대:
+- "SO FIRST..." 주변 두 말풍선이 각각 독립 commit unit.
+- 아래쪽 원문이 남은 채 위쪽에 두 번역이 몰리는 현상 없어야 함.
+
+5. page032
+기대:
+- weak "1 La" Vision expansion이 정상 "AMI RIGHT?" 후보를 제거하지 않음.
+- "AM I RIGHT?" 정상 번역/commit.
+
+
+남은 문제 / 다음 버전 후보
+------------------------------------------------------------
+1. page014 NONONO detector scale sensitivity
+- chapter image에서 RT-DETR target 자체가 누락됨.
+- OCR은 읽었지만 immutable detector owner가 없어 unbound.
+- detector preprocessing / multi-scale inference / threshold robustness를 별도 검토.
+
+2. cleaned_text_redetected
+0033_2에서 page005 / page012 / page028 총 3개.
+0034 ownership 수정 후 page012/page028 일부가 자연히 사라질 수 있으므로
+0034 재검증 후 실제 잔여 케이스만 별도 분석.
+
+3. target coverage 결과에서 unresolved target이 반복되면
+detector-owned targeted OCR rescue를 다음 단계로 검토.
+
