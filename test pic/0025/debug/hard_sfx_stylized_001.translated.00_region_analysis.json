@@ -1,0 +1,72 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=4; legacy_mask_candidates=80; active_region_containers=2",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "Bubble",
+      "x": 1133,
+      "y": 1114,
+      "width": 164,
+      "height": 83,
+      "score": 0.86957717,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "TextBubble",
+      "x": 1157,
+      "y": 1134,
+      "width": 115,
+      "height": 35,
+      "score": 0.81112576,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG003",
+      "kind": "Bubble",
+      "x": 1137,
+      "y": 1189,
+      "width": 165,
+      "height": 124,
+      "score": 0.9319866,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG004",
+      "kind": "TextBubble",
+      "x": 1151,
+      "y": 1202,
+      "width": 134,
+      "height": 93,
+      "score": 0.91406775,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": [
+    {
+      "id": "PC001",
+      "kind": "Speech",
+      "x": 1133,
+      "y": 1114,
+      "width": 164,
+      "height": 83,
+      "mode": "rtdetr_region_rect",
+      "score": 6.73915433883667,
+      "fill_ratio": 0.8937702027622686
+    },
+    {
+      "id": "PC002",
+      "kind": "Speech",
+      "x": 1141,
+      "y": 1196,
+      "width": 157,
+      "height": 113,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.3979798555374146,
+      "fill_ratio": 0.7665013246152979
+    }
+  ]
+}
