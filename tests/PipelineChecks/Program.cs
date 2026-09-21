@@ -1922,6 +1922,84 @@ try
         mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
         mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
 
+    // 0034 regression: a broad orphan OCR block can overlap a normal
+    // TextBubble and nearby free-standing stylized text. Geometry fallback may
+    // choose one immutable owner, but it must never bind both owners into one
+    // erase/layout commit unit.
+    var mixBubble =
+        new PageRegion(
+            "VB-MIX",
+            PageRegionKind.Bubble,
+            new Rect(20, 20, 150, 90),
+            0.96f,
+            "test-rtdetr");
+
+    var mixText =
+        new PageRegion(
+            "VT-MIX-BUBBLE",
+            PageRegionKind.TextBubble,
+            new Rect(40, 42, 105, 42),
+            0.92f,
+            "test-rtdetr");
+
+    var mixFree =
+        new PageRegion(
+            "VT-MIX-FREE",
+            PageRegionKind.TextFree,
+            new Rect(155, 38, 150, 88),
+            0.88f,
+            "test-rtdetr");
+
+    var mixSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [mixBubble, mixText, mixFree],
+                [],
+                "v2-0034-owner-boundary",
+                true));
+
+    var broadOrphanBlock =
+        new OcrTextBlock(
+            2034,
+            35,
+            34,
+            265,
+            96,
+            "NO NO LET ME OUT",
+            3,
+            "en",
+            [
+                new OcrLine(42, 48, 96, 28, "NO NO", 0.95f, "en"),
+                new OcrLine(164, 48, 126, 32, "LET ME", 0.97f, "en"),
+                new OcrLine(180, 82, 92, 30, "OUT", 0.96f, "en")
+            ]);
+
+    var broadOrphanTranslation =
+        new VisionTranslation(
+            2034,
+            broadOrphanBlock,
+            "NO NO LET ME OUT",
+            "안 돼, 내보내 줘",
+            "caption",
+            true);
+
+    var ownerBoundarySelection =
+        V2EraseSelector.Select(
+            mixSnapshot,
+            [broadOrphanTranslation]);
+
+    Check("V2 0034 geometry fallback never joins TextBubble and TextFree owners",
+        ownerBoundarySelection.Bindings.TryGetValue(
+            2034,
+            out var ownerBoundaryBinding) &&
+        ownerBoundaryBinding.TextRegionIds.Count == 1 &&
+        !(ownerBoundaryBinding.TextRegionIds.Contains(
+              "VT-MIX-BUBBLE",
+              StringComparer.Ordinal) &&
+          ownerBoundaryBinding.TextRegionIds.Contains(
+              "VT-MIX-FREE",
+              StringComparer.Ordinal)));
+
     var freeTextRegion =
         new PageRegion(
             "VT-FREE",
@@ -2048,7 +2126,11 @@ try
         stylizedSelection.PreservationReasons.TryGetValue(
             2003,
             out var stylizedReason) &&
-        stylizedReason == "stylized_graphic");
+        stylizedReason == "stylized_graphic" &&
+        stylizedSelection.PreservationTargetReasons.TryGetValue(
+            "VT-FREE",
+            out var stylizedTargetReason) &&
+        stylizedTargetReason == "stylized_graphic");
 
     var ordinaryUppercaseTranslation =
         new VisionTranslation(
