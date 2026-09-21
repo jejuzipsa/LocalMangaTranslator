@@ -1,0 +1,449 @@
+{
+  "SourceFile": "core_whitebg_short_speech_001.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-21T19:58:59.6610791+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 866,
+        "Y": 31.5,
+        "W": 379.5,
+        "H": 206.5,
+        "Text": "ALLL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 866,
+            "Y": 31.5,
+            "W": 379.5,
+            "H": 206.5,
+            "Text": "ALLL",
+            "Confidence": 0.41678154,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ZZZZZ",
+      "Translation": "\uB4DC\uB7EC\uB801",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1049,
+        "Y": 260,
+        "W": 103.5,
+        "H": 37,
+        "Text": "BRUCE?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1049,
+            "Y": 260,
+            "W": 103.5,
+            "H": 37,
+            "Text": "BRUCE?",
+            "Confidence": 0.9990155,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BRUCE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "BRUCE?",
+      "Translation": "\uBE0C\uB8E8\uC2A4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 614,
+        "Y": 764.6666666666666,
+        "W": 18.33333333333337,
+        "H": 11.333333333333371,
+        "Text": "108",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 614,
+            "Y": 764.6666666666666,
+            "W": 18.33333333333337,
+            "H": 11.333333333333371,
+            "Text": "108",
+            "Confidence": 0.7288004,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "dialogue",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 637.3333333333334,
+        "Y": 795.3333333333334,
+        "W": 104,
+        "H": 50.66666666666663,
+        "Text": "Wh... wherre..",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 662,
+            "Y": 795.3333333333334,
+            "W": 54.66666666666674,
+            "H": 29.333333333333258,
+            "Text": "Wh...",
+            "Confidence": 0.96565527,
+            "Language": "en"
+          },
+          {
+            "X": 637.3333333333334,
+            "Y": 814.6666666666666,
+            "W": 104,
+            "H": 31.33333333333337,
+            "Text": "wherre..",
+            "Confidence": 0.9374035,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Wh... wherrrrre...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "Wh... wherrrrre...",
+      "Translation": "\uC5B4... \uC5B4...\uC5B4\uB514...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 264,
+        "Y": 980,
+        "W": 114.66666666666669,
+        "H": 70.5,
+        "Text": "AIfrud?! Alfrd come in!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 277.66666666666663,
+            "Y": 980,
+            "W": 92.33333333333337,
+            "H": 30.66666666666663,
+            "Text": "AIfrud?!",
+            "Confidence": 0.96520966,
+            "Language": "en"
+          },
+          {
+            "X": 264,
+            "Y": 1001,
+            "W": 114.66666666666669,
+            "H": 30,
+            "Text": "Alfrd come",
+            "Confidence": 0.99521697,
+            "Language": "en"
+          },
+          {
+            "X": 298.5,
+            "Y": 1020,
+            "W": 43,
+            "H": 30.5,
+            "Text": "in!",
+            "Confidence": 0.9974129,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Alfrud?! Alfrd come in!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "Alfrud?! Alfrd come in!",
+      "Translation": "\uC54C\uD504\uB8E8\uB4DC?![BR]\uC54C\uD504\uB8E8\uB4DC, \uB4E4\uC5B4\uC640!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 441.6666666666667,
+        "Y": 1038,
+        "W": 103.33333333333331,
+        "H": 48.33333333333326,
+        "Text": "Is anynun heeerre?!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 443.33333333333337,
+            "Y": 1038,
+            "W": 101.66666666666663,
+            "H": 27.666666666666742,
+            "Text": "Is anynun",
+            "Confidence": 0.96113914,
+            "Language": "en"
+          },
+          {
+            "X": 441.6666666666667,
+            "Y": 1057,
+            "W": 99.66666666666657,
+            "H": 29.333333333333258,
+            "Text": "heeerre?!",
+            "Confidence": 0.9968068,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Is anymun heeerre?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "Is anyun heeerre?!",
+      "Translation": "\uC548\uC724, \uC5EC\uAE30 \uC788\uC5B4?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 710.3333333333334,
+        "Y": 1095,
+        "W": 108.66666666666663,
+        "H": 203,
+        "Text": "cl",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 710.3333333333334,
+            "Y": 1095,
+            "W": 108.66666666666663,
+            "H": 203,
+            "Text": "cl",
+            "Confidence": 0.64720035,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "HERE.",
+      "Translation": "\uC5EC\uAE30.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 601.6666666666666,
+        "Y": 1163,
+        "W": 94,
+        "H": 49.66666666666674,
+        "Text": "YOU\u0027RE HERE.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 601.6666666666666,
+            "Y": 1163,
+            "W": 94,
+            "H": 29.333333333333258,
+            "Text": "YOU\u0027RE",
+            "Confidence": 0.9837682,
+            "Language": "en"
+          },
+          {
+            "X": 614.3333333333334,
+            "Y": 1183.3333333333333,
+            "W": 67,
+            "H": 29.333333333333485,
+            "Text": "HERE.",
+            "Confidence": 0.99617594,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU\u0027RE HERE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "YOU\u0027RE HERE.",
+      "Translation": "\uC5EC\uAE30 \uC788\uC5C8\uAD70.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 671,
+        "Y": 1443,
+        "W": 138.66666666666663,
+        "H": 214,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 671,
+            "Y": 1443,
+            "W": 138.66666666666663,
+            "H": 214,
+            "Text": "E",
+            "Confidence": 0.46770477,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "E",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 846.6666666666666,
+        "Y": 1469.6666666666667,
+        "W": 91.33333333333337,
+        "H": 48.666666666666515,
+        "Text": "BRUCE WAYNE...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 854,
+            "Y": 1469.6666666666667,
+            "W": 79.66666666666674,
+            "H": 27.333333333333258,
+            "Text": "BRUCE",
+            "Confidence": 0.99646777,
+            "Language": "en"
+          },
+          {
+            "X": 846.6666666666666,
+            "Y": 1488.3333333333333,
+            "W": 91.33333333333337,
+            "H": 30,
+            "Text": "WAYNE...",
+            "Confidence": 0.9641665,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BRUCE WAYNE...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "BRUCE WAYNE...",
+      "Translation": "\uBE0C\uB8E8\uC2A4 \uC6E8\uC778...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 862.3333333333334,
+        "Y": 1540.6666666666667,
+        "W": 155.66666666666663,
+        "H": 105.33333333333326,
+        "Text": "MY LORD. YOU\u0027RE RIGHT HERE. AND IT\u0027S FINALLY OVER.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 888,
+            "Y": 1540.6666666666667,
+            "W": 105.66666666666674,
+            "H": 24,
+            "Text": "MY LORD.",
+            "Confidence": 0.998694,
+            "Language": "en"
+          },
+          {
+            "X": 863.3333333333334,
+            "Y": 1559,
+            "W": 152.33333333333337,
+            "H": 25.666666666666742,
+            "Text": "YOU\u0027RE RIGHT",
+            "Confidence": 0.9954588,
+            "Language": "en"
+          },
+          {
+            "X": 862.3333333333334,
+            "Y": 1579.6666666666667,
+            "W": 155.66666666666663,
+            "H": 23.666666666666515,
+            "Text": "HERE. AND IT\u0027S",
+            "Confidence": 0.9980036,
+            "Language": "en"
+          },
+          {
+            "X": 896.6666666666667,
+            "Y": 1598.6666666666667,
+            "W": 85.33333333333326,
+            "H": 25.666666666666515,
+            "Text": "FINALLY",
+            "Confidence": 0.99959844,
+            "Language": "en"
+          },
+          {
+            "X": 903.5,
+            "Y": 1616,
+            "W": 71,
+            "H": 30,
+            "Text": "OVER.",
+            "Confidence": 0.9989873,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MY LORD.\nYOU\u0027RE RIGHT\nHERE. AND IT\u0027S\nFINALLY\nOVER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "MY LORD. YOU\u0027RE RIGHT HERE. AND IT\u0027S FINALLY OVER.",
+      "Translation": "\uC8FC\uAD70.[BR]\uBC14\uB85C \uC5EC\uAE30 \uACC4\uC168\uAD70\uC694.[BR]\uB4DC\uB514\uC5B4 \uB05D\uB0AC\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

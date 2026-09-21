@@ -1,0 +1,224 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "core_short_speech_sparse_001.jpg",
+  "output_file": "core_short_speech_sparse_001.translated.webp",
+  "image": {
+    "width": 1331,
+    "height": 2048,
+    "changed_pixels": 2480,
+    "changed_ratio": 0.0009097952667167543,
+    "changed_regions": [
+      {
+        "x": 523,
+        "y": 322,
+        "width": 62,
+        "height": 21
+      },
+      {
+        "x": 644,
+        "y": 318,
+        "width": 48,
+        "height": 25
+      },
+      {
+        "x": 643,
+        "y": 345,
+        "width": 41,
+        "height": 24
+      },
+      {
+        "x": 541,
+        "y": 300,
+        "width": 40,
+        "height": 18
+      },
+      {
+        "x": 582,
+        "y": 299,
+        "width": 6,
+        "height": 21
+      },
+      {
+        "x": 586,
+        "y": 325,
+        "width": 9,
+        "height": 12
+      },
+      {
+        "x": 678,
+        "y": 363,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "x": 684,
+        "y": 355,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "x": 535,
+        "y": 314,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "x": 530,
+        "y": 314,
+        "width": 4,
+        "height": 4
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "core_short_speech_sparse_001.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 1164,
+    "erase_changed_ratio": 0.00042701681066867016,
+    "typeset_changed_pixels": 1863,
+    "typeset_changed_ratio": 0.0006834470088279489
+  },
+  "region_analysis": {
+    "total": 4,
+    "bubbles": 2,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 4,
+      "Global2x": 3,
+      "Focus3x": 17,
+      "Region1x": 4,
+      "Region2x": 4,
+      "Container1x": 4,
+      "Container2x": 4
+    },
+    "canonical_lines": 7,
+    "units": 4,
+    "assigned_lines": 5,
+    "orphan_groups": 2,
+    "secondary_total": 2,
+    "secondary_accepted": 2,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 299,
+          "Bottom": 341,
+          "Left": 529,
+          "Right": 588,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...TO HELP?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 321,
+          "Bottom": 365,
+          "Left": 637,
+          "Right": 694,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY\nGOD.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 4,
+    "requested_render": 4
+  },
+  "render": {
+    "total": 2,
+    "approved": 2,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 4,
+    "TranslatedUnits": 2,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 2,
+    "TypesetCommittedUnits": 2,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "S",
+        "Translation": "...\uB3C4\uC640\uC8FC\uB824\uACE0?",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "a",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "TO HELP?",
+        "Translation": "...\uB3C4\uC640\uC8FC\uB824\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "MY GOD.",
+        "Translation": "\uC138\uC0C1\uC5D0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

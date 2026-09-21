@@ -1,0 +1,450 @@
+{
+  "SourceFile": "hard_bw_caption_signage_001.png",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-21T19:59:48.3435089+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 189.66666666666666,
+        "Y": 117.66666666666667,
+        "W": 42.33333333333334,
+        "H": 19.66666666666667,
+        "Text": "PS",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 189.66666666666666,
+            "Y": 117.66666666666667,
+            "W": 42.33333333333334,
+            "H": 19.66666666666667,
+            "Text": "PS",
+            "Confidence": 0.50273156,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "PS",
+      "Translation": "\uC27F",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1130.3333333333333,
+        "Y": 208.66666666666669,
+        "W": 21.666666666666742,
+        "H": 34.66666666666666,
+        "Text": "es",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1130.3333333333333,
+            "Y": 208.66666666666669,
+            "W": 21.666666666666742,
+            "H": 34.66666666666666,
+            "Text": "es",
+            "Confidence": 0.81372917,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "es",
+      "Translation": "es",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 321,
+        "Y": 223,
+        "W": 327,
+        "H": 35,
+        "Text": "ALICE - FOUR DAYS UNTIL ENTRY",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 321,
+            "Y": 223,
+            "W": 327,
+            "H": 35,
+            "Text": "ALICE - FOUR DAYS UNTIL ENTRY",
+            "Confidence": 0.9914211,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALICE - FOUR DAYS UNTIL ENTRY",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "ALICE - FOUR DAYS UNTIL ENTRY",
+      "Translation": "\uC568\uB9AC\uC2A4 - \uC785\uC7A5\uAE4C\uC9C0 4\uC77C",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 605,
+        "Y": 587,
+        "W": 70,
+        "H": 33,
+        "Text": "D1",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 605,
+            "Y": 587,
+            "W": 70,
+            "H": 33,
+            "Text": "D1",
+            "Confidence": 0.71336937,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "D1",
+      "Translation": "D1",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 866,
+        "Y": 590.3333333333334,
+        "W": 73,
+        "H": 67.66666666666663,
+        "Text": "OVER HERE!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 869,
+            "Y": 590.3333333333334,
+            "W": 66,
+            "H": 34.33333333333326,
+            "Text": "OVER",
+            "Confidence": 0.99944925,
+            "Language": "en"
+          },
+          {
+            "X": 866,
+            "Y": 615,
+            "W": 73,
+            "H": 43,
+            "Text": "HERE!",
+            "Confidence": 0.99956304,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OVER HERE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG004"
+      },
+      "CorrectedText": "OVER HERE!",
+      "Translation": "\uC774\uCABD\uC774\uC57C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 166,
+        "Y": 607,
+        "W": 119,
+        "H": 148,
+        "Text": "SNIF SNIF On",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 166,
+            "Y": 607,
+            "W": 119,
+            "H": 46,
+            "Text": "SNIF SNIF",
+            "Confidence": 0.99477345,
+            "Language": "en"
+          },
+          {
+            "X": 174,
+            "Y": 731,
+            "W": 64.66666666666666,
+            "H": 24,
+            "Text": "On",
+            "Confidence": 0.6526103,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SNIF SNIF",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "SNIF SNIF",
+      "Translation": "\uD081\uD081",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 972.3333333333333,
+        "Y": 643.3333333333334,
+        "W": 75.33333333333348,
+        "H": 55,
+        "Text": "CRAIO",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 972.3333333333333,
+            "Y": 643.3333333333334,
+            "W": 75.33333333333348,
+            "H": 55,
+            "Text": "CRAIO",
+            "Confidence": 0.5253169,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "CRAIO",
+      "Translation": "\uD06C\uB77C\uC774\uC624",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 455.6666666666667,
+        "Y": 709.6666666666666,
+        "W": 44.333333333333314,
+        "H": 45.33333333333337,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 455.6666666666667,
+            "Y": 709.6666666666666,
+            "W": 44.333333333333314,
+            "H": 45.33333333333337,
+            "Text": "E",
+            "Confidence": 0.4336567,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "E",
+      "Translation": "E",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 182,
+        "Y": 1076.5,
+        "W": 29.5,
+        "H": 23,
+        "Text": "tal",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 182,
+            "Y": 1076.5,
+            "W": 29.5,
+            "H": 23,
+            "Text": "tal",
+            "Confidence": 0.37941694,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "tal",
+      "Translation": "\uD0C8",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 148.5,
+        "Y": 1135.5,
+        "W": 40.5,
+        "H": 70.5,
+        "Text": "E B.UNE",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 156.5,
+            "Y": 1135.5,
+            "W": 32.5,
+            "H": 35.5,
+            "Text": "E",
+            "Confidence": 0.7505681,
+            "Language": "en"
+          },
+          {
+            "X": 148.5,
+            "Y": 1184.5,
+            "W": 39,
+            "H": 21.5,
+            "Text": "B.UNE",
+            "Confidence": 0.5740212,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "B.UNE",
+      "Translation": "B.UNE",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 132,
+        "Y": 1239,
+        "W": 122.33333333333334,
+        "H": 22,
+        "Text": "Ca teh",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 132,
+            "Y": 1239,
+            "W": 122.33333333333334,
+            "H": 22,
+            "Text": "Ca teh",
+            "Confidence": 0.5761816,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "Cafe",
+      "Translation": "\uCE74\uD398",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 331.3333333333333,
+        "Y": 1361.6666666666667,
+        "W": 29.000000000000057,
+        "H": 21.666666666666515,
+        "Text": "22",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 331.3333333333333,
+            "Y": 1361.6666666666667,
+            "W": 29.000000000000057,
+            "H": 21.666666666666515,
+            "Text": "22",
+            "Confidence": 0.68474656,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "22",
+      "Translation": "22",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 281,
+        "Y": 1433,
+        "W": 29,
+        "H": 34.5,
+        "Text": "e",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 281,
+            "Y": 1433,
+            "W": 29,
+            "H": 34.5,
+            "Text": "e",
+            "Confidence": 0.69014,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "e",
+      "Translation": "e",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

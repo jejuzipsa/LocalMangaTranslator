@@ -1,0 +1,391 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "core_caption_speech_mixed_001.jpg",
+  "RequestedUnits": 15,
+  "TranslatedUnits": 13,
+  "PreservedOriginalUnits": 2,
+  "EraseCommittedUnits": 13,
+  "TypesetCommittedUnits": 13,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "We\u0027ve had many adventures together, Batman and I.",
+      "Translation": "\uBC30\uD2B8\uB9E8\uACFC \uB098, [BR]\uC6B0\uB9B0 \uD568\uAED8 \uB9CE\uC740 \uBAA8\uD5D8\uC744 \uD574\uC654\uC9C0.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 46,
+        "Y": 262,
+        "Width": 279,
+        "Height": 59
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "I\u0027ve been at his side practically his whole life.",
+      "Translation": "\uB09C \uAC70\uC758 \uD3C9\uC0DD\uC744[BR]\uADF8\uC758 \uACC1\uC5D0\uC11C \uD568\uAED8\uD574 \uC654\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 289,
+        "Y": 317,
+        "Width": 265,
+        "Height": 65
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "N",
+      "Translation": "\uC548 \uB3FC.",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "FINAL NEARING DESTINATION, ALFRED.",
+      "Translation": "\uBAA9\uC801\uC9C0\uC5D0 \uAC70\uC758 \uB2E4 \uC654\uB124, \uC54C\uD504\uB808\uB4DC.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 179,
+        "Y": 411,
+        "Width": 187,
+        "Height": 94
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "HERE. I\u0027M SHOW SENSORS NO MOVEMENT AT THE SITE, SITE, SIR.",
+      "Translation": "\uB3C4\uCC29\uD588\uC2B5\uB2C8\uB2E4. \uC13C\uC11C\uC5D0\n\uC6C0\uC9C1\uC784\uC774 \uAC10\uC9C0\uB418\uC9C0\n\uC54A\uC2B5\uB2C8\uB2E4, \uB300\uC7A5\uB2D8.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 321,
+        "Y": 490,
+        "Width": 209,
+        "Height": 124
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "From the start, though, something about this case felt different.",
+      "Translation": "\uD558\uC9C0\uB9CC \uCC98\uC74C\uBD80\uD130[BR]\uC774 \uC0AC\uAC74\uC740 \uBB54\uAC00 \uC880 \uB2EC\uB790\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 46,
+        "Y": 685,
+        "Width": 247,
+        "Height": 74
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "He\u0027d been following it for almost exactly a year.",
+      "Translation": "\uADF8\uB294 \uAC70\uC758 \uC815\uD655\uD788 1\uB144 \uB3D9\uC548[BR]\uADF8\uAC83\uC744 \uCAD3\uACE0 \uC788\uC5C8\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "BubbleRegionId": "RG011",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 269,
+        "Y": 753,
+        "Width": 262,
+        "Height": 62
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 8,
+      "SourceText": "EH",
+      "Translation": "\uC5B4?",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 10,
+      "SourceText": "The most unsettling thing about it was that there was no grandstanding villain, no corpse, no real victim at all. It shouldn\u0027t have alarmed him so. And yet...",
+      "Translation": "\uAC00\uC7A5 \uC18C\uB984 \uB07C\uCE58\uB294 \uC810\uC740[BR]\uAC70\uCC3D\uD55C \uC545\uB2F9\uB3C4, \uC2DC\uCCB4\uB3C4,[BR]\uC9C4\uC9DC \uD76C\uC0DD\uC790\uC870\uCC28 \uC804\uD600 \uC5C6\uB2E4\uB294 \uAC83\uC774\uC5C8\uB2E4.[BR]\uADF8\uB807\uAC8C\uAE4C\uC9C0 \uACBD\uACC4\uD560 \uC774\uC720\uAC00 \uC5C6\uC5C8\uB294\uB370.[BR]\uADF8\uB7F0\uB370\uB3C4...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "BubbleRegionId": "RG013",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 874,
+        "Y": 915,
+        "Width": 415,
+        "Height": 96
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 11,
+      "SourceText": "NO HEAT SIGNATURE EITHER, SIR.",
+      "Translation": "\uC5F4 \uC2E0\uD638\uB3C4 \uAC10\uC9C0\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4, \uB300\uC7A5.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG016"
+      ],
+      "BubbleRegionId": "RG015",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 902,
+        "Y": 1060,
+        "Width": 156,
+        "Height": 110
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 13,
+      "SourceText": "UNDERSTOOD.",
+      "Translation": "\uC54C\uC558\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG018"
+      ],
+      "BubbleRegionId": "RG017",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 736,
+        "Y": 1172,
+        "Width": 192,
+        "Height": 74
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 16,
+      "SourceText": "secret about him. About Batman. You know where he feels alarm?",
+      "Translation": "\uADF8\uC5D0 \uB300\uD574 \uBE44\uBC00 \uD558\uB098 \uB9D0\uD574\uC904\uAC8C.[BR]\uBC30\uD2B8\uB9E8\uC5D0 \uB300\uD574\uC11C \uB9D0\uC774\uC57C.[BR]\uADF8\uAC00 \uC5B8\uC81C \uACBD\uACC4\uC2EC\uC744 \uB290\uB07C\uB294\uC9C0 \uC54C\uC544?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG020"
+      ],
+      "BubbleRegionId": "RG019",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 150,
+        "Y": 1542,
+        "Width": 302,
+        "Height": 73
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 17,
+      "SourceText": "In his scar tissue. A grim warning system hypertrophic...scars I often feel responsible for.",
+      "Translation": "\uD749\uD130 \uC870\uC9C1 \uC18D\uC5D0.[BR] \uBAB8\uC5D0 \uC0C8\uACA8\uC9C4[BR] \uC554\uC6B8\uD55C \uACBD\uACE0 \uC2DC\uC2A4\uD15C. \uCF08\uB85C\uC774\uB4DC, \uBE44\uD6C4\uC131...[BR] \uB0B4\uAC00 \uCC45\uC784\uAC10\uC744 \uB290\uB07C\uB294 \uD749\uD130\uB4E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG022"
+      ],
+      "BubbleRegionId": "RG021",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 843,
+        "Y": 1556,
+        "Width": 359,
+        "Height": 94
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 18,
+      "SourceText": "SIR JUST I\u0027M SUGGESTING 16 THERE NEED NO SPEED. TO I SEE NO--",
+      "Translation": "\uAC01\uD558, \uC11C\uB450\uB974\uC2E4 \uD544\uC694\uB294 \uC5C6\uB2E4\uACE0 \uB9D0\uC500\uB4DC\uB9AC\uB294 \uAC81\uB2C8\uB2E4. \uC81C\uAC00 \uBCF4\uAE30\uC5D4\u2014",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG024"
+      ],
+      "BubbleRegionId": "RG023",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 95,
+        "Y": 1755,
+        "Width": 218,
+        "Height": 144
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 20,
+      "SourceText": "OKAY THEN.",
+      "Translation": "\uC88B\uC544, \uADF8\uB7FC.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG026"
+      ],
+      "BubbleRegionId": "RG025",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 777,
+        "Y": 1896,
+        "Width": 102,
+        "Height": 78
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "Schema": "pipeline-v2-erase-audit-v2",
+  "SourceFile": "hard_sfx_combat_001.jpg",
+  "SourceMode": "hybrid_rtdetr",
+  "DetectedTargetCount": 2,
+  "SelectedTargetCount": 1,
+  "InitialMaskPixels": 2241,
+  "GrayscaleMaskPixels": 2026,
+  "ColorRescueMaskPixels": 2235,
+  "ResidualBeforeRetryPixels": 36,
+  "RetryMaskPixels": 0,
+  "ResidualAfterRetryPixels": 15,
+  "RetryTargetCount": 0,
+  "Clean": true,
+  "LegacyReviewerCheckpoint": {
+    "DetectedBubbleCount": 2,
+    "EraseTargetBubbleCount": 1,
+    "EmptyVerifiedBubbleCount": 1,
+    "BubbleCheckpointPass": true,
+    "EraseTargetBubbleIds": [
+      "RG003"
+    ],
+    "EmptyVerifiedBubbleIds": [
+      "RG003"
+    ],
+    "CheckpointMissingBubbleIds": [],
+    "EraseTargetTextFreeCount": 0,
+    "EmptyVerifiedTextFreeCount": 0,
+    "TextFreeCheckpointPass": true,
+    "EraseTargetTextFreeIds": [],
+    "EmptyVerifiedTextFreeIds": [],
+    "CheckpointMissingTextFreeIds": [],
+    "OverallPass": true,
+    "Items": [
+      {
+        "CheckpointId": "RG003",
+        "Kind": "Bubble",
+        "Bounds": {
+          "X": 736,
+          "Y": 1803,
+          "Width": 152,
+          "Height": 102
+        },
+        "TextRegionIds": [
+          "RG004"
+        ],
+        "EmptyVerified": true,
+        "Status": "EMPTY_OK"
+      }
+    ]
+  },
+  "Targets": [
+    {
+      "TextRegionId": "RG004",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 747,
+        "Y": 1831,
+        "Width": 127,
+        "Height": 42
+      },
+      "TextScore": 0.88739717,
+      "BubbleRegionId": "RG003",
+      "BubbleBounds": {
+        "X": 736,
+        "Y": 1803,
+        "Width": 152,
+        "Height": 102
+      },
+      "BubbleScore": 0.9324567,
+      "GrayscaleMaskPixels": 2026,
+      "ColorRescueMaskPixels": 2235,
+      "InitialMaskPixels": 2241,
+      "CoreMaskPixels": 0,
+      "ResidualBeforeRetryPixels": 36,
+      "EffectiveResidualBeforeRetryPixels": 15,
+      "CoreOverlapBeforeRetryPixels": 0,
+      "PersistentCoreBeforeRetryPixels": 0,
+      "RetryMaskPixels": 0,
+      "ResidualAfterRetryPixels": 36,
+      "EffectiveResidualAfterRetryPixels": 15,
+      "CoreOverlapAfterRetryPixels": 0,
+      "PersistentCoreAfterRetryPixels": 0,
+      "SelectedResidualPixels": 15,
+      "SelectedPersistentCorePixels": 0,
+      "SelectedPersistenceRatio": 0,
+      "SelectedPass": "first",
+      "Retried": false,
+      "PrimaryReview": "pass",
+      "SecondaryReview": "not_run",
+      "RescuedBySecondary": false,
+      "ReviewReason": "primary_residual_clean",
+      "Status": "clean_after_first_pass"
+    }
+  ]
+}
