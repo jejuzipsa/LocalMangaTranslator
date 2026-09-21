@@ -322,75 +322,77 @@ public sealed class PagePipelineService
     {
         return reviewed
             .Select(region =>
-            {
-                if (region.Render)
-                    return region;
-
-                if (region.Source.RegionTextRegion is not { } textRegion ||
-                    textRegion.Kind !=
-                        PageRegionKind.TextBubble ||
-                    region.Source.RegionContainer is null)
-                {
-                    return region;
-                }
-
-                bool renderableType =
-                    region.Type is
-                        "dialogue" or
-                        "thought" or
-                        "caption";
-
-                if (!renderableType)
-                    return region;
-
-                string corrected =
-                    string.IsNullOrWhiteSpace(
-                        region.CorrectedText)
-                        ? region.Source.Text
-                        : region.CorrectedText;
-
-                int meaningful =
-                    corrected.Count(
-                        char.IsLetterOrDigit);
-
-                if (meaningful < 2)
-                    return region;
-
-                bool secondaryEvidence =
-                    !string.IsNullOrWhiteSpace(
-                        region.Source.SecondaryOcrText) &&
-                    region.Source.SecondaryOcrText.Count(
-                        char.IsLetterOrDigit) >= 2;
-
-                double averageConfidence =
-                    region.Source.Lines.Count == 0
-                        ? 0
-                        : region.Source.Lines.Average(x =>
-                            x.Confidence);
-
-                bool strongPrimary =
-                    region.Source.Lines.Count > 0 &&
-                    averageConfidence >= 0.80;
-
-                if (!secondaryEvidence &&
-                    !strongPrimary)
-                {
-                    return region;
-                }
-
-                // 0034: an immutable RT-DETR TextBubble with meaningful OCR
-                // and independent/strong text evidence may not disappear only
-                // because one Vision review returned Render=false. Re-arm it
-                // for the isolated final translator; erase/layout still remain
-                // detector-owned and must pass their own safety gates later.
-                return region with
-                {
-                    Render = true
-                };
-            })
+                ShouldRecoverDetectorOwnedRenderableUnit(
+                    region)
+                    ? region with
+                    {
+                        Render = true
+                    }
+                    : region)
             .OrderBy(x =>
                 x.Id)
             .ToList();
+    }
+
+    public static bool ShouldRecoverDetectorOwnedRenderableUnit(
+        VisionTranslation region)
+    {
+        if (region.Render)
+            return false;
+
+        if (region.Source.RegionTextRegion is not { } textRegion ||
+            textRegion.Kind !=
+                PageRegionKind.TextBubble ||
+            region.Source.RegionContainer is null)
+        {
+            return false;
+        }
+
+        bool renderableType =
+            region.Type is
+                "dialogue" or
+                "thought" or
+                "caption";
+
+        if (!renderableType)
+            return false;
+
+        string corrected =
+            string.IsNullOrWhiteSpace(
+                region.CorrectedText)
+                ? region.Source.Text
+                : region.CorrectedText;
+
+        int meaningful =
+            corrected.Count(
+                char.IsLetterOrDigit);
+
+        if (meaningful < 2)
+            return false;
+
+        bool secondaryEvidence =
+            !string.IsNullOrWhiteSpace(
+                region.Source.SecondaryOcrText) &&
+            region.Source.SecondaryOcrText.Count(
+                char.IsLetterOrDigit) >= 2;
+
+        double averageConfidence =
+            region.Source.Lines.Count == 0
+                ? 0
+                : region.Source.Lines.Average(x =>
+                    x.Confidence);
+
+        bool strongPrimary =
+            region.Source.Lines.Count > 0 &&
+            averageConfidence >= 0.80;
+
+        // 0034: an immutable RT-DETR TextBubble with meaningful OCR and
+        // independent/strong text evidence may not disappear only because one
+        // Vision review returned Render=false. It is re-armed for the isolated
+        // final translator; erase/layout still pass their own detector-owned
+        // safety gates later.
+        return secondaryEvidence ||
+               strongPrimary;
     }
 }
 
