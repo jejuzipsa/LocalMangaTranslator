@@ -336,3 +336,33 @@ The flat decision is intentionally conservative. Ambiguous backgrounds fall back
 The same information is also embedded in v2_erase_audit.json under BackgroundReconstruction.
 
 0030 does not special-case NONONO or any literal word. The intended regression is general: colored/outlined lettering on a flat balloon should restore the balloon background, while text over real artwork should remain on the inpainting path.
+
+
+## 0031 purified background candidate clustering
+
+0030 confirmed that foreground removal and background reconstruction must be separate decisions, but one large colored display-lettering case still fell back to TELEA. Its non-mask sample median was contaminated by red/black glyph-adjacent pixels, so the classifier incorrectly concluded that the flat speech balloon was not flat.
+
+0031 changes the background classifier rather than loosening a global threshold:
+
+1. the accepted glyph mask is expanded by an adaptive exclusion radius before background sampling;
+2. pixels in that exclusion halo are not allowed to vote as background;
+3. remaining samples are quantized into coarse color bins;
+4. the strongest bins seed candidate color clusters;
+5. each seed is refined by color-distance support over all purified samples;
+6. the largest compact cluster is treated as the candidate background only if it is also spatially distributed across the detector box.
+
+The flat decision now uses:
+- dominant purified-cluster ratio;
+- 90th-percentile distance inside that cluster;
+- spatial coverage over a 4x4 grid.
+
+This avoids the 0030 failure mode where anti-aliased red/black display lettering dominated the median, while still keeping genuinely mixed artwork on TELEA.
+
+New audit evidence:
+- SpatialCoverage
+- ExclusionRadius
+- Reason values such as dominant_purified_background_cluster, background_cluster_weak, background_cluster_variance, and background_cluster_not_spatial.
+
+The 0030 23-page regression also showed that only four selected targets used TELEA: hard_long_speech_001/RG012 and three targets in core_mixed_dialogue_caption_sfx_001. The latter three already had strong dominant gray backgrounds but were rejected only by outlier pixels, so 0031 is expected to cleanly classify them without changing OCR, translation, or detector geometry.
+
+The regression target remains general: large colored/outlined lettering over a flat balloon must resolve to the actual balloon background; complex artwork must remain on TELEA.
