@@ -26,10 +26,10 @@ bool AllAccepted(params OcrObservation[] lines)
 bool NoneAccepted(params OcrObservation[] lines)
     => ContainerOcrValidator.ValidateLines([candidate], lines).All(x => !x.Accepted);
 
-var default0036Options = new PipelineOptions();
-Check("V2 0036 defaults to Laya experimental shadow track",
-    default0036Options.DecisionTrack == PipelineDecisionTrack.LayaExperimental &&
-    default0036Options.LayaMode == LayaDecisionMode.Shadow);
+var default0041Options = new PipelineOptions();
+Check("V2 0041 defaults to Laya experimental advisory track",
+    default0041Options.DecisionTrack == PipelineDecisionTrack.LayaExperimental &&
+    default0041Options.LayaMode == LayaDecisionMode.Advisory);
 
 var layaPythonCandidates =
     LayaDecisionService.BuildPythonCandidates(
@@ -258,6 +258,55 @@ Check("V2 0040 detector retry match accepts overlapping TextBubble",
         .IsShadowRetryMatch(
             shadowRetryBlock,
             shadowRetryHit));
+
+Check("V2 0041 accepts cross-scale agreement for same recovered TextBubble",
+    PageAnalysisService.AreSamePhysicalRegion(
+        new Rect(985, 1035, 323, 182),
+        new Rect(986, 1033, 317, 184),
+        0.45,
+        0.22));
+
+Check("V2 0041 rejects page012 retry when it duplicates existing full-page TextBubble",
+    PageAnalysisService.IsExistingTextDuplicate(
+        new Rect(915, 104, 128, 48),
+        new Rect(913, 102, 133, 50)));
+
+Check("V2 0041 keeps page014 retry when no existing full-page TextBubble overlaps",
+    !PageAnalysisService.IsExistingTextDuplicate(
+        new Rect(986, 1033, 317, 184),
+        new Rect(103, 1032, 130, 52)));
+
+var dontKnowSource =
+    new VisionTranslation(
+        9041,
+        shadowRetryBlock,
+        "I DON'T KNOW ANYMORE. I DON'T-",
+        "",
+        "dialogue",
+        true);
+
+Check("V2 0041 accepts Korean 모르겠어 as preserved English negation",
+    TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource,
+        "더는 모르겠어. 나..."));
+
+Check("V2 0041 accepts Korean 몰라 as preserved English negation",
+    TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource with
+        {
+            CorrectedText =
+                "I DON'T KNOW."
+        },
+        "몰라."));
+
+Check("V2 0041 still rejects polarity reversal for DON'T KNOW",
+    !TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource with
+        {
+            CorrectedText =
+                "I DON'T KNOW."
+        },
+        "알겠어."));
 
 Check("V2 0040 detector retry match rejects unrelated TextBubble",
     !RtdetrPageRegionAnalyzer

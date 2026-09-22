@@ -258,13 +258,38 @@ public sealed class PagePipelineService
                                 PipelineStageKind.PageAnalysis,
                                 message)));
 
-                await pageAnalysis
-                    .WriteShadowDetectorRetryAuditAsync(
-                        sourcePath,
-                        outputDirectory,
-                        layaAudit.DetectorRetryRequests,
-                        retryProgress,
-                        token);
+                var retryAudit =
+                    await pageAnalysis
+                        .RunDetectorRetryAuditAsync(
+                            sourcePath,
+                            outputDirectory,
+                            layaAudit.DetectorRetryRequests,
+                            pageAnalysisResult.Regions,
+                            options.LayaMode,
+                            retryProgress,
+                            token);
+
+                if (retryAudit.AdvisoryCandidates.Count >
+                        0 &&
+                    v2Snapshot is not null &&
+                    v2Selection is not null)
+                {
+                    (
+                        translated,
+                        v2Snapshot,
+                        v2Selection) =
+                        ApplyDetectorRetryAdvisory(
+                            translated,
+                            v2Snapshot,
+                            v2Selection,
+                            retryAudit.AdvisoryCandidates);
+
+                    progress?.Report(
+                        new PipelineProgress(
+                            PipelineStageKind.PageAnalysis,
+                            $"Laya Advisory · 신규 TextBubble {retryAudit.AdvisoryCandidates.Count}개를 " +
+                            "해당 UNBOUND unit에만 제한 적용"));
+                }
             }
 
             if (layaAudit.RenderRecoveryRequests.Count >
@@ -384,6 +409,186 @@ public sealed class PagePipelineService
             translated,
             jsonPath,
             imagePath);
+    }
+
+    static (
+        List<VisionTranslation> Translated,
+        V2DetectionSnapshot Snapshot,
+        V2EraseSelection Selection)
+        ApplyDetectorRetryAdvisory(
+            IReadOnlyList<VisionTranslation> translated,
+            V2DetectionSnapshot snapshot,
+            V2EraseSelection existingSelection,
+            IReadOnlyList<LayaDetectorAdvisoryCandidate> candidates)
+    {
+        var updated =
+            translated.ToList();
+
+        var rawRegions =
+            snapshot.RawRegions.ToList();
+
+        foreach (var candidate in
+                 candidates)
+        {
+            int index =
+                updated.FindIndex(x =>
+                    x.Id ==
+                    candidate.TranslationRegionId);
+
+            if (index < 0)
+                continue;
+
+            var current =
+                updated[index];
+
+            if (!current.Render ||
+                string.IsNullOrWhiteSpace(
+                    current.Translation))
+            {
+                continue;
+            }
+
+            if (!rawRegions.Any(x =>
+                    string.Equals(
+                        x.RegionId,
+                        candidate.BubbleRegion.RegionId,
+                        StringComparison.Ordinal)))
+            {
+                rawRegions.Add(
+                    candidate.BubbleRegion);
+            }
+
+            if (!rawRegions.Any(x =>
+                    string.Equals(
+                        x.RegionId,
+                        candidate.TextRegion.RegionId,
+                        StringComparison.Ordinal)))
+            {
+                rawRegions.Add(
+                    candidate.TextRegion);
+            }
+
+            updated[index] =
+                current with
+                {
+                    Source =
+                        current.Source with
+                        {
+                            RegionId =
+                                candidate.BubbleRegion.RegionId,
+                            RegionTextRegion =
+                                candidate.TextRegion
+                        }
+                };
+        }
+
+        var advisorySnapshot =
+            V2DetectionSnapshot.Create(
+                new PageAnalysisResult(
+                    rawRegions,
+                    [],
+                    snapshot.SourceMode +
+                    "+laya_advisory",
+                    true,
+                    "detector_retry_advisory"));
+
+        var targetIds =
+            new HashSet<string>(
+                existingSelection.TextRegionIds,
+                StringComparer.Ordinal);
+
+        var translationIds =
+            new HashSet<int>(
+                existingSelection.TranslationRegionIds);
+
+        var bindings =
+            existingSelection.Bindings
+                .ToDictionary(
+                    x =>
+                        x.Key,
+                    x =>
+                        x.Value);
+
+        var preservationReasons =
+            existingSelection.PreservationReasons
+                .ToDictionary(
+                    x =>
+                        x.Key,
+                    x =>
+                        x.Value);
+
+        var preservationTargetReasons =
+            existingSelection.PreservationTargetReasons
+                .ToDictionary(
+                    x =>
+                        x.Key,
+                    x =>
+                        x.Value,
+                    StringComparer.Ordinal);
+
+        foreach (var candidate in
+                 candidates)
+        {
+            var region =
+                updated.FirstOrDefault(x =>
+                    x.Id ==
+                    candidate.TranslationRegionId);
+
+            if (region is null)
+                continue;
+
+            var one =
+                V2EraseSelector.Select(
+                    advisorySnapshot,
+                    [region]);
+
+            if (!one.Bindings.TryGetValue(
+                    region.Id,
+                    out var binding) ||
+                !binding.TextRegionIds.Contains(
+                    candidate.TextRegion.RegionId,
+                    StringComparer.Ordinal))
+            {
+                continue;
+            }
+
+            foreach (string id in
+                     one.TextRegionIds)
+            {
+                targetIds.Add(
+                    id);
+            }
+
+            translationIds.Add(
+                region.Id);
+
+            bindings[region.Id] =
+                binding;
+
+            preservationReasons.Remove(
+                region.Id);
+
+            foreach (string id in
+                     binding.TextRegionIds)
+            {
+                preservationTargetReasons.Remove(
+                    id);
+            }
+        }
+
+        return (
+            updated,
+            advisorySnapshot,
+            new V2EraseSelection(
+                targetIds,
+                translationIds,
+                bindings)
+            {
+                PreservationReasons =
+                    preservationReasons,
+                PreservationTargetReasons =
+                    preservationTargetReasons
+            });
     }
 
     async Task WriteShadowRenderRecoveryAuditAsync(

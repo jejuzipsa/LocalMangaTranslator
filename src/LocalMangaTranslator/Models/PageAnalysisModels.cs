@@ -38,7 +38,7 @@ public sealed record PipelineOptions(
     bool EnableBaberuOcr = true,
     bool EnableFinalAudit = true,
     PipelineDecisionTrack DecisionTrack = PipelineDecisionTrack.LayaExperimental,
-    LayaDecisionMode LayaMode = LayaDecisionMode.Shadow);
+    LayaDecisionMode LayaMode = LayaDecisionMode.Advisory);
 
 public sealed record PageRegion(
     string RegionId,

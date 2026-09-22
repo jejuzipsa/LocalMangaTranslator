@@ -11,6 +11,22 @@ namespace LocalMangaTranslator.Services;
 /// supply a better interior mask for an already detected RT-DETR bubble; it
 /// cannot create additional containers in Architecture 2.0 mode.
 /// </summary>
+public sealed record LayaDetectorAdvisoryCandidate(
+    int TranslationRegionId,
+    PageRegion TextRegion,
+    PageRegion BubbleRegion,
+    double? LayaConfidence,
+    double CrossScaleTextIoU,
+    double CrossScaleBubbleIoU,
+    string SourceText);
+
+public sealed record LayaDetectorRetryAuditResult(
+    IReadOnlyList<LayaDetectorAdvisoryCandidate> AdvisoryCandidates)
+{
+    public static LayaDetectorRetryAuditResult Empty { get; } =
+        new([]);
+}
+
 public sealed class PageAnalysisService : IDisposable
 {
     readonly PageContainerCandidateDetector legacyDetector = new();
@@ -76,26 +92,34 @@ public sealed class PageAnalysisService : IDisposable
             $"regions={regions.Count}; legacy_mask_candidates={legacy.Count}; active_region_containers={fused.Count}");
     }
 
-    public async Task WriteShadowDetectorRetryAuditAsync(
+    public async Task<LayaDetectorRetryAuditResult> RunDetectorRetryAuditAsync(
         string sourcePath,
         string outputDirectory,
         IReadOnlyList<LayaDetectorRetryRequest> requests,
+        IReadOnlyList<PageRegion> existingRegions,
+        LayaDecisionMode mode,
         IProgress<string>? progress = null,
         CancellationToken token = default)
     {
         if (requests.Count == 0 ||
             !rtdetr.IsReady)
         {
-            return;
+            return LayaDetectorRetryAuditResult.Empty;
         }
 
-        await Task.Run(
+        return await Task.Run(
             () =>
             {
                 var requestAudits =
                     new List<object>();
 
+                var advisoryCandidates =
+                    new List<LayaDetectorAdvisoryCandidate>();
+
                 int recovered =
+                    0;
+
+                int advisoryEligible =
                     0;
 
                 foreach (var request in requests)
@@ -103,7 +127,7 @@ public sealed class PageAnalysisService : IDisposable
                     token.ThrowIfCancellationRequested();
 
                     progress?.Report(
-                        $"Laya detector Shadow retry · id={request.Region.Id}");
+                        $"Laya detector retry · id={request.Region.Id}");
 
                     var passes =
                         rtdetr.AnalyzeShadowRetry(
@@ -111,107 +135,239 @@ public sealed class PageAnalysisService : IDisposable
                             request.Region.Source,
                             token);
 
-                    var passAudits =
-                        passes.Select(pass =>
-                        {
-                            var textBubbles =
-                                pass.Regions
-                                    .Where(x =>
-                                        x.Kind ==
-                                            PageRegionKind.TextBubble)
-                                    .ToList();
-
-                            var matches =
-                                textBubbles
-                                    .Where(x =>
-                                        RtdetrPageRegionAnalyzer
-                                            .IsShadowRetryMatch(
-                                                request.Region.Source,
-                                                x))
-                                    .OrderByDescending(x =>
-                                        RtdetrPageRegionAnalyzer
-                                            .ShadowRetryAffinity(
-                                                request.Region.Source,
-                                                x))
-                                    .ToList();
-
-                            var best =
-                                matches.FirstOrDefault();
-
-                            return new
+                    var evaluations =
+                        passes
+                            .Select(pass =>
                             {
-                                pass.Window.PassId,
-                                CropBounds =
-                                    new
-                                    {
-                                        pass.Window.CropBounds.X,
-                                        pass.Window.CropBounds.Y,
-                                        pass.Window.CropBounds.Width,
-                                        pass.Window.CropBounds.Height
-                                    },
-                                pass.Window.ContextMultiplier,
-                                pass.Window.InputPixelsPerSourcePixel,
-                                RegionCount =
-                                    pass.Regions.Count,
-                                TextBubbleCount =
-                                    textBubbles.Count,
-                                Recovered =
-                                    best is not null,
-                                BestMatch =
-                                    best is null
+                                var textMatches =
+                                    pass.Regions
+                                        .Where(x =>
+                                            x.Kind ==
+                                                PageRegionKind.TextBubble &&
+                                            RtdetrPageRegionAnalyzer
+                                                .IsShadowRetryMatch(
+                                                    request.Region.Source,
+                                                    x))
+                                        .OrderByDescending(x =>
+                                            RtdetrPageRegionAnalyzer
+                                                .ShadowRetryAffinity(
+                                                    request.Region.Source,
+                                                    x))
+                                        .ToList();
+
+                                var bestText =
+                                    textMatches.FirstOrDefault();
+
+                                var bestBubble =
+                                    bestText is null
                                         ? null
-                                        : new
-                                        {
-                                            best.RegionId,
-                                            Kind =
-                                                best.Kind.ToString(),
-                                            Bounds =
-                                                new
-                                                {
-                                                    best.Bounds.X,
-                                                    best.Bounds.Y,
-                                                    best.Bounds.Width,
-                                                    best.Bounds.Height
-                                                },
-                                            best.Score,
-                                            best.Source,
-                                            Affinity =
-                                                RtdetrPageRegionAnalyzer
-                                                    .ShadowRetryAffinity(
-                                                        request.Region.Source,
-                                                        best)
-                                        },
-                                Matches =
-                                    matches.Select(x =>
-                                        new
-                                        {
-                                            x.RegionId,
-                                            Bounds =
-                                                new
-                                                {
-                                                    x.Bounds.X,
-                                                    x.Bounds.Y,
-                                                    x.Bounds.Width,
-                                                    x.Bounds.Height
-                                                },
-                                            x.Score,
-                                            Affinity =
-                                                RtdetrPageRegionAnalyzer
-                                                    .ShadowRetryAffinity(
-                                                        request.Region.Source,
-                                                        x)
-                                        })
-                                    .ToArray()
-                            };
-                        })
-                        .ToArray();
+                                        : FindOwningBubble(
+                                            bestText,
+                                            pass.Regions);
+
+                                return (
+                                    Pass: pass,
+                                    TextMatches: textMatches,
+                                    BestText: bestText,
+                                    BestBubble: bestBubble);
+                            })
+                            .ToList();
 
                     bool requestRecovered =
-                        passAudits.Any(x =>
-                            x.Recovered);
+                        evaluations.Any(x =>
+                            x.BestText is not null);
 
                     if (requestRecovered)
                         recovered++;
+
+                    var usable =
+                        evaluations
+                            .Where(x =>
+                                x.BestText is not null &&
+                                x.BestBubble is not null)
+                            .ToList();
+
+                    double textIoU =
+                        usable.Count >= 2
+                            ? IoU(
+                                usable[0].BestText!.Bounds,
+                                usable[1].BestText!.Bounds)
+                            : 0;
+
+                    double bubbleIoU =
+                        usable.Count >= 2
+                            ? IoU(
+                                usable[0].BestBubble!.Bounds,
+                                usable[1].BestBubble!.Bounds)
+                            : 0;
+
+                    bool twoScaleAgreement =
+                        usable.Count >= 2 &&
+                        AreSamePhysicalRegion(
+                            usable[0].BestText!.Bounds,
+                            usable[1].BestText!.Bounds,
+                            0.45,
+                            0.22) &&
+                        AreSamePhysicalRegion(
+                            usable[0].BestBubble!.Bounds,
+                            usable[1].BestBubble!.Bounds,
+                            0.30,
+                            0.28);
+
+                    float minTextScore =
+                        usable.Count >= 2
+                            ? usable
+                                .Take(2)
+                                .Min(x =>
+                                    x.BestText!.Score)
+                            : 0;
+
+                    bool scoreStrong =
+                        minTextScore >=
+                        0.45f;
+
+                    var chosen =
+                        usable
+                            .OrderByDescending(x =>
+                                x.BestText!.Score)
+                            .FirstOrDefault();
+
+                    bool duplicateExisting =
+                        chosen.BestText is not null &&
+                        existingRegions
+                            .Where(x =>
+                                x.Kind ==
+                                    PageRegionKind.TextBubble)
+                            .Any(x =>
+                                IsExistingTextDuplicate(
+                                    chosen.BestText.Bounds,
+                                    x.Bounds));
+
+                    string? rejectReason =
+                        !requestRecovered
+                            ? "retry_not_recovered"
+                            : usable.Count < 2
+                                ? "missing_two_scale_parent"
+                                : !twoScaleAgreement
+                                    ? "cross_scale_inconsistent"
+                                    : !scoreStrong
+                                        ? "weak_retry_score"
+                                        : duplicateExisting
+                                            ? "duplicate_existing_fullpage"
+                                            : null;
+
+                    bool eligible =
+                        rejectReason is null &&
+                        chosen.BestText is not null &&
+                        chosen.BestBubble is not null;
+
+                    PageRegion? advisoryText =
+                        null;
+
+                    PageRegion? advisoryBubble =
+                        null;
+
+                    if (eligible)
+                    {
+                        advisoryEligible++;
+
+                        var existingParent =
+                            FindOwningBubble(
+                                chosen.BestText!,
+                                existingRegions);
+
+                        advisoryBubble =
+                            existingParent ??
+                            chosen.BestBubble! with
+                            {
+                                RegionId =
+                                    $"LRB{request.Region.Id:000}",
+                                Source =
+                                    "ogkalu-rtdetr-v2-laya-advisory"
+                            };
+
+                        advisoryText =
+                            chosen.BestText! with
+                            {
+                                RegionId =
+                                    $"LRT{request.Region.Id:000}",
+                                Source =
+                                    "ogkalu-rtdetr-v2-laya-advisory"
+                            };
+
+                        if (mode is
+                                LayaDecisionMode.Advisory or
+                                LayaDecisionMode.Active)
+                        {
+                            advisoryCandidates.Add(
+                                new LayaDetectorAdvisoryCandidate(
+                                    request.Region.Id,
+                                    advisoryText,
+                                    advisoryBubble,
+                                    request.Confidence,
+                                    textIoU,
+                                    bubbleIoU,
+                                    request.Region.Source.Text));
+                        }
+                    }
+
+                    var passAudits =
+                        evaluations
+                            .Select(x =>
+                                new
+                                {
+                                    x.Pass.Window.PassId,
+                                    CropBounds =
+                                        new
+                                        {
+                                            x.Pass.Window.CropBounds.X,
+                                            x.Pass.Window.CropBounds.Y,
+                                            x.Pass.Window.CropBounds.Width,
+                                            x.Pass.Window.CropBounds.Height
+                                        },
+                                    x.Pass.Window.ContextMultiplier,
+                                    x.Pass.Window.InputPixelsPerSourcePixel,
+                                    RegionCount =
+                                        x.Pass.Regions.Count,
+                                    TextBubbleCount =
+                                        x.Pass.Regions.Count(y =>
+                                            y.Kind ==
+                                                PageRegionKind.TextBubble),
+                                    Recovered =
+                                        x.BestText is not null,
+                                    BestMatch =
+                                        x.BestText is null
+                                            ? null
+                                            : new
+                                            {
+                                                x.BestText.RegionId,
+                                                Kind =
+                                                    x.BestText.Kind.ToString(),
+                                                Bounds =
+                                                    RectAudit(
+                                                        x.BestText.Bounds),
+                                                x.BestText.Score,
+                                                x.BestText.Source,
+                                                Affinity =
+                                                    RtdetrPageRegionAnalyzer
+                                                        .ShadowRetryAffinity(
+                                                            request.Region.Source,
+                                                            x.BestText)
+                                            },
+                                    ParentBubble =
+                                        x.BestBubble is null
+                                            ? null
+                                            : new
+                                            {
+                                                x.BestBubble.RegionId,
+                                                Bounds =
+                                                    RectAudit(
+                                                        x.BestBubble.Bounds),
+                                                x.BestBubble.Score,
+                                                x.BestBubble.Source
+                                            }
+                                })
+                            .ToArray();
 
                     requestAudits.Add(
                         new
@@ -234,6 +390,49 @@ public sealed class PageAnalysisService : IDisposable
                                 },
                             Recovered =
                                 requestRecovered,
+                            TwoScaleAgreement =
+                                twoScaleAgreement,
+                            CrossScaleTextIoU =
+                                textIoU,
+                            CrossScaleBubbleIoU =
+                                bubbleIoU,
+                            MinimumTextScore =
+                                minTextScore,
+                            ExistingFullPageDuplicate =
+                                duplicateExisting,
+                            AdvisoryEligible =
+                                eligible,
+                            Applied =
+                                eligible &&
+                                mode is
+                                    LayaDecisionMode.Advisory or
+                                    LayaDecisionMode.Active,
+                            RejectReason =
+                                rejectReason,
+                            AdvisoryTextRegion =
+                                advisoryText is null
+                                    ? null
+                                    : new
+                                    {
+                                        advisoryText.RegionId,
+                                        Bounds =
+                                            RectAudit(
+                                                advisoryText.Bounds),
+                                        advisoryText.Score,
+                                        advisoryText.Source
+                                    },
+                            AdvisoryBubbleRegion =
+                                advisoryBubble is null
+                                    ? null
+                                    : new
+                                    {
+                                        advisoryBubble.RegionId,
+                                        Bounds =
+                                            RectAudit(
+                                                advisoryBubble.Bounds),
+                                        advisoryBubble.Score,
+                                        advisoryBubble.Source
+                                    },
                             Passes =
                                 passAudits
                         });
@@ -254,21 +453,23 @@ public sealed class PageAnalysisService : IDisposable
                     new
                     {
                         Schema =
-                            "pipeline-v2-laya-detector-retry-shadow-v1",
+                            "pipeline-v2-laya-detector-retry-advisory-v1",
                         SourceFile =
                             Path.GetFileName(
                                 sourcePath),
                         Mode =
-                            "Shadow",
+                            mode.ToString(),
                         MutationApplied =
-                            false,
+                            advisoryCandidates.Count >
+                            0,
                         Requests =
                             requests.Count,
                         RecoveredRequests =
                             recovered,
-                        UnrecoveredRequests =
-                            requests.Count -
-                            recovered,
+                        AdvisoryEligibleRequests =
+                            advisoryEligible,
+                        AppliedRequests =
+                            advisoryCandidates.Count,
                         Items =
                             requestAudits
                     };
@@ -284,9 +485,178 @@ public sealed class PageAnalysisService : IDisposable
                         }));
 
                 progress?.Report(
-                    $"Laya detector Shadow retry 완료 · {recovered}/{requests.Count} 재검출");
+                    $"Laya detector retry 완료 · recovered {recovered}/{requests.Count} · " +
+                    $"advisory {advisoryCandidates.Count}/{advisoryEligible}");
+
+                return new LayaDetectorRetryAuditResult(
+                    advisoryCandidates);
             },
             token);
+    }
+
+    static object RectAudit(
+        Rect rect)
+        => new
+        {
+            rect.X,
+            rect.Y,
+            rect.Width,
+            rect.Height
+        };
+
+    static PageRegion? FindOwningBubble(
+        PageRegion text,
+        IReadOnlyList<PageRegion> regions)
+        => regions
+            .Where(x =>
+                x.Kind ==
+                    PageRegionKind.Bubble)
+            .Select(x =>
+                new
+                {
+                    Region =
+                        x,
+                    Coverage =
+                        Coverage(
+                            text.Bounds,
+                            x.Bounds),
+                    CenterInside =
+                        ContainsCenter(
+                            text.Bounds,
+                            x.Bounds)
+                })
+            .Where(x =>
+                x.CenterInside ||
+                x.Coverage >=
+                    0.45)
+            .OrderByDescending(x =>
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.Coverage)
+            .ThenByDescending(x =>
+                x.Region.Score)
+            .Select(x =>
+                x.Region)
+            .FirstOrDefault();
+
+    public static bool AreSamePhysicalRegion(
+        Rect a,
+        Rect b,
+        double minIoU,
+        double maxNormalizedCenterDistance)
+    {
+        if (IoU(
+                a,
+                b) >=
+            minIoU)
+        {
+            return true;
+        }
+
+        double ax =
+            a.X +
+            a.Width /
+            2.0;
+
+        double ay =
+            a.Y +
+            a.Height /
+            2.0;
+
+        double bx =
+            b.X +
+            b.Width /
+            2.0;
+
+        double by =
+            b.Y +
+            b.Height /
+            2.0;
+
+        double distance =
+            Math.Sqrt(
+                Math.Pow(
+                    ax -
+                    bx,
+                    2) +
+                Math.Pow(
+                    ay -
+                    by,
+                    2));
+
+        double scale =
+            Math.Max(
+                1.0,
+                Math.Max(
+                    Math.Max(
+                        a.Width,
+                        a.Height),
+                    Math.Max(
+                        b.Width,
+                        b.Height)));
+
+        return distance /
+               scale <=
+               maxNormalizedCenterDistance;
+    }
+
+    public static bool IsExistingTextDuplicate(
+        Rect retry,
+        Rect existing)
+        => IoU(
+               retry,
+               existing) >=
+               0.45 ||
+           OverlapOverSmaller(
+               retry,
+               existing) >=
+               0.75;
+
+    static double IoU(
+        Rect a,
+        Rect b)
+    {
+        double intersection =
+            IntersectionArea(
+                a,
+                b);
+
+        if (intersection <= 0)
+            return 0;
+
+        double union =
+            Math.Max(
+                1.0,
+                a.Width *
+                    (double)a.Height +
+                b.Width *
+                    (double)b.Height -
+                intersection);
+
+        return intersection /
+               union;
+    }
+
+    static double OverlapOverSmaller(
+        Rect a,
+        Rect b)
+    {
+        double intersection =
+            IntersectionArea(
+                a,
+                b);
+
+        double smaller =
+            Math.Max(
+                1.0,
+                Math.Min(
+                    a.Width *
+                        (double)a.Height,
+                    b.Width *
+                        (double)b.Height));
+
+        return intersection /
+               smaller;
     }
 
     public static IReadOnlyList<ContainerCandidate> FuseContainers(
