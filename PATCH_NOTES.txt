@@ -2715,3 +2715,323 @@ V2 0040: execute Laya shadow recovery probes
 7deb5eef81f9b934ab12f3e7b14422ff7869f107
 Fix 0040 RT-DETR shadow retry session call
 
+============================================================
+0041 - Safe Detector Retry Advisory / Negation Validator Fix
+============================================================
+
+0040 실전 결과
+------------------------------------------------------------
+검증 커밋:
+21dd6c7316836049a09394ab8c4d30d17d6c76cf
+test pic 0040
+
+page014:
+Laya detector_retry=true였던
+"NONONO NNNNOOO!"가 실제 local-scale RT-DETR에서 재검출됐다.
+
+OCR block:
+- x=974
+- y=1034
+- w=336.33
+- h=189.67
+- OCR confidence 약 0.926
+
+local_2p40:
+- TextBubble x=985 y=1035 w=323 h=182
+- score 약 0.542
+
+local_1p60:
+- TextBubble x=986 y=1033 w=317 h=184
+- score 약 0.616
+
+두 scale이 거의 동일한 physical TextBubble을 독립적으로 검출했다.
+기존 full-page detector에는 이 위치 TextBubble이 없었으므로
+실제 detector miss recovery로 판단한다.
+
+page012:
+Laya detector_retry=true였던 혼합 OCR block도 local retry에서
+TextBubble을 찾았지만 기존 full-page RG002와 사실상 동일했다.
+
+기존 RG002:
+- x=913 y=102 w=133 h=50
+
+retry:
+- 약 x=915 y=104 w=128 h=48
+
+따라서 page012는 신규 geometry recovery가 아니라
+기존 detector target 재발견으로 분류해야 한다.
+
+page021:
+Laya render_recovery=true인
+"I DON'T KNOW ANYMORE. I DON'T-"를 Shadow에서 다시 Render=true로
+translation refinement에 넣었으나 다시:
+
+- Render=false
+- Translation=""
+- V2Binding=null
+
+로 떨어졌다.
+
+즉 RG014 geometry/binding보다 앞선
+TranslationRefinementService의 translation validation이
+실패 원인임을 확인했다.
+
+0040 최종 결과 불변성:
+- page012/014/017/021/028은 0039와 final image SHA 동일.
+- page032만 Gemma 최종 번역 wording 변화로 binary 차이.
+- page032 erase changed pixels는 동일.
+- Laya Shadow probe가 기존 출력에 직접 mutation한 증거 없음.
+
+
+0041 목표
+------------------------------------------------------------
+Laya 전체를 Active로 올리지 않는다.
+
+0040에서 실전 검증된 detector_retry만
+제한적 Advisory action으로 승격한다.
+
+동시에 page021에서 확인된
+DON'T KNOW 계열 Korean negation validator false reject를 수정한다.
+
+
+기본 decision mode
+------------------------------------------------------------
+PipelineOptions 기본값:
+
+DecisionTrack = LayaExperimental
+LayaMode = Advisory
+
+Advisory에서 실제 결과에 영향을 줄 수 있는 항목은
+0041 detector retry recovery만이다.
+
+다음 Laya decision은 계속 diagnostic/shadow 성격으로 유지:
+- ownership
+- duplicate
+- ocr_consensus
+- vision_correction
+- translation_consistency
+- render_recovery
+
+
+Detector retry Advisory 승인 조건
+------------------------------------------------------------
+Laya detector_retry=true만 retry 대상이 된다.
+
+추가 RT-DETR local passes:
+- local_2p40
+- local_1p60
+
+Advisory candidate로 승인하려면 모두 만족해야 한다.
+
+1. 두 local scale에서 모두 matching TextBubble 검출.
+2. 각 TextBubble에 detector Bubble parent가 존재.
+3. 두 scale TextBubble이 같은 physical region.
+   - IoU >= 0.45
+   - 또는 normalized center distance <= 0.22
+4. 두 scale parent Bubble도 같은 physical region.
+   - IoU >= 0.30
+   - 또는 normalized center distance <= 0.28
+5. 두 TextBubble score 중 낮은 값도 >= 0.45.
+6. 기존 full-page TextBubble과 중복되지 않아야 함.
+   - IoU >= 0.45 또는 smaller-overlap >= 0.75이면
+     duplicate_existing_fullpage로 거부.
+
+따라서 0040 실측 기준:
+- page014 NONONO -> 신규 Advisory 후보
+- page012 retry -> 기존 RG002 duplicate로 거부
+
+
+Advisory geometry
+------------------------------------------------------------
+승인된 retry geometry는 별도 namespace 사용.
+
+TextBubble:
+LRT<TranslationRegionId>
+
+신규 local parent Bubble:
+LRB<TranslationRegionId>
+
+Source:
+ogkalu-rtdetr-v2-laya-advisory
+
+local TextBubble이 기존 full-page Bubble 안에 안전하게 들어가는 경우에는
+새 Bubble을 만들지 않고 기존 Bubble을 parent로 재사용한다.
+
+
+적용 범위 제한
+------------------------------------------------------------
+Advisory TextBubble은 retry를 trigger한 translation unit 하나에만 연결한다.
+
+다른 OCR/translation unit에 전파하지 않는다.
+기존 full-page owner보다 우선하는 전역 geometry replacement도 하지 않는다.
+
+해당 unit Source에만:
+- RegionTextRegion = Advisory TextBubble
+- RegionId = Advisory/existing parent Bubble
+
+를 연결한다.
+
+
+V2 commit boundary
+------------------------------------------------------------
+Advisory candidate는 즉시 immutable target set에 넣지 않는다.
+
+candidate 하나씩:
+
+1. 임시 raw region set에 Bubble/TextBubble 추가.
+2. 임시 V2DetectionSnapshot 생성.
+3. trigger unit 하나만 V2EraseSelector.Select() 실행.
+4. 정확한 LRT target binding이 생성됐는지 확인.
+5. binding 성공 시에만:
+   - translated unit link commit
+   - V2 snapshot commit
+   - V2 selection target/binding commit
+
+실패 candidate는 snapshot에 남기지 않는다.
+
+목적:
+Advisory binding 실패가 새로운 unresolved detector target으로
+coverage audit에 남는 것을 방지한다.
+
+
+Detector retry audit
+------------------------------------------------------------
+기존:
+pipeline-v2-laya-detector-retry-shadow-v1
+
+0041:
+pipeline-v2-laya-detector-retry-advisory-v1
+
+추가 기록:
+- Mode
+- TwoScaleAgreement
+- CrossScaleTextIoU
+- CrossScaleBubbleIoU
+- MinimumTextScore
+- ExistingFullPageDuplicate
+- AdvisoryEligible
+- Applied
+- RejectReason
+- AdvisoryTextRegion
+- AdvisoryBubbleRegion
+- AdvisoryEligibleRequests
+- AppliedRequests
+- MutationApplied
+
+대표 reject reason:
+- retry_not_recovered
+- missing_two_scale_parent
+- cross_scale_inconsistent
+- weak_retry_score
+- duplicate_existing_fullpage
+
+
+page021 translation validator 수정
+------------------------------------------------------------
+기존 TranslationRefinementService.IsUsableTranslation()은
+영어 source에 DON'T/NOT/NEVER 등의 explicit negation이 있으면
+Korean translation에도 negation cue를 요구한다.
+
+기존 cue:
+안 / 못 / 아니 / 않 / 없 / 말 / 지마 / 절대 등
+
+문제:
+"I DON'T KNOW."
+"I DON'T KNOW ANYMORE."
+
+의 자연스러운 Korean translation:
+
+- 몰라.
+- 더는 모르겠어.
+
+는 negation 의미가 보존됐지만 기존 cue에 걸리지 않아
+정상 번역도 validation failure가 될 수 있었다.
+
+0041 추가 cue:
+- 모르
+- 몰라
+
+따라서:
+- 모르겠어
+- 모른다
+- 모릅니다
+- 몰라
+
+계열이 explicit negation preservation으로 인정된다.
+
+반대로:
+"I DON'T KNOW." -> "알겠어."
+
+같은 polarity reversal은 기존처럼 reject한다.
+
+
+PipelineChecks
+------------------------------------------------------------
+0041 regression 추가:
+
+1. 기본 Laya mode = Advisory.
+2. page014 실측과 유사한 두 retry TextBubble box가
+   cross-scale same physical region으로 인정.
+3. page012 retry box와 기존 RG002 box는
+   existing full-page duplicate로 판정.
+4. page014 retry box는 다른 기존 TextBubble과 중복으로 오판하지 않음.
+5. "I DON'T KNOW ANYMORE..." -> "더는 모르겠어." 통과.
+6. "I DON'T KNOW." -> "몰라." 통과.
+7. "I DON'T KNOW." -> "알겠어."는 계속 reject.
+
+
+0041에서 하지 않는 것
+------------------------------------------------------------
+- Laya ownership override 없음.
+- Laya duplicate winner override 없음.
+- vision_correction / translation_consistency Active 적용 없음.
+- render_recovery를 최종 translated list에 직접 강제 삽입하지 않음.
+- detector retry가 한 scale에서만 보이면 적용하지 않음.
+- 기존 full-page TextBubble 재발견은 적용하지 않음.
+- page028 cleaned_text_redetected / unbound 문제 수정 없음.
+
+
+0041 재검증
+------------------------------------------------------------
+동일 6페이지:
+- page012
+- page014
+- page017
+- page021
+- page028
+- page032
+
+핵심 기대:
+
+page012
+- detector retry는 duplicate_existing_fullpage로 reject.
+- 기존 RG002 결과 유지.
+
+page014
+- NONONO retry가 두 scale 합의.
+- AdvisoryEligible=true / Applied=true 기대.
+- LRTxxx + parent Bubble binding 생성.
+- 기존 7 TextBubble 외 신규 target이 실제 commit되는지 확인.
+- NONONO가 최종 번역/erase/typeset 경로에 들어가는지 확인.
+
+page021
+- translation validator 수정으로
+  Shadow render recovery candidate가 더 이상 단순 negation cue 때문에
+  탈락하지 않는지 확인.
+- 실제 model wording에 따라 recovery success 여부 재평가.
+
+나머지 페이지
+- 기존 결과 회귀 여부 확인.
+
+
+관련 커밋
+------------------------------------------------------------
+b3f4ba1dac66235809170988d11561b24336db8e
+V2 0041: promote safe detector retry advisory
+
+3574c175c4c5508c518200077568d770194474ac
+Fix 0041 advisory geometry helpers
+
+9263fd4c42336c29133248fd6ba31abe48d7c556
+Harden 0041 advisory commit boundary
+
