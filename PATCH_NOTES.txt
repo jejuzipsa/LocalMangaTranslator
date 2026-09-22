@@ -3641,3 +3641,27 @@ page028만:
 - page005: 원문 잔존/겹침 해소 확인.
 - page016: 우측 하단 검은 배경 문장 실제 erase + 한국어 조판 확인.
 - page031: 녹색 대사 Render=true + 최종 한국어 commit 확인.
+
+
+0043 CI verification
+------------------------------------------------------------
+Final code head:
+- ac2321186aaf08c9b950a9816d9bc2be801c2bf6
+
+Pipeline V2 Windows Portable:
+- run 35731425929
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+
+0043 implementation commits:
+- 5b8250dc6dd00440e47fa04504423c5663108ba7
+  TextBubble residual retry gate
+- d00e742f0a59b2838cdda19c7f388165d13cb0c2
+  safe sentence-like TextFree translation
+- 273102bb878db563f36bf3e28a19563bfdee0d97
+  negative question-tag validator
+- f15521dc1b1cf8643afe1cad8bc1464d0bc85b52
+  PipelineChecks
+- ac2321186aaf08c9b950a9816d9bc2be801c2bf6
+  final question-tag regex escaping fix
