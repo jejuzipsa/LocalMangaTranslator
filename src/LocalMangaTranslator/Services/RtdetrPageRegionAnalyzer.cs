@@ -383,7 +383,7 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
             region.Score;
     }
 
-    static IReadOnlyList<PageRegion> AnalyzeMat(
+    IReadOnlyList<PageRegion> AnalyzeMat(
         Mat source,
         Point sourceOrigin,
         string sourceTag,
