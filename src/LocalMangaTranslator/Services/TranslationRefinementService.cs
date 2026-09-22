@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using LocalMangaTranslator.Models;
 
 namespace LocalMangaTranslator.Services;
@@ -445,13 +446,17 @@ INPUT:
     static bool HasExplicitEnglishNegation(
         string source)
     {
+        string semanticSource =
+            StripNegativeQuestionTags(
+                source);
+
         var normalized =
             new StringBuilder(
-                source.Length + 2);
+                semanticSource.Length + 2);
 
         normalized.Append(' ');
 
-        foreach (char raw in source)
+        foreach (char raw in semanticSource)
         {
             char ch =
                 char.ToLowerInvariant(
@@ -503,6 +508,23 @@ INPUT:
             lower.Contains(
                 x,
                 StringComparison.Ordinal));
+    }
+
+    static string StripNegativeQuestionTags(
+        string source)
+    {
+        // 0043: a negative auxiliary in an English tag question does not
+        // necessarily carry negative proposition meaning. For example,
+        // "COMES FIRST, DOESN'T IT?" can translate naturally as
+        // "먼저잖아?" without any Korean negation cue. Requiring 안/못/않
+        // here caused the valid translation to be rejected repeatedly.
+        // Only comma-led auxiliary+pronoun tags are stripped; ordinary
+        // sentence negation such as "I DON'T KNOW" remains protected.
+        return Regex.Replace(
+            source,
+            @"(?i),s*(?:doesn['’]t|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|haven['’]t|hasn['’]t|hadn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|don['’]t|didn['’]t|can['’]t)s+(?:it|he|she|they|we|you|i)",
+            " ",
+            RegexOptions.CultureInvariant);
     }
 
     static bool HasKoreanNegationCue(
