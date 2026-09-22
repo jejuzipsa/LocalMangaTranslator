@@ -1,0 +1,665 @@
+{
+  "SourceFile": "page014.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T19:53:15.6839689+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 83,
+        "Y": 120.5,
+        "W": 319.6666666666667,
+        "H": 208.5,
+        "Text": "I WILL, MY BOY. I WILL. I PROMISE I\u0027LL TAKE YOU HOME AS SOON AS I CAN. AND I WANT YOU TO KNOW--AS THE FIRST STAND WHILE EMERGE FROM THIS LONG NIGHTMARE-- THAT YOU ARE FORGIVEN.",
+        "OriginalRegionCount": 10,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 183.5,
+            "Y": 120.5,
+            "W": 113.5,
+            "H": 26,
+            "Text": "I WILL, MY",
+            "Confidence": 0.9955298,
+            "Language": "en"
+          },
+          {
+            "X": 113.66666666666667,
+            "Y": 137.33333333333334,
+            "W": 251.33333333333331,
+            "H": 30.666666666666657,
+            "Text": "BOY. I WILL. I PROMISE",
+            "Confidence": 0.98666143,
+            "Language": "en"
+          },
+          {
+            "X": 113.33333333333333,
+            "Y": 158.33333333333334,
+            "W": 252,
+            "H": 25.666666666666657,
+            "Text": "I\u0027LL TAKE YOU HOME AS",
+            "Confidence": 0.9948836,
+            "Language": "en"
+          },
+          {
+            "X": 85.66666666666667,
+            "Y": 178.66666666666669,
+            "W": 308,
+            "H": 28.333333333333314,
+            "Text": "SOON AS I CAN. AND I WANT",
+            "Confidence": 0.99775183,
+            "Language": "en"
+          },
+          {
+            "X": 83,
+            "Y": 200,
+            "W": 313,
+            "H": 25,
+            "Text": "YOU TO KNOW--AS THE FIRST",
+            "Confidence": 0.9940353,
+            "Language": "en"
+          },
+          {
+            "X": 276,
+            "Y": 220,
+            "W": 126.66666666666669,
+            "H": 23.333333333333314,
+            "Text": "STAND WHILE",
+            "Confidence": 0.9979759,
+            "Language": "en"
+          },
+          {
+            "X": 154,
+            "Y": 241,
+            "W": 214.66666666666663,
+            "H": 22.666666666666686,
+            "Text": "EMERGE FROM THIS",
+            "Confidence": 0.9994916,
+            "Language": "en"
+          },
+          {
+            "X": 131.33333333333334,
+            "Y": 258.3333333333333,
+            "W": 215.33333333333334,
+            "H": 25.666666666666686,
+            "Text": "LONG NIGHTMARE--",
+            "Confidence": 0.99792427,
+            "Language": "en"
+          },
+          {
+            "X": 166.33333333333334,
+            "Y": 280.3333333333333,
+            "W": 146.3333333333333,
+            "H": 22.33333333333337,
+            "Text": "THAT YOU ARE",
+            "Confidence": 0.9989788,
+            "Language": "en"
+          },
+          {
+            "X": 178.66666666666666,
+            "Y": 295,
+            "W": 123.00000000000003,
+            "H": 34,
+            "Text": "FORGIVEN.",
+            "Confidence": 0.9998073,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I WILL MY\nBOY, I WILL I PROMISE\nI\u0027LL THE YOU HAM ENTER\nSOON HIS ICHN IND I WANT YOU KNG UPLANGHE-CHAN-\nANCHANE\nATAREALLANDENCHAR",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "I WILL, MY BOY. I WILL. I PROMISE I\u0027LL TAKE YOU HOME AS SOON AS I CAN. AND I WANT YOU TO KNOW--AS THE FIRST THING YOU UNDERSTAND WHILE YOU EMERGE FROM THIS LONG NIGHTMARE-- THAT YOU ARE FORGIVEN.",
+      "Translation": "\uADF8\uB7F4 \uAC70\uB2E4, \uC598\uC57C. \uADF8\uB7F4 \uAC70\uC57C. \uC57D\uC18D\uD558\uB9C8. \uAC00\uB2A5\uD55C \uD55C \uBE68\uB9AC \uB110 \uC9D1\uC73C\uB85C \uB370\uB824\uB2E4\uC904\uAC8C. \uADF8\uB9AC\uACE0 \uB124\uAC00 \uC774 \uAE34 \uC545\uBABD\uC5D0\uC11C \uAE68\uC5B4\uB098\uBA70 \uAC00\uC7A5 \uBA3C\uC800 \uC54C\uC544\uC57C \uD560 \uC0AC\uC2E4\uC740\u2014\n\uB124\uAC00 \uC6A9\uC11C\uBC1B\uC558\uB2E4\uB294 \uC0AC\uC2E4\uC774\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 355.3333333333333,
+        "Y": 269.66666666666663,
+        "W": 311.00000000000006,
+        "H": 222.33333333333337,
+        "Text": "NO ONE BLAMES YOU, BRUCE. NO ONE. NOT YOUR DOCTORS CITY, AND CERTAINLY NOT ME. NEVER ME. EVERYONE KNOWS YOU WEREN\u0027T IN YOUR RIGHT MIND THOSE YEARS AGO. WHEN YOU...WHEN YOU DID WHAT YoU DID.",
+        "OriginalRegionCount": 12,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 467.3333333333333,
+            "Y": 269.66666666666663,
+            "W": 88.33333333333331,
+            "H": 26.666666666666742,
+            "Text": "NO ONE",
+            "Confidence": 0.99976677,
+            "Language": "en"
+          },
+          {
+            "X": 439,
+            "Y": 291.6666666666667,
+            "W": 146,
+            "H": 22.999999999999943,
+            "Text": "BLAMES YOU,",
+            "Confidence": 0.99532783,
+            "Language": "en"
+          },
+          {
+            "X": 397.3333333333333,
+            "Y": 309,
+            "W": 229.00000000000006,
+            "H": 28.33333333333337,
+            "Text": "BRUCE. NO ONE. NOT",
+            "Confidence": 0.99366695,
+            "Language": "en"
+          },
+          {
+            "X": 374.6666666666667,
+            "Y": 330.66666666666663,
+            "W": 175.33333333333331,
+            "H": 23.666666666666742,
+            "Text": "YOUR DOCTORS",
+            "Confidence": 0.99932444,
+            "Language": "en"
+          },
+          {
+            "X": 364,
+            "Y": 351,
+            "W": 300,
+            "H": 23.5,
+            "Text": "CITY, AND CERTAINLY NOT ME.",
+            "Confidence": 0.9987701,
+            "Language": "en"
+          },
+          {
+            "X": 355.3333333333333,
+            "Y": 368.33333333333337,
+            "W": 311.00000000000006,
+            "H": 26.333333333333258,
+            "Text": "NEVER ME. EVERYONE KNOWS",
+            "Confidence": 0.99805766,
+            "Language": "en"
+          },
+          {
+            "X": 364,
+            "Y": 390,
+            "W": 299.5,
+            "H": 23.5,
+            "Text": "YOU WEREN\u0027T IN YOUR RIGHT",
+            "Confidence": 0.99501204,
+            "Language": "en"
+          },
+          {
+            "X": 375.3333333333333,
+            "Y": 407.6666666666667,
+            "W": 273.00000000000006,
+            "H": 27.333333333333314,
+            "Text": "MIND THOSE YEARS AGO.",
+            "Confidence": 0.9953957,
+            "Language": "en"
+          },
+          {
+            "X": 397,
+            "Y": 430,
+            "W": 230,
+            "H": 23,
+            "Text": "WHEN YOU...WHEN YOU",
+            "Confidence": 0.94929403,
+            "Language": "en"
+          },
+          {
+            "X": 432.3333333333333,
+            "Y": 447.6666666666667,
+            "W": 50.666666666666686,
+            "H": 26.333333333333314,
+            "Text": "DID",
+            "Confidence": 0.9989277,
+            "Language": "en"
+          },
+          {
+            "X": 479.3333333333333,
+            "Y": 449,
+            "W": 110.33333333333331,
+            "H": 24,
+            "Text": "WHAT YoU",
+            "Confidence": 0.9140675,
+            "Language": "en"
+          },
+          {
+            "X": 485.3333333333333,
+            "Y": 468.66666666666663,
+            "W": 52.00000000000006,
+            "H": 23.33333333333337,
+            "Text": "DID.",
+            "Confidence": 0.99959975,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO ONE\nBARAMES YOU,\nBRICK IN ONE.\nYOUR DOCTORS, NOT THE\nCITY AND CERTAINING MERE WARE YONERE WARANE WATALY\nMATALYONE\nMERANANERAN",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "NO ONE BLAMES YOU, BRUCE. NO ONE. NOT YOUR DOCTORS, NOT THE CITY, AND CERTAINLY NOT ME. NEVER ME. EVERYONE KNOWS YOU WEREN\u0027T IN YOUR RIGHT MIND THOSE YEARS AGO. WHEN YOU...WHEN YOU DID WHAT YOU DID.",
+      "Translation": "\uC544\uBB34\uB3C4 \uB110 \uD0D3\uD558\uC9C0 \uC54A\uC544, \uBE0C\uB8E8\uC2A4. [BR] \uC544\uBB34\uB3C4. [BR] \uC758\uC0AC\uB4E4\uB3C4, \uB3C4\uC2DC\uB3C4, [BR] \uADF8\uB9AC\uACE0 \uB2F9\uC5F0\uD788 \uB098\uB3C4 \uC544\uB2C8\uC57C. [BR] \uC808\uB300 \uB098\uB3C4. [BR] \uBAA8\uB450\uAC00 \uC54C\uACE0 \uC788\uC5B4. [BR] \uBA87 \uB144 \uC804 \uB124\uAC00 [BR] \uC81C\uC815\uC2E0\uC774 \uC544\uB2C8\uC5C8\uB2E4\uB294 \uAC78. [BR] \uB124\uAC00... [BR] \uB124\uAC00 \uADF8 \uC77C\uC744 \uC800\uC9C8\uB800\uC744 \uB54C \uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 635,
+        "Y": 776,
+        "W": 118.33333333333326,
+        "H": 74,
+        "Text": "Forgivnn? When I did wut...",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 635,
+            "Y": 776,
+            "W": 118.33333333333326,
+            "H": 31.33333333333337,
+            "Text": "Forgivnn?",
+            "Confidence": 0.8859728,
+            "Language": "en"
+          },
+          {
+            "X": 635,
+            "Y": 795.6666666666666,
+            "W": 117,
+            "H": 33.33333333333337,
+            "Text": "When I did",
+            "Confidence": 0.9786028,
+            "Language": "en"
+          },
+          {
+            "X": 656.5,
+            "Y": 815.5,
+            "W": 69,
+            "H": 34.5,
+            "Text": "wut...",
+            "Confidence": 0.975011,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Forgivnnn? When I did wut...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "Forgivnn? When I did wut...",
+      "Translation": "\uC6A9\uC11C? \uB0B4\uAC00 \uBB58\n\uD588\uB2E4\uACE0...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 1010,
+        "Y": 821,
+        "W": 67,
+        "H": 58,
+        "Text": "O0",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1010,
+            "Y": 821,
+            "W": 67,
+            "H": 58,
+            "Text": "O0",
+            "Confidence": 0.3090303,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "O0",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 101.66666666666667,
+        "Y": 902.5,
+        "W": 234.66666666666663,
+        "H": 85.83333333333337,
+        "Text": "I\u0027M SO SORRY, BRUCE. I...I THOUGHT YOU UNDERSTOOD THIS MUCH.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 134,
+            "Y": 902.5,
+            "W": 167.5,
+            "H": 26.5,
+            "Text": "I\u0027M SO SORRY,",
+            "Confidence": 0.9947717,
+            "Language": "en"
+          },
+          {
+            "X": 101.66666666666667,
+            "Y": 922.6666666666666,
+            "W": 234.66666666666663,
+            "H": 26,
+            "Text": "BRUCE. I...I THOUGHT",
+            "Confidence": 0.979456,
+            "Language": "en"
+          },
+          {
+            "X": 116.66666666666667,
+            "Y": 943.3333333333334,
+            "W": 202,
+            "H": 24.333333333333258,
+            "Text": "YOU UNDERSTOOD",
+            "Confidence": 0.99747854,
+            "Language": "en"
+          },
+          {
+            "X": 157.66666666666666,
+            "Y": 961.6666666666666,
+            "W": 120.66666666666666,
+            "H": 26.666666666666742,
+            "Text": "THIS MUCH.",
+            "Confidence": 0.99710464,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027M SO SORRY,\nBRUCE. I... I THOUGHT\nYOU UNDERSTOOD\nTHIS MUCH.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "I\u0027M SO SORRY, BRUCE. I...I THOUGHT YOU UNDERSTOOD THIS MUCH.",
+      "Translation": "\uC815\uB9D0 \uBBF8\uC548\uD574, \uBE0C\uB8E8\uC2A4. \uB09C...[BR]\uB124\uAC00 \uC774 \uC815\uB3C4\uB294[BR]\uC774\uD574\uD558\uACE0 \uC788\uC744 \uC904[BR]\uC54C\uC558\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 105.66666666666667,
+        "Y": 1033.3333333333333,
+        "W": 123.66666666666667,
+        "H": 49.333333333333485,
+        "Text": "Alfrrr\u00EDd... d\u00EDd wwwut...?! al",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 105.66666666666667,
+            "Y": 1033.3333333333333,
+            "W": 123.66666666666667,
+            "H": 26.666666666666742,
+            "Text": "Alfrrr\u00EDd... d\u00EDd",
+            "Confidence": 0.9591318,
+            "Language": "en"
+          },
+          {
+            "X": 107.66666666666667,
+            "Y": 1053.6666666666667,
+            "W": 118.66666666666667,
+            "H": 29,
+            "Text": "wwwut...?!",
+            "Confidence": 0.95833623,
+            "Language": "en"
+          },
+          {
+            "X": 195.33333333333334,
+            "Y": 1055.3333333333333,
+            "W": 29,
+            "H": 10.666666666666742,
+            "Text": "al",
+            "Confidence": 0.8273541,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Alfrrrid...did www.ut...?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "Alfrrr\u00EDd...did wwwut...?!",
+      "Translation": "\uC54C\uD504\uB9AC\uB4DC... \uBC29\uAE08[BR]\uBB50 \uD55C \uAC70\uC57C...?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 974,
+        "Y": 1034,
+        "W": 336.3333333333335,
+        "H": 189.66666666666674,
+        "Text": "NONONO NNNNOOO!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1002.6666666666666,
+            "Y": 1034,
+            "W": 269.9999999999999,
+            "H": 101.66666666666674,
+            "Text": "NONONO",
+            "Confidence": 0.9566661,
+            "Language": "en"
+          },
+          {
+            "X": 974,
+            "Y": 1092.6666666666667,
+            "W": 336.3333333333335,
+            "H": 131,
+            "Text": "NNNNOOO!",
+            "Confidence": 0.89465153,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": "LRB006"
+      },
+      "CorrectedText": "NONONO\nNNNNOOO!",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC\n\uC548 \uB3FC, \uC548 \uB3FC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 342.5,
+        "Y": 1273.5,
+        "W": 31.5,
+        "H": 21.5,
+        "Text": "W",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 342.5,
+            "Y": 1273.5,
+            "W": 31.5,
+            "H": 21.5,
+            "Text": "W",
+            "Confidence": 0.60355496,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "W",
+      "Translation": "\uD718\uC775",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 111.5,
+        "Y": 1449.5,
+        "W": 72,
+        "H": 49.5,
+        "Text": "WHEN YOu...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 113.5,
+            "Y": 1449.5,
+            "W": 69.5,
+            "H": 26,
+            "Text": "WHEN",
+            "Confidence": 0.9994513,
+            "Language": "en"
+          },
+          {
+            "X": 111.5,
+            "Y": 1466,
+            "W": 72,
+            "H": 33,
+            "Text": "YOu...",
+            "Confidence": 0.89993936,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...WELL, WHEN YOU...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "...WELL, WHEN YOU...",
+      "Translation": "...\uBB50, \uB124\uAC00...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 859,
+        "Y": 1728.3333333333333,
+        "W": 39.33333333333337,
+        "H": 37.66666666666674,
+        "Text": "de",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 859,
+            "Y": 1728.3333333333333,
+            "W": 39.33333333333337,
+            "H": 37.66666666666674,
+            "Text": "de",
+            "Confidence": 0.334522,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "de",
+      "Translation": "\uC5B4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 519,
+        "Y": 1764.6666666666667,
+        "W": 162.33333333333337,
+        "H": 105,
+        "Text": "WHEN YOu KILLED YOUR PARENTS IN THAT ALLEY.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 567.6666666666667,
+            "Y": 1764.6666666666667,
+            "W": 64.33333333333326,
+            "H": 26.333333333333258,
+            "Text": "WHEN",
+            "Confidence": 0.9998929,
+            "Language": "en"
+          },
+          {
+            "X": 535.6666666666666,
+            "Y": 1785.6666666666667,
+            "W": 129,
+            "H": 26.333333333333258,
+            "Text": "YOu KILLED",
+            "Confidence": 0.94442654,
+            "Language": "en"
+          },
+          {
+            "X": 519,
+            "Y": 1806,
+            "W": 64,
+            "H": 24,
+            "Text": "YOUR",
+            "Confidence": 0.99831635,
+            "Language": "en"
+          },
+          {
+            "X": 581.6666666666666,
+            "Y": 1806,
+            "W": 99.66666666666674,
+            "H": 23.666666666666742,
+            "Text": "PARENTS",
+            "Confidence": 0.9995956,
+            "Language": "en"
+          },
+          {
+            "X": 559.6666666666666,
+            "Y": 1825.6666666666667,
+            "W": 79.66666666666663,
+            "H": 24.333333333333258,
+            "Text": "IN THAT",
+            "Confidence": 0.99096173,
+            "Language": "en"
+          },
+          {
+            "X": 567.3333333333334,
+            "Y": 1844.6666666666667,
+            "W": 65.66666666666663,
+            "H": 25,
+            "Text": "ALLEY.",
+            "Confidence": 0.993175,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHEN YOU KILLED YOUR PARENTS IN THAT ALLEY.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "WHEN YOU KILLED YOUR PARENTS IN THAT ALLEY.",
+      "Translation": "\uB124\uAC00 \uADF8 \uACE8\uBAA9\uC5D0\uC11C\n\uBD80\uBAA8\uB2D8\uC744\n\uC8FD\uC600\uC744 \uB54C \uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

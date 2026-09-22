@@ -1,0 +1,672 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-v2",
+  "SourceFile": "page028.jpg",
+  "VerifierAvailable": true,
+  "VerifierMode": "cleaned_rtdetr_plus_erase_evidence",
+  "OriginalDetectedBubbleCount": 15,
+  "SelectedTargetCount": 14,
+  "ResidualTextDetectionCount": 1,
+  "DetectorOnlyFalsePositiveRescueCount": 1,
+  "EraseTargetBubbleCount": 14,
+  "EmptyVerifiedBubbleCount": 14,
+  "BubbleCheckpointPass": true,
+  "EraseTargetBubbleIds": [
+    "RG001",
+    "RG003",
+    "RG005",
+    "RG007",
+    "RG011",
+    "RG012",
+    "RG015",
+    "RG017",
+    "RG019",
+    "RG021",
+    "RG023",
+    "RG025",
+    "RG027",
+    "RG029"
+  ],
+  "EmptyVerifiedBubbleIds": [
+    "RG001",
+    "RG003",
+    "RG005",
+    "RG007",
+    "RG011",
+    "RG012",
+    "RG015",
+    "RG017",
+    "RG019",
+    "RG021",
+    "RG023",
+    "RG025",
+    "RG027",
+    "RG029"
+  ],
+  "CheckpointMissingBubbleIds": [],
+  "EraseTargetTextFreeCount": 0,
+  "EmptyVerifiedTextFreeCount": 0,
+  "TextFreeCheckpointPass": true,
+  "OverallPass": true,
+  "LegacyReviewerDisagreements": 0,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "OriginalBounds": {
+        "Top": 45,
+        "Bottom": 235,
+        "Left": 64,
+        "Right": 404,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 22674,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG004",
+      "OriginalBounds": {
+        "Top": 195,
+        "Bottom": 225,
+        "Left": 400,
+        "Right": 504,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 938,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG006",
+      "OriginalBounds": {
+        "Top": 262,
+        "Bottom": 412,
+        "Left": 255,
+        "Right": 487,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 11543,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG008",
+      "OriginalBounds": {
+        "Top": 304,
+        "Bottom": 350,
+        "Left": 970,
+        "Right": 1065,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 1638,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG013",
+      "OriginalBounds": {
+        "Top": 601,
+        "Bottom": 684,
+        "Left": 94,
+        "Right": 217,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 2358,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG014",
+      "OriginalBounds": {
+        "Top": 609,
+        "Bottom": 677,
+        "Left": 275,
+        "Right": 402,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 2280,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG016",
+      "OriginalBounds": {
+        "Top": 659,
+        "Bottom": 769,
+        "Left": 924,
+        "Right": 1144,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 8440,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG018",
+      "OriginalBounds": {
+        "Top": 797,
+        "Bottom": 904,
+        "Left": 885,
+        "Right": 1249,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 14185,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG020",
+      "OriginalBounds": {
+        "Top": 953,
+        "Bottom": 1041,
+        "Left": 741,
+        "Right": 913,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 5400,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG022",
+      "OriginalBounds": {
+        "Top": 1067,
+        "Bottom": 1196,
+        "Left": 656,
+        "Right": 838,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 7378,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG024",
+      "OriginalBounds": {
+        "Top": 1218,
+        "Bottom": 1327,
+        "Left": 680,
+        "Right": 822,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 3959,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG026",
+      "OriginalBounds": {
+        "Top": 1606,
+        "Bottom": 1645,
+        "Left": 225,
+        "Right": 371,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE",
+      "ResidualRegionIds": [
+        "RG002"
+      ],
+      "MaxResidualScore": 0.77567005,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": true,
+      "LegacyInitialMaskPixels": 260,
+      "LegacySelectedResidualPixels": 6,
+      "LegacyResidualRatio": 0.023076923076923078,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG028",
+      "OriginalBounds": {
+        "Top": 1704,
+        "Bottom": 1775,
+        "Left": 350,
+        "Right": 515,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 3586,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG030",
+      "OriginalBounds": {
+        "Top": 1872,
+        "Bottom": 1943,
+        "Left": 1085,
+        "Right": 1249,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 3117,
+      "LegacySelectedResidualPixels": 628,
+      "LegacyResidualRatio": 0.20147577799165864,
+      "LegacyPersistentGlyphPixels": 0
+    }
+  ],
+  "Checkpoints": [
+    {
+      "CheckpointId": "RG001",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 33,
+        "Bottom": 245,
+        "Left": 46,
+        "Right": 427,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG003",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 176,
+        "Bottom": 245,
+        "Left": 386,
+        "Right": 523,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG005",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 248,
+        "Bottom": 430,
+        "Left": 235,
+        "Right": 509,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG007",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 285,
+        "Bottom": 373,
+        "Left": 949,
+        "Right": 1083,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG011",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 590,
+        "Bottom": 700,
+        "Left": 81,
+        "Right": 232,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG013"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG012",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 593,
+        "Bottom": 694,
+        "Left": 258,
+        "Right": 419,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG015",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 641,
+        "Bottom": 789,
+        "Left": 909,
+        "Right": 1160,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG016"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG017",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 787,
+        "Bottom": 909,
+        "Left": 878,
+        "Right": 1255,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG018"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG019",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 936,
+        "Bottom": 1057,
+        "Left": 724,
+        "Right": 931,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG020"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG021",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1055,
+        "Bottom": 1214,
+        "Left": 639,
+        "Right": 857,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG022"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG023",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1213,
+        "Bottom": 1339,
+        "Left": 665,
+        "Right": 839,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG024"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG025",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1597,
+        "Bottom": 1658,
+        "Left": 218,
+        "Right": 382,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG026"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG027",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1692,
+        "Bottom": 1787,
+        "Left": 340,
+        "Right": 524,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG028"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG029",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1857,
+        "Bottom": 1958,
+        "Left": 1070,
+        "Right": 1271,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG030"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    }
+  ],
+  "ResidualDetections": [
+    {
+      "RegionId": "RG002",
+      "Kind": 1,
+      "Bounds": {
+        "X": 223,
+        "Y": 1604,
+        "Width": 148,
+        "Height": 43
+      },
+      "Score": 0.77567005
+    }
+  ]
+}
