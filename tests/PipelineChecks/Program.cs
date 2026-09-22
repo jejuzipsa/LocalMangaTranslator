@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using LocalMangaTranslator.Models;
@@ -57,6 +58,30 @@ Check("V2 0037 Laya Python discovery scans standard Python 3.12 install",
         x.FileName.EndsWith(
             @"Programs\Python\Python312\python.exe",
             StringComparison.OrdinalIgnoreCase)));
+
+var layaEnvironmentProbe =
+    new ProcessStartInfo();
+LayaDecisionService.ConfigurePythonEnvironment(
+    layaEnvironmentProbe);
+
+Check("V2 0038 disables Hugging Face symlink cache on Windows",
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "HF_HUB_DISABLE_SYMLINKS",
+        out var disableSymlinks) &&
+    disableSymlinks == "1");
+
+Check("V2 0038 forces UTF-8 Python diagnostics",
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "PYTHONUTF8",
+        out var pythonUtf8) &&
+    pythonUtf8 == "1" &&
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "PYTHONIOENCODING",
+        out var pythonIoEncoding) &&
+    string.Equals(
+        pythonIoEncoding,
+        "utf-8",
+        StringComparison.OrdinalIgnoreCase));
 
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);

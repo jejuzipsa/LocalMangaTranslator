@@ -4,9 +4,12 @@ import os
 import sys
 import traceback
 
-# transformers may probe TensorFlow during import. Laya upstream recommends
-# disabling that probe when TF is present because it can deadlock model load.
+# Keep Laya startup portable on Windows. Hugging Face's default cache layout
+# uses symlinks, which require Developer Mode or elevated privileges. Force the
+# documented no-symlink cache mode so normal desktop users can load checkpoints.
 os.environ.setdefault("USE_TF", "0")
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS", "1")
+os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 
 def emit(payload):
     sys.stdout.write(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n")

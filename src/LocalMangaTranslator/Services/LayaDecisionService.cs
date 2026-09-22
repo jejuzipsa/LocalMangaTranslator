@@ -181,6 +181,25 @@ public sealed class LayaDecisionService
         return result;
     }
 
+    public static void ConfigurePythonEnvironment(
+        ProcessStartInfo start)
+    {
+        start.Environment["USE_TF"] =
+            "0";
+
+        start.Environment["HF_HUB_DISABLE_SYMLINKS"] =
+            "1";
+
+        start.Environment["HF_HUB_DISABLE_SYMLINKS_WARNING"] =
+            "1";
+
+        start.Environment["PYTHONUTF8"] =
+            "1";
+
+        start.Environment["PYTHONIOENCODING"] =
+            "utf-8";
+    }
+
     public async Task WriteShadowAuditAsync(
         string sourcePath,
         string outputDirectory,
@@ -916,8 +935,8 @@ public sealed class LayaDecisionService
                     prefixArgument);
             }
 
-            start.Environment["USE_TF"] =
-                "0";
+            ConfigurePythonEnvironment(
+                start);
 
             start.ArgumentList.Add(
                 "-u");
@@ -1534,8 +1553,8 @@ public sealed class LayaDecisionService
                     Encoding.UTF8
             };
 
-        start.Environment["USE_TF"] =
-            "0";
+        ConfigurePythonEnvironment(
+            start);
 
         foreach (string argument in arguments)
         {
