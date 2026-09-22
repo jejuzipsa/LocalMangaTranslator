@@ -522,7 +522,7 @@ INPUT:
         // sentence negation such as "I DON'T KNOW" remains protected.
         return Regex.Replace(
             source,
-            @"(?i),s*(?:doesn['’]t|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|haven['’]t|hasn['’]t|hadn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|don['’]t|didn['’]t|can['’]t)s+(?:it|he|she|they|we|you|i)",
+            @"(?i),\s*(?:doesn['’]t|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|haven['’]t|hasn['’]t|hadn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|don['’]t|didn['’]t|can['’]t)\s+(?:it|he|she|they|we|you|i)\b",
             " ",
             RegexOptions.CultureInvariant);
     }
