@@ -3823,3 +3823,80 @@ CI verification:
 - Pipeline evidence checks: success
 - Publish win-x64: success
 - artifact upload: success
+
+
+0046 - severe flat TextBubble mask undershoot recovery
+------------------------------------------------------------
+Live baseline:
+- test pic/0045
+- commit 6b997347b49bf855b11ea23ac9a61868e0cdcb27
+
+Observed page005 failure:
+- RG020 TextBubble confidence=0.9509926
+- TextBounds=290x63 (18,270 px)
+- InitialMaskPixels=356 (~1.95%)
+- GrayscaleMaskPixels=6
+- ColorRescueMaskPixels=356
+- legacy residual=0 / primary review=pass / cleaned-state=EMPTY_OK
+- independent source-linked residual=5,671 px (~31.0%)
+- 0045 classified it as AMBIGUOUS_STRUCTURE and allowed commit,
+  which restored the original failure mode: source text remained while Korean
+  typesetting was committed over it.
+
+Cross-page evidence from the 0045 11-page run:
+- page005 RG024: initial mask ~27.9%, independent residual ~9.7%
+- page011 RG004: initial mask ~31.8%, independent residual ~9.8%
+- these are broad/ambiguous independent detections with normal initial mask
+  coverage and must remain diagnostic only.
+- RG020 is the outlier: ordinary erase mask coverage is almost absent.
+
+0046 classification:
+- new disposition: MASK_UNDERSHOOT_RECOVERY
+- eligible only when all conditions hold:
+  * TextBubble detector confidence >= 0.85
+  * FLAT_FILL already accepted (runtime precondition)
+  * dominant flat-background ratio >= 0.60
+  * InitialMaskPixels / TextBounds area <= 5%
+  * independent source-linked residual / TextBounds area >= 8%
+  * independent source-linked residual / TextBounds area <= 45%
+- this is a distinct failure mode, not a relaxation of AMBIGUOUS_STRUCTURE.
+
+Behavior:
+- CLEAN: unchanged.
+- SAFE_RESIDUAL: guarded cleanup as in corrected 0044.
+- MASK_UNDERSHOOT_RECOVERY:
+  * independent residual mask is promoted to guarded FLAT_FILL recovery mask
+    inside immutable TextBounds.
+  * cleanup is followed by the same independent recheck.
+  * if residual remains, the target enters BackgroundQualityFailedTextRegionIds
+    and atomic commit is blocked.
+- AMBIGUOUS_STRUCTURE:
+  * detection remains in audit/debug.
+  * no automatic cleanup.
+  * no commit block by itself.
+
+Audit:
+- schema bumped to pipeline-v2-erase-audit-v5.
+- IndependentFlatResidualCleanup adds MaskUndershootRecoveryTargets.
+- per-target IndependentSourceLinkedDisposition can now report
+  MASK_UNDERSHOOT_RECOVERY.
+
+Regression checks:
+- page005 RG020-shaped values (5671 residual / 290x63 bounds /
+  356 initial mask / dominant=0.6967 / text score=0.951)
+  => MASK_UNDERSHOOT_RECOVERY and actionable cleanup.
+- page005 RG024-shaped normal mask case remains AMBIGUOUS_STRUCTURE.
+- page011 RG004-shaped normal mask case remains AMBIGUOUS_STRUCTURE.
+
+Code commits:
+- d6294cd720264307c2631b797177d49b5f6b0538
+  V2 0046: recover severe flat TextBubble mask undershoot
+- c157126c632d6999315d3c9561a5ed88191632dd
+  Tests 0046: cover mask undershoot recovery and normal-mask ambiguity
+
+CI verification:
+- Pipeline V2 Windows Portable run 35742158810
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+- artifact upload: success
