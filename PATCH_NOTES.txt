@@ -3374,3 +3374,149 @@ page028 RG010
 d0fa327b3a0694984d6e375a2aed31424fe9ab4e
 V2 0042: rescue detector-only cleaned-state false positives
 
+
+
+0042 실전 검증 결과
+------------------------------------------------------------
+검증 커밋:
+0e8ef3a60a60f358f8bcc5deb0a3e136f876a544
+test pic 0042
+
+결론:
+0042의 detector-only cleaned-state false-positive rescue가
+page028 RG026 "ANYTHING." 실전 결과에서 의도대로 동작했다.
+
+1. page028 RG026 rescue 성공
+- cleaned RT-DETR residual detection 자체는 그대로 1개 존재.
+- Original RG026:
+  x=225 y=1606 w=146 h=39
+- cleaned residual:
+  x=223 y=1604 w=148 h=43
+  score=0.77567005
+- DetectorOnlyFalsePositiveRescueCount=1
+- RG026:
+  EmptyVerified=true
+  Status=EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE
+  DetectorOnlyFalsePositiveRescue=true
+- source-linked erase evidence:
+  InitialMaskPixels=260
+  SelectedResidualPixels=6
+  LegacyResidualRatio=0.0230769
+  SelectedPersistentCorePixels=0
+  SelectedPersistenceRatio=0
+  PrimaryReview=pass
+  ReviewReason=primary_residual_clean
+  Status=clean_after_first_pass
+
+즉 detector가 같은 검은/어두운 구조를 TextBubble로 재검출한 기록은 보존하면서,
+실제 source glyph persistence가 없다는 erase evidence에 의해
+detector-only false positive로 정상 rescue되었다.
+
+2. RG025 checkpoint / cleaned-state 전체
+- EraseTargetBubbleCount=14
+- EmptyVerifiedBubbleCount=14
+- BubbleCheckpointPass=true
+- OverallPass=true
+- RG025 checkpoint:
+  TextRegionIds=[RG026]
+  EmptyVerified=true
+  Status=EMPTY_OK
+
+0041에서는:
+- EmptyVerifiedBubbleCount=13/14
+- BubbleCheckpointPass=false
+- OverallPass=false
+였으므로 RG026 하나만 정확히 개선되었다.
+
+3. "ANYTHING." 실제 최종 commit 성공
+Region 17:
+- SourceText="ANYTHING.
+- Translation="뭐든지."
+- Bound=true
+- TextRegionIds=[RG026]
+- BubbleRegionId=RG025
+- LayoutApproved=true
+- LegacyEraseReviewClean=true
+- CleanedStateEmpty=true
+- ReviewerDisagreement=false
+- EraseClean=true
+- Committed=true
+- Status=translated
+
+0041:
+- original_preserved:cleaned_text_redetected
+- Committed=false
+
+0042:
+- translated
+- Committed=true
+
+4. page028 전체 지표
+0041 -> 0042:
+- RenderApproved: 13 -> 14
+- RenderRejected: 1 -> 0
+- V2TranslatedUnits: 13 -> 14
+- V2PreservedOriginalUnits: 3 -> 2
+- V2EraseCommittedUnits: 13 -> 14
+- V2TypesetCommittedUnits: 13 -> 14
+- V2CleanedTextRedetectedUnits: 1 -> 0
+- CommittedTargets: 13 -> 14
+- PreservedTargets: 1 -> 0
+- EraseTypesetCountMatch=true 유지
+- MissingUnits=0 유지
+
+page028 final image SHA는 0041과 달라졌으며,
+이는 RG026 신규 erase/typeset commit에 따른 의도된 변경이다.
+
+5. RG010은 의도대로 미수정
+RG010:
+- Status=unresolved_detected_no_translation_unit
+- BoundTranslationRegionIds=[]
+- Unresolved=true
+
+따라서:
+- DetectedTextTargets=15
+- CommittedTargets=14
+- PreservedTargets=0
+- UnresolvedTargets=1
+- CoverageComplete=false
+
+0042 범위에서 제외하기로 한 RG010 문제만 그대로 남아 있다.
+
+6. 0041 대비 회귀 확인
+최종 translated image blob SHA 비교:
+
+page012
+- 0041 == 0042
+- 3d91db2b93d88d756d1ab120519af609f228f05c
+
+page014
+- 0041 == 0042
+- dce90a4c0deaec3baac264d9de1648fe387f0c8e
+
+page017
+- 0041 == 0042
+- 7146bb9fa72a3aa09b1332246a5c8097a700f028
+
+page021
+- 0041 == 0042
+- 3f1d8234c29bbe82b1e88a88ee2b6d0d80d7540a
+
+page032
+- 0041 == 0042
+- b1d5f50ad4f28f6ac6aa0be84d86373dfc520b72
+
+page028만:
+- 0041 c2f8e0bbde12312b2e0f8e43a284d69ad050166c
+- 0042 a497e9377c53f7e76f51c0fce5bbbc425f64f8c2
+
+즉 0042는 목표였던 page028 RG026만 최종 결과를 변경했고,
+나머지 5개 regression page는 binary 동일하다.
+
+7. 0042 최종 판단
+- detector-only false-positive rescue 실전 검증 성공.
+- 실제 source glyph persistence가 없는 경우에만 RT-DETR 단독 재검출을 뒤집는 구조가 정상 작동.
+- 기존 RT-DETR residual evidence는 audit에 유지됨.
+- erase/typeset atomic count invariant 유지.
+- 일반 페이지 회귀 없음.
+- 다음 별도 과제는 page028 RG010 unresolved_detected_no_translation_unit.
