@@ -3191,3 +3191,186 @@ page014 final audit의 initial page-analysis metric:
 향후 audit summary에 Advisory-added target count를 별도로 표시하면
 초기 detector count와 effective V2 target count의 차이를 더 명확히 볼 수 있다.
 
+============================================================
+0042 - Cleaned-State Detector False-Positive Rescue
+============================================================
+
+대상
+------------------------------------------------------------
+page028 RG026:
+"ANYTHING."
+
+0041 실전 결과에서 이 unit은:
+- OCR 정상
+- Baberu agreement=agree
+- CorrectedText="ANYTHING."
+- Translation="뭐든지."
+- Render=true
+- RG026 / RG025 binding 정상
+- LayoutApproved=true
+
+까지 모두 통과했지만 cleaned-state verifier에서
+RT-DETR이 같은 위치를 다시 TextBubble로 검출하여
+최종 commit이 취소됐다.
+
+0041 cleaned-state:
+- Original RG026:
+  x=225 y=1606 w=146 h=39
+  score=0.8291
+- cleaned residual detection:
+  x=223 y=1604 w=148 h=43
+  score=0.7757
+- Status=TEXT_REDETECTED
+- final status=original_preserved:cleaned_text_redetected
+
+반면 erase pipeline 자체의 source-linked evidence:
+- InitialMaskPixels=260
+- SelectedResidualPixels=6
+- SelectedResidualRatio 약 0.0231
+- SelectedPersistentCorePixels=0
+- SelectedPersistenceRatio=0
+- PrimaryReview=pass
+- Status=clean_after_first_pass
+
+즉 원래 glyph evidence는 거의 사라졌는데
+cleaned RT-DETR만 원래 TextBubble 크기와 비슷한
+검은 배경/테두리 구조를 다시 TextBubble로 보는 상황이었다.
+
+
+0042 원칙
+------------------------------------------------------------
+RT-DETR cleaned re-detection 단독으로 commit을 막지 않는다.
+
+단, 무조건 완화하지 않고 기존 erase pipeline의
+source-linked residual evidence가 매우 강하게 clean일 때만
+detector-only false-positive rescue를 허용한다.
+
+원본 immutable target geometry는 그대로 유지한다.
+
+
+Detector-only false-positive rescue 조건
+------------------------------------------------------------
+CleanedStateVerifier.CanRescueDetectorOnlyRedetection() 추가.
+
+다음 조건을 모두 만족해야 한다.
+
+1. ErasePipelineV2.IsAuditClean(audit) == true
+2. InitialMaskPixels >= 40
+3. SelectedResidualPixels <=
+   min(12, ceil(InitialMaskPixels * 0.03))
+4. SelectedPersistentCorePixels == 0
+5. SelectedPersistenceRatio <= 0.005
+6. 대상이 TextBubble이어야 함
+
+이 조건은 page028 RG026 실측:
+- 260 initial
+- 6 residual
+- 0 persistent glyph
+
+을 통과한다.
+
+의미 있는 residual이 남거나,
+source glyph persistence가 조금이라도 확인되거나,
+기존 erase reviewer가 fail이면 rescue하지 않는다.
+
+
+Cleaned-state 판정 변경
+------------------------------------------------------------
+기존:
+RT-DETR residual match 존재
+-> TEXT_REDETECTED
+-> EmptyVerified=false
+-> commit 차단
+
+0042:
+RT-DETR residual match 존재
++ detector-only rescue 조건 만족
+-> EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE
+-> EmptyVerified=true
+-> V2 commit 허용
+
+RT-DETR residual detection 자체는 audit에서 삭제하지 않는다.
+즉 검출 기록은 그대로 남기되
+"실제 원문 glyph 잔존 증거가 없음"을 별도 상태로 기록한다.
+
+
+Audit 확장
+------------------------------------------------------------
+schema:
+pipeline-v2-cleaned-state-v2
+
+VerifierMode:
+cleaned_rtdetr_plus_erase_evidence
+
+target별 추가 필드:
+- DetectorOnlyFalsePositiveRescue
+- LegacyInitialMaskPixels
+- LegacySelectedResidualPixels
+- LegacyResidualRatio
+- LegacyPersistentGlyphPixels
+
+문서 최상위 추가:
+- DetectorOnlyFalsePositiveRescueCount
+
+따라서 page028에서 RT-DETR residual detection count는
+1로 남을 수 있지만 RG026은 EmptyVerified=true가 될 수 있다.
+
+
+PipelineChecks
+------------------------------------------------------------
+0042 regression 추가:
+
+1. page028 RG026 실측과 동일한 audit:
+   - initial=260
+   - residual=6
+   - persistent=0
+   - clean_after_first_pass
+   -> detector-only rescue 허용
+
+2. residual=20
+   -> rescue 거부
+
+3. persistent source glyph=2 / ratio=0.01
+   -> rescue 거부
+
+4. legacy erase status=review_required
+   -> rescue 거부
+
+
+0042에서 하지 않는 것
+------------------------------------------------------------
+- RT-DETR cleaned verifier 제거하지 않음.
+- detector score threshold를 전역으로 낮추거나 무시하지 않음.
+- source-linked erase reviewer fail을 override하지 않음.
+- persistent glyph가 남은 경우 통과시키지 않음.
+- page028 RG010 unresolved_detected_no_translation_unit 문제는 별도 유지.
+- Laya detector Advisory 규칙 변경 없음.
+
+
+0042 재검증
+------------------------------------------------------------
+같은 6페이지 테스트 권장.
+
+핵심 기대:
+page028 RG026
+- ResidualDetections에는 RT-DETR box가 남아도 됨.
+- DetectorOnlyFalsePositiveRescue=true 기대.
+- Status=EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE 기대.
+- RG025 checkpoint EmptyVerified=true 기대.
+- Region 17 ANYTHING translation committed 기대.
+- "뭐든지." 최종 typeset 기대.
+- V2CleanedTextRedetectedUnits 1 -> 0 기대.
+
+page028 RG010
+- unresolved_detected_no_translation_unit는 이번 패치 대상이 아니므로
+  그대로 남을 수 있음.
+
+나머지 regression pages
+- 0041 결과 유지 확인.
+
+
+관련 커밋
+------------------------------------------------------------
+d0fa327b3a0694984d6e375a2aed31424fe9ab4e
+V2 0042: rescue detector-only cleaned-state false positives
+
