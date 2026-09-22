@@ -3665,3 +3665,96 @@ Pipeline V2 Windows Portable:
   PipelineChecks
 - ac2321186aaf08c9b950a9816d9bc2be801c2bf6
   final question-tag regex escaping fix
+
+
+0044 - independent flat-background residual verifier
+------------------------------------------------------------
+기준 실전 결과:
+- test pic/0043
+- commit 396adecb73fe508d9b36f5badd0c907c932288f9
+
+문제:
+- page005 RG008은 0043에서 retry가 실제 실행되어
+  SelectedResidualPixels 417 -> 10까지 감소했다.
+- status=clean_after_retry
+- cleaned-state verifier도 OverallPass=true
+- 그러나 실제 결과 이미지에서는 원문 일부가 남아 한국어와 겹쳤다.
+- 즉 기존 검수기가 erase mask / residual mask가 놓친 source glyph fragment를
+  스스로 다시 발견하지 못하는 blind spot이 남아 있었다.
+
+0044 방향:
+- erase 강도를 무작정 올리지 않는다.
+- 기존 0033 chromatic cleanup 뒤에
+  "mask-independent flat residual verification" 단계를 추가한다.
+- immutable RT-DETR TextBubble + FLAT_FILL target에만 적용한다.
+- 기존 erase/glyph mask는 독립 검수의 입력 근거로 사용하지 않는다.
+- 대신 다음 4가지 증거를 직접 비교한다.
+  1. source image
+  2. cleaned image
+  3. immutable TextBounds
+  4. BackgroundReconstructionV2가 이미 산출한 flat background color
+
+판정:
+- source pixel이 flat background에서 충분히 멀고
+- cleaned pixel도 여전히 flat background에서 충분히 멀며
+- cleaned pixel이 source pixel과 거의 같은 색으로 남아 있으면
+  source-linked residual 후보로 본다.
+- 긴 bubble border / panel rule 같은 구조가 지워지지 않도록
+  TextBounds 대부분을 가로지르는 큰 connected component는 seed에서 제외한다.
+- cleanup은 TextBounds 밖으로 절대 나가지 않는다.
+
+cleanup:
+- 안전 범위 안의 source-linked residual만
+  저장된 FLAT_FILL background color로 다시 복원한다.
+- cleanup 후 같은 독립 검사를 다시 실행한다.
+- 독립 residual이 남으면 해당 TextRegionId를
+  BackgroundQualityFailedTextRegionIds에 포함시켜 atomic commit을 차단한다.
+- 즉 새 검수까지 실패하면 한국어를 겹쳐 쓰지 않고 원본 보존으로 돌아간다.
+
+새 debug:
+- *.v2_03e_independent_flat_residual.webp
+- *.v2_03f_independent_flat_cleanup_mask.webp
+
+audit:
+- schema: pipeline-v2-erase-audit-v3
+- IndependentFlatResidualCleanup
+  * AppliedTargets
+  * ResidualBeforePixels
+  * CleanupMaskPixels
+  * ResidualAfterPixels
+  * FailedTargetIds
+- background item별:
+  * IndependentSourceLinkedResidualBeforePixels
+  * IndependentSourceLinkedCleanupApplied
+  * IndependentSourceLinkedCleanupPixels
+  * IndependentSourceLinkedResidualAfterPixels
+  * IndependentSourceLinkedResidualPass
+
+PipelineChecks:
+- 기존 erase mask가 놓친 검은 source glyph fragment를 독립 검수가 잡는지 확인.
+- TextBounds 대부분을 가로지르는 긴 구조는 cleanup seed로 사용하지 않는지 확인.
+- cleanup 후 source-linked residual이 0이 되는지 확인.
+- geometry safety ceiling을 넘는 과도한 cleanup은 거부하는지 확인.
+
+관련 commits:
+- a287e4054576ad2675af9d97cfa0680201805614
+  V2 0044 independent flat residual verifier
+- 00227121b0a1a664abe6ed5f5daaba1357962638
+  PipelineChecks
+
+
+0044 CI verification
+------------------------------------------------------------
+Final code head:
+- 4313490d15ff2ee2cce2d1b31ef5b7e97cb2004b
+
+Pipeline V2 Windows Portable:
+- run 35735018814
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+
+Notes:
+- initial 0044 CI failed because the new verifier referenced a nonexistent ClampRect helper.
+- replaced it with explicit image-bound clamping.
+- no algorithmic rollback was required.
