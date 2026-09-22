@@ -1922,6 +1922,42 @@ try
         mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
         mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
 
+    var wrongLegacyOwnerBlock =
+        new OcrTextBlock(
+            2036,
+            242,
+            76,
+            120,
+            46,
+            "RIGHT BALLOON",
+            2,
+            "en",
+            [
+                new OcrLine(
+                    246,
+                    82,
+                    108,
+                    28,
+                    "RIGHT BALLOON",
+                    0.99f,
+                    "en")
+            ])
+        {
+            // Simulate the 0034 regression: legacy candidate/RegionId points
+            // at the left Bubble even though OCR geometry is inside the right
+            // immutable TextBubble.
+            RegionId = "VB-A"
+        };
+
+    var resolvedDetectorText =
+        OcrPipelineService.ResolveDetectorTextRegionForBlock(
+            wrongLegacyOwnerBlock,
+            [bubbleA, textA, bubbleB, textB]);
+
+    Check("V2 0035 detector TextRegion overrides wrong legacy Bubble ownership",
+        resolvedDetectorText is not null &&
+        resolvedDetectorText.RegionId == "VT-B");
+
     var detectorOwnedCandidate =
         new ContainerCandidate(
             "PC-0034",
@@ -1978,6 +2014,22 @@ try
             {
                 Type = "logo"
             }));
+
+    var renderDroppedWithoutDirectTextLink =
+        renderDroppedDialogue with
+        {
+            Source =
+                renderDroppedDialogue.Source with
+                {
+                    RegionId = "VB-A",
+                    RegionTextRegion = null
+                }
+        };
+
+    Check("V2 0035 recovers Render=false from unique TextBubble under parent Bubble",
+        PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedWithoutDirectTextLink,
+            [bubbleA, textA, bubbleB, textB]));
 
     // 0034 regression: a broad orphan OCR block can overlap a normal
     // TextBubble and nearby free-standing stylized text. Geometry fallback may
@@ -2155,14 +2207,16 @@ try
             freeSnapshot,
             [freeTranslation]);
 
-    Check("V2 selector binds approved free text without inventing a Bubble",
-        freeSelection.Bindings.TryGetValue(
+    Check("V2 0035 preserves TextFree captions as original artwork",
+        !freeSelection.Bindings.ContainsKey(2002) &&
+        freeSelection.PreservationReasons.TryGetValue(
             2002,
-            out var freeBinding) &&
-        freeBinding.TextRegionIds.SequenceEqual(["VT-FREE"]) &&
-        freeBinding.BubbleRegionId is null &&
-        freeBinding.LayoutMode == "rtdetr_textfree" &&
-        freeBinding.LayoutBounds == freeTextRegion.Bounds);
+            out var freeReason) &&
+        freeReason == "textfree_original" &&
+        freeSelection.PreservationTargetReasons.TryGetValue(
+            "VT-FREE",
+            out var freeTargetReason) &&
+        freeTargetReason == "textfree_original");
 
     var stylizedTranslation =
         new VisionTranslation(
@@ -2203,9 +2257,12 @@ try
             freeSnapshot,
             [ordinaryUppercaseTranslation]);
 
-    Check("V2 selector does not misclassify long uppercase TextFree dialogue as graphic",
-        ordinaryUppercaseSelection.Bindings.ContainsKey(2005) &&
-        !ordinaryUppercaseSelection.PreservationReasons.ContainsKey(2005));
+    Check("V2 0035 preserves long uppercase TextFree lettering",
+        !ordinaryUppercaseSelection.Bindings.ContainsKey(2005) &&
+        ordinaryUppercaseSelection.PreservationReasons.TryGetValue(
+            2005,
+            out var uppercaseFreeReason) &&
+        uppercaseFreeReason == "textfree_original");
 
     var shortCaptionTranslation =
         new VisionTranslation(
@@ -2221,9 +2278,12 @@ try
             freeSnapshot,
             [shortCaptionTranslation]);
 
-    Check("V2 selector still translates short TextFree captions",
-        shortCaptionSelection.Bindings.ContainsKey(2004) &&
-        !shortCaptionSelection.PreservationReasons.ContainsKey(2004));
+    Check("V2 0035 preserves short TextFree captions instead of erasing artwork",
+        !shortCaptionSelection.Bindings.ContainsKey(2004) &&
+        shortCaptionSelection.PreservationReasons.TryGetValue(
+            2004,
+            out var shortFreeReason) &&
+        shortFreeReason == "textfree_original");
 
     var v2MainResult =
         new ErasePipelineV2().Run(
