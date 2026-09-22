@@ -1289,3 +1289,306 @@ physical text ownership과 coverage의 안정화다.
 3. target coverage 결과에서 unresolved target이 반복되면
 detector-owned targeted OCR rescue를 다음 단계로 검토.
 
+
+
+============================================================
+0035 - Detector TextRegion Ownership Authority
+============================================================
+
+배경
+------------------------------------------------------------
+0034 실전 재검증은 page012 / page017 / page021 / page028 / page032 5장을 사용했다.
+
+0034 결과에서 확인된 개선:
+- page012의 작은 "Nononono... no..."가 TextFree "LET ME OUTTT!"와 분리되어 정상 번역/commit.
+- page032의 정확한 "AMI RIGHT?" 후보가 weak "1 La" 후보에 의해 제거되지 않고 정상 commit.
+- 신규 v2_target_coverage_audit.json이 기존 MissingUnits=0 blind spot을 실제로 드러냄.
+
+그러나 다음 문제가 남았다.
+
+page017:
+- "COME ON, COME ON."은 정상 commit.
+- 오른쪽 "IT HAS TO BE HERE SOMEWHERE, BRUCE..."는 원문 보존.
+- commit reason = container_duplicate_after_v2_candidate_arbitration.
+- target coverage:
+  RG007 TextBubble <- translation Region 2, Region 4가 같이 몰림.
+  RG008 TextBubble -> unresolved_detected_unbound_translation.
+- translation Region 4 geometry는 실제 RG008 내부에 있는데 Source.RegionId가
+  왼쪽 Bubble RG005로 잘못 기록됨.
+
+page028:
+- "I'LL TELL YOU IF YOU WANT..."는 정상 commit.
+- 아래 "SO FIRST... A FAVOR? FOR AN OLD MAN?"은 원문 보존.
+- target coverage:
+  RG022 TextBubble <- Region 13, Region 16이 같이 몰림.
+  실제 아래 RG024 TextBubble -> unresolved_detected_unbound_translation.
+- Region 16 geometry는 RG024 내부인데 Source.RegionId가 앞 Bubble RG021로 잘못 기록됨.
+
+page021:
+- "I DON'T KNOW ANYMORE. I DON'T--"는 OCR A와 Baberu 모두 존재.
+- detector Bubble RG013 / TextBubble RG014 존재.
+- Vision result = Type dialogue, Render=false, Translation="".
+- target coverage = preserved_render_false:dialogue.
+- 0034 recovery는 runtime RegionTextRegion 직접 링크를 요구해서 이 unit을 살리지 못함.
+
+page012 TextFree:
+- 시각 결과는 원하는 대로 "LET ME OUTTT!" 원본 보존.
+- 하지만 coverage에서는 RG003 TextFree가
+  unresolved_detected_unbound_translation으로 표시.
+- 사용자 정책은 SFX/effect/decorative TextFree는 번역/erase하지 않고 원본 보존이므로
+  unresolved가 아니라 명시적 preserved policy가 되어야 함.
+
+
+0035 핵심 원인
+------------------------------------------------------------
+0034는 "서로 다른 detector owner를 한 commit unit에 묶지 않는다"는
+downstream boundary를 추가했지만,
+upstream AttachRegionContainers가 여전히 legacy CandidateId를 먼저 신뢰했다.
+
+기존 순서:
+OCR unit
+-> legacy CandidateId
+-> candidate.RegionId
+-> candidate 영역 안에서 TextBubble 탐색
+-> RegionId / RegionTextRegion 부여
+
+문제:
+legacy page candidate가 인접한 두 말풍선을 넓게 포괄하거나
+OCR ownership 단계에서 이웃 candidate를 선택하면,
+실제 OCR block geometry가 다른 TextBubble 안에 있어도
+candidate가 가리키는 Bubble 안에서만 TextBubble을 찾는다.
+
+따라서 0034의 downstream duplicate arbitration에 도달하기 전에
+translation unit 자체가 잘못된 physical owner를 이미 가진 상태가 됨.
+
+
+0035 핵심 원칙
+------------------------------------------------------------
+Detector TextRegion이 ownership의 최종 authority다.
+
+새 순서:
+OCR block geometry
+-> RT-DETR TextBubble 직접 매칭
+-> TextBubble의 parent Bubble 결정
+-> 그 parent Bubble에 대응하는 candidate를 역으로 선택
+-> RegionId / RegionContainer / RegionTextRegion 갱신
+-> UnitOwnership CandidateId와 LineOwnership도 detector owner 기준으로 교정
+
+즉 ContainerCandidate는 더 이상 physical owner를 결정하지 않는다.
+candidate는 detector owner가 정해진 뒤 mask/layout/OCR evidence를 제공하는
+보조 자료로만 사용한다.
+
+
+변경 1 - detector-first OCR ownership attachment
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/OcrPipelineService.cs
+
+기존 AttachRegionContainers:
+CandidateId -> candidate.RegionId -> candidate 내부 TextBubble 탐색.
+
+0035:
+1. OCR block geometry로 모든 RT-DETR TextBubble 중 best target을 직접 선택.
+2. block coverage >= 0.45 또는 block center가 TextBubble 내부인 경우만 후보.
+3. center containment -> block coverage -> detector score 순으로 선택.
+4. 선택된 TextBubble의 parent Bubble을 detector geometry로 다시 결정.
+5. parent Bubble RegionId와 같은 candidate를 역으로 찾음.
+6. block:
+   RegionTextRegion = detector TextBubble
+   RegionId = detector parent Bubble
+   RegionContainer = detector parent Bubble candidate
+7. legacy UnitOwnership CandidateId가 다르면 detector candidate id로 교체.
+8. 해당 unit의 LineOwnership CandidateId도 동일하게 교체.
+
+이 변경으로 page017 / page028처럼
+실제 OCR geometry는 오른쪽/아래 TextBubble인데
+legacy candidate가 왼쪽/위 Bubble을 가리키는 오류를 차단한다.
+
+관련 커밋:
+27ab9af94f4fc36a8ba1c49c0f13ca9cf4765d89
+V2 0035: make detector TextRegion authoritative for OCR ownership
+
+
+변경 2 - consolidation 단계도 candidate-independent detector owner 사용
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/OcrPipelineService.cs
+
+0034 ConsolidateRegionOwnedUnits는 detector TextRegion 기준 grouping을 도입했지만,
+FindBestTextRegion 자체가 candidate 내부만 검색했다.
+
+0035:
+consolidation의 detector owner 계산도 OCR block geometry -> 전체 RT-DETR TextBubble
+직접 매칭으로 변경.
+
+따라서 잘못된 candidate 때문에 두 다른 물리 말풍선이 같은 detector owner로
+오판되는 가능성을 줄인다.
+
+
+변경 3 - orphan recovery도 detector-first
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/OcrPipelineService.cs
+
+기존:
+각 candidate를 순회하며 그 candidate 안의 TextBubble을 찾고 후보 경쟁.
+
+0035:
+1. OCR block geometry에서 detector TextBubble을 먼저 직접 선택.
+2. detector TextBubble의 parent Bubble을 찾음.
+3. parent Bubble에 대응하는 candidate를 역으로 찾음.
+4. 해당 candidate로 orphan ownership을 복구.
+
+candidate competition이 detector owner를 결정하지 않도록 방향을 역전.
+
+
+변경 4 - secondary OCR도 detector-authoritative Bubble에 연결
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/OcrPipelineService.cs
+
+기존 ApplySecondaryEvidence:
+UnitOwnership.CandidateId -> candidate.RegionId를 사용해 Baberu evidence를 선택.
+
+문제:
+ownership을 detector 기준으로 고쳐도 legacy candidate가 남아 있으면
+이웃 Bubble의 Baberu 문장이 다시 unit에 붙을 수 있음.
+
+0035:
+evidence region 선택 우선순위:
+1. units[i].RegionId (detector-authoritative parent Bubble)
+2. candidate.RegionId fallback
+
+목표:
+page017 오른쪽 문장에 왼쪽 "COME ON, COME ON." Baberu evidence가 붙는 문제 차단.
+
+관련 커밋:
+24e42ab4ed61f31779cfebd397c7f7467b7537a5
+V2 0035: attach secondary OCR to detector-authoritative Bubble
+
+
+변경 5 - page021 Render=false recovery 보강
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/Services/PagePipelineService.cs
+
+0034 조건:
+runtime Source.RegionTextRegion이 직접 존재해야 recovery 가능.
+
+0035:
+직접 RegionTextRegion link가 없더라도:
+- Source.RegionId가 RT-DETR Bubble과 일치하고
+- 그 Bubble 아래 detector-parent mapping 기준 TextBubble이 정확히 1개라면
+해당 TextBubble을 구조적으로 다시 연결.
+
+이후 기존 safety 조건:
+- Type = dialogue / thought / caption
+- meaningful text
+- secondary OCR evidence 또는 primary 평균 confidence >= 0.80
+을 만족하면 Render=true로 재활성화.
+
+재활성화 후에도 final translator / V2 selector / layout / erase /
+cleaned-state 검수를 모두 통과해야 commit.
+
+관련 커밋:
+542b01c54e88b7db1123437ab4b6b5d4296baf01
+V2 0035: recover unique detector TextBubble from parent Bubble
+
+
+변경 6 - TextFree/SFX 원본 보존 정책 명시
+------------------------------------------------------------
+파일:
+src/LocalMangaTranslator/PipelineV2/Erase/V2EraseSelector.cs
+
+사용자 결정:
+SFX / effect / decorative free text는 번역·삭제하지 않고 원본 artwork로 보존.
+애매한 free-standing text도 artwork 손상보다 보존 우선.
+
+0035:
+- 모든 RT-DETR TextFree target을 기본 preservation target으로 등록.
+- 기본 target reason = textfree_original.
+- translation이 TextFree에 매칭돼도 erase binding을 만들지 않음.
+- stylized heuristic이 명확하면 기존 stylized_graphic reason 유지 가능.
+- mixed fallback이 발생해도 TextFree는 제거하고 TextBubble만 erase 대상으로 진행.
+
+효과:
+page012 "LET ME OUTTT!" 같은 SFX가
+unresolved가 아니라 preserved_policy로 coverage에 기록되고,
+향후 stochastic translation result 때문에 erase 대상으로 다시 들어가는 것을 방지.
+
+관련 커밋:
+498f335932397df82d99ba46feb4f318d42c5609
+V2 0035: preserve TextFree targets as original artwork
+
+
+Regression tests
+------------------------------------------------------------
+파일:
+tests/PipelineChecks/Program.cs
+
+추가/변경:
+1. legacy RegionId가 왼쪽 Bubble을 가리켜도
+   OCR geometry가 오른쪽 TextBubble 내부이면 오른쪽 detector TextRegion을 선택.
+
+2. RegionTextRegion 직접 link가 없어도
+   parent Bubble 아래 unique TextBubble이 있으면 Render=false dialogue recovery.
+
+3. TextFree caption/dialogue/stylized lettering 모두 erase binding을 만들지 않고
+   original preservation reason을 가져야 함.
+
+4. 기존 stylized short shout는 stylized_graphic reason 유지.
+
+관련 커밋:
+c36a59fe4f5a4a2f1a39f1569815e6e384f39803
+Refactor 0035 detector text owner resolver for regression tests
+
+c98ba4a9e22c9052a433a53ff9dbc3e46ee2b122
+Tests: lock 0035 detector ownership recovery and TextFree preservation
+
+
+0035에서 의도적으로 건드리지 않은 것
+------------------------------------------------------------
+- 0033 FLAT_FILL / TELEA reconstruction
+- chromatic residual cleanup
+- CleanedStateVerifier 판정 방식
+- RT-DETR model threshold / detector scale sensitivity
+- final Korean translation style
+
+따라서 page028 "ANYTHING."의 cleaned_text_redetected는
+0035 ownership 변경 후에도 남으면 별도 erase/verifier 문제로 다룬다.
+
+page014 NONONO의 resolution/scale detector miss도 별도 문제로 유지.
+
+
+0035 우선 재검증 페이지
+------------------------------------------------------------
+page012
+- Nononono 작은 말풍선 정상 번역 유지.
+- LET ME OUTTT! TextFree는 원본 보존.
+- target coverage에서 TextFree가 preserved_policy로 기록.
+
+page017
+- COME ON / IT HAS TO BE HERE가 서로 다른 detector TextBubble owner.
+- 오른쪽 말풍선 영어가 남지 않아야 함.
+- RG008 unresolved = 0 기대.
+
+page021
+- I DON'T KNOW ANYMORE... Render=false recovery.
+- RG014 translated_committed 기대.
+
+page028
+- I'LL TELL YOU...와 SO FIRST...가 서로 다른 detector owner.
+- RG024 unresolved = 0 기대.
+- "ANYTHING." cleaned redetected는 별도 관찰.
+
+page032
+- AM I RIGHT? 0034 성공 상태 유지.
+- weak 1 La 후보가 exact candidate를 제거하지 않아야 함.
+
+
+남은 문제 / 다음 후보
+------------------------------------------------------------
+1. page014 detector scale sensitivity
+2. page028 ANYTHING cleaned_text_redetected
+3. 0035 재검증에서 target coverage unresolved가 새로 남는지 확인
+4. detector owner가 없는 genuine OCR-only dialogue 처리 정책
