@@ -3035,3 +3035,342 @@ Fix 0041 advisory geometry helpers
 9263fd4c42336c29133248fd6ba31abe48d7c556
 Harden 0041 advisory commit boundary
 
+0041 실전 검증 결과
+------------------------------------------------------------
+검증 커밋:
+f149851c888ae4bee00f5ab4e1591ea1ccc2bb59
+test pic 0041
+
+결론:
+0041의 두 핵심 목표 모두 실제 최종 결과까지 성공.
+
+1. page014 detector retry Advisory 성공
+- Laya detector_retry request: 1
+- RecoveredRequests: 1
+- AdvisoryEligibleRequests: 1
+- AppliedRequests: 1
+- MutationApplied: true
+
+NONONO NNNNOOO!:
+- TwoScaleAgreement = true
+- CrossScaleTextIoU = 0.97095
+- CrossScaleBubbleIoU = 0.65367
+- MinimumTextScore = 0.54227
+- ExistingFullPageDuplicate = false
+- AdvisoryEligible = true
+- Applied = true
+
+생성:
+- TextBubble LRT006
+  x=986 y=1033 w=317 h=184
+  score=0.61580
+- Bubble LRB006
+  x=985 y=945 w=319 h=298
+
+V2 target coverage:
+- 기존 TextBubble 7개 -> effective target 8개
+- LRT006 translated_committed
+- DetectedTextTargets=8
+- CommittedTargets=8
+- PreservedTargets=0
+- UnresolvedTargets=0
+- CoverageComplete=true
+
+V2 commit:
+- Region 6 "NONONO NNNNOOO!"
+- Translation = "안 돼, 안 돼 / 안 돼, 안 돼!"
+- Bound=true
+- LayoutApproved=true
+- EraseClean=true
+- Committed=true
+- Status=translated
+
+0040 -> 0041:
+- page014 final image SHA 변경
+- V2TranslatedUnits 7 -> 8
+- V2EraseCommittedUnits 7 -> 8
+- V2TypesetCommittedUnits 7 -> 8
+- V2UnboundUnits 2 -> 1
+
+즉 0040에서 Shadow로만 확인했던 detector miss가
+0041에서 실제 최종 번역/erase/typeset 개선으로 연결됨.
+
+
+2. page012 기존 geometry 재발견 차단 성공
+- retry 자체는 두 scale 모두 recovery
+- TwoScaleAgreement=true
+- CrossScaleTextIoU=0.96459
+- CrossScaleBubbleIoU=0.98925
+- MinimumTextScore=0.87668
+- ExistingFullPageDuplicate=true
+
+결과:
+- AdvisoryEligible=false
+- Applied=false
+- RejectReason=duplicate_existing_fullpage
+- MutationApplied=false
+
+기존 RG002 / duplicate suppression 동작 유지.
+0040과 page012 final image SHA 동일.
+
+즉 retry detector가 강하게 같은 영역을 재발견하더라도
+기존 full-page target과 중복이면 Advisory가 새 geometry를 만들지 않는다.
+
+
+3. page021 DON'T KNOW validator 수정 성공
+0040:
+- RG014 preserved_render_false:dialogue
+- 최종 Render=false
+- Shadow re-arm 후에도 validator가 다시 Render=false로 떨어뜨림.
+
+0041:
+Region 6:
+- CorrectedText = "I DON'T KNOW ANYMORE. I DON'T-"
+- Translation = "더는 모르겠어. 난 / 모른—"
+- Render=true
+
+V2 target RG014:
+- BoundTranslationRegionIds=[6]
+- Status=translated_committed
+
+coverage:
+- DetectedTextTargets=15
+- CommittedTargets=15
+- PreservedTargets=0
+- UnresolvedTargets=0
+- CoverageComplete=true
+
+0040 -> 0041:
+- V2TranslatedUnits 14 -> 15
+- V2EraseCommittedUnits 14 -> 15
+- V2TypesetCommittedUnits 14 -> 15
+- page021 final image SHA 변경
+
+0041에서는 post_translation_final render_recovery decision 자체가 0건.
+의미:
+validator fix 덕분에 해당 unit이 정상 translation path에서 살아남아
+Laya recovery probe가 필요 없어짐.
+
+
+4. 회귀 확인
+0040 -> 0041 final image SHA:
+- page012 동일
+- page014 변경 (의도된 신규 detector recovery)
+- page017 동일
+- page021 변경 (의도된 validator fix)
+- page028 동일
+- page032 동일
+
+즉 의도된 두 페이지만 최종 출력이 변경되고
+나머지 4개 regression page는 binary 동일.
+
+
+5. 남은 기존 문제
+page028:
+- RG010 unresolved_detected_no_translation_unit 유지
+- RG026 preserved_cleaned_state_or_background_quality 유지
+- V2CleanedTextRedetectedUnits=1
+- V2UnboundUnits=1
+- CoverageComplete=false
+
+0041 detector Advisory / negation validator 작업과는 독립 문제.
+
+
+6. 진단 로그 주의점
+page014 final audit의 initial page-analysis metric:
+- RegionCount=14
+- TextRegionCount=7
+
+은 Advisory 이전 full-page RT-DETR 결과를 표시한다.
+
+실제 effective V2 target coverage에는:
+- LRT006 추가
+- DetectedTextTargets=8
+
+이므로 기능상 문제는 아니지만,
+향후 audit summary에 Advisory-added target count를 별도로 표시하면
+초기 detector count와 effective V2 target count의 차이를 더 명확히 볼 수 있다.
+
+============================================================
+0042 - Cleaned-State Detector False-Positive Rescue
+============================================================
+
+대상
+------------------------------------------------------------
+page028 RG026:
+"ANYTHING."
+
+0041 실전 결과에서 이 unit은:
+- OCR 정상
+- Baberu agreement=agree
+- CorrectedText="ANYTHING."
+- Translation="뭐든지."
+- Render=true
+- RG026 / RG025 binding 정상
+- LayoutApproved=true
+
+까지 모두 통과했지만 cleaned-state verifier에서
+RT-DETR이 같은 위치를 다시 TextBubble로 검출하여
+최종 commit이 취소됐다.
+
+0041 cleaned-state:
+- Original RG026:
+  x=225 y=1606 w=146 h=39
+  score=0.8291
+- cleaned residual detection:
+  x=223 y=1604 w=148 h=43
+  score=0.7757
+- Status=TEXT_REDETECTED
+- final status=original_preserved:cleaned_text_redetected
+
+반면 erase pipeline 자체의 source-linked evidence:
+- InitialMaskPixels=260
+- SelectedResidualPixels=6
+- SelectedResidualRatio 약 0.0231
+- SelectedPersistentCorePixels=0
+- SelectedPersistenceRatio=0
+- PrimaryReview=pass
+- Status=clean_after_first_pass
+
+즉 원래 glyph evidence는 거의 사라졌는데
+cleaned RT-DETR만 원래 TextBubble 크기와 비슷한
+검은 배경/테두리 구조를 다시 TextBubble로 보는 상황이었다.
+
+
+0042 원칙
+------------------------------------------------------------
+RT-DETR cleaned re-detection 단독으로 commit을 막지 않는다.
+
+단, 무조건 완화하지 않고 기존 erase pipeline의
+source-linked residual evidence가 매우 강하게 clean일 때만
+detector-only false-positive rescue를 허용한다.
+
+원본 immutable target geometry는 그대로 유지한다.
+
+
+Detector-only false-positive rescue 조건
+------------------------------------------------------------
+CleanedStateVerifier.CanRescueDetectorOnlyRedetection() 추가.
+
+다음 조건을 모두 만족해야 한다.
+
+1. ErasePipelineV2.IsAuditClean(audit) == true
+2. InitialMaskPixels >= 40
+3. SelectedResidualPixels <=
+   min(12, ceil(InitialMaskPixels * 0.03))
+4. SelectedPersistentCorePixels == 0
+5. SelectedPersistenceRatio <= 0.005
+6. 대상이 TextBubble이어야 함
+
+이 조건은 page028 RG026 실측:
+- 260 initial
+- 6 residual
+- 0 persistent glyph
+
+을 통과한다.
+
+의미 있는 residual이 남거나,
+source glyph persistence가 조금이라도 확인되거나,
+기존 erase reviewer가 fail이면 rescue하지 않는다.
+
+
+Cleaned-state 판정 변경
+------------------------------------------------------------
+기존:
+RT-DETR residual match 존재
+-> TEXT_REDETECTED
+-> EmptyVerified=false
+-> commit 차단
+
+0042:
+RT-DETR residual match 존재
++ detector-only rescue 조건 만족
+-> EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE
+-> EmptyVerified=true
+-> V2 commit 허용
+
+RT-DETR residual detection 자체는 audit에서 삭제하지 않는다.
+즉 검출 기록은 그대로 남기되
+"실제 원문 glyph 잔존 증거가 없음"을 별도 상태로 기록한다.
+
+
+Audit 확장
+------------------------------------------------------------
+schema:
+pipeline-v2-cleaned-state-v2
+
+VerifierMode:
+cleaned_rtdetr_plus_erase_evidence
+
+target별 추가 필드:
+- DetectorOnlyFalsePositiveRescue
+- LegacyInitialMaskPixels
+- LegacySelectedResidualPixels
+- LegacyResidualRatio
+- LegacyPersistentGlyphPixels
+
+문서 최상위 추가:
+- DetectorOnlyFalsePositiveRescueCount
+
+따라서 page028에서 RT-DETR residual detection count는
+1로 남을 수 있지만 RG026은 EmptyVerified=true가 될 수 있다.
+
+
+PipelineChecks
+------------------------------------------------------------
+0042 regression 추가:
+
+1. page028 RG026 실측과 동일한 audit:
+   - initial=260
+   - residual=6
+   - persistent=0
+   - clean_after_first_pass
+   -> detector-only rescue 허용
+
+2. residual=20
+   -> rescue 거부
+
+3. persistent source glyph=2 / ratio=0.01
+   -> rescue 거부
+
+4. legacy erase status=review_required
+   -> rescue 거부
+
+
+0042에서 하지 않는 것
+------------------------------------------------------------
+- RT-DETR cleaned verifier 제거하지 않음.
+- detector score threshold를 전역으로 낮추거나 무시하지 않음.
+- source-linked erase reviewer fail을 override하지 않음.
+- persistent glyph가 남은 경우 통과시키지 않음.
+- page028 RG010 unresolved_detected_no_translation_unit 문제는 별도 유지.
+- Laya detector Advisory 규칙 변경 없음.
+
+
+0042 재검증
+------------------------------------------------------------
+같은 6페이지 테스트 권장.
+
+핵심 기대:
+page028 RG026
+- ResidualDetections에는 RT-DETR box가 남아도 됨.
+- DetectorOnlyFalsePositiveRescue=true 기대.
+- Status=EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE 기대.
+- RG025 checkpoint EmptyVerified=true 기대.
+- Region 17 ANYTHING translation committed 기대.
+- "뭐든지." 최종 typeset 기대.
+- V2CleanedTextRedetectedUnits 1 -> 0 기대.
+
+page028 RG010
+- unresolved_detected_no_translation_unit는 이번 패치 대상이 아니므로
+  그대로 남을 수 있음.
+
+나머지 regression pages
+- 0041 결과 유지 확인.
+
+
+관련 커밋
+------------------------------------------------------------
+d0fa327b3a0694984d6e375a2aed31424fe9ab4e
+V2 0042: rescue detector-only cleaned-state false positives
+
