@@ -582,7 +582,7 @@ public partial class MainWindow : System.Windows.Window
         StopButton.IsEnabled = true;
         InstallModelButton.IsEnabled = false;
 
-        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | Baberu: {pipelineOptions.EnableBaberuOcr} | 영역 OCR 진단: {pipelineOptions.EnableTargetedRegionOcr} | 완료검토: {pipelineOptions.EnableFinalAudit} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
+        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | Baberu: {pipelineOptions.EnableBaberuOcr} | 영역 OCR 진단: {pipelineOptions.EnableTargetedRegionOcr} | 완료검토: {pipelineOptions.EnableFinalAudit} | 판단트랙: {pipelineOptions.DecisionTrack}/{pipelineOptions.LayaMode} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
 
         try
         {
