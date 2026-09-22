@@ -1893,3 +1893,207 @@ Docs 0036: add Laya third-party notice
 
 951a85067112a7bf643f20b1791ad29a55f20e1c
 Tests: lock 0036 Laya shadow track defaults
+
+============================================================
+0037 - Laya Runtime Bootstrap / Model Check Preflight
+============================================================
+
+배경
+------------------------------------------------------------
+0036 첫 실전 회귀 테스트(page012/014/017/021/028/032)에서
+최종 이미지 결과는 0035와 동일 계열이었으나,
+Laya shadow log는 전 페이지에서 실제 inference를 한 번도 수행하지 못했다.
+
+0036 test output:
+- page012/014/017/021/028/032 모두
+  Available = false
+  Runtime = null
+  TotalDecisions = 0
+- 공통 오류:
+  Windows에서 'python' 실행 파일을 찾지 못함.
+- 따라서 당시 빠른 처리 속도는 Laya inference가 추가된 결과가 아니라
+  Laya bootstrap이 즉시 실패하여 Classic-only로 처리된 결과였다.
+- 0035 대비 0036 출력 파일은 줄지 않았고,
+  기존 파일 누락 0개 + Laya decision/summary 12개가 추가된 상태였다.
+
+0037 목표
+------------------------------------------------------------
+사용자가 Python/Laya를 별도로 수동 설치하지 않아도
+[선택 모델 확인/설치] 단계에서 LayaExperimental Shadow Track까지
+미리 준비할 수 있도록 Windows runtime bootstrap을 보강한다.
+
+핵심 원칙은 그대로 유지한다.
+- Laya는 Shadow에서 Classic 결과를 override하지 않는다.
+- Laya bootstrap 실패가 번역/erase/typeset Classic 결과를 실패시키지 않는다.
+- geometry 생성 권한은 여전히 없다.
+
+
+Python runtime discovery
+------------------------------------------------------------
+기존:
+- LMT_LAYA_PYTHON 또는 고정 명령 'python'만 사용.
+
+0037:
+다음 후보를 순서대로 probe한다.
+
+1. LMT_LAYA_PYTHON
+2. python
+3. py -3
+4. python3
+5. LocalAppData 표준 설치 경로
+   - Python313
+   - Python312
+   - Python311
+   - Python310
+6. Program Files 표준 설치 경로
+   - Python313
+   - Python312
+   - Python311
+   - Python310
+
+각 후보는 실제 Python code를 실행해
+Python >= 3.10인지 확인한 뒤에만 선택한다.
+
+Laya 0.3.5 upstream package metadata 기준:
+- requires-python >= 3.10
+- Python 3.10 / 3.11 / 3.12 / 3.13 지원 표기.
+
+선택한 runtime은 프로세스 수명 동안 cache하여 재사용한다.
+
+
+Laya package version pin
+------------------------------------------------------------
+0036은 import laya가 성공하면 설치된 버전을 그대로 사용했다.
+
+0037은 import 성공 여부뿐 아니라
+__version__ == 0.3.5인지 확인한다.
+
+다른 버전이 설치되어 있거나 import가 실패하면:
+pip install laya==0.3.5
+
+를 실행하여 실험 버전을 고정한다.
+
+
+선택 모델 확인/설치 연동
+------------------------------------------------------------
+MainWindow의 [선택 모델 확인/설치] 흐름에
+Laya preflight를 추가했다.
+
+순서:
+1. Ollama / 선택 Vision·번역 모델 확인 및 설치
+2. RT-DETR 확인/설치
+3. Baberu 확인/설치
+4. Laya Python runtime 확인
+5. laya==0.3.5 확인/설치
+6. typed-decisions checkpoint 로드
+7. worker ready 확인
+
+Python 3.10+ runtime을 찾지 못하면
+Python 3.12 자동 설치 여부를 묻는다.
+
+사용자가 동의하면 winget:
+Python.Python.3.12
+
+를 설치한 뒤 Laya 준비를 다시 시도한다.
+
+사용자가 Python 설치를 취소해도
+Classic pipeline 자체는 계속 사용할 수 있다.
+
+
+Persistent worker 재사용
+------------------------------------------------------------
+0036에서는 PagePipelineService 내부에서
+LayaDecisionService를 자체 생성했다.
+
+이 구조에서는 모델 확인 단계에서 별도 Laya instance를 준비해도
+실제 페이지 처리 시 다른 instance가 checkpoint를 다시 로드할 수 있다.
+
+0037:
+- MainWindow가 LayaDecisionService 한 개를 소유.
+- 같은 instance를 PagePipelineService에 주입.
+- [선택 모델 확인/설치]에서 준비한 worker를
+  실제 page012/... 처리에서도 그대로 재사용.
+
+따라서 checkpoint를 model-check에서 한 번 로드한 뒤
+페이지마다 다시 로드하지 않는다.
+
+
+TensorFlow import deadlock 방어
+------------------------------------------------------------
+Laya upstream은 transformers가 TensorFlow를 probe하는 환경에서
+model construction이 멈출 수 있으며 USE_TF=0 사용을 권장한다.
+
+0037:
+- Python package/version probe subprocess
+- persistent laya_bridge worker
+- laya_bridge.py import 이전
+
+모두 USE_TF=0을 적용한다.
+
+
+UI / 로그
+------------------------------------------------------------
+[선택 모델 확인/설치] 실행 중 다음 상태를 표시한다.
+
+- Laya Python 확인
+- Laya 0.3.5 설치/버전 고정
+- typed-decisions checkpoint 로딩
+- LayaExperimental 준비 완료
+
+준비가 완료되면 실제 runtime description에
+사용된 Python launcher/version + Laya version + device를 기록한다.
+
+예:
+py -3 · Python 3.12.x · laya 0.3.5 · typed-decisions · cuda
+
+
+Regression / CI
+------------------------------------------------------------
+PipelineChecks에 live model download/inference 없이
+Python discovery 구조만 고정했다.
+
+검증:
+- LMT_LAYA_PYTHON override가 최우선.
+- Windows py -3 launcher fallback 존재.
+- 표준 Python312 LocalAppData 경로 포함.
+
+실제 Laya package/model download는 CI에서 수행하지 않는다.
+
+
+0037 재검증 페이지
+------------------------------------------------------------
+0036에서 Laya가 실행되지 않았으므로 같은 6페이지를 다시 사용한다.
+
+- page012
+- page014
+- page017
+- page021
+- page028
+- page032
+
+이번 검증의 1차 성공 조건:
+- 각 page .laya_summary.json의 Available = true
+- Runtime != null
+- TotalDecisions > 0인 페이지가 실제로 존재
+- Decisions가 shadow_only 상태로 기록
+- Classic 최종 결과는 Laya 때문에 변경되지 않음
+
+그 뒤에 ownership / detector_retry / render_recovery / duplicate의
+Match/Mismatch와 confidence를 비교한다.
+
+
+0037에서 의도적으로 하지 않은 것
+------------------------------------------------------------
+- Laya Advisory/Active 전환 없음.
+- Laya 판단의 Classic override 없음.
+- multi-scale RT-DETR 실제 재검출 없음.
+- OCR consensus / translation consistency 전용 Laya decision은 아직 추가하지 않음.
+- page014 detector scale 문제 자체 수정 없음.
+- page028 cleaned_text_redetected 문제 자체 수정 없음.
+
+
+관련 커밋
+------------------------------------------------------------
+89d0b4657c55a9c96442a65d7da23d27f7d4c681
+V2 0037: harden Laya runtime bootstrap
+
