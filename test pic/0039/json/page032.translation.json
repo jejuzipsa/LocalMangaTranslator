@@ -1,0 +1,530 @@
+{
+  "SourceFile": "page032.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T18:01:49.8503733+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 753,
+        "Y": 0,
+        "W": 523,
+        "H": 365,
+        "Text": "TAKOOM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 753,
+            "Y": 0,
+            "W": 523,
+            "H": 365,
+            "Text": "TAKOOM",
+            "Confidence": 0.9306616,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "KRAKOOM",
+      "Translation": "\uCF70\uB974\uB989",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 131.66666666666666,
+        "Y": 266,
+        "W": 207.33333333333334,
+        "H": 125,
+        "Text": "BUTIKNOWI KNOW SOME THINGS! I MUST! JUST TAKE ME WITH YOU, AND ILL TELL YOU EVERYTHING!",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 170,
+            "Y": 266,
+            "W": 135.33333333333331,
+            "H": 33.666666666666686,
+            "Text": "BUTIKNOWI",
+            "Confidence": 0.9988474,
+            "Language": "en"
+          },
+          {
+            "X": 141.33333333333334,
+            "Y": 291.6666666666667,
+            "W": 186.66666666666666,
+            "H": 29.333333333333314,
+            "Text": "KNOW SOME THINGS!",
+            "Confidence": 0.97982854,
+            "Language": "en"
+          },
+          {
+            "X": 131.66666666666666,
+            "Y": 314.33333333333337,
+            "W": 207.33333333333334,
+            "H": 30.333333333333258,
+            "Text": "I MUST! JUST TAKE ME",
+            "Confidence": 0.9954374,
+            "Language": "en"
+          },
+          {
+            "X": 132.33333333333334,
+            "Y": 338.6666666666667,
+            "W": 206.66666666666666,
+            "H": 29.66666666666663,
+            "Text": "WITH YOU, AND ILL TELL",
+            "Confidence": 0.95992833,
+            "Language": "en"
+          },
+          {
+            "X": 161.33333333333334,
+            "Y": 362,
+            "W": 145.66666666666666,
+            "H": 29,
+            "Text": "YOU EVERYTHING!",
+            "Confidence": 0.9969922,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BUT I KNOW I KNOW SOME THINGS! I MUST! JUST TAKE ME WITH YOU, AND I\u0027LL TELL YOU FURTHING!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "BUT I KNOW I KNOW SOME THINGS! I MUST! JUST TAKE ME WITH YOU, AND I\u0027LL TELL YOU EVERYTHING!",
+      "Translation": "\uD558\uC9C0\uB9CC \uB09C[BR]\uBB50\uB77C\uB3C4 \uC54C\uACE0 \uC788\uB2E4\uACE0! \uC54C\uC544\uC57C\uB9CC \uD574![BR]\uC81C\uBC1C \uB098\uB3C4 \uB370\uB824\uAC00\uC918,[BR]\uADF8\uB7FC \uC804\uBD80 \uB2E4 \uB9D0\uD574\uC904\uAC8C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 101,
+        "Y": 464.3333333333333,
+        "W": 233,
+        "H": 150.00000000000006,
+        "Text": "SPEED FORCE STORMS. THEY\u0027RE A NIGHTMARE AROUND HERE. YOU NEED TO FIND COVER. BUT PLEASE. BATS! PLEASE TAKE ME WITH 4--",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 108,
+            "Y": 464.3333333333333,
+            "W": 217,
+            "H": 34,
+            "Text": "SPEED FORCE STORMS.",
+            "Confidence": 0.99649906,
+            "Language": "en"
+          },
+          {
+            "X": 127.66666666666667,
+            "Y": 491.66666666666663,
+            "W": 180.66666666666663,
+            "H": 29,
+            "Text": "THEY\u0027RE A NIGHTMARE",
+            "Confidence": 0.9844576,
+            "Language": "en"
+          },
+          {
+            "X": 101,
+            "Y": 514.6666666666666,
+            "W": 233,
+            "H": 28.33333333333337,
+            "Text": "AROUND HERE. YOU NEED TO",
+            "Confidence": 0.9931955,
+            "Language": "en"
+          },
+          {
+            "X": 109,
+            "Y": 537,
+            "W": 214,
+            "H": 30.5,
+            "Text": "FIND COVER. BUT PLEASE.",
+            "Confidence": 0.9834894,
+            "Language": "en"
+          },
+          {
+            "X": 115,
+            "Y": 558.3333333333334,
+            "W": 205,
+            "H": 33.33333333333326,
+            "Text": "BATS! PLEASE TAKE ME",
+            "Confidence": 0.99120575,
+            "Language": "en"
+          },
+          {
+            "X": 178.33333333333331,
+            "Y": 583,
+            "W": 76.33333333333334,
+            "H": 31.33333333333337,
+            "Text": "WITH 4--",
+            "Confidence": 0.91872233,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SPEED FORCE STORMS. THEY\u0027RE A NIGHTMARE AROUND HERE, YOU NEED TO",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "SPEED FORCE STORMS. THEY\u0027RE A NIGHTMARE AROUND HERE. YOU NEED TO FIND COVER. BUT PLEASE, BATS! PLEASE TAKE ME WITH Y-",
+      "Translation": "\uC2A4\uD53C\uB4DC \uD3EC\uC2A4 \uC2A4\uD1B0. [BR]\uC774 \uADFC\uCC98\uC5D0\uC120 \uC815\uB9D0 \uC7AC\uC559\uC774\uB098 \uB2E4\uB984\uC5C6\uC5B4. [BR]\uC5B4\uB518\uAC00\uB85C \uC228\uC5B4\uC57C \uD574. [BR]\uD558\uC9C0\uB9CC \uC81C\uBC1C, \uBC30\uD2B8! [BR]\uC81C\uBC1C \uB098\uB3C4 \uAC19\uC774 \uB370-",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 277.33333333333337,
+        "Y": 601.3333333333334,
+        "W": 98.66666666666663,
+        "H": 46,
+        "Text": "STOP TALKING.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 295,
+            "Y": 601.3333333333334,
+            "W": 65.33333333333331,
+            "H": 25.333333333333258,
+            "Text": "STOP",
+            "Confidence": 0.9999261,
+            "Language": "en"
+          },
+          {
+            "X": 277.33333333333337,
+            "Y": 621.6666666666666,
+            "W": 98.66666666666663,
+            "H": 25.666666666666742,
+            "Text": "TALKING.",
+            "Confidence": 0.9995495,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "STOP TALKING.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "STOP TALKING.",
+      "Translation": "\uC785 \uB2E5\uCCD0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 555.5,
+        "Y": 646.5,
+        "W": 95,
+        "H": 42.5,
+        "Text": "HA! YES!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 555.5,
+            "Y": 646.5,
+            "W": 95,
+            "H": 42.5,
+            "Text": "HA! YES!",
+            "Confidence": 0.9809166,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HA! YES!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "HA! YES!",
+      "Translation": "\uD558! \uADF8\uB798!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 386,
+        "Y": 903,
+        "W": 52.666666666666686,
+        "H": 37,
+        "Text": "M",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 386,
+            "Y": 903,
+            "W": 52.666666666666686,
+            "H": 37,
+            "Text": "M",
+            "Confidence": 0.5202703,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "M",
+      "Translation": "\uC74C",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 477.6666666666667,
+        "Y": 991,
+        "W": 121.66666666666669,
+        "H": 109.66666666666674,
+        "Text": "LOoK AT US. JUST LIKE E OLD TIMES!",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 506.3333333333333,
+            "Y": 991,
+            "W": 64.66666666666669,
+            "H": 41,
+            "Text": "LOoK",
+            "Confidence": 0.81573766,
+            "Language": "en"
+          },
+          {
+            "X": 477.6666666666667,
+            "Y": 1019,
+            "W": 121.66666666666669,
+            "H": 34,
+            "Text": "AT US. JUST",
+            "Confidence": 0.9675948,
+            "Language": "en"
+          },
+          {
+            "X": 499.66666666666663,
+            "Y": 1045.3333333333333,
+            "W": 42.33333333333337,
+            "H": 29,
+            "Text": "LIKE",
+            "Confidence": 0.99951893,
+            "Language": "en"
+          },
+          {
+            "X": 528.3333333333334,
+            "Y": 1045.6666666666667,
+            "W": 49.66666666666663,
+            "H": 27.333333333333258,
+            "Text": "E OLD",
+            "Confidence": 0.89340407,
+            "Language": "en"
+          },
+          {
+            "X": 503.33333333333337,
+            "Y": 1066,
+            "W": 68.66666666666663,
+            "H": 34.66666666666674,
+            "Text": "TIMES!",
+            "Confidence": 0.9920987,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LOOK\nAT US. JUST\nLIKE OLD\nTIMES!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "LOOK\nAT US. JUST\nLIKE OLD\nTIMES!",
+      "Translation": "\uC6B0\uB9B4 \uBD10.\n\uC608\uC804\uCC98\uB7FC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 459.3333333333333,
+        "Y": 1106.6666666666667,
+        "W": 190.99999999999994,
+        "H": 126.33333333333326,
+        "Text": "BATMAN AND NOGGIN!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 459.3333333333333,
+            "Y": 1106.6666666666667,
+            "W": 190.99999999999994,
+            "H": 55.33333333333326,
+            "Text": "BATMAN",
+            "Confidence": 0.99046475,
+            "Language": "en"
+          },
+          {
+            "X": 515,
+            "Y": 1145,
+            "W": 81,
+            "H": 47,
+            "Text": "AND",
+            "Confidence": 0.97776234,
+            "Language": "en"
+          },
+          {
+            "X": 464.6666666666667,
+            "Y": 1175.3333333333333,
+            "W": 180.33333333333331,
+            "H": 57.66666666666674,
+            "Text": "NOGGIN!",
+            "Confidence": 0.9045605,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "BATMAN AND NOGGIN!",
+      "Translation": "\uBC30\uD2B8\uB9E8\uACFC\n\uB178\uAE34!",
+      "Type": "logo",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 540,
+        "Y": 1469,
+        "W": 223,
+        "H": 206,
+        "Text": "1 La AMI RIGHT?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 540,
+            "Y": 1469,
+            "W": 188.66666666666674,
+            "H": 101.66666666666674,
+            "Text": "1",
+            "Confidence": 0.39927423,
+            "Language": "en"
+          },
+          {
+            "X": 641.3333333333334,
+            "Y": 1469,
+            "W": 121.66666666666663,
+            "H": 206,
+            "Text": "La",
+            "Confidence": 0.40086126,
+            "Language": "en"
+          },
+          {
+            "X": 583,
+            "Y": 1553,
+            "W": 64,
+            "H": 38,
+            "Text": "AMI",
+            "Confidence": 0.9987735,
+            "Language": "en"
+          },
+          {
+            "X": 578,
+            "Y": 1580.6666666666667,
+            "W": 73.33333333333337,
+            "H": 33.33333333333326,
+            "Text": "RIGHT?",
+            "Confidence": 0.9985189,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "AM I RIGHT?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "AM I RIGHT?",
+      "Translation": "\uB0B4 \uB9D0\uC774 \uB9DE\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 642.6666666666666,
+        "Y": 1675.3333333333333,
+        "W": 69.33333333333337,
+        "H": 33.333333333333485,
+        "Text": "BATS?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 642.6666666666666,
+            "Y": 1675.3333333333333,
+            "W": 69.33333333333337,
+            "H": 33.333333333333485,
+            "Text": "BATS?",
+            "Confidence": 0.9946899,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BATS?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG014"
+      },
+      "CorrectedText": "BATS?",
+      "Translation": "\uBC15\uC950?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 806,
+        "Y": 1797,
+        "W": 105,
+        "H": 77,
+        "Text": "HEY, IS THIS THING ON?",
+        "OriginalRegionCount": 1,
+        "Language": "multi",
+        "Lines": [
+          {
+            "X": 806,
+            "Y": 1797,
+            "W": 105,
+            "H": 77,
+            "Text": "HEY, IS THIS THING ON?",
+            "Confidence": 0.82,
+            "Language": "multi"
+          }
+        ],
+        "SecondaryOcrText": "HEY, IS THIS THING ON?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "secondary_only",
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "HEY, IS THIS THING ON?",
+      "Translation": "\uC5B4\uC774, \uC774\uAC70 \uCF1C\uC838 \uC788\uB294 \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

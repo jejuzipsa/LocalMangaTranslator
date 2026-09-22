@@ -1,0 +1,1124 @@
+{
+  "SourceFile": "page028.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T18:11:05.5179389+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 67.66666666666667,
+        "Y": 42.5,
+        "W": 326.3333333333333,
+        "H": 188.16666666666666,
+        "Text": "TOYMAN, WHAT HE DIDTHERES A PARTIAL MILE OF C PEOPLE. NOT REAL WITH BUT THEN AGAIN SO REAL. THE ALGORITHMS...I ACTED EVERY PART PART FOR YOU, BRUCE. HUNDREDS..IT\u0027S MY MASTERPIECE.",
+        "OriginalRegionCount": 13,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 150.5,
+            "Y": 42.5,
+            "W": 164,
+            "H": 33,
+            "Text": "TOYMAN, WHAT",
+            "Confidence": 0.9921365,
+            "Language": "en"
+          },
+          {
+            "X": 89,
+            "Y": 64.66666666666666,
+            "W": 285.6666666666667,
+            "H": 33.33333333333334,
+            "Text": "HE DIDTHERES A PARTIAL",
+            "Confidence": 0.9897907,
+            "Language": "en"
+          },
+          {
+            "X": 205,
+            "Y": 98,
+            "W": 56,
+            "H": 13.666666666666671,
+            "Text": "MILE",
+            "Confidence": 0.9991673,
+            "Language": "en"
+          },
+          {
+            "X": 259.6666666666667,
+            "Y": 98,
+            "W": 47.333333333333314,
+            "H": 13.666666666666671,
+            "Text": "OF C",
+            "Confidence": 0.8718153,
+            "Language": "en"
+          },
+          {
+            "X": 118.66666666666667,
+            "Y": 107.66666666666667,
+            "W": 188.33333333333331,
+            "H": 24.66666666666667,
+            "Text": "PEOPLE. NOT REAL",
+            "Confidence": 0.9964621,
+            "Language": "en"
+          },
+          {
+            "X": 67.66666666666667,
+            "Y": 110,
+            "W": 57.33333333333333,
+            "H": 20.333333333333343,
+            "Text": "WITH",
+            "Confidence": 0.9981244,
+            "Language": "en"
+          },
+          {
+            "X": 74,
+            "Y": 124,
+            "W": 320,
+            "H": 29,
+            "Text": "BUT THEN AGAIN SO REAL. THE",
+            "Confidence": 0.9948588,
+            "Language": "en"
+          },
+          {
+            "X": 77.5,
+            "Y": 148.5,
+            "W": 314,
+            "H": 22,
+            "Text": "ALGORITHMS...I ACTED EVERY",
+            "Confidence": 0.99110454,
+            "Language": "en"
+          },
+          {
+            "X": 105,
+            "Y": 164,
+            "W": 72,
+            "H": 30,
+            "Text": "PART",
+            "Confidence": 0.9980148,
+            "Language": "en"
+          },
+          {
+            "X": 113,
+            "Y": 167,
+            "W": 244,
+            "H": 24,
+            "Text": "PART FOR YOU, BRUCE.",
+            "Confidence": 0.98134595,
+            "Language": "en"
+          },
+          {
+            "X": 128.66666666666666,
+            "Y": 185.66666666666666,
+            "W": 178.33333333333334,
+            "H": 26,
+            "Text": "HUNDREDS..IT\u0027S",
+            "Confidence": 0.96918094,
+            "Language": "en"
+          },
+          {
+            "X": 299.66666666666663,
+            "Y": 188,
+            "W": 39,
+            "H": 21.666666666666657,
+            "Text": "MY",
+            "Confidence": 0.98577833,
+            "Language": "en"
+          },
+          {
+            "X": 157.66666666666666,
+            "Y": 204.66666666666666,
+            "W": 152.66666666666666,
+            "H": 26,
+            "Text": "MASTERPIECE.",
+            "Confidence": 0.9994969,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "TOYAHAN, WHAT HE DID... THERE\u0027S A PARTIAL CITY A HAVE MAKE OF CO",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "TOYMAN, WHAT HE DID... THERE\u0027S A PARTIAL CITY. A HALF MILE OF GOTHAM, WITH PEOPLE. NOT REAL PEOPLE, BUT THEN AGAIN SO REAL. THE ALGORITHMS... I ACTED EVERY PART FOR YOU, BRUCE. HUNDREDS... IT\u0027S MY MASTERPIECE.",
+      "Translation": "\uD1A0\uC774\uB9E8, \uADF8\uAC00 \uD55C \uC9D3\uC744... [BR]\uB3C4\uC2DC\uC758 \uC77C\uBD80\uAC00 \uC788\uC5B4. [BR]\uC0AC\uB78C\uB4E4\uC774 \uC0AC\uB294 \uACE0\uB2F4\uC758 \uC808\uBC18\uC774\uC9C0. [BR]\uC9C4\uC9DC \uC0AC\uB78C\uC740 \uC544\uB2C8\uC9C0\uB9CC, [BR]\uADF8\uB9CC\uD07C\uC774\uB098 \uC0DD\uC0DD\uD574. [BR]\uC54C\uACE0\uB9AC\uC998\uC774... [BR]\uB124 \uBAA8\uB4E0 \uBD80\uBD84\uC744 \uC5F0\uAE30\uD588\uC5B4, \uBE0C\uB8E8\uC2A4. [BR]\uC218\uBC31 \uAC1C\uB098 \uB9D0\uC774\uC57C... [BR]\uC774\uAC74 \uB0B4 \uAC78\uC791\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 511.3333333333333,
+        "Y": 73,
+        "W": 98.66666666666669,
+        "H": 76,
+        "Text": "H",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 511.3333333333333,
+            "Y": 73,
+            "W": 98.66666666666669,
+            "H": 76,
+            "Text": "H",
+            "Confidence": 0.9317258,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "H",
+      "Translation": "\uD750",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 402.6666666666667,
+        "Y": 195.33333333333334,
+        "W": 97,
+        "H": 28.333333333333343,
+        "Text": "ALFRED...",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 402.6666666666667,
+            "Y": 195.33333333333334,
+            "W": 97,
+            "H": 28.333333333333343,
+            "Text": "ALFRED...",
+            "Confidence": 0.9419314,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALFRED...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "ALFRED...",
+      "Translation": "\uC54C\uD504\uB808\uB4DC...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 259.6666666666667,
+        "Y": 263,
+        "W": 224,
+        "H": 147,
+        "Text": "THERE\u0027SA MANOR, TOO! EVERY DETAIL. HOME. IF YOU\u0027D JUST COME SEE, BRUCE. IF YOU\u0027D G\u00CDVE IT A CHANCE, MAYBE--",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 316,
+            "Y": 263,
+            "W": 113,
+            "H": 28,
+            "Text": "THERE\u0027SA",
+            "Confidence": 0.994537,
+            "Language": "en"
+          },
+          {
+            "X": 294.6666666666667,
+            "Y": 282.6666666666667,
+            "W": 152.66666666666663,
+            "H": 27.66666666666663,
+            "Text": "MANOR, TOO!",
+            "Confidence": 0.9985752,
+            "Language": "en"
+          },
+          {
+            "X": 260.3333333333333,
+            "Y": 303,
+            "W": 221,
+            "H": 27.666666666666686,
+            "Text": "EVERY DETAIL. HOME.",
+            "Confidence": 0.99324226,
+            "Language": "en"
+          },
+          {
+            "X": 263,
+            "Y": 325,
+            "W": 218,
+            "H": 24,
+            "Text": "IF YOU\u0027D JUST COME",
+            "Confidence": 0.99577475,
+            "Language": "en"
+          },
+          {
+            "X": 259.6666666666667,
+            "Y": 344,
+            "W": 224,
+            "H": 23.666666666666686,
+            "Text": "SEE, BRUCE. IF YOU\u0027D",
+            "Confidence": 0.99392897,
+            "Language": "en"
+          },
+          {
+            "X": 275.6666666666667,
+            "Y": 363.6666666666667,
+            "W": 190.66666666666663,
+            "H": 25.333333333333314,
+            "Text": "G\u00CDVE IT A CHANCE,",
+            "Confidence": 0.9900477,
+            "Language": "en"
+          },
+          {
+            "X": 323.3333333333333,
+            "Y": 382.6666666666667,
+            "W": 94.66666666666669,
+            "H": 27.333333333333314,
+            "Text": "MAYBE--",
+            "Confidence": 0.99770135,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THERE\u0027S A MANOR, TOO! EVERY DETAIL HOME. IF YOU\u0027D JUST COME SEE,",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "THERE\u0027S A MANOR, TOO! EVERY DETAIL. HOME. IF YOU\u0027D JUST COME SEE, BRUCE. IF YOU\u0027D GIVE IT A CHANCE, MAYBE--",
+      "Translation": "\uC800\uD0DD\uB3C4 \uC788\uC5B4![BR]\uBAA8\uB4E0 \uC138\uBD80 \uC0AC\uD56D\uAE4C\uC9C0. \uC9D1 \uB9D0\uC774\uC57C.[BR]\uC9C1\uC811 \uC640\uC11C \uBD24\uC73C\uBA74 \uC88B\uC558\uC744 \uD150\uB370, \uBE0C\uB8E8\uC2A4.[BR]\uD55C \uBC88\uB9CC \uAE30\uD68C\uB97C \uC92C\uB2E4\uBA74, \uC5B4\uCA4C\uBA74\u2014",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 971.3333333333334,
+        "Y": 303.3333333333333,
+        "W": 89.33333333333337,
+        "H": 45.666666666666686,
+        "Text": "ALFRED, I CAN\u0027T.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 973.3333333333334,
+            "Y": 303.3333333333333,
+            "W": 87.33333333333337,
+            "H": 27,
+            "Text": "ALFRED,",
+            "Confidence": 0.9997199,
+            "Language": "en"
+          },
+          {
+            "X": 971.3333333333334,
+            "Y": 325,
+            "W": 88.33333333333337,
+            "H": 24,
+            "Text": "I CAN\u0027T.",
+            "Confidence": 0.99210846,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALFRED, I CAN\u0027T.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "ALFRED, I CAN\u0027T.",
+      "Translation": "\uC54C\uD504\uB808\uB4DC, \uBABB \uD558\uACA0\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 396.66666666666663,
+        "Y": 584.3333333333334,
+        "W": 42.66666666666674,
+        "H": 46,
+        "Text": "X",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 396.66666666666663,
+            "Y": 584.3333333333334,
+            "W": 42.66666666666674,
+            "H": 46,
+            "Text": "X",
+            "Confidence": 0.49288794,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "E.\nWITH",
+      "Translation": "E.\n\uD568\uAED8",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 118.66666666666667,
+        "Y": 595.5,
+        "W": 96.66666666666664,
+        "H": 87.16666666666663,
+        "Text": "I KNOW CAN\u0027T, SIR.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 140,
+            "Y": 595.5,
+            "W": 31,
+            "H": 28,
+            "Text": "I",
+            "Confidence": 0.9925828,
+            "Language": "en"
+          },
+          {
+            "X": 118.66666666666667,
+            "Y": 616.6666666666666,
+            "W": 71.66666666666667,
+            "H": 26,
+            "Text": "KNOW",
+            "Confidence": 0.99981016,
+            "Language": "en"
+          },
+          {
+            "X": 141,
+            "Y": 632.3333333333334,
+            "W": 74.33333333333331,
+            "H": 32.66666666666663,
+            "Text": "CAN\u0027T,",
+            "Confidence": 0.99053276,
+            "Language": "en"
+          },
+          {
+            "X": 129,
+            "Y": 656,
+            "W": 50.33333333333334,
+            "H": 26.66666666666663,
+            "Text": "SIR.",
+            "Confidence": 0.99863774,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I KNOW YOU CAN\u0027T, SIR.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "...I KNOW YOU CAN\u0027T, SIR.",
+      "Translation": "...\uBABB \uD558\uC2E4 \uAC70\uB77C\uB294[BR]\uAC70 \uC555\uB2C8\uB2E4, \uB300\uC7A5.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 277.3333333333333,
+        "Y": 609.6666666666666,
+        "W": 82.33333333333331,
+        "H": 66.66666666666674,
+        "Text": "COM COME ME.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 300,
+            "Y": 609.6666666666666,
+            "W": 51,
+            "H": 26.33333333333337,
+            "Text": "COM",
+            "Confidence": 0.99991035,
+            "Language": "en"
+          },
+          {
+            "X": 277.3333333333333,
+            "Y": 629.6666666666666,
+            "W": 73.66666666666669,
+            "H": 26.666666666666742,
+            "Text": "COME",
+            "Confidence": 0.9995897,
+            "Language": "en"
+          },
+          {
+            "X": 315.6666666666667,
+            "Y": 648.6666666666666,
+            "W": 43.99999999999994,
+            "H": 27.666666666666742,
+            "Text": "ME.",
+            "Confidence": 0.9995703,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "COME.\nCOME WITH ME.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "COME.\nCOME WITH ME.",
+      "Translation": "\uC774\uB9AC \uC640.\n\uB098\uB791 \uAC19\uC774 \uAC00\uC790.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 929.3333333333333,
+        "Y": 662,
+        "W": 210.33333333333326,
+        "H": 105.66666666666663,
+        "Text": "NO..I\u0027M AFRAID I DON\u0027T HAVE IT IN ME. NOT AFTER...EVERYTHING THAT\u0027S HAPPENED.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 988.6666666666667,
+            "Y": 662,
+            "W": 93.99999999999977,
+            "H": 24.66666666666663,
+            "Text": "NO..I\u0027M",
+            "Confidence": 0.88224596,
+            "Language": "en"
+          },
+          {
+            "X": 949.3333333333333,
+            "Y": 681.3333333333334,
+            "W": 172.33333333333326,
+            "H": 24.66666666666663,
+            "Text": "AFRAID I DON\u0027T",
+            "Confidence": 0.99746233,
+            "Language": "en"
+          },
+          {
+            "X": 935.3333333333333,
+            "Y": 699.3333333333334,
+            "W": 198.33333333333326,
+            "H": 26.333333333333258,
+            "Text": "HAVE IT IN ME. NOT",
+            "Confidence": 0.99731857,
+            "Language": "en"
+          },
+          {
+            "X": 929.3333333333333,
+            "Y": 722.3333333333334,
+            "W": 210.33333333333326,
+            "H": 22.66666666666663,
+            "Text": "AFTER...EVERYTHING",
+            "Confidence": 0.99326384,
+            "Language": "en"
+          },
+          {
+            "X": 934.3333333333334,
+            "Y": 737,
+            "W": 196.0000000000001,
+            "H": 30.66666666666663,
+            "Text": "THAT\u0027S HAPPENED.",
+            "Confidence": 0.9966653,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO...I\u0027M\nAFRAID I DON\u0027T\nHAVE IT IN ME. NOT\nAFTER...EVERYTHING\nTHAT\u0027S HAPPENED.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "NO...I\u0027M AFRAID I DON\u0027T HAVE IT IN ME. NOT AFTER...EVERYTHING THAT\u0027S HAPPENED.",
+      "Translation": "\uC548 \uB3FC... [BR]\uB09C \uBABB \uD560 \uAC83 \uAC19\uC544. [BR]\uADF8 \uBAA8\uB4E0 \uC77C\uB4E4\uC744 [BR]\uACAA\uACE0 \uB09C \uB4A4\uC5D0\uB294... [BR]\uB3C4\uC800\uD788 \uBABB \uD558\uACA0\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 883,
+        "Y": 794.6666666666666,
+        "W": 370,
+        "H": 110,
+        "Text": "WHEN YOU GO, THOUGH, TAKE SOMETHING TO REMEMBER US, WON\u0027T YOU? YOUR FAMILY MAYBE THE BLASTED PENNY. YES...THE PENNY -HEH.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 988.3333333333333,
+            "Y": 794.6666666666666,
+            "W": 158.00000000000023,
+            "H": 28.33333333333337,
+            "Text": "WHEN YOU GO,",
+            "Confidence": 0.9622561,
+            "Language": "en"
+          },
+          {
+            "X": 923.5,
+            "Y": 815,
+            "W": 288,
+            "H": 30.5,
+            "Text": "THOUGH, TAKE SOMETHING",
+            "Confidence": 0.993342,
+            "Language": "en"
+          },
+          {
+            "X": 904,
+            "Y": 836.6666666666666,
+            "W": 330,
+            "H": 26,
+            "Text": "TO REMEMBER US, WON\u0027T YOU?",
+            "Confidence": 0.98557353,
+            "Language": "en"
+          },
+          {
+            "X": 883,
+            "Y": 852,
+            "W": 370,
+            "H": 33,
+            "Text": "YOUR FAMILY MAYBE THE BLASTED",
+            "Confidence": 0.9897911,
+            "Language": "en"
+          },
+          {
+            "X": 904,
+            "Y": 875.3333333333334,
+            "W": 327.3333333333335,
+            "H": 29.333333333333258,
+            "Text": "PENNY. YES...THE PENNY -HEH.",
+            "Confidence": 0.9365863,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHEN YOU GO,\nTHOUGH THRIE SOMETHING\nTO REMEMBER US, WON\u0027T YOU?\nY",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "WHEN YOU GO, THOUGH, TAKE SOMETHING TO REMEMBER US, WON\u0027T YOU? YOUR FAMILY MAYBE THE BLASTED PENNY. YES...THE PENNY -HEH.",
+      "Translation": "\uD558\uC9C0\uB9CC \uAC08 \uB54C, \uC6B0\uB9AC\uB97C \uAE30\uC5B5\uD560[BR]\uBB34\uC5B8\uAC00\uB77C\uB3C4 \uCC59\uACA8\uAC00\uB77C\uACE0,[BR]\uC548 \uADF8\uB798? \uAC00\uC871\uC774\uB77C\uB4E0\uAC00, \uADF8 \uBE4C\uC5B4\uBA39\uC744 \uB3D9\uC804\uC774\uB77C\uB4E0\uAC00.[BR]\uADF8\uB798... \uB3D9\uC804.[BR]\uD5E4\uD5E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 457,
+        "Y": 860,
+        "W": 136.66666666666663,
+        "H": 209,
+        "Text": "KX",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 457,
+            "Y": 860,
+            "W": 136.66666666666663,
+            "H": 209,
+            "Text": "KX",
+            "Confidence": 0.41166258,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "KX",
+      "Translation": "KX",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 932,
+        "Y": 925,
+        "W": 287.5,
+        "H": 34,
+        "Text": "IZA A A",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 932,
+            "Y": 925,
+            "W": 74,
+            "H": 28,
+            "Text": "IZA",
+            "Confidence": 0.7395954,
+            "Language": "en"
+          },
+          {
+            "X": 996.5,
+            "Y": 926,
+            "W": 223,
+            "H": 33,
+            "Text": "A A",
+            "Confidence": 0.51907504,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "PENNY. YES... THE PENNY \u2192HEH\u2192.",
+      "Translation": "\uB3D9\uC804. \uADF8\uB798... \uADF8 \uB3D9\uC804 \u2192\uD750\uD750\u2192.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 743.6666666666667,
+        "Y": 954,
+        "W": 168,
+        "H": 84,
+        "Text": "WHY ALFRED? AM I NOT OLD? I FEEL YOUNG, STRONG.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 845.3333333333333,
+            "Y": 954,
+            "W": 53,
+            "H": 24,
+            "Text": "WHY",
+            "Confidence": 0.97651255,
+            "Language": "en"
+          },
+          {
+            "X": 755.6666666666666,
+            "Y": 954.6666666666666,
+            "W": 98.66666666666663,
+            "H": 23,
+            "Text": "ALFRED?",
+            "Confidence": 0.99814355,
+            "Language": "en"
+          },
+          {
+            "X": 743.6666666666667,
+            "Y": 973.3333333333334,
+            "W": 168,
+            "H": 26.66666666666663,
+            "Text": "AM I NOT OLD?",
+            "Confidence": 0.99711037,
+            "Language": "en"
+          },
+          {
+            "X": 746.6666666666666,
+            "Y": 992.3333333333334,
+            "W": 158.66666666666663,
+            "H": 27,
+            "Text": "I FEEL YOUNG,",
+            "Confidence": 0.99781823,
+            "Language": "en"
+          },
+          {
+            "X": 774.6666666666666,
+            "Y": 1013.6666666666666,
+            "W": 102.66666666666663,
+            "H": 24.33333333333337,
+            "Text": "STRONG.",
+            "Confidence": 0.99931866,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALFRED? WHY AM I NOT OLD? I FEEL YOUNG, STRONG.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "ALFRED? WHY AM I NOT OLD?\nI FEEL YOUNG,\nSTRONG.",
+      "Translation": "\uC54C\uD504\uB808\uB4DC? \uC65C \uB09C\n\uB299\uC9C0 \uC54A\uC740 \uAC70\uC9C0?\n\uBAB8\uC774 \uAC00\uBCCD\uACE0,\n\uD798\uC774 \uB118\uCCD0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 660.6666666666666,
+        "Y": 1064,
+        "W": 172.33333333333337,
+        "H": 128.66666666666674,
+        "Text": "I\u0027LL YOU IF TELL YOU WANT, BUT IT\u0027LL UPSET you. WANT TO VOU LEAVE AFTER.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 717,
+            "Y": 1064,
+            "W": 53,
+            "H": 30,
+            "Text": "I\u0027LL",
+            "Confidence": 0.9951922,
+            "Language": "en"
+          },
+          {
+            "X": 732.6666666666666,
+            "Y": 1089.6666666666667,
+            "W": 75.33333333333337,
+            "H": 23.666666666666515,
+            "Text": "YOU IF",
+            "Confidence": 0.89333373,
+            "Language": "en"
+          },
+          {
+            "X": 687,
+            "Y": 1090.6666666666667,
+            "W": 52,
+            "H": 21.666666666666515,
+            "Text": "TELL",
+            "Confidence": 0.9998683,
+            "Language": "en"
+          },
+          {
+            "X": 668.6666666666666,
+            "Y": 1107.6666666666667,
+            "W": 160.33333333333337,
+            "H": 26.333333333333258,
+            "Text": "YOU WANT, BUT",
+            "Confidence": 0.97174853,
+            "Language": "en"
+          },
+          {
+            "X": 660.6666666666666,
+            "Y": 1129.3333333333333,
+            "W": 123.33333333333337,
+            "H": 24,
+            "Text": "IT\u0027LL UPSET",
+            "Confidence": 0.9745337,
+            "Language": "en"
+          },
+          {
+            "X": 778.6666666666666,
+            "Y": 1131,
+            "W": 53.33333333333337,
+            "H": 20,
+            "Text": "you.",
+            "Confidence": 0.77800894,
+            "Language": "en"
+          },
+          {
+            "X": 734,
+            "Y": 1148.6666666666667,
+            "W": 99,
+            "H": 24.333333333333258,
+            "Text": "WANT TO",
+            "Confidence": 0.99950904,
+            "Language": "en"
+          },
+          {
+            "X": 661.6666666666666,
+            "Y": 1150,
+            "W": 68,
+            "H": 10,
+            "Text": "VOU",
+            "Confidence": 0.66120785,
+            "Language": "en"
+          },
+          {
+            "X": 676,
+            "Y": 1168.6666666666667,
+            "W": 139,
+            "H": 24,
+            "Text": "LEAVE AFTER.",
+            "Confidence": 0.99944246,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027LL\nTELL YOU IF\nYOU WANT, BUT\nIT\u0027LL UPSET YOU.\nYOU\u0027LL WANT TO\nL",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "I\u0027LL TELL YOU IF YOU WANT, BUT IT\u0027LL UPSET YOU. YOU\u0027LL WANT TO LEAVE AFTER.",
+      "Translation": "\uC6D0\uD55C\uB2E4\uBA74 \uB9D0\uD574\uC8FC\uACA0\uC9C0\uB9CC, [BR]\uB4E3\uACE0 \uB098\uBA74 \uC18D\uC0C1\uD560 \uAC70\uC57C. [BR]\uADF8\uB7FC \uB2F9\uC7A5 \uB5A0\uB098\uACE0 \uC2F6\uC5B4\uC9C8 \uD14C\uB2C8\uAE4C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 847.6666666666666,
+        "Y": 1090,
+        "W": 18.33333333333337,
+        "H": 70,
+        "Text": "DAKS",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 847.6666666666666,
+            "Y": 1090,
+            "W": 18.33333333333337,
+            "H": 70,
+            "Text": "DAKS",
+            "Confidence": 0.65644956,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "DAKS",
+      "Translation": "\uB2E5\uC2A4",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 489,
+        "Y": 1150.3333333333333,
+        "W": 32.66666666666663,
+        "H": 36,
+        "Text": "WW",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 489,
+            "Y": 1150.3333333333333,
+            "W": 32.66666666666663,
+            "H": 36,
+            "Text": "WW",
+            "Confidence": 0.6279079,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WW",
+      "Translation": "\uC6B0\uC640\uC544",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 682.6666666666666,
+        "Y": 1214.5,
+        "W": 134.33333333333337,
+        "H": 112.5,
+        "Text": "SO FIRST...A FAVOR? FOR AN OLD MAN?",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 724,
+            "Y": 1214.5,
+            "W": 50.5,
+            "H": 34,
+            "Text": "SO",
+            "Confidence": 0.995965,
+            "Language": "en"
+          },
+          {
+            "X": 704,
+            "Y": 1239.3333333333333,
+            "W": 93.33333333333326,
+            "H": 25.333333333333485,
+            "Text": "FIRST...A",
+            "Confidence": 0.9370806,
+            "Language": "en"
+          },
+          {
+            "X": 682.6666666666666,
+            "Y": 1260.6666666666667,
+            "W": 134.33333333333337,
+            "H": 23.333333333333258,
+            "Text": "FAVOR? FOR",
+            "Confidence": 0.9960244,
+            "Language": "en"
+          },
+          {
+            "X": 708.6666666666666,
+            "Y": 1280,
+            "W": 82,
+            "H": 23.333333333333258,
+            "Text": "AN OLD",
+            "Confidence": 0.99582314,
+            "Language": "en"
+          },
+          {
+            "X": 713,
+            "Y": 1295,
+            "W": 75,
+            "H": 32,
+            "Text": "MAN?",
+            "Confidence": 0.9990661,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SO FIRST...A FAVOR? FOR AN OLD MAN?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "SO FIRST...A FAVOR? FOR AN OLD MAN?",
+      "Translation": "\uADF8\uB7FC \uC6B0\uC120... \uBD80\uD0C1 \uD558\uB098 \uD574\uB3C4 \uB420\uAE4C? [BR] \uC774 \uB299\uC740\uC774\uD55C\uD14C \uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 231.66666666666666,
+        "Y": 1613.6666666666667,
+        "W": 123.00000000000003,
+        "H": 28.333333333333258,
+        "Text": "\u0022ANYTHING.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 231.66666666666666,
+            "Y": 1613.6666666666667,
+            "W": 123.00000000000003,
+            "H": 28.333333333333258,
+            "Text": "\u0022ANYTHING.",
+            "Confidence": 0.9939695,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022ANYTHING.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG025"
+      },
+      "CorrectedText": "\u0022ANYTHING.\u0022",
+      "Translation": "\u0022\uBB50\uB4E0\uC9C0.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 354.6666666666667,
+        "Y": 1706.3333333333333,
+        "W": 156,
+        "H": 67.66666666666674,
+        "Text": "\u0022LET ME HOLD YOU ONE LAST TIME...",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 355.6666666666667,
+            "Y": 1706.3333333333333,
+            "W": 155,
+            "H": 27,
+            "Text": "\u0022LET ME HOLD",
+            "Confidence": 0.99889296,
+            "Language": "en"
+          },
+          {
+            "X": 354.6666666666667,
+            "Y": 1727,
+            "W": 154,
+            "H": 25.666666666666742,
+            "Text": "YOU ONE LAST",
+            "Confidence": 0.9965131,
+            "Language": "en"
+          },
+          {
+            "X": 393,
+            "Y": 1746,
+            "W": 74,
+            "H": 28,
+            "Text": "TIME...",
+            "Confidence": 0.9621273,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022LET ME HOLD YOU ONE LAST TIME...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG027"
+      },
+      "CorrectedText": "\u0022LET ME HOLD YOU ONE LAST TIME...\u0022",
+      "Translation": "\u0022\uB9C8\uC9C0\uB9C9\uC73C\uB85C \uD55C \uBC88\uB9CC...[BR]\uC548\uC544\uC918...\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 1087.3333333333333,
+        "Y": 1869,
+        "W": 157.66666666666674,
+        "H": 74,
+        "Text": "LET ME HOLD THE BOY I LOVE...",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1116,
+            "Y": 1869,
+            "W": 106,
+            "H": 35.5,
+            "Text": "LET ME",
+            "Confidence": 0.9270735,
+            "Language": "en"
+          },
+          {
+            "X": 1087.3333333333333,
+            "Y": 1895,
+            "W": 157.66666666666674,
+            "H": 25.666666666666742,
+            "Text": "HOLD THE BOY",
+            "Confidence": 0.9995638,
+            "Language": "en"
+          },
+          {
+            "X": 1106,
+            "Y": 1909,
+            "W": 106,
+            "H": 34,
+            "Text": "I LOVE...",
+            "Confidence": 0.9223628,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u201C...LET ME HOLD THE BOY I LOVE...\u201D",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG029"
+      },
+      "CorrectedText": "\u0022...LET ME HOLD THE BOY I LOVE...\u0022",
+      "Translation": "...\uC0AC\uB791\uD558\uB294 \uC544\uC774\uB97C[BR]\uD55C \uBC88\uB9CC \uC548\uC544\uBCF4\uAC8C \uD574\uC918...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
