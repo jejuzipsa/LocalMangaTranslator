@@ -306,7 +306,7 @@ public sealed class OcrPipelineService
                             out var candidate))
                     {
                         detectorTextRegion =
-                            FindBestTextRegion(
+                            ResolveDetectorTextRegionForBlock(
                                 block,
                                 regions);
                     }
@@ -601,7 +601,7 @@ public sealed class OcrPipelineService
             // the immutable RT-DETR TextBubble from the OCR block geometry
             // first, then derive its parent Bubble and candidate.
             var detectorTextRegion =
-                FindBestTextRegion(
+                ResolveDetectorTextRegionForBlock(
                     block,
                     regions);
 
@@ -789,7 +789,7 @@ public sealed class OcrPipelineService
                 continue;
 
             var textRegion =
-                FindBestTextRegion(
+                ResolveDetectorTextRegionForBlock(
                     block,
                     regions);
 
@@ -886,7 +886,7 @@ public sealed class OcrPipelineService
         };
     }
 
-    static PageRegion? FindBestTextRegion(
+    public static PageRegion? ResolveDetectorTextRegionForBlock(
         OcrTextBlock block,
         IReadOnlyList<PageRegion> regions)
     {
