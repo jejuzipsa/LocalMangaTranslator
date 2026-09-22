@@ -3975,3 +3975,14 @@ CI verification:
 - Pipeline evidence checks: success
 - Publish win-x64: success
 - artifact upload: success
+
+
+Repository housekeeping - test pic organization
+------------------------------------------------
+- Reorganized the main-branch test pic tree without deleting historical test evidence.
+- current/0047: latest targeted validation.
+- regression/0046: focused regression validation.
+- chapter/0042_2 and chapter/0046_2: chapter-scale validation sets.
+- archive/: older 0028-0045 test outputs.
+- Added test pic/README.txt describing the folder convention.
+- Git history remains intact; this change only cleans the current repository tree.
