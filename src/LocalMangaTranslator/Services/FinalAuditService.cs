@@ -26,6 +26,57 @@ public sealed class FinalAuditService
         public int SecondaryAccepted { get; set; }
         public int RenderApproved { get; set; }
         public int RenderRejected { get; set; }
+        public int V2RequestedUnits { get; set; }
+        public int V2TranslatedUnits { get; set; }
+        public int V2PreservedOriginalUnits { get; set; }
+        public int V2EraseCommittedUnits { get; set; }
+        public int V2TypesetCommittedUnits { get; set; }
+        public int V2MissingUnits { get; set; }
+        public bool V2CountMatch { get; set; }
+        public bool HasCommittedCleaned { get; set; }
+        public long EraseChangedPixels { get; set; }
+        public double EraseChangedRatio { get; set; }
+        public long TypesetChangedPixels { get; set; }
+        public double TypesetChangedRatio { get; set; }
+        public int V2EraseReviewFailedUnits { get; set; }
+        public int V2CleanedTextRedetectedUnits { get; set; }
+        public int V2UnboundUnits { get; set; }
+        public int V2DuplicateSuppressedUnits { get; set; }
+        public int V2StylizedGraphicUnits { get; set; }
+        public int V2OcrNoiseUnits { get; set; }
+        public int V2OtherPreservedUnits { get; set; }
+    }
+
+    sealed class V2CommitUnitSummary
+    {
+        public int RegionId { get; set; }
+        public string SourceText { get; set; } = "";
+        public string Translation { get; set; } = "";
+        public string Status { get; set; } = "";
+        public bool Committed { get; set; }
+        public bool Bound { get; set; }
+        public bool LayoutApproved { get; set; }
+        public bool EraseClean { get; set; }
+        public bool LegacyEraseReviewClean { get; set; }
+        public bool CleanedStateVerifierAvailable { get; set; }
+        public bool CleanedStateEmpty { get; set; }
+        public bool ReviewerDisagreement { get; set; }
+        public string? LayoutMode { get; set; }
+    }
+
+    sealed class V2CommitAuditSummary
+    {
+        public int RequestedUnits { get; set; }
+        public int TranslatedUnits { get; set; }
+        public int PreservedOriginalUnits { get; set; }
+        public int EraseCommittedUnits { get; set; }
+        public int TypesetCommittedUnits { get; set; }
+        public int MissingUnits { get; set; }
+        public int DuplicateUnits { get; set; }
+        public bool EraseTypesetCountMatch { get; set; }
+        public bool SourceToFinalCountMatch { get; set; }
+        public IReadOnlyList<V2CommitUnitSummary> Units { get; set; } =
+            [];
     }
 
     public Task GenerateAsync(
@@ -135,18 +186,88 @@ public sealed class FinalAuditService
                 changedMask,
                 token);
 
+        string debugDirectory =
+            OutputDirectoryLayout.Debug(
+                outputRoot);
+
         string planPath =
             Path.Combine(
-                OutputDirectoryLayout.Debug(
-                    outputRoot),
+                debugDirectory,
                 $"{baseName}.translated.render-plan.json");
 
         RenderPlanDocument? renderPlan =
             TryLoadPlan(
                 planPath);
 
+        string v2CommitPath =
+            Path.Combine(
+                debugDirectory,
+                $"{baseName}.v2_commit_audit.json");
+
+        V2CommitAuditSummary? v2Commit =
+            TryLoadV2CommitAudit(
+                v2CommitPath);
+
+        string committedCleanedPath =
+            Path.Combine(
+                debugDirectory,
+                $"{baseName}.v2_05_committed_cleaned.webp");
+
+        using var committedCleaned =
+            File.Exists(
+                committedCleanedPath)
+                ? Cv2.ImRead(
+                    committedCleanedPath,
+                    ImreadModes.Color)
+                : new Mat();
+
+        bool hasCommittedCleaned =
+            !committedCleaned.Empty() &&
+            committedCleaned.Size() ==
+                original.Size();
+
+        using var eraseChangedMask =
+            hasCommittedCleaned
+                ? BuildChangedMask(
+                    original,
+                    committedCleaned)
+                : Mat.Zeros(
+                        original.Rows,
+                        original.Cols,
+                        MatType.CV_8UC1)
+                    .ToMat();
+
+        using var typesetChangedMask =
+            hasCommittedCleaned
+                ? BuildChangedMask(
+                    committedCleaned,
+                    final)
+                : Mat.Zeros(
+                        original.Rows,
+                        original.Cols,
+                        MatType.CV_8UC1)
+                    .ToMat();
+
+        long eraseChangedPixels =
+            Cv2.CountNonZero(
+                eraseChangedMask);
+
+        long typesetChangedPixels =
+            Cv2.CountNonZero(
+                typesetChangedMask);
+
+        double eraseChangedRatio =
+            eraseChangedPixels /
+            (double)totalPixels;
+
+        double typesetChangedRatio =
+            typesetChangedPixels /
+            (double)totalPixels;
+
         SaveCompareImage(
             original,
+            committedCleaned,
+            hasCommittedCleaned,
             final,
             changedMask,
             Path.Combine(
@@ -208,7 +329,7 @@ public sealed class FinalAuditService
             new
             {
                 schema =
-                    "final-audit-v1",
+                    "final-audit-v2",
                 source_file =
                     Path.GetFileName(
                         sourcePath),
@@ -227,7 +348,22 @@ public sealed class FinalAuditService
                         changed_ratio =
                             changedRatio,
                         changed_regions =
-                            changedRegions
+                            changedRegions,
+                        committed_cleaned_available =
+                            hasCommittedCleaned,
+                        committed_cleaned_file =
+                            hasCommittedCleaned
+                                ? Path.GetFileName(
+                                    committedCleanedPath)
+                                : null,
+                        erase_changed_pixels =
+                            eraseChangedPixels,
+                        erase_changed_ratio =
+                            eraseChangedRatio,
+                        typeset_changed_pixels =
+                            typesetChangedPixels,
+                        typeset_changed_ratio =
+                            typesetChangedRatio
                     },
                 region_analysis =
                     new
@@ -285,7 +421,9 @@ public sealed class FinalAuditService
                             renderRejected,
                         rejection_reasons =
                             rejectionReasons
-                    }
+                    },
+                v2_commit =
+                    v2Commit
             };
 
         string auditJsonPath =
@@ -301,6 +439,65 @@ public sealed class FinalAuditService
                 {
                     WriteIndented = true
                 }));
+
+        int v2EraseReviewFailed =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:erase_review_failed",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2CleanedTextRedetected =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:cleaned_text_redetected",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2Unbound =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:unbound",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2DuplicateSuppressed =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:container_duplicate",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2StylizedGraphic =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:stylized_graphic",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2OcrNoise =
+            v2Commit?.Units.Count(x =>
+                string.Equals(
+                    x.Status,
+                    "original_preserved:ocr_noise",
+                    StringComparison.Ordinal)) ??
+            0;
+
+        int v2OtherPreserved =
+            Math.Max(
+                0,
+                (v2Commit?.PreservedOriginalUnits ?? 0) -
+                v2EraseReviewFailed -
+                v2CleanedTextRedetected -
+                v2Unbound -
+                v2DuplicateSuppressed -
+                v2StylizedGraphic -
+                v2OcrNoise);
 
         UpdateSummary(
             auditDirectory,
@@ -328,8 +525,66 @@ public sealed class FinalAuditService
                 RenderApproved =
                     renderApproved,
                 RenderRejected =
-                    renderRejected
+                    renderRejected,
+                V2RequestedUnits =
+                    v2Commit?.RequestedUnits ?? 0,
+                V2TranslatedUnits =
+                    v2Commit?.TranslatedUnits ?? 0,
+                V2PreservedOriginalUnits =
+                    v2Commit?.PreservedOriginalUnits ?? 0,
+                V2EraseCommittedUnits =
+                    v2Commit?.EraseCommittedUnits ?? 0,
+                V2TypesetCommittedUnits =
+                    v2Commit?.TypesetCommittedUnits ?? 0,
+                V2MissingUnits =
+                    v2Commit?.MissingUnits ?? 0,
+                V2CountMatch =
+                    v2Commit is not null &&
+                    v2Commit.EraseTypesetCountMatch &&
+                    v2Commit.SourceToFinalCountMatch,
+                HasCommittedCleaned =
+                    hasCommittedCleaned,
+                EraseChangedPixels =
+                    eraseChangedPixels,
+                EraseChangedRatio =
+                    eraseChangedRatio,
+                TypesetChangedPixels =
+                    typesetChangedPixels,
+                TypesetChangedRatio =
+                    typesetChangedRatio,
+                V2EraseReviewFailedUnits =
+                    v2EraseReviewFailed,
+                V2CleanedTextRedetectedUnits =
+                    v2CleanedTextRedetected,
+                V2UnboundUnits =
+                    v2Unbound,
+                V2DuplicateSuppressedUnits =
+                    v2DuplicateSuppressed,
+                V2StylizedGraphicUnits =
+                    v2StylizedGraphic,
+                V2OcrNoiseUnits =
+                    v2OcrNoise,
+                V2OtherPreservedUnits =
+                    v2OtherPreserved
             });
+    }
+
+    static V2CommitAuditSummary? TryLoadV2CommitAudit(
+        string path)
+    {
+        try
+        {
+            if (!File.Exists(path))
+                return null;
+
+            return JsonSerializer.Deserialize<V2CommitAuditSummary>(
+                File.ReadAllText(
+                    path));
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     static RenderPlanDocument? TryLoadPlan(
@@ -389,8 +644,43 @@ public sealed class FinalAuditService
             .ToList();
     }
 
+    static Mat BuildChangedMask(
+        Mat first,
+        Mat second)
+    {
+        using var difference =
+            new Mat();
+
+        Cv2.Absdiff(
+            first,
+            second,
+            difference);
+
+        using var gray =
+            new Mat();
+
+        Cv2.CvtColor(
+            difference,
+            gray,
+            ColorConversionCodes.BGR2GRAY);
+
+        var mask =
+            new Mat();
+
+        Cv2.Threshold(
+            gray,
+            mask,
+            8,
+            255,
+            ThresholdTypes.Binary);
+
+        return mask;
+    }
+
     static void SaveCompareImage(
         Mat original,
+        Mat committedCleaned,
+        bool hasCommittedCleaned,
         Mat final,
         Mat changedMask,
         string outputPath)
@@ -418,6 +708,9 @@ public sealed class FinalAuditService
         using var originalPreview =
             new Mat();
 
+        using var cleanedPreview =
+            new Mat();
+
         using var finalPreview =
             new Mat();
 
@@ -433,6 +726,19 @@ public sealed class FinalAuditService
             0,
             0,
             InterpolationFlags.Area);
+
+        if (hasCommittedCleaned)
+        {
+            Cv2.Resize(
+                committedCleaned,
+                cleanedPreview,
+                new Size(
+                    width,
+                    height),
+                0,
+                0,
+                InterpolationFlags.Area);
+        }
 
         Cv2.Resize(
             final,
@@ -481,10 +787,16 @@ public sealed class FinalAuditService
             diffPreview,
             maskPreview);
 
+        int columns =
+            hasCommittedCleaned
+                ? 4
+                : 3;
+
         using var sheet =
             new Mat(
                 height,
-                width * 3,
+                width *
+                    columns,
                 MatType.CV_8UC3,
                 new Scalar(
                     20,
@@ -500,11 +812,34 @@ public sealed class FinalAuditService
                     width,
                     height)));
 
+        int finalColumn =
+            hasCommittedCleaned
+                ? 2
+                : 1;
+
+        int diffColumn =
+            hasCommittedCleaned
+                ? 3
+                : 2;
+
+        if (hasCommittedCleaned)
+        {
+            cleanedPreview.CopyTo(
+                new Mat(
+                    sheet,
+                    new Rect(
+                        width,
+                        0,
+                        width,
+                        height)));
+        }
+
         finalPreview.CopyTo(
             new Mat(
                 sheet,
                 new Rect(
-                    width,
+                    width *
+                        finalColumn,
                     0,
                     width,
                     height)));
@@ -513,25 +848,46 @@ public sealed class FinalAuditService
             new Mat(
                 sheet,
                 new Rect(
-                    width * 2,
+                    width *
+                        diffColumn,
                     0,
                     width,
                     height)));
 
         DrawLabel(
             sheet,
-            "ORIGINAL",
+            "1 ORIGINAL",
             12);
 
-        DrawLabel(
-            sheet,
-            "FINAL",
-            width + 12);
+        if (hasCommittedCleaned)
+        {
+            DrawLabel(
+                sheet,
+                "2 ERASE COMMIT",
+                width + 12);
 
-        DrawLabel(
-            sheet,
-            "DIFF",
-            width * 2 + 12);
+            DrawLabel(
+                sheet,
+                "3 FINAL",
+                width * 2 + 12);
+
+            DrawLabel(
+                sheet,
+                "4 DIFF",
+                width * 3 + 12);
+        }
+        else
+        {
+            DrawLabel(
+                sheet,
+                "2 FINAL",
+                width + 12);
+
+            DrawLabel(
+                sheet,
+                "3 DIFF",
+                width * 2 + 12);
+        }
 
         Cv2.ImEncode(
             ".webp",
@@ -624,6 +980,12 @@ public sealed class FinalAuditService
         entries =
             entries
                 .OrderByDescending(x =>
+                    x.V2PreservedOriginalUnits)
+                .ThenByDescending(x =>
+                    x.V2EraseReviewFailedUnits)
+                .ThenByDescending(x =>
+                    x.V2UnboundUnits)
+                .ThenByDescending(x =>
                     x.RenderRejected)
                 .ThenByDescending(x =>
                     x.ChangedRatio)

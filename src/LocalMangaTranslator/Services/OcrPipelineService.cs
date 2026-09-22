@@ -229,7 +229,9 @@ public sealed class OcrPipelineService
 
         unitBuild =
             ConsolidateRegionOwnedUnits(
-                unitBuild);
+                unitBuild,
+                pageCandidates,
+                pageAnalysis.Regions);
 
         unitBuild =
             AttachRegionContainers(
@@ -271,7 +273,9 @@ public sealed class OcrPipelineService
     }
 
     static OcrUnitBuildResult ConsolidateRegionOwnedUnits(
-        OcrUnitBuildResult input)
+        OcrUnitBuildResult input,
+        IReadOnlyList<ContainerCandidate> candidates,
+        IReadOnlyList<PageRegion> regions)
     {
         if (input.Units.Count == 0 ||
             input.UnitOwnership.Count != input.Units.Count)
@@ -279,12 +283,41 @@ public sealed class OcrPipelineService
             return input;
         }
 
+        var candidateById =
+            candidates.ToDictionary(
+                x => x.CandidateId,
+                StringComparer.Ordinal);
+
         var entries =
             input.Units
-                .Select((block, index) => new
+                .Select((block, index) =>
                 {
-                    Block = block,
-                    Ownership = input.UnitOwnership[index]
+                    var ownership =
+                        input.UnitOwnership[index];
+
+                    PageRegion? detectorTextRegion =
+                        null;
+
+                    if (!ownership.IsOrphan &&
+                        !string.IsNullOrWhiteSpace(
+                            ownership.CandidateId) &&
+                        candidateById.TryGetValue(
+                            ownership.CandidateId,
+                            out var candidate))
+                    {
+                        detectorTextRegion =
+                            ResolveDetectorTextRegionForBlock(
+                                block,
+                                regions);
+                    }
+
+                    return new
+                    {
+                        Block = block,
+                        Ownership = ownership,
+                        DetectorTextRegion =
+                            detectorTextRegion
+                    };
                 })
                 .ToList();
 
@@ -296,20 +329,29 @@ public sealed class OcrPipelineService
                 bool IsOrphan,
                 string Reason)>();
 
-        // A learned speech-bubble region owns one dialogue unit. Older
-        // clustering may split distant line stacks inside that bubble; merge
-        // those pieces before Vision so the external region map remains the
-        // structural source of truth.
+        // 0034: a broad container candidate is no longer a commit-unit
+        // boundary.  Two independent RT-DETR TextBubble regions may overlap
+        // the same legacy/container candidate, and consolidating only by
+        // CandidateId merged adjacent balloons (page017/page028 regression).
+        //
+        // Consolidation is therefore allowed only inside the same immutable
+        // detector text region.  If detector ownership is still unresolved,
+        // keep the original unit isolated rather than guessing and merging.
         foreach (var group in
                  entries
                      .Where(x =>
                          !x.Ownership.IsOrphan &&
                          !string.IsNullOrWhiteSpace(
-                             x.Ownership.CandidateId))
+                             x.Ownership.CandidateId) &&
+                         x.DetectorTextRegion is not null)
                      .GroupBy(
-                         x => x.Ownership.CandidateId!,
+                         x =>
+                             $"{x.Ownership.CandidateId}|{x.DetectorTextRegion!.RegionId}",
                          StringComparer.Ordinal))
         {
+            var first =
+                group.First();
+
             var lines =
                 group
                     .SelectMany(x =>
@@ -343,12 +385,31 @@ public sealed class OcrPipelineService
                 BuildBlockFromLines(
                     -1,
                     lines),
-                group.Key,
+                first.Ownership.CandidateId,
                 lineIds,
                 false,
                 group.Count() > 1
-                    ? "region_owned_consolidated"
-                    : group.First().Ownership.Reason));
+                    ? "detector_textregion_consolidated"
+                    : first.Ownership.Reason));
+        }
+
+        // Candidate-owned entries without a confident RT-DETR text-region
+        // owner stay separate.  This is deliberately conservative: later
+        // attachment/recovery may still bind them, but they cannot drag a
+        // neighboring balloon into the same translation/commit unit.
+        foreach (var entry in
+                 entries.Where(x =>
+                     !x.Ownership.IsOrphan &&
+                     !string.IsNullOrWhiteSpace(
+                         x.Ownership.CandidateId) &&
+                     x.DetectorTextRegion is null))
+        {
+            drafts.Add((
+                entry.Block,
+                entry.Ownership.CandidateId,
+                entry.Ownership.LineIds,
+                false,
+                entry.Ownership.Reason));
         }
 
         foreach (var entry in
@@ -483,66 +544,26 @@ public sealed class OcrPipelineService
             return input;
         }
 
-        var byId =
+        var candidateById =
             candidates.ToDictionary(
                 x => x.CandidateId,
                 StringComparer.Ordinal);
 
-        var units =
-            input.Units
-                .Select((block, index) =>
-                {
-                    var ownership =
-                        input.UnitOwnership[index];
-
-                    if (string.IsNullOrWhiteSpace(
-                            ownership.CandidateId) ||
-                        !byId.TryGetValue(
-                            ownership.CandidateId,
-                            out var candidate))
-                    {
-                        return block;
-                    }
-
-                    return block with
-                    {
-                        RegionId =
-                            candidate.RegionId,
-                        RegionContainer =
-                            candidate,
-                        RegionTextRegion =
-                            FindBestTextRegion(
-                                block,
-                                candidate,
-                                regions)
-                    };
-                })
-                .ToList();
-
-        return new OcrUnitBuildResult(
-            units,
-            input.ContainerCount,
-            input.AssignedLineCount,
-            input.OrphanGroupCount)
-        {
-            LineOwnership =
-                input.LineOwnership,
-            UnitOwnership =
-                input.UnitOwnership
-        };
-    }
-
-    static OcrUnitBuildResult RecoverRtdetrTextRegionOrphans(
-        OcrUnitBuildResult input,
-        IReadOnlyList<ContainerCandidate> candidates,
-        IReadOnlyList<PageRegion> regions)
-    {
-        if (input.Units.Count == 0 ||
-            input.UnitOwnership.Count != input.Units.Count ||
-            candidates.Count == 0)
-        {
-            return input;
-        }
+        var candidateByRegionId =
+            candidates
+                .Where(x =>
+                    !string.IsNullOrWhiteSpace(
+                        x.RegionId))
+                .GroupBy(
+                    x => x.RegionId!,
+                    StringComparer.Ordinal)
+                .ToDictionary(
+                    x => x.Key,
+                    x => x
+                        .OrderByDescending(y =>
+                            y.Score)
+                        .First(),
+                    StringComparer.Ordinal);
 
         var units =
             input.Units.ToList();
@@ -553,82 +574,95 @@ public sealed class OcrPipelineService
         var lineOwnership =
             input.LineOwnership.ToList();
 
-        for (int i = 0; i < units.Count; i++)
+        for (int i = 0;
+             i < units.Count &&
+             i < ownership.Count;
+             i++)
         {
-            var owner = ownership[i];
+            var block =
+                units[i];
 
-            if (!owner.IsOrphan ||
-                !string.IsNullOrWhiteSpace(
+            var owner =
+                ownership[i];
+
+            ContainerCandidate? legacyCandidate =
+                null;
+
+            if (!string.IsNullOrWhiteSpace(
                     owner.CandidateId))
             {
-                continue;
+                candidateById.TryGetValue(
+                    owner.CandidateId,
+                    out legacyCandidate);
             }
 
-            var block = units[i];
+            // 0035: detector text ownership is authoritative.  The legacy
+            // page candidate may have grouped neighboring balloons, so choose
+            // the immutable RT-DETR TextBubble from the OCR block geometry
+            // first, then derive its parent Bubble and candidate.
+            var detectorTextRegion =
+                ResolveDetectorTextRegionForBlock(
+                    block,
+                    regions);
 
-            if (block.Lines.Count == 0 ||
-                MeaningfulLength(
-                    block.Text) == 0)
+            if (detectorTextRegion is null)
             {
+                if (legacyCandidate is null)
+                    continue;
+
+                units[i] =
+                    block with
+                    {
+                        RegionId =
+                            legacyCandidate.RegionId,
+                        RegionContainer =
+                            legacyCandidate,
+                        RegionTextRegion =
+                            null
+                    };
+
                 continue;
             }
 
-            double avgConfidence =
-                block.Lines.Average(
-                    x => x.Confidence);
+            var parentBubble =
+                FindParentBubble(
+                    detectorTextRegion,
+                    regions);
 
-            if (avgConfidence < 0.30)
-                continue;
+            ContainerCandidate? detectorCandidate =
+                null;
 
-            var matches =
-                candidates
-                    .Select(candidate =>
-                    {
-                        var textRegion =
-                            FindBestTextRegion(
-                                block,
-                                candidate,
-                                regions);
+            if (parentBubble is not null)
+            {
+                candidateByRegionId.TryGetValue(
+                    parentBubble.RegionId,
+                    out detectorCandidate);
+            }
 
-                        if (textRegion is null)
-                            return null;
+            var effectiveCandidate =
+                detectorCandidate ??
+                legacyCandidate;
 
-                        double coverage =
-                            Coverage(
-                                ToRect(block),
-                                textRegion.Bounds);
+            string? detectorBubbleRegionId =
+                parentBubble?.RegionId ??
+                effectiveCandidate?.RegionId;
 
-                        double score =
-                            coverage * 4.0 +
-                            textRegion.Score * 2.0 +
-                            Math.Clamp(
-                                candidate.Score,
-                                0,
-                                10) * 0.08;
+            units[i] =
+                block with
+                {
+                    RegionId =
+                        detectorBubbleRegionId,
+                    RegionContainer =
+                        effectiveCandidate,
+                    RegionTextRegion =
+                        detectorTextRegion
+                };
 
-                        return new
-                        {
-                            Candidate = candidate,
-                            TextRegion = textRegion,
-                            Coverage = coverage,
-                            Score = score
-                        };
-                    })
-                    .Where(x =>
-                        x is not null &&
-                        x.Coverage >= 0.52 &&
-                        x.TextRegion.Score >= 0.72f)
-                    .OrderByDescending(x =>
-                        x!.Score)
-                    .ToList();
-
-            if (matches.Count == 0)
-                continue;
-
-            var best = matches[0]!;
-
-            if (matches.Count > 1 &&
-                best.Score - matches[1]!.Score < 0.30)
+            if (detectorCandidate is null ||
+                string.Equals(
+                    owner.CandidateId,
+                    detectorCandidate.CandidateId,
+                    StringComparison.Ordinal))
             {
                 continue;
             }
@@ -637,14 +671,15 @@ public sealed class OcrPipelineService
                 owner with
                 {
                     CandidateId =
-                        best.Candidate.CandidateId,
+                        detectorCandidate.CandidateId,
                     IsOrphan =
                         false,
                     Reason =
-                        "rtdetr_textbubble_recovered"
+                        "rtdetr_textregion_owner_authority"
                 };
 
-            foreach (string lineId in owner.LineIds)
+            foreach (string lineId in
+                     owner.LineIds)
             {
                 int lineIndex =
                     lineOwnership.FindIndex(x =>
@@ -653,20 +688,22 @@ public sealed class OcrPipelineService
                             lineId,
                             StringComparison.Ordinal));
 
-                if (lineIndex < 0 ||
-                    lineOwnership[lineIndex].Assigned)
-                {
+                if (lineIndex < 0)
                     continue;
-                }
+
+                var previous =
+                    lineOwnership[lineIndex];
 
                 lineOwnership[lineIndex] =
-                    new LineOwnershipDecision(
-                        lineId,
-                        best.Candidate.CandidateId,
-                        true,
-                        "rtdetr_textbubble_recovered",
-                        best.Coverage,
-                        best.Score);
+                    previous with
+                    {
+                        CandidateId =
+                            detectorCandidate.CandidateId,
+                        Assigned =
+                            true,
+                        Reason =
+                            "rtdetr_textregion_owner_authority"
+                    };
             }
         }
 
@@ -685,15 +722,174 @@ public sealed class OcrPipelineService
         };
     }
 
-    static PageRegion? FindBestTextRegion(
-        OcrTextBlock block,
-        ContainerCandidate candidate,
+    static OcrUnitBuildResult RecoverRtdetrTextRegionOrphans(
+        OcrUnitBuildResult input,
+        IReadOnlyList<ContainerCandidate> candidates,
         IReadOnlyList<PageRegion> regions)
     {
-        var bubble =
-            candidate.LearnedBounds ??
-            candidate.Bounds;
+        if (input.Units.Count == 0 ||
+            input.UnitOwnership.Count != input.Units.Count ||
+            candidates.Count == 0)
+        {
+            return input;
+        }
 
+        var candidateByRegionId =
+            candidates
+                .Where(x =>
+                    !string.IsNullOrWhiteSpace(
+                        x.RegionId))
+                .GroupBy(
+                    x => x.RegionId!,
+                    StringComparer.Ordinal)
+                .ToDictionary(
+                    x => x.Key,
+                    x => x
+                        .OrderByDescending(y =>
+                            y.Score)
+                        .First(),
+                    StringComparer.Ordinal);
+
+        var units =
+            input.Units.ToList();
+
+        var ownership =
+            input.UnitOwnership.ToList();
+
+        var lineOwnership =
+            input.LineOwnership.ToList();
+
+        for (int i = 0; i < units.Count; i++)
+        {
+            var owner =
+                ownership[i];
+
+            if (!owner.IsOrphan ||
+                !string.IsNullOrWhiteSpace(
+                    owner.CandidateId))
+            {
+                continue;
+            }
+
+            var block =
+                units[i];
+
+            if (block.Lines.Count == 0 ||
+                MeaningfulLength(
+                    block.Text) == 0)
+            {
+                continue;
+            }
+
+            double avgConfidence =
+                block.Lines.Average(
+                    x => x.Confidence);
+
+            if (avgConfidence < 0.30)
+                continue;
+
+            var textRegion =
+                ResolveDetectorTextRegionForBlock(
+                    block,
+                    regions);
+
+            if (textRegion is null ||
+                textRegion.Score < 0.72f)
+            {
+                continue;
+            }
+
+            double coverage =
+                Coverage(
+                    ToRect(block),
+                    textRegion.Bounds);
+
+            if (coverage < 0.52 &&
+                !ContainsCenter(
+                    textRegion.Bounds,
+                    ToRect(block)))
+            {
+                continue;
+            }
+
+            var parentBubble =
+                FindParentBubble(
+                    textRegion,
+                    regions);
+
+            if (parentBubble is null ||
+                !candidateByRegionId.TryGetValue(
+                    parentBubble.RegionId,
+                    out var candidate))
+            {
+                continue;
+            }
+
+            double score =
+                coverage * 4.0 +
+                textRegion.Score * 2.0 +
+                Math.Clamp(
+                    candidate.Score,
+                    0,
+                    10) * 0.08;
+
+            ownership[i] =
+                owner with
+                {
+                    CandidateId =
+                        candidate.CandidateId,
+                    IsOrphan =
+                        false,
+                    Reason =
+                        "rtdetr_textbubble_recovered"
+                };
+
+            foreach (string lineId in
+                     owner.LineIds)
+            {
+                int lineIndex =
+                    lineOwnership.FindIndex(x =>
+                        string.Equals(
+                            x.LineId,
+                            lineId,
+                            StringComparison.Ordinal));
+
+                if (lineIndex < 0 ||
+                    lineOwnership[lineIndex].Assigned)
+                {
+                    continue;
+                }
+
+                lineOwnership[lineIndex] =
+                    new LineOwnershipDecision(
+                        lineId,
+                        candidate.CandidateId,
+                        true,
+                        "rtdetr_textbubble_recovered",
+                        coverage,
+                        score);
+            }
+        }
+
+        return new OcrUnitBuildResult(
+            units,
+            input.ContainerCount,
+            lineOwnership.Count(x =>
+                x.Assigned),
+            ownership.Count(x =>
+                x.IsOrphan))
+        {
+            LineOwnership =
+                lineOwnership,
+            UnitOwnership =
+                ownership
+        };
+    }
+
+    public static PageRegion? ResolveDetectorTextRegionForBlock(
+        OcrTextBlock block,
+        IReadOnlyList<PageRegion> regions)
+    {
         var blockRect =
             ToRect(
                 block);
@@ -706,24 +902,57 @@ public sealed class OcrPipelineService
             .Select(x => new
             {
                 Region = x,
-                BubbleCoverage =
-                    Coverage(
-                        x.Bounds,
-                        bubble),
                 BlockCoverage =
                     Coverage(
                         blockRect,
-                        x.Bounds)
+                        x.Bounds),
+                CenterInside =
+                    ContainsCenter(
+                        x.Bounds,
+                        blockRect)
             })
             .Where(x =>
-                x.BubbleCoverage >= 0.60 &&
-                (x.BlockCoverage >= 0.45 ||
-                 ContainsCenter(
-                     x.Region.Bounds,
-                     blockRect)))
+                x.BlockCoverage >= 0.45 ||
+                x.CenterInside)
             .OrderByDescending(x =>
-                x.BlockCoverage * 3.0 +
-                x.BubbleCoverage +
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.BlockCoverage)
+            .ThenByDescending(x =>
+                x.Region.Score)
+            .Select(x =>
+                x.Region)
+            .FirstOrDefault();
+    }
+
+    static PageRegion? FindParentBubble(
+        PageRegion textRegion,
+        IReadOnlyList<PageRegion> regions)
+    {
+        return regions
+            .Where(x =>
+                x.Kind ==
+                    PageRegionKind.Bubble)
+            .Select(x => new
+            {
+                Region = x,
+                Coverage =
+                    Coverage(
+                        textRegion.Bounds,
+                        x.Bounds),
+                CenterInside =
+                    ContainsCenter(
+                        x.Bounds,
+                        textRegion.Bounds)
+            })
+            .Where(x =>
+                x.CenterInside ||
+                x.Coverage >= 0.45)
+            .OrderByDescending(x =>
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.Coverage)
+            .ThenByDescending(x =>
                 x.Region.Score)
             .Select(x =>
                 x.Region)
@@ -878,11 +1107,24 @@ public sealed class OcrPipelineService
                     ownership.CandidateId) ||
                 !candidateById.TryGetValue(
                     ownership.CandidateId,
-                    out var candidate) ||
-                string.IsNullOrWhiteSpace(
-                    candidate.RegionId) ||
+                    out var candidate))
+            {
+                continue;
+            }
+
+            // 0035: Baberu evidence follows the detector-authoritative Bubble
+            // assigned to the block. The legacy candidate RegionId is only a
+            // fallback when no detector Bubble was resolved.
+            string? evidenceRegionId =
+                !string.IsNullOrWhiteSpace(
+                    units[i].RegionId)
+                    ? units[i].RegionId
+                    : candidate.RegionId;
+
+            if (string.IsNullOrWhiteSpace(
+                    evidenceRegionId) ||
                 !evidenceByRegion.TryGetValue(
-                    candidate.RegionId,
+                    evidenceRegionId,
                     out var secondary))
             {
                 continue;

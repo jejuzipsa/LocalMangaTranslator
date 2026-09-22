@@ -176,12 +176,11 @@ public sealed class VisionTranslationService
             format = "json",
             options = new
             {
-                temperature = recoveryAttempt switch
-                {
-                    0 => 0.05,
-                    1 => 0.10,
-                    _ => 0.16
-                },
+                // 0034 reproducibility: structural review decisions must be
+                // stable for identical image/model input. Recovery attempts
+                // keep distinct deterministic seeds but no sampling heat.
+                temperature = 0.0,
+                seed = 34034 + recoveryAttempt,
                 num_ctx = 8192,
                 num_predict = recoveryAttempt switch
                 {
@@ -571,6 +570,39 @@ public sealed class VisionTranslationService
             ? 0
             : text.Count(char.IsLetterOrDigit);
 
+    static bool HasMeaningfulSource(
+        string? text)
+        => MeaningfulLength(text) > 0;
+
+    static bool ContainsDisallowedPlaceholder(
+        string text)
+    {
+        string normalized =
+            text
+                .Replace(
+                    "[BR]",
+                    " ",
+                    StringComparison.OrdinalIgnoreCase)
+                .Trim();
+
+        string[] blocked =
+        [
+            "여기에 번역된 내용이 들어갑니다",
+            "번역된 내용이 들어갑니다",
+            "번역문을 입력",
+            "번역을 입력",
+            "translation here",
+            "translated text here",
+            "insert translation",
+            "placeholder"
+        ];
+
+        return blocked.Any(x =>
+            normalized.Contains(
+                x,
+                StringComparison.OrdinalIgnoreCase));
+    }
+
     static bool IsCompleteAndUsable(
         IReadOnlyList<VisionTranslation> result,
         IReadOnlyList<OcrTextBlock> blocks)
@@ -590,6 +622,14 @@ public sealed class VisionTranslationService
 
             if (string.IsNullOrWhiteSpace(item.Translation))
                 return false;
+
+            if (!HasMeaningfulSource(
+                    item.CorrectedText) ||
+                ContainsDisallowedPlaceholder(
+                    item.Translation))
+            {
+                return false;
+            }
 
             var source = blocks[item.Id];
             bool sourceUsesLatin = source.Text.Any(c => c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
@@ -644,6 +684,8 @@ NON-NEGOTIABLE RULES:
 9. Set render=true ONLY for dialogue, thought, and narrative caption. Set render=false for sign, sfx, logo, background, and other artwork text.
 10. Very short speech is still dialogue. Words such as "NO.", "YES.", "WAIT!", "RUN!", "NEVER." must never be dropped merely because they are short.
 11. For render=true, translation MUST be a finished Korean translation, never unchanged source text.
+11a. If corrected visible content has no real letters/digits (for example only "...", "**", "_" or decoration), set render=false. Never invent a translation for punctuation/noise.
+11b. Never output placeholders, template instructions, or notes such as "여기에 번역된 내용이 들어갑니다".
 12. Before finalizing each translation, silently check three things: literal fidelity, natural Korean speech/caption style, and brevity for a speech balloon. Do not output the checks.
 13. Avoid stiff translationese. Use the shortest natural Korean wording that preserves the exact intent, relationship, register, emotion, and emphasis.
 14. Neighboring input blocks are context-only. They may guide names, honorifics, pronouns, and speaker tone, but their words, facts, numbers, actions, and clauses MUST NOT be copied into another id. Each id owns only the visible text inside its own OCR block/container.

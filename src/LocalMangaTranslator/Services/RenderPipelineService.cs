@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LocalMangaTranslator.Models;
+using LocalMangaTranslator.PipelineV2.Detection;
+using LocalMangaTranslator.PipelineV2.Erase;
 using OpenCvSharp;
 using CvRect = OpenCvSharp.Rect;
 using WpfRect = System.Windows.Rect;
@@ -26,6 +28,9 @@ public sealed class RenderPipelineService
     const int FinalWebpLosslessQuality = 101;
     const int DebugWebpQuality = 82;
 
+    readonly CleanedStateVerifier cleanedStateVerifier =
+        new();
+
     sealed record ContainerSelection(
         VisionTranslation Region,
         BalloonLayout Layout,
@@ -40,70 +45,208 @@ public sealed class RenderPipelineService
         IReadOnlyList<VisionTranslation> regions,
         string outputPath,
         IProgress<string>? progress = null,
-        CancellationToken token = default)
+        CancellationToken token = default,
+        V2DetectionSnapshot? v2Snapshot = null,
+        V2EraseSelection? v2Selection = null)
     {
-        var requested = regions
-            .Where(x => x.Render)
-            .ToList();
+        bool useV2 =
+            v2Snapshot is not null &&
+            v2Selection is not null;
 
-        var candidates = SuppressDuplicateRegions(
-            requested,
-            out var legacySuppressed);
+        var allRequested =
+            regions
+                .Where(x =>
+                    x.Render &&
+                    !string.IsNullOrWhiteSpace(
+                        x.Translation))
+                .ToList();
+
+        var requested =
+            useV2
+                ? allRequested
+                    .Where(x =>
+                        v2Selection!.Bindings.ContainsKey(
+                            x.Id))
+                    .ToList()
+                : allRequested;
+
+        List<VisionTranslation> legacySuppressed = [];
+
+        var candidates =
+            useV2
+                ? requested
+                : SuppressDuplicateRegions(
+                    requested,
+                    out legacySuppressed);
+
+        var debugDir =
+            Path.Combine(
+                Path.GetDirectoryName(outputPath) ??
+                    AppContext.BaseDirectory,
+                "debug");
+
+        Directory.CreateDirectory(
+            debugDir);
+
+        string baseName =
+            Path.GetFileNameWithoutExtension(
+                outputPath);
+
+        string sourceBaseName =
+            Path.GetFileNameWithoutExtension(
+                sourcePath);
+
+        string ocrDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.01_planned_lines.webp");
+
+        string containerDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.02_container_assignment.webp");
+
+        string unitDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.03_translation_units.webp");
+
+        string eraseDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.04_erase_mask.webp");
+
+        string layoutDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.05_layout_box.webp");
+
+        string finalDebug =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.06_final_output.webp");
+
+        string planJson =
+            Path.Combine(
+                debugDir,
+                $"{baseName}.render-plan.json");
+
+        string v2CommittedCleaned =
+            Path.Combine(
+                debugDir,
+                $"{sourceBaseName}.v2_05_committed_cleaned.webp");
+
+        string v2CommitAudit =
+            Path.Combine(
+                debugDir,
+                $"{sourceBaseName}.v2_commit_audit.json");
+
+        string v2TargetCoverageAudit =
+            Path.Combine(
+                debugDir,
+                $"{sourceBaseName}.v2_target_coverage_audit.json");
 
         if (candidates.Count == 0)
-            throw new InvalidOperationException("조판할 번역 영역이 없습니다.");
+        {
+            SaveSourceAsOutput(
+                sourcePath,
+                outputPath);
+
+            SaveDebugCopy(
+                outputPath,
+                finalDebug);
+
+            if (useV2)
+            {
+                WriteV2CommitAudit(
+                    sourcePath,
+                    allRequested,
+                    v2Selection!,
+                    [],
+                    [],
+                    [],
+                    [],
+                    [],
+                    v2CommitAudit);
+
+                WriteV2TargetCoverageAudit(
+                    sourcePath,
+                    regions,
+                    v2Snapshot!,
+                    v2Selection!,
+                    [],
+                    [],
+                    v2TargetCoverageAudit);
+            }
+
+            progress?.Report(
+                useV2
+                    ? "Pipeline V2 · 연결 가능한 번역 Unit이 없어 원문을 유지했습니다."
+                    : "조판할 번역 영역이 없어 원문을 유지했습니다.");
+
+            return;
+        }
 
         if (legacySuppressed.Count > 0)
         {
             progress?.Report(
                 $"기존 중복 방어 {legacySuppressed.Count}개 제외 · " +
-                string.Join(", ", legacySuppressed.Select(x => $"id={x.Id}")));
+                string.Join(
+                    ", ",
+                    legacySuppressed.Select(x =>
+                        $"id={x.Id}")));
         }
 
-        var debugDir = Path.Combine(
-            Path.GetDirectoryName(outputPath) ?? AppContext.BaseDirectory,
-            "debug");
+        progress?.Report(
+            useV2
+                ? $"1/5 V2 parent Bubble 조판영역 고정 · {candidates.Count}개 번역 블록"
+                : $"1/5 컨테이너 분석 · {candidates.Count}개 번역 블록");
 
-        Directory.CreateDirectory(debugDir);
-
-        string baseName = Path.GetFileNameWithoutExtension(outputPath);
-        string ocrDebug = Path.Combine(debugDir, $"{baseName}.01_planned_lines.webp");
-        string containerDebug = Path.Combine(debugDir, $"{baseName}.02_container_assignment.webp");
-        string unitDebug = Path.Combine(debugDir, $"{baseName}.03_translation_units.webp");
-        string eraseDebug = Path.Combine(debugDir, $"{baseName}.04_erase_mask.webp");
-        string layoutDebug = Path.Combine(debugDir, $"{baseName}.05_layout_box.webp");
-        string finalDebug = Path.Combine(debugDir, $"{baseName}.06_final_output.webp");
-        string planJson = Path.Combine(debugDir, $"{baseName}.render-plan.json");
-
-        progress?.Report($"1/5 컨테이너 분석 · {candidates.Count}개 번역 블록");
-
-        var layouts = await Task.Run(
-            () => AnalyzeContainers(
-                sourcePath,
-                candidates,
-                progress,
-                token),
-            token);
+        var layouts =
+            useV2
+                ? CreateV2BubbleLayouts(
+                    candidates,
+                    v2Selection!.Bindings,
+                    progress)
+                : await Task.Run(
+                    () => AnalyzeContainers(
+                        sourcePath,
+                        candidates,
+                        progress,
+                        token),
+                    token);
 
         token.ThrowIfCancellationRequested();
 
-        progress?.Report("2/5 ContainerId / UnitId / LineId 확정 + 조판 사전 검증");
+        progress?.Report(
+            "2/5 ContainerId / UnitId / LineId 확정 + 조판 사전 검증");
 
-        var plans = BuildRenderPlans(
-            candidates,
-            layouts,
-            out var containerSuppressed,
-            progress);
+        var plans =
+            BuildRenderPlans(
+                candidates,
+                layouts,
+                out var containerSuppressed,
+                progress,
+                requireLegacyErase:
+                    !useV2);
 
         if (containerSuppressed.Count > 0)
         {
             progress?.Report(
                 $"동일 컨테이너 중복 {containerSuppressed.Count}개 제외 · " +
-                string.Join(", ", containerSuppressed.Select(x => $"id={x.Id}")));
+                string.Join(
+                    ", ",
+                    containerSuppressed.Select(x =>
+                        $"id={x.Id}")));
         }
 
-        int preApproved = plans.Count(x => x.Approved);
-        int preRejected = plans.Count - preApproved;
+        int preApproved =
+            plans.Count(x =>
+                x.Approved);
+
+        int preRejected =
+            plans.Count -
+            preApproved;
 
         progress?.Report(
             $"렌더 계획 · 승인 {preApproved} · 원문 유지 {preRejected}");
@@ -119,29 +262,295 @@ public sealed class RenderPipelineService
                 token),
             token);
 
-        string cleanedPath = Path.Combine(
-            Path.GetTempPath(),
-            $"lmt_plan_inpaint_{Guid.NewGuid():N}.png");
+        if (useV2)
+        {
+            try
+            {
+                if (File.Exists(
+                        eraseDebug))
+                {
+                    File.Delete(
+                        eraseDebug);
+                }
+            }
+            catch
+            {
+                // stale legacy debug must not fail V2 rendering.
+            }
+
+            var layoutApprovedPlans =
+                plans
+                    .Where(x =>
+                        x.Approved)
+                    .ToList();
+
+            var eraseTargetIds =
+                layoutApprovedPlans
+                    .Where(x =>
+                        v2Selection!.Bindings.ContainsKey(
+                            x.Region.Id))
+                    .SelectMany(x =>
+                        v2Selection!.Bindings[
+                            x.Region.Id]
+                            .TextRegionIds)
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
+            if (layoutApprovedPlans.Count == 0 ||
+                eraseTargetIds.Count == 0)
+            {
+                SaveSourceAsOutput(
+                    sourcePath,
+                    outputPath);
+
+                SaveDebugCopy(
+                    outputPath,
+                    finalDebug);
+
+                WritePlanJson(
+                    sourcePath,
+                    plans,
+                    planJson);
+
+                WriteV2CommitAudit(
+                    sourcePath,
+                    allRequested,
+                    v2Selection!,
+                    plans,
+                    containerSuppressed,
+                    [],
+                    [],
+                    [],
+                    v2CommitAudit);
+
+                WriteV2TargetCoverageAudit(
+                    sourcePath,
+                    regions,
+                    v2Snapshot!,
+                    v2Selection!,
+                    plans,
+                    [],
+                    v2TargetCoverageAudit);
+
+                progress?.Report(
+                    "Pipeline V2 · 조판 가능한 Unit이 없어 원문을 유지했습니다.");
+
+                return;
+            }
+
+            progress?.Report(
+                $"3/5 조판 가능 Unit {layoutApprovedPlans.Count}개만 V2 erase 검수");
+
+            string outputDirectory =
+                Path.GetDirectoryName(
+                    outputPath) ??
+                AppContext.BaseDirectory;
+
+            var v2Erase =
+                await Task.Run(
+                    () => new ErasePipelineV2().Run(
+                        sourcePath,
+                        outputDirectory,
+                        v2Snapshot!,
+                        eraseTargetIds,
+                        token),
+                    token);
+
+            progress?.Report(
+                "3/5 erase 완료 · cleaned 이미지에서 RT-DETR 텍스트 재검출");
+
+            var cleanedState =
+                await Task.Run(
+                    () => cleanedStateVerifier.Verify(
+                        sourcePath,
+                        v2Erase.CleanedDebugPath,
+                        outputDirectory,
+                        v2Snapshot!,
+                        eraseTargetIds,
+                        v2Erase.TargetAudits,
+                        v2Erase.CleanedStateRescueEvidence,
+                        token),
+                    token);
+
+            var cleanedByTarget =
+                cleanedState.Targets
+                    .ToDictionary(
+                        x => x.TextRegionId,
+                        StringComparer.Ordinal);
+
+            var backgroundQualityFailedIds =
+                v2Erase.BackgroundQualityFailedTextRegionIds
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
+            int legacyDisagreements =
+                cleanedState.Targets.Count(x =>
+                    x.EmptyVerified !=
+                    x.LegacyReviewerClean);
+
+            progress?.Report(
+                $"Cleaned checkpoint · mode={cleanedState.VerifierMode} · " +
+                $"target={cleanedState.Targets.Count} · " +
+                $"empty={cleanedState.Targets.Count(x => x.EmptyVerified)} · " +
+                $"background quality fail={backgroundQualityFailedIds.Count} · " +
+                $"legacy disagreement={legacyDisagreements}");
+
+            bool CleanedStateEmptyFor(
+                RenderUnitPlan plan)
+            {
+                if (!v2Selection!.Bindings.TryGetValue(
+                        plan.Region.Id,
+                        out var binding) ||
+                    binding.TextRegionIds.Count == 0)
+                {
+                    return false;
+                }
+
+                return binding.TextRegionIds.All(id =>
+                    cleanedByTarget.TryGetValue(
+                        id,
+                        out var check) &&
+                    check.EmptyVerified &&
+                    !backgroundQualityFailedIds.Contains(
+                        id));
+            }
+
+            var finalPlans =
+                layoutApprovedPlans
+                    .Where(
+                        CleanedStateEmptyFor)
+                    .ToList();
+
+            var committedTargetIds =
+                finalPlans
+                    .SelectMany(plan =>
+                        v2Selection!.Bindings[
+                            plan.Region.Id]
+                            .TextRegionIds)
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
+            BuildCommittedV2Cleaned(
+                sourcePath,
+                v2Erase.CleanedDebugPath,
+                v2Snapshot!,
+                committedTargetIds,
+                v2CommittedCleaned);
+
+            int eraseRejected =
+                layoutApprovedPlans.Count -
+                finalPlans.Count;
+
+            progress?.Report(
+                $"4/5 cleaned-state commit · empty 확인 {finalPlans.Count} · " +
+                $"텍스트 재검출/검수실패 {eraseRejected} · " +
+                $"지운 Unit={finalPlans.Count} / 채울 Unit={finalPlans.Count}");
+
+            if (finalPlans.Count == 0)
+            {
+                SaveSourceAsOutput(
+                    sourcePath,
+                    outputPath);
+            }
+            else
+            {
+                TypesetAndSave(
+                    v2CommittedCleaned,
+                    finalPlans,
+                    outputPath,
+                    token);
+            }
+
+            SaveDebugCopy(
+                outputPath,
+                finalDebug);
+
+            var committedUnitIds =
+                finalPlans
+                    .Select(x => x.UnitId)
+                    .ToHashSet(
+                        StringComparer.Ordinal);
+
+            var finalizedPlans =
+                plans
+                    .Select(plan =>
+                        plan.Approved &&
+                        !committedUnitIds.Contains(
+                            plan.UnitId)
+                            ? plan with
+                            {
+                                Approved = false,
+                                Reason = "v2_commit_preserved_original"
+                            }
+                            : plan)
+                    .ToList();
+
+            WritePlanJson(
+                sourcePath,
+                finalizedPlans,
+                planJson);
+
+            WriteV2CommitAudit(
+                sourcePath,
+                allRequested,
+                v2Selection!,
+                plans,
+                containerSuppressed,
+                v2Erase.TargetAudits,
+                cleanedState.Targets,
+                finalPlans,
+                v2CommitAudit);
+
+            WriteV2TargetCoverageAudit(
+                sourcePath,
+                regions,
+                v2Snapshot!,
+                v2Selection!,
+                plans,
+                finalPlans,
+                v2TargetCoverageAudit);
+
+            progress?.Report(
+                $"5/5 완료 · 원본 Unit 보존/교체 1:1 · " +
+                $"erase={finalPlans.Count} typeset={finalPlans.Count} · " +
+                $"{Path.GetFileName(outputPath)}");
+
+            return;
+        }
+
+        string cleanedPath =
+            Path.Combine(
+                Path.GetTempPath(),
+                $"lmt_plan_inpaint_{Guid.NewGuid():N}.png");
 
         try
         {
-            progress?.Report("3/5 승인된 Unit의 삭제 마스크 생성 + 허용영역 최종 제한");
+            progress?.Report(
+                "3/5 승인된 Unit의 삭제 마스크 생성 + 허용영역 최종 제한");
 
-            var erasedUnitIds = await Task.Run(
-                () => InpaintApprovedUnits(
-                    sourcePath,
-                    cleanedPath,
-                    eraseDebug,
-                    plans,
-                    progress,
-                    token),
-                token);
+            var erasedUnitIds =
+                await Task.Run(
+                    () => InpaintApprovedUnits(
+                        sourcePath,
+                        cleanedPath,
+                        eraseDebug,
+                        plans,
+                        progress,
+                        token),
+                    token);
 
-            var finalPlans = plans
-                .Where(x => x.Approved && erasedUnitIds.Contains(x.UnitId))
-                .ToList();
+            var finalPlans =
+                plans
+                    .Where(x =>
+                        x.Approved &&
+                        erasedUnitIds.Contains(
+                            x.UnitId))
+                    .ToList();
 
-            int eraseRejected = preApproved - finalPlans.Count;
+            int eraseRejected =
+                preApproved -
+                finalPlans.Count;
+
             if (eraseRejected > 0)
             {
                 progress?.Report(
@@ -150,16 +559,29 @@ public sealed class RenderPipelineService
 
             if (finalPlans.Count == 0)
             {
-                // 안전 정책: 지울 원문이 확인되지 않은 페이지에 번역문만 덮지 않는다.
-                SaveSourceAsOutput(sourcePath, outputPath);
-                SaveDebugCopy(outputPath, finalDebug);
-                WritePlanJson(sourcePath, plans, planJson);
-                progress?.Report("안전하게 조판할 Unit이 없어 원문을 유지했습니다.");
+                SaveSourceAsOutput(
+                    sourcePath,
+                    outputPath);
+
+                SaveDebugCopy(
+                    outputPath,
+                    finalDebug);
+
+                WritePlanJson(
+                    sourcePath,
+                    plans,
+                    planJson);
+
+                progress?.Report(
+                    "안전하게 조판할 Unit이 없어 원문을 유지했습니다.");
+
                 return;
             }
 
             token.ThrowIfCancellationRequested();
-            progress?.Report($"4/5 승인 Unit {finalPlans.Count}개를 계획대로 1회 조판");
+
+            progress?.Report(
+                $"4/5 승인 Unit {finalPlans.Count}개를 계획대로 1회 조판");
 
             TypesetAndSave(
                 cleanedPath,
@@ -167,8 +589,14 @@ public sealed class RenderPipelineService
                 outputPath,
                 token);
 
-            SaveDebugCopy(outputPath, finalDebug);
-            WritePlanJson(sourcePath, plans, planJson);
+            SaveDebugCopy(
+                outputPath,
+                finalDebug);
+
+            WritePlanJson(
+                sourcePath,
+                plans,
+                planJson);
 
             progress?.Report(
                 $"5/5 완료 · RenderPlan {finalPlans.Count}개 · {Path.GetFileName(outputPath)}");
@@ -177,14 +605,829 @@ public sealed class RenderPipelineService
         {
             try
             {
-                if (File.Exists(cleanedPath))
-                    File.Delete(cleanedPath);
+                if (File.Exists(
+                        cleanedPath))
+                {
+                    File.Delete(
+                        cleanedPath);
+                }
             }
             catch
             {
-                // 임시파일 정리 실패는 결과 저장을 실패 처리하지 않는다.
+                // temp cleanup failure does not invalidate output.
             }
         }
+    }
+
+    static Dictionary<int, BalloonLayout> CreateV2BubbleLayouts(
+        IReadOnlyList<VisionTranslation> regions,
+        IReadOnlyDictionary<int, V2RegionBinding> bindings,
+        IProgress<string>? progress)
+    {
+        var result =
+            new Dictionary<int, BalloonLayout>(
+                regions.Count);
+
+        foreach (var region in regions)
+        {
+            if (!bindings.TryGetValue(
+                    region.Id,
+                    out var binding))
+            {
+                continue;
+            }
+
+            var bounds =
+                binding.LayoutBounds;
+
+            int insetX =
+                Math.Clamp(
+                    (int)Math.Round(
+                        bounds.Width *
+                        0.08),
+                    4,
+                    24);
+
+            int insetY =
+                Math.Clamp(
+                    (int)Math.Round(
+                        bounds.Height *
+                        0.10),
+                    4,
+                    24);
+
+            int innerWidth =
+                Math.Max(
+                    12,
+                    bounds.Width -
+                    insetX * 2);
+
+            int innerHeight =
+                Math.Max(
+                    12,
+                    bounds.Height -
+                    insetY * 2);
+
+            var inner =
+                new CvRect(
+                    bounds.X +
+                        insetX,
+                    bounds.Y +
+                        insetY,
+                    innerWidth,
+                    innerHeight);
+
+            int maskWidth =
+                Math.Max(
+                    1,
+                    bounds.Width);
+
+            int maskHeight =
+                Math.Max(
+                    1,
+                    bounds.Height);
+
+            var safeMask =
+                Enumerable.Repeat(
+                        (byte)255,
+                        maskWidth *
+                        maskHeight)
+                    .ToArray();
+
+            var layout =
+                new BalloonLayout(
+                    bounds,
+                    inner,
+                    true,
+                    false,
+                    safeMask,
+                    maskWidth,
+                    maskHeight,
+                    region.Type,
+                    binding.LayoutMode switch
+                    {
+                        "rtdetr_parent_bubble" =>
+                            "v2:rtdetr_parent_bubble",
+                        "rtdetr_textfree" =>
+                            "v2:rtdetr_textfree",
+                        _ =>
+                            "v2:textbubble_layout_fallback"
+                    },
+                    true,
+                    binding.LayoutMode switch
+                    {
+                        "rtdetr_parent_bubble" =>
+                            "v2_parent_bubble_for_layout",
+                        "rtdetr_textfree" =>
+                            "v2_textfree_local_layout",
+                        _ =>
+                            "v2_no_parent_bubble"
+                    },
+                    1.0,
+                    1.0,
+                    1.0,
+                    0,
+                    inner.Width *
+                    (double)inner.Height /
+                    Math.Max(
+                        1.0,
+                        bounds.Width *
+                        (double)bounds.Height),
+                    1.0,
+                    0);
+
+            result[
+                region.Id] =
+                layout;
+
+            progress?.Report(
+                $"[v2-box] id={region.Id} " +
+                $"erase_text={binding.TextBounds.X},{binding.TextBounds.Y}," +
+                $"{binding.TextBounds.Width}x{binding.TextBounds.Height} " +
+                $"layout={bounds.X},{bounds.Y},{bounds.Width}x{bounds.Height} " +
+                $"mode={binding.LayoutMode}");
+        }
+
+        return result;
+    }
+
+    static void BuildCommittedV2Cleaned(
+        string sourcePath,
+        string v2CleanedPath,
+        V2DetectionSnapshot snapshot,
+        IReadOnlySet<string> committedTargetIds,
+        string outputPath)
+    {
+        using var source =
+            Cv2.ImRead(
+                sourcePath,
+                ImreadModes.Color);
+
+        using var cleaned =
+            Cv2.ImRead(
+                v2CleanedPath,
+                ImreadModes.Color);
+
+        if (source.Empty() ||
+            cleaned.Empty())
+        {
+            throw new InvalidOperationException(
+                "Pipeline V2 commit 이미지를 열 수 없습니다.");
+        }
+
+        using var committed =
+            source.Clone();
+
+        foreach (var target in snapshot.TextTargets.Where(x =>
+                     committedTargetIds.Contains(
+                         x.TextRegionId)))
+        {
+            var bounds =
+                ClampRect(
+                    target.TextBounds.X,
+                    target.TextBounds.Y,
+                    target.TextBounds.Width,
+                    target.TextBounds.Height,
+                    source.Cols,
+                    source.Rows);
+
+            if (bounds.Width <= 0 ||
+                bounds.Height <= 0)
+            {
+                continue;
+            }
+
+            using var srcRoi =
+                new Mat(
+                    cleaned,
+                    bounds);
+
+            using var dstRoi =
+                new Mat(
+                    committed,
+                    bounds);
+
+            srcRoi.CopyTo(
+                dstRoi);
+        }
+
+        if (!SaveLosslessWebp(
+                outputPath,
+                committed))
+        {
+            throw new InvalidOperationException(
+                "Pipeline V2 committed cleaned 이미지를 저장하지 못했습니다.");
+        }
+    }
+
+    static void WriteV2CommitAudit(
+        string sourcePath,
+        IReadOnlyList<VisionTranslation> requested,
+        V2EraseSelection selection,
+        IReadOnlyList<RenderUnitPlan> plans,
+        IReadOnlyList<VisionTranslation> containerSuppressed,
+        IReadOnlyList<V2EraseTargetAudit> targetAudits,
+        IReadOnlyList<V2CleanedTargetVerification> cleanedVerifications,
+        IReadOnlyList<RenderUnitPlan> committedPlans,
+        string path)
+    {
+        try
+        {
+            var planByRegion =
+                plans.ToDictionary(
+                    x => x.Region.Id);
+
+            var suppressedIds =
+                containerSuppressed
+                    .Select(x => x.Id)
+                    .ToHashSet();
+
+            var auditByTarget =
+                targetAudits
+                    .ToDictionary(
+                        x => x.TextRegionId,
+                        StringComparer.Ordinal);
+
+            var cleanedByTarget =
+                cleanedVerifications
+                    .ToDictionary(
+                        x => x.TextRegionId,
+                        StringComparer.Ordinal);
+
+            var committedIds =
+                committedPlans
+                    .Select(x => x.Region.Id)
+                    .ToHashSet();
+
+            var units =
+                requested
+                    .Select(region =>
+                    {
+                        bool bound =
+                            selection.Bindings.TryGetValue(
+                                region.Id,
+                                out var binding);
+
+                        bool planned =
+                            planByRegion.TryGetValue(
+                                region.Id,
+                                out var plan);
+
+                        bool layoutReady =
+                            planned &&
+                            plan!.Approved;
+
+                        bool legacyEraseClean =
+                            bound &&
+                            binding!.TextRegionIds.Count > 0 &&
+                            binding.TextRegionIds.All(id =>
+                                auditByTarget.TryGetValue(
+                                    id,
+                                    out var audit) &&
+                                ErasePipelineV2.IsAuditClean(
+                                    audit));
+
+                        bool cleanedStateEmpty =
+                            bound &&
+                            binding!.TextRegionIds.Count > 0 &&
+                            binding.TextRegionIds.All(id =>
+                                cleanedByTarget.TryGetValue(
+                                    id,
+                                    out var cleaned) &&
+                                cleaned.EmptyVerified);
+
+                        bool cleanedVerifierAvailable =
+                            bound &&
+                            binding!.TextRegionIds.Count > 0 &&
+                            binding.TextRegionIds.All(id =>
+                                cleanedByTarget.ContainsKey(
+                                    id));
+
+                        bool committed =
+                            committedIds.Contains(
+                                region.Id);
+
+                        string? policyReason =
+                            null;
+
+                        if (!bound)
+                        {
+                            selection.PreservationReasons.TryGetValue(
+                                region.Id,
+                                out policyReason);
+                        }
+
+                        bool auditNoise =
+                            !bound &&
+                            IsLikelyAuditOcrNoise(
+                                region);
+
+                        string status;
+
+                        if (committed)
+                        {
+                            status =
+                                "translated";
+                        }
+                        else if (!string.IsNullOrWhiteSpace(
+                                     policyReason))
+                        {
+                            status =
+                                $"original_preserved:{policyReason}";
+                        }
+                        else if (auditNoise)
+                        {
+                            status =
+                                "original_preserved:ocr_noise";
+                        }
+                        else if (!bound)
+                        {
+                            status =
+                                "original_preserved:unbound";
+                        }
+                        else if (suppressedIds.Contains(
+                                     region.Id))
+                        {
+                            status =
+                                "original_preserved:container_duplicate";
+                        }
+                        else if (!planned)
+                        {
+                            status =
+                                "original_preserved:not_planned";
+                        }
+                        else if (!layoutReady)
+                        {
+                            status =
+                                $"original_preserved:{plan!.Reason}";
+                        }
+                        else if (cleanedVerifierAvailable &&
+                                 !cleanedStateEmpty)
+                        {
+                            status =
+                                "original_preserved:cleaned_text_redetected";
+                        }
+                        else if (!cleanedVerifierAvailable &&
+                                 !legacyEraseClean)
+                        {
+                            status =
+                                "original_preserved:erase_review_failed";
+                        }
+                        else
+                        {
+                            status =
+                                "original_preserved:not_committed";
+                        }
+
+                        return new
+                        {
+                            RegionId =
+                                region.Id,
+                            SourceText =
+                                region.Source.Text,
+                            Translation =
+                                region.Translation,
+                            Bound =
+                                bound,
+                            TextRegionIds =
+                                bound
+                                    ? binding!.TextRegionIds
+                                    : [],
+                            BubbleRegionId =
+                                bound
+                                    ? binding!.BubbleRegionId
+                                    : null,
+                            LayoutMode =
+                                bound
+                                    ? binding!.LayoutMode
+                                    : null,
+                            LayoutBounds =
+                                bound
+                                    ? new
+                                    {
+                                        binding!.LayoutBounds.X,
+                                        binding.LayoutBounds.Y,
+                                        binding.LayoutBounds.Width,
+                                        binding.LayoutBounds.Height
+                                    }
+                                    : null,
+                            Planned =
+                                planned,
+                            LayoutApproved =
+                                layoutReady,
+                            LegacyEraseReviewClean =
+                                legacyEraseClean,
+                            CleanedStateVerifierAvailable =
+                                cleanedVerifierAvailable,
+                            CleanedStateEmpty =
+                                cleanedStateEmpty,
+                            ReviewerDisagreement =
+                                cleanedVerifierAvailable &&
+                                legacyEraseClean !=
+                                cleanedStateEmpty,
+                            EraseClean =
+                                cleanedVerifierAvailable
+                                    ? cleanedStateEmpty
+                                    : legacyEraseClean,
+                            Committed =
+                                committed,
+                            Status =
+                                status
+                        };
+                    })
+                    .ToArray();
+
+            int committedCount =
+                units.Count(x =>
+                    x.Committed);
+
+            int preservedCount =
+                units.Length -
+                committedCount;
+
+            var document =
+                new
+                {
+                    Schema =
+                        "pipeline-v2-cleaned-state-commit-v2",
+                    SourceFile =
+                        Path.GetFileName(
+                            sourcePath),
+                    RequestedUnits =
+                        units.Length,
+                    TranslatedUnits =
+                        committedCount,
+                    PreservedOriginalUnits =
+                        preservedCount,
+                    EraseCommittedUnits =
+                        committedCount,
+                    TypesetCommittedUnits =
+                        committedCount,
+                    MissingUnits =
+                        0,
+                    DuplicateUnits =
+                        0,
+                    EraseTypesetCountMatch =
+                        true,
+                    SourceToFinalCountMatch =
+                        units.Length ==
+                        committedCount +
+                        preservedCount,
+                    Units =
+                        units
+                };
+
+            File.WriteAllText(
+                path,
+                JsonSerializer.Serialize(
+                    document,
+                    new JsonSerializerOptions
+                    {
+                        WriteIndented =
+                            true
+                    }));
+        }
+        catch
+        {
+            // diagnostic failure must not invalidate a finished image.
+        }
+    }
+
+    static void WriteV2TargetCoverageAudit(
+        string sourcePath,
+        IReadOnlyList<VisionTranslation> regions,
+        V2DetectionSnapshot snapshot,
+        V2EraseSelection selection,
+        IReadOnlyList<RenderUnitPlan> plans,
+        IReadOnlyList<RenderUnitPlan> finalPlans,
+        string path)
+    {
+        try
+        {
+            var committedRegionIds =
+                finalPlans
+                    .Select(x =>
+                        x.Region.Id)
+                    .ToHashSet();
+
+            var plansByRegion =
+                plans
+                    .GroupBy(x =>
+                        x.Region.Id)
+                    .ToDictionary(
+                        x => x.Key,
+                        x => x
+                            .OrderByDescending(y =>
+                                y.Approved)
+                            .ThenBy(y =>
+                                y.UnitId)
+                            .First());
+
+            var targets =
+                snapshot.TextTargets
+                    .Select(target =>
+                    {
+                        var boundRegionIds =
+                            selection.Bindings
+                                .Where(x =>
+                                    x.Value.TextRegionIds.Contains(
+                                        target.TextRegionId,
+                                        StringComparer.Ordinal))
+                                .Select(x =>
+                                    x.Key)
+                                .Distinct()
+                                .OrderBy(x =>
+                                    x)
+                                .ToArray();
+
+                        int? committedRegionId =
+                            boundRegionIds
+                                .Where(id =>
+                                    committedRegionIds.Contains(
+                                        id))
+                                .Select(id =>
+                                    (int?)id)
+                                .FirstOrDefault();
+
+                        bool committed =
+                            committedRegionId.HasValue;
+
+                        string status;
+                        int? bestRegionId =
+                            null;
+                        string? planReason =
+                            null;
+
+                        if (committed)
+                        {
+                            status =
+                                "translated_committed";
+
+                            bestRegionId =
+                                committedRegionId;
+                        }
+                        else if (selection.PreservationTargetReasons.TryGetValue(
+                                     target.TextRegionId,
+                                     out var policyReason))
+                        {
+                            status =
+                                $"preserved_policy:{policyReason}";
+                        }
+                        else if (boundRegionIds.Length > 0)
+                        {
+                            var boundPlans =
+                                boundRegionIds
+                                    .Where(id =>
+                                        plansByRegion.ContainsKey(
+                                            id))
+                                    .Select(id =>
+                                        plansByRegion[id])
+                                    .OrderByDescending(x =>
+                                        x.Approved)
+                                    .ThenByDescending(x =>
+                                        V2CandidateKeepScore(
+                                            x.Region))
+                                    .ToList();
+
+                            if (boundPlans.Count == 0)
+                            {
+                                status =
+                                    "unresolved_bound_without_plan";
+
+                                bestRegionId =
+                                    boundRegionIds[0];
+                            }
+                            else
+                            {
+                                var bestPlan =
+                                    boundPlans[0];
+
+                                bestRegionId =
+                                    bestPlan.Region.Id;
+
+                                planReason =
+                                    bestPlan.Reason;
+
+                                status =
+                                    bestPlan.Approved
+                                        ? "preserved_cleaned_state_or_background_quality"
+                                        : $"preserved_plan:{bestPlan.Reason}";
+                            }
+                        }
+                        else
+                        {
+                            var bestRegion =
+                                regions
+                                    .Select(region => new
+                                    {
+                                        Region = region,
+                                        Score =
+                                            TargetAffinityScore(
+                                                region,
+                                                target)
+                                    })
+                                    .Where(x =>
+                                        x.Score > 0)
+                                    .OrderByDescending(x =>
+                                        x.Score)
+                                    .ThenBy(x =>
+                                        x.Region.Id)
+                                    .FirstOrDefault();
+
+                            if (bestRegion is null)
+                            {
+                                status =
+                                    "unresolved_detected_no_translation_unit";
+                            }
+                            else
+                            {
+                                bestRegionId =
+                                    bestRegion.Region.Id;
+
+                                if (!bestRegion.Region.Render ||
+                                    string.IsNullOrWhiteSpace(
+                                        bestRegion.Region.Translation))
+                                {
+                                    status =
+                                        $"preserved_render_false:{bestRegion.Region.Type}";
+                                }
+                                else
+                                {
+                                    status =
+                                        "unresolved_detected_unbound_translation";
+                                }
+                            }
+                        }
+
+                        bool unresolved =
+                            status.StartsWith(
+                                "unresolved_",
+                                StringComparison.Ordinal);
+
+                        return new
+                        {
+                            TextRegionId =
+                                target.TextRegionId,
+                            Kind =
+                                target.Kind.ToString(),
+                            target.TextScore,
+                            BubbleRegionId =
+                                target.BubbleRegionId,
+                            TextBounds =
+                                new
+                                {
+                                    target.TextBounds.X,
+                                    target.TextBounds.Y,
+                                    target.TextBounds.Width,
+                                    target.TextBounds.Height
+                                },
+                            BoundTranslationRegionIds =
+                                boundRegionIds,
+                            BestTranslationRegionId =
+                                bestRegionId,
+                            Status =
+                                status,
+                            PlanReason =
+                                planReason,
+                            Unresolved =
+                                unresolved
+                        };
+                    })
+                    .ToArray();
+
+            var document =
+                new
+                {
+                    Schema =
+                        "pipeline-v2-target-coverage-v1",
+                    SourceFile =
+                        Path.GetFileName(
+                            sourcePath),
+                    DetectedTextTargets =
+                        targets.Length,
+                    CommittedTargets =
+                        targets.Count(x =>
+                            x.Status ==
+                            "translated_committed"),
+                    PreservedTargets =
+                        targets.Count(x =>
+                            x.Status.StartsWith(
+                                "preserved_",
+                                StringComparison.Ordinal)),
+                    UnresolvedTargets =
+                        targets.Count(x =>
+                            x.Unresolved),
+                    CoverageComplete =
+                        targets.All(x =>
+                            !x.Unresolved),
+                    Targets =
+                        targets
+                };
+
+            File.WriteAllText(
+                path,
+                JsonSerializer.Serialize(
+                    document,
+                    new JsonSerializerOptions
+                    {
+                        WriteIndented =
+                            true
+                    }));
+        }
+        catch
+        {
+            // Coverage diagnostics must never invalidate a finished page.
+        }
+    }
+
+    static double TargetAffinityScore(
+        VisionTranslation region,
+        V2TextTarget target)
+    {
+        if (region.Source.RegionTextRegion is { } linked &&
+            string.Equals(
+                linked.RegionId,
+                target.TextRegionId,
+                StringComparison.Ordinal))
+        {
+            return 1000;
+        }
+
+        if (!string.IsNullOrWhiteSpace(
+                region.Source.RegionId) &&
+            !string.IsNullOrWhiteSpace(
+                target.BubbleRegionId) &&
+            string.Equals(
+                region.Source.RegionId,
+                target.BubbleRegionId,
+                StringComparison.Ordinal))
+        {
+            return 600;
+        }
+
+        var source =
+            new Rect2d(
+                region.Source.X,
+                region.Source.Y,
+                Math.Max(
+                    1.0,
+                    region.Source.W),
+                Math.Max(
+                    1.0,
+                    region.Source.H));
+
+        double overlap =
+            IntersectionArea(
+                source,
+                new Rect2d(
+                    target.TextBounds.X,
+                    target.TextBounds.Y,
+                    target.TextBounds.Width,
+                    target.TextBounds.Height));
+
+        if (overlap <= 0)
+            return 0;
+
+        double sourceArea =
+            Math.Max(
+                1.0,
+                source.Width *
+                source.Height);
+
+        double targetArea =
+            Math.Max(
+                1.0,
+                target.TextBounds.Width *
+                (double)target.TextBounds.Height);
+
+        double containment =
+            overlap /
+            Math.Min(
+                sourceArea,
+                targetArea);
+
+        return containment >= 0.18
+            ? 100 + containment * 100
+            : 0;
+    }
+
+    static bool IsLikelyAuditOcrNoise(
+        VisionTranslation region)
+    {
+        string source =
+            region.Source.Text.Trim();
+
+        int meaningful =
+            source.Count(
+                char.IsLetterOrDigit);
+
+        if (meaningful == 0)
+            return true;
+
+        if (meaningful > 1)
+            return false;
+
+        return region.Source.Lines.Count <= 2;
     }
 
     static Dictionary<int, BalloonLayout> AnalyzeContainers(
@@ -226,7 +1469,8 @@ public sealed class RenderPipelineService
         IReadOnlyList<VisionTranslation> regions,
         IReadOnlyDictionary<int, BalloonLayout> layouts,
         out List<VisionTranslation> containerSuppressed,
-        IProgress<string>? progress)
+        IProgress<string>? progress,
+        bool requireLegacyErase = true)
     {
         containerSuppressed = [];
 
@@ -246,19 +1490,29 @@ public sealed class RenderPipelineService
             if (!layouts.TryGetValue(region.Id, out var layout))
                 continue;
 
-            ContainerSelection? same = null;
-
-            if (layout.Detected)
+            // Legacy rendering still suppresses duplicate physical containers
+            // up front.  Pipeline V2 must not: 0033_2 showed that a weak OCR
+            // candidate can be selected first, fail semantic validation, and
+            // permanently suppress a later exact/secondary-backed candidate
+            // (page032 AM I RIGHT?).  V2 evaluates every candidate first and
+            // arbitrates only among candidates that are actually renderable.
+            if (requireLegacyErase &&
+                layout.Detected)
             {
-                same = selected.FirstOrDefault(x =>
-                    x.Layout.Detected &&
-                    IsSamePhysicalContainer(x.Layout, layout));
-            }
+                var same =
+                    selected.FirstOrDefault(x =>
+                        x.Layout.Detected &&
+                        IsSamePhysicalContainer(
+                            x.Layout,
+                            layout));
 
-            if (same is not null)
-            {
-                containerSuppressed.Add(region);
-                continue;
+                if (same is not null)
+                {
+                    containerSuppressed.Add(
+                        region);
+
+                    continue;
+                }
             }
 
             selected.Add(new ContainerSelection(
@@ -304,20 +1558,31 @@ public sealed class RenderPipelineService
                     line));
             }
 
-            var conflicts = plannedLines
-                .Where(x => lineOwners.ContainsKey(x.LineId))
-                .Select(x => x.LineId)
-                .Distinct(StringComparer.Ordinal)
-                .ToList();
+            var conflicts =
+                requireLegacyErase
+                    ? plannedLines
+                        .Where(x =>
+                            lineOwners.ContainsKey(
+                                x.LineId))
+                        .Select(x =>
+                            x.LineId)
+                        .Distinct(
+                            StringComparer.Ordinal)
+                        .ToList()
+                    : [];
 
-            // A duplicated canonical line must not invalidate an otherwise
-            // independent translation unit. The earlier unit keeps ownership
-            // of the physical OCR line; this unit simply cannot erase that
-            // line again. If every line is already owned, the unit is still
-            // rejected because it has no independent source-text ownership.
-            var ownedLines = plannedLines
-                .Where(x => !lineOwners.ContainsKey(x.LineId))
-                .ToList();
+            // Canonical-line ownership is a legacy erase safety rule.  V2
+            // erase ownership is the immutable RT-DETR TextRegion, so two OCR
+            // candidates for the same detector target must both survive long
+            // enough for evidence arbitration.
+            var ownedLines =
+                requireLegacyErase
+                    ? plannedLines
+                        .Where(x =>
+                            !lineOwners.ContainsKey(
+                                x.LineId))
+                        .ToList()
+                    : plannedLines.ToList();
 
             if (conflicts.Count > 0 &&
                 ownedLines.Count > 0)
@@ -352,7 +1617,8 @@ public sealed class RenderPipelineService
                             semanticSafe &&
                             textLayout.Fits &&
                             !allLinesConflict &&
-                            erase.Approved;
+                            (!requireLegacyErase ||
+                             erase.Approved);
 
             string reason;
             if (!item.Layout.ShouldRender)
@@ -363,16 +1629,20 @@ public sealed class RenderPipelineService
                 reason = $"line_ownership_conflict_all:{string.Join("+", conflicts)}";
             else if (!textLayout.Fits)
                 reason = $"layout_rejected:{textLayout.Reason}";
-            else if (!erase.Approved)
+            else if (requireLegacyErase &&
+                     !erase.Approved)
                 reason = $"erase_rejected:{erase.Reason}";
             else
-                reason = "ok";
+                reason = requireLegacyErase
+                    ? "ok"
+                    : "ok_v2_erase";
 
-            if (approved)
+            if (approved &&
+                requireLegacyErase)
             {
-                // Only an actually renderable unit may claim canonical lines.
-                // A rejected unit must not block a later valid unit that shares
-                // one OCR observation.
+                // Only legacy rendering claims canonical OCR lines here.
+                // V2 arbitrates candidates by detector-owned physical target
+                // after semantic/layout validation.
                 foreach (var line in ownedLines)
                     lineOwners[line.LineId] = unitId;
             }
@@ -394,7 +1664,139 @@ public sealed class RenderPipelineService
                 reason));
         }
 
+        if (!requireLegacyErase)
+        {
+            var approved =
+                plans
+                    .Where(x =>
+                        x.Approved)
+                    .OrderByDescending(x =>
+                        V2CandidateKeepScore(
+                            x.Region))
+                    .ThenBy(x =>
+                        x.Region.Id)
+                    .ToList();
+
+            var kept =
+                new List<RenderUnitPlan>();
+
+            var suppressedRegionIds =
+                new HashSet<int>();
+
+            foreach (var candidate in approved)
+            {
+                bool duplicate =
+                    kept.Any(existing =>
+                        existing.Container.Detected &&
+                        candidate.Container.Detected &&
+                        IsSamePhysicalContainer(
+                            existing.Container,
+                            candidate.Container));
+
+                if (!duplicate)
+                {
+                    kept.Add(
+                        candidate);
+
+                    continue;
+                }
+
+                suppressedRegionIds.Add(
+                    candidate.Region.Id);
+
+                containerSuppressed.Add(
+                    candidate.Region);
+            }
+
+            if (suppressedRegionIds.Count > 0)
+            {
+                plans =
+                    plans
+                        .Select(plan =>
+                            suppressedRegionIds.Contains(
+                                plan.Region.Id)
+                                ? plan with
+                                {
+                                    Approved = false,
+                                    Reason =
+                                        "container_duplicate_after_v2_candidate_arbitration"
+                                }
+                                : plan)
+                        .ToList();
+            }
+        }
+
         return plans;
+    }
+
+    public static double GetV2CandidateKeepScore(
+        VisionTranslation region)
+        => V2CandidateKeepScore(
+            region);
+
+    static double V2CandidateKeepScore(
+        VisionTranslation region)
+    {
+        double score =
+            DuplicateKeepScore(
+                region);
+
+        if (region.Source.RegionTextRegion is not null)
+            score += 40000;
+
+        if (!string.IsNullOrWhiteSpace(
+                region.Source.RegionId))
+        {
+            score += 20000;
+        }
+
+        string agreement =
+            region.Source.SecondaryOcrAgreement ??
+            "";
+
+        if (string.Equals(
+                agreement,
+                "agree",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            score += 50000;
+        }
+        else if (string.Equals(
+                     agreement,
+                     "partial",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            score += 20000;
+        }
+        else if (string.Equals(
+                     agreement,
+                     "secondary_only",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            score += 15000;
+        }
+
+        if (region.Source.Lines.Count > 0)
+        {
+            double confidence =
+                region.Source.Lines.Average(x =>
+                    Math.Clamp(
+                        x.Confidence,
+                        0,
+                        1));
+
+            score +=
+                confidence *
+                25000;
+        }
+
+        if (RenderSafetyPolicy.IsSuspiciousVisionExpansion(
+                region))
+        {
+            score -= 100000;
+        }
+
+        return score;
     }
 
     static ErasePlan CreateErasePlan(
@@ -854,12 +2256,32 @@ public sealed class RenderPipelineService
             8,
             13);
 
+        int meaningfulTranslation =
+            text.Count(char.IsLetterOrDigit);
+
+        bool shortWideCaption =
+            caption &&
+            meaningfulTranslation > 0 &&
+            meaningfulTranslation <= 24 &&
+            box.Width >= box.Height * 3.0;
+
         double containerMaxFont = Math.Clamp(
             caption
-                ? Math.Min(box.Height * 0.34, 48)
+                ? Math.Min(
+                    box.Height *
+                    (shortWideCaption
+                        ? 0.46
+                        : 0.34),
+                    shortWideCaption
+                        ? 52
+                        : 48)
                 : Math.Min(box.Height * 0.46, 56),
             Math.Max(minFont, 12),
-            caption ? 48 : 56);
+            caption
+                ? shortWideCaption
+                    ? 52
+                    : 48
+                : 56);
 
         double sourceGlyphHint = ComputeSourceGlyphHint(
             region.Source,
@@ -870,8 +2292,19 @@ public sealed class RenderPipelineService
             pageFontReference * 0.78,
             pageFontReference * 1.22);
 
+        // Short single-line sign/caption text such as
+        // "ALICE - FOUR DAYS UNTIL ENTRY" already owns a wide parent
+        // rectangle. Keeping it at 0.92x the OCR glyph hint leaves the Korean
+        // translation looking like a tiny label inside that box. Let those
+        // captions use more of the confirmed parent geometry, while dense
+        // narration keeps the conservative scale.
         double sourceDrivenMax =
-            normalizedGlyph * (caption ? 0.92 : 0.98);
+            normalizedGlyph *
+            (caption
+                ? shortWideCaption
+                    ? 1.18
+                    : 0.92
+                : 0.98);
 
         double maxFont = Math.Min(
             containerMaxFont,
@@ -901,7 +2334,8 @@ public sealed class RenderPipelineService
                     factor,
                     alignment,
                     box,
-                    caption);
+                    caption,
+                    shortWideCaption);
 
                 if (candidate.Fits)
                 {
@@ -938,7 +2372,8 @@ public sealed class RenderPipelineService
                 1.0,
                 alignment,
                 box,
-                caption);
+                caption,
+                shortWideCaption);
 
             if (candidate.Fits)
                 return candidate;
@@ -962,7 +2397,8 @@ public sealed class RenderPipelineService
         double lineHeightFactor,
         TextAlignment alignment,
         WpfRect box,
-        bool caption)
+        bool caption,
+        bool centerShortWideCaption)
     {
         var formatted = MakeFormattedText(
             text,
@@ -973,9 +2409,16 @@ public sealed class RenderPipelineService
             lineHeightFactor,
             alignment);
 
-        double originY = caption
-            ? box.Y
-            : box.Y + Math.Max(0, (box.Height - formatted.Height) / 2.0);
+        double originY =
+            caption &&
+            !centerShortWideCaption
+                ? box.Y
+                : box.Y +
+                  Math.Max(
+                      0,
+                      (box.Height -
+                       formatted.Height) /
+                      2.0);
 
         double originX = box.X;
         var origin = new System.Windows.Point(originX, originY);

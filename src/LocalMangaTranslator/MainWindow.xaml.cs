@@ -28,6 +28,7 @@ public partial class MainWindow : System.Windows.Window
     readonly VisionTranslationService vision = new();
     readonly TranslationRefinementService translationRefiner = new();
     readonly RenderPipelineService renderer = new();
+    readonly LayaDecisionService laya = new();
 
     CancellationTokenSource? workCts;
     OcrEngine? ocr;
@@ -69,7 +70,8 @@ public partial class MainWindow : System.Windows.Window
                 ocrPipeline,
                 vision,
                 translationRefiner,
-                renderer);
+                renderer,
+                laya);
             Log($"OCR: {ocr.Status}");
         }
         catch (Exception ex)
@@ -256,7 +258,14 @@ public partial class MainWindow : System.Windows.Window
                     workCts.Token);
             }
 
-            CurrentStatusText.Text = "선택 모델 준비 완료";
+            bool layaReady =
+                await EnsureLayaRuntimeAsync(
+                    workCts.Token);
+
+            CurrentStatusText.Text =
+                layaReady
+                    ? "선택 모델 준비 완료"
+                    : "선택 모델 준비 완료 · Laya 미준비";
         }
         catch (OperationCanceledException)
         {
@@ -274,6 +283,139 @@ public partial class MainWindow : System.Windows.Window
             workCts = null;
             InstallModelButton.IsEnabled = true;
             StopButton.IsEnabled = false;
+        }
+    }
+
+    async Task<bool> EnsureLayaRuntimeAsync(
+        CancellationToken token)
+    {
+        var progress =
+            new Progress<string>(message =>
+            {
+                CurrentStatusText.Text =
+                    $"Laya · {message}";
+
+                Log(
+                    $"Laya · {message}");
+            });
+
+        try
+        {
+            await laya.PrepareAsync(
+                progress,
+                token);
+
+            return true;
+        }
+        catch (LayaPythonNotFoundException ex)
+        {
+            Log(
+                $"Laya Python 미준비 · {ex.Message}");
+
+            var answer =
+                System.Windows.MessageBox.Show(
+                    "LayaExperimental Shadow Track을 실행하려면 Python 3.10 이상이 필요합니다.\n\n" +
+                    "Python 3.12를 지금 자동 설치할까요?",
+                    "Laya Python 설치",
+                    System.Windows.MessageBoxButton.YesNo,
+                    System.Windows.MessageBoxImage.Question);
+
+            if (answer !=
+                System.Windows.MessageBoxResult.Yes)
+            {
+                Log(
+                    "Laya Python 설치 취소 · Classic 결과는 계속 사용할 수 있습니다");
+
+                return false;
+            }
+
+            Log(
+                "Laya Python 3.12 설치 시작 · Windows 패키지 관리자(winget) 사용");
+
+            CurrentStatusText.Text =
+                "Laya Python 3.12 설치 중...";
+
+            var psi =
+                new ProcessStartInfo
+                {
+                    FileName =
+                        "winget.exe",
+                    Arguments =
+                        "install --id Python.Python.3.12 -e --silent --accept-package-agreements --accept-source-agreements --disable-interactivity",
+                    UseShellExecute =
+                        false,
+                    RedirectStandardOutput =
+                        true,
+                    RedirectStandardError =
+                        true,
+                    CreateNoWindow =
+                        true
+                };
+
+            using var process =
+                Process.Start(
+                    psi) ??
+                throw new InvalidOperationException(
+                    "winget을 실행할 수 없습니다.");
+
+            var stdoutTask =
+                process.StandardOutput
+                    .ReadToEndAsync(
+                        token);
+
+            var stderrTask =
+                process.StandardError
+                    .ReadToEndAsync(
+                        token);
+
+            await process
+                .WaitForExitAsync(
+                    token);
+
+            string stdout =
+                await stdoutTask;
+
+            string stderr =
+                await stderrTask;
+
+            if (process.ExitCode != 0)
+            {
+                string detail =
+                    string.IsNullOrWhiteSpace(
+                        stderr)
+                        ? stdout
+                        : stderr;
+
+                detail =
+                    detail
+                        .Replace(
+                            '\r',
+                            ' ')
+                        .Replace(
+                            '\n',
+                            ' ')
+                        .Trim();
+
+                if (detail.Length >
+                    300)
+                {
+                    detail =
+                        detail[..300] +
+                        "...";
+                }
+
+                throw new InvalidOperationException(
+                    $"Python 3.12 설치 실패 (winget 종료코드 {process.ExitCode}) · {detail}");
+            }
+
+            Log(
+                "Laya Python 3.12 설치 완료 · Laya 패키지/checkpoint 준비 재시도");
+
+            await laya.PrepareAsync(
+                progress,
+                token);
+
+            return true;
         }
     }
 
@@ -582,7 +724,7 @@ public partial class MainWindow : System.Windows.Window
         StopButton.IsEnabled = true;
         InstallModelButton.IsEnabled = false;
 
-        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | Baberu: {pipelineOptions.EnableBaberuOcr} | 영역 OCR 진단: {pipelineOptions.EnableTargetedRegionOcr} | 완료검토: {pipelineOptions.EnableFinalAudit} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
+        Log($"작업 시작 | 페이지 분석: {pipelineOptions.RegionAnalysis} | Baberu: {pipelineOptions.EnableBaberuOcr} | 영역 OCR 진단: {pipelineOptions.EnableTargetedRegionOcr} | 완료검토: {pipelineOptions.EnableFinalAudit} | 판단트랙: {pipelineOptions.DecisionTrack}/{pipelineOptions.LayaMode} | OCR: {ocr.Status} | 검수: {reviewModel.Name} | 번역: {translationModel.Name}");
 
         try
         {

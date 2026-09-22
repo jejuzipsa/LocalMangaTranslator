@@ -5,6 +5,16 @@ using OpenCvSharp;
 
 namespace LocalMangaTranslator.Services;
 
+public sealed record RtdetrShadowRetryWindow(
+    string PassId,
+    Rect CropBounds,
+    double ContextMultiplier,
+    double InputPixelsPerSourcePixel);
+
+public sealed record RtdetrShadowRetryPass(
+    RtdetrShadowRetryWindow Window,
+    IReadOnlyList<PageRegion> Regions);
+
 /// <summary>
 /// Apache-2.0 RT-DETR-v2 detector published by ogkalu.
 /// The model is trained specifically for comic bubble/text detection and is
@@ -36,6 +46,350 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
             throw new InvalidOperationException(
                 "RT-DETR 분석을 위해 원본 이미지를 열 수 없습니다.");
 
+        return AnalyzeMat(
+            source,
+            new Point(0, 0),
+            "ogkalu-rtdetr-v2",
+            "RG",
+            token);
+    }
+
+    public IReadOnlyList<RtdetrShadowRetryPass> AnalyzeShadowRetry(
+        string sourcePath,
+        OcrTextBlock block,
+        CancellationToken token = default)
+    {
+        token.ThrowIfCancellationRequested();
+
+        using var source =
+            Cv2.ImRead(
+                sourcePath,
+                ImreadModes.Color);
+
+        if (source.Empty())
+            throw new InvalidOperationException(
+                "RT-DETR Shadow retry를 위해 원본 이미지를 열 수 없습니다.");
+
+        var windows =
+            BuildShadowRetryWindows(
+                source.Cols,
+                source.Rows,
+                block);
+
+        var result =
+            new List<RtdetrShadowRetryPass>(
+                windows.Count);
+
+        foreach (var window in windows)
+        {
+            token.ThrowIfCancellationRequested();
+
+            using var cropView =
+                new Mat(
+                    source,
+                    window.CropBounds);
+
+            using var crop =
+                cropView.Clone();
+
+            var regions =
+                AnalyzeMat(
+                    crop,
+                    new Point(
+                        window.CropBounds.X,
+                        window.CropBounds.Y),
+                    $"ogkalu-rtdetr-v2-shadow-{window.PassId}",
+                    $"SH_{window.PassId}_",
+                    token);
+
+            result.Add(
+                new RtdetrShadowRetryPass(
+                    window,
+                    regions));
+        }
+
+        return result;
+    }
+
+    public static IReadOnlyList<RtdetrShadowRetryWindow> BuildShadowRetryWindows(
+        int imageWidth,
+        int imageHeight,
+        OcrTextBlock block)
+    {
+        if (imageWidth <= 0 ||
+            imageHeight <= 0)
+        {
+            return [];
+        }
+
+        var result =
+            new List<RtdetrShadowRetryWindow>();
+
+        foreach (var spec in
+                 new[]
+                 {
+                     (PassId: "local_2p40", Context: 2.40),
+                     (PassId: "local_1p60", Context: 1.60)
+                 })
+        {
+            double blockMax =
+                Math.Max(
+                    1.0,
+                    Math.Max(
+                        block.W,
+                        block.H));
+
+            int desiredSide =
+                (int)Math.Ceiling(
+                    Math.Max(
+                        256.0,
+                        blockMax *
+                        spec.Context));
+
+            int side =
+                Math.Clamp(
+                    desiredSide,
+                    64,
+                    Math.Max(
+                        64,
+                        Math.Min(
+                            imageWidth,
+                            imageHeight)));
+
+            double cx =
+                block.X +
+                block.W / 2.0;
+
+            double cy =
+                block.Y +
+                block.H / 2.0;
+
+            int left =
+                (int)Math.Round(
+                    cx -
+                    side / 2.0);
+
+            int top =
+                (int)Math.Round(
+                    cy -
+                    side / 2.0);
+
+            left =
+                Math.Clamp(
+                    left,
+                    0,
+                    Math.Max(
+                        0,
+                        imageWidth -
+                        side));
+
+            top =
+                Math.Clamp(
+                    top,
+                    0,
+                    Math.Max(
+                        0,
+                        imageHeight -
+                        side));
+
+            var crop =
+                new Rect(
+                    left,
+                    top,
+                    Math.Min(
+                        side,
+                        imageWidth -
+                        left),
+                    Math.Min(
+                        side,
+                        imageHeight -
+                        top));
+
+            if (crop.Width <= 0 ||
+                crop.Height <= 0)
+            {
+                continue;
+            }
+
+            if (result.Any(x =>
+                    x.CropBounds ==
+                    crop))
+            {
+                continue;
+            }
+
+            result.Add(
+                new RtdetrShadowRetryWindow(
+                    spec.PassId,
+                    crop,
+                    spec.Context,
+                    InputSize /
+                    (double)Math.Max(
+                        crop.Width,
+                        crop.Height)));
+        }
+
+        return result;
+    }
+
+    public static bool IsShadowRetryMatch(
+        OcrTextBlock block,
+        PageRegion region)
+    {
+        if (region.Kind !=
+            PageRegionKind.TextBubble)
+        {
+            return false;
+        }
+
+        var blockBounds =
+            new Rect2d(
+                block.X,
+                block.Y,
+                Math.Max(
+                    1.0,
+                    block.W),
+                Math.Max(
+                    1.0,
+                    block.H));
+
+        var target =
+            region.Bounds;
+
+        double left =
+            Math.Max(
+                blockBounds.Left,
+                target.Left);
+
+        double top =
+            Math.Max(
+                blockBounds.Top,
+                target.Top);
+
+        double right =
+            Math.Min(
+                blockBounds.Right,
+                target.Right);
+
+        double bottom =
+            Math.Min(
+                blockBounds.Bottom,
+                target.Bottom);
+
+        double intersection =
+            Math.Max(
+                0,
+                right -
+                left) *
+            Math.Max(
+                0,
+                bottom -
+                top);
+
+        if (intersection <= 0)
+            return false;
+
+        double smaller =
+            Math.Max(
+                1.0,
+                Math.Min(
+                    blockBounds.Width *
+                    blockBounds.Height,
+                    target.Width *
+                    (double)target.Height));
+
+        double overlap =
+            intersection /
+            smaller;
+
+        bool centerRelated =
+            ContainsCenter(
+                blockBounds,
+                target) ||
+            ContainsCenter(
+                target,
+                blockBounds);
+
+        return overlap >=
+                   0.25 ||
+               centerRelated;
+    }
+
+    public static double ShadowRetryAffinity(
+        OcrTextBlock block,
+        PageRegion region)
+    {
+        if (!IsShadowRetryMatch(
+                block,
+                region))
+        {
+            return 0;
+        }
+
+        var blockBounds =
+            new Rect2d(
+                block.X,
+                block.Y,
+                Math.Max(
+                    1.0,
+                    block.W),
+                Math.Max(
+                    1.0,
+                    block.H));
+
+        double left =
+            Math.Max(
+                blockBounds.Left,
+                region.Bounds.Left);
+
+        double top =
+            Math.Max(
+                blockBounds.Top,
+                region.Bounds.Top);
+
+        double right =
+            Math.Min(
+                blockBounds.Right,
+                region.Bounds.Right);
+
+        double bottom =
+            Math.Min(
+                blockBounds.Bottom,
+                region.Bounds.Bottom);
+
+        double intersection =
+            Math.Max(
+                0,
+                right -
+                left) *
+            Math.Max(
+                0,
+                bottom -
+                top);
+
+        double smaller =
+            Math.Max(
+                1.0,
+                Math.Min(
+                    blockBounds.Width *
+                    blockBounds.Height,
+                    region.Bounds.Width *
+                    (double)region.Bounds.Height));
+
+        return
+            intersection /
+            smaller *
+            10.0 +
+            region.Score;
+    }
+
+    IReadOnlyList<PageRegion> AnalyzeMat(
+        Mat source,
+        Point sourceOrigin,
+        string sourceTag,
+        string idPrefix,
+        CancellationToken token)
+    {
         var runtime =
             GetSession();
 
@@ -84,9 +438,6 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
             }
         }
 
-        // This export follows the Comic Translate ONNX wrapper:
-        // [width, height] is supplied to orig_target_sizes and the model returns
-        // boxes already projected to source-image coordinates.
         var sizeTensor =
             new DenseTensor<long>(
                 new[]
@@ -164,7 +515,8 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
                 scores[i];
 
             if (!float.IsFinite(score) ||
-                score < DefaultThreshold)
+                score <
+                DefaultThreshold)
             {
                 continue;
             }
@@ -172,17 +524,25 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
             var kind =
                 labels[i] switch
                 {
-                    0 => PageRegionKind.Bubble,
-                    1 => PageRegionKind.TextBubble,
-                    2 => PageRegionKind.TextFree,
-                    _ => PageRegionKind.Unknown
+                    0 =>
+                        PageRegionKind.Bubble,
+                    1 =>
+                        PageRegionKind.TextBubble,
+                    2 =>
+                        PageRegionKind.TextFree,
+                    _ =>
+                        PageRegionKind.Unknown
                 };
 
-            if (kind == PageRegionKind.Unknown)
+            if (kind ==
+                PageRegionKind.Unknown)
+            {
                 continue;
+            }
 
             int offset =
-                i * 4;
+                i *
+                4;
 
             int left =
                 (int)Math.Floor(
@@ -208,28 +568,41 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
                         boxes[offset + 1],
                         boxes[offset + 3]));
 
-            var bounds =
+            var localBounds =
                 ClampRect(
                     left,
                     top,
-                    right - left,
-                    bottom - top,
+                    right -
+                    left,
+                    bottom -
+                    top,
                     source.Cols,
                     source.Rows);
 
-            if (bounds.Width < 4 ||
-                bounds.Height < 4)
+            if (localBounds.Width <
+                    4 ||
+                localBounds.Height <
+                    4)
             {
                 continue;
             }
+
+            var sourceBounds =
+                new Rect(
+                    localBounds.X +
+                    sourceOrigin.X,
+                    localBounds.Y +
+                    sourceOrigin.Y,
+                    localBounds.Width,
+                    localBounds.Height);
 
             raw.Add(
                 new PageRegion(
                     "",
                     kind,
-                    bounds,
+                    sourceBounds,
                     score,
-                    "ogkalu-rtdetr-v2"));
+                    sourceTag));
         }
 
         var deduplicated =
@@ -242,9 +615,53 @@ public sealed class RtdetrPageRegionAnalyzer : IDisposable
                     x with
                     {
                         RegionId =
-                            $"RG{index + 1:000}"
+                            $"{idPrefix}{index + 1:000}"
                     })
             .ToList();
+    }
+
+    static bool ContainsCenter(
+        Rect2d inner,
+        Rect outer)
+    {
+        double cx =
+            inner.X +
+            inner.Width / 2.0;
+
+        double cy =
+            inner.Y +
+            inner.Height / 2.0;
+
+        return cx >=
+                   outer.Left &&
+               cx <=
+                   outer.Right &&
+               cy >=
+                   outer.Top &&
+               cy <=
+                   outer.Bottom;
+    }
+
+    static bool ContainsCenter(
+        Rect inner,
+        Rect2d outer)
+    {
+        double cx =
+            inner.X +
+            inner.Width / 2.0;
+
+        double cy =
+            inner.Y +
+            inner.Height / 2.0;
+
+        return cx >=
+                   outer.Left &&
+               cx <=
+                   outer.Right &&
+               cy >=
+                   outer.Top &&
+               cy <=
+                   outer.Bottom;
     }
 
     InferenceSession GetSession()

@@ -8,6 +8,20 @@ public enum RegionAnalysisMode
     HybridRtdetr
 }
 
+public enum PipelineDecisionTrack
+{
+    Classic,
+    LayaExperimental
+}
+
+public enum LayaDecisionMode
+{
+    Off,
+    Shadow,
+    Advisory,
+    Active
+}
+
 public enum PageRegionKind
 {
     Bubble,
@@ -22,7 +36,9 @@ public sealed record PipelineOptions(
     RegionAnalysisMode RegionAnalysis = RegionAnalysisMode.HybridRtdetr,
     bool EnableTargetedRegionOcr = false,
     bool EnableBaberuOcr = true,
-    bool EnableFinalAudit = true);
+    bool EnableFinalAudit = true,
+    PipelineDecisionTrack DecisionTrack = PipelineDecisionTrack.LayaExperimental,
+    LayaDecisionMode LayaMode = LayaDecisionMode.Advisory);
 
 public sealed record PageRegion(
     string RegionId,

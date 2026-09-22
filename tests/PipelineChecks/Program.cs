@@ -1,7 +1,10 @@
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using LocalMangaTranslator.Models;
 using LocalMangaTranslator.Services;
+using LocalMangaTranslator.PipelineV2.Detection;
+using LocalMangaTranslator.PipelineV2.Erase;
 using OpenCvSharp;
 
 var candidate = new ContainerCandidate("PC001", ContainerCandidateKind.Speech,
@@ -22,6 +25,432 @@ bool AllAccepted(params OcrObservation[] lines)
     => ContainerOcrValidator.ValidateLines([candidate], lines).All(x => x.Accepted);
 bool NoneAccepted(params OcrObservation[] lines)
     => ContainerOcrValidator.ValidateLines([candidate], lines).All(x => !x.Accepted);
+
+var default0041Options = new PipelineOptions();
+Check("V2 0041 defaults to Laya experimental advisory track",
+    default0041Options.DecisionTrack == PipelineDecisionTrack.LayaExperimental &&
+    default0041Options.LayaMode == LayaDecisionMode.Advisory);
+
+var layaPythonCandidates =
+    LayaDecisionService.BuildPythonCandidates(
+        @"C:\custom\python.exe",
+        @"C:\Users\tester\AppData\Local",
+        @"C:\Program Files");
+
+Check("V2 0037 Laya Python discovery prefers explicit override",
+    layaPythonCandidates.Count > 0 &&
+    string.Equals(
+        layaPythonCandidates[0].FileName,
+        @"C:\custom\python.exe",
+        StringComparison.OrdinalIgnoreCase));
+
+Check("V2 0037 Laya Python discovery supports Windows py launcher",
+    layaPythonCandidates.Any(x =>
+        string.Equals(
+            x.FileName,
+            "py",
+            StringComparison.OrdinalIgnoreCase) &&
+        x.PrefixArguments.SequenceEqual(
+            new[] { "-3" })));
+
+Check("V2 0037 Laya Python discovery scans standard Python 3.12 install",
+    layaPythonCandidates.Any(x =>
+        x.FileName.EndsWith(
+            @"Programs\Python\Python312\python.exe",
+            StringComparison.OrdinalIgnoreCase)));
+
+var layaEnvironmentProbe =
+    new ProcessStartInfo();
+LayaDecisionService.ConfigurePythonEnvironment(
+    layaEnvironmentProbe);
+
+Check("V2 0038 disables Hugging Face symlink cache on Windows",
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "HF_HUB_DISABLE_SYMLINKS",
+        out var disableSymlinks) &&
+    disableSymlinks == "1");
+
+Check("V2 0038 forces UTF-8 Python diagnostics",
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "PYTHONUTF8",
+        out var pythonUtf8) &&
+    pythonUtf8 == "1" &&
+    layaEnvironmentProbe.Environment.TryGetValue(
+        "PYTHONIOENCODING",
+        out var pythonIoEncoding) &&
+    string.Equals(
+        pythonIoEncoding,
+        "utf-8",
+        StringComparison.OrdinalIgnoreCase));
+
+var layaDuplicateBlockA = new OcrTextBlock(
+    900,
+    100,
+    100,
+    80,
+    30,
+    "RU LETT ME OUTTT!",
+    1,
+    "en",
+    [new OcrLine(100, 100, 80, 30, "RU LETT ME OUTTT!", 0.85f, "en")]);
+
+var layaDuplicateBlockB = new OcrTextBlock(
+    901,
+    110,
+    105,
+    75,
+    25,
+    "Nononono... no...",
+    1,
+    "en",
+    [new OcrLine(110, 105, 75, 25, "Nononono... no...", 0.95f, "en")])
+{
+    RegionId = "RG001",
+    SecondaryOcrText = "Nononono... no...",
+    SecondaryOcrSource = "baberu",
+    SecondaryOcrAgreement = "agree"
+};
+
+var layaDuplicateA =
+    new VisionTranslation(
+        900,
+        layaDuplicateBlockA,
+        "Nononono... no... LET ME OUTTT!",
+        "테스트 A",
+        "dialogue",
+        true);
+
+var layaDuplicateB =
+    new VisionTranslation(
+        901,
+        layaDuplicateBlockB,
+        "Nononono... no...",
+        "테스트 B",
+        "dialogue",
+        true);
+
+var layaDuplicateSelection =
+    new V2EraseSelection(
+        new HashSet<string>(
+            StringComparer.Ordinal)
+        {
+            "RG002"
+        },
+        new HashSet<int>
+        {
+            900,
+            901
+        },
+        new Dictionary<int, V2RegionBinding>
+        {
+            [900] =
+                new(
+                    900,
+                    new[] { "RG002" },
+                    new Rect(110, 100, 80, 40),
+                    "RG001",
+                    new Rect(90, 80, 160, 100),
+                    "rtdetr_parent_bubble"),
+            [901] =
+                new(
+                    901,
+                    new[] { "RG002" },
+                    new Rect(110, 100, 80, 40),
+                    "RG001",
+                    new Rect(90, 80, 160, 100),
+                    "rtdetr_parent_bubble")
+        });
+
+var layaDuplicateGroups =
+    LayaDecisionService
+        .FindV2DuplicateCandidateGroups(
+            new[]
+            {
+                layaDuplicateA,
+                layaDuplicateB
+            },
+            layaDuplicateSelection);
+
+Check("V2 0039 Laya duplicate shadow follows immutable V2 physical container",
+    layaDuplicateGroups.Count == 1 &&
+    layaDuplicateGroups[0].SequenceEqual(
+        new[] { 900, 901 }));
+
+var shadowRetryBlock =
+    new OcrTextBlock(
+        9040,
+        974,
+        1034,
+        336,
+        190,
+        "NONONO NNNNOOO!",
+        2,
+        "en",
+        [new OcrLine(
+            974,
+            1034,
+            336,
+            190,
+            "NONONO NNNNOOO!",
+            0.92f,
+            "en")]);
+
+var shadowWindows =
+    RtdetrPageRegionAnalyzer
+        .BuildShadowRetryWindows(
+            1300,
+            2000,
+            shadowRetryBlock);
+
+Check("V2 0040 detector retry builds two local scales",
+    shadowWindows.Count == 2 &&
+    shadowWindows.All(x =>
+        x.CropBounds.Width <
+            1300 &&
+        x.CropBounds.Height <
+            2000));
+
+Check("V2 0040 detector retry windows contain OCR center",
+    shadowWindows.All(x =>
+        shadowRetryBlock.X +
+            shadowRetryBlock.W /
+            2.0 >=
+            x.CropBounds.Left &&
+        shadowRetryBlock.X +
+            shadowRetryBlock.W /
+            2.0 <=
+            x.CropBounds.Right &&
+        shadowRetryBlock.Y +
+            shadowRetryBlock.H /
+            2.0 >=
+            x.CropBounds.Top &&
+        shadowRetryBlock.Y +
+            shadowRetryBlock.H /
+            2.0 <=
+            x.CropBounds.Bottom));
+
+var shadowRetryHit =
+    new PageRegion(
+        "SH_TEST",
+        PageRegionKind.TextBubble,
+        new Rect(
+            990,
+            1045,
+            300,
+            160),
+        0.91f,
+        "shadow");
+
+var shadowRetryMiss =
+    new PageRegion(
+        "SH_MISS",
+        PageRegionKind.TextBubble,
+        new Rect(
+            100,
+            100,
+            120,
+            60),
+        0.95f,
+        "shadow");
+
+Check("V2 0040 detector retry match accepts overlapping TextBubble",
+    RtdetrPageRegionAnalyzer
+        .IsShadowRetryMatch(
+            shadowRetryBlock,
+            shadowRetryHit));
+
+Check("V2 0041 accepts cross-scale agreement for same recovered TextBubble",
+    PageAnalysisService.AreSamePhysicalRegion(
+        new Rect(985, 1035, 323, 182),
+        new Rect(986, 1033, 317, 184),
+        0.45,
+        0.22));
+
+Check("V2 0041 rejects page012 retry when it duplicates existing full-page TextBubble",
+    PageAnalysisService.IsExistingTextDuplicate(
+        new Rect(915, 104, 128, 48),
+        new Rect(913, 102, 133, 50)));
+
+Check("V2 0041 keeps page014 retry when no existing full-page TextBubble overlaps",
+    !PageAnalysisService.IsExistingTextDuplicate(
+        new Rect(986, 1033, 317, 184),
+        new Rect(103, 1032, 130, 52)));
+
+var dontKnowSource =
+    new VisionTranslation(
+        9041,
+        shadowRetryBlock,
+        "I DON'T KNOW ANYMORE. I DON'T-",
+        "",
+        "dialogue",
+        true);
+
+Check("V2 0041 accepts Korean 모르겠어 as preserved English negation",
+    TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource,
+        "더는 모르겠어. 나..."));
+
+Check("V2 0041 accepts Korean 몰라 as preserved English negation",
+    TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource with
+        {
+            CorrectedText =
+                "I DON'T KNOW."
+        },
+        "몰라."));
+
+Check("V2 0041 still rejects polarity reversal for DON'T KNOW",
+    !TranslationRefinementService.IsUsableTranslation(
+        dontKnowSource with
+        {
+            CorrectedText =
+                "I DON'T KNOW."
+        },
+        "알겠어."));
+
+Check("V2 0040 detector retry match rejects unrelated TextBubble",
+    !RtdetrPageRegionAnalyzer
+        .IsShadowRetryMatch(
+            shadowRetryBlock,
+            shadowRetryMiss));
+
+var anythingEraseAudit =
+    new V2EraseTargetAudit(
+        TextRegionId: "RG026",
+        InitialMaskPixels: 260,
+        CoreMaskPixels: 0,
+        ResidualBeforeRetryPixels: 6,
+        EffectiveResidualBeforeRetryPixels: 6,
+        CoreOverlapBeforeRetryPixels: 0,
+        PersistentCoreBeforeRetryPixels: 0,
+        RetryMaskPixels: 0,
+        ResidualAfterRetryPixels: 6,
+        EffectiveResidualAfterRetryPixels: 6,
+        CoreOverlapAfterRetryPixels: 0,
+        PersistentCoreAfterRetryPixels: 0,
+        Retried: false,
+        Status: "clean_after_first_pass",
+        SelectedResidualPixels: 6,
+        SelectedPersistentCorePixels: 0,
+        SelectedPersistenceRatio: 0,
+        SelectedPass: "first",
+        PrimaryReview: "pass",
+        SecondaryReview: "not_run",
+        RescuedBySecondary: false,
+        ReviewReason: "primary_residual_clean");
+
+Check("V2 0042 rescues detector-only redetection when source-linked residual is tiny",
+    CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit));
+
+Check("V2 0042 does not rescue meaningful residual pixels",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            SelectedResidualPixels = 20
+        }));
+
+Check("V2 0042 does not rescue persistent source glyph evidence",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            SelectedPersistentCorePixels = 2,
+            SelectedPersistenceRatio = 0.01
+        }));
+
+Check("V2 0042 requires legacy erase reviewer clean",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            Status = "review_required",
+            PrimaryReview = "fail"
+        }));
+
+var page048FlatEraseAudit =
+    new V2EraseTargetAudit(
+        TextRegionId: "RG010",
+        InitialMaskPixels: 15266,
+        CoreMaskPixels: 8644,
+        ResidualBeforeRetryPixels: 1661,
+        EffectiveResidualBeforeRetryPixels: 1035,
+        CoreOverlapBeforeRetryPixels: 0,
+        PersistentCoreBeforeRetryPixels: 0,
+        RetryMaskPixels: 21951,
+        ResidualAfterRetryPixels: 1059,
+        EffectiveResidualAfterRetryPixels: 1059,
+        CoreOverlapAfterRetryPixels: 0,
+        PersistentCoreAfterRetryPixels: 0,
+        Retried: true,
+        Status: "clean_after_secondary",
+        SelectedResidualPixels: 1035,
+        SelectedPersistentCorePixels: 0,
+        SelectedPersistenceRatio: 0,
+        SelectedPass: "first",
+        PrimaryReview: "fail",
+        SecondaryReview: "pass",
+        RescuedBySecondary: true,
+        ReviewReason: "secondary_glyph_rescue");
+
+var page048FlatRescueEvidence =
+    new V2CleanedStateRescueEvidence(
+        TextRegionId: "RG010",
+        FlatAccepted: true,
+        Strategy: "FLAT_FILL",
+        DominantMatchRatio: 0.603125,
+        BackgroundQualityPass: true,
+        IndependentDisposition: "AMBIGUOUS_STRUCTURE",
+        IndependentResidualBeforePixels: 174,
+        IndependentResidualAfterPixels: 174);
+
+Check("V2 0047 rescues page048-like flat-background detector-only redetection",
+    CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence,
+        0.45646143f));
+
+Check("V2 0047 keeps high-confidence cleaned redetection blocking",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence,
+        0.61f));
+
+Check("V2 0047 requires background quality pass",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence with
+        {
+            BackgroundQualityPass = false
+        },
+        0.45646143f));
+
+Check("V2 0047 requires ambiguous independent structure evidence",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence with
+        {
+            IndependentDisposition = "SAFE_RESIDUAL",
+            IndependentResidualAfterPixels = 0
+        },
+        0.45646143f));
+
+Check("V2 0047 never rescues persistent source glyph evidence",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit with
+        {
+            SelectedPersistentCorePixels = 1,
+            SelectedPersistenceRatio = 0.01
+        },
+        page048FlatRescueEvidence,
+        0.45646143f));
+
+Check("V2 0047 rejects excessive legacy residual density",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit with
+        {
+            SelectedResidualPixels = 1300
+        },
+        page048FlatRescueEvidence,
+        0.45646143f));
 
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
@@ -137,6 +566,42 @@ Check("each line has one explicit owner", oneContainer.LineOwnership.Count == 2 
 Check("container unit keeps both canonical line ids", oneContainer.UnitOwnership.Count == 1 &&
     oneContainer.UnitOwnership[0].LineIds.Count == 2 &&
     oneContainer.UnitOwnership[0].CandidateId == "PC001");
+
+var fullerLine = new OcrLine(
+    108,
+    220,
+    84,
+    16,
+    "YOU'RE STILL IN THE MIDDLE",
+    0.985f,
+    "en");
+
+var fragmentLine = new OcrLine(
+    145,
+    220,
+    46,
+    16,
+    "THE MIDDLE",
+    0.999f,
+    "en");
+
+var completeRepresentative =
+    unitBuilder.Build(
+        [fragmentLine, fullerLine],
+        [candidate],
+        [eligibleA],
+        [],
+        []);
+
+Check("overlapping OCR keeps complete line instead of tiny confidence fragment",
+    completeRepresentative.Units.Count == 1 &&
+    completeRepresentative.Units[0].Text.Contains(
+        "YOU'RE STILL IN THE MIDDLE",
+        StringComparison.OrdinalIgnoreCase) &&
+    !string.Equals(
+        completeRepresentative.Units[0].Text.Trim(),
+        "THE MIDDLE",
+        StringComparison.OrdinalIgnoreCase));
 
 var outsideLine = new OcrLine(20, 20, 30, 10, "OUTSIDE", 0.9f, "en");
 var orphanResult = unitBuilder.Build(
@@ -553,6 +1018,2161 @@ finally
     }
 }
 
+string v2MaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var v2Source = Mat.Zeros(220, 420, MatType.CV_8UC3).ToMat();
+    v2Source.SetTo(new Scalar(255, 255, 255));
+
+    Cv2.PutText(
+        v2Source,
+        "YOU'RE STILL IN THE MIDDLE",
+        new Point(55, 118),
+        HersheyFonts.HersheySimplex,
+        0.72,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(v2MaskSourcePath, v2Source);
+
+    var v2Bubble = new PageRegion(
+        "V2-B1",
+        PageRegionKind.Bubble,
+        new Rect(25, 55, 360, 105),
+        0.97f,
+        "test-rtdetr");
+
+    var v2Text = new PageRegion(
+        "V2-T1",
+        PageRegionKind.TextBubble,
+        new Rect(45, 82, 330, 52),
+        0.96f,
+        "test-rtdetr");
+
+    var v2Snapshot = V2DetectionSnapshot.Create(
+        new PageAnalysisResult(
+            [v2Bubble, v2Text],
+            [],
+            "v2-test",
+            true));
+
+    Check("V2 snapshot preserves RT-DETR TextBubble geometry",
+        v2Snapshot.TextTargets.Count == 1 &&
+        v2Snapshot.TextTargets[0].TextBounds == v2Text.Bounds &&
+        v2Snapshot.TextTargets[0].BubbleBounds == v2Bubble.Bounds);
+
+    using var v2Mask = ComicTranslateComponentMask.Build(
+        v2Source,
+        v2Text.Bounds,
+        v2Bubble.Bounds);
+
+    Check("V2 text mask finds lettering without OCR canonical lines",
+        Cv2.CountNonZero(v2Mask) > 100);
+
+    bool outsideTouched = false;
+    for (int y = 0; y < v2Mask.Rows && !outsideTouched; y++)
+    {
+        for (int x = 0; x < v2Mask.Cols; x++)
+        {
+            if (v2Mask.At<byte>(y, x) == 0)
+                continue;
+
+            if (x < v2Text.Bounds.Left ||
+                x >= v2Text.Bounds.Right ||
+                y < v2Text.Bounds.Top ||
+                y >= v2Text.Bounds.Bottom)
+            {
+                outsideTouched = true;
+                break;
+            }
+        }
+    }
+
+    Check("V2 text mask cannot escape immutable TextBubble geometry",
+        !outsideTouched);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2MaskSourcePath))
+            File.Delete(v2MaskSourcePath);
+    }
+    catch
+    {
+    }
+}
+
+string v2DarkMaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_dark_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var darkSource =
+        Mat.Zeros(180, 360, MatType.CV_8UC3).ToMat();
+
+    darkSource.SetTo(
+        new Scalar(245, 245, 245));
+
+    var darkBubble =
+        new Rect(40, 45, 280, 90);
+
+    var darkText =
+        new Rect(60, 60, 240, 58);
+
+    Cv2.Rectangle(
+        darkSource,
+        darkBubble,
+        new Scalar(8, 8, 8),
+        thickness: -1);
+
+    Cv2.PutText(
+        darkSource,
+        "WHITE ON BLACK",
+        new Point(72, 99),
+        HersheyFonts.HersheySimplex,
+        0.72,
+        new Scalar(245, 245, 245),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2DarkMaskSourcePath,
+        darkSource);
+
+    using var darkMask =
+        ComicTranslateComponentMask.Build(
+            darkSource,
+            darkText,
+            darkBubble);
+
+    int darkMaskPixels =
+        Cv2.CountNonZero(darkMask);
+
+    Check("V2 text mask supports white lettering on dark captions",
+        darkMaskPixels > 100);
+
+    Check("V2 dark text mask never degenerates into full-box erase",
+        darkMaskPixels <
+        darkText.Width * darkText.Height * 0.48);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2DarkMaskSourcePath))
+            File.Delete(v2DarkMaskSourcePath);
+    }
+    catch
+    {
+    }
+}
+
+string v2ColoredMaskSourcePath = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_colored_mask_{Guid.NewGuid():N}.png");
+try
+{
+    using var coloredSource =
+        Mat.Zeros(190, 420, MatType.CV_8UC3).ToMat();
+
+    coloredSource.SetTo(
+        new Scalar(235, 235, 235));
+
+    var coloredBubble =
+        new Rect(40, 38, 340, 112);
+
+    var coloredText =
+        new Rect(58, 56, 304, 76);
+
+    Cv2.Rectangle(
+        coloredSource,
+        coloredBubble,
+        new Scalar(252, 252, 252),
+        thickness: -1);
+
+    Cv2.PutText(
+        coloredSource,
+        "NONONO",
+        new Point(90, 112),
+        HersheyFonts.HersheySimplex,
+        1.45,
+        new Scalar(30, 30, 220),
+        4,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2ColoredMaskSourcePath,
+        coloredSource);
+
+    using var coloredMask =
+        ComicTranslateComponentMask.Build(
+            coloredSource,
+            coloredText,
+            coloredBubble);
+
+    int coloredMaskPixels =
+        Cv2.CountNonZero(
+            coloredMask);
+
+    Check("V2 mask rescues colored comic lettering",
+        coloredMaskPixels > 250);
+
+    Check("V2 colored rescue stays local instead of consuming detector box",
+        coloredMaskPixels <
+        coloredText.Width * coloredText.Height * 0.35);
+
+    using var coloredReviewMask =
+        ComicTranslateComponentMask.Build(
+            coloredSource,
+            coloredText,
+            coloredBubble,
+            includeColorRescue: false);
+
+    Check("V2 residual review can disable chroma rescue",
+        Cv2.CountNonZero(coloredReviewMask) <=
+        coloredMaskPixels);
+}
+finally
+{
+    try
+    {
+        if (File.Exists(v2ColoredMaskSourcePath))
+            File.Delete(v2ColoredMaskSourcePath);
+    }
+    catch
+    {
+    }
+}
+
+// 0029 regression: comic display lettering often uses red fill + thick
+// black outline. The erase mask must select the ink, not flood-fill the white
+// counter inside O/P/R or the negative space between letters.
+using (var outlinedGlyphSource =
+       Mat.Zeros(
+           180,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+{
+    outlinedGlyphSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var outlinedBubble =
+        new Rect(
+            20,
+            20,
+            140,
+            140);
+
+    var outlinedText =
+        new Rect(
+            38,
+            38,
+            84,
+            84);
+
+    Cv2.Circle(
+        outlinedGlyphSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            10,
+            10,
+            10),
+        12,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        outlinedGlyphSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            30,
+            30,
+            220),
+        6,
+        LineTypes.AntiAlias);
+
+    using var outlinedGlyphMask =
+        ComicTranslateComponentMask.Build(
+            outlinedGlyphSource,
+            outlinedText,
+            outlinedBubble);
+
+    Check("V2 0029 outlined comic glyph keeps O counter empty",
+        outlinedGlyphMask.At<byte>(
+            80,
+            80) == 0);
+
+    Check("V2 0029 outlined comic glyph still selects colored/outlined ink",
+        Cv2.CountNonZero(
+            outlinedGlyphMask) > 250 &&
+        outlinedGlyphMask.At<byte>(
+            50,
+            80) != 0);
+}
+
+// 0030 regression: foreground segmentation and background reconstruction
+// are separate decisions. A stylized colored glyph on a flat balloon should
+// restore from the balloon background instead of feeding colored ink to Telea.
+using (var flatBackgroundSource =
+       Mat.Zeros(
+           180,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+{
+    flatBackgroundSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var flatBubble =
+        new Rect(
+            20,
+            20,
+            140,
+            140);
+
+    var flatTextBounds =
+        new Rect(
+            38,
+            38,
+            84,
+            84);
+
+    Cv2.Circle(
+        flatBackgroundSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            10,
+            10,
+            10),
+        12,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        flatBackgroundSource,
+        new Point(
+            80,
+            80),
+        30,
+        new Scalar(
+            30,
+            30,
+            220),
+        6,
+        LineTypes.AntiAlias);
+
+    var flatTarget =
+        new V2TextTarget(
+            "V2-0030-FLAT",
+            PageRegionKind.TextBubble,
+            flatTextBounds,
+            0.95f,
+            "V2-0030-BUBBLE",
+            flatBubble,
+            0.96f);
+
+    using var flatGlyphMask =
+        ComicTranslateComponentMask.Build(
+            flatBackgroundSource,
+            flatTextBounds,
+            flatBubble);
+
+    var flatAudit =
+        BackgroundReconstructionV2.Analyze(
+            flatBackgroundSource,
+            flatTarget,
+            flatGlyphMask);
+
+    Check("V2 0030 classifies dominant balloon background as flat",
+        flatAudit.FlatAccepted &&
+        flatAudit.Strategy == "FLAT_FILL" &&
+        flatAudit.DominantMatchRatio >= 0.70);
+
+    using var flatReconstructed =
+        flatBackgroundSource.Clone();
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        flatReconstructed,
+        flatGlyphMask,
+        flatAudit);
+
+    var restoredInkPixel =
+        flatReconstructed.At<Vec3b>(
+            50,
+            80);
+
+    Check("V2 0030 flat fill restores colored glyph ink to balloon background",
+        restoredInkPixel.Item0 >= 240 &&
+        restoredInkPixel.Item1 >= 240 &&
+        restoredInkPixel.Item2 >= 240);
+
+    Check("V2 0030 flat fill keeps O counter unmasked",
+        flatGlyphMask.At<byte>(
+            80,
+            80) == 0 &&
+        flatReconstructed.At<Vec3b>(
+            80,
+            80).Item0 >= 240);
+}
+
+// 0031 regression: background candidates immediately adjacent to a
+// stylized colored glyph are not trustworthy. Excluding a halo around the
+// accepted glyph mask must recover the actual flat balloon background even
+// when the mask itself does not cover the full black/red display lettering.
+using (var contaminatedFlatSource =
+       Mat.Zeros(
+           180,
+           220,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var partialGlyphMask =
+       Mat.Zeros(
+           180,
+           220,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    contaminatedFlatSource.SetTo(
+        new Scalar(
+            252,
+            252,
+            252));
+
+    var contaminatedTextBounds =
+        new Rect(
+            30,
+            30,
+            160,
+            120);
+
+    Cv2.Circle(
+        contaminatedFlatSource,
+        new Point(
+            110,
+            88),
+        38,
+        new Scalar(
+            8,
+            8,
+            8),
+        14,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        contaminatedFlatSource,
+        new Point(
+            110,
+            88),
+        38,
+        new Scalar(
+            25,
+            35,
+            225),
+        7,
+        LineTypes.AntiAlias);
+
+    Cv2.Circle(
+        partialGlyphMask,
+        new Point(
+            110,
+            88),
+        38,
+        Scalar.White,
+        7,
+        LineTypes.AntiAlias);
+
+    var contaminatedTarget =
+        new V2TextTarget(
+            "V2-0031-CONTAMINATED-FLAT",
+            PageRegionKind.TextBubble,
+            contaminatedTextBounds,
+            0.95f,
+            "V2-0031-BUBBLE",
+            new Rect(
+                24,
+                24,
+                172,
+                132),
+            0.96f);
+
+    var contaminatedAudit =
+        BackgroundReconstructionV2.Analyze(
+            contaminatedFlatSource,
+            contaminatedTarget,
+            partialGlyphMask);
+
+    Check("V2 0031 excludes glyph-adjacent color contamination before background clustering",
+        contaminatedAudit.FlatAccepted &&
+        contaminatedAudit.Strategy == "FLAT_FILL" &&
+        contaminatedAudit.BackgroundB >= 240 &&
+        contaminatedAudit.BackgroundG >= 240 &&
+        contaminatedAudit.BackgroundR >= 240 &&
+        contaminatedAudit.ExclusionRadius >= 3 &&
+        contaminatedAudit.DominantMatchRatio >= 0.60);
+}
+
+// 0032 regression: a target that was classified FLAT_FILL must keep that
+// strategy during retry. Expanding the retry mask over surviving colored ink
+// should repaint it from the already-estimated flat background, never use the
+// colored residue itself as Telea source material.
+using (var retryFlatImage =
+       Mat.Zeros(
+           120,
+           160,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var retryFlatMask =
+       Mat.Zeros(
+           120,
+           160,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    retryFlatImage.SetTo(
+        new Scalar(
+            246,
+            242,
+            241));
+
+    Cv2.Rectangle(
+        retryFlatImage,
+        new Rect(
+            55,
+            42,
+            50,
+            28),
+        new Scalar(
+            35,
+            45,
+            225),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        retryFlatMask,
+        new Rect(
+            48,
+            36,
+            64,
+            40),
+        Scalar.White,
+        thickness: -1);
+
+    var retryFlatAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0032-FLAT-RETRY",
+            PageRegionKind.TextBubble.ToString(),
+            new Rect(
+                30,
+                24,
+                100,
+                72),
+            "FLAT_FILL",
+            Cv2.CountNonZero(
+                retryFlatMask),
+            100,
+            246,
+            242,
+            241,
+            0.88,
+            16,
+            20,
+            0.625,
+            7,
+            true,
+            "dominant_purified_background_cluster");
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        retryFlatImage,
+        retryFlatMask,
+        retryFlatAudit);
+
+    var retriedPixel =
+        retryFlatImage.At<Vec3b>(
+            58,
+            78);
+
+    Check("V2 0032 flat retry removes colored residue with stored background instead of Telea",
+        retriedPixel.Item0 == 246 &&
+        retriedPixel.Item1 == 242 &&
+        retriedPixel.Item2 == 241);
+}
+
+// 0033 regression: the post-retry chromatic quality failure becomes a
+// constrained cleanup mask. Colored residue seeds the cleanup and may pull in
+// its directly attached neutral outline, while an unrelated neutral line in
+// the same review zone must remain untouched.
+using (var cleanupImage =
+       Mat.Zeros(
+           140,
+           180,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var cleanupOriginalMask =
+       Mat.Zeros(
+           140,
+           180,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    cleanupImage.SetTo(
+        new Scalar(
+            246,
+            242,
+            241));
+
+    Cv2.Rectangle(
+        cleanupOriginalMask,
+        new Rect(
+            60,
+            45,
+            34,
+            30),
+        Scalar.White,
+        thickness: -1);
+
+    // Simulate surviving glyph ink immediately outside the mask: black
+    // outline with a colored fill.
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            94,
+            49,
+            10,
+            22),
+        new Scalar(
+            8,
+            8,
+            8),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            95,
+            52,
+            6,
+            16),
+        new Scalar(
+            25,
+            35,
+            225),
+        thickness: -1);
+
+    // A nearby neutral feature is deliberately separated by flat background.
+    // It represents bubble/artwork structure that cleanup must not consume.
+    Cv2.Rectangle(
+        cleanupImage,
+        new Rect(
+            52,
+            50,
+            2,
+            20),
+        new Scalar(
+            10,
+            10,
+            10),
+        thickness: -1);
+
+    var cleanupAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0033-FLAT-CLEANUP",
+            PageRegionKind.TextBubble.ToString(),
+            new Rect(
+                40,
+                30,
+                100,
+                80),
+            "FLAT_FILL",
+            Cv2.CountNonZero(
+                cleanupOriginalMask),
+            100,
+            246,
+            242,
+            241,
+            0.88,
+            16,
+            19.5,
+            0.625,
+            7,
+            true,
+            "dominant_purified_background_cluster");
+
+    using var cleanupSeed =
+        ErasePipelineV2.BuildFlatChromaticOutlierMask(
+            cleanupImage,
+            cleanupOriginalMask,
+            cleanupAudit.Bounds,
+            cleanupAudit);
+
+    using var cleanupMask0033 =
+        ErasePipelineV2.BuildFlatResidualCleanupMask(
+            cleanupImage,
+            cleanupOriginalMask,
+            cleanupAudit.Bounds,
+            cleanupAudit);
+
+    Check("V2 0033 chromatic residual seeds flat cleanup",
+        cleanupSeed.At<byte>(
+            58,
+            98) != 0);
+
+    Check("V2 0033 flat cleanup pulls in attached neutral outline only",
+        cleanupMask0033.At<byte>(
+            58,
+            98) != 0 &&
+        cleanupMask0033.At<byte>(
+            50,
+            103) != 0 &&
+        cleanupMask0033.At<byte>(
+            58,
+            52) == 0);
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        cleanupImage,
+        cleanupMask0033,
+        cleanupAudit);
+
+    var cleanedColor0033 =
+        cleanupImage.At<Vec3b>(
+            58,
+            98);
+
+    var cleanedOutline0033 =
+        cleanupImage.At<Vec3b>(
+            50,
+            103);
+
+    var preservedNeutral0033 =
+        cleanupImage.At<Vec3b>(
+            58,
+            52);
+
+    Check("V2 0033 cleanup repaints linked residue from stored flat background",
+        cleanedColor0033.Item0 == 246 &&
+        cleanedColor0033.Item1 == 242 &&
+        cleanedColor0033.Item2 == 241 &&
+        cleanedOutline0033.Item0 == 246 &&
+        cleanedOutline0033.Item1 == 242 &&
+        cleanedOutline0033.Item2 == 241 &&
+        preservedNeutral0033.Item0 == 10 &&
+        preservedNeutral0033.Item1 == 10 &&
+        preservedNeutral0033.Item2 == 10);
+}
+
+using (var independentSource =
+       new Mat(
+           120,
+           180,
+           MatType.CV_8UC3,
+           new Scalar(
+               255,
+               255,
+               255)))
+using (var independentCleaned =
+       independentSource.Clone())
+{
+    var independentBounds =
+        new Rect(
+            40,
+            25,
+            100,
+            75);
+
+    // Simulate source glyph fragments that were never included in the erase
+    // mask: they remain pixel-identical after the ordinary erase/retry pass.
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            72,
+            48,
+            8,
+            22),
+        new Scalar(
+            18,
+            18,
+            18),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            72,
+            48,
+            8,
+            22),
+        new Scalar(
+            18,
+            18,
+            18),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            86,
+            48,
+            7,
+            22),
+        new Scalar(
+            35,
+            35,
+            35),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            86,
+            48,
+            7,
+            22),
+        new Scalar(
+            35,
+            35,
+            35),
+        thickness: -1);
+
+    // A long source/background structure crossing most of the detector box is
+    // deliberately preserved: the independent verifier rejects edge-spanning
+    // components instead of repainting panel/bubble rules.
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            45,
+            82,
+            88,
+            3),
+        new Scalar(
+            25,
+            25,
+            25),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            45,
+            82,
+            88,
+            3),
+        new Scalar(
+            25,
+            25,
+            25),
+        thickness: -1);
+
+    var independentAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0044-INDEPENDENT",
+            PageRegionKind.TextBubble.ToString(),
+            independentBounds,
+            "FLAT_FILL",
+            1200,
+            300,
+            255,
+            255,
+            255,
+            0.97,
+            2,
+            5,
+            1.0,
+            4,
+            true,
+            "dominant_purified_background_cluster");
+
+    using var independentResidual =
+        ErasePipelineV2.BuildIndependentFlatPersistenceMask(
+            independentSource,
+            independentCleaned,
+            independentBounds,
+            independentAudit);
+
+    int independentResidualPixels =
+        Cv2.CountNonZero(
+            independentResidual);
+
+    Check("V2 0044 independent verifier catches source-linked missed glyph fragments",
+        independentResidualPixels > 20 &&
+        independentResidual.At<byte>(
+            55,
+            75) != 0 &&
+        independentResidual.At<byte>(
+            83,
+            60) == 0);
+
+    Check("V2 0044 independent verifier classifies narrow flat residual as safe",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                independentResidualPixels,
+                independentBounds,
+                independentAudit.DominantMatchRatio),
+            "SAFE_RESIDUAL",
+            StringComparison.Ordinal) &&
+        ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            independentResidualPixels,
+            independentBounds,
+            independentAudit.DominantMatchRatio));
+
+    Check("V2 0044 independent verifier keeps broad or weak-flat evidence diagnostic",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                5000,
+                independentBounds,
+                0.97),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                250,
+                independentBounds,
+                0.69),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
+        !ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            5000,
+            independentBounds,
+            0.97));
+
+    Check("V2 0046 classifies severe high-confidence mask undershoot as recoverable",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                5671,
+                new Rect(
+                    0,
+                    0,
+                    290,
+                    63),
+                0.6967,
+                356,
+                0.951f),
+            "MASK_UNDERSHOOT_RECOVERY",
+            StringComparison.Ordinal) &&
+        ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            5671,
+            new Rect(
+                0,
+                0,
+                290,
+                63),
+            0.6967,
+            356,
+            0.951f));
+
+    Check("V2 0046 keeps broad residual diagnostic when ordinary mask coverage is normal",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                2419,
+                new Rect(
+                    0,
+                    0,
+                    196,
+                    127),
+                0.8339,
+                6955,
+                0.95f),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                4518,
+                new Rect(
+                    0,
+                    0,
+                    310,
+                    149),
+                0.7751,
+                14641,
+                0.95f),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal));
+
+    Check("V2 0044 independent verifier reports clean when no source-linked residual exists",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                0,
+                independentBounds,
+                0.97),
+            "CLEAN",
+            StringComparison.Ordinal));
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        independentCleaned,
+        independentResidual,
+        independentAudit);
+
+    using var independentAfter =
+        ErasePipelineV2.BuildIndependentFlatPersistenceMask(
+            independentSource,
+            independentCleaned,
+            independentBounds,
+            independentAudit);
+
+    Check("V2 0044 independent flat cleanup removes its source-linked residual",
+        Cv2.CountNonZero(
+            independentAfter) == 0 &&
+        independentCleaned.At<Vec3b>(
+            55,
+            75).Equals(
+                new Vec3b(
+                    255,
+                    255,
+                    255)) &&
+        independentCleaned.At<Vec3b>(
+            83,
+            60).Equals(
+                new Vec3b(
+                    25,
+                    25,
+                    25)));
+}
+
+using (var artworkSource =
+       Mat.Zeros(
+           160,
+           200,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var artworkMask =
+       Mat.Zeros(
+           160,
+           200,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    for (int y = 20; y < 140; y++)
+    {
+        for (int x = 20; x < 180; x++)
+        {
+            bool alternate =
+                ((x / 12) +
+                 (y / 12)) %
+                2 == 0;
+
+            artworkSource.Set(
+                y,
+                x,
+                alternate
+                    ? new Vec3b(
+                        30,
+                        50,
+                        200)
+                    : new Vec3b(
+                        210,
+                        180,
+                        40));
+        }
+    }
+
+    Cv2.Rectangle(
+        artworkMask,
+        new Rect(
+            80,
+            60,
+            40,
+            35),
+        Scalar.White,
+        thickness: -1);
+
+    var artworkTarget =
+        new V2TextTarget(
+            "V2-0030-ART",
+            PageRegionKind.TextFree,
+            new Rect(
+                20,
+                20,
+                160,
+                120),
+            0.95f,
+            null,
+            null,
+            null);
+
+    var artworkAudit =
+        BackgroundReconstructionV2.Analyze(
+            artworkSource,
+            artworkTarget,
+            artworkMask);
+
+    Check("V2 0030 keeps complex artwork on Telea path",
+        !artworkAudit.FlatAccepted &&
+        artworkAudit.Strategy == "TELEA");
+}
+
+// 0020 regression: initial erase may use chroma rescue, but post-inpaint
+// residual review must not reinterpret harmless color variation as lettering.
+Check("V2 residual policy remains density based after chroma review split",
+    ErasePipelineV2.IsResidualAcceptable(
+        3780,
+        278,
+        new Rect(63, 56, 157, 75)));
+
+Check("V2 0022 accepts ten-percent low-density post-inpaint residue",
+    ErasePipelineV2.IsResidualAcceptable(
+        3780,
+        378,
+        new Rect(63, 56, 157, 75)));
+
+Check("V2 0022 accepts sparse caption texture without retry inflation",
+    ErasePipelineV2.IsResidualAcceptable(
+        7233,
+        379,
+        new Rect(1046, 243, 223, 64)));
+
+Check("V2 residual review tolerates tiny post-inpaint speckles",
+    ErasePipelineV2.IsResidualAcceptable(
+        2303,
+        10,
+        new Rect(540, 193, 102, 77)));
+
+Check("V2 residual review tolerates low-density textured caption noise",
+    ErasePipelineV2.IsResidualAcceptable(
+        5944,
+        343,
+        new Rect(179, 1187, 288, 52)));
+
+Check("V2 residual review still rejects substantial remaining lettering",
+    !ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        587,
+        new Rect(1061, 1671, 163, 52)));
+
+Check("V2 0024 accepts inpaint texture when outside-mask residue is tiny",
+    ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        433,
+        40,
+        new Rect(1061, 1671, 163, 52)));
+
+Check("V2 0024 still rejects real outside-mask lettering",
+    !ErasePipelineV2.IsResidualAcceptable(
+        3537,
+        433,
+        180,
+        new Rect(1061, 1671, 163, 52)));
+
+Check("V2 0043 TextBubble gate retries page005-like dense residue",
+    !ErasePipelineV2.IsResidualAcceptable(
+        7005,
+        524,
+        417,
+        new Rect(335, 505, 185, 107),
+        strictTextBubble: true));
+
+Check("V2 0043 keeps generic residual tolerance unchanged",
+    ErasePipelineV2.IsResidualAcceptable(
+        7005,
+        524,
+        417,
+        new Rect(335, 505, 185, 107),
+        strictTextBubble: false));
+
+using (var originalMask =
+       Mat.Zeros(
+           20,
+           20,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var residualMask =
+       Mat.Zeros(
+           20,
+           20,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    Cv2.Rectangle(
+        originalMask,
+        new Rect(
+            5,
+            5,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            7,
+            7,
+            4,
+            4),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            15,
+            8,
+            2,
+            3),
+        Scalar.White,
+        thickness: -1);
+
+    Check("V2 0024 residual review ignores re-segmented pixels inside erased glyph mask",
+        ErasePipelineV2.CountResidualOutsideOriginalMask(
+            residualMask,
+            originalMask) == 6);
+}
+
+// 0025 regression: review must follow source-glyph persistence, not any
+// high-contrast structure that happens to be near the detector text box.
+using (var coreMask =
+       Mat.Zeros(
+           40,
+           40,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var residualMask =
+       Mat.Zeros(
+           40,
+           40,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    Cv2.Rectangle(
+        coreMask,
+        new Rect(
+            14,
+            14,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    // Nearby bubble/artwork edge: inside the halo but never touching the
+    // source glyph core.
+    Cv2.Line(
+        residualMask,
+        new Point(
+            8,
+            10),
+        new Point(
+            30,
+            10),
+        Scalar.White,
+        2);
+
+    // Actual source-glyph residue.
+    Cv2.Rectangle(
+        residualMask,
+        new Rect(
+            17,
+            17,
+            4,
+            4),
+        Scalar.White,
+        thickness: -1);
+
+    using var linked =
+        ErasePipelineV2.BuildCoreLinkedResidual(
+            residualMask,
+            coreMask);
+
+    Check("V2 0025 ignores nearby border components that do not touch glyph core",
+        Cv2.CountNonZero(
+            linked) == 16);
+}
+
+using (var sourceGlyph =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var cleanedGlyph =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC3)
+       .ToMat())
+using (var glyphCore =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC1)
+       .ToMat())
+using (var glyphResidual =
+       Mat.Zeros(
+           32,
+           32,
+           MatType.CV_8UC1)
+       .ToMat())
+{
+    sourceGlyph.SetTo(
+        new Scalar(
+            255,
+            255,
+            255));
+
+    cleanedGlyph.SetTo(
+        new Scalar(
+            255,
+            255,
+            255));
+
+    Cv2.Rectangle(
+        sourceGlyph,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        new Scalar(
+            0,
+            0,
+            0),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        glyphCore,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    Cv2.Rectangle(
+        glyphResidual,
+        new Rect(
+            10,
+            10,
+            10,
+            10),
+        Scalar.White,
+        thickness: -1);
+
+    int erasedPersistence =
+        ErasePipelineV2.CountOriginalGlyphPersistence(
+            sourceGlyph,
+            cleanedGlyph,
+            glyphCore,
+            glyphResidual,
+            new Rect(
+                8,
+                8,
+                14,
+                14));
+
+    Check("V2 0025 accepts a fully changed source glyph core",
+        erasedPersistence == 0 &&
+        ErasePipelineV2.IsCorePersistenceAcceptable(
+            100,
+            100,
+            erasedPersistence));
+
+    sourceGlyph.CopyTo(
+        cleanedGlyph);
+
+    int survivingPersistence =
+        ErasePipelineV2.CountOriginalGlyphPersistence(
+            sourceGlyph,
+            cleanedGlyph,
+            glyphCore,
+            glyphResidual,
+            new Rect(
+                8,
+                8,
+                14,
+                14));
+
+    Check("V2 0025 rejects genuinely surviving source glyph pixels",
+        survivingPersistence == 100 &&
+        !ErasePipelineV2.IsCorePersistenceAcceptable(
+            100,
+            100,
+            survivingPersistence));
+}
+
+Check("V2 0027 cleaned checkpoint requires exact detector ID set match",
+    ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B003", "B001", "B002"]));
+
+Check("V2 0027 cleaned checkpoint catches a missing bubble ID",
+    !ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B001", "B003"]));
+
+Check("V2 0027 cleaned checkpoint catches an unexpected replacement ID",
+    !ErasePipelineV2.CheckpointIdsMatch(
+        ["B001", "B002", "B003"],
+        ["B001", "B002", "B004"]));
+
+Check("V2 0028 cleaned verifier matches residual text inside original target",
+    CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            130,
+            120,
+            120,
+            35)));
+
+Check("V2 0028 cleaned verifier allows nearby text outside original target",
+    !CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            315,
+            110,
+            100,
+            35)));
+
+Check("V2 0028 cleaned verifier accepts a partially clipped surviving detection",
+    CleanedStateVerifier.IsResidualMatch(
+        new Rect(
+            100,
+            100,
+            200,
+            80),
+        new Rect(
+            275,
+            120,
+            55,
+            35)));
+
+var primaryPassDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: true,
+        secondaryClean: false);
+
+Check("V2 0026 primary pass cannot be overturned by secondary reviewer",
+    primaryPassDecision.Clean &&
+    !primaryPassDecision.SecondaryRan &&
+    !primaryPassDecision.RescuedBySecondary &&
+    primaryPassDecision.Reason ==
+        "primary_residual_clean");
+
+var secondaryRescueDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: false,
+        secondaryClean: true);
+
+Check("V2 0026 secondary glyph review only rescues primary failures",
+    secondaryRescueDecision.Clean &&
+    secondaryRescueDecision.SecondaryRan &&
+    secondaryRescueDecision.RescuedBySecondary &&
+    secondaryRescueDecision.Reason ==
+        "secondary_glyph_rescue");
+
+var doubleFailDecision =
+    ErasePipelineV2.ResolveReviewDecision(
+        primaryClean: false,
+        secondaryClean: false);
+
+Check("V2 0026 keeps original when both review layers fail",
+    !doubleFailDecision.Clean &&
+    doubleFailDecision.SecondaryRan &&
+    !doubleFailDecision.RescuedBySecondary &&
+    doubleFailDecision.Reason ==
+        "original_glyph_persistence");
+
+var firstPassSelection =
+    ErasePipelineV2.SelectBestResidualPass(
+        433,
+        587,
+        true);
+
+Check("V2 0023 keeps first erase pass when retry is worse",
+    firstPassSelection.SelectedPass == "first" &&
+    firstPassSelection.SelectedResidualPixels == 433);
+
+var retryPassSelection =
+    ErasePipelineV2.SelectBestResidualPass(
+        587,
+        279,
+        true);
+
+Check("V2 0023 keeps retry erase pass when it improves residual",
+    retryPassSelection.SelectedPass == "retry" &&
+    retryPassSelection.SelectedResidualPixels == 279);
+
+string v2MainRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_main_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(v2MainRoot);
+
+    string v2MainSourcePath =
+        Path.Combine(v2MainRoot, "v2_main.png");
+
+    using var v2MainSource =
+        Mat.Zeros(220, 420, MatType.CV_8UC3).ToMat();
+
+    v2MainSource.SetTo(
+        new Scalar(255, 255, 255));
+
+    Cv2.PutText(
+        v2MainSource,
+        "HELLO",
+        new Point(70, 105),
+        HersheyFonts.HersheySimplex,
+        0.9,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.PutText(
+        v2MainSource,
+        "KEEP",
+        new Point(250, 105),
+        HersheyFonts.HersheySimplex,
+        0.9,
+        new Scalar(0, 0, 0),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        v2MainSourcePath,
+        v2MainSource);
+
+    var bubbleA = new PageRegion(
+        "VB-A",
+        PageRegionKind.Bubble,
+        new Rect(35, 55, 155, 85),
+        0.97f,
+        "test-rtdetr");
+
+    var textA = new PageRegion(
+        "VT-A",
+        PageRegionKind.TextBubble,
+        new Rect(55, 75, 120, 48),
+        0.96f,
+        "test-rtdetr");
+
+    var bubbleB = new PageRegion(
+        "VB-B",
+        PageRegionKind.Bubble,
+        new Rect(220, 55, 165, 85),
+        0.97f,
+        "test-rtdetr");
+
+    var textB = new PageRegion(
+        "VT-B",
+        PageRegionKind.TextBubble,
+        new Rect(240, 75, 125, 48),
+        0.96f,
+        "test-rtdetr");
+
+    var mainSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [bubbleA, textA, bubbleB, textB],
+                [],
+                "v2-main-test",
+                true));
+
+    var translatedBlock =
+        new OcrTextBlock(
+            2001,
+            55,
+            75,
+            120,
+            48,
+            "HELLO",
+            1,
+            "en",
+            [new OcrLine(65, 82, 90, 28, "HELLO", 0.99f, "en")])
+        {
+            RegionId = "VB-A",
+            RegionTextRegion = textA
+        };
+
+    var translatedRegion =
+        new VisionTranslation(
+            2001,
+            translatedBlock,
+            "HELLO",
+            "안녕",
+            "dialogue",
+            true);
+
+    var selection =
+        V2EraseSelector.Select(
+            mainSnapshot,
+            [translatedRegion]);
+
+    Check("V2 selector erases only translated immutable target",
+        selection.TextRegionIds.SetEquals(["VT-A"]) &&
+        selection.TranslationRegionIds.SetEquals([2001]));
+
+    Check("V2 selector keeps TextBubble for erase and parent Bubble for layout",
+        selection.Bindings.TryGetValue(2001, out var mainBinding) &&
+        mainBinding.TextBounds == textA.Bounds &&
+        mainBinding.LayoutBounds == bubbleA.Bounds &&
+        mainBinding.BubbleRegionId == "VB-A" &&
+        mainBinding.LayoutMode == "rtdetr_parent_bubble" &&
+        mainBinding.TextRegionIds.SequenceEqual(["VT-A"]));
+
+    var wrongLegacyOwnerBlock =
+        new OcrTextBlock(
+            2036,
+            242,
+            76,
+            120,
+            46,
+            "RIGHT BALLOON",
+            2,
+            "en",
+            [
+                new OcrLine(
+                    246,
+                    82,
+                    108,
+                    28,
+                    "RIGHT BALLOON",
+                    0.99f,
+                    "en")
+            ])
+        {
+            // Simulate the 0034 regression: legacy candidate/RegionId points
+            // at the left Bubble even though OCR geometry is inside the right
+            // immutable TextBubble.
+            RegionId = "VB-A"
+        };
+
+    var resolvedDetectorText =
+        OcrPipelineService.ResolveDetectorTextRegionForBlock(
+            wrongLegacyOwnerBlock,
+            [bubbleA, textA, bubbleB, textB]);
+
+    Check("V2 0035 detector TextRegion overrides wrong legacy Bubble ownership",
+        resolvedDetectorText is not null &&
+        resolvedDetectorText.RegionId == "VT-B");
+
+    var detectorOwnedCandidate =
+        new ContainerCandidate(
+            "PC-0034",
+            ContainerCandidateKind.Speech,
+            bubbleA.Bounds,
+            "test-rtdetr",
+            false,
+            6.0,
+            0.88,
+            0,
+            Enumerable.Repeat(
+                    (byte)255,
+                    bubbleA.Bounds.Width *
+                    bubbleA.Bounds.Height)
+                .ToArray(),
+            bubbleA.Bounds.Width,
+            bubbleA.Bounds.Height)
+        {
+            RegionId = "VB-A",
+            LearnedBounds = bubbleA.Bounds
+        };
+
+    var renderDroppedBlock =
+        translatedBlock with
+        {
+            SecondaryOcrText =
+                "I DON'T KNOW ANYMORE. I DON'T--",
+            SecondaryOcrSource =
+                "baberu",
+            SecondaryOcrAgreement =
+                "agree",
+            RegionContainer =
+                detectorOwnedCandidate,
+            RegionTextRegion =
+                textA
+        };
+
+    var renderDroppedDialogue =
+        new VisionTranslation(
+            2035,
+            renderDroppedBlock,
+            "I DON'T KNOW ANYMORE. I DON'T--",
+            "",
+            "dialogue",
+            false);
+
+    Check("V2 0034 recovers detector-owned dialogue from one Vision Render=false",
+        PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedDialogue));
+
+    Check("V2 0034 does not force non-dialogue detector content to render",
+        !PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedDialogue with
+            {
+                Type = "logo"
+            }));
+
+    var renderDroppedWithoutDirectTextLink =
+        renderDroppedDialogue with
+        {
+            Source =
+                renderDroppedDialogue.Source with
+                {
+                    RegionId = "VB-A",
+                    RegionTextRegion = null
+                }
+        };
+
+    Check("V2 0035 recovers Render=false from unique TextBubble under parent Bubble",
+        PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            renderDroppedWithoutDirectTextLink,
+            [bubbleA, textA, bubbleB, textB]));
+
+    // 0034 regression: a broad orphan OCR block can overlap a normal
+    // TextBubble and nearby free-standing stylized text. Geometry fallback may
+    // choose one immutable owner, but it must never bind both owners into one
+    // erase/layout commit unit.
+    var mixBubble =
+        new PageRegion(
+            "VB-MIX",
+            PageRegionKind.Bubble,
+            new Rect(20, 20, 150, 90),
+            0.96f,
+            "test-rtdetr");
+
+    var mixText =
+        new PageRegion(
+            "VT-MIX-BUBBLE",
+            PageRegionKind.TextBubble,
+            new Rect(40, 42, 105, 42),
+            0.92f,
+            "test-rtdetr");
+
+    var mixFree =
+        new PageRegion(
+            "VT-MIX-FREE",
+            PageRegionKind.TextFree,
+            new Rect(155, 38, 150, 88),
+            0.88f,
+            "test-rtdetr");
+
+    var mixSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [mixBubble, mixText, mixFree],
+                [],
+                "v2-0034-owner-boundary",
+                true));
+
+    var broadOrphanBlock =
+        new OcrTextBlock(
+            2034,
+            35,
+            34,
+            265,
+            96,
+            "NO NO LET ME OUT",
+            3,
+            "en",
+            [
+                new OcrLine(42, 48, 96, 28, "NO NO", 0.95f, "en"),
+                new OcrLine(164, 48, 126, 32, "LET ME", 0.97f, "en"),
+                new OcrLine(180, 82, 92, 30, "OUT", 0.96f, "en")
+            ]);
+
+    var broadOrphanTranslation =
+        new VisionTranslation(
+            2034,
+            broadOrphanBlock,
+            "NO NO LET ME OUT",
+            "안 돼, 내보내 줘",
+            "caption",
+            true);
+
+    var ownerBoundarySelection =
+        V2EraseSelector.Select(
+            mixSnapshot,
+            [broadOrphanTranslation]);
+
+    Check("V2 0034 geometry fallback never joins TextBubble and TextFree owners",
+        ownerBoundarySelection.Bindings.TryGetValue(
+            2034,
+            out var ownerBoundaryBinding) &&
+        ownerBoundaryBinding.TextRegionIds.Count == 1 &&
+        !(ownerBoundaryBinding.TextRegionIds.Contains(
+              "VT-MIX-BUBBLE",
+              StringComparer.Ordinal) &&
+          ownerBoundaryBinding.TextRegionIds.Contains(
+              "VT-MIX-FREE",
+              StringComparer.Ordinal)));
+
+    var freeTextRegion =
+        new PageRegion(
+            "VT-FREE",
+            PageRegionKind.TextFree,
+            new Rect(72, 158, 210, 34),
+            0.94f,
+            "test-rtdetr");
+
+    var freeSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [freeTextRegion],
+                [],
+                "v2-free-test",
+                true));
+
+    Check("V2 snapshot carries RT-DETR TextFree geometry",
+        freeSnapshot.TextTargets.Count == 1 &&
+        freeSnapshot.TextTargets[0].Kind == PageRegionKind.TextFree &&
+        freeSnapshot.TextTargets[0].TextBounds == freeTextRegion.Bounds &&
+        freeSnapshot.TextTargets[0].BubbleBounds is null);
+
+    var freeBlock =
+        new OcrTextBlock(
+            2002,
+            74,
+            160,
+            205,
+            30,
+            "YOU'VE BEEN LOST IN THE DARK",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "YOU'VE BEEN LOST IN THE DARK",
+                0.98f,
+                "en")]);
+
+    var freeTranslation =
+        new VisionTranslation(
+            2002,
+            freeBlock,
+            freeBlock.Text,
+            "어둠 속에서 길을 잃었군.",
+            "caption",
+            true);
+
+    Check("Translation 0023 rejects placeholder output",
+        !TranslationRefinementService.IsUsableTranslation(
+            freeTranslation,
+            "...[여기에 번역된 내용이 들어갑니다]"));
+
+    var cantBlock =
+        new OcrTextBlock(
+            2006,
+            74,
+            160,
+            205,
+            30,
+            "I CAN'T.",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "I CAN'T.",
+                0.99f,
+                "en")]);
+
+    var cantTranslation =
+        new VisionTranslation(
+            2006,
+            cantBlock,
+            "I CAN'T.",
+            "난 못 해.",
+            "dialogue",
+            true);
+
+    Check("Translation 0023 rejects lost English negation",
+        !TranslationRefinementService.IsUsableTranslation(
+            cantTranslation,
+            "난 할 수 있어."));
+
+    Check("Translation 0023 accepts preserved English negation",
+        TranslationRefinementService.IsUsableTranslation(
+            cantTranslation,
+            "난 할 수 없어."));
+
+    var tagQuestionBlock =
+        new OcrTextBlock(
+            2017,
+            74,
+            160,
+            205,
+            30,
+            "WAIT THE KNOCK-KNOCK COMES FIRST, DOESN'T IT... SHIT.",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "WAIT THE KNOCK-KNOCK COMES FIRST, DOESN'T IT... SHIT.",
+                0.95f,
+                "en")]);
+
+    var tagQuestionTranslation =
+        new VisionTranslation(
+            2017,
+            tagQuestionBlock,
+            tagQuestionBlock.Text,
+            "",
+            "dialogue",
+            true);
+
+    Check("Translation 0043 does not treat negative question tag as semantic negation",
+        TranslationRefinementService.IsUsableTranslation(
+            tagQuestionTranslation,
+            "잠깐, 노크부터 먼저잖아... 젠장."));
+
+    var freeSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [freeTranslation]);
+
+    Check("V2 0035 preserves TextFree captions as original artwork",
+        !freeSelection.Bindings.ContainsKey(2002) &&
+        freeSelection.PreservationReasons.TryGetValue(
+            2002,
+            out var freeReason) &&
+        freeReason == "textfree_original" &&
+        freeSelection.PreservationTargetReasons.TryGetValue(
+            "VT-FREE",
+            out var freeTargetReason) &&
+        freeTargetReason == "textfree_original");
+
+    var stylizedTranslation =
+        new VisionTranslation(
+            2003,
+            freeBlock,
+            "BRUCE!",
+            "브루스!",
+            "dialogue",
+            true);
+
+    var stylizedSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [stylizedTranslation]);
+
+    Check("V2 selector preserves free-standing stylized shout text",
+        !stylizedSelection.Bindings.ContainsKey(2003) &&
+        stylizedSelection.PreservationReasons.TryGetValue(
+            2003,
+            out var stylizedReason) &&
+        stylizedReason == "stylized_graphic" &&
+        stylizedSelection.PreservationTargetReasons.TryGetValue(
+            "VT-FREE",
+            out var stylizedTargetReason) &&
+        stylizedTargetReason == "stylized_graphic");
+
+    var ordinaryUppercaseTranslation =
+        new VisionTranslation(
+            2005,
+            freeBlock,
+            "AND DEATH WILL BE UPON YOU!",
+            "죽음이 닥칠 것이다!",
+            "dialogue",
+            true);
+
+    var ordinaryUppercaseSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [ordinaryUppercaseTranslation]);
+
+    Check("V2 0035 preserves long uppercase TextFree lettering",
+        !ordinaryUppercaseSelection.Bindings.ContainsKey(2005) &&
+        ordinaryUppercaseSelection.PreservationReasons.TryGetValue(
+            2005,
+            out var uppercaseFreeReason) &&
+        uppercaseFreeReason == "textfree_original");
+
+    var shortCaptionTranslation =
+        new VisionTranslation(
+            2004,
+            freeBlock,
+            "THAT'S ALL.",
+            "그게 전부야.",
+            "caption",
+            true);
+
+    var shortCaptionSelection =
+        V2EraseSelector.Select(
+            freeSnapshot,
+            [shortCaptionTranslation]);
+
+    Check("V2 0043 binds strong sentence-like TextFree caption",
+        shortCaptionSelection.Bindings.TryGetValue(
+            2004,
+            out var shortFreeBinding) &&
+        shortFreeBinding.TextRegionIds.SequenceEqual(
+            ["VT-FREE"]) &&
+        shortFreeBinding.LayoutMode ==
+            "rtdetr_textfree" &&
+        !shortCaptionSelection.PreservationReasons.ContainsKey(
+            2004) &&
+        !shortCaptionSelection.PreservationTargetReasons.ContainsKey(
+            "VT-FREE"));
+
+    var v2MainResult =
+        new ErasePipelineV2().Run(
+            v2MainSourcePath,
+            v2MainRoot,
+            mainSnapshot,
+            selection.TextRegionIds);
+
+    Check("V2 main erase writes first residual and final debug stages",
+        File.Exists(v2MainResult.MaskDebugPath) &&
+        File.Exists(v2MainResult.FirstCleanedDebugPath) &&
+        File.Exists(v2MainResult.ResidualDebugPath) &&
+        File.Exists(v2MainResult.CleanedDebugPath) &&
+        File.Exists(v2MainResult.DetectionJsonPath));
+
+    Check("V2 main erase reports only selected target",
+        v2MainResult.DetectedTargetCount == 2 &&
+        v2MainResult.TargetCount == 1 &&
+        v2MainResult.MaskPixels > 0 &&
+        v2MainResult.TargetAudits.Count == 1 &&
+        v2MainResult.TargetAudits[0].InitialMaskPixels > 0);
+
+    using var v2Final =
+        Cv2.ImRead(
+            v2MainResult.CleanedDebugPath,
+            ImreadModes.Color);
+
+    Check("V2 main erase preserves unselected TextBubble pixels",
+        !v2Final.Empty() &&
+        v2Final.At<Vec3b>(104, 258).Equals(
+            v2MainSource.At<Vec3b>(104, 258)));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(v2MainRoot))
+            Directory.Delete(v2MainRoot, true);
+    }
+    catch
+    {
+    }
+}
+
+string flatTextFreeRoot = Path.Combine(
+    Path.GetTempPath(),
+    $"lmt_v2_flat_textfree_{Guid.NewGuid():N}");
+try
+{
+    OutputDirectoryLayout.Ensure(
+        flatTextFreeRoot);
+
+    string flatSourcePath =
+        Path.Combine(
+            flatTextFreeRoot,
+            "flat_textfree.png");
+
+    using var flatSource =
+        Mat.Zeros(
+            220,
+            480,
+            MatType.CV_8UC3)
+        .ToMat();
+
+    flatSource.SetTo(
+        new Scalar(
+            12,
+            12,
+            12));
+
+    Cv2.PutText(
+        flatSource,
+        "THAT PETITE BODY WILL CRUMBLE",
+        new Point(
+            60,
+            120),
+        HersheyFonts.HersheySimplex,
+        0.65,
+        new Scalar(
+            245,
+            245,
+            245),
+        2,
+        LineTypes.AntiAlias);
+
+    Cv2.ImWrite(
+        flatSourcePath,
+        flatSource);
+
+    var flatTextRegion =
+        new PageRegion(
+            "VT-FLAT-DARK",
+            PageRegionKind.TextFree,
+            new Rect(
+                50,
+                82,
+                365,
+                55),
+            0.95f,
+            "test-rtdetr");
+
+    var flatSnapshot =
+        V2DetectionSnapshot.Create(
+            new PageAnalysisResult(
+                [flatTextRegion],
+                [],
+                "v2-flat-dark-test",
+                true));
+
+    var flatResult =
+        new ErasePipelineV2().Run(
+            flatSourcePath,
+            flatTextFreeRoot,
+            flatSnapshot,
+            new HashSet<string>(
+                ["VT-FLAT-DARK"],
+                StringComparer.Ordinal));
+
+    Check("V2 0022 flat TextFree dark panel erases cleanly",
+        flatResult.TargetAudits.Count == 1 &&
+        ErasePipelineV2.IsAuditClean(
+            flatResult.TargetAudits[0]));
+}
+finally
+{
+    try
+    {
+        if (Directory.Exists(
+                flatTextFreeRoot))
+        {
+            Directory.Delete(
+                flatTextFreeRoot,
+                true);
+        }
+    }
+    catch
+    {
+    }
+}
+
 string auditRoot = Path.Combine(
     Path.GetTempPath(),
     $"lmt_audit_{Guid.NewGuid():N}");
@@ -591,6 +3211,29 @@ try
         PageAnalysis = new PageAnalysisResult([], [], "test", false)
     };
 
+    string auditCommitted =
+        Path.Combine(
+            OutputDirectoryLayout.Debug(auditRoot),
+            "audit_source.v2_05_committed_cleaned.webp");
+
+    using (var committed = Cv2.ImRead(
+               auditSource,
+               ImreadModes.Color))
+    {
+        Cv2.Rectangle(
+            committed,
+            new Rect(10, 10, 10, 8),
+            new Scalar(255, 255, 255),
+            -1);
+
+        Cv2.ImWrite(
+            auditCommitted,
+            committed,
+            [new ImageEncodingParam(
+                ImwriteFlags.WebPQuality,
+                101)]);
+    }
+
     await new FinalAuditService().GenerateAsync(
         auditSource,
         auditFinal,
@@ -598,13 +3241,36 @@ try
         emptyStage,
         []);
 
-    Check("final audit writes compare json and summary after output",
-        File.Exists(Path.Combine(
+    string auditCompare =
+        Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
-            "audit_source.final_compare.webp")) &&
-        File.Exists(Path.Combine(
+            "audit_source.final_compare.webp");
+
+    string auditJson =
+        Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
-            "audit_source.final_audit.json")) &&
+            "audit_source.final_audit.json");
+
+    using var auditCompareImage =
+        Cv2.ImDecode(
+            File.ReadAllBytes(
+                auditCompare),
+            ImreadModes.Color);
+
+    string auditJsonText =
+        File.ReadAllText(
+            auditJson);
+
+    Check("final audit writes four-stage original erase final diff sheet",
+        File.Exists(auditCompare) &&
+        !auditCompareImage.Empty() &&
+        auditCompareImage.Cols == 200 &&
+        auditJsonText.Contains(
+            "\"schema\": \"final-audit-v2\"",
+            StringComparison.Ordinal) &&
+        auditJsonText.Contains(
+            "\"committed_cleaned_available\": true",
+            StringComparison.Ordinal) &&
         File.Exists(Path.Combine(
             OutputDirectoryLayout.Audit(auditRoot),
             "audit_summary.json")));

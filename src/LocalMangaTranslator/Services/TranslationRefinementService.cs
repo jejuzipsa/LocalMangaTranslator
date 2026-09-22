@@ -1,6 +1,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using LocalMangaTranslator.Models;
 
 namespace LocalMangaTranslator.Services;
@@ -27,10 +28,25 @@ public sealed class TranslationRefinementService
     {
         if (reviewed.Count == 0) return [];
 
-        // Vision 검수 단계의 번역을 항상 안전한 fallback으로 보존한다.
-        var result = reviewed.ToList();
-        var renderable = reviewed
-            .Where(x => x.Render && IsRenderableType(x.Type))
+        // Vision 검수 단계의 번역을 fallback으로 보존하되, 실제 언어가
+        // 없는 punctuation/noise unit은 번역 모델에 보내지 않는다.
+        var result = reviewed
+            .Select(x =>
+                x.Render &&
+                IsRenderableType(x.Type) &&
+                !HasMeaningfulSource(x.CorrectedText)
+                    ? x with
+                    {
+                        Translation = "",
+                        Render = false
+                    }
+                    : x)
+            .ToList();
+
+        var renderable = result
+            .Where(x =>
+                x.Render &&
+                IsRenderableType(x.Type))
             .ToList();
 
         for (int offset = 0; offset < renderable.Count; offset += BatchSize)
@@ -73,7 +89,11 @@ public sealed class TranslationRefinementService
 
                 try
                 {
-                    var one = await SendBatchAsync([item], model, token);
+                    var one = await SendBatchAsync(
+                        [item],
+                        model,
+                        token,
+                        repairMode: true);
                     var recovered = one.FirstOrDefault(x =>
                         x.Id == item.Id && !string.IsNullOrWhiteSpace(x.Translation));
 
@@ -88,10 +108,35 @@ public sealed class TranslationRefinementService
                     progress?.Report($"번역 ID {item.Id} 재시도 실패 · Vision 번역 유지: {Compact(ex.Message)}");
                 }
 
-                // reviewed의 Translation은 Vision 검수 단계에서 이미 검증된 한국어 번역이다.
-                // 최종 번역 모델이 형식을 깨뜨려도 이 값을 유지하면 작업 전체는 계속 진행된다.
-                if (!string.IsNullOrWhiteSpace(item.Translation))
-                    map[item.Id] = item.Translation;
+                // Vision draft도 최종 안전성 검사를 통과할 때만 fallback으로
+                // 사용한다. placeholder/부정 의미 반전 등이 그대로 최종 출력으로
+                // 새는 경우에는 해당 unit을 원문 보존으로 돌린다.
+                if (IsUsableTranslation(
+                        item,
+                        item.Translation))
+                {
+                    map[item.Id] =
+                        item.Translation;
+                }
+                else
+                {
+                    int resultIndex =
+                        result.FindIndex(x =>
+                            x.Id == item.Id);
+
+                    if (resultIndex >= 0)
+                    {
+                        result[resultIndex] =
+                            result[resultIndex] with
+                            {
+                                Translation = "",
+                                Render = false
+                            };
+                    }
+
+                    progress?.Report(
+                        $"번역 ID {item.Id} 검증 실패 · 안전하게 원문 유지");
+                }
             }
 
             for (int i = 0; i < result.Count; i++)
@@ -107,7 +152,8 @@ public sealed class TranslationRefinementService
     async Task<List<(int Id, string Translation)>> SendBatchAsync(
         IReadOnlyList<VisionTranslation> batch,
         ModelProfile model,
-        CancellationToken token)
+        CancellationToken token,
+        bool repairMode = false)
     {
         var payload = batch.Select((x, index) => new
         {
@@ -128,7 +174,10 @@ public sealed class TranslationRefinementService
             format = "json",
             options = new
             {
-                temperature = 0.08,
+                // 0034 reproducibility: identical corrected source should
+                // produce a stable final translation candidate.
+                temperature = 0.0,
+                seed = 34034,
                 num_ctx = 8192,
                 num_predict = 1800
             },
@@ -137,7 +186,9 @@ public sealed class TranslationRefinementService
                 new
                 {
                     role = "user",
-                    content = BuildPrompt(payload)
+                    content = BuildPrompt(
+                        payload,
+                        repairMode)
                 }
             }
         };
@@ -182,9 +233,23 @@ public sealed class TranslationRefinementService
         return parsed;
     }
 
-    static string BuildPrompt(object payload)
+    static string BuildPrompt(
+        object payload,
+        bool repairMode = false)
     {
         var json = JsonSerializer.Serialize(payload);
+
+        string repairInstructions =
+            repairMode
+                ? """
+REPAIR MODE:
+- A previous translation failed automatic validation.
+- Re-check explicit negation such as NOT, CAN'T, CANNOT, DON'T, WON'T, NEVER and preserve that negative meaning in Korean.
+- Never output placeholders, template instructions, notes, or text such as "여기에 번역된 내용이 들어갑니다".
+- Return only the finished Korean translation for the visible corrected_source.
+
+"""
+                : "";
 
         const string instructions = """
 TARGET LANGUAGE: Korean (한국어).
@@ -218,7 +283,10 @@ OUTPUT:
 INPUT:
 """;
 
-        return instructions + Environment.NewLine + json;
+        return repairInstructions +
+               instructions +
+               Environment.NewLine +
+               json;
     }
 
     static List<(int Id, string Translation)> Parse(string content)
@@ -282,7 +350,7 @@ INPUT:
     static bool IsRenderableType(string? type)
         => type is "dialogue" or "thought" or "caption";
 
-    static bool IsUsableTranslation(
+    public static bool IsUsableTranslation(
         VisionTranslation source,
         string? translation)
     {
@@ -290,6 +358,26 @@ INPUT:
             return false;
 
         string text = translation.Trim();
+
+        if (ContainsDisallowedPlaceholder(
+                text))
+        {
+            return false;
+        }
+
+        if (!HasMeaningfulSource(
+                source.CorrectedText))
+        {
+            return false;
+        }
+
+        if (HasExplicitEnglishNegation(
+                source.CorrectedText) &&
+            !HasKoreanNegationCue(
+                text))
+        {
+            return false;
+        }
 
         bool sourceUsesLatin =
             source.CorrectedText.Any(c =>
@@ -322,6 +410,155 @@ INPUT:
             return false;
 
         return true;
+    }
+
+    static bool HasMeaningfulSource(
+        string? text)
+        => !string.IsNullOrWhiteSpace(text) &&
+           text.Any(char.IsLetterOrDigit);
+
+    static bool ContainsDisallowedPlaceholder(
+        string text)
+    {
+        string normalized =
+            text
+                .Replace("[BR]", " ", StringComparison.OrdinalIgnoreCase)
+                .Trim();
+
+        string[] blocked =
+        [
+            "여기에 번역된 내용이 들어갑니다",
+            "번역된 내용이 들어갑니다",
+            "번역문을 입력",
+            "번역을 입력",
+            "translation here",
+            "translated text here",
+            "insert translation",
+            "placeholder"
+        ];
+
+        return blocked.Any(x =>
+            normalized.Contains(
+                x,
+                StringComparison.OrdinalIgnoreCase));
+    }
+
+    static bool HasExplicitEnglishNegation(
+        string source)
+    {
+        string semanticSource =
+            StripNegativeQuestionTags(
+                source);
+
+        var normalized =
+            new StringBuilder(
+                semanticSource.Length + 2);
+
+        normalized.Append(' ');
+
+        foreach (char raw in semanticSource)
+        {
+            char ch =
+                char.ToLowerInvariant(
+                    raw == '’'
+                        ? '\''
+                        : raw);
+
+            normalized.Append(
+                char.IsLetter(ch) ||
+                ch == '\''
+                    ? ch
+                    : ' ');
+        }
+
+        normalized.Append(' ');
+
+        string lower =
+            normalized.ToString();
+
+        string[] cues =
+        [
+            " can't ",
+            " cannot ",
+            " don't ",
+            " doesn't ",
+            " didn't ",
+            " won't ",
+            " wouldn't ",
+            " shouldn't ",
+            " couldn't ",
+            " mustn't ",
+            " isn't ",
+            " aren't ",
+            " wasn't ",
+            " weren't ",
+            " haven't ",
+            " hasn't ",
+            " hadn't ",
+            " never ",
+            " not ",
+            " no longer ",
+            " no one ",
+            " nobody ",
+            " nothing ",
+            " none "
+        ];
+
+        return cues.Any(x =>
+            lower.Contains(
+                x,
+                StringComparison.Ordinal));
+    }
+
+    static string StripNegativeQuestionTags(
+        string source)
+    {
+        // 0043: a negative auxiliary in an English tag question does not
+        // necessarily carry negative proposition meaning. For example,
+        // "COMES FIRST, DOESN'T IT?" can translate naturally as
+        // "먼저잖아?" without any Korean negation cue. Requiring 안/못/않
+        // here caused the valid translation to be rejected repeatedly.
+        // Only comma-led auxiliary+pronoun tags are stripped; ordinary
+        // sentence negation such as "I DON'T KNOW" remains protected.
+        return Regex.Replace(
+            source,
+            @"(?i),\s*(?:doesn['’]t|isn['’]t|aren['’]t|wasn['’]t|weren['’]t|haven['’]t|hasn['’]t|hadn['’]t|won['’]t|wouldn['’]t|shouldn['’]t|couldn['’]t|don['’]t|didn['’]t|can['’]t)\s+(?:it|he|she|they|we|you|i)\b",
+            " ",
+            RegexOptions.CultureInvariant);
+    }
+
+    static bool HasKoreanNegationCue(
+        string translation)
+    {
+        string compact =
+            translation
+                .Replace("[BR]", " ", StringComparison.OrdinalIgnoreCase)
+                .Replace(" ", "");
+
+        string[] cues =
+        [
+            "안",
+            "못",
+            "아니",
+            "않",
+            "없",
+            "말",
+            "지마",
+            "마라",
+            "말라",
+            "말고",
+            "절대",
+            "싫",
+            "금지",
+            "그만",
+            "모르",
+            "몰라"
+        ];
+
+        return cues.Any(x =>
+            compact.Contains(
+                x,
+                StringComparison.Ordinal));
     }
 
     static string NormalizeComparable(string? text)

@@ -19,5 +19,6 @@
 
   <ItemGroup>
     <None Include="..\..\models\**\*" Link="models\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\tools\laya_bridge.py" Link="tools\laya_bridge.py" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
