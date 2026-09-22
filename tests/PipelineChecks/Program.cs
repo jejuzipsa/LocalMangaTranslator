@@ -366,6 +366,92 @@ Check("V2 0042 requires legacy erase reviewer clean",
             PrimaryReview = "fail"
         }));
 
+var page048FlatEraseAudit =
+    new V2EraseTargetAudit(
+        TextRegionId: "RG010",
+        InitialMaskPixels: 15266,
+        CoreMaskPixels: 8644,
+        ResidualBeforeRetryPixels: 1661,
+        EffectiveResidualBeforeRetryPixels: 1035,
+        CoreOverlapBeforeRetryPixels: 0,
+        PersistentCoreBeforeRetryPixels: 0,
+        RetryMaskPixels: 21951,
+        ResidualAfterRetryPixels: 1059,
+        EffectiveResidualAfterRetryPixels: 1059,
+        CoreOverlapAfterRetryPixels: 0,
+        PersistentCoreAfterRetryPixels: 0,
+        Retried: true,
+        Status: "clean_after_secondary",
+        SelectedResidualPixels: 1035,
+        SelectedPersistentCorePixels: 0,
+        SelectedPersistenceRatio: 0,
+        SelectedPass: "first",
+        PrimaryReview: "fail",
+        SecondaryReview: "pass",
+        RescuedBySecondary: true,
+        ReviewReason: "secondary_glyph_rescue");
+
+var page048FlatRescueEvidence =
+    new V2CleanedStateRescueEvidence(
+        TextRegionId: "RG010",
+        FlatAccepted: true,
+        Strategy: "FLAT_FILL",
+        DominantMatchRatio: 0.603125,
+        BackgroundQualityPass: true,
+        IndependentDisposition: "AMBIGUOUS_STRUCTURE",
+        IndependentResidualBeforePixels: 174,
+        IndependentResidualAfterPixels: 174);
+
+Check("V2 0047 rescues page048-like flat-background detector-only redetection",
+    CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence,
+        0.45646143f));
+
+Check("V2 0047 keeps high-confidence cleaned redetection blocking",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence,
+        0.61f));
+
+Check("V2 0047 requires background quality pass",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence with
+        {
+            BackgroundQualityPass = false
+        },
+        0.45646143f));
+
+Check("V2 0047 requires ambiguous independent structure evidence",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit,
+        page048FlatRescueEvidence with
+        {
+            IndependentDisposition = "SAFE_RESIDUAL",
+            IndependentResidualAfterPixels = 0
+        },
+        0.45646143f));
+
+Check("V2 0047 never rescues persistent source glyph evidence",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit with
+        {
+            SelectedPersistentCorePixels = 1,
+            SelectedPersistenceRatio = 0.01
+        },
+        page048FlatRescueEvidence,
+        0.45646143f));
+
+Check("V2 0047 rejects excessive legacy residual density",
+    !CleanedStateVerifier.CanRescueFlatBackgroundDetectorOnlyRedetection(
+        page048FlatEraseAudit with
+        {
+            SelectedResidualPixels = 1300
+        },
+        page048FlatRescueEvidence,
+        0.45646143f));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);
