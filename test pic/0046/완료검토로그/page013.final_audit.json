@@ -1,0 +1,428 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page013.jpg",
+  "output_file": "page013.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 36025,
+    "changed_ratio": 0.013028264009587934,
+    "changed_regions": [
+      {
+        "x": 922,
+        "y": 351,
+        "width": 203,
+        "height": 156
+      },
+      {
+        "x": 1148,
+        "y": 1872,
+        "width": 103,
+        "height": 77
+      },
+      {
+        "x": 1123,
+        "y": 539,
+        "width": 111,
+        "height": 57
+      },
+      {
+        "x": 426,
+        "y": 424,
+        "width": 90,
+        "height": 31
+      },
+      {
+        "x": 413,
+        "y": 455,
+        "width": 64,
+        "height": 37
+      },
+      {
+        "x": 445,
+        "y": 493,
+        "width": 63,
+        "height": 29
+      },
+      {
+        "x": 1049,
+        "y": 451,
+        "width": 38,
+        "height": 48
+      },
+      {
+        "x": 1236,
+        "y": 1913,
+        "width": 40,
+        "height": 35
+      },
+      {
+        "x": 1183,
+        "y": 1850,
+        "width": 57,
+        "height": 23
+      },
+      {
+        "x": 1120,
+        "y": 513,
+        "width": 51,
+        "height": 24
+      },
+      {
+        "x": 504,
+        "y": 458,
+        "width": 33,
+        "height": 33
+      },
+      {
+        "x": 1172,
+        "y": 513,
+        "width": 39,
+        "height": 24
+      },
+      {
+        "x": 1046,
+        "y": 238,
+        "width": 32,
+        "height": 28
+      },
+      {
+        "x": 1017,
+        "y": 239,
+        "width": 28,
+        "height": 27
+      },
+      {
+        "x": 1027,
+        "y": 269,
+        "width": 27,
+        "height": 26
+      },
+      {
+        "x": 1211,
+        "y": 513,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "x": 926,
+        "y": 451,
+        "width": 27,
+        "height": 24
+      },
+      {
+        "x": 988,
+        "y": 238,
+        "width": 24,
+        "height": 27
+      },
+      {
+        "x": 1138,
+        "y": 1844,
+        "width": 21,
+        "height": 27
+      },
+      {
+        "x": 923,
+        "y": 477,
+        "width": 23,
+        "height": 23
+      },
+      {
+        "x": 1144,
+        "y": 539,
+        "width": 31,
+        "height": 17
+      },
+      {
+        "x": 502,
+        "y": 456,
+        "width": 27,
+        "height": 18
+      },
+      {
+        "x": 1097,
+        "y": 477,
+        "width": 21,
+        "height": 23
+      },
+      {
+        "x": 1225,
+        "y": 541,
+        "width": 20,
+        "height": 24
+      },
+      {
+        "x": 1247,
+        "y": 1896,
+        "width": 26,
+        "height": 18
+      },
+      {
+        "x": 471,
+        "y": 475,
+        "width": 23,
+        "height": 17
+      },
+      {
+        "x": 1138,
+        "y": 1928,
+        "width": 21,
+        "height": 18
+      },
+      {
+        "x": 1259,
+        "y": 1927,
+        "width": 21,
+        "height": 18
+      },
+      {
+        "x": 1269,
+        "y": 1850,
+        "width": 18,
+        "height": 21
+      },
+      {
+        "x": 1256,
+        "y": 1877,
+        "width": 20,
+        "height": 17
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page013.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 19232,
+    "erase_changed_ratio": 0.006955158179941572,
+    "typeset_changed_pixels": 23383,
+    "typeset_changed_ratio": 0.008456346907319768
+  },
+  "region_analysis": {
+    "total": 10,
+    "bubbles": 5,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 7,
+      "Global2x": 8,
+      "Focus3x": 57,
+      "Region1x": 24,
+      "Region2x": 29,
+      "Container1x": 22,
+      "Container2x": 22
+    },
+    "canonical_lines": 25,
+    "units": 8,
+    "assigned_lines": 22,
+    "orphan_groups": 3,
+    "secondary_total": 5,
+    "secondary_accepted": 5,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 241,
+          "Bottom": 292,
+          "Left": 1005,
+          "Right": 1093,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DR. HUDD?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 343,
+          "Bottom": 511,
+          "Left": 917,
+          "Right": 1126,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE SCANS SHOW FULL ENGREMENT, MR. PENNYWORTH. HE\u0027S STILL WAKING UP, SURE, BUT HE\u0027S BACK WITH",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 425,
+          "Bottom": 519,
+          "Left": 413,
+          "Right": 532,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE, IS IT...IS IT REALLY... YOU?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 511,
+          "Bottom": 600,
+          "Left": 1130,
+          "Right": 1232,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE? BRUCE, TALK TO ME.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1844,
+          "Bottom": 1954,
+          "Left": 1151,
+          "Right": 1277,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Alfrid,\nPleazzz.\nPLeeze jus\ntak mmme\nhOm.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 8,
+    "requested_render": 6
+  },
+  "render": {
+    "total": 5,
+    "approved": 5,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 6,
+    "TranslatedUnits": 5,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 5,
+    "TypesetCommittedUnits": 5,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "DR. HUDD?",
+        "Translation": "\uD5C8\uB4DC \uBC15\uC0AC\uB2D8?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "THE SCANS SHOW FULL ENGAGEMENT, MR. PENNYWORTH. HE\u0027S STILL WAKING SURE, BUT HE\u0027S BACK WITH us.",
+        "Translation": "\uC2A4\uCE94 \uACB0\uACFC \uC804\uC2E0\uC774 \uBC18\uC751\uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4, \uD398\uB2C8\uC6CC\uC2A4 \uC528. \uC544\uC9C1 \uAE68\uC5B4\uB098\uB294 \uC911\uC774\uAE34 \uD558\uC9C0\uB9CC, \uD655\uC2E4\uD788 \uC6B0\uB9AC\uC640 \uC5F0\uACB0\uB418\uC5C8\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "BRUCE, IS IT...S IT REALLY... You?",
+        "Translation": "\uBE0C\uB8E8\uC2A4, \uC815\uB9D0...[BR]\uC815\uB9D0 \uB108\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "BRUCE? TALK T\u00D3 A",
+        "Translation": "\uBE0C\uB8E8\uC2A4?\n\uBE0C\uB8E8\uC2A4,\n\uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "y.",
+        "Translation": "\uC751.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "Alfrid, Pleazzz. PLeeeze jus tak mmme hOm.",
+        "Translation": "\uC54C\uD504\uB9AC\uB4DC, \uC81C\uBC1C\uC694.[BR]\uC81C\uBC1C... \uADF8\uB0E5 \uB098\uB97C \uC9D1\uC73C\uB85C \uB370\uB824\uB2E4\uC918\uC694.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

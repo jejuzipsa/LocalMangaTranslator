@@ -1,0 +1,1154 @@
+{
+  "SourceFile": "page011.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:10:42.251125+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 119,
+        "Y": 124,
+        "W": 60,
+        "H": 30,
+        "Text": "You...",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 119,
+            "Y": 124,
+            "W": 60,
+            "H": 30,
+            "Text": "You...",
+            "Confidence": 0.9156351,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "You...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "YOU...",
+      "Translation": "\uB108...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 365,
+        "Y": 138,
+        "W": 265,
+        "H": 164.66666666666663,
+        "Text": "TAKE IT EASY, BRUCE. PLEASE. YOUR MOTOR FUNCTIONS, YOUR SPEECH, SPEECH, BACK THEY\u0027LL ALL COME SOON. IT\u0027S A SIMPL JUST SIDE EFFECT. RELAX.",
+        "OriginalRegionCount": 15,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 467.3333333333333,
+            "Y": 138,
+            "W": 59.99999999999994,
+            "H": 27.333333333333343,
+            "Text": "TAKE",
+            "Confidence": 0.999859,
+            "Language": "en"
+          },
+          {
+            "X": 408.6666666666667,
+            "Y": 158,
+            "W": 177.00000000000006,
+            "H": 27,
+            "Text": "IT EASY, BRUCE.",
+            "Confidence": 0.99607825,
+            "Language": "en"
+          },
+          {
+            "X": 380,
+            "Y": 178.33333333333334,
+            "W": 235.66666666666674,
+            "H": 25.99999999999997,
+            "Text": "PLEASE. YOUR MOTOR",
+            "Confidence": 0.99834764,
+            "Language": "en"
+          },
+          {
+            "X": 365,
+            "Y": 198.33333333333334,
+            "W": 265,
+            "H": 24.333333333333343,
+            "Text": "FUNCTIONS, YOUR SPEECH,",
+            "Confidence": 0.9964101,
+            "Language": "en"
+          },
+          {
+            "X": 547.3333333333334,
+            "Y": 200,
+            "W": 81.99999999999989,
+            "H": 23,
+            "Text": "SPEECH,",
+            "Confidence": 0.9985641,
+            "Language": "en"
+          },
+          {
+            "X": 560.6666666666666,
+            "Y": 220.33333333333334,
+            "W": 64.33333333333337,
+            "H": 21.666666666666657,
+            "Text": "BACK",
+            "Confidence": 0.9973429,
+            "Language": "en"
+          },
+          {
+            "X": 373.3333333333333,
+            "Y": 220.66666666666666,
+            "W": 77.33333333333337,
+            "H": 20,
+            "Text": "THEY\u0027LL",
+            "Confidence": 0.93636364,
+            "Language": "en"
+          },
+          {
+            "X": 453.66666666666663,
+            "Y": 220.66666666666666,
+            "W": 40,
+            "H": 20.00000000000003,
+            "Text": "ALL",
+            "Confidence": 0.99979186,
+            "Language": "en"
+          },
+          {
+            "X": 494,
+            "Y": 221,
+            "W": 64.33333333333337,
+            "H": 20.666666666666657,
+            "Text": "COME",
+            "Confidence": 0.9999738,
+            "Language": "en"
+          },
+          {
+            "X": 390,
+            "Y": 239.33333333333331,
+            "W": 73.66666666666663,
+            "H": 21.666666666666686,
+            "Text": "SOON.",
+            "Confidence": 0.9976462,
+            "Language": "en"
+          },
+          {
+            "X": 458,
+            "Y": 239.33333333333331,
+            "W": 133,
+            "H": 22,
+            "Text": "IT\u0027S A SIMPL",
+            "Confidence": 0.9670726,
+            "Language": "en"
+          },
+          {
+            "X": 534.6666666666666,
+            "Y": 259,
+            "W": 58.66666666666663,
+            "H": 23,
+            "Text": "JUST",
+            "Confidence": 0.99743336,
+            "Language": "en"
+          },
+          {
+            "X": 403.33333333333337,
+            "Y": 259.3333333333333,
+            "W": 53,
+            "H": 21.666666666666686,
+            "Text": "SIDE",
+            "Confidence": 0.9997542,
+            "Language": "en"
+          },
+          {
+            "X": 457,
+            "Y": 259.3333333333333,
+            "W": 78.66666666666674,
+            "H": 21,
+            "Text": "EFFECT.",
+            "Confidence": 0.9996319,
+            "Language": "en"
+          },
+          {
+            "X": 455.6666666666667,
+            "Y": 278,
+            "W": 83.00000000000006,
+            "H": 24.66666666666663,
+            "Text": "RELAX.",
+            "Confidence": 0.9987785,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "TAKE\nIT EASY BRUCE.\nPLEASE YOUR MOTOR\nFUNCTIONS, YOUR SPECH,\nTHE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "TAKE IT EASY, BRUCE. PLEASE. YOUR MOTOR FUNCTIONS, YOUR SPEECH, THEY\u0027LL ALL COME BACK SOON. IT\u0027S A SIMPLE SIDE EFFECT. JUST RELAX.",
+      "Translation": "\uC9C4\uC815\uD574, \uBE0C\uB8E8\uC2A4. \uC81C\uBC1C.[BR]\uC6B4\uB3D9 \uB2A5\uB825\uB3C4, \uB9D0\uB3C4[BR]\uACE7 \uD68C\uBCF5\uB420 \uAC70\uC57C.[BR]\uB2E8\uC21C\uD55C \uBD80\uC791\uC6A9\uC77C \uBFD0\uC774\uC57C.[BR]\uADF8\uB0E5 \uD3B8\uD558\uAC8C \uC788\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 1002.3333333333334,
+        "Y": 160.66666666666666,
+        "W": 103.99999999999989,
+        "H": 123.33333333333334,
+        "Text": "7 No... yer tricking mmmme. PLayinn a jJOKe.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1002.3333333333334,
+            "Y": 160.66666666666666,
+            "W": 30.66666666666663,
+            "H": 123.33333333333334,
+            "Text": "7",
+            "Confidence": 0.54442483,
+            "Language": "en"
+          },
+          {
+            "X": 1015.5,
+            "Y": 169,
+            "W": 87,
+            "H": 29.5,
+            "Text": "No... yer",
+            "Confidence": 0.8656646,
+            "Language": "en"
+          },
+          {
+            "X": 1012.5,
+            "Y": 187.5,
+            "W": 88.5,
+            "H": 31.5,
+            "Text": "tricking",
+            "Confidence": 0.9989339,
+            "Language": "en"
+          },
+          {
+            "X": 1009.6666666666666,
+            "Y": 212.66666666666666,
+            "W": 92.00000000000011,
+            "H": 20.666666666666686,
+            "Text": "mmmme.",
+            "Confidence": 0.98328733,
+            "Language": "en"
+          },
+          {
+            "X": 1006.6666666666666,
+            "Y": 227.66666666666666,
+            "W": 99.66666666666663,
+            "H": 29.00000000000003,
+            "Text": "PLayinn a",
+            "Confidence": 0.97822374,
+            "Language": "en"
+          },
+          {
+            "X": 1017.3333333333334,
+            "Y": 246,
+            "W": 75.99999999999989,
+            "H": 30.666666666666686,
+            "Text": "jJOKe.",
+            "Confidence": 0.9794617,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "No...yer tricking mmmme. PLayinn a jJOKe. I\u0027",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "No... yer tricking mmmme. Playing a joke.",
+      "Translation": "\uC544\uB2C8... \uB098\uB97C \uC18D\uC774\uB294 \uAC70\uC796\uC544. \uC7A5\uB09C\uCE58\uB294 \uAC70\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 723.3333333333334,
+        "Y": 164.33333333333334,
+        "W": 29.333333333333258,
+        "H": 34.99999999999997,
+        "Text": "6",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 723.3333333333334,
+            "Y": 164.33333333333334,
+            "W": 29.333333333333258,
+            "H": 34.99999999999997,
+            "Text": "6",
+            "Confidence": 0.43223184,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "6",
+      "Translation": "6",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 172.33333333333334,
+        "Y": 201.66666666666669,
+        "W": 125.66666666666666,
+        "H": 47.333333333333314,
+        "Text": "Whaty you... dunnnto m--",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 172.33333333333334,
+            "Y": 201.66666666666669,
+            "W": 123.00000000000003,
+            "H": 30.333333333333314,
+            "Text": "Whaty you...",
+            "Confidence": 0.9852088,
+            "Language": "en"
+          },
+          {
+            "X": 172.33333333333334,
+            "Y": 222.66666666666669,
+            "W": 125.66666666666666,
+            "H": 26.333333333333314,
+            "Text": "dunnnto m--",
+            "Confidence": 0.97410494,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "What\u0027v you... dunninto m--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "Whaty you... dunnnto m--",
+      "Translation": "\uB108... \uB300\uCCB4 \uBB58... \uD558\uB824\uB294...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1113,
+        "Y": 255,
+        "W": 96.66666666666674,
+        "H": 45.666666666666686,
+        "Text": "BUT I\u0027M NOT.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1136.3333333333333,
+            "Y": 255,
+            "W": 51.333333333333485,
+            "H": 25,
+            "Text": "BUT",
+            "Confidence": 0.97782564,
+            "Language": "en"
+          },
+          {
+            "X": 1113,
+            "Y": 273.6666666666667,
+            "W": 96.66666666666674,
+            "H": 27,
+            "Text": "I\u0027M NOT.",
+            "Confidence": 0.97821873,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BUT I\u0027M NOT.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "BUT I\u0027M NOT.",
+      "Translation": "\uD558\uC9C0\uB9CC \uB09C \uC544\uB2C8\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 54.333333333333336,
+        "Y": 664,
+        "W": 211.99999999999997,
+        "H": 125,
+        "Text": "IN FACT, IS THE THIS FIRST TIME IN MANY YEARS YOU\u0027RE NOT BEING TRICKED, BRUCE.",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 148.66666666666666,
+            "Y": 664,
+            "W": 29.666666666666657,
+            "H": 25,
+            "Text": "IN",
+            "Confidence": 0.999436,
+            "Language": "en"
+          },
+          {
+            "X": 70.33333333333333,
+            "Y": 684,
+            "W": 61.000000000000014,
+            "H": 25,
+            "Text": "FACT,",
+            "Confidence": 0.9979101,
+            "Language": "en"
+          },
+          {
+            "X": 173,
+            "Y": 684.3333333333334,
+            "W": 75,
+            "H": 23.66666666666663,
+            "Text": "IS THE",
+            "Confidence": 0.9976537,
+            "Language": "en"
+          },
+          {
+            "X": 128.33333333333334,
+            "Y": 685,
+            "W": 53.66666666666666,
+            "H": 23,
+            "Text": "THIS",
+            "Confidence": 0.9997914,
+            "Language": "en"
+          },
+          {
+            "X": 54.333333333333336,
+            "Y": 702.6666666666666,
+            "W": 210.66666666666666,
+            "H": 25.666666666666742,
+            "Text": "FIRST TIME IN MANY",
+            "Confidence": 0.99868566,
+            "Language": "en"
+          },
+          {
+            "X": 55.333333333333336,
+            "Y": 723.6666666666666,
+            "W": 210.99999999999997,
+            "H": 25.33333333333337,
+            "Text": "YEARS YOU\u0027RE NOT",
+            "Confidence": 0.98927826,
+            "Language": "en"
+          },
+          {
+            "X": 71,
+            "Y": 742.3333333333334,
+            "W": 177,
+            "H": 26.66666666666663,
+            "Text": "BEING TRICKED,",
+            "Confidence": 0.99924487,
+            "Language": "en"
+          },
+          {
+            "X": 118.33333333333333,
+            "Y": 761.6666666666666,
+            "W": 82.66666666666667,
+            "H": 27.33333333333337,
+            "Text": "BRUCE.",
+            "Confidence": 0.9983975,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IN\nFACT, THIS IS THE\nFIRST TIME IN MANY\nYEARS YOU\u0027RE NOT\nBEING T",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "IN FACT, THIS IS THE FIRST TIME IN MANY YEARS YOU\u0027RE NOT BEING TRICKED, BRUCE.",
+      "Translation": "\uC0AC\uC2E4, \uC218\uB144 \uB9CC\uC5D0 \uCC98\uC74C\uC73C\uB85C[BR]\uC18D\uC9C0 \uC54A\uC740 \uAC8C \uBC14\uB85C \uC9C0\uAE08\uC774\uC57C, \uBE0C\uB8E8\uC2A4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 251,
+        "Y": 730.3333333333334,
+        "W": 323,
+        "H": 204.33333333333326,
+        "Text": "SEE, EVERYTHING TO GET THR OF THERAPEUTIC MEASURES. NOTHING EVER WORKED. BUT NOW... FINALLY, A NEW MEDICINE, FAMILY\u0027S CREATED I YOUR vi PHARMA BRANCH, A DRUG CALLED HELIOX, HAS JOB. ITS DUNE TTS JUD.",
+        "OriginalRegionCount": 15,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 323.6666666666667,
+            "Y": 730.3333333333334,
+            "W": 47,
+            "H": 27,
+            "Text": "SEE,",
+            "Confidence": 0.9992406,
+            "Language": "en"
+          },
+          {
+            "X": 300.3333333333333,
+            "Y": 746.3333333333334,
+            "W": 221.00000000000006,
+            "H": 31,
+            "Text": "EVERYTHING TO GET",
+            "Confidence": 0.9986906,
+            "Language": "en"
+          },
+          {
+            "X": 257.33333333333337,
+            "Y": 770.6666666666666,
+            "W": 41.66666666666663,
+            "H": 21.33333333333337,
+            "Text": "THR",
+            "Confidence": 0.9994432,
+            "Language": "en"
+          },
+          {
+            "X": 261.5,
+            "Y": 790,
+            "W": 301,
+            "H": 25.5,
+            "Text": "OF THERAPEUTIC MEASURES.",
+            "Confidence": 0.99628145,
+            "Language": "en"
+          },
+          {
+            "X": 256.6666666666667,
+            "Y": 810.3333333333334,
+            "W": 309.6666666666667,
+            "H": 25,
+            "Text": "NOTHING EVER WORKED. BUT",
+            "Confidence": 0.99840325,
+            "Language": "en"
+          },
+          {
+            "X": 251,
+            "Y": 829,
+            "W": 323,
+            "H": 26.5,
+            "Text": "NOW... FINALLY, A NEW MEDICINE,",
+            "Confidence": 0.9836047,
+            "Language": "en"
+          },
+          {
+            "X": 461.3333333333333,
+            "Y": 849.6666666666666,
+            "W": 98.33333333333331,
+            "H": 22.33333333333337,
+            "Text": "FAMILY\u0027S",
+            "Confidence": 0.98821187,
+            "Language": "en"
+          },
+          {
+            "X": 264.3333333333333,
+            "Y": 851,
+            "W": 106.66666666666669,
+            "H": 21,
+            "Text": "CREATED I",
+            "Confidence": 0.9511851,
+            "Language": "en"
+          },
+          {
+            "X": 397.6666666666667,
+            "Y": 851,
+            "W": 63.333333333333314,
+            "H": 20,
+            "Text": "YOUR",
+            "Confidence": 0.9989402,
+            "Language": "en"
+          },
+          {
+            "X": 373.6666666666667,
+            "Y": 852.6666666666666,
+            "W": 23,
+            "H": 8.333333333333371,
+            "Text": "vi",
+            "Confidence": 0.7492876,
+            "Language": "en"
+          },
+          {
+            "X": 274.3333333333333,
+            "Y": 866.6666666666666,
+            "W": 275.6666666666667,
+            "H": 29,
+            "Text": "PHARMA BRANCH, A DRUG",
+            "Confidence": 0.99779165,
+            "Language": "en"
+          },
+          {
+            "X": 299.6666666666667,
+            "Y": 884.3333333333334,
+            "W": 223.33333333333331,
+            "H": 31.66666666666663,
+            "Text": "CALLED HELIOX, HAS",
+            "Confidence": 0.99397737,
+            "Language": "en"
+          },
+          {
+            "X": 433.6666666666667,
+            "Y": 909,
+            "W": 57.333333333333314,
+            "H": 22.33333333333337,
+            "Text": "JOB.",
+            "Confidence": 0.99924916,
+            "Language": "en"
+          },
+          {
+            "X": 393.6666666666667,
+            "Y": 909.6666666666666,
+            "W": 48,
+            "H": 22,
+            "Text": "ITS",
+            "Confidence": 0.9995274,
+            "Language": "en"
+          },
+          {
+            "X": 332,
+            "Y": 921,
+            "W": 158.66666666666669,
+            "H": 13.666666666666629,
+            "Text": "DUNE TTS JUD.",
+            "Confidence": 0.90144765,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MAY MAY SEE, WE\u0027D TRIED EVERY FIVERYTHING TO GET THROUGHT TO YOU ALL KINDS OF THEREPLING MERELA WALLATHEATATALA ARATATATATALATAT",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "SEE, WE\u0027D TRIED EVERYTHING TO GET THROUGH TO YOU, ALL KINDS OF THERAPEUTIC MEASURES. NOTHING EVER WORKED. BUT NOW... FINALLY, A NEW MEDICINE, CREATED BY YOUR FAMILY\u0027S PHARM BRANCH, A DRUG CALLED HELIOX, HAS DONE ITS JOB.",
+      "Translation": "\uBD10, \uB124\uAC8C \uB2FF\uC73C\uB824\uACE0 \uC628\uAC16 \uCE58\uB8CC\uBC95\uC744 \uB2E4 \uB3D9\uC6D0\uD588\uC5B4. \uD558\uC9C0\uB9CC \uC544\uBB34\uAC83\uB3C4 \uC18C\uC6A9\uC5C6\uC5C8\uC9C0. \uADF8\uB7F0\uB370 \uC774\uC81C... \uB4DC\uB514\uC5B4 \uB124 \uAC00\uBB38\uC758 \uC81C\uC57D \uBD80\uBB38\uC5D0\uC11C \uB9CC\uB4E0 \uC2E0\uC57D, \u0027\uD5EC\uB85D\uC2A4\u0027\uB77C\uB294 \uC57D\uC774 \uD6A8\uACFC\uB97C \uBC1C\uD718\uD55C \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 483.3333333333333,
+        "Y": 919,
+        "W": 261.6666666666667,
+        "H": 167,
+        "Text": "AND SO TIME, AFTER ALL THIS YOU\u0027RE ACTUALLY HERE WITH US! IN REALITY. AND FRANKLY...EVERYONE AT THIS FACILITY.WE\u0027RE JUST SO HAPPY TO MEET YOu.",
+        "OriginalRegionCount": 10,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 570.3333333333334,
+            "Y": 919,
+            "W": 90,
+            "H": 25.66666666666663,
+            "Text": "AND SO",
+            "Confidence": 0.9990984,
+            "Language": "en"
+          },
+          {
+            "X": 665.6666666666667,
+            "Y": 939.3333333333334,
+            "W": 59.33333333333326,
+            "H": 25,
+            "Text": "TIME,",
+            "Confidence": 0.9995574,
+            "Language": "en"
+          },
+          {
+            "X": 507,
+            "Y": 939.6666666666666,
+            "W": 67.66666666666663,
+            "H": 23.666666666666742,
+            "Text": "AFTER",
+            "Confidence": 0.9996308,
+            "Language": "en"
+          },
+          {
+            "X": 573.3333333333334,
+            "Y": 940,
+            "W": 94.99999999999989,
+            "H": 23.66666666666663,
+            "Text": "ALL THIS",
+            "Confidence": 0.99917173,
+            "Language": "en"
+          },
+          {
+            "X": 492.3333333333333,
+            "Y": 959.3333333333334,
+            "W": 245.33333333333343,
+            "H": 23.66666666666663,
+            "Text": "YOU\u0027RE ACTUALLY HERE",
+            "Confidence": 0.99753374,
+            "Language": "en"
+          },
+          {
+            "X": 483.3333333333333,
+            "Y": 975.3333333333334,
+            "W": 261.6666666666667,
+            "H": 31.333333333333258,
+            "Text": "WITH US! IN REALITY. AND",
+            "Confidence": 0.9764294,
+            "Language": "en"
+          },
+          {
+            "X": 506.3333333333333,
+            "Y": 999.6666666666666,
+            "W": 217.33333333333343,
+            "H": 21.33333333333337,
+            "Text": "FRANKLY...EVERYONE",
+            "Confidence": 0.9866301,
+            "Language": "en"
+          },
+          {
+            "X": 490.5,
+            "Y": 1018,
+            "W": 249.5,
+            "H": 25,
+            "Text": "AT THIS FACILITY.WE\u0027RE",
+            "Confidence": 0.97382134,
+            "Language": "en"
+          },
+          {
+            "X": 505,
+            "Y": 1033,
+            "W": 219,
+            "H": 37.33333333333326,
+            "Text": "JUST SO HAPPY TO",
+            "Confidence": 0.9925337,
+            "Language": "en"
+          },
+          {
+            "X": 558.3333333333333,
+            "Y": 1055.3333333333333,
+            "W": 114.00000000000011,
+            "H": 30.666666666666742,
+            "Text": "MEET YOu.",
+            "Confidence": 0.94756794,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "AHPS.\nOB.\nAND SO\nAFTER ALL THIS TIME,\nYOU\u0027RE ACTUALLY HERE\nWITH US! IN REALITY. AND\nFRANE\nF THISTALTATALTALA\nATATA\nATATATALTATA",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "AND SO AFTER ALL THIS TIME, YOU\u0027RE ACTUALLY HERE WITH US! IN REALITY. AND FRANKLY... EVERYONE AT THIS FACILITY... WE\u0027RE JUST SO HAPPY TO MEET YOU.",
+      "Translation": "\uADF8\uB807\uAC8C \uC624\uB79C \uC2DC\uAC04\uC774 \uD750\uB978 \uB4A4\uC5D0, \uB2F9\uC2E0\uC774 \uC815\uB9D0\uB85C \uC6B0\uB9AC\uC640 \uD568\uAED8 \uC788\uAC8C \uB418\uC5C8\uAD70\uC694! \uC2E4\uC81C\uB85C\uC694. \uADF8\uB9AC\uACE0 \uC194\uC9C1\uD788 \uB9D0\uD574\uC11C... \uC774 \uC2DC\uC124\uC758 \uBAA8\uB4E0 \uC774\uB4E4\uC774... \uB2F9\uC2E0\uC744 \uB9CC\uB098\uAC8C \uB418\uC5B4 \uC815\uB9D0 \uAE30\uBED0\uD558\uACE0 \uC788\uC5B4\uC694.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 465.6666666666667,
+        "Y": 947.6666666666666,
+        "W": 14.333333333333314,
+        "H": 16.33333333333337,
+        "Text": "71",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 465.6666666666667,
+            "Y": 947.6666666666666,
+            "W": 14.333333333333314,
+            "H": 16.33333333333337,
+            "Text": "71",
+            "Confidence": 0.5159995,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "71",
+      "Translation": "71",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 297,
+        "Y": 1044,
+        "W": 29,
+        "H": 24,
+        "Text": "*",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 297,
+            "Y": 1044,
+            "W": 29,
+            "H": 24,
+            "Text": "*",
+            "Confidence": 0.7931317,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "*",
+      "Translation": "*",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 500.5,
+        "Y": 1146,
+        "W": 120,
+        "H": 90,
+        "Text": "nonono... I know who yu aRe!!! I know you!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 506,
+            "Y": 1146,
+            "W": 103,
+            "H": 28,
+            "Text": "nonono...",
+            "Confidence": 0.9407533,
+            "Language": "en"
+          },
+          {
+            "X": 503,
+            "Y": 1166,
+            "W": 117.5,
+            "H": 27.5,
+            "Text": "I know who",
+            "Confidence": 0.9433784,
+            "Language": "en"
+          },
+          {
+            "X": 500.5,
+            "Y": 1185.5,
+            "W": 120,
+            "H": 30,
+            "Text": "yu aRe!!! I",
+            "Confidence": 0.9578257,
+            "Language": "en"
+          },
+          {
+            "X": 509.66666666666663,
+            "Y": 1205.6666666666667,
+            "W": 102.00000000000011,
+            "H": 30.333333333333258,
+            "Text": "know you!",
+            "Confidence": 0.9917406,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "nonono...\nI know who\nyu are!!! I\nknow you!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "nonono...\nI know who\nyu aRe!!! I\nknow you!",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC...[BR]\uB124\uAC00 \uB204\uAD6C\uC778\uC9C0[BR]\uC54C\uACE0 \uC788\uC5B4!!![BR]\uB09C \uC54C\uC544!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 845,
+        "Y": 1376,
+        "W": 254.33333333333348,
+        "H": 191,
+        "Text": "I KNOW YOU TOO, BRUCE. I\u0027M YOUR DOCTOR. DR. REDMUND HUDD. AND I HAVE BEEN FOR NEARLY TWENTY YEARS. THE YOU\u0027VE WHOLE TIME BEEN HERE WITH us...",
+        "OriginalRegionCount": 13,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 903,
+            "Y": 1376,
+            "W": 140,
+            "H": 27,
+            "Text": "I KNOW YOU",
+            "Confidence": 0.9956128,
+            "Language": "en"
+          },
+          {
+            "X": 879.6666666666667,
+            "Y": 1394,
+            "W": 185.99999999999977,
+            "H": 30,
+            "Text": "TOO, BRUCE. I\u0027M",
+            "Confidence": 0.9939102,
+            "Language": "en"
+          },
+          {
+            "X": 868,
+            "Y": 1423,
+            "W": 208.66666666666674,
+            "H": 20.333333333333258,
+            "Text": "YOUR DOCTOR. DR.",
+            "Confidence": 0.98954564,
+            "Language": "en"
+          },
+          {
+            "X": 845,
+            "Y": 1436.6666666666667,
+            "W": 254.33333333333348,
+            "H": 25.666666666666515,
+            "Text": "REDMUND HUDD. AND I",
+            "Confidence": 0.9981268,
+            "Language": "en"
+          },
+          {
+            "X": 847.5,
+            "Y": 1457,
+            "W": 251,
+            "H": 24.5,
+            "Text": "HAVE BEEN FOR NEARLY",
+            "Confidence": 0.9974879,
+            "Language": "en"
+          },
+          {
+            "X": 867,
+            "Y": 1475.6666666666667,
+            "W": 213.33333333333326,
+            "H": 27.666666666666515,
+            "Text": "TWENTY YEARS. THE",
+            "Confidence": 0.99415284,
+            "Language": "en"
+          },
+          {
+            "X": 993.6666666666666,
+            "Y": 1496.3333333333333,
+            "W": 81.33333333333337,
+            "H": 24,
+            "Text": "YOU\u0027VE",
+            "Confidence": 0.95344096,
+            "Language": "en"
+          },
+          {
+            "X": 870,
+            "Y": 1497,
+            "W": 75.33333333333337,
+            "H": 22.666666666666742,
+            "Text": "WHOLE",
+            "Confidence": 0.99954844,
+            "Language": "en"
+          },
+          {
+            "X": 941.6666666666666,
+            "Y": 1497,
+            "W": 57,
+            "H": 24,
+            "Text": "TIME",
+            "Confidence": 0.9997778,
+            "Language": "en"
+          },
+          {
+            "X": 888.3333333333334,
+            "Y": 1516.3333333333333,
+            "W": 59.66666666666663,
+            "H": 24,
+            "Text": "BEEN",
+            "Confidence": 0.99962693,
+            "Language": "en"
+          },
+          {
+            "X": 945,
+            "Y": 1516.3333333333333,
+            "W": 59.33333333333337,
+            "H": 24,
+            "Text": "HERE",
+            "Confidence": 0.9985019,
+            "Language": "en"
+          },
+          {
+            "X": 1003.6666666666666,
+            "Y": 1517,
+            "W": 53.66666666666663,
+            "H": 22,
+            "Text": "WITH",
+            "Confidence": 0.999237,
+            "Language": "en"
+          },
+          {
+            "X": 940,
+            "Y": 1529,
+            "W": 63,
+            "H": 38,
+            "Text": "us...",
+            "Confidence": 0.88050455,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I KNOW YOU\nTOO, BRILECE I\u0027M\nYOUR DOCTOR DR\nREDMAND HUDD. AND I\nH",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "I KNOW YOU TOO, BRUCE. I\u0027M YOUR DOCTOR. DR. REDMUND HUDD. AND I HAVE BEEN FOR NEARLY TWENTY YEARS. THE WHOLE TIME YOU\u0027VE BEEN HERE WITH US...",
+      "Translation": "\uB098\uB3C4 \uB2F9\uC2E0\uC744 \uC54C\uACE0 \uC788\uC8E0, \uBE0C\uB8E8\uC2A4.[BR]\uB09C \uB2F9\uC2E0\uC758 \uC8FC\uCE58\uC758\uC785\uB2C8\uB2E4.[BR]\uB808\uB4DC\uBA3C\uB4DC \uD5C8\uB4DC \uBC15\uC0AC\uB77C\uACE0 \uD558\uC8E0.[BR]\uAC70\uC758 20\uB144 \uB3D9\uC548\uC774\uB098\uC694.[BR]\uB2F9\uC2E0\uC774 \uC6B0\uB9AC\uC640 \uD568\uAED8[BR]\uC788\uC5C8\uB358 \uADF8 \uBAA8\uB4E0 \uC2DC\uAC04 \uB3D9\uC548 \uB9D0\uC774\uC8E0...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 1192.3333333333335,
+        "Y": 1386.3333333333333,
+        "W": 20,
+        "H": 15.666666666666742,
+        "Text": "MW",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1192.3333333333335,
+            "Y": 1386.3333333333333,
+            "W": 20,
+            "H": 15.666666666666742,
+            "Text": "MW",
+            "Confidence": 0.30918586,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "MW",
+      "Translation": "\uC74C",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 437.3333333333333,
+        "Y": 1426.3333333333333,
+        "W": 122.00000000000006,
+        "H": 90,
+        "Text": "C",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 437.3333333333333,
+            "Y": 1426.3333333333333,
+            "W": 122.00000000000006,
+            "H": 90,
+            "Text": "C",
+            "Confidence": 0.36225423,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "C",
+      "Translation": "C",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 706.3333333333334,
+        "Y": 1431.6666666666667,
+        "W": 40.66666666666663,
+        "H": 30,
+        "Text": "1",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 706.3333333333334,
+            "Y": 1431.6666666666667,
+            "W": 40.66666666666663,
+            "H": 30,
+            "Text": "1",
+            "Confidence": 0.30776167,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "1",
+      "Translation": "1",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 1068,
+        "Y": 1682,
+        "W": 166,
+        "H": 49,
+        "Text": "\u0022. IN ARKHAM ASYLUM",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1068,
+            "Y": 1682,
+            "W": 166,
+            "H": 32,
+            "Text": "\u0022. IN ARKHAM",
+            "Confidence": 0.90591663,
+            "Language": "en"
+          },
+          {
+            "X": 1090,
+            "Y": 1704,
+            "W": 95,
+            "H": 27,
+            "Text": "ASYLUM",
+            "Confidence": 0.995925,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022...IN ARKHAM ASYLUM.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "\u0022...IN ARKHAM ASYLUM.\u0022",
+      "Translation": "...\uC544\uCE84 \uC218\uC6A9\uC18C\uC5D0.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

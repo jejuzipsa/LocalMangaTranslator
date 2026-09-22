@@ -1,0 +1,113 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "page012.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": false,
+  "Requests": 1,
+  "RecoveredRequests": 1,
+  "AdvisoryEligibleRequests": 0,
+  "AppliedRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 0,
+      "SourceText": "RU LETT ME OUTTT!",
+      "CorrectedText": "Nononono... no...\nLET ME OUTTT!",
+      "LayaConfidence": 0.542,
+      "Block": {
+        "X": 803,
+        "Y": 51.666666666666664,
+        "W": 392.6666666666665,
+        "H": 344.3333333333333
+      },
+      "Recovered": true,
+      "TwoScaleAgreement": true,
+      "CrossScaleTextIoU": 0.9645933014354067,
+      "CrossScaleBubbleIoU": 0.989247311827957,
+      "MinimumTextScore": 0.8766825,
+      "ExistingFullPageDuplicate": true,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "duplicate_existing_fullpage",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 398,
+            "Y": 0,
+            "Width": 943,
+            "Height": 943
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.6786850477200425,
+          "RegionCount": 11,
+          "TextBubbleCount": 5,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_2p40_002",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 915,
+              "Y": 104,
+              "Width": 128,
+              "Height": 48
+            },
+            "Score": 0.8915205,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40",
+            "Affinity": 10.891520500183105
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_2p40_001",
+            "Bounds": {
+              "X": 884,
+              "Y": 74,
+              "Width": 186,
+              "Height": 102
+            },
+            "Score": 0.9589133,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40"
+          }
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 685,
+            "Y": 0,
+            "Width": 629,
+            "Height": 629
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 1.0174880763116056,
+          "RegionCount": 3,
+          "TextBubbleCount": 1,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_1p60_002",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 916,
+              "Y": 103,
+              "Width": 126,
+              "Height": 49
+            },
+            "Score": 0.8766825,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60",
+            "Affinity": 10.87668251991272
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_1p60_001",
+            "Bounds": {
+              "X": 886,
+              "Y": 74,
+              "Width": 184,
+              "Height": 102
+            },
+            "Score": 0.9490235,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60"
+          }
+        }
+      ]
+    }
+  ]
+}
