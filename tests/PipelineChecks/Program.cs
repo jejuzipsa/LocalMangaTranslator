@@ -1832,13 +1832,47 @@ using (var independentCleaned =
             83,
             60) == 0);
 
-    Check("V2 0044 independent cleanup stays under geometry safety ceiling",
+    Check("V2 0044 independent verifier classifies narrow flat residual as safe",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                independentResidualPixels,
+                independentBounds,
+                independentAudit.DominantMatchRatio),
+            "SAFE_RESIDUAL",
+            StringComparison.Ordinal) &&
         ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
             independentResidualPixels,
-            independentBounds) &&
+            independentBounds,
+            independentAudit.DominantMatchRatio));
+
+    Check("V2 0044 independent verifier keeps broad or weak-flat evidence diagnostic",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                5000,
+                independentBounds,
+                0.97),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                250,
+                independentBounds,
+                0.69),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
         !ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
             5000,
-            independentBounds));
+            independentBounds,
+            0.97));
+
+    Check("V2 0044 independent verifier reports clean when no source-linked residual exists",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                0,
+                independentBounds,
+                0.97),
+            "CLEAN",
+            StringComparison.Ordinal));
 
     BackgroundReconstructionV2.ApplyFlatFill(
         independentCleaned,
