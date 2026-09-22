@@ -57,9 +57,10 @@ public static class V2EraseSelector
             new Dictionary<string, string>(
                 StringComparer.Ordinal);
 
-        // 0035 policy: detector TextFree is treated as artwork/SFX/decorative
-        // lettering and is preserved verbatim.  It remains visible in coverage
-        // diagnostics, but it cannot become an erase target.
+        // 0043 policy: TextFree remains preserve-by-default because free
+        // lettering often belongs to artwork/SFX. A narrow exception below
+        // allows strong sentence-like dialogue/captions to use the immutable
+        // TextFree geometry for erase + local layout.
         foreach (var target in
                  snapshot.TextTargets.Where(x =>
                      x.Kind ==
@@ -82,40 +83,55 @@ public static class V2EraseSelector
             if (matched.Count == 0)
                 continue;
 
-            if (matched.All(x =>
+            bool allTextFree =
+                matched.All(x =>
                     x.Kind ==
-                        PageRegionKind.TextFree))
+                        PageRegionKind.TextFree);
+
+            if (allTextFree)
             {
-                string reason =
+                bool stylized =
                     ShouldPreserveStylizedGraphic(
                         region,
-                        matched)
-                        ? "stylized_graphic"
-                        : "textfree_original";
+                        matched);
 
-                preservationReasons[
-                    region.Id] =
-                    reason;
-
-                foreach (var target in matched)
+                if (stylized ||
+                    !ShouldTranslateSentenceLikeTextFree(
+                        region,
+                        matched))
                 {
-                    preservationTargetReasons[
-                        target.TextRegionId] =
+                    string reason =
+                        stylized
+                            ? "stylized_graphic"
+                            : "textfree_original";
+
+                    preservationReasons[
+                        region.Id] =
                         reason;
+
+                    foreach (var target in matched)
+                    {
+                        preservationTargetReasons[
+                            target.TextRegionId] =
+                            reason;
+                    }
+
+                    continue;
                 }
-
-                continue;
             }
-
-            // Mixed ownership is not allowed. If geometry fallback ever
-            // returns a TextFree alongside a normal bubble, preserve the
-            // TextFree and continue erase/layout only with TextBubble targets.
-            matched =
-                matched
-                    .Where(x =>
-                        x.Kind !=
-                            PageRegionKind.TextFree)
-                    .ToList();
+            else
+            {
+                // Mixed ownership is not allowed. If geometry fallback ever
+                // returns a TextFree alongside a normal bubble, preserve the
+                // TextFree and continue erase/layout only with TextBubble
+                // targets.
+                matched =
+                    matched
+                        .Where(x =>
+                            x.Kind !=
+                                PageRegionKind.TextFree)
+                        .ToList();
+            }
 
             if (matched.Count == 0)
                 continue;
@@ -141,7 +157,13 @@ public static class V2EraseSelector
             {
                 targetIds.Add(
                     target.TextRegionId);
+
+                preservationTargetReasons.Remove(
+                    target.TextRegionId);
             }
+
+            preservationReasons.Remove(
+                region.Id);
 
             var textBounds =
                 UnionBounds(
@@ -168,11 +190,6 @@ public static class V2EraseSelector
             bool oneParentBubble =
                 bubbleIds.Length == 1 &&
                 bubbleBounds.Length == 1;
-
-            bool allTextFree =
-                matched.All(x =>
-                    x.Kind ==
-                    PageRegionKind.TextFree);
 
             Rect layoutBounds =
                 oneParentBubble
@@ -215,6 +232,65 @@ public static class V2EraseSelector
             PreservationTargetReasons =
                 preservationTargetReasons
         };
+    }
+
+    static bool ShouldTranslateSentenceLikeTextFree(
+        VisionTranslation region,
+        IReadOnlyList<V2TextTarget> matched)
+    {
+        if (matched.Count == 0 ||
+            matched.Any(x =>
+                x.Kind !=
+                    PageRegionKind.TextFree ||
+                x.BubbleBounds.HasValue))
+        {
+            return false;
+        }
+
+        if (region.Type is not (
+                "dialogue" or
+                "thought" or
+                "caption"))
+        {
+            return false;
+        }
+
+        string text =
+            string.IsNullOrWhiteSpace(
+                region.CorrectedText)
+                ? region.Source.Text
+                : region.CorrectedText;
+
+        int meaningful =
+            text.Count(
+                char.IsLetterOrDigit);
+
+        bool sentenceShape =
+            text.Any(
+                char.IsWhiteSpace) &&
+            (text.Contains('.') ||
+             text.Contains('?') ||
+             text.Contains(',') ||
+             text.Contains(';') ||
+             text.Contains(':'));
+
+        if (meaningful < 6 ||
+            !sentenceShape ||
+            region.Source.Lines.Count == 0)
+        {
+            return false;
+        }
+
+        double averageConfidence =
+            region.Source.Lines.Average(x =>
+                x.Confidence);
+
+        // page016 0042_2: black-panel prose was already a strong RT-DETR
+        // TextFree + OCR observation (0.98+ confidence) but the blanket 0035
+        // policy preserved it. Keep decorative/SFX text conservative and
+        // admit only high-confidence sentence-like units.
+        return averageConfidence >=
+               0.90;
     }
 
     static bool ShouldPreserveStylizedGraphic(
