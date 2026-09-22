@@ -57,6 +57,19 @@ public static class V2EraseSelector
             new Dictionary<string, string>(
                 StringComparer.Ordinal);
 
+        // 0035 policy: detector TextFree is treated as artwork/SFX/decorative
+        // lettering and is preserved verbatim.  It remains visible in coverage
+        // diagnostics, but it cannot become an erase target.
+        foreach (var target in
+                 snapshot.TextTargets.Where(x =>
+                     x.Kind ==
+                         PageRegionKind.TextFree))
+        {
+            preservationTargetReasons[
+                target.TextRegionId] =
+                "textfree_original";
+        }
+
         foreach (var region in translations.Where(x =>
                      x.Render &&
                      !string.IsNullOrWhiteSpace(x.Translation)))
@@ -65,6 +78,44 @@ public static class V2EraseSelector
                 MatchTargets(
                     snapshot.TextTargets,
                     region);
+
+            if (matched.Count == 0)
+                continue;
+
+            if (matched.All(x =>
+                    x.Kind ==
+                        PageRegionKind.TextFree))
+            {
+                string reason =
+                    ShouldPreserveStylizedGraphic(
+                        region,
+                        matched)
+                        ? "stylized_graphic"
+                        : "textfree_original";
+
+                preservationReasons[
+                    region.Id] =
+                    reason;
+
+                foreach (var target in matched)
+                {
+                    preservationTargetReasons[
+                        target.TextRegionId] =
+                        reason;
+                }
+
+                continue;
+            }
+
+            // Mixed ownership is not allowed. If geometry fallback ever
+            // returns a TextFree alongside a normal bubble, preserve the
+            // TextFree and continue erase/layout only with TextBubble targets.
+            matched =
+                matched
+                    .Where(x =>
+                        x.Kind !=
+                            PageRegionKind.TextFree)
+                    .ToList();
 
             if (matched.Count == 0)
                 continue;
