@@ -1,0 +1,91 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "page016.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": false,
+  "Requests": 1,
+  "RecoveredRequests": 1,
+  "AdvisoryEligibleRequests": 0,
+  "AppliedRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 12,
+      "SourceText": ".YOU\u0027VE BEEN LOST IN IN KALONG TIME. YOUR EYES JUST NEED TO ADJUST.",
+      "CorrectedText": "...YOU\u0027VE BEEN LOST IN THE DARK A LONG TIME. YOUR EYES JUST NEED TO ADJUST.",
+      "LayaConfidence": 0.5186,
+      "Block": {
+        "X": 995.6666666666666,
+        "Y": 1589,
+        "W": 186.0000000000001,
+        "H": 124.66666666666674
+      },
+      "Recovered": true,
+      "TwoScaleAgreement": false,
+      "CrossScaleTextIoU": 0,
+      "CrossScaleBubbleIoU": 0,
+      "MinimumTextScore": 0,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "missing_two_scale_parent",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 865,
+            "Y": 1428,
+            "Width": 447,
+            "Height": 447
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 1.4317673378076063,
+          "RegionCount": 1,
+          "TextBubbleCount": 0,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 940,
+            "Y": 1502,
+            "Width": 298,
+            "Height": 298
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 2.1476510067114094,
+          "RegionCount": 3,
+          "TextBubbleCount": 1,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_1p60_001",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 979,
+              "Y": 1585,
+              "Width": 212,
+              "Height": 140
+            },
+            "Score": 0.63953805,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60",
+            "Affinity": 10.639538049697876
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_1p60_003",
+            "Bounds": {
+              "X": 980,
+              "Y": 1586,
+              "Width": 210,
+              "Height": 136
+            },
+            "Score": 0.48784786,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60"
+          }
+        }
+      ]
+    }
+  ]
+}

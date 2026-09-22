@@ -1,0 +1,725 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page031.jpg",
+  "output_file": "page031.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 116393,
+    "changed_ratio": 0.042092955804801345,
+    "changed_regions": [
+      {
+        "x": 918,
+        "y": 1321,
+        "width": 318,
+        "height": 95
+      },
+      {
+        "x": 232,
+        "y": 1358,
+        "width": 190,
+        "height": 133
+      },
+      {
+        "x": 99,
+        "y": 436,
+        "width": 199,
+        "height": 117
+      },
+      {
+        "x": 1113,
+        "y": 1855,
+        "width": 153,
+        "height": 120
+      },
+      {
+        "x": 497,
+        "y": 1321,
+        "width": 158,
+        "height": 97
+      },
+      {
+        "x": 1035,
+        "y": 846,
+        "width": 129,
+        "height": 104
+      },
+      {
+        "x": 507,
+        "y": 1465,
+        "width": 156,
+        "height": 74
+      },
+      {
+        "x": 652,
+        "y": 1401,
+        "width": 112,
+        "height": 57
+      },
+      {
+        "x": 549,
+        "y": 1557,
+        "width": 109,
+        "height": 49
+      },
+      {
+        "x": 622,
+        "y": 1466,
+        "width": 99,
+        "height": 50
+      },
+      {
+        "x": 908,
+        "y": 1519,
+        "width": 83,
+        "height": 59
+      },
+      {
+        "x": 1067,
+        "y": 1445,
+        "width": 89,
+        "height": 50
+      },
+      {
+        "x": 751,
+        "y": 1612,
+        "width": 67,
+        "height": 57
+      },
+      {
+        "x": 551,
+        "y": 1606,
+        "width": 146,
+        "height": 24
+      },
+      {
+        "x": 1018,
+        "y": 1518,
+        "width": 48,
+        "height": 61
+      },
+      {
+        "x": 1182,
+        "y": 1379,
+        "width": 63,
+        "height": 37
+      },
+      {
+        "x": 986,
+        "y": 1521,
+        "width": 40,
+        "height": 58
+      },
+      {
+        "x": 262,
+        "y": 488,
+        "width": 38,
+        "height": 59
+      },
+      {
+        "x": 324,
+        "y": 1452,
+        "width": 46,
+        "height": 47
+      },
+      {
+        "x": 635,
+        "y": 1582,
+        "width": 85,
+        "height": 23
+      },
+      {
+        "x": 1129,
+        "y": 777,
+        "width": 60,
+        "height": 32
+      },
+      {
+        "x": 345,
+        "y": 1405,
+        "width": 72,
+        "height": 23
+      },
+      {
+        "x": 1156,
+        "y": 1006,
+        "width": 60,
+        "height": 24
+      },
+      {
+        "x": 1101,
+        "y": 1497,
+        "width": 57,
+        "height": 25
+      },
+      {
+        "x": 553,
+        "y": 1556,
+        "width": 53,
+        "height": 26
+      },
+      {
+        "x": 1129,
+        "y": 982,
+        "width": 60,
+        "height": 22
+      },
+      {
+        "x": 641,
+        "y": 1321,
+        "width": 27,
+        "height": 45
+      },
+      {
+        "x": 397,
+        "y": 1428,
+        "width": 26,
+        "height": 46
+      },
+      {
+        "x": 686,
+        "y": 1553,
+        "width": 42,
+        "height": 28
+      },
+      {
+        "x": 288,
+        "y": 495,
+        "width": 20,
+        "height": 58
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page031.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 82040,
+    "erase_changed_ratio": 0.02966936236909352,
+    "typeset_changed_pixels": 56543,
+    "typeset_changed_ratio": 0.02044849776250189
+  },
+  "region_analysis": {
+    "total": 28,
+    "bubbles": 14,
+    "text_regions": 14,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 26,
+      "Global2x": 30,
+      "Focus3x": 281,
+      "Region1x": 58,
+      "Region2x": 54,
+      "Container1x": 42,
+      "Container2x": 46
+    },
+    "canonical_lines": 67,
+    "units": 19,
+    "assigned_lines": 61,
+    "orphan_groups": 5,
+    "secondary_total": 14,
+    "secondary_accepted": 14,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 436,
+          "Bottom": 553,
+          "Left": 99,
+          "Right": 308,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHO\u0027S THERE?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 770,
+          "Bottom": 816,
+          "Left": 1072,
+          "Right": 1253,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...JOKER?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 848,
+          "Bottom": 954,
+          "Left": 1040,
+          "Right": 1158,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WAIT THE \u0022KNOCK-KNOCK\u0022 COMES FIRST, DOESN\u0027T IT... SHIT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 978,
+          "Bottom": 1029,
+          "Left": 1105,
+          "Right": 1218,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HOW ARE YOU...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1317,
+          "Bottom": 1416,
+          "Left": 918,
+          "Right": 1242,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HAMALJUST YANKING YOUR CHAIN, AMGO! NO AUDIONCE FOR TEN YEARS, Y",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG010",
+        "Bounds": {
+          "Top": 1317,
+          "Bottom": 1418,
+          "Left": 497,
+          "Right": 670,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OH BATS, I\u0027D HUG YOU RIGHT NOW. I MEAN IF I WASN\u0027T... YOU KNOW...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1354,
+          "Bottom": 1503,
+          "Left": 227,
+          "Right": 428,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALWE? NO IDEA!\nHAHAHA! HOW ARE YOU ALWE?! I DON\u0027T CARE! BECAUSE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1395,
+          "Bottom": 1463,
+          "Left": 654,
+          "Right": 766,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "A HEAD IN A JAR?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1449,
+          "Bottom": 1521,
+          "Left": 1061,
+          "Right": 1197,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHO DID THIS TO YOU?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1464,
+          "Bottom": 1544,
+          "Left": 500,
+          "Right": 727,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "RIGHT, A H-\nWAITWHAT? I WAS GOING\nTO SAY \u0022MANLY.\u0022",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1527,
+          "Bottom": 1604,
+          "Left": 905,
+          "Right": 1070,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE THING IS,\nI CAN\u0027T REMEMBER\nMUCH...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1553,
+          "Bottom": 1633,
+          "Left": 512,
+          "Right": 728,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT THE HELL ARE YOU TALKING ABOUT, HEAD IN A JAR?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 1604,
+          "Bottom": 1674,
+          "Left": 747,
+          "Right": 842,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JOKER, YOUR BODY--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG027",
+        "Bounds": {
+          "Top": 1856,
+          "Bottom": 1977,
+          "Left": 1109,
+          "Right": 1268,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SAND IN THE OXYGEN TUBES, VULTURE TURDS IN MY BRAIN-BLOOD. WHO K",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 19,
+    "requested_render": 15
+  },
+  "render": {
+    "total": 14,
+    "approved": 14,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 15,
+    "TranslatedUnits": 14,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 14,
+    "TypesetCommittedUnits": 14,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "WHO\u0027S THERe?!",
+        "Translation": "\uAC70\uAE30 \uB204\uAD6C\uB0D0?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "JOKER!",
+        "Translation": "...\uC870\uCEE4?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "WAIT THE \u0022KNOCK-KNOCK\u0022 COMES FIRST, DOESN\u0027T IT.. SHIT.",
+        "Translation": "\uC7A0\uAE50, \u0022\uB611\uB611\u0022\uC774[BR]\uBA3C\uC800 \uB098\uC640\uC57C \uD558\uC796\uC544... \uC820\uC7A5.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "HOW ARE YOU...",
+        "Translation": "\uC5B4\uB5BB\uAC8C... \uC9C0\uB0B4\uACE0 \uC788\uC5B4?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "A",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "HA! JUST YANKING YOUR CHAIN, CHAIN, AMIGO! NO AUDIENCE FOR TEN YEARS, YOU DI LAND ANYMORE-",
+        "Translation": "\uD558! \uADF8\uB0E5 \uB18D\uB2F4 \uC880 \uD55C \uAC70\uC57C, \uCE5C\uAD6C! 10\uB144\uC774\uB098 \uAD00\uC911\uC774 \uC5C6\uC5C8\uC73C\uB2C8, \uBB50\uAC00 \uBA39\uD790\uC9C0 \uC774\uC81C\uB294 \uC54C \uC218\uAC00 \uC5C6\uC796\uC544\u2014",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "OH BATS, I\u0027D HUG RIGHT NOW. I MEAN IF I WASN.T.. YOU KNOW..",
+        "Translation": "\uC640, \uBC15\uC950\uC57C, \uC9C0\uAE08 \uB2F9\uC7A5 \uAF49 \uC548\uC544\uC8FC\uACE0 \uC2F6\uB2E4. \uB0B4 \uB9D0\uC740, \uB0B4\uAC00... \uC788\uC796\uC544...[BR]\uADF8\uAC8C \uC544\uB2C8\uC5C8\uB2E4\uBA74...[BR]\uC544\uBB34\uD2BC...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "ALIVE? NO IDEA! HAHAHA! HOW ARE YOU ALIVE?! I DONT CARE! BECAUSE YOU\u0027RE HERE! CAME BACK FOR ME!",
+        "Translation": "\uC0B4\uC544\uC788\uB0D0\uACE0? / \uBAA8\uB974\uACA0\uC9C0! \uD558\uD558\uD558! / \uC5B4\uB5BB\uAC8C \uC0B4\uC544\uB0A8\uC740 \uAC74\uC9C0?! / \uC0C1\uAD00\uC5C6\uC5B4! / \uB124\uAC00 \uC5EC\uAE30 \uC788\uC73C\uB2C8\uAE4C! / \uB0A0 \uC704\uD574 \uB3CC\uC544\uC640 \uC92C\uC796\uC544!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "A HEAD IN A JAR?",
+        "Translation": "\uBCD1 \uC18D\uC5D0 \uB4E0 \uBA38\uB9AC\uB77C\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "WHO DID TO THIS You?",
+        "Translation": "\uB204\uAC00 \uB110 \uC774\uB807\uAC8C \uB9CC\uB4E0 \uAC70\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "RIGHT, A H-- WAITWHAT? I WAS GOING TO SAY \u0022MANLY.\u0022",
+        "Translation": "\uC88B\uC544, \uD55C-- \uC7A0\uAE50, \uBB50\uB77C\uACE0?[BR] \u0022\uB0A8\uC790\uB2F5\uAC8C\u0022\uB77C\uACE0 \uB9D0\uD558\uB824\uB358 \uAC70\uC600\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "THE I CAN\u0027T REMEMBER MUCH...",
+        "Translation": "\uBB38\uC81C\uB294, [BR]\uAE30\uC5B5\uC774 \uC798 \uC548 \uB09C\uB2E4\uB294 \uAC70\uC57C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "WHAT THE HELL ARE YOU TALKING ABOUT. HEAD IN A JAR?",
+        "Translation": "\uB3C4\uB300\uCCB4 \uBB34\uC2A8 \uC18C\uB9B4 \uD558\uB294 \uAC70\uC57C,\n\uBA38\uB9AC\uAC00 \uBCD1\uC5D0 \uB4E4\uC5B4\uC788\uB2E4\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "JOKER, YOUR BODY",
+        "Translation": "\uC870\uCEE4, \uB124 \uBAB8\uC774--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "SAND IN THE OXYGEN TUBES, VULTURE TURDS IN MY BRAIN-BLOOD. WHO KNOWS.",
+        "Translation": "\uC0B0\uC18C \uD638\uC2A4\uC5D4 \uBAA8\uB798\uAC00[BR]\uB1CC\uD608\uAD00\uC5D4 \uB3C5\uC218\uB9AC \uB625\uC774 \uAC00\uB4DD\uD574.[BR]\uB204\uAC00 \uC54C\uACA0\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
