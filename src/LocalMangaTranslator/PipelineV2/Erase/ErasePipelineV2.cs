@@ -1234,20 +1234,36 @@ public sealed class ErasePipelineV2
                 independentResidual,
                 independentFlatResidualDebugMask);
 
+            var eraseAudit =
+                audits.First(x =>
+                    string.Equals(
+                        x.TextRegionId,
+                        target.TextRegionId,
+                        StringComparison.Ordinal));
+
             string independentDisposition =
                 ClassifyIndependentFlatResidual(
                     beforePixels,
                     target.TextBounds,
-                    backgroundAudit.DominantMatchRatio);
+                    backgroundAudit.DominantMatchRatio,
+                    eraseAudit.InitialMaskPixels,
+                    target.TextScore);
 
             independentFlatDispositionByTarget[
                 target.TextRegionId] =
                 independentDisposition;
 
-            if (!string.Equals(
+            bool actionableIndependentResidual =
+                string.Equals(
                     independentDisposition,
                     "SAFE_RESIDUAL",
-                    StringComparison.Ordinal))
+                    StringComparison.Ordinal) ||
+                string.Equals(
+                    independentDisposition,
+                    "MASK_UNDERSHOOT_RECOVERY",
+                    StringComparison.Ordinal);
+
+            if (!actionableIndependentResidual)
             {
                 independentFlatCleanupPixelsByTarget[
                     target.TextRegionId] = 0;
@@ -1336,10 +1352,14 @@ public sealed class ErasePipelineV2
                     independentFlatDispositionByTarget.TryGetValue(
                         x.Key,
                         out var disposition) &&
-                    string.Equals(
+                    (string.Equals(
                         disposition,
                         "SAFE_RESIDUAL",
-                        StringComparison.Ordinal))
+                        StringComparison.Ordinal) ||
+                     string.Equals(
+                        disposition,
+                        "MASK_UNDERSHOOT_RECOVERY",
+                        StringComparison.Ordinal)))
                 .Select(x =>
                     x.Key)
                 .ToHashSet(
@@ -1485,7 +1505,7 @@ public sealed class ErasePipelineV2
             new
             {
                 Schema =
-                    "pipeline-v2-erase-audit-v4",
+                    "pipeline-v2-erase-audit-v5",
                 SourceFile =
                     Path.GetFileName(sourcePath),
                 snapshot.SourceMode,
@@ -1548,6 +1568,12 @@ public sealed class ErasePipelineV2
                                 string.Equals(
                                     x.Value,
                                     "SAFE_RESIDUAL",
+                                    StringComparison.Ordinal)),
+                        MaskUndershootRecoveryTargets =
+                            independentFlatDispositionByTarget.Count(x =>
+                                string.Equals(
+                                    x.Value,
+                                    "MASK_UNDERSHOOT_RECOVERY",
                                     StringComparison.Ordinal)),
                         AmbiguousStructureTargets =
                             independentFlatDispositionByTarget.Count(x =>
@@ -3313,7 +3339,9 @@ public sealed class ErasePipelineV2
     public static string ClassifyIndependentFlatResidual(
         int residualPixels,
         Rect textBounds,
-        double dominantMatchRatio)
+        double dominantMatchRatio,
+        int initialMaskPixels = int.MaxValue,
+        float textScore = 1.0f)
     {
         if (residualPixels < 2)
             return "CLEAN";
@@ -3328,10 +3356,30 @@ public sealed class ErasePipelineV2
             residualPixels /
             (double)textArea;
 
-        // 0044 correction: source-linked evidence remains visible on every
-        // flat TextBubble, but broad dark structures are diagnostic rather
-        // than destructive evidence. page005/RG008 is ~2.1% with a 0.97
-        // dominant flat background; RG020 is ~31% with only 0.697 dominance.
+        double initialMaskRatio =
+            initialMaskPixels == int.MaxValue
+                ? 1.0
+                : initialMaskPixels /
+                  (double)textArea;
+
+        // 0046: a broad source-linked residual is not always artwork. If the
+        // ordinary glyph mask captured almost none of a high-confidence
+        // TextBubble while the independent verifier still sees a substantial
+        // amount of source-linked foreground, treat it as mask undershoot and
+        // recover with the immutable TextBounds + stored flat background.
+        bool maskUndershoot =
+            textScore >= 0.85f &&
+            dominantMatchRatio >= 0.60 &&
+            initialMaskRatio <= 0.05 &&
+            residualRatio >= 0.08 &&
+            residualRatio <= 0.45;
+
+        if (maskUndershoot)
+            return "MASK_UNDERSHOOT_RECOVERY";
+
+        // Ordinary broad/weak-flat evidence stays diagnostic only. This keeps
+        // normal-mask cases such as page005/RG024 and page011/RG004 from being
+        // repainted or from blocking an otherwise-clean commit.
         if (dominantMatchRatio < 0.80 ||
             residualRatio > 0.05)
         {
@@ -3344,15 +3392,27 @@ public sealed class ErasePipelineV2
     public static bool ShouldApplyIndependentFlatCleanup(
         int residualPixels,
         Rect textBounds,
-        double dominantMatchRatio)
+        double dominantMatchRatio,
+        int initialMaskPixels = int.MaxValue,
+        float textScore = 1.0f)
     {
-        return string.Equals(
+        string disposition =
             ClassifyIndependentFlatResidual(
                 residualPixels,
                 textBounds,
-                dominantMatchRatio),
-            "SAFE_RESIDUAL",
-            StringComparison.Ordinal);
+                dominantMatchRatio,
+                initialMaskPixels,
+                textScore);
+
+        return
+            string.Equals(
+                disposition,
+                "SAFE_RESIDUAL",
+                StringComparison.Ordinal) ||
+            string.Equals(
+                disposition,
+                "MASK_UNDERSHOOT_RECOVERY",
+                StringComparison.Ordinal);
     }
 
     static double ColorDistance(
