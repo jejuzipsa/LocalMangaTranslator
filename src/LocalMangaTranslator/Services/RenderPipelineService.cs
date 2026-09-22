@@ -1728,6 +1728,11 @@ public sealed class RenderPipelineService
         return plans;
     }
 
+    public static double GetV2CandidateKeepScore(
+        VisionTranslation region)
+        => V2CandidateKeepScore(
+            region);
+
     static double V2CandidateKeepScore(
         VisionTranslation region)
     {
