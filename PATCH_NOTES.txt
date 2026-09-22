@@ -3520,3 +3520,148 @@ page028만:
 - erase/typeset atomic count invariant 유지.
 - 일반 페이지 회귀 없음.
 - 다음 별도 과제는 page028 RG010 unresolved_detected_no_translation_unit.
+
+
+0043 - full chapter regression fixes
+------------------------------------------------------------
+기준 실전 결과:
+- test pic/0042_2
+- commit ca1abe5ab37ada753fda216f0b39c523f64458d7
+
+목표:
+한 챕터 실전 테스트에서 확인된 3개 회귀 유형을 서로 독립적으로 수정한다.
+1. page005: 번역 글자와 원문이 겹치는 말풍선 / erase 잔존
+2. page016: 우측 하단 검은 배경 TextFree 문장 미번역
+3. page031: 녹색 대사 번역 누락
+
+1. page005 TextBubble residual retry 강화
+관찰:
+- page005 RG008
+- TextBubble x335 y505 w185 h107
+- FLAT_FILL
+- InitialMaskPixels=7005
+- raw residual=524
+- effective residual=417
+- effective/initial ~= 5.95%
+- SelectedPersistentCorePixels=0
+- 기존 primary review는 pass로 처리되어 retry가 실행되지 않았다.
+- 최종 이미지에서는 원문 일부가 남아 새 한국어와 겹치는 현상이 관찰되었다.
+
+변경:
+- generic residual policy는 그대로 유지한다.
+- immutable RT-DETR TextBubble에만 stricter primary gate를 추가한다.
+- effective residual이 max(24, InitialMaskPixels * 0.05)를 초과하면
+  첫 pass를 clean으로 확정하지 않고 retry로 보낸다.
+- TextFree/caption/artwork용 기존 density tolerance는 변경하지 않는다.
+- 목적은 정상 말풍선의 눈에 띄는 source glyph 잔존만 더 적극적으로 재삭제하는 것이다.
+
+2. page016 sentence-like TextFree 번역 허용
+관찰:
+- 미번역 영역은 detector miss가 아니었다.
+- RT-DETR이 이미 TextFree로 검출했다.
+- 예:
+  RG021 x980 y1585 w213 h138 score~0.906
+  source:
+  "...YOU'VE BEEN LOST IN THE DARK A LONG TIME. YOUR EYES JUST NEED TO ADJUST."
+  OCR confidence ~0.98
+- RG024 x1100 y1866 w137 h37 score~0.812
+  source: "THAT'S ALL."
+  OCR confidence ~0.996
+- 둘 다 translation 자체는 존재하고 Render=true였지만,
+  0035의 blanket TextFree preserve 정책 때문에
+  original_preserved:textfree_original로 최종 보존되었다.
+
+변경:
+- TextFree는 계속 preserve-by-default.
+- 다음 조건을 모두 만족하는 경우에만 immutable TextFree geometry를
+  실제 erase + local layout 대상으로 허용한다.
+  * detector target이 TextFree
+  * parent Bubble 없음
+  * type이 dialogue/thought/caption
+  * OCR line 존재
+  * 평균 OCR confidence >= 0.90
+  * 의미 문자 >= 6
+  * 공백이 있는 문장형 텍스트
+  * '.', '?', ',', ';', ':' 중 하나를 포함
+  * 기존 stylized graphic 보호 조건에 걸리지 않음
+- mixed TextBubble/TextFree ownership 결합 금지 규칙은 그대로 유지.
+- 허용된 TextFree는 layoutMode=rtdetr_textfree를 사용한다.
+- 기존 decorative/SFX/짧은 비문장형 TextFree는 계속 원문 보존한다.
+
+3. page031 negative question-tag validator 수정
+관찰:
+- 해당 unit source:
+  WAIT THE "KNOCK-KNOCK" COMES FIRST, DOESN'T IT... SHIT.
+- detector TextBubble RG006 score~0.947
+- primary OCR confidence ~0.951
+- secondary OCR agree
+- Classic detector-owned recovery eligibility=true
+- Laya post_translation_final render_recovery=true confidence=0.5609
+- 즉 OCR/detector/Laya는 실제 대사라고 판단하고 있었다.
+- 하지만 final translation validation에서 "DOESN'T"를 일반 부정문으로 보고
+  한국어 결과에 안/못/않 등의 부정 cue가 없으면 반복적으로 reject했다.
+- 실제 "doesn't it?"는 부정 의미가 아니라 부가의문문이므로
+  "먼저잖아?" 같은 자연스러운 한국어 번역에 부정 cue가 필요하지 않다.
+
+변경:
+- HasExplicitEnglishNegation 검사 전에 comma-led negative question tag를 제거한다.
+- 예:
+  ", doesn't it"
+  ", isn't it"
+  ", aren't they"
+  ", won't you"
+  등 auxiliary contraction + pronoun 형태.
+- 일반 문장 부정:
+  "I DON'T KNOW"
+  "I CAN'T"
+  "NEVER"
+  등은 기존 보호 규칙을 그대로 유지한다.
+
+4. Laya 관련
+- 0043에서 Laya render_recovery를 무조건 mutation으로 승격하지 않는다.
+- page031 사례는 Laya 판단 자체는 맞았지만,
+  근본 원인이 translation negation validator 오판이었으므로
+  validator를 수정해 Classic pipeline이 정상적으로 완료되도록 한다.
+- detector_retry Advisory 정책은 기존 0041 범위를 유지한다.
+
+5. PipelineChecks 추가/변경
+- page005-like TextBubble residual:
+  generic policy에서는 허용되지만 strict TextBubble gate에서는 retry되는지 확인.
+- negative question tag:
+  "DOESN'T IT?"가 포함된 문장이 한국어 부정 cue 없이도 유효 번역으로 인정되는지 확인.
+- 기존 "I CAN'T." 의미 반전 방지 테스트는 그대로 유지.
+- TextFree:
+  비문장형/스타일형 preserve 테스트는 유지.
+  "THAT'S ALL." 같은 strong sentence-like TextFree는 rtdetr_textfree binding으로
+  승격되는지 확인.
+
+0043 실전 재검증 권장:
+- 우선 page005 / page016 / page031 3페이지만 재실행.
+- 이후 회귀가 없으면 동일 챕터 전체 재실행.
+- page005: 원문 잔존/겹침 해소 확인.
+- page016: 우측 하단 검은 배경 문장 실제 erase + 한국어 조판 확인.
+- page031: 녹색 대사 Render=true + 최종 한국어 commit 확인.
+
+
+0043 CI verification
+------------------------------------------------------------
+Final code head:
+- ac2321186aaf08c9b950a9816d9bc2be801c2bf6
+
+Pipeline V2 Windows Portable:
+- run 35731425929
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+
+0043 implementation commits:
+- 5b8250dc6dd00440e47fa04504423c5663108ba7
+  TextBubble residual retry gate
+- d00e742f0a59b2838cdda19c7f388165d13cb0c2
+  safe sentence-like TextFree translation
+- 273102bb878db563f36bf3e28a19563bfdee0d97
+  negative question-tag validator
+- f15521dc1b1cf8643afe1cad8bc1464d0bc85b52
+  PipelineChecks
+- ac2321186aaf08c9b950a9816d9bc2be801c2bf6
+  final question-tag regex escaping fix
