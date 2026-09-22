@@ -1815,6 +1815,22 @@ Check("V2 0024 still rejects real outside-mask lettering",
         180,
         new Rect(1061, 1671, 163, 52)));
 
+Check("V2 0043 TextBubble gate retries page005-like dense residue",
+    !ErasePipelineV2.IsResidualAcceptable(
+        7005,
+        524,
+        417,
+        new Rect(335, 505, 185, 107),
+        strictTextBubble: true));
+
+Check("V2 0043 keeps generic residual tolerance unchanged",
+    ErasePipelineV2.IsResidualAcceptable(
+        7005,
+        524,
+        417,
+        new Rect(335, 505, 185, 107),
+        strictTextBubble: false));
+
 using (var originalMask =
        Mat.Zeros(
            20,
@@ -2543,6 +2559,39 @@ try
             cantTranslation,
             "난 할 수 없어."));
 
+    var tagQuestionBlock =
+        new OcrTextBlock(
+            2017,
+            74,
+            160,
+            205,
+            30,
+            "WAIT THE KNOCK-KNOCK COMES FIRST, DOESN'T IT... SHIT.",
+            1,
+            "en",
+            [new OcrLine(
+                74,
+                160,
+                205,
+                30,
+                "WAIT THE KNOCK-KNOCK COMES FIRST, DOESN'T IT... SHIT.",
+                0.95f,
+                "en")]);
+
+    var tagQuestionTranslation =
+        new VisionTranslation(
+            2017,
+            tagQuestionBlock,
+            tagQuestionBlock.Text,
+            "",
+            "dialogue",
+            true);
+
+    Check("Translation 0043 does not treat negative question tag as semantic negation",
+        TranslationRefinementService.IsUsableTranslation(
+            tagQuestionTranslation,
+            "잠깐, 노크부터 먼저잖아... 젠장."));
+
     var freeSelection =
         V2EraseSelector.Select(
             freeSnapshot,
@@ -2619,12 +2668,18 @@ try
             freeSnapshot,
             [shortCaptionTranslation]);
 
-    Check("V2 0035 preserves short TextFree captions instead of erasing artwork",
-        !shortCaptionSelection.Bindings.ContainsKey(2004) &&
-        shortCaptionSelection.PreservationReasons.TryGetValue(
+    Check("V2 0043 binds strong sentence-like TextFree caption",
+        shortCaptionSelection.Bindings.TryGetValue(
             2004,
-            out var shortFreeReason) &&
-        shortFreeReason == "textfree_original");
+            out var shortFreeBinding) &&
+        shortFreeBinding.TextRegionIds.SequenceEqual(
+            ["VT-FREE"]) &&
+        shortFreeBinding.LayoutMode ==
+            "rtdetr_textfree" &&
+        !shortCaptionSelection.PreservationReasons.ContainsKey(
+            2004) &&
+        !shortCaptionSelection.PreservationTargetReasons.ContainsKey(
+            "VT-FREE"));
 
     var v2MainResult =
         new ErasePipelineV2().Run(
