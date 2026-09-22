@@ -3741,3 +3741,20 @@ PipelineChecks:
   V2 0044 independent flat residual verifier
 - 00227121b0a1a664abe6ed5f5daaba1357962638
   PipelineChecks
+
+
+0044 CI verification
+------------------------------------------------------------
+Final code head:
+- 4313490d15ff2ee2cce2d1b31ef5b7e97cb2004b
+
+Pipeline V2 Windows Portable:
+- run 35735018814
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+
+Notes:
+- initial 0044 CI failed because the new verifier referenced a nonexistent ClampRect helper.
+- replaced it with explicit image-bound clamping.
+- no algorithmic rollback was required.
