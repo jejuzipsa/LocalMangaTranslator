@@ -2097,3 +2097,108 @@ Match/Mismatch와 confidence를 비교한다.
 89d0b4657c55a9c96442a65d7da23d27f7d4c681
 V2 0037: harden Laya runtime bootstrap
 
+============================================================
+0038 - Windows Hugging Face No-Symlink Cache for Laya
+============================================================
+
+배경
+------------------------------------------------------------
+0037에서 Python 3.12 자동 설치와 laya==0.3.5 설치까지는 정상 동작했다.
+
+사용자 실제 로그:
+- Python 3.12.10 자동 설치 성공
+- laya 0.3.5 설치 성공
+- typed-decisions checkpoint 로딩 시작
+- 이후 Hugging Face cache snapshot 생성 중 WinError 1314 발생
+
+오류 형태:
+blobs/<hash> -> snapshots/<revision>/typed-decisions/encoder/config.json
+심볼릭 링크 생성 권한이 없어 checkpoint 준비 실패.
+
+Windows에서는 Hugging Face cache가 기본적으로 symlink를 사용할 수 있고,
+Developer Mode 또는 관리자 권한이 없으면 이 작업이 실패할 수 있다.
+
+
+0038 목표
+------------------------------------------------------------
+사용자에게 Windows Developer Mode나 관리자 실행을 요구하지 않고
+일반 데스크톱 권한으로 Laya checkpoint를 준비한다.
+
+
+Hugging Face no-symlink cache
+------------------------------------------------------------
+Laya Python subprocess와 persistent worker에 다음 환경변수를 강제한다.
+
+HF_HUB_DISABLE_SYMLINKS=1
+HF_HUB_DISABLE_SYMLINKS_WARNING=1
+
+의미:
+- snapshot directory에 symlink 대신 실제 파일을 복사/배치.
+- Windows symlink privilege가 없어도 checkpoint를 사용할 수 있음.
+- 동일 blob의 중복 저장 가능성은 있으나 portability를 우선.
+
+laya_bridge.py에도 같은 값을 import 이전에 설정하여
+bridge를 직접 실행하는 경우에도 동일 동작을 보장한다.
+
+
+Python diagnostic UTF-8
+------------------------------------------------------------
+0037 실패 로그에서 Windows 로컬라이즈 오류 문자열이 깨져 보였다.
+
+0038에서 모든 Laya Python subprocess에:
+PYTHONUTF8=1
+PYTHONIOENCODING=utf-8
+
+을 설정한다.
+
+이후 Python/Hugging Face 오류 메시지를 debug log에서
+UTF-8로 읽을 수 있도록 한다.
+
+
+공통 환경 설정
+------------------------------------------------------------
+LayaDecisionService.ConfigurePythonEnvironment(ProcessStartInfo)를 추가.
+
+다음 모두 동일 환경을 사용한다.
+- Python runtime probe
+- pip/laya version check
+- persistent laya_bridge worker
+
+설정:
+- USE_TF=0
+- HF_HUB_DISABLE_SYMLINKS=1
+- HF_HUB_DISABLE_SYMLINKS_WARNING=1
+- PYTHONUTF8=1
+- PYTHONIOENCODING=utf-8
+
+
+Regression / CI
+------------------------------------------------------------
+PipelineChecks 추가:
+- HF_HUB_DISABLE_SYMLINKS == 1
+- PYTHONUTF8 == 1
+- PYTHONIOENCODING == utf-8
+
+실제 Hugging Face model 다운로드는 CI에서 수행하지 않는다.
+
+
+0038 재검증
+------------------------------------------------------------
+[선택 모델 확인/설치]을 다시 누른다.
+
+기대:
+1. 기존 Python 3.12.10 재사용
+2. 기존 laya 0.3.5 재사용
+3. typed-decisions checkpoint 재시도
+4. symlink 대신 no-symlink cache로 snapshot 준비
+5. LayaExperimental 준비 완료 로그 출력
+
+기존 실패에서 내려받은 blob은 Hugging Face cache에 남아 있을 수 있으므로
+가능한 경우 재사용되며 전체 checkpoint를 처음부터 다시 받을 필요는 없다.
+
+
+관련 커밋
+------------------------------------------------------------
+bf50b687c7368314ac454d26b9882ee6b8f1a1f2
+V2 0038: disable HF symlink cache for Laya
+
