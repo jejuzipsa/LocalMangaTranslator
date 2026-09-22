@@ -612,29 +612,47 @@ public sealed class PageAnalysisService : IDisposable
                existing) >=
                0.75;
 
-    static double IoU(
-        Rect a,
-        Rect b)
+    static double Coverage(
+        Rect inner,
+        Rect outer)
     {
         double intersection =
             IntersectionArea(
-                a,
-                b);
+                inner,
+                outer);
 
-        if (intersection <= 0)
-            return 0;
-
-        double union =
+        double area =
             Math.Max(
                 1.0,
-                a.Width *
-                    (double)a.Height +
-                b.Width *
-                    (double)b.Height -
-                intersection);
+                inner.Width *
+                (double)inner.Height);
 
         return intersection /
-               union;
+               area;
+    }
+
+    static bool ContainsCenter(
+        Rect inner,
+        Rect outer)
+    {
+        double cx =
+            inner.X +
+            inner.Width /
+            2.0;
+
+        double cy =
+            inner.Y +
+            inner.Height /
+            2.0;
+
+        return cx >=
+                   outer.Left &&
+               cx <=
+                   outer.Right &&
+               cy >=
+                   outer.Top &&
+               cy <=
+                   outer.Bottom;
     }
 
     static double OverlapOverSmaller(
