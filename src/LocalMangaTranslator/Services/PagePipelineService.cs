@@ -427,70 +427,8 @@ public sealed class PagePipelineService
         var rawRegions =
             snapshot.RawRegions.ToList();
 
-        foreach (var candidate in
-                 candidates)
-        {
-            int index =
-                updated.FindIndex(x =>
-                    x.Id ==
-                    candidate.TranslationRegionId);
-
-            if (index < 0)
-                continue;
-
-            var current =
-                updated[index];
-
-            if (!current.Render ||
-                string.IsNullOrWhiteSpace(
-                    current.Translation))
-            {
-                continue;
-            }
-
-            if (!rawRegions.Any(x =>
-                    string.Equals(
-                        x.RegionId,
-                        candidate.BubbleRegion.RegionId,
-                        StringComparison.Ordinal)))
-            {
-                rawRegions.Add(
-                    candidate.BubbleRegion);
-            }
-
-            if (!rawRegions.Any(x =>
-                    string.Equals(
-                        x.RegionId,
-                        candidate.TextRegion.RegionId,
-                        StringComparison.Ordinal)))
-            {
-                rawRegions.Add(
-                    candidate.TextRegion);
-            }
-
-            updated[index] =
-                current with
-                {
-                    Source =
-                        current.Source with
-                        {
-                            RegionId =
-                                candidate.BubbleRegion.RegionId,
-                            RegionTextRegion =
-                                candidate.TextRegion
-                        }
-                };
-        }
-
-        var advisorySnapshot =
-            V2DetectionSnapshot.Create(
-                new PageAnalysisResult(
-                    rawRegions,
-                    [],
-                    snapshot.SourceMode +
-                    "+laya_advisory",
-                    true,
-                    "detector_retry_advisory"));
+        var currentSnapshot =
+            snapshot;
 
         var targetIds =
             new HashSet<string>(
@@ -529,21 +467,77 @@ public sealed class PagePipelineService
         foreach (var candidate in
                  candidates)
         {
-            var region =
-                updated.FirstOrDefault(x =>
+            int index =
+                updated.FindIndex(x =>
                     x.Id ==
                     candidate.TranslationRegionId);
 
-            if (region is null)
+            if (index < 0)
                 continue;
+
+            var current =
+                updated[index];
+
+            if (!current.Render ||
+                string.IsNullOrWhiteSpace(
+                    current.Translation))
+            {
+                continue;
+            }
+
+            var linked =
+                current with
+                {
+                    Source =
+                        current.Source with
+                        {
+                            RegionId =
+                                candidate.BubbleRegion.RegionId,
+                            RegionTextRegion =
+                                candidate.TextRegion
+                        }
+                };
+
+            var tentativeRaw =
+                rawRegions.ToList();
+
+            if (!tentativeRaw.Any(x =>
+                    string.Equals(
+                        x.RegionId,
+                        candidate.BubbleRegion.RegionId,
+                        StringComparison.Ordinal)))
+            {
+                tentativeRaw.Add(
+                    candidate.BubbleRegion);
+            }
+
+            if (!tentativeRaw.Any(x =>
+                    string.Equals(
+                        x.RegionId,
+                        candidate.TextRegion.RegionId,
+                        StringComparison.Ordinal)))
+            {
+                tentativeRaw.Add(
+                    candidate.TextRegion);
+            }
+
+            var tentativeSnapshot =
+                V2DetectionSnapshot.Create(
+                    new PageAnalysisResult(
+                        tentativeRaw,
+                        [],
+                        snapshot.SourceMode +
+                        "+laya_advisory",
+                        true,
+                        "detector_retry_advisory"));
 
             var one =
                 V2EraseSelector.Select(
-                    advisorySnapshot,
-                    [region]);
+                    tentativeSnapshot,
+                    [linked]);
 
             if (!one.Bindings.TryGetValue(
-                    region.Id,
+                    linked.Id,
                     out var binding) ||
                 !binding.TextRegionIds.Contains(
                     candidate.TextRegion.RegionId,
@@ -551,6 +545,18 @@ public sealed class PagePipelineService
             {
                 continue;
             }
+
+            // Only now commit this advisory target. A failed candidate never
+            // enters the immutable target set, so it cannot create a new
+            // unresolved coverage target.
+            updated[index] =
+                linked;
+
+            rawRegions =
+                tentativeRaw;
+
+            currentSnapshot =
+                tentativeSnapshot;
 
             foreach (string id in
                      one.TextRegionIds)
@@ -560,13 +566,13 @@ public sealed class PagePipelineService
             }
 
             translationIds.Add(
-                region.Id);
+                linked.Id);
 
-            bindings[region.Id] =
+            bindings[linked.Id] =
                 binding;
 
             preservationReasons.Remove(
-                region.Id);
+                linked.Id);
 
             foreach (string id in
                      binding.TextRegionIds)
@@ -578,7 +584,7 @@ public sealed class PagePipelineService
 
         return (
             updated,
-            advisorySnapshot,
+            currentSnapshot,
             new V2EraseSelection(
                 targetIds,
                 translationIds,
