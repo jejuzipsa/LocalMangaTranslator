@@ -1,0 +1,1413 @@
+{
+  "SourceFile": "page049.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:46:04.5317638+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 75,
+        "Y": 92,
+        "W": 229.66666666666669,
+        "H": 85.33333333333334,
+        "Text": "I TOLD you. THERE IS NO WONDER WOMAN. NO BATMAN. NO--",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 75,
+            "Y": 92,
+            "W": 81.33333333333334,
+            "H": 22.666666666666657,
+            "Text": "I TOLD",
+            "Confidence": 0.9968905,
+            "Language": "en"
+          },
+          {
+            "X": 155,
+            "Y": 92,
+            "W": 51,
+            "H": 23.333333333333343,
+            "Text": "you.",
+            "Confidence": 0.97360194,
+            "Language": "en"
+          },
+          {
+            "X": 210,
+            "Y": 92.66666666666666,
+            "W": 94.66666666666669,
+            "H": 22.666666666666686,
+            "Text": "THERE IS",
+            "Confidence": 0.999216,
+            "Language": "en"
+          },
+          {
+            "X": 77.33333333333334,
+            "Y": 109.33333333333333,
+            "W": 39.999999999999986,
+            "H": 24.66666666666667,
+            "Text": "NO",
+            "Confidence": 0.99980974,
+            "Language": "en"
+          },
+          {
+            "X": 115,
+            "Y": 111,
+            "W": 97.66666666666666,
+            "H": 24,
+            "Text": "WONDER",
+            "Confidence": 0.99956524,
+            "Language": "en"
+          },
+          {
+            "X": 213,
+            "Y": 112.33333333333333,
+            "W": 87,
+            "H": 21.66666666666667,
+            "Text": "WOMAN.",
+            "Confidence": 0.99936575,
+            "Language": "en"
+          },
+          {
+            "X": 123,
+            "Y": 131.66666666666666,
+            "W": 39,
+            "H": 22.666666666666686,
+            "Text": "NO",
+            "Confidence": 0.99985033,
+            "Language": "en"
+          },
+          {
+            "X": 161,
+            "Y": 132.33333333333331,
+            "W": 95.33333333333331,
+            "H": 22.666666666666686,
+            "Text": "BATMAN.",
+            "Confidence": 0.998392,
+            "Language": "en"
+          },
+          {
+            "X": 159.33333333333334,
+            "Y": 147,
+            "W": 61,
+            "H": 30.333333333333343,
+            "Text": "NO--",
+            "Confidence": 0.98998374,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I TOLD YOU. THERE IS NO WONDER WOMAN, NO BATMAN. NO--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG002"
+      },
+      "CorrectedText": "I TOLD YOU. THERE IS NO WONDER WOMAN. NO BATMAN. NO--",
+      "Translation": "\uB9D0\uD588\uC796\uC544.[BR]\uC6D0\uB354\uC6B0\uBA3C\uB3C4,[BR]\uBC30\uD2B8\uB9E8\uB3C4,[BR]\uC5C6\uB2E4\uACE0.-",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 441,
+        "Y": 95,
+        "W": 249.33333333333326,
+        "H": 82.33333333333331,
+        "Text": "ALIVE IN THE PLAINS OF SOLI THESE FOLKTALES WELL.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 441,
+            "Y": 95,
+            "W": 61.333333333333314,
+            "H": 23.333333333333343,
+            "Text": "ALIVE",
+            "Confidence": 0.99983674,
+            "Language": "en"
+          },
+          {
+            "X": 492.6666666666667,
+            "Y": 95,
+            "W": 164.66666666666657,
+            "H": 23.666666666666657,
+            "Text": "IN THE PLAINS",
+            "Confidence": 0.9993586,
+            "Language": "en"
+          },
+          {
+            "X": 651.6666666666666,
+            "Y": 95.33333333333334,
+            "W": 38.66666666666663,
+            "H": 23.333333333333314,
+            "Text": "OF",
+            "Confidence": 0.99959636,
+            "Language": "en"
+          },
+          {
+            "X": 458,
+            "Y": 114.66666666666666,
+            "W": 55,
+            "H": 24.333333333333343,
+            "Text": "SOLI",
+            "Confidence": 0.99247766,
+            "Language": "en"
+          },
+          {
+            "X": 468.66666666666663,
+            "Y": 132.33333333333334,
+            "W": 191.33333333333337,
+            "H": 26,
+            "Text": "THESE FOLKTALES",
+            "Confidence": 0.99937314,
+            "Language": "en"
+          },
+          {
+            "X": 533.3333333333334,
+            "Y": 153.33333333333331,
+            "W": 61.33333333333326,
+            "H": 24,
+            "Text": "WELL.",
+            "Confidence": 0.99882317,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALIVE IN THE PLAINS OF SOLUTUDE? I KNOW THESE FOLKTALES WELL.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "ALIVE IN THE PLAINS OF SOLITUDE? I KNOW THESE FOLKTALES WELL. BUT I SAW CJ BEER FALL WITH",
+      "Translation": "\uACE0\uB3C5\uC758 \uD3C9\uC6D0(PLAINS OF SOLITUDE)\uC5D0\uC11C \uC0B4\uC544\uB0A8\uB294\uB2E4\uACE0? \uC774 \uBBFC\uB2F4\uC740 \uC798 \uC54C\uACE0 \uC788\uC9C0. \uD558\uC9C0\uB9CC \uB09C CJ \uB9E5\uC8FC\uAC00... \uADF8\uACF3\uC5D0\uC11C \uC4F0\uB7EC\uC9C0\uB294 \uAC78 \uBD24\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 102.33333333333333,
+        "Y": 181,
+        "W": 16,
+        "H": 18.333333333333343,
+        "Text": "du",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 102.33333333333333,
+            "Y": 181,
+            "W": 16,
+            "H": 18.333333333333343,
+            "Text": "du",
+            "Confidence": 0.42840207,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "du",
+      "Translation": "\uB450",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 575.3333333333334,
+        "Y": 181,
+        "W": 199.33333333333337,
+        "H": 103.33333333333337,
+        "Text": "BUT I SAW CLARK FALL WITH MY OWN EYES, AND I\u0027VE SCOURED THE PLAINS. ruP Bi",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 617.3333333333334,
+            "Y": 181,
+            "W": 116.99999999999989,
+            "H": 22.666666666666657,
+            "Text": "BUT I SAW",
+            "Confidence": 0.99706846,
+            "Language": "en"
+          },
+          {
+            "X": 583.6666666666666,
+            "Y": 199.66666666666666,
+            "W": 185.66666666666663,
+            "H": 24,
+            "Text": "CLARK FALL WITH",
+            "Confidence": 0.99885905,
+            "Language": "en"
+          },
+          {
+            "X": 575.3333333333334,
+            "Y": 220.33333333333334,
+            "W": 199.33333333333337,
+            "H": 24,
+            "Text": "MY OWN EYES, AND",
+            "Confidence": 0.98574996,
+            "Language": "en"
+          },
+          {
+            "X": 594.3333333333334,
+            "Y": 238.33333333333334,
+            "W": 163.9999999999999,
+            "H": 25.666666666666657,
+            "Text": "I\u0027VE SCOURED",
+            "Confidence": 0.99760544,
+            "Language": "en"
+          },
+          {
+            "X": 612,
+            "Y": 256.33333333333337,
+            "W": 127.66666666666663,
+            "H": 28,
+            "Text": "THE PLAINS.",
+            "Confidence": 0.999302,
+            "Language": "en"
+          },
+          {
+            "X": 619,
+            "Y": 260.66666666666663,
+            "W": 31,
+            "H": 8.333333333333371,
+            "Text": "ruP",
+            "Confidence": 0.4023722,
+            "Language": "en"
+          },
+          {
+            "X": 658,
+            "Y": 261.33333333333337,
+            "W": 19.333333333333258,
+            "H": 7.666666666666629,
+            "Text": "Bi",
+            "Confidence": 0.596274,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ELL.\nBUT I SAW\nCLARK FALL WITH\nMY OWN EYES, AND\nI\u0027VE SCOURED\nTHE PLAINS.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "BUT I SAW CLARK FALL WITH MY OWN EYES, AND I\u0027VE SCOURED THE PLAINS.",
+      "Translation": "\uD558\uC9C0\uB9CC \uB0B4 \uB208\uC73C\uB85C \uC9C1\uC811 \uD074\uB77C\uD06C\uAC00 \uC4F0\uB7EC\uC9C0\uB294 \uAC78 \uBD24\uACE0,[BR]\uD3C9\uC6D0\uC744 \uC0C5\uC0C5\uC774 \uB4A4\uC838\uBD24\uB2E8 \uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 375,
+        "Y": 182,
+        "W": 84,
+        "H": 155.33333333333337,
+        "Text": "2C",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 375,
+            "Y": 182,
+            "W": 84,
+            "H": 155.33333333333337,
+            "Text": "2C",
+            "Confidence": 0.35831743,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "2C",
+      "Translation": "2C",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 155,
+        "Y": 188.33333333333331,
+        "W": 148,
+        "H": 107.00000000000006,
+        "Text": "FRED SAID THERE ARE RUMORS. ABOUT CLARK..",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 219,
+            "Y": 188.33333333333331,
+            "W": 56.333333333333314,
+            "H": 28,
+            "Text": "FRED",
+            "Confidence": 0.9999666,
+            "Language": "en"
+          },
+          {
+            "X": 167.33333333333334,
+            "Y": 211,
+            "W": 125.66666666666666,
+            "H": 24.333333333333314,
+            "Text": "SAID THERE",
+            "Confidence": 0.9989772,
+            "Language": "en"
+          },
+          {
+            "X": 155,
+            "Y": 231,
+            "W": 148,
+            "H": 23.333333333333314,
+            "Text": "ARE RUMORS.",
+            "Confidence": 0.99767435,
+            "Language": "en"
+          },
+          {
+            "X": 190.33333333333334,
+            "Y": 250.66666666666669,
+            "W": 78.33333333333334,
+            "H": 23.333333333333314,
+            "Text": "ABOUT",
+            "Confidence": 0.9944831,
+            "Language": "en"
+          },
+          {
+            "X": 184.66666666666666,
+            "Y": 269.33333333333337,
+            "W": 88.33333333333334,
+            "H": 26,
+            "Text": "CLARK..",
+            "Confidence": 0.9913326,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALFRED SAID THERE ARE RUMORS. ABOUT CLARK...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG006"
+      },
+      "CorrectedText": "ALFRED SAID THERE ARE RUMORS. ABOUT CLARK...",
+      "Translation": "\uC54C\uD504\uB808\uB4DC\uAC00 \uB9D0\uD588\uC5B4. \uC18C\uBB38\uC774 \uB3CC\uACE0 \uC788\uB2E4\uACE0...[BR]\uD074\uB77D\uC5D0 \uB300\uD574\uC11C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 956.6666666666666,
+        "Y": 189,
+        "W": 39.33333333333337,
+        "H": 40.66666666666666,
+        "Text": "GG",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 956.6666666666666,
+            "Y": 189,
+            "W": 39.33333333333337,
+            "H": 40.66666666666666,
+            "Text": "GG",
+            "Confidence": 0.5847231,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "GG",
+      "Translation": "GG",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 797,
+        "Y": 209,
+        "W": 91.66666666666663,
+        "H": 68,
+        "Text": "LIES TO LURE us OUT.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 817.5,
+            "Y": 209,
+            "W": 52.5,
+            "H": 25.5,
+            "Text": "LIES",
+            "Confidence": 0.9999454,
+            "Language": "en"
+          },
+          {
+            "X": 797,
+            "Y": 229.66666666666666,
+            "W": 91.66666666666663,
+            "H": 25.666666666666686,
+            "Text": "TO LURE",
+            "Confidence": 0.9979259,
+            "Language": "en"
+          },
+          {
+            "X": 799.6666666666667,
+            "Y": 248.66666666666669,
+            "W": 87.33333333333326,
+            "H": 28.333333333333314,
+            "Text": "us OUT.",
+            "Confidence": 0.8119775,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LIES TO LURE US OUT.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "LIES TO LURE US OUT.",
+      "Translation": "\uC6B0\uB9B4\uB3C4\uBC1C\uD558\uAE30[BR]\uC704\uD55C \uAC70\uC9D3\uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 69.33333333333333,
+        "Y": 344,
+        "W": 91.66666666666667,
+        "H": 22.666666666666686,
+        "Text": "MY",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 69.33333333333333,
+            "Y": 344,
+            "W": 91.66666666666667,
+            "H": 22.666666666666686,
+            "Text": "MY",
+            "Confidence": 0.67764926,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "MY",
+      "Translation": "\uB0B4 \uAC83",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 376.3333333333333,
+        "Y": 392.3333333333333,
+        "W": 304.00000000000006,
+        "H": 149.00000000000006,
+        "Text": "YOU WANT RUMORS, BRUCE? THE RUMOR IS THAT H BORN AND BRED IN GOTHAM POSSIBLY H MORE LIKELY...",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 376.3333333333333,
+            "Y": 392.3333333333333,
+            "W": 304.00000000000006,
+            "H": 31.666666666666686,
+            "Text": "YOU WANT RUMORS, BRUCE?",
+            "Confidence": 0.9968968,
+            "Language": "en"
+          },
+          {
+            "X": 382,
+            "Y": 416.6666666666667,
+            "W": 121,
+            "H": 25.666666666666686,
+            "Text": "THE RUMOR",
+            "Confidence": 0.9955928,
+            "Language": "en"
+          },
+          {
+            "X": 405,
+            "Y": 438.66666666666663,
+            "W": 98,
+            "H": 21.666666666666742,
+            "Text": "IS THAT H",
+            "Confidence": 0.9980079,
+            "Language": "en"
+          },
+          {
+            "X": 419.3333333333333,
+            "Y": 454.3333333333333,
+            "W": 215.00000000000006,
+            "H": 29.33333333333337,
+            "Text": "BORN AND BRED IN",
+            "Confidence": 0.99834424,
+            "Language": "en"
+          },
+          {
+            "X": 410.6666666666667,
+            "Y": 477,
+            "W": 92.33333333333331,
+            "H": 24,
+            "Text": "GOTHAM",
+            "Confidence": 0.99927235,
+            "Language": "en"
+          },
+          {
+            "X": 513.6666666666666,
+            "Y": 486,
+            "W": 129.33333333333337,
+            "H": 14.666666666666686,
+            "Text": "POSSIBLY H",
+            "Confidence": 0.9971082,
+            "Language": "en"
+          },
+          {
+            "X": 559.3333333333334,
+            "Y": 497.6666666666667,
+            "W": 66.33333333333337,
+            "H": 21.666666666666686,
+            "Text": "MORE",
+            "Confidence": 0.9999011,
+            "Language": "en"
+          },
+          {
+            "X": 483,
+            "Y": 515.6666666666666,
+            "W": 84,
+            "H": 25.666666666666742,
+            "Text": "LIKELY...",
+            "Confidence": 0.9560636,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU WANT RUMORS, BRUCE? THE RUMOR ABOUT OMEGA IS THAT HE\u0027S SOMEONE BORN AND BRED IN GOTHALY A ALY A ALA A BAND BLA BOTALLA A ATA",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "YOU WANT RUMORS, BRUCE? THE RUMOR ABOUT OMEGA IS THAT HE\u0027S SOMEONE BORN AND BRED IN GOTHAM. POSSIBLY A VILLAIN, BUT MORE LIKELY...",
+      "Translation": "\uC18C\uBB38\uC774 \uB4E3\uACE0 \uC2F6\uB098, \uBE0C\uB8E8\uC2A4? \uC624\uBA54\uAC00\uC5D0 \uAD00\uD55C \uC18C\uBB38\uC740 \uB9D0\uC774\uC57C, \uADF8\uAC00 \uACE0\uB2F4\uC5D0\uC11C \uD0DC\uC5B4\uB098\uACE0 \uC790\uB780 \uC778\uBB3C\uC774\uB77C\uB294 \uAC70\uC9C0. \uBE4C\uB7F0\uC77C \uC218\uB3C4 \uC788\uACA0\uC9C0\uB9CC, \uB354 \uAC00\uB2A5\uC131 \uB192\uC740 \uAC74...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 70,
+        "Y": 393.3333333333333,
+        "W": 297,
+        "H": 167.00000000000006,
+        "Text": "WELL THIS V OMEGA, WHOEVER HE IS, BE H WHY lo BRING HIM DOWN. IF HE\u0027S BASED IN GOTHAM, HE\u0027S VULNERABLE. I KNOW GOTHAM BETTER THAN--",
+        "OriginalRegionCount": 12,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 166.66666666666666,
+            "Y": 393.3333333333333,
+            "W": 110.66666666666666,
+            "H": 26,
+            "Text": "WELL THIS",
+            "Confidence": 0.99970394,
+            "Language": "en"
+          },
+          {
+            "X": 70,
+            "Y": 398,
+            "W": 19.66666666666667,
+            "H": 19.333333333333314,
+            "Text": "V",
+            "Confidence": 0.53504705,
+            "Language": "en"
+          },
+          {
+            "X": 90.66666666666667,
+            "Y": 414,
+            "W": 263.66666666666663,
+            "H": 26.66666666666663,
+            "Text": "OMEGA, WHOEVER HE IS,",
+            "Confidence": 0.997759,
+            "Language": "en"
+          },
+          {
+            "X": 230.66666666666666,
+            "Y": 445,
+            "W": 33.666666666666714,
+            "H": 12.666666666666686,
+            "Text": "BE",
+            "Confidence": 0.99867535,
+            "Language": "en"
+          },
+          {
+            "X": 263.33333333333337,
+            "Y": 445,
+            "W": 18.66666666666663,
+            "H": 11.666666666666686,
+            "Text": "H",
+            "Confidence": 0.99914265,
+            "Language": "en"
+          },
+          {
+            "X": 283,
+            "Y": 445,
+            "W": 46.333333333333314,
+            "H": 13.666666666666686,
+            "Text": "WHY",
+            "Confidence": 0.9798253,
+            "Language": "en"
+          },
+          {
+            "X": 334.3333333333333,
+            "Y": 445,
+            "W": 32.666666666666686,
+            "H": 13.666666666666686,
+            "Text": "lo",
+            "Confidence": 0.5960996,
+            "Language": "en"
+          },
+          {
+            "X": 89,
+            "Y": 455.33333333333337,
+            "W": 268.6666666666667,
+            "H": 23.333333333333258,
+            "Text": "BRING HIM DOWN. IF HE\u0027S",
+            "Confidence": 0.9984471,
+            "Language": "en"
+          },
+          {
+            "X": 93.66666666666667,
+            "Y": 474.33333333333337,
+            "W": 260.3333333333333,
+            "H": 26.66666666666663,
+            "Text": "BASED IN GOTHAM, HE\u0027S",
+            "Confidence": 0.98005587,
+            "Language": "en"
+          },
+          {
+            "X": 109,
+            "Y": 494.5,
+            "W": 228.5,
+            "H": 24.5,
+            "Text": "VULNERABLE. I KNOW",
+            "Confidence": 0.9954958,
+            "Language": "en"
+          },
+          {
+            "X": 132.33333333333334,
+            "Y": 513.6666666666666,
+            "W": 181.66666666666666,
+            "H": 25,
+            "Text": "GOTHAM BETTER",
+            "Confidence": 0.99960285,
+            "Language": "en"
+          },
+          {
+            "X": 185,
+            "Y": 533,
+            "W": 76,
+            "H": 27.33333333333337,
+            "Text": "THAN--",
+            "Confidence": 0.99746174,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WELL THIS\nOMEGA, WHOEVER HE IS,\nTHERE HAS TO BE A WAY TO\nBRING HIM DOWN. IF HE\u0027S\nBASED IN COTHAN, I N THAN,\nCHATHA\nCHAN-\nTHATA\nT",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "WELL THIS OMEGA, WHOEVER HE IS, THERE HAS TO BE A WAY TO BRING HIM DOWN. IF HE\u0027S BASED IN GOTHAM, HE\u0027S VULNERABLE. I KNOW GOTHAM BETTER THAN--",
+      "Translation": "\uC774 \uC624\uBA54\uAC00\uB77C\uB294 \uC790\uAC00\n\uB204\uAD6C\uB4E0 \uAC04\uC5D0, \uC4F0\uB7EC\uB728\uB9B4 \uBC29\uBC95\uC774\n\uBD84\uBA85\uD788 \uC788\uC744 \uAC70\uC57C. \uB9CC\uC57D \uADF8\uAC00\n\uACE0\uB2F4\uC5D0 \uAE30\uBC18\uC744 \uB450\uACE0 \uC788\uB2E4\uBA74\n\uC57D\uC810\uC774 \uC0DD\uAE30\uACA0\uC9C0. \uB09C \uACE0\uB2F4\uC744\n\uB204\uAD6C\uBCF4\uB2E4 \uC798 \uC54C\uAC70\uB4E0\u2014",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1093,
+        "Y": 426,
+        "W": 144.66666666666674,
+        "H": 91.66666666666663,
+        "Text": "NO. THAT\u0027S IMPOSSIBLE. YOU\u0027RE SAYING--",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1102.6666666666667,
+            "Y": 426,
+            "W": 129,
+            "H": 33,
+            "Text": "NO. THAT\u0027S",
+            "Confidence": 0.95774144,
+            "Language": "en"
+          },
+          {
+            "X": 1093,
+            "Y": 453,
+            "W": 144.66666666666674,
+            "H": 25,
+            "Text": "IMPOSSIBLE.",
+            "Confidence": 0.9992721,
+            "Language": "en"
+          },
+          {
+            "X": 1125.6666666666667,
+            "Y": 474,
+            "W": 81.66666666666652,
+            "H": 22.66666666666663,
+            "Text": "YOU\u0027RE",
+            "Confidence": 0.9807191,
+            "Language": "en"
+          },
+          {
+            "X": 1114.6666666666667,
+            "Y": 492,
+            "W": 102.33333333333326,
+            "H": 25.66666666666663,
+            "Text": "SAYING--",
+            "Confidence": 0.9764557,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO. THAT\u0027S IMPOSSIBLE. YOU\u0027RE SAYING--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "NO. THAT\u0027S IMPOSSIBLE. YOU\u0027RE SAYING--",
+      "Translation": "\uC548 \uB3FC. \uADF8\uAC74 \uBD88\uAC00\uB2A5\uD574.[BR]\uC9C0\uAE08 \uADF8 \uB9D0\uC740\u2014",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 1053.6666666666667,
+        "Y": 449,
+        "W": 17.333333333333258,
+        "H": 12.666666666666686,
+        "Text": ".",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1053.6666666666667,
+            "Y": 449,
+            "W": 17.333333333333258,
+            "H": 12.666666666666686,
+            "Text": ".",
+            "Confidence": 0.61058193,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "dialogue",
+      "Render": false
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 505.66666666666663,
+        "Y": 561.6666666666666,
+        "W": 144.66666666666663,
+        "H": 82,
+        "Text": "SIGH LIKELY MORE OF YOUR ONE DISCIPLES.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 533.6666666666666,
+            "Y": 561.6666666666666,
+            "W": 87.33333333333337,
+            "H": 23.666666666666742,
+            "Text": "SIGH",
+            "Confidence": 0.99570364,
+            "Language": "en"
+          },
+          {
+            "X": 572.6666666666666,
+            "Y": 578.3333333333334,
+            "W": 75.00000000000011,
+            "H": 23.66666666666663,
+            "Text": "LIKELY",
+            "Confidence": 0.9994888,
+            "Language": "en"
+          },
+          {
+            "X": 509,
+            "Y": 580.3333333333334,
+            "W": 67,
+            "H": 20.333333333333258,
+            "Text": "MORE",
+            "Confidence": 0.9999504,
+            "Language": "en"
+          },
+          {
+            "X": 550.3333333333334,
+            "Y": 598.3333333333334,
+            "W": 99.99999999999989,
+            "H": 25,
+            "Text": "OF YOUR",
+            "Confidence": 0.9937719,
+            "Language": "en"
+          },
+          {
+            "X": 505.66666666666663,
+            "Y": 599.3333333333334,
+            "W": 50,
+            "H": 23,
+            "Text": "ONE",
+            "Confidence": 0.99936634,
+            "Language": "en"
+          },
+          {
+            "X": 517,
+            "Y": 617.6666666666666,
+            "W": 120.66666666666674,
+            "H": 26,
+            "Text": "DISCIPLES.",
+            "Confidence": 0.9985466,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "*SIGH~...\nMORE LIKELY\nONE OF YOUR\nDISCIPLES.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "*SIGH*... MORE LIKELY ONE OF YOUR DISCIPLES.",
+      "Translation": "*\uD55C\uC228*...[BR]\uB124 \uC81C\uC790 \uC911 \uD558\uB098\uC77C \uAC00\uB2A5\uC131\uC774 \uB354 \uB192\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 108.33333333333333,
+        "Y": 1034.3333333333333,
+        "W": 157.33333333333337,
+        "H": 64.66666666666674,
+        "Text": "I\u0027M SAYING TIME, THAT IT\u0027S BRUCE.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 122,
+            "Y": 1034.3333333333333,
+            "W": 44.33333333333334,
+            "H": 24.666666666666742,
+            "Text": "I\u0027M",
+            "Confidence": 0.99754983,
+            "Language": "en"
+          },
+          {
+            "X": 164.33333333333334,
+            "Y": 1041,
+            "W": 91.33333333333331,
+            "H": 17.333333333333258,
+            "Text": "SAYING",
+            "Confidence": 0.9979268,
+            "Language": "en"
+          },
+          {
+            "X": 206.33333333333334,
+            "Y": 1054,
+            "W": 59.33333333333334,
+            "H": 26.333333333333258,
+            "Text": "TIME,",
+            "Confidence": 0.9996811,
+            "Language": "en"
+          },
+          {
+            "X": 108.33333333333333,
+            "Y": 1056,
+            "W": 56.000000000000014,
+            "H": 21.666666666666742,
+            "Text": "THAT",
+            "Confidence": 0.99975836,
+            "Language": "en"
+          },
+          {
+            "X": 162,
+            "Y": 1056,
+            "W": 48,
+            "H": 22.333333333333258,
+            "Text": "IT\u0027S",
+            "Confidence": 0.9947125,
+            "Language": "en"
+          },
+          {
+            "X": 146,
+            "Y": 1082,
+            "W": 80,
+            "H": 17,
+            "Text": "BRUCE.",
+            "Confidence": 0.99812615,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I\u0027M SAYING THAT IT\u0027S TIME, BRUCE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "I\u0027M SAYING THAT IT\u0027S TIME, BRUCE.",
+      "Translation": "\uB0B4 \uB9D0\uC740, [BR]\uB54C\uAC00 \uB410\uB2E4\uB294 \uAC70\uC57C, [BR]\uBE0C\uB8E8\uC2A4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 1011,
+        "Y": 1095,
+        "W": 36,
+        "H": 26,
+        "Text": "L.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1011,
+            "Y": 1095,
+            "W": 36,
+            "H": 26,
+            "Text": "L.",
+            "Confidence": 0.5166066,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "L.",
+      "Translation": "L.",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 92,
+        "Y": 1121.3333333333333,
+        "W": 182,
+        "H": 104.33333333333348,
+        "Text": "TIME TO RELINQUISH WORLD TO THE ITS NEW HEROES AND GODS.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 139.33333333333334,
+            "Y": 1121.3333333333333,
+            "W": 52.66666666666666,
+            "H": 23.333333333333485,
+            "Text": "TIME",
+            "Confidence": 0.99992996,
+            "Language": "en"
+          },
+          {
+            "X": 190,
+            "Y": 1122.3333333333333,
+            "W": 37,
+            "H": 23.666666666666742,
+            "Text": "TO",
+            "Confidence": 0.9999562,
+            "Language": "en"
+          },
+          {
+            "X": 120.33333333333333,
+            "Y": 1141.3333333333333,
+            "W": 127.66666666666667,
+            "H": 23,
+            "Text": "RELINQUISH",
+            "Confidence": 0.99946487,
+            "Language": "en"
+          },
+          {
+            "X": 145.33333333333334,
+            "Y": 1160.3333333333333,
+            "W": 117.33333333333334,
+            "H": 23.666666666666742,
+            "Text": "WORLD TO",
+            "Confidence": 0.99944204,
+            "Language": "en"
+          },
+          {
+            "X": 104.66666666666667,
+            "Y": 1162.3333333333333,
+            "W": 42.66666666666667,
+            "H": 20.333333333333485,
+            "Text": "THE",
+            "Confidence": 0.99983567,
+            "Language": "en"
+          },
+          {
+            "X": 92,
+            "Y": 1177,
+            "W": 182,
+            "H": 31,
+            "Text": "ITS NEW HEROES",
+            "Confidence": 0.9885578,
+            "Language": "en"
+          },
+          {
+            "X": 117.33333333333333,
+            "Y": 1199.6666666666667,
+            "W": 130.66666666666669,
+            "H": 26,
+            "Text": "AND GODS.",
+            "Confidence": 0.99906147,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "TIME TO RELINQUISH THE WORLD TO ITS NEW HEROES AND GODS.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "TIME TO RELINQUISH THE WORLD TO ITS NEW HEROES AND GODS.",
+      "Translation": "\uC774\uC81C \uC138\uC0C1\uC744 \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uB4E4\uACFC\n\uC2E0\uB4E4\uC5D0\uAC8C \uB0B4\uC5B4\uC904 \uC2DC\uAC04\uC774\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 991,
+        "Y": 1122,
+        "W": 27,
+        "H": 16,
+        "Text": ":.:",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 991,
+            "Y": 1122,
+            "W": 27,
+            "H": 16,
+            "Text": ":.:",
+            "Confidence": 0.61059797,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 246,
+        "Y": 1155.6666666666667,
+        "W": 29.666666666666686,
+        "H": 54,
+        "Text": "ES",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 246,
+            "Y": 1155.6666666666667,
+            "W": 29.666666666666686,
+            "H": 54,
+            "Text": "ES",
+            "Confidence": 0.85293245,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "TO FINISH\nOLD TO\nHEROES\nODDS.",
+      "Translation": "\uB05D\uB0B4\uAE30 \uC704\uD574\n\uACFC\uAC70\uC5D0\uC11C\n\uC601\uC6C5\uC758\n\uC6B4\uBA85\uC73C\uB85C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 526.3333333333334,
+        "Y": 1158.6666666666667,
+        "W": 130.33333333333337,
+        "H": 65.33333333333326,
+        "Text": "BUT HERE, THESE PE",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 567,
+            "Y": 1158.6666666666667,
+            "W": 49,
+            "H": 25,
+            "Text": "BUT",
+            "Confidence": 0.9861108,
+            "Language": "en"
+          },
+          {
+            "X": 526.3333333333334,
+            "Y": 1181,
+            "W": 65.66666666666663,
+            "H": 22,
+            "Text": "HERE,",
+            "Confidence": 0.9997261,
+            "Language": "en"
+          },
+          {
+            "X": 582.3333333333334,
+            "Y": 1181,
+            "W": 74.33333333333337,
+            "H": 21.666666666666742,
+            "Text": "THESE",
+            "Confidence": 0.99993056,
+            "Language": "en"
+          },
+          {
+            "X": 540.3333333333334,
+            "Y": 1197.6666666666667,
+            "W": 32.66666666666663,
+            "H": 26.333333333333258,
+            "Text": "PE",
+            "Confidence": 0.9973259,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BUT HERE, THESE PEOPLE...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG025"
+      },
+      "CorrectedText": "BUT HERE, THESE PEOPLE...",
+      "Translation": "\uD558\uC9C0\uB9CC \uC5EC\uAE30 \uC0AC\uB78C\uB4E4\uC740...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 500.33333333333337,
+        "Y": 1247,
+        "W": 154.66666666666663,
+        "H": 58,
+        "Text": "SAVED THIS FOR YOu, BRUCE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 548.6666666666666,
+            "Y": 1247,
+            "W": 75.00000000000011,
+            "H": 23.333333333333258,
+            "Text": "SAVED",
+            "Confidence": 0.9998473,
+            "Language": "en"
+          },
+          {
+            "X": 500.33333333333337,
+            "Y": 1266,
+            "W": 54.66666666666663,
+            "H": 25.666666666666742,
+            "Text": "THIS",
+            "Confidence": 0.9998399,
+            "Language": "en"
+          },
+          {
+            "X": 550.6666666666666,
+            "Y": 1266,
+            "W": 104.33333333333337,
+            "H": 26.333333333333258,
+            "Text": "FOR YOu,",
+            "Confidence": 0.9596616,
+            "Language": "en"
+          },
+          {
+            "X": 536.3333333333333,
+            "Y": 1286,
+            "W": 82.66666666666674,
+            "H": 19,
+            "Text": "BRUCE.",
+            "Confidence": 0.99839365,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I SAVED THIS FOR YOU, BRUCE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG027"
+      },
+      "CorrectedText": "I SAVED THIS FOR YOU, BRUCE.",
+      "Translation": "\uC774\uAC70 \uB108 \uC8FC\uB824\uACE0 \uB0A8\uACA8\uB454 \uAC70\uC57C, \uBE0C\uB8E8\uC2A4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 21,
+      "Source": {
+        "Id": 21,
+        "X": 1024.5,
+        "Y": 1788,
+        "W": 199,
+        "H": 168,
+        "Text": "AND TOMORROW, OPENING A THE PASSAGE TO UNDERWORLD. I\u0027D LIKE YOU TO COME WITH us.",
+        "OriginalRegionCount": 11,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1094,
+            "Y": 1788,
+            "W": 59,
+            "H": 29,
+            "Text": "AND",
+            "Confidence": 0.99988186,
+            "Language": "en"
+          },
+          {
+            "X": 1054.5,
+            "Y": 1810,
+            "W": 138.5,
+            "H": 27,
+            "Text": "TOMORROW,",
+            "Confidence": 0.99962944,
+            "Language": "en"
+          },
+          {
+            "X": 1084.3333333333333,
+            "Y": 1833.6666666666667,
+            "W": 100.33333333333348,
+            "H": 20.333333333333258,
+            "Text": "OPENING",
+            "Confidence": 0.99968696,
+            "Language": "en"
+          },
+          {
+            "X": 1187.6666666666667,
+            "Y": 1835,
+            "W": 15.666666666666515,
+            "H": 17,
+            "Text": "A",
+            "Confidence": 0.9885295,
+            "Language": "en"
+          },
+          {
+            "X": 1175.3333333333333,
+            "Y": 1852,
+            "W": 40.333333333333485,
+            "H": 22,
+            "Text": "THE",
+            "Confidence": 0.9997453,
+            "Language": "en"
+          },
+          {
+            "X": 1034.6666666666667,
+            "Y": 1853.3333333333333,
+            "W": 104,
+            "H": 19.666666666666742,
+            "Text": "PASSAGE",
+            "Confidence": 0.993921,
+            "Language": "en"
+          },
+          {
+            "X": 1135.6666666666667,
+            "Y": 1853.6666666666667,
+            "W": 37,
+            "H": 19,
+            "Text": "TO",
+            "Confidence": 0.99986124,
+            "Language": "en"
+          },
+          {
+            "X": 1024.5,
+            "Y": 1869,
+            "W": 199,
+            "H": 26,
+            "Text": "UNDERWORLD. I\u0027D",
+            "Confidence": 0.9960853,
+            "Language": "en"
+          },
+          {
+            "X": 1056.6666666666667,
+            "Y": 1890.3333333333333,
+            "W": 134.33333333333326,
+            "H": 23.666666666666742,
+            "Text": "LIKE YOU TO",
+            "Confidence": 0.99429554,
+            "Language": "en"
+          },
+          {
+            "X": 1063.6666666666667,
+            "Y": 1910,
+            "W": 122.33333333333326,
+            "H": 25,
+            "Text": "COME WITH",
+            "Confidence": 0.99956757,
+            "Language": "en"
+          },
+          {
+            "X": 1102.5,
+            "Y": 1928.5,
+            "W": 42.5,
+            "H": 27.5,
+            "Text": "us.",
+            "Confidence": 0.96003395,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "AND\nTOMORROW,\nI\u0027M OPENING A\nPASSAGE TO THE\nUNDERWORLD. I\u0027D\nLIKE Y",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG029"
+      },
+      "CorrectedText": "AND TOMORROW, I\u0027M OPENING A PASSAGE TO THE UNDERWORLD. I\u0027D LIKE YOU TO COME WITH US.",
+      "Translation": "\uADF8\uB9AC\uACE0 \uB0B4\uC77C, \uB09C \uC9C0\uD558 \uC138\uACC4\uB85C \uD1B5\uD558\uB294\n\uD1B5\uB85C\uB97C \uC5F4 \uAC70\uC57C.\n\uB124\uAC00 \uC6B0\uB9AC\uC640 \uD568\uAED8\n\uC640\uC92C\uC73C\uBA74 \uC88B\uACA0\uAD70.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

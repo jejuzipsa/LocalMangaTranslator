@@ -1,0 +1,446 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page038.jpg",
+  "output_file": "page038.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 36894,
+    "changed_ratio": 0.013342533584170362,
+    "changed_regions": [
+      {
+        "x": 402,
+        "y": 982,
+        "width": 235,
+        "height": 140
+      },
+      {
+        "x": 1110,
+        "y": 252,
+        "width": 120,
+        "height": 69
+      },
+      {
+        "x": 595,
+        "y": 1747,
+        "width": 101,
+        "height": 73
+      },
+      {
+        "x": 1069,
+        "y": 252,
+        "width": 50,
+        "height": 60
+      },
+      {
+        "x": 396,
+        "y": 1074,
+        "width": 48,
+        "height": 52
+      },
+      {
+        "x": 602,
+        "y": 1076,
+        "width": 42,
+        "height": 50
+      },
+      {
+        "x": 1132,
+        "y": 1205,
+        "width": 61,
+        "height": 32
+      },
+      {
+        "x": 1118,
+        "y": 1236,
+        "width": 69,
+        "height": 28
+      },
+      {
+        "x": 978,
+        "y": 236,
+        "width": 65,
+        "height": 25
+      },
+      {
+        "x": 1175,
+        "y": 1841,
+        "width": 56,
+        "height": 20
+      },
+      {
+        "x": 1173,
+        "y": 229,
+        "width": 44,
+        "height": 23
+      },
+      {
+        "x": 1083,
+        "y": 229,
+        "width": 44,
+        "height": 23
+      },
+      {
+        "x": 1129,
+        "y": 229,
+        "width": 40,
+        "height": 22
+      },
+      {
+        "x": 1084,
+        "y": 297,
+        "width": 34,
+        "height": 23
+      },
+      {
+        "x": 1017,
+        "y": 210,
+        "width": 29,
+        "height": 26
+      },
+      {
+        "x": 989,
+        "y": 209,
+        "width": 25,
+        "height": 26
+      },
+      {
+        "x": 1197,
+        "y": 252,
+        "width": 28,
+        "height": 23
+      },
+      {
+        "x": 600,
+        "y": 1030,
+        "width": 27,
+        "height": 23
+      },
+      {
+        "x": 1211,
+        "y": 224,
+        "width": 23,
+        "height": 21
+      },
+      {
+        "x": 621,
+        "y": 1053,
+        "width": 19,
+        "height": 24
+      },
+      {
+        "x": 676,
+        "y": 1747,
+        "width": 23,
+        "height": 18
+      },
+      {
+        "x": 594,
+        "y": 1749,
+        "width": 22,
+        "height": 18
+      },
+      {
+        "x": 1062,
+        "y": 224,
+        "width": 22,
+        "height": 18
+      },
+      {
+        "x": 1215,
+        "y": 305,
+        "width": 19,
+        "height": 20
+      },
+      {
+        "x": 1062,
+        "y": 306,
+        "width": 19,
+        "height": 19
+      },
+      {
+        "x": 401,
+        "y": 1053,
+        "width": 14,
+        "height": 21
+      },
+      {
+        "x": 681,
+        "y": 1809,
+        "width": 18,
+        "height": 14
+      },
+      {
+        "x": 396,
+        "y": 979,
+        "width": 11,
+        "height": 21
+      },
+      {
+        "x": 591,
+        "y": 1810,
+        "width": 17,
+        "height": 13
+      },
+      {
+        "x": 633,
+        "y": 979,
+        "width": 11,
+        "height": 19
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page038.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 24912,
+    "erase_changed_ratio": 0.009009302234749607,
+    "typeset_changed_pixels": 21328,
+    "typeset_changed_ratio": 0.0077131662677721435
+  },
+  "region_analysis": {
+    "total": 12,
+    "bubbles": 6,
+    "text_regions": 6,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 9,
+      "Global2x": 13,
+      "Focus3x": 71,
+      "Region2x": 19,
+      "Region1x": 16,
+      "Container1x": 16,
+      "Container2x": 15
+    },
+    "canonical_lines": 26,
+    "units": 11,
+    "assigned_lines": 21,
+    "orphan_groups": 5,
+    "secondary_total": 6,
+    "secondary_accepted": 6,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 208,
+          "Bottom": 263,
+          "Left": 990,
+          "Right": 1045,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NICE ONE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 224,
+          "Bottom": 325,
+          "Left": 1062,
+          "Right": 1234,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW SLIT THAT GUY\u0027S THROAT! NO, ACID HIS FACE! NO, CHOP OFF HIS--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 979,
+          "Bottom": 1126,
+          "Left": 396,
+          "Right": 644,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OWWWWW.WATCH THE GLASS, MAN, WHIL YOU? I\u0027M JUST TRYING TO HELP W",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1207,
+          "Bottom": 1265,
+          "Left": 1113,
+          "Right": 1192,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...BABY STEPS?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1754,
+          "Bottom": 1823,
+          "Left": 591,
+          "Right": 699,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AND I\u0027LL SHOW MYSELF OUT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1838,
+          "Bottom": 1867,
+          "Left": 1173,
+          "Right": 1233,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Unh...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 11,
+    "requested_render": 6
+  },
+  "render": {
+    "total": 6,
+    "approved": 6,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 6,
+    "TranslatedUnits": 6,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 6,
+    "TypesetCommittedUnits": 6,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "NICE ONE!",
+        "Translation": "\uD55C \uBC29 \uBA39\uC5C8\uB124!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "NOW SLIT THAT GUY\u0027S THROAT! NO, ACID HIS FACE! NO, CHOP",
+        "Translation": "\uB2F9\uC7A5 \uC800\uB188 \uBAA9\uC744 \uADF8\uC5B4\uBC84\uB824! \uC544\uB2C8, \uC5BC\uAD74\uC5D0 \uC0B0\uC744 \uBFCC\uB824! \uC544\uB2C8, \uD314\uC744 \uC798\uB77C--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "OWWWWW. WATCH THE GLASS, MAN, WILL YOU? I\u0027M JUST TRYING TO HELP. WE NEED TO WORK AS A TEAM. I KNOW IT\u0027S NEW, BUT. YOU KNoOW..",
+        "Translation": "\uC73C\uC544\uC544\uC544. [BR]\uC720\uB9AC \uC870\uC2EC \uC880 \uD574\uC904\uB798? [BR]\uB09C \uADF8\uB0E5 \uB3C4\uC640\uC8FC\uB824\uB294 \uAC83\uBFD0\uC774\uB77C\uACE0. [BR]\uC6B0\uB9B0 \uD300\uC73C\uB85C \uC6C0\uC9C1\uC5EC\uC57C \uD574. [BR]\uC775\uC219\uD558\uC9C4 \uC54A\uACA0\uC9C0\uB9CC, [BR]\uC54C\uC796\uC544...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": ".BABY STEPS?",
+        "Translation": "...\uD55C \uAC78\uC74C\uC529?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "NOs W AND I\u0027LL SHOW MYSELF OUT.",
+        "Translation": "\uADF8\uB7FC \uC774\uB9CC[BR]\uBB3C\uB7EC\uAC00\uACA0\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "Unh",
+        "Translation": "\uC73C\uC73D...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

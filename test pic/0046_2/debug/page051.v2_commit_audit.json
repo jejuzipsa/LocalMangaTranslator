@@ -1,0 +1,171 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page051.jpg",
+  "RequestedUnits": 6,
+  "TranslatedUnits": 5,
+  "PreservedOriginalUnits": 1,
+  "EraseCommittedUnits": 5,
+  "TypesetCommittedUnits": 5,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+      "Translation": "\u0022\uD558\uC9C0\uB9CC \uC774 \uC0AC\uB78C\uB4E4\uC5D0\uAC90 \uC601\uC6C5\uC774 \uD544\uC694\uD574. \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uC774. \uC800 \uC704\uC5D0\uC11C \uC2F8\uC6B4 \uAC74 \uADF8\uC758 \uC2F8\uC6C0\uC774\uC5C8\uC5B4. \uC61B\uB0A0\uC758 \uBE0C\uB8E8\uC2A4 \uB9D0\uC774\uC57C.\u0022",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 68,
+        "Y": 85,
+        "Width": 327,
+        "Height": 112
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+      "Translation": "\u0022\uC774\uACF3\uC5D0 \uC624\uBA74 \uB2F9\uC2E0\uC740 \uC0C8\uB85C\uC6B4 \uC2DC\uB300\uC758 \uC0C8\uB85C\uC6B4 \uBC30\uD2B8\uB9E8\uC774 \uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC800\uD76C\uC640 \uD568\uAED8 \uAC00\uC2DC\uC8E0. \uBD80\uD0C1\uC785\uB2C8\uB2E4.\u0022",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 932,
+        "Y": 317,
+        "Width": 267,
+        "Height": 108
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "DIANA, I DON\u0027T KNOW... I...",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 261,
+        "Y": 524,
+        "Width": 137,
+        "Height": 106
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "as PS",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 493,
+        "Y": 808,
+        "Width": 150,
+        "Height": 118
+      },
+      "Planned": true,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": false,
+      "Status": "original_preserved:vision_expansion_untrusted"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+      "Translation": "\uC81C\uBC1C, \uC880 \uC26C\uC5B4. \uB0B4\uC77C \uC544\uCE68\uC5D0 \uB354 \uC598\uAE30\uD558\uC790. \uADF8\uB9AC\uACE0 \uBE0C\uB8E8\uC2A4...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 132,
+        "Y": 615,
+        "Width": 197,
+        "Height": 142
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "IT\u0027S GOOD TO HAVE YOU BACK.",
+      "Translation": "...\uB2E4\uC2DC \uB3CC\uC544\uC640\uC11C[BR]\uB2E4\uD589\uC774\uC57C.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 493,
+        "Y": 808,
+        "Width": 150,
+        "Height": 118
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

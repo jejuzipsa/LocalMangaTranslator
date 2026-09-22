@@ -1,0 +1,281 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page033.jpg",
+  "output_file": "page033.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 28738,
+    "changed_ratio": 0.010392956311104457,
+    "changed_regions": [
+      {
+        "x": 602,
+        "y": 787,
+        "width": 87,
+        "height": 70
+      },
+      {
+        "x": 814,
+        "y": 788,
+        "width": 60,
+        "height": 69
+      },
+      {
+        "x": 498,
+        "y": 787,
+        "width": 44,
+        "height": 69
+      },
+      {
+        "x": 690,
+        "y": 788,
+        "width": 43,
+        "height": 67
+      },
+      {
+        "x": 768,
+        "y": 788,
+        "width": 40,
+        "height": 68
+      },
+      {
+        "x": 460,
+        "y": 787,
+        "width": 37,
+        "height": 70
+      },
+      {
+        "x": 549,
+        "y": 788,
+        "width": 33,
+        "height": 68
+      },
+      {
+        "x": 734,
+        "y": 788,
+        "width": 32,
+        "height": 68
+      },
+      {
+        "x": 608,
+        "y": 474,
+        "width": 42,
+        "height": 44
+      },
+      {
+        "x": 559,
+        "y": 727,
+        "width": 30,
+        "height": 49
+      },
+      {
+        "x": 713,
+        "y": 726,
+        "width": 27,
+        "height": 51
+      },
+      {
+        "x": 414,
+        "y": 474,
+        "width": 32,
+        "height": 43
+      },
+      {
+        "x": 681,
+        "y": 727,
+        "width": 27,
+        "height": 49
+      },
+      {
+        "x": 591,
+        "y": 727,
+        "width": 27,
+        "height": 49
+      },
+      {
+        "x": 535,
+        "y": 727,
+        "width": 26,
+        "height": 49
+      },
+      {
+        "x": 742,
+        "y": 727,
+        "width": 24,
+        "height": 49
+      },
+      {
+        "x": 617,
+        "y": 727,
+        "width": 24,
+        "height": 49
+      },
+      {
+        "x": 769,
+        "y": 727,
+        "width": 23,
+        "height": 49
+      },
+      {
+        "x": 655,
+        "y": 727,
+        "width": 23,
+        "height": 49
+      },
+      {
+        "x": 562,
+        "y": 495,
+        "width": 42,
+        "height": 23
+      },
+      {
+        "x": 655,
+        "y": 476,
+        "width": 40,
+        "height": 23
+      },
+      {
+        "x": 488,
+        "y": 497,
+        "width": 42,
+        "height": 21
+      },
+      {
+        "x": 461,
+        "y": 479,
+        "width": 23,
+        "height": 36
+      },
+      {
+        "x": 563,
+        "y": 474,
+        "width": 40,
+        "height": 19
+      },
+      {
+        "x": 654,
+        "y": 496,
+        "width": 42,
+        "height": 16
+      },
+      {
+        "x": 494,
+        "y": 474,
+        "width": 30,
+        "height": 21
+      },
+      {
+        "x": 447,
+        "y": 473,
+        "width": 8,
+        "height": 45
+      },
+      {
+        "x": 533,
+        "y": 506,
+        "width": 10,
+        "height": 9
+      },
+      {
+        "x": 533,
+        "y": 488,
+        "width": 10,
+        "height": 9
+      },
+      {
+        "x": 795,
+        "y": 741,
+        "width": 7,
+        "height": 8
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page033.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 24334,
+    "erase_changed_ratio": 0.008800271378468085,
+    "typeset_changed_pixels": 4404,
+    "typeset_changed_ratio": 0.001592684932636371
+  },
+  "region_analysis": {
+    "total": 2,
+    "bubbles": 1,
+    "text_regions": 1,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 2,
+      "Global2x": 3,
+      "Focus3x": 6,
+      "Region1x": 4,
+      "Region2x": 4,
+      "Container1x": 4,
+      "Container2x": 4
+    },
+    "canonical_lines": 4,
+    "units": 2,
+    "assigned_lines": 3,
+    "orphan_groups": 1,
+    "secondary_total": 1,
+    "secondary_accepted": 1,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 709,
+          "Bottom": 885,
+          "Left": 445,
+          "Right": 890,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PAPI HREE: THE ASYLUM",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 2,
+    "requested_render": 1
+  },
+  "render": {
+    "total": 1,
+    "approved": 1,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 1,
+    "TranslatedUnits": 1,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 1,
+    "TypesetCommittedUnits": 1,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "THREE: PART THE",
+        "Translation": "\uC81C3\uBD80:\n\uC218\uC6A9\uC18C",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

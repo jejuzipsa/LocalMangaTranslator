@@ -1,0 +1,61 @@
+{
+  "schema": "line-ownership-v1",
+  "lines": [
+    {
+      "LineId": "L0001",
+      "CandidateId": "PC001",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.86946838711749
+    },
+    {
+      "LineId": "L0002",
+      "CandidateId": "PC001",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.948685781708564
+    },
+    {
+      "LineId": "L0003",
+      "CandidateId": "PC001",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.944873404520404
+    },
+    {
+      "LineId": "L0004",
+      "CandidateId": "PC001",
+      "Assigned": true,
+      "Reason": "strong_geometry_owner",
+      "Coverage": 1,
+      "Score": 10.910352037115818
+    }
+  ],
+  "units": [
+    {
+      "UnitId": 0,
+      "CandidateId": "PC001",
+      "LineIds": [
+        "L0001",
+        "L0004"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_clustered"
+    },
+    {
+      "UnitId": 1,
+      "CandidateId": "PC001",
+      "LineIds": [
+        "L0003"
+      ],
+      "IsOrphan": false,
+      "Reason": "container_clustered"
+    }
+  ],
+  "container_count": 1,
+  "assigned_line_count": 4,
+  "orphan_group_count": 0
+}

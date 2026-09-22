@@ -1,0 +1,692 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page035.jpg",
+  "output_file": "page035.translated.webp",
+  "image": {
+    "width": 2062,
+    "height": 1586,
+    "changed_pixels": 53062,
+    "changed_ratio": 0.01622526397931464,
+    "changed_regions": [
+      {
+        "x": 1832,
+        "y": 935,
+        "width": 134,
+        "height": 95
+      },
+      {
+        "x": 287,
+        "y": 1153,
+        "width": 121,
+        "height": 96
+      },
+      {
+        "x": 317,
+        "y": 246,
+        "width": 220,
+        "height": 50
+      },
+      {
+        "x": 1163,
+        "y": 1000,
+        "width": 106,
+        "height": 81
+      },
+      {
+        "x": 837,
+        "y": 1385,
+        "width": 97,
+        "height": 75
+      },
+      {
+        "x": 617,
+        "y": 1408,
+        "width": 110,
+        "height": 57
+      },
+      {
+        "x": 73,
+        "y": 917,
+        "width": 101,
+        "height": 60
+      },
+      {
+        "x": 402,
+        "y": 1226,
+        "width": 90,
+        "height": 65
+      },
+      {
+        "x": 1605,
+        "y": 996,
+        "width": 99,
+        "height": 59
+      },
+      {
+        "x": 1496,
+        "y": 927,
+        "width": 81,
+        "height": 65
+      },
+      {
+        "x": 391,
+        "y": 755,
+        "width": 61,
+        "height": 55
+      },
+      {
+        "x": 253,
+        "y": 357,
+        "width": 154,
+        "height": 14
+      },
+      {
+        "x": 1569,
+        "y": 927,
+        "width": 31,
+        "height": 44
+      },
+      {
+        "x": 239,
+        "y": 58,
+        "width": 78,
+        "height": 17
+      },
+      {
+        "x": 218,
+        "y": 76,
+        "width": 76,
+        "height": 17
+      },
+      {
+        "x": 659,
+        "y": 1389,
+        "width": 50,
+        "height": 19
+      },
+      {
+        "x": 386,
+        "y": 1225,
+        "width": 29,
+        "height": 26
+      },
+      {
+        "x": 319,
+        "y": 58,
+        "width": 44,
+        "height": 17
+      },
+      {
+        "x": 285,
+        "y": 372,
+        "width": 50,
+        "height": 14
+      },
+      {
+        "x": 337,
+        "y": 372,
+        "width": 49,
+        "height": 14
+      },
+      {
+        "x": 497,
+        "y": 282,
+        "width": 40,
+        "height": 17
+      },
+      {
+        "x": 296,
+        "y": 76,
+        "width": 37,
+        "height": 17
+      },
+      {
+        "x": 383,
+        "y": 372,
+        "width": 28,
+        "height": 18
+      },
+      {
+        "x": 1680,
+        "y": 995,
+        "width": 25,
+        "height": 20
+      },
+      {
+        "x": 1160,
+        "y": 1002,
+        "width": 32,
+        "height": 15
+      },
+      {
+        "x": 1491,
+        "y": 929,
+        "width": 30,
+        "height": 16
+      },
+      {
+        "x": 1603,
+        "y": 996,
+        "width": 27,
+        "height": 16
+      },
+      {
+        "x": 336,
+        "y": 79,
+        "width": 33,
+        "height": 13
+      },
+      {
+        "x": 707,
+        "y": 1385,
+        "width": 20,
+        "height": 21
+      },
+      {
+        "x": 252,
+        "y": 372,
+        "width": 29,
+        "height": 14
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page035.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 33167,
+    "erase_changed_ratio": 0.010141783769965863,
+    "typeset_changed_pixels": 32306,
+    "typeset_changed_ratio": 0.009878507747837223
+  },
+  "region_analysis": {
+    "total": 26,
+    "bubbles": 13,
+    "text_regions": 13,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 24,
+      "Global2x": 19,
+      "Focus3x": 142,
+      "Region1x": 48,
+      "Region2x": 47,
+      "Container1x": 44,
+      "Container2x": 43
+    },
+    "canonical_lines": 56,
+    "units": 21,
+    "assigned_lines": 48,
+    "orphan_groups": 8,
+    "secondary_total": 13,
+    "secondary_accepted": 13,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 57,
+          "Bottom": 94,
+          "Left": 212,
+          "Right": 379,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "He walked the whole way at the same pace.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 246,
+          "Bottom": 299,
+          "Left": 308,
+          "Right": 537,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 354,
+          "Bottom": 390,
+          "Left": 248,
+          "Right": 411,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "But that\u0027s selfishness. And I know better.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 761,
+          "Bottom": 804,
+          "Left": 388,
+          "Right": 452,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I TOLD YOU SO.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 920,
+          "Bottom": 975,
+          "Left": 73,
+          "Right": 174,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I HAD TO SEE FOR MYSELF.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG010",
+        "Bounds": {
+          "Top": 929,
+          "Bottom": 991,
+          "Left": 1491,
+          "Right": 1600,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUST...\nTHERE FOR THE\nTAKING.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 936,
+          "Bottom": 1031,
+          "Left": 1832,
+          "Right": 1966,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT DOFSN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 996,
+          "Bottom": 1057,
+          "Left": 1603,
+          "Right": 1705,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BY EVERYONE AND ANYONE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1002,
+          "Bottom": 1083,
+          "Left": 1160,
+          "Right": 1274,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1153,
+          "Bottom": 1251,
+          "Left": 287,
+          "Right": 407,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1225,
+          "Bottom": 1294,
+          "Left": 397,
+          "Right": 495,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT HAPPENED TO THE BATTERY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1385,
+          "Bottom": 1465,
+          "Left": 619,
+          "Right": 723,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 1384,
+          "Bottom": 1461,
+          "Left": 844,
+          "Right": 929,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MOGO\nLEECHED TO\nDEATH BY\nBRAINIAC.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 21,
+    "requested_render": 14
+  },
+  "render": {
+    "total": 13,
+    "approved": 13,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 14,
+    "TranslatedUnits": 13,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 13,
+    "TypesetCommittedUnits": 13,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "He walked the whole way at the same pace.",
+        "Translation": "\uADF8\uB294 \uB0B4\uB0B4 \uC77C\uC815\uD55C \uC18D\uB3C4\uB85C \uAC78\uC5C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "I like to think he was thinking the Old days, Of family.",
+        "Translation": "\uADF8\uAC00 \uB5A0\uB098\uBA74\uC11C \uB098\uB97C \uC0DD\uAC01\uD558\uBA70,\n\uC61B \uC2DC\uC808\uACFC \uAC00\uC871\uC744 \uB5A0\uC62C\uB838\uC744 \uAC70\uB77C \uBBFF\uACE0 \uC2F6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "But that\u0027s selfishness. And I know better.",
+        "Translation": "\uD558\uC9C0\uB9CC \uADF8\uAC74 \uC774\uAE30\uC801\uC778 \uAC70\uC57C.[BR]\uB09C \uB354 \uC798 \uC54C\uACE0 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "I TOLD YOU SO.",
+        "Translation": "\uAC70\uBD10, \uB0B4 \uB9D0\uC774 \uB9DE\uC9C0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "I HAD TO SEE FOR MYSELF.",
+        "Translation": "\uB0B4 \uB208\uC73C\uB85C \uC9C1\uC811 \uD655\uC778\uD574\uC57C \uD588\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "JUST.. THERE FOR THE TAKING.",
+        "Translation": "\uADF8\uC800...[BR]\uAC00\uC838\uAC00\uAE30\uB9CC \uD558\uBA74 \uB3FC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "IT DOESNT MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "Translation": "\uD558\uC9C0\uB9CC \uC0C1\uAD00\uC5C6\uC5B4.[BR]\uADF8\uAC74 \uAE34 \uC804\uC7C1 \uC18D\uC758[BR]\uB2E8 \uD55C \uBC88\uC758 \uC804\uD22C\uC600\uC73C\uB2C8\uAE4C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "BY EVERYONE AND ANYONE.",
+        "Translation": "\uADF8 \uB204\uAD6C\uB77C\uB3C4, [BR]\uADF8 \uB204\uAD6C\uC5D0\uAC8C\uB098.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "Translation": "\uADF8\uB9B0 \uB79C\uD134 \uBC18\uC9C0\uB4E4\uC774[BR]\uC9C0\uAD6C\uB85C \uB5A8\uC5B4\uC9C0\uACE0 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "i",
+        "Translation": "\uB098",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "WELL, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OF OFF IN HERE.",
+        "Translation": "\uC790, \uADF8\uB7FC \uD655\uC778\uD558\uACE0 \uAC00\uC790. [BR]\uC5EC\uAE30\uC11C \uB540 \uC880 \uBED8\uBED8 \uD758\uB9AC\uACE0 \uC788\uAC70\uB4E0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "WHAT HAPPENED TO THE BATTERY?",
+        "Translation": "\uBC30\uD130\uB9AC\uB294 \uC5B4\uB5BB\uAC8C \uB41C \uAC70\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "Translation": "\uADF8\uB0E5 \uC870\uAC01\uC870\uAC01 \uC0DD\uAC01\uB0A0 \uBFD0\uC774\uC57C. \uCE74\uB4DC \uBC18 \uC138\uD2B8 \uC815\uB3C4, \uB9DE\uC9C0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "M060 LEECHED TO DEATH BY BRAINIAC.",
+        "Translation": "\uBAA8\uACE0\uB294 \uBE0C\uB808\uC774\uB2C8\uC561\uC5D0\uAC8C\n\uC0DD\uBA85\uB825\uC744 \uBE68\uB824 \uC8FD\uC5C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

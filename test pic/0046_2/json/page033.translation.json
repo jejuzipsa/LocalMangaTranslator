@@ -1,0 +1,89 @@
+{
+  "SourceFile": "page033.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:19:04.7079787+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 453,
+        "Y": 715,
+        "W": 356.66666666666663,
+        "H": 146.5,
+        "Text": "THREE: PART THE",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 638.3333333333334,
+            "Y": 715,
+            "W": 171.33333333333326,
+            "H": 71.33333333333337,
+            "Text": "THREE:",
+            "Confidence": 0.99933195,
+            "Language": "en"
+          },
+          {
+            "X": 523.3333333333334,
+            "Y": 716.3333333333334,
+            "W": 130,
+            "H": 68.66666666666663,
+            "Text": "PART",
+            "Confidence": 0.9985627,
+            "Language": "en"
+          },
+          {
+            "X": 453,
+            "Y": 780,
+            "W": 146,
+            "H": 81.5,
+            "Text": "THE",
+            "Confidence": 0.9995932,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PAPI HREE: THE ASYLUM",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "PART THREE:\nTHE ASYLUM",
+      "Translation": "\uC81C3\uBD80:\n\uC218\uC6A9\uC18C",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1005.5,
+        "Y": 1754,
+        "W": 206.5,
+        "H": 128,
+        "Text": "HATA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1005.5,
+            "Y": 1754,
+            "W": 206.5,
+            "H": 128,
+            "Text": "HATA",
+            "Confidence": 0.31472787,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "HATA",
+      "Translation": "\uD558\uD0C0",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

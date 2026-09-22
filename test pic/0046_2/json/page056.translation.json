@@ -1,0 +1,57 @@
+{
+  "SourceFile": "page056.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:18:50.2820045+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 406,
+        "Y": 714,
+        "W": 545,
+        "H": 167,
+        "Text": "\u0022..on one last adventure \u0022..on one last adventure together.\u0022",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 406,
+            "Y": 714,
+            "W": 545,
+            "H": 76,
+            "Text": "\u0022..on one last adventure",
+            "Confidence": 0.9408216,
+            "Language": "en"
+          },
+          {
+            "X": 406.3333333333333,
+            "Y": 719.6666666666666,
+            "W": 540.6666666666667,
+            "H": 68.33333333333337,
+            "Text": "\u0022..on one last adventure",
+            "Confidence": 0.96323377,
+            "Language": "en"
+          },
+          {
+            "X": 527,
+            "Y": 769,
+            "W": 288,
+            "H": 112,
+            "Text": "together.\u0022",
+            "Confidence": 0.94133526,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "\u0022...on one last adventure together.\u0022",
+      "Translation": "\u0022...\uB9C8\uC9C0\uB9C9 \uBAA8\uD5D8\uC744[BR]\uD568\uAED8.\u0022",
+      "Type": "caption",
+      "Render": true
+    }
+  ]
+}

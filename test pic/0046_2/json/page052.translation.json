@@ -1,0 +1,910 @@
+{
+  "SourceFile": "page052.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:50:53.641803+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 344,
+        "Y": 57,
+        "W": 96,
+        "H": 23,
+        "Text": "SORRY?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 344,
+            "Y": 57,
+            "W": 96,
+            "H": 23,
+            "Text": "SORRY?",
+            "Confidence": 0.9997017,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SORRY?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "SORRY?",
+      "Translation": "\uBB50\uB77C\uACE0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 123.66666666666667,
+        "Y": 95.66666666666667,
+        "W": 227.33333333333331,
+        "H": 126.33333333333333,
+        "Text": "YOU\u0027RE BATMAN, PEOPLE ARE IGHT? THAT SAYING \u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "OriginalRegionCount": 10,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 147.33333333333334,
+            "Y": 95.66666666666667,
+            "W": 178.99999999999997,
+            "H": 28.999999999999986,
+            "Text": "YOU\u0027RE BATMAN,",
+            "Confidence": 0.9954434,
+            "Language": "en"
+          },
+          {
+            "X": 211.33333333333334,
+            "Y": 117,
+            "W": 133.3333333333333,
+            "H": 25.666666666666657,
+            "Text": "PEOPLE ARE",
+            "Confidence": 0.99884266,
+            "Language": "en"
+          },
+          {
+            "X": 149,
+            "Y": 118.66666666666667,
+            "W": 69.66666666666669,
+            "H": 22.33333333333333,
+            "Text": "IGHT?",
+            "Confidence": 0.99923426,
+            "Language": "en"
+          },
+          {
+            "X": 212.33333333333334,
+            "Y": 137.66666666666666,
+            "W": 53.99999999999997,
+            "H": 24,
+            "Text": "THAT",
+            "Confidence": 0.99945956,
+            "Language": "en"
+          },
+          {
+            "X": 127.33333333333334,
+            "Y": 139.33333333333334,
+            "W": 82.99999999999997,
+            "H": 21.333333333333314,
+            "Text": "SAYING",
+            "Confidence": 0.97028404,
+            "Language": "en"
+          },
+          {
+            "X": 316,
+            "Y": 142,
+            "W": 34.666666666666686,
+            "H": 20,
+            "Text": "\u0027RE",
+            "Confidence": 0.977123,
+            "Language": "en"
+          },
+          {
+            "X": 123.66666666666667,
+            "Y": 155,
+            "W": 227.33333333333331,
+            "H": 26.666666666666657,
+            "Text": "HIM. SO CAN YOU SEE",
+            "Confidence": 0.9953682,
+            "Language": "en"
+          },
+          {
+            "X": 163,
+            "Y": 178,
+            "W": 132.33333333333337,
+            "H": 22,
+            "Text": "THINGS LIKE",
+            "Confidence": 0.99944866,
+            "Language": "en"
+          },
+          {
+            "X": 292,
+            "Y": 179.33333333333334,
+            "W": 20,
+            "H": 19.333333333333343,
+            "Text": "A",
+            "Confidence": 0.987723,
+            "Language": "en"
+          },
+          {
+            "X": 207,
+            "Y": 196,
+            "W": 62,
+            "H": 26,
+            "Text": "BAT?",
+            "Confidence": 0.9995705,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN Y",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+      "Translation": "\uB2F9\uC2E0\uC774 \uBC30\uD2B8\uB9E8 \uB9DE\uC8E0? \uC0AC\uB78C\uB4E4\uC774 \uB2E4 \uB2F9\uC2E0\uC774\uB77C\uACE0 \uD558\uB358\uB370. \uADF8\uB7FC \uBC15\uC950\uCC98\uB7FC \uC0AC\uBB3C\uC744 \uBCFC \uC218 \uC788\uB098\uC694?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 958.3333333333334,
+        "Y": 154,
+        "W": 168.9999999999999,
+        "H": 67,
+        "Text": "2n HC TUHLL7.. IM THE ONE WHO\u0027S SCARED.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 958.3333333333334,
+            "Y": 154,
+            "W": 20.66666666666663,
+            "H": 51,
+            "Text": "2n",
+            "Confidence": 0.33495548,
+            "Language": "en"
+          },
+          {
+            "X": 970,
+            "Y": 169,
+            "W": 31,
+            "H": 11,
+            "Text": "HC",
+            "Confidence": 0.99644697,
+            "Language": "en"
+          },
+          {
+            "X": 997.3333333333334,
+            "Y": 169,
+            "W": 125.33333333333337,
+            "H": 14,
+            "Text": "TUHLL7.. IM",
+            "Confidence": 0.82246125,
+            "Language": "en"
+          },
+          {
+            "X": 962.3333333333334,
+            "Y": 176.66666666666666,
+            "W": 42,
+            "H": 24.666666666666657,
+            "Text": "THE",
+            "Confidence": 0.99957186,
+            "Language": "en"
+          },
+          {
+            "X": 1002,
+            "Y": 177.66666666666666,
+            "W": 52,
+            "H": 23,
+            "Text": "ONE",
+            "Confidence": 0.99952286,
+            "Language": "en"
+          },
+          {
+            "X": 1050,
+            "Y": 178,
+            "W": 77.33333333333326,
+            "H": 23,
+            "Text": "WHO\u0027S",
+            "Confidence": 0.99527204,
+            "Language": "en"
+          },
+          {
+            "X": 997.3333333333334,
+            "Y": 198,
+            "W": 94.99999999999989,
+            "H": 23,
+            "Text": "SCARED.",
+            "Confidence": 0.99940306,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+      "Translation": "\uC0AC\uC2E4\uC740... \uBB34\uC11C\uC6B4 \uAC74[BR]\uB098\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 299.66666666666663,
+        "Y": 201,
+        "W": 226,
+        "H": 112,
+        "Text": "MY MY BROTHER IS LITTLE DE IT\u0027LL E TUNT SCARED DARK WHERE WE\u0027RE GOING NEXT. 4",
+        "OriginalRegionCount": 11,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 389,
+            "Y": 201,
+            "W": 46,
+            "H": 35,
+            "Text": "MY",
+            "Confidence": 0.98503065,
+            "Language": "en"
+          },
+          {
+            "X": 394.3333333333333,
+            "Y": 206,
+            "W": 39.666666666666686,
+            "H": 20,
+            "Text": "MY",
+            "Confidence": 0.999499,
+            "Language": "en"
+          },
+          {
+            "X": 379.3333333333333,
+            "Y": 228.66666666666669,
+            "W": 136.00000000000006,
+            "H": 24.333333333333314,
+            "Text": "BROTHER IS",
+            "Confidence": 0.99957716,
+            "Language": "en"
+          },
+          {
+            "X": 313.3333333333333,
+            "Y": 229.33333333333331,
+            "W": 69.33333333333337,
+            "H": 23.333333333333343,
+            "Text": "LITTLE",
+            "Confidence": 0.9999439,
+            "Language": "en"
+          },
+          {
+            "X": 495.6666666666667,
+            "Y": 247.66666666666666,
+            "W": 29.999999999999943,
+            "H": 13.333333333333343,
+            "Text": "DE",
+            "Confidence": 0.45619604,
+            "Language": "en"
+          },
+          {
+            "X": 444,
+            "Y": 249,
+            "W": 64,
+            "H": 22.33333333333337,
+            "Text": "IT\u0027LL E",
+            "Confidence": 0.9737478,
+            "Language": "en"
+          },
+          {
+            "X": 389.6666666666667,
+            "Y": 249.33333333333334,
+            "W": 54.333333333333314,
+            "H": 11.666666666666657,
+            "Text": "TUNT",
+            "Confidence": 0.8388345,
+            "Language": "en"
+          },
+          {
+            "X": 299.66666666666663,
+            "Y": 249.66666666666669,
+            "W": 88.33333333333337,
+            "H": 21.333333333333314,
+            "Text": "SCARED",
+            "Confidence": 0.9996741,
+            "Language": "en"
+          },
+          {
+            "X": 308,
+            "Y": 265,
+            "W": 211.66666666666663,
+            "H": 29.666666666666686,
+            "Text": "DARK WHERE WE\u0027RE",
+            "Confidence": 0.99467987,
+            "Language": "en"
+          },
+          {
+            "X": 343.6666666666667,
+            "Y": 288.66666666666663,
+            "W": 141.33333333333331,
+            "H": 23,
+            "Text": "GOING NEXT.",
+            "Confidence": 0.99555236,
+            "Language": "en"
+          },
+          {
+            "X": 511.33333333333337,
+            "Y": 306.33333333333337,
+            "W": 6.666666666666629,
+            "H": 6.666666666666629,
+            "Text": "4",
+            "Confidence": 0.3584997,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MY\nLITTLE BROTHER IS\nSCARED THAT IT\u0027LL BE\nDARK WHERE WE\u0027RE\nGOING NEXT.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "MY LITTLE BROTHER IS SCARED THAT IT\u0027LL BE DARK WHERE WE\u0027RE GOING NEXT.",
+      "Translation": "\uB0B4 \uB3D9\uC0DD\uC774 \uB2E4\uC74C \uC7A5\uC18C\uB294\n\uC5B4\uB450\uC6B8\uAE4C \uBD10 \uBB34\uC11C\uC6CC\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1059,
+        "Y": 235.66666666666666,
+        "W": 195,
+        "H": 100.33333333333334,
+        "Text": "BUT SEE IN CAN THE DARK, RIGHT? TEACH CAN YOU HOW?",
+        "OriginalRegionCount": 10,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1132.3333333333333,
+            "Y": 235.66666666666666,
+            "W": 45.33333333333326,
+            "H": 22.333333333333343,
+            "Text": "BUT",
+            "Confidence": 0.99139595,
+            "Language": "en"
+          },
+          {
+            "X": 1166,
+            "Y": 253.33333333333334,
+            "W": 74,
+            "H": 25.00000000000003,
+            "Text": "SEE IN",
+            "Confidence": 0.9995849,
+            "Language": "en"
+          },
+          {
+            "X": 1119.3333333333333,
+            "Y": 255,
+            "W": 49.66666666666674,
+            "H": 21.333333333333314,
+            "Text": "CAN",
+            "Confidence": 0.9993192,
+            "Language": "en"
+          },
+          {
+            "X": 1059,
+            "Y": 273.66666666666663,
+            "W": 43,
+            "H": 22.33333333333337,
+            "Text": "THE",
+            "Confidence": 0.9996656,
+            "Language": "en"
+          },
+          {
+            "X": 1096.3333333333333,
+            "Y": 274,
+            "W": 74.66666666666674,
+            "H": 23.33333333333337,
+            "Text": "DARK,",
+            "Confidence": 0.999577,
+            "Language": "en"
+          },
+          {
+            "X": 1169.6666666666667,
+            "Y": 274,
+            "W": 84.33333333333326,
+            "H": 22.66666666666663,
+            "Text": "RIGHT?",
+            "Confidence": 0.99970335,
+            "Language": "en"
+          },
+          {
+            "X": 1169,
+            "Y": 292.6666666666667,
+            "W": 70.66666666666674,
+            "H": 24.999999999999943,
+            "Text": "TEACH",
+            "Confidence": 0.99429584,
+            "Language": "en"
+          },
+          {
+            "X": 1073,
+            "Y": 294.3333333333333,
+            "W": 54,
+            "H": 21.333333333333314,
+            "Text": "CAN",
+            "Confidence": 0.9988355,
+            "Language": "en"
+          },
+          {
+            "X": 1117,
+            "Y": 295.3333333333333,
+            "W": 51.33333333333326,
+            "H": 19.333333333333314,
+            "Text": "YOU",
+            "Confidence": 0.68636745,
+            "Language": "en"
+          },
+          {
+            "X": 1136.6666666666667,
+            "Y": 313.66666666666663,
+            "W": 69.66666666666652,
+            "H": 22.33333333333337,
+            "Text": "HOW?",
+            "Confidence": 0.9972724,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+      "Translation": "\uD558\uC9C0\uB9CC \uC5B4\uB460 \uC18D\uC5D0\uC11C\uB3C4 \uBCFC \uC218 \uC788\uC796\uC544, \uADF8\uCE58? \uC6B0\uB9AC\uD55C\uD14C\uB3C4 \uAC00\uB974\uCCD0 \uC904 \uC218 \uC788\uC5B4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 347.3333333333333,
+        "Y": 335.33333333333337,
+        "W": 83.33333333333337,
+        "H": 48,
+        "Text": "DOWN THERE?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 351.3333333333333,
+            "Y": 335.33333333333337,
+            "W": 74,
+            "H": 28.66666666666663,
+            "Text": "DOWN",
+            "Confidence": 0.9997785,
+            "Language": "en"
+          },
+          {
+            "X": 347.3333333333333,
+            "Y": 356.33333333333337,
+            "W": 83.33333333333337,
+            "H": 27,
+            "Text": "THERE?",
+            "Confidence": 0.998952,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DOWN THERE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "DOWN THERE?",
+      "Translation": "\uC800 \uC544\uB798\uC5D0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 907.6666666666666,
+        "Y": 769,
+        "W": 158.9999999999999,
+        "H": 45.66666666666663,
+        "Text": "WM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 907.6666666666666,
+            "Y": 769,
+            "W": 158.9999999999999,
+            "H": 45.66666666666663,
+            "Text": "WM",
+            "Confidence": 0.623104,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WM",
+      "Translation": "WM",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 923.3333333333333,
+        "Y": 848.5,
+        "W": 343.66666666666674,
+        "H": 104.5,
+        "Text": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 924.5,
+            "Y": 848.5,
+            "W": 342.5,
+            "H": 26.5,
+            "Text": "WELL, BATS... THEY CAN\u0027T ACTUALLY",
+            "Confidence": 0.97975665,
+            "Language": "en"
+          },
+          {
+            "X": 923.3333333333333,
+            "Y": 869,
+            "W": 343.66666666666674,
+            "H": 25,
+            "Text": "SEE IN THE DARK. THEY USE THEIR",
+            "Confidence": 0.99782306,
+            "Language": "en"
+          },
+          {
+            "X": 930.6666666666666,
+            "Y": 888,
+            "W": 331.66666666666663,
+            "H": 26.66666666666663,
+            "Text": "VOICES. THEY USE ECHOES. IT\u0027S",
+            "Confidence": 0.99656284,
+            "Language": "en"
+          },
+          {
+            "X": 960,
+            "Y": 909.5,
+            "W": 271.5,
+            "H": 23.5,
+            "Text": "HOW THEY FIND THEIR WAY",
+            "Confidence": 0.9989197,
+            "Language": "en"
+          },
+          {
+            "X": 1039,
+            "Y": 929,
+            "W": 113,
+            "H": 24,
+            "Text": "THROUGH.",
+            "Confidence": 0.9977424,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WELL BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE THOR HOW HOW THEX THO THEMA THEX THOHO THEX T.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+      "Translation": "\uAE00\uC384, \uBC15\uC950\uB4E4\uC740...[BR]\uC0AC\uC2E4 \uC5B4\uB460 \uC18D\uC744 \uBCFC \uC218 \uC5C6\uC5B4.[BR]\uBAA9\uC18C\uB9AC\uB97C \uC774\uC6A9\uD558\uACE0,[BR]\uBA54\uC544\uB9AC\uB97C \uC774\uC6A9\uD558\uB294 \uAC70\uC9C0.[BR]\uADF8\uAC8C \uAE38\uC744 \uCC3E\uB294 \uBC29\uC2DD\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1029,
+        "Y": 960.6666666666666,
+        "W": 79.33333333333348,
+        "H": 24.33333333333337,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1029,
+            "Y": 960.6666666666666,
+            "W": 79.33333333333348,
+            "H": 24.33333333333337,
+            "Text": "A",
+            "Confidence": 0.46234426,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 893,
+        "Y": 1310,
+        "W": 160,
+        "H": 104,
+        "Text": "HEEL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 893,
+            "Y": 1310,
+            "W": 160,
+            "H": 104,
+            "Text": "HEEL",
+            "Confidence": 0.82724625,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "HELL",
+      "Translation": "\uC9C0\uC625",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 103,
+        "Y": 1320,
+        "W": 298.6666666666667,
+        "H": 84.33333333333326,
+        "Text": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 103,
+            "Y": 1320,
+            "W": 298.6666666666667,
+            "H": 24.333333333333258,
+            "Text": "WE\u0027RE NOT REALLY ALLOWED",
+            "Confidence": 0.9989187,
+            "Language": "en"
+          },
+          {
+            "X": 123,
+            "Y": 1339,
+            "W": 260,
+            "H": 25.666666666666742,
+            "Text": "TO MAKE ECHOES DOWN",
+            "Confidence": 0.99280524,
+            "Language": "en"
+          },
+          {
+            "X": 145.33333333333334,
+            "Y": 1361,
+            "W": 215.66666666666666,
+            "H": 22.333333333333258,
+            "Text": "HERE. THEY DISTURB",
+            "Confidence": 0.9977858,
+            "Language": "en"
+          },
+          {
+            "X": 193,
+            "Y": 1379.3333333333333,
+            "W": 119.66666666666669,
+            "H": 25,
+            "Text": "EVERYONE.",
+            "Confidence": 0.9991836,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+      "Translation": "\uC5EC\uAE30\uC120 \uC18C\uB9AC \uB0B4\uBA74 \uC548 \uB3FC.[BR]\uBAA8\uB450\uB97C \uBC29\uD574\uD558\uAC70\uB4E0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 243.33333333333334,
+        "Y": 1444,
+        "W": 143.33333333333334,
+        "H": 64,
+        "Text": "HEH. you WANT TO TRY ANYWAY?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 265,
+            "Y": 1444,
+            "W": 54,
+            "H": 24.333333333333258,
+            "Text": "HEH.",
+            "Confidence": 0.974864,
+            "Language": "en"
+          },
+          {
+            "X": 317,
+            "Y": 1444.3333333333333,
+            "W": 49.666666666666686,
+            "H": 23.333333333333485,
+            "Text": "you",
+            "Confidence": 0.6837084,
+            "Language": "en"
+          },
+          {
+            "X": 243.33333333333334,
+            "Y": 1462.6666666666667,
+            "W": 143.33333333333334,
+            "H": 27.666666666666515,
+            "Text": "WANT TO TRY",
+            "Confidence": 0.99830574,
+            "Language": "en"
+          },
+          {
+            "X": 265.33333333333337,
+            "Y": 1483.3333333333333,
+            "W": 103.99999999999994,
+            "H": 24.666666666666742,
+            "Text": "ANYWAY?",
+            "Confidence": 0.9971535,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HEH. YOU WANT TO TRY ANYWAY?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "HEH. YOU WANT TO TRY ANYWAY?",
+      "Translation": "\uD6D7. \uADF8\uB798\uB3C4 \uD55C\uBC88 \uD574\uBCF4\uACA0\uB2E4\uACE0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 585.5,
+        "Y": 1486.3333333333333,
+        "W": 118.5,
+        "H": 67.33333333333348,
+        "Text": "READY? ON THREE. VE, TWO...",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 605,
+            "Y": 1486.3333333333333,
+            "W": 83,
+            "H": 27.333333333333485,
+            "Text": "READY?",
+            "Confidence": 0.99867463,
+            "Language": "en"
+          },
+          {
+            "X": 585.5,
+            "Y": 1507.5,
+            "W": 111.5,
+            "H": 25.5,
+            "Text": "ON THREE.",
+            "Confidence": 0.9879648,
+            "Language": "en"
+          },
+          {
+            "X": 605,
+            "Y": 1527,
+            "W": 99,
+            "H": 26.666666666666742,
+            "Text": "VE, TWO...",
+            "Confidence": 0.93806595,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "READY?\nON THREE.\nONE, TWO...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "READY? ON THREE. ONE, TWO...",
+      "Translation": "\uC900\uBE44\uB410\uC5B4?[BR]\uC14B\uC5D0 \uB9DE\uCDB0\uC11C.[BR]\uD558\uB098, \uB458...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 175,
+        "Y": 1543,
+        "W": 104,
+        "H": 36,
+        "Text": "REALLY?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 175,
+            "Y": 1543,
+            "W": 104,
+            "H": 36,
+            "Text": "REALLY?",
+            "Confidence": 0.99963486,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "REALLY?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "REALLY?",
+      "Translation": "\uC9C4\uC9DC?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1072,
+        "Y": 1797,
+        "W": 208,
+        "H": 198,
+        "Text": "00",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1072,
+            "Y": 1797,
+            "W": 208,
+            "H": 198,
+            "Text": "00",
+            "Confidence": 0.3012591,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "00",
+      "Translation": "00",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page052.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.1209,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.8655788,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.5495097567963922,
+            "Affinity": 7.427690365805163
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0159,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9543483,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.7453559924999257,
+            "Affinity": 7.475683450879685
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0747,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9440396,
+            "BlockCoverage": 0.9458035267449736,
+            "CenterInside": true,
+            "CenterDistance": 3.700600551862464,
+            "Affinity": 7.247832697479258
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.1375,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.959149,
+            "BlockCoverage": 0.9553571428571429,
+            "CenterInside": true,
+            "CenterDistance": 4.0858835573770955,
+            "Affinity": 7.292831305828252
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1192,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9549346,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.9718253158075338,
+            "Affinity": 7.475523647876075
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0575,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.8880558,
+            "BlockCoverage": 0.9861111111111119,
+            "CenterInside": true,
+            "CenterDistance": 1.536590742882119,
+            "Affinity": 7.385399163654485
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5891,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "WM",
+        "corrected_text": "WM",
+        "ocr_confidence": 0.6231039762496948,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 907.6666666666666,
+          "Y": 769,
+          "W": 158.9999999999999,
+          "H": 45.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.1541,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9647311,
+            "BlockCoverage": 0.9952153110047848,
+            "CenterInside": true,
+            "CenterDistance": 2.3993633414813806,
+            "Affinity": 7.458428065946864
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0531,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9647311,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 74.99203661426685,
+            "Affinity": 0.33238147538215357
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 9,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5913,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "HEEL",
+        "corrected_text": "HELL",
+        "ocr_confidence": 0.8272462487220764,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 893,
+          "Y": 1310,
+          "W": 160,
+          "H": 104
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0851,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.95604956,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.8408935028646936,
+            "Affinity": 7.474342993744545
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0222,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.9452132,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.5811388300841898,
+            "Affinity": 7.469444321670734
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.14,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.94358873,
+            "BlockCoverage": 0.9817437439946515,
+            "CenterInside": true,
+            "CenterDistance": 4.981214711292819,
+            "Affinity": 7.3888069133925685
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.0897,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.8902958,
+            "BlockCoverage": 0.8547008547008547,
+            "CenterInside": true,
+            "CenterDistance": 2.23606797749979,
+            "Affinity": 6.859479184621872
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 14,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.587,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "00",
+        "corrected_text": "00",
+        "ocr_confidence": 0.3012591004371643,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1072,
+          "Y": 1797,
+          "W": 208,
+          "H": 198
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0952,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SORRY?",
+        "secondary_ocr": "SORRY?",
+        "primary_confidence": 0.9997016787528992,
+        "current_agreement": "agree",
+        "corrected_text": "SORRY?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0144,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "YOU\u0027RE BATMAN, PEOPLE ARE IGHT? THAT SAYING \u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "secondary_ocr": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN Y",
+        "primary_confidence": 0.9922497272491455,
+        "current_agreement": "disagree",
+        "corrected_text": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0726,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "2n HC TUHLL7.. IM THE ONE WHO\u0027S SCARED.",
+        "secondary_ocr": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "primary_confidence": 0.8782333731651306,
+        "current_agreement": "disagree",
+        "corrected_text": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0532,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MY MY BROTHER IS LITTLE DE IT\u0027LL E TUNT SCARED DARK WHERE WE\u0027RE GOING NEXT. 4",
+        "secondary_ocr": "MY\nLITTLE BROTHER IS\nSCARED THAT IT\u0027LL BE\nDARK WHERE WE\u0027RE\nGOING NEXT.",
+        "primary_confidence": 0.8728395700454712,
+        "current_agreement": "disagree",
+        "corrected_text": "MY LITTLE BROTHER IS SCARED THAT IT\u0027LL BE DARK WHERE WE\u0027RE GOING NEXT."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0177,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BUT SEE IN CAN THE DARK, RIGHT? TEACH CAN YOU HOW?",
+        "secondary_ocr": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "primary_confidence": 0.9666017293930054,
+        "current_agreement": "disagree",
+        "corrected_text": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1015,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DOWN THERE?",
+        "secondary_ocr": "DOWN THERE?",
+        "primary_confidence": 0.9993652105331421,
+        "current_agreement": "agree",
+        "corrected_text": "DOWN THERE?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0128,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+        "secondary_ocr": "WELL BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE THOR HOW HOW THEX THO THEMA THEX THOHO THEX T.",
+        "primary_confidence": 0.9941609501838684,
+        "current_agreement": "disagree",
+        "corrected_text": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.034,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+        "secondary_ocr": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB",
+        "primary_confidence": 0.9971733093261719,
+        "current_agreement": "partial",
+        "corrected_text": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1611,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HEH. you WANT TO TRY ANYWAY?",
+        "secondary_ocr": "HEH. YOU WANT TO TRY ANYWAY?",
+        "primary_confidence": 0.9135079383850098,
+        "current_agreement": "agree",
+        "corrected_text": "HEH. YOU WANT TO TRY ANYWAY?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0736,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "READY? ON THREE. VE, TWO...",
+        "secondary_ocr": "READY?\nON THREE.\nONE, TWO...",
+        "primary_confidence": 0.9749017953872681,
+        "current_agreement": "disagree",
+        "corrected_text": "READY? ON THREE. ONE, TWO..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 13,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1059,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "REALLY?",
+        "secondary_ocr": "REALLY?",
+        "primary_confidence": 0.999634861946106,
+        "current_agreement": "agree",
+        "corrected_text": "REALLY?"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5107,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "YOU\u0027RE BATMAN, PEOPLE ARE IGHT? THAT SAYING \u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "corrected_text": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "secondary_ocr": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN Y",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9922497272491455,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5366,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "2n HC TUHLL7.. IM THE ONE WHO\u0027S SCARED.",
+        "corrected_text": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "secondary_ocr": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.8782333731651306,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5888,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MY MY BROTHER IS LITTLE DE IT\u0027LL E TUNT SCARED DARK WHERE WE\u0027RE GOING NEXT. 4",
+        "corrected_text": "MY LITTLE BROTHER IS SCARED THAT IT\u0027LL BE DARK WHERE WE\u0027RE GOING NEXT.",
+        "secondary_ocr": "MY\nLITTLE BROTHER IS\nSCARED THAT IT\u0027LL BE\nDARK WHERE WE\u0027RE\nGOING NEXT.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.8728395700454712,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5056,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "BUT SEE IN CAN THE DARK, RIGHT? TEACH CAN YOU HOW?",
+        "corrected_text": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "secondary_ocr": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9666017293930054,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5103,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "HEEL",
+        "corrected_text": "HELL",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.8272462487220764,
+        "type": "sign"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5326,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "READY? ON THREE. VE, TWO...",
+        "corrected_text": "READY? ON THREE. ONE, TWO...",
+        "secondary_ocr": "READY?\nON THREE.\nONE, TWO...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9749017953872681,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5162,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SORRY?",
+        "corrected_source_text": "SORRY?",
+        "korean_translation": "\uBB50\uB77C\uACE0?",
+        "type": "dialogue",
+        "secondary_ocr": "SORRY?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5497,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "YOU\u0027RE BATMAN, PEOPLE ARE IGHT? THAT SAYING \u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "corrected_source_text": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "korean_translation": "\uB2F9\uC2E0\uC774 \uBC30\uD2B8\uB9E8 \uB9DE\uC8E0? \uC0AC\uB78C\uB4E4\uC774 \uB2E4 \uB2F9\uC2E0\uC774\uB77C\uACE0 \uD558\uB358\uB370. \uADF8\uB7FC \uBC15\uC950\uCC98\uB7FC \uC0AC\uBB3C\uC744 \uBCFC \uC218 \uC788\uB098\uC694?",
+        "type": "dialogue",
+        "secondary_ocr": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN Y",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6348,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "2n HC TUHLL7.. IM THE ONE WHO\u0027S SCARED.",
+        "corrected_source_text": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "korean_translation": "\uC0AC\uC2E4\uC740... \uBB34\uC11C\uC6B4 \uAC74[BR]\uB098\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5771,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MY MY BROTHER IS LITTLE DE IT\u0027LL E TUNT SCARED DARK WHERE WE\u0027RE GOING NEXT. 4",
+        "corrected_source_text": "MY LITTLE BROTHER IS SCARED THAT IT\u0027LL BE DARK WHERE WE\u0027RE GOING NEXT.",
+        "korean_translation": "\uB0B4 \uB3D9\uC0DD\uC774 \uB2E4\uC74C \uC7A5\uC18C\uB294\n\uC5B4\uB450\uC6B8\uAE4C \uBD10 \uBB34\uC11C\uC6CC\uD574.",
+        "type": "dialogue",
+        "secondary_ocr": "MY\nLITTLE BROTHER IS\nSCARED THAT IT\u0027LL BE\nDARK WHERE WE\u0027RE\nGOING NEXT.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5434,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BUT SEE IN CAN THE DARK, RIGHT? TEACH CAN YOU HOW?",
+        "corrected_source_text": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "korean_translation": "\uD558\uC9C0\uB9CC \uC5B4\uB460 \uC18D\uC5D0\uC11C\uB3C4 \uBCFC \uC218 \uC788\uC796\uC544, \uADF8\uCE58? \uC6B0\uB9AC\uD55C\uD14C\uB3C4 \uAC00\uB974\uCCD0 \uC904 \uC218 \uC788\uC5B4?",
+        "type": "dialogue",
+        "secondary_ocr": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5059,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DOWN THERE?",
+        "corrected_source_text": "DOWN THERE?",
+        "korean_translation": "\uC800 \uC544\uB798\uC5D0?",
+        "type": "dialogue",
+        "secondary_ocr": "DOWN THERE?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5357,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+        "corrected_source_text": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+        "korean_translation": "\uAE00\uC384, \uBC15\uC950\uB4E4\uC740...[BR]\uC0AC\uC2E4 \uC5B4\uB460 \uC18D\uC744 \uBCFC \uC218 \uC5C6\uC5B4.[BR]\uBAA9\uC18C\uB9AC\uB97C \uC774\uC6A9\uD558\uACE0,[BR]\uBA54\uC544\uB9AC\uB97C \uC774\uC6A9\uD558\uB294 \uAC70\uC9C0.[BR]\uADF8\uAC8C \uAE38\uC744 \uCC3E\uB294 \uBC29\uC2DD\uC774\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "WELL BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE THOR HOW HOW THEX THO THEMA THEX THOHO THEX T.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5616,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+        "corrected_source_text": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+        "korean_translation": "\uC5EC\uAE30\uC120 \uC18C\uB9AC \uB0B4\uBA74 \uC548 \uB3FC.[BR]\uBAA8\uB450\uB97C \uBC29\uD574\uD558\uAC70\uB4E0.",
+        "type": "dialogue",
+        "secondary_ocr": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.556,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HEH. you WANT TO TRY ANYWAY?",
+        "corrected_source_text": "HEH. YOU WANT TO TRY ANYWAY?",
+        "korean_translation": "\uD6D7. \uADF8\uB798\uB3C4 \uD55C\uBC88 \uD574\uBCF4\uACA0\uB2E4\uACE0?",
+        "type": "dialogue",
+        "secondary_ocr": "HEH. YOU WANT TO TRY ANYWAY?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5959,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "READY? ON THREE. VE, TWO...",
+        "corrected_source_text": "READY? ON THREE. ONE, TWO...",
+        "korean_translation": "\uC900\uBE44\uB410\uC5B4?[BR]\uC14B\uC5D0 \uB9DE\uCDB0\uC11C.[BR]\uD558\uB098, \uB458...",
+        "type": "dialogue",
+        "secondary_ocr": "READY?\nON THREE.\nONE, TWO...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5526,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "REALLY?",
+        "corrected_source_text": "REALLY?",
+        "korean_translation": "\uC9C4\uC9DC?",
+        "type": "dialogue",
+        "secondary_ocr": "REALLY?",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

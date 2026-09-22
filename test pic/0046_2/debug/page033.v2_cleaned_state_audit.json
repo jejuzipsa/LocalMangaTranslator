@@ -1,0 +1,73 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-v2",
+  "SourceFile": "page033.jpg",
+  "VerifierAvailable": true,
+  "VerifierMode": "cleaned_rtdetr_plus_erase_evidence",
+  "OriginalDetectedBubbleCount": 1,
+  "SelectedTargetCount": 1,
+  "ResidualTextDetectionCount": 0,
+  "DetectorOnlyFalsePositiveRescueCount": 0,
+  "EraseTargetBubbleCount": 1,
+  "EmptyVerifiedBubbleCount": 1,
+  "BubbleCheckpointPass": true,
+  "EraseTargetBubbleIds": [
+    "RG001"
+  ],
+  "EmptyVerifiedBubbleIds": [
+    "RG001"
+  ],
+  "CheckpointMissingBubbleIds": [],
+  "EraseTargetTextFreeCount": 0,
+  "EmptyVerifiedTextFreeCount": 0,
+  "TextFreeCheckpointPass": true,
+  "OverallPass": true,
+  "LegacyReviewerDisagreements": 0,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "OriginalBounds": {
+        "Top": 709,
+        "Bottom": 885,
+        "Left": 445,
+        "Right": 890,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 24470,
+      "LegacySelectedResidualPixels": 4009,
+      "LegacyResidualRatio": 0.1638332652227217,
+      "LegacyPersistentGlyphPixels": 0
+    }
+  ],
+  "Checkpoints": [
+    {
+      "CheckpointId": "RG001",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 447,
+        "Bottom": 1139,
+        "Left": 389,
+        "Right": 950,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    }
+  ],
+  "ResidualDetections": []
+}

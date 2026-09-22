@@ -1,0 +1,760 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page049.jpg",
+  "output_file": "page049.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 143113,
+    "changed_ratio": 0.051756112344320836,
+    "changed_regions": [
+      {
+        "x": 387,
+        "y": 403,
+        "width": 281,
+        "height": 77
+      },
+      {
+        "x": 580,
+        "y": 177,
+        "width": 193,
+        "height": 111
+      },
+      {
+        "x": 93,
+        "y": 400,
+        "width": 262,
+        "height": 78
+      },
+      {
+        "x": 103,
+        "y": 479,
+        "width": 248,
+        "height": 77
+      },
+      {
+        "x": 1029,
+        "y": 1796,
+        "width": 162,
+        "height": 117
+      },
+      {
+        "x": 443,
+        "y": 92,
+        "width": 253,
+        "height": 74
+      },
+      {
+        "x": 100,
+        "y": 1119,
+        "width": 174,
+        "height": 84
+      },
+      {
+        "x": 155,
+        "y": 194,
+        "width": 126,
+        "height": 98
+      },
+      {
+        "x": 1101,
+        "y": 438,
+        "width": 138,
+        "height": 81
+      },
+      {
+        "x": 165,
+        "y": 96,
+        "width": 137,
+        "height": 77
+      },
+      {
+        "x": 508,
+        "y": 583,
+        "width": 140,
+        "height": 69
+      },
+      {
+        "x": 414,
+        "y": 481,
+        "width": 166,
+        "height": 58
+      },
+      {
+        "x": 139,
+        "y": 1033,
+        "width": 128,
+        "height": 67
+      },
+      {
+        "x": 796,
+        "y": 207,
+        "width": 91,
+        "height": 76
+      },
+      {
+        "x": 535,
+        "y": 1244,
+        "width": 87,
+        "height": 71
+      },
+      {
+        "x": 538,
+        "y": 1164,
+        "width": 105,
+        "height": 57
+      },
+      {
+        "x": 83,
+        "y": 96,
+        "width": 89,
+        "height": 57
+      },
+      {
+        "x": 588,
+        "y": 177,
+        "width": 73,
+        "height": 45
+      },
+      {
+        "x": 300,
+        "y": 513,
+        "width": 67,
+        "height": 48
+      },
+      {
+        "x": 80,
+        "y": 514,
+        "width": 66,
+        "height": 47
+      },
+      {
+        "x": 435,
+        "y": 135,
+        "width": 63,
+        "height": 46
+      },
+      {
+        "x": 1118,
+        "y": 1913,
+        "width": 76,
+        "height": 38
+      },
+      {
+        "x": 123,
+        "y": 1205,
+        "width": 122,
+        "height": 23
+      },
+      {
+        "x": 1184,
+        "y": 1836,
+        "width": 36,
+        "height": 73
+      },
+      {
+        "x": 105,
+        "y": 1033,
+        "width": 55,
+        "height": 46
+      },
+      {
+        "x": 1168,
+        "y": 1789,
+        "width": 57,
+        "height": 42
+      },
+      {
+        "x": 277,
+        "y": 188,
+        "width": 30,
+        "height": 77
+      },
+      {
+        "x": 1026,
+        "y": 1789,
+        "width": 57,
+        "height": 39
+      },
+      {
+        "x": 578,
+        "y": 481,
+        "width": 47,
+        "height": 44
+      },
+      {
+        "x": 658,
+        "y": 468,
+        "width": 26,
+        "height": 76
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page049.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 94682,
+    "erase_changed_ratio": 0.034241279471361685,
+    "typeset_changed_pixels": 77929,
+    "typeset_changed_ratio": 0.0281826394449182
+  },
+  "region_analysis": {
+    "total": 30,
+    "bubbles": 15,
+    "text_regions": 15,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 59,
+      "Global2x": 53,
+      "Focus3x": 433,
+      "Region1x": 68,
+      "Region2x": 73,
+      "Container1x": 68,
+      "Container2x": 75
+    },
+    "canonical_lines": 105,
+    "units": 22,
+    "assigned_lines": 98,
+    "orphan_groups": 7,
+    "secondary_total": 15,
+    "secondary_accepted": 14,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 91,
+          "Bottom": 181,
+          "Left": 435,
+          "Right": 696,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALIVE IN THE PLAINS OF SOLUTUDE? I KNOW THESE FOLKTALES WELL.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 90,
+          "Bottom": 177,
+          "Left": 75,
+          "Right": 312,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I TOLD YOU. THERE IS NO WONDER WOMAN, NO BATMAN. NO--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 179,
+          "Bottom": 287,
+          "Left": 573,
+          "Right": 777,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ELL.\nBUT I SAW\nCLARK FALL WITH\nMY OWN EYES, AND\nI\u0027VE SCOURED\nTHE PLAINS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG006",
+        "Bounds": {
+          "Top": 188,
+          "Bottom": 298,
+          "Left": 152,
+          "Right": 306,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALFRED SAID THERE ARE RUMORS. ABOUT CLARK...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 207,
+          "Bottom": 277,
+          "Left": 794,
+          "Right": 895,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LIES TO LURE US OUT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 394,
+          "Bottom": 561,
+          "Left": 80,
+          "Right": 367,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WELL THIS\nOMEGA, WHOEVER HE IS,\nTHERE HAS TO BE A WAY TO\nBRING HIM DOWN. IF HE\u0027S\nBASED IN COTHAN, I N THAN,\nCHATHA\nCHAN-\nTHATA\nT",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 396,
+          "Bottom": 544,
+          "Left": 375,
+          "Right": 684,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WANT RUMORS, BRUCE? THE RUMOR ABOUT OMEGA IS THAT HE\u0027S SOMEONE BORN AND BRED IN GOTHALY A ALY A ALA A BAND BLA BOTALLA A ATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 432,
+          "Bottom": 519,
+          "Left": 1092,
+          "Right": 1239,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NO. THAT\u0027S IMPOSSIBLE. YOU\u0027RE SAYING--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 446,
+          "Bottom": 468,
+          "Left": 1050,
+          "Right": 1079,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "empty_result"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 561,
+          "Bottom": 646,
+          "Left": 503,
+          "Right": 654,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "*SIGH~...\nMORE LIKELY\nONE OF YOUR\nDISCIPLES.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1033,
+          "Bottom": 1102,
+          "Left": 105,
+          "Right": 267,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027M SAYING THAT IT\u0027S TIME, BRUCE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1119,
+          "Bottom": 1227,
+          "Left": 94,
+          "Right": 274,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "TIME TO RELINQUISH THE WORLD TO ITS NEW HEROES AND GODS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 1157,
+          "Bottom": 1227,
+          "Left": 523,
+          "Right": 661,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT HERE, THESE PEOPLE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG027",
+        "Bounds": {
+          "Top": 1244,
+          "Bottom": 1314,
+          "Left": 499,
+          "Right": 660,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I SAVED THIS FOR YOU, BRUCE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG029",
+        "Bounds": {
+          "Top": 1789,
+          "Bottom": 1956,
+          "Left": 1026,
+          "Right": 1225,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AND\nTOMORROW,\nI\u0027M OPENING A\nPASSAGE TO THE\nUNDERWORLD. I\u0027D\nLIKE Y",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 22,
+    "requested_render": 16
+  },
+  "render": {
+    "total": 15,
+    "approved": 14,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 16,
+    "TranslatedUnits": 14,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 14,
+    "TypesetCommittedUnits": 14,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "I TOLD you. THERE IS NO WONDER WOMAN. NO BATMAN. NO--",
+        "Translation": "\uB9D0\uD588\uC796\uC544.[BR]\uC6D0\uB354\uC6B0\uBA3C\uB3C4,[BR]\uBC30\uD2B8\uB9E8\uB3C4,[BR]\uC5C6\uB2E4\uACE0.-",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "ALIVE IN THE PLAINS OF SOLI THESE FOLKTALES WELL.",
+        "Translation": "\uACE0\uB3C5\uC758 \uD3C9\uC6D0(PLAINS OF SOLITUDE)\uC5D0\uC11C \uC0B4\uC544\uB0A8\uB294\uB2E4\uACE0? \uC774 \uBBFC\uB2F4\uC740 \uC798 \uC54C\uACE0 \uC788\uC9C0. \uD558\uC9C0\uB9CC \uB09C CJ \uB9E5\uC8FC\uAC00... \uADF8\uACF3\uC5D0\uC11C \uC4F0\uB7EC\uC9C0\uB294 \uAC78 \uBD24\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "BUT I SAW CLARK FALL WITH MY OWN EYES, AND I\u0027VE SCOURED THE PLAINS. ruP Bi",
+        "Translation": "\uD558\uC9C0\uB9CC \uB0B4 \uB208\uC73C\uB85C \uC9C1\uC811 \uD074\uB77C\uD06C\uAC00 \uC4F0\uB7EC\uC9C0\uB294 \uAC78 \uBD24\uACE0,[BR]\uD3C9\uC6D0\uC744 \uC0C5\uC0C5\uC774 \uB4A4\uC838\uBD24\uB2E8 \uB9D0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "FRED SAID THERE ARE RUMORS. ABOUT CLARK..",
+        "Translation": "\uC54C\uD504\uB808\uB4DC\uAC00 \uB9D0\uD588\uC5B4. \uC18C\uBB38\uC774 \uB3CC\uACE0 \uC788\uB2E4\uACE0...[BR]\uD074\uB77D\uC5D0 \uB300\uD574\uC11C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "LIES TO LURE us OUT.",
+        "Translation": "\uC6B0\uB9B4\uB3C4\uBC1C\uD558\uAE30[BR]\uC704\uD55C \uAC70\uC9D3\uB9D0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "MY",
+        "Translation": "\uB0B4 \uAC83",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "YOU WANT RUMORS, BRUCE? THE RUMOR IS THAT H BORN AND BRED IN GOTHAM POSSIBLY H MORE LIKELY...",
+        "Translation": "\uC18C\uBB38\uC774 \uB4E3\uACE0 \uC2F6\uB098, \uBE0C\uB8E8\uC2A4? \uC624\uBA54\uAC00\uC5D0 \uAD00\uD55C \uC18C\uBB38\uC740 \uB9D0\uC774\uC57C, \uADF8\uAC00 \uACE0\uB2F4\uC5D0\uC11C \uD0DC\uC5B4\uB098\uACE0 \uC790\uB780 \uC778\uBB3C\uC774\uB77C\uB294 \uAC70\uC9C0. \uBE4C\uB7F0\uC77C \uC218\uB3C4 \uC788\uACA0\uC9C0\uB9CC, \uB354 \uAC00\uB2A5\uC131 \uB192\uC740 \uAC74...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "WELL THIS V OMEGA, WHOEVER HE IS, BE H WHY lo BRING HIM DOWN. IF HE\u0027S BASED IN GOTHAM, HE\u0027S VULNERABLE. I KNOW GOTHAM BETTER THAN--",
+        "Translation": "\uC774 \uC624\uBA54\uAC00\uB77C\uB294 \uC790\uAC00\n\uB204\uAD6C\uB4E0 \uAC04\uC5D0, \uC4F0\uB7EC\uB728\uB9B4 \uBC29\uBC95\uC774\n\uBD84\uBA85\uD788 \uC788\uC744 \uAC70\uC57C. \uB9CC\uC57D \uADF8\uAC00\n\uACE0\uB2F4\uC5D0 \uAE30\uBC18\uC744 \uB450\uACE0 \uC788\uB2E4\uBA74\n\uC57D\uC810\uC774 \uC0DD\uAE30\uACA0\uC9C0. \uB09C \uACE0\uB2F4\uC744\n\uB204\uAD6C\uBCF4\uB2E4 \uC798 \uC54C\uAC70\uB4E0\u2014",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "NO. THAT\u0027S IMPOSSIBLE. YOU\u0027RE SAYING--",
+        "Translation": "\uC548 \uB3FC. \uADF8\uAC74 \uBD88\uAC00\uB2A5\uD574.[BR]\uC9C0\uAE08 \uADF8 \uB9D0\uC740\u2014",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "SIGH LIKELY MORE OF YOUR ONE DISCIPLES.",
+        "Translation": "*\uD55C\uC228*...[BR]\uB124 \uC81C\uC790 \uC911 \uD558\uB098\uC77C \uAC00\uB2A5\uC131\uC774 \uB354 \uB192\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "I\u0027M SAYING TIME, THAT IT\u0027S BRUCE.",
+        "Translation": "\uB0B4 \uB9D0\uC740, [BR]\uB54C\uAC00 \uB410\uB2E4\uB294 \uAC70\uC57C, [BR]\uBE0C\uB8E8\uC2A4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "TIME TO RELINQUISH WORLD TO THE ITS NEW HEROES AND GODS.",
+        "Translation": "\uC774\uC81C \uC138\uC0C1\uC744 \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uB4E4\uACFC\n\uC2E0\uB4E4\uC5D0\uAC8C \uB0B4\uC5B4\uC904 \uC2DC\uAC04\uC774\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "ES",
+        "Translation": "\uB05D\uB0B4\uAE30 \uC704\uD574\n\uACFC\uAC70\uC5D0\uC11C\n\uC601\uC6C5\uC758\n\uC6B4\uBA85\uC73C\uB85C.",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "BUT HERE, THESE PE",
+        "Translation": "\uD558\uC9C0\uB9CC \uC5EC\uAE30 \uC0AC\uB78C\uB4E4\uC740...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "SAVED THIS FOR YOu, BRUCE.",
+        "Translation": "\uC774\uAC70 \uB108 \uC8FC\uB824\uACE0 \uB0A8\uACA8\uB454 \uAC70\uC57C, \uBE0C\uB8E8\uC2A4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "AND TOMORROW, OPENING A THE PASSAGE TO UNDERWORLD. I\u0027D LIKE YOU TO COME WITH us.",
+        "Translation": "\uADF8\uB9AC\uACE0 \uB0B4\uC77C, \uB09C \uC9C0\uD558 \uC138\uACC4\uB85C \uD1B5\uD558\uB294\n\uD1B5\uB85C\uB97C \uC5F4 \uAC70\uC57C.\n\uB124\uAC00 \uC6B0\uB9AC\uC640 \uD568\uAED8\n\uC640\uC92C\uC73C\uBA74 \uC88B\uACA0\uAD70.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

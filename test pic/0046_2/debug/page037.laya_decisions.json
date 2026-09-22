@@ -1,0 +1,676 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page037.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "detector_retry",
+      "RegionId": 0,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5448,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "AAODELIESE.",
+        "corrected_text": "AAOOEEIIEE.",
+        "ocr_confidence": 0.6023969650268555,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 459,
+          "Y": 25,
+          "W": 514,
+          "H": 149
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0813,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.8964488,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.9013878188659973,
+            "Affinity": 7.446421619875802
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5932,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "W",
+        "corrected_text": "BA",
+        "ocr_confidence": 0.5012935400009155,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 574,
+          "Y": 308,
+          "W": 105.33333333333337,
+          "H": 230
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0696,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.93574405,
+            "BlockCoverage": 0.9461077844311377,
+            "CenterInside": true,
+            "CenterDistance": 3.355137023199575,
+            "Affinity": 7.245592887260611
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 4,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5849,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "9",
+        "corrected_text": "9",
+        "ocr_confidence": 0.3605649471282959,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 668.3333333333334,
+          "Y": 895.3333333333334,
+          "W": 14.666666666666629,
+          "H": 19.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0906,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.72798985,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 4.972144630058801,
+            "Affinity": 7.3540506369541
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6189,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.321432888507843,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 962.5,
+          "Y": 968.5,
+          "W": 37.5,
+          "H": 21.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG009",
+      "LayaDecision": "RG009",
+      "Confidence": 0.1632,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG009",
+            "BubbleRegionId": "RG008",
+            "DetectorScore": 0.7698364,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.3392781412698405,
+            "Affinity": 7.380239656608086
+          }
+        ],
+        "RegionId": "RG008",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.1181,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9346372,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.118033988749895,
+            "Affinity": 7.465082526478219
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.1175,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9530055,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.8027756377319946,
+            "Affinity": 7.472897195068149
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 10,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.605,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "EET",
+        "corrected_text": "EET",
+        "ocr_confidence": 0.3588460385799408,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 893.6666666666667,
+          "Y": 1764,
+          "W": 93.33333333333326,
+          "H": 166.33333333333326
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6154,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "2",
+        "corrected_text": "2",
+        "ocr_confidence": 0.36137017607688904,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 793.6666666666666,
+          "Y": 1784,
+          "W": 12.333333333333371,
+          "H": 10
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0961,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9219574,
+            "BlockCoverage": 0.9558359621451098,
+            "CenterInside": true,
+            "CenterDistance": 0.7120003121096523,
+            "Affinity": 7.28289853476576
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0702,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "COME ON!",
+        "secondary_ocr": "COME ON!",
+        "primary_confidence": 0.9968100786209106,
+        "current_agreement": "agree",
+        "corrected_text": "COME ON!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1257,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "secondary_ocr": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "primary_confidence": 0.9831569790840149,
+        "current_agreement": "agree",
+        "corrected_text": "DO I HEAR BABIES?! I LOVE BABIES!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "partial",
+      "LayaDecision": "agree",
+      "Confidence": 0.0803,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!",
+        "secondary_ocr": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO",
+        "primary_confidence": 0.9976100921630859,
+        "current_agreement": "partial",
+        "corrected_text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "partial",
+      "LayaDecision": "agree",
+      "Confidence": 0.082,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..",
+        "secondary_ocr": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE",
+        "primary_confidence": 0.9963418245315552,
+        "current_agreement": "partial",
+        "corrected_text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0244,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WITH HIM DEAD, THOUGH.. THES\u00C9 PEOPLE...",
+        "secondary_ocr": "WITH HIM\nDEAD, THOUGH...\nTHESE PEOPLE...",
+        "primary_confidence": 0.9844403266906738,
+        "current_agreement": "disagree",
+        "corrected_text": "WITH HIM DEAD, THOUGH... THESE PEOPLE..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.036,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+        "secondary_ocr": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO W",
+        "primary_confidence": 0.9954022765159607,
+        "current_agreement": "partial",
+        "corrected_text": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0764,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "secondary_ocr": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "primary_confidence": 0.9683951735496521,
+        "current_agreement": "agree",
+        "corrected_text": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5186,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "AAODELIESE.",
+        "corrected_text": "AAOOEEIIEE.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6023969650268555,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5351,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "W",
+        "corrected_text": "BA",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5012935400009155,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5267,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!",
+        "corrected_text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!\u0022",
+        "secondary_ocr": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9976100921630859,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5118,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..",
+        "corrected_text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..\u0022",
+        "secondary_ocr": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9963418245315552,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5779,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WITH HIM DEAD, THOUGH.. THES\u00C9 PEOPLE...",
+        "corrected_text": "WITH HIM DEAD, THOUGH... THESE PEOPLE...",
+        "secondary_ocr": "WITH HIM\nDEAD, THOUGH...\nTHESE PEOPLE...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9844403266906738,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5259,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "COME ON!",
+        "corrected_source_text": "COME ON!",
+        "korean_translation": "\uC5B4\uC11C!",
+        "type": "dialogue",
+        "secondary_ocr": "COME ON!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.682,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "W",
+        "corrected_source_text": "BA",
+        "korean_translation": "\uBC14",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5923,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "corrected_source_text": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "korean_translation": "\uC544\uAE30 \uC18C\uB9AC\uAC00 \uB4E4\uB824?![BR]\uB09C \uC544\uAE30 \uC815\uB9D0 \uC88B\uC544\uD574!",
+        "type": "dialogue",
+        "secondary_ocr": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6078,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!",
+        "corrected_source_text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!\u0022",
+        "korean_translation": "\u0022\uC560\uB4E4\uC774 \uC544\uB2C8\uC57C. \uB9C1\uC744 \uC81C\uC5B4\uD558\uB824\uBA74\n\uC644\uBCBD\uD558\uAC8C \uBC1C\uB2EC\uD55C \uC758\uC9C0\uAC00\n\uD544\uC694\uD558\uB2E4\uACE0!\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6102,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..",
+        "corrected_source_text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..\u0022",
+        "korean_translation": "\u0022\uBAA8\uACE0\uC758 \uC784\uBB34\uB294 \uBC18\uC9C0\uB97C \uC0AC\uC6A9\uD560 \uC900\uBE44\uAC00 \uB41C \uC790\uB4E4\uC5D0\uAC8C[BR]\uBC18\uC9C0\uB97C \uC804\uB2EC\uD558\uB294 \uAC83\uC774\uC5C8\uC9C0. \uADF8\uAC00 \uC8FD\uC73C\uBA74\uC11C...\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6066,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WITH HIM DEAD, THOUGH.. THES\u00C9 PEOPLE...",
+        "corrected_source_text": "WITH HIM DEAD, THOUGH... THESE PEOPLE...",
+        "korean_translation": "\uADF8\uAC00 \uC8FD\uC5C8\uC73C\uB2C8...[BR]\uC774 \uC0AC\uB78C\uB4E4\uC740...",
+        "type": "dialogue",
+        "secondary_ocr": "WITH HIM\nDEAD, THOUGH...\nTHESE PEOPLE...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5024,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+        "corrected_source_text": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+        "korean_translation": "\uADF8\uAC8C \uB204\uAD6C\uB4E0, \uADF8\uAC78 \uD718\uB450\uB97C \uC815\uB3C4\uC758\n\uD798\uC774\uB098 \uC758\uC9C0\uB294 \uC5C6\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO W",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5313,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "corrected_source_text": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "korean_translation": "\uADF8\uB188\uB4E4 \uC9C4\uC9DC \uC7AC\uC218 \uC5C6\uC9C0. \uC54C\uC558\uC73C\uB2C8\uAE4C![BR]\uBE44\uCF1C!",
+        "type": "dialogue",
+        "secondary_ocr": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

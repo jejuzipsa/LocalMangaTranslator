@@ -1,0 +1,37 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "page034.jpg",
+  "TargetCount": 1,
+  "FlatFillTargets": 1,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG001",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 381,
+        "Y": 714,
+        "Width": 601,
+        "Height": 159
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 13383,
+      "SampleCount": 12091,
+      "Background": {
+        "B": 0,
+        "G": 0,
+        "R": 0
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 0,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 6,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

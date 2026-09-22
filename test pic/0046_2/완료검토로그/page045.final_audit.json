@@ -1,0 +1,545 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page045.jpg",
+  "output_file": "page045.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 49260,
+    "changed_ratio": 0.0178146366443387,
+    "changed_regions": [
+      {
+        "x": 324,
+        "y": 413,
+        "width": 204,
+        "height": 134
+      },
+      {
+        "x": 104,
+        "y": 1774,
+        "width": 166,
+        "height": 124
+      },
+      {
+        "x": 115,
+        "y": 445,
+        "width": 137,
+        "height": 59
+      },
+      {
+        "x": 815,
+        "y": 1658,
+        "width": 94,
+        "height": 71
+      },
+      {
+        "x": 750,
+        "y": 468,
+        "width": 102,
+        "height": 52
+      },
+      {
+        "x": 126,
+        "y": 504,
+        "width": 108,
+        "height": 38
+      },
+      {
+        "x": 365,
+        "y": 603,
+        "width": 76,
+        "height": 47
+      },
+      {
+        "x": 745,
+        "y": 136,
+        "width": 89,
+        "height": 30
+      },
+      {
+        "x": 482,
+        "y": 413,
+        "width": 50,
+        "height": 43
+      },
+      {
+        "x": 132,
+        "y": 1724,
+        "width": 64,
+        "height": 24
+      },
+      {
+        "x": 337,
+        "y": 602,
+        "width": 36,
+        "height": 38
+      },
+      {
+        "x": 812,
+        "y": 1747,
+        "width": 51,
+        "height": 26
+      },
+      {
+        "x": 760,
+        "y": 521,
+        "width": 51,
+        "height": 26
+      },
+      {
+        "x": 373,
+        "y": 579,
+        "width": 43,
+        "height": 21
+      },
+      {
+        "x": 812,
+        "y": 521,
+        "width": 31,
+        "height": 26
+      },
+      {
+        "x": 840,
+        "y": 1648,
+        "width": 21,
+        "height": 32
+      },
+      {
+        "x": 341,
+        "y": 579,
+        "width": 32,
+        "height": 21
+      },
+      {
+        "x": 110,
+        "y": 437,
+        "width": 29,
+        "height": 21
+      },
+      {
+        "x": 154,
+        "y": 1778,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 821,
+        "y": 1649,
+        "width": 19,
+        "height": 30
+      },
+      {
+        "x": 108,
+        "y": 1724,
+        "width": 23,
+        "height": 24
+      },
+      {
+        "x": 225,
+        "y": 437,
+        "width": 29,
+        "height": 19
+      },
+      {
+        "x": 423,
+        "y": 580,
+        "width": 25,
+        "height": 20
+      },
+      {
+        "x": 450,
+        "y": 576,
+        "width": 19,
+        "height": 24
+      },
+      {
+        "x": 369,
+        "y": 434,
+        "width": 18,
+        "height": 25
+      },
+      {
+        "x": 818,
+        "y": 1775,
+        "width": 21,
+        "height": 21
+      },
+      {
+        "x": 442,
+        "y": 603,
+        "width": 20,
+        "height": 22
+      },
+      {
+        "x": 839,
+        "y": 1775,
+        "width": 15,
+        "height": 27
+      },
+      {
+        "x": 828,
+        "y": 468,
+        "width": 21,
+        "height": 19
+      },
+      {
+        "x": 110,
+        "y": 532,
+        "width": 22,
+        "height": 17
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page045.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 30476,
+    "erase_changed_ratio": 0.01102149546026931,
+    "typeset_changed_pixels": 28295,
+    "typeset_changed_ratio": 0.010232747540632633
+  },
+  "region_analysis": {
+    "total": 18,
+    "bubbles": 9,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 21,
+      "Global2x": 10,
+      "Focus3x": 148,
+      "Region1x": 32,
+      "Region2x": 36,
+      "Container1x": 30,
+      "Container2x": 37
+    },
+    "canonical_lines": 39,
+    "units": 12,
+    "assigned_lines": 36,
+    "orphan_groups": 3,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 134,
+          "Bottom": 166,
+          "Left": 739,
+          "Right": 846,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ENOUGH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 413,
+          "Bottom": 545,
+          "Left": 324,
+          "Right": 532,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MAGIC IS LONG DEAD. THE HELMET IS JUST A HELMET. THERE IS NO DOCTOR FATE ANYMORE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 437,
+          "Bottom": 549,
+          "Left": 110,
+          "Right": 254,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THAT HELMET... YOU THE NEW DOCTOR FATE?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 475,
+          "Bottom": 543,
+          "Left": 750,
+          "Right": 854,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...OR WONDER WOMAN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 576,
+          "Bottom": 645,
+          "Left": 333,
+          "Right": 466,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1655,
+          "Bottom": 1725,
+          "Left": 808,
+          "Right": 900,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S SIMPLE, BRUCE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1724,
+          "Bottom": 1753,
+          "Left": 103,
+          "Right": 197,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DIANA?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1748,
+          "Bottom": 1798,
+          "Left": 809,
+          "Right": 868,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU DID.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1774,
+          "Bottom": 1902,
+          "Left": 104,
+          "Right": 270,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THANK\nGOD. PLEASE,\nTELL ME WHO\nDID THIS? WHO\nKILLED THE\nWORLD?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 12,
+    "requested_render": 9
+  },
+  "render": {
+    "total": 9,
+    "approved": 9,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 9,
+    "TranslatedUnits": 9,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 9,
+    "TypesetCommittedUnits": 9,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "ENOUGH.",
+        "Translation": "\uADF8\uB9CC\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "MAGIC IS LONG D THE HELMET IS JUST A HELMET. TH NO DOCTOF ANYMORE.",
+        "Translation": "\uB9C8\uBC95\uC740 \uC774\uBBF8 \uC0AC\uB77C\uC84C\uC5B4.\n\uC774 \uD22C\uAD6C\uB294 \uADF8\uC800\n\uD22C\uAD6C\uC77C \uBFD0\uC774\uC57C.\n\uB354 \uC774\uC0C1\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB294\n\uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "THAT HELMET.. YOU THE NEW DOCTOR FATE?",
+        "Translation": "\uC800 \uD22C\uAD6C...\n\uB124\uAC00 \uC0C8\uB85C\uC6B4\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB0D0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "OR WONDER WOMAN.",
+        "Translation": "...\uC544\uB2C8\uBA74[BR]\uC6D0\uB354\uC6B0\uBA3C\uC774\uAC70\uB098.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "JUST LIKE THEI NO BATMAN..",
+        "Translation": "\uBC30\uD2B8\uB9E8\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uAC83\uCC98\uB7FC...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "IT\u0027S IT\u0027S SIMPLE, BRUCE.",
+        "Translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4.[BR]\uB124\uAC00 \uADF8\uB7AC\uC796\uC544.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "DIANA?!",
+        "Translation": "\uB2E4\uC774\uC544?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "You DID.",
+        "Translation": "\uADF8\uB7AC\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+        "Translation": "\uB2E4\uD589\uC774\uB2E4. \uC81C\uBC1C, \uB204\uAC00 \uC774\uB7AC\uB294\uC9C0 \uB9D0\uD574\uC918. \uB204\uAC00 \uC138\uC0C1\uC744 \uB9DD\uAC00\uB728\uB9B0 \uAC70\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

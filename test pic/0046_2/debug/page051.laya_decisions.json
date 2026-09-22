@@ -1,0 +1,525 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page051.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0395,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.94673276,
+            "BlockCoverage": 0.9807073954983923,
+            "CenterInside": true,
+            "CenterDistance": 4.272001872658765,
+            "Affinity": 7.3876519579861055
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0148,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9440178,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.9755449318549585,
+            "Affinity": 7.468057823891707
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0278,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.918661,
+            "BlockCoverage": 0.9695817490494301,
+            "CenterInside": true,
+            "CenterDistance": 2.266911751455835,
+            "Affinity": 7.333123671867019
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6123,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "as PS",
+        "corrected_text": "DIANA, I DON\u0027T KNOW... I...",
+        "ocr_confidence": 0.5048035383224487,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 340,
+          "Y": 550,
+          "W": 206.66666666666663,
+          "H": 442
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.1582,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9474329,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.7400510848184159,
+            "Affinity": 7.470236335646983
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0567,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9420067,
+            "BlockCoverage": 0.984905660377358,
+            "CenterInside": true,
+            "CenterDistance": 1.4337208778404553,
+            "Affinity": 7.407758553349485
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0523,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.93155724,
+            "BlockCoverage": 0.47973531844499584,
+            "CenterInside": true,
+            "CenterDistance": 1.5206906325745548,
+            "Affinity": 5.381678511565815
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 5,
+      "RuleDecision": "R5",
+      "LayaDecision": "R5",
+      "Confidence": 0.0029,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG009",
+        "candidates": [
+          {
+            "option": "R3",
+            "Id": 3,
+            "source": "as PS",
+            "corrected": "DIANA, I DON\u0027T KNOW... I...",
+            "secondary_agreement": null,
+            "ocr_confidence": 0.5048035383224487,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG010"
+            ],
+            "BubbleRegionId": "RG009",
+            "LayoutBounds": {
+              "Top": 808,
+              "Bottom": 926,
+              "Left": 493,
+              "Right": 643,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": -84897.6754311468
+          },
+          {
+            "option": "R5",
+            "Id": 5,
+            "source": "IT\u0027S GOOD TO HAVE YOU BACK.",
+            "corrected": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+            "secondary_agreement": "agree",
+            "ocr_confidence": 0.9698883295059204,
+            "detector_text_region": "RG010",
+            "TextRegionIds": [
+              "RG010"
+            ],
+            "BubbleRegionId": "RG009",
+            "LayoutBounds": {
+              "Top": 808,
+              "Bottom": 926,
+              "Left": 493,
+              "Right": 643,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 138587.1165289289
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.033,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+        "secondary_ocr": "\u0022BUT THESE PEOPLE, THEY NEED HEROES, NEW HEROES. UP THERE, THAT W",
+        "primary_confidence": 0.99348384141922,
+        "current_agreement": "partial",
+        "corrected_text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0171,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+        "secondary_ocr": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US, PLEASE.\u0022",
+        "primary_confidence": 0.9935977458953857,
+        "current_agreement": "agree",
+        "corrected_text": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0335,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DIANA, I DON\u0027T KNOW... I...",
+        "secondary_ocr": "DIANA,\nI DON\u0027T\nKNOW...\nI...",
+        "primary_confidence": 0.9689747095108032,
+        "current_agreement": "agree",
+        "corrected_text": "DIANA, I DON\u0027T KNOW... I..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0958,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+        "secondary_ocr": "PLEASE,\nREST. WE\u0027LL\nTALK MORE IN\nTHE MORNING.\nAND BRUCE...",
+        "primary_confidence": 0.9906709790229797,
+        "current_agreement": "disagree",
+        "corrected_text": "PLEASE, REST. WE\u0027LL TALK MORE IN THE MORNING. AND BRUCE..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1765,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT\u0027S GOOD TO HAVE YOU BACK.",
+        "secondary_ocr": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "primary_confidence": 0.9698883295059204,
+        "current_agreement": "agree",
+        "corrected_text": "...IT\u0027S GOOD TO HAVE YOU BACK."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0292,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SNE",
+        "secondary_ocr": "CAN YOU SEE IN THE DARK?",
+        "primary_confidence": 0.3748215436935425,
+        "current_agreement": "disagree",
+        "corrected_text": "SNE"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5995,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+        "corrected_text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.\u0022",
+        "secondary_ocr": "\u0022BUT THESE PEOPLE, THEY NEED HEROES, NEW HEROES. UP THERE, THAT W",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.99348384141922,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5709,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "as PS",
+        "corrected_text": "DIANA, I DON\u0027T KNOW... I...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5048035383224487,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5022,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+        "corrected_text": "PLEASE, REST. WE\u0027LL TALK MORE IN THE MORNING. AND BRUCE...",
+        "secondary_ocr": "PLEASE,\nREST. WE\u0027LL\nTALK MORE IN\nTHE MORNING.\nAND BRUCE...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9906709790229797,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5809,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IT\u0027S GOOD TO HAVE YOU BACK.",
+        "corrected_text": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "secondary_ocr": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9698883295059204,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5917,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+        "corrected_source_text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.\u0022",
+        "korean_translation": "\u0022\uD558\uC9C0\uB9CC \uC774 \uC0AC\uB78C\uB4E4\uC5D0\uAC90 \uC601\uC6C5\uC774 \uD544\uC694\uD574. \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uC774. \uC800 \uC704\uC5D0\uC11C \uC2F8\uC6B4 \uAC74 \uADF8\uC758 \uC2F8\uC6C0\uC774\uC5C8\uC5B4. \uC61B\uB0A0\uC758 \uBE0C\uB8E8\uC2A4 \uB9D0\uC774\uC57C.\u0022",
+        "type": "caption",
+        "secondary_ocr": "\u0022BUT THESE PEOPLE, THEY NEED HEROES, NEW HEROES. UP THERE, THAT W",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.588,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+        "corrected_source_text": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+        "korean_translation": "\u0022\uC774\uACF3\uC5D0 \uC624\uBA74 \uB2F9\uC2E0\uC740 \uC0C8\uB85C\uC6B4 \uC2DC\uB300\uC758 \uC0C8\uB85C\uC6B4 \uBC30\uD2B8\uB9E8\uC774 \uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC800\uD76C\uC640 \uD568\uAED8 \uAC00\uC2DC\uC8E0. \uBD80\uD0C1\uC785\uB2C8\uB2E4.\u0022",
+        "type": "caption",
+        "secondary_ocr": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US, PLEASE.\u0022",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5287,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DIANA, I DON\u0027T KNOW... I...",
+        "corrected_source_text": "DIANA, I DON\u0027T KNOW... I...",
+        "korean_translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+        "type": "dialogue",
+        "secondary_ocr": "DIANA,\nI DON\u0027T\nKNOW...\nI...",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6284,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "as PS",
+        "corrected_source_text": "DIANA, I DON\u0027T KNOW... I...",
+        "korean_translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6256,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+        "corrected_source_text": "PLEASE, REST. WE\u0027LL TALK MORE IN THE MORNING. AND BRUCE...",
+        "korean_translation": "\uC81C\uBC1C, \uC880 \uC26C\uC5B4. \uB0B4\uC77C \uC544\uCE68\uC5D0 \uB354 \uC598\uAE30\uD558\uC790. \uADF8\uB9AC\uACE0 \uBE0C\uB8E8\uC2A4...",
+        "type": "dialogue",
+        "secondary_ocr": "PLEASE,\nREST. WE\u0027LL\nTALK MORE IN\nTHE MORNING.\nAND BRUCE...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5037,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT\u0027S GOOD TO HAVE YOU BACK.",
+        "corrected_source_text": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "korean_translation": "...\uB2E4\uC2DC \uB3CC\uC544\uC640\uC11C[BR]\uB2E4\uD589\uC774\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

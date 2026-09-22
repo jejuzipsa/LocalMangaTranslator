@@ -1,0 +1,247 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page040.jpg",
+  "RequestedUnits": 10,
+  "TranslatedUnits": 6,
+  "PreservedOriginalUnits": 4,
+  "EraseCommittedUnits": 6,
+  "TypesetCommittedUnits": 6,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "JE",
+      "Translation": "\uC81C",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+      "Translation": "\uBB34\uC2A8 \uC77C\uC774\uC57C? \uC544\uBB34\uAC83\uB3C4 \uC548 \uBCF4\uC5EC!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 69,
+        "Y": 134,
+        "Width": 141,
+        "Height": 103
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "I DON\u0027T KNOW!",
+      "Translation": "\uBAA8\uB974\uACA0\uB2E4\uACE0!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 115,
+        "Y": 239,
+        "Width": 119,
+        "Height": 76
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "OVER HERE! GET IN!",
+      "Translation": "\uC774\uCABD\uC774\uC57C! \uBE68\uB9AC \uD0C0!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "BubbleRegionId": "RG011",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1047,
+        "Y": 594,
+        "Width": 149,
+        "Height": 101
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "WA pteuiE",
+      "Translation": "\uC870\uC2EC\uD574!",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "you THERE!",
+      "Translation": "\uAC70\uAE30 \uB108!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "BubbleRegionId": "RG013",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 359,
+        "Y": 702,
+        "Width": 115,
+        "Height": 80
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 8,
+      "SourceText": "EEEMNSOS PIn",
+      "Translation": "\uC774\uAC74 \uB0B4 \uAC70\uC57C.",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 9,
+      "SourceText": "I SAID GET IN, DAMMIT! BEFORE A HUNDRED MORE SLINGERS COME FOR US!",
+      "Translation": "\uBE68\uB9AC \uD0C0\uB77C\uACE0, \uC81C\uAE38! [BR]\uBC31 \uBA85\uC774\uB098 \uB418\uB294 \uC0AC\uC218\uB4E4\uC774\n\uBAB0\uB824\uC624\uAE30 \uC804\uC5D0!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG016"
+      ],
+      "BubbleRegionId": "RG015",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 470,
+        "Y": 1186,
+        "Width": 239,
+        "Height": 143
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 11,
+      "SourceText": "ENGAGE INVISIBILITY!",
+      "Translation": "\uC740\uC2E0 \uBAA8\uB4DC \uAC00\uB3D9!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG018"
+      ],
+      "BubbleRegionId": "RG017",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 828,
+        "Y": 1757,
+        "Width": 168,
+        "Height": 94
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 12,
+      "SourceText": "DE",
+      "Translation": "\uC5B4?",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    }
+  ]
+}

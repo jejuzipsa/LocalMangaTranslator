@@ -1,0 +1,48 @@
+{
+  "SourceFile": "page042.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:30:47.7171793+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 410,
+        "Y": 720.5,
+        "W": 518,
+        "H": 144.83333333333326,
+        "Text": "PART FOUR: ECHOLOCATION",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 536.5,
+            "Y": 720.5,
+            "W": 262.5,
+            "H": 62.5,
+            "Text": "PART FOUR:",
+            "Confidence": 0.9998258,
+            "Language": "en"
+          },
+          {
+            "X": 410,
+            "Y": 777,
+            "W": 518,
+            "H": 88.33333333333326,
+            "Text": "ECHOLOCATION",
+            "Confidence": 0.99970484,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PART FOUR: EGHOLOGATION",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "PART FOUR: ECHOLOCATION",
+      "Translation": "\uC81C4\uBD80: \uBC18\uD5A5 \uC704\uCE58",
+      "Type": "caption",
+      "Render": true
+    }
+  ]
+}

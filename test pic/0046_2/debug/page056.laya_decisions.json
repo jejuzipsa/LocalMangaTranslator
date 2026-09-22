@@ -1,0 +1,71 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page056.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG001",
+      "Confidence": 0.1506,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG001",
+            "BubbleRegionId": null,
+            "DetectorScore": 0.52907014,
+            "BlockCoverage": 0.9580838323353293,
+            "CenterInside": true,
+            "CenterDistance": 6.946221994724902,
+            "Affinity": 7.082977954817505
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5529,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022..on one last adventure \u0022..on one last adventure together.\u0022",
+        "corrected_text": "\u0022...on one last adventure together.\u0022",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.9484635591506958,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6104,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022..on one last adventure \u0022..on one last adventure together.\u0022",
+        "corrected_source_text": "\u0022...on one last adventure together.\u0022",
+        "korean_translation": "\u0022...\uB9C8\uC9C0\uB9C9 \uBAA8\uD5D8\uC744[BR]\uD568\uAED8.\u0022",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    }
+  ]
+}

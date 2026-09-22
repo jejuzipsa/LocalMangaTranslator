@@ -1,0 +1,298 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page034.jpg",
+  "output_file": "page034.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 13052,
+    "changed_ratio": 0.004720191585097619,
+    "changed_regions": [
+      {
+        "x": 624,
+        "y": 727,
+        "width": 116,
+        "height": 118
+      },
+      {
+        "x": 569,
+        "y": 798,
+        "width": 29,
+        "height": 47
+      },
+      {
+        "x": 466,
+        "y": 740,
+        "width": 36,
+        "height": 35
+      },
+      {
+        "x": 585,
+        "y": 741,
+        "width": 37,
+        "height": 33
+      },
+      {
+        "x": 773,
+        "y": 810,
+        "width": 23,
+        "height": 48
+      },
+      {
+        "x": 936,
+        "y": 740,
+        "width": 23,
+        "height": 48
+      },
+      {
+        "x": 565,
+        "y": 731,
+        "width": 21,
+        "height": 46
+      },
+      {
+        "x": 750,
+        "y": 801,
+        "width": 21,
+        "height": 44
+      },
+      {
+        "x": 432,
+        "y": 731,
+        "width": 20,
+        "height": 45
+      },
+      {
+        "x": 508,
+        "y": 801,
+        "width": 20,
+        "height": 44
+      },
+      {
+        "x": 784,
+        "y": 741,
+        "width": 18,
+        "height": 47
+      },
+      {
+        "x": 531,
+        "y": 810,
+        "width": 23,
+        "height": 36
+      },
+      {
+        "x": 909,
+        "y": 740,
+        "width": 23,
+        "height": 36
+      },
+      {
+        "x": 883,
+        "y": 740,
+        "width": 24,
+        "height": 34
+      },
+      {
+        "x": 742,
+        "y": 740,
+        "width": 24,
+        "height": 34
+      },
+      {
+        "x": 600,
+        "y": 810,
+        "width": 23,
+        "height": 35
+      },
+      {
+        "x": 832,
+        "y": 740,
+        "width": 23,
+        "height": 35
+      },
+      {
+        "x": 806,
+        "y": 740,
+        "width": 23,
+        "height": 35
+      },
+      {
+        "x": 529,
+        "y": 740,
+        "width": 23,
+        "height": 34
+      },
+      {
+        "x": 503,
+        "y": 740,
+        "width": 23,
+        "height": 34
+      },
+      {
+        "x": 627,
+        "y": 810,
+        "width": 22,
+        "height": 35
+      },
+      {
+        "x": 860,
+        "y": 740,
+        "width": 20,
+        "height": 35
+      },
+      {
+        "x": 422,
+        "y": 728,
+        "width": 7,
+        "height": 46
+      },
+      {
+        "x": 401,
+        "y": 726,
+        "width": 10,
+        "height": 23
+      },
+      {
+        "x": 768,
+        "y": 728,
+        "width": 10,
+        "height": 22
+      },
+      {
+        "x": 840,
+        "y": 798,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "x": 833,
+        "y": 798,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "x": 409,
+        "y": 728,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "x": 741,
+        "y": 811,
+        "width": 5,
+        "height": 33
+      },
+      {
+        "x": 796,
+        "y": 728,
+        "width": 6,
+        "height": 11
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page034.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 11871,
+    "erase_changed_ratio": 0.004293088745532779,
+    "typeset_changed_pixels": 1393,
+    "typeset_changed_ratio": 0.0005037715965400692
+  },
+  "region_analysis": {
+    "total": 3,
+    "bubbles": 1,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 3,
+      "Global2x": 2,
+      "Focus3x": 7,
+      "Region1x": 6,
+      "Region2x": 6,
+      "Container1x": 2,
+      "Container2x": 7
+    },
+    "canonical_lines": 4,
+    "units": 2,
+    "assigned_lines": 4,
+    "orphan_groups": 0,
+    "secondary_total": 1,
+    "secondary_accepted": 1,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 714,
+          "Bottom": 873,
+          "Left": 381,
+          "Right": 982,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 2,
+    "requested_render": 2
+  },
+  "render": {
+    "total": 2,
+    "approved": 1,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 2,
+    "TranslatedUnits": 1,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 1,
+    "TypesetCommittedUnits": 1,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "journ g..",
+        "Translation": "\uC5EC\uC815",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "II",
+        "Translation": "\uB098",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

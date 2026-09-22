@@ -1,0 +1,560 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page040.jpg",
+  "output_file": "page040.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 26225,
+    "changed_ratio": 0.00948414222488393,
+    "changed_regions": [
+      {
+        "x": 497,
+        "y": 1230,
+        "width": 187,
+        "height": 81
+      },
+      {
+        "x": 77,
+        "y": 147,
+        "width": 121,
+        "height": 75
+      },
+      {
+        "x": 1068,
+        "y": 619,
+        "width": 97,
+        "height": 57
+      },
+      {
+        "x": 134,
+        "y": 249,
+        "width": 84,
+        "height": 29
+      },
+      {
+        "x": 380,
+        "y": 742,
+        "width": 68,
+        "height": 29
+      },
+      {
+        "x": 389,
+        "y": 710,
+        "width": 54,
+        "height": 32
+      },
+      {
+        "x": 140,
+        "y": 278,
+        "width": 63,
+        "height": 25
+      },
+      {
+        "x": 143,
+        "y": 198,
+        "width": 55,
+        "height": 27
+      },
+      {
+        "x": 858,
+        "y": 1777,
+        "width": 56,
+        "height": 24
+      },
+      {
+        "x": 589,
+        "y": 1202,
+        "width": 46,
+        "height": 27
+      },
+      {
+        "x": 915,
+        "y": 1779,
+        "width": 51,
+        "height": 22
+      },
+      {
+        "x": 491,
+        "y": 1202,
+        "width": 37,
+        "height": 26
+      },
+      {
+        "x": 909,
+        "y": 1804,
+        "width": 31,
+        "height": 26
+      },
+      {
+        "x": 597,
+        "y": 1230,
+        "width": 27,
+        "height": 25
+      },
+      {
+        "x": 663,
+        "y": 1202,
+        "width": 26,
+        "height": 25
+      },
+      {
+        "x": 883,
+        "y": 1804,
+        "width": 24,
+        "height": 26
+      },
+      {
+        "x": 563,
+        "y": 1202,
+        "width": 23,
+        "height": 26
+      },
+      {
+        "x": 530,
+        "y": 1202,
+        "width": 20,
+        "height": 26
+      },
+      {
+        "x": 646,
+        "y": 1204,
+        "width": 19,
+        "height": 25
+      },
+      {
+        "x": 179,
+        "y": 146,
+        "width": 19,
+        "height": 24
+      },
+      {
+        "x": 494,
+        "y": 1270,
+        "width": 24,
+        "height": 18
+      },
+      {
+        "x": 947,
+        "y": 1804,
+        "width": 25,
+        "height": 17
+      },
+      {
+        "x": 668,
+        "y": 1297,
+        "width": 21,
+        "height": 16
+      },
+      {
+        "x": 491,
+        "y": 1300,
+        "width": 19,
+        "height": 13
+      },
+      {
+        "x": 1164,
+        "y": 636,
+        "width": 12,
+        "height": 20
+      },
+      {
+        "x": 868,
+        "y": 1804,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 854,
+        "y": 1804,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 169,
+        "y": 148,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 446,
+        "y": 743,
+        "width": 11,
+        "height": 19
+      },
+      {
+        "x": 551,
+        "y": 1212,
+        "width": 12,
+        "height": 17
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page040.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 17285,
+    "erase_changed_ratio": 0.006251035209041705,
+    "typeset_changed_pixels": 14754,
+    "typeset_changed_ratio": 0.005335711511379885
+  },
+  "region_analysis": {
+    "total": 18,
+    "bubbles": 9,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 14,
+      "Global2x": 14,
+      "Focus3x": 62,
+      "Region1x": 18,
+      "Region2x": 22,
+      "Container1x": 21,
+      "Container2x": 20
+    },
+    "canonical_lines": 27,
+    "units": 16,
+    "assigned_lines": 21,
+    "orphan_groups": 7,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 105,
+          "Bottom": 139,
+          "Left": 502,
+          "Right": 555,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "gak.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 108,
+          "Bottom": 137,
+          "Left": 1199,
+          "Right": 1249,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "gak.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 146,
+          "Bottom": 225,
+          "Left": 74,
+          "Right": 198,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 231,
+          "Bottom": 259,
+          "Left": 922,
+          "Right": 969,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "gak.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 253,
+          "Bottom": 303,
+          "Left": 128,
+          "Right": 222,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I DON\u0027T KNOW!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 612,
+          "Bottom": 680,
+          "Left": 1061,
+          "Right": 1179,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OVER HERE! GET IN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 717,
+          "Bottom": 767,
+          "Left": 374,
+          "Right": 460,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU THERE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1204,
+          "Bottom": 1313,
+          "Left": 491,
+          "Right": 689,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I SAID GET IN,\nDAMMIT! BEFORE\nA HUNDRED MORE\nSUNGERS COME\nFOR US!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1776,
+          "Bottom": 1827,
+          "Left": 843,
+          "Right": 983,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ENGAGE INVISIBILITY!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 16,
+    "requested_render": 10
+  },
+  "render": {
+    "total": 6,
+    "approved": 6,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 10,
+    "TranslatedUnits": 6,
+    "PreservedOriginalUnits": 4,
+    "EraseCommittedUnits": 6,
+    "TypesetCommittedUnits": 6,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "JE",
+        "Translation": "\uC81C",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+        "Translation": "\uBB34\uC2A8 \uC77C\uC774\uC57C? \uC544\uBB34\uAC83\uB3C4 \uC548 \uBCF4\uC5EC!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "I DON\u0027T KNOW!",
+        "Translation": "\uBAA8\uB974\uACA0\uB2E4\uACE0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "OVER HERE! GET IN!",
+        "Translation": "\uC774\uCABD\uC774\uC57C! \uBE68\uB9AC \uD0C0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "WA pteuiE",
+        "Translation": "\uC870\uC2EC\uD574!",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "you THERE!",
+        "Translation": "\uAC70\uAE30 \uB108!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "EEEMNSOS PIn",
+        "Translation": "\uC774\uAC74 \uB0B4 \uAC70\uC57C.",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "I SAID GET IN, DAMMIT! BEFORE A HUNDRED MORE SLINGERS COME FOR US!",
+        "Translation": "\uBE68\uB9AC \uD0C0\uB77C\uACE0, \uC81C\uAE38! [BR]\uBC31 \uBA85\uC774\uB098 \uB418\uB294 \uC0AC\uC218\uB4E4\uC774\n\uBAB0\uB824\uC624\uAE30 \uC804\uC5D0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "ENGAGE INVISIBILITY!",
+        "Translation": "\uC740\uC2E0 \uBAA8\uB4DC \uAC00\uB3D9!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "DE",
+        "Translation": "\uC5B4?",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}

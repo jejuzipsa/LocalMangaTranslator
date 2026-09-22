@@ -1,0 +1,239 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page043.jpg",
+  "output_file": "page043.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 15959,
+    "changed_ratio": 0.005771493832866449,
+    "changed_regions": [
+      {
+        "x": 586,
+        "y": 728,
+        "width": 191,
+        "height": 60
+      },
+      {
+        "x": 663,
+        "y": 795,
+        "width": 107,
+        "height": 63
+      },
+      {
+        "x": 780,
+        "y": 728,
+        "width": 62,
+        "height": 61
+      },
+      {
+        "x": 471,
+        "y": 728,
+        "width": 57,
+        "height": 58
+      },
+      {
+        "x": 845,
+        "y": 735,
+        "width": 56,
+        "height": 51
+      },
+      {
+        "x": 610,
+        "y": 797,
+        "width": 51,
+        "height": 49
+      },
+      {
+        "x": 531,
+        "y": 793,
+        "width": 43,
+        "height": 51
+      },
+      {
+        "x": 529,
+        "y": 736,
+        "width": 43,
+        "height": 49
+      },
+      {
+        "x": 579,
+        "y": 810,
+        "width": 27,
+        "height": 48
+      },
+      {
+        "x": 898,
+        "y": 727,
+        "width": 22,
+        "height": 49
+      },
+      {
+        "x": 450,
+        "y": 726,
+        "width": 22,
+        "height": 48
+      },
+      {
+        "x": 724,
+        "y": 821,
+        "width": 35,
+        "height": 23
+      },
+      {
+        "x": 574,
+        "y": 728,
+        "width": 11,
+        "height": 58
+      },
+      {
+        "x": 724,
+        "y": 794,
+        "width": 35,
+        "height": 18
+      },
+      {
+        "x": 438,
+        "y": 727,
+        "width": 9,
+        "height": 23
+      },
+      {
+        "x": 769,
+        "y": 797,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "x": 431,
+        "y": 728,
+        "width": 9,
+        "height": 22
+      },
+      {
+        "x": 920,
+        "y": 761,
+        "width": 9,
+        "height": 21
+      },
+      {
+        "x": 811,
+        "y": 800,
+        "width": 9,
+        "height": 14
+      },
+      {
+        "x": 821,
+        "y": 800,
+        "width": 8,
+        "height": 14
+      },
+      {
+        "x": 796,
+        "y": 831,
+        "width": 11,
+        "height": 9
+      },
+      {
+        "x": 782,
+        "y": 831,
+        "width": 11,
+        "height": 9
+      },
+      {
+        "x": 769,
+        "y": 831,
+        "width": 10,
+        "height": 9
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page043.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 9343,
+    "erase_changed_ratio": 0.0033788499831111747,
+    "typeset_changed_pixels": 8756,
+    "typeset_changed_ratio": 0.0031665643211090063
+  },
+  "region_analysis": {
+    "total": 3,
+    "bubbles": 1,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 2,
+      "Global2x": 2,
+      "Focus3x": 4,
+      "Region1x": 4,
+      "Region2x": 6,
+      "Container1x": 2,
+      "Container2x": 5
+    },
+    "canonical_lines": 2,
+    "units": 1,
+    "assigned_lines": 2,
+    "orphan_groups": 0,
+    "secondary_total": 1,
+    "secondary_accepted": 1,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 712,
+          "Bottom": 870,
+          "Left": 412,
+          "Right": 948,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022There\u0027s no going back, people...\u0022",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 1,
+    "requested_render": 1
+  },
+  "render": {
+    "total": 1,
+    "approved": 1,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 1,
+    "TranslatedUnits": 1,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 1,
+    "TypesetCommittedUnits": 1,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "\u0022There\u0027s no going back, people..\u0022",
+        "Translation": "\u0022\uC774\uC81C \uB418\uB3CC\uB9B4 \uC218 \uC5C6\uC5B4, \uBAA8\uB450\uB4E4...\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

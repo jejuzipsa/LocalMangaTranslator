@@ -1,0 +1,41 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page056.jpg",
+  "RequestedUnits": 1,
+  "TranslatedUnits": 1,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 1,
+  "TypesetCommittedUnits": 1,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "\u0022..on one last adventure \u0022..on one last adventure together.\u0022",
+      "Translation": "\u0022...\uB9C8\uC9C0\uB9C9 \uBAA8\uD5D8\uC744[BR]\uD568\uAED8.\u0022",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG001"
+      ],
+      "BubbleRegionId": null,
+      "LayoutMode": "textbubble_fallback",
+      "LayoutBounds": {
+        "X": 383,
+        "Y": 714,
+        "Width": 579,
+        "Height": 160
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

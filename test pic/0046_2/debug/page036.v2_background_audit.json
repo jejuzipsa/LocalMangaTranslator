@@ -1,0 +1,91 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "page036.jpg",
+  "TargetCount": 3,
+  "FlatFillTargets": 3,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 578,
+        "Y": 1477,
+        "Width": 83,
+        "Height": 35
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 827,
+      "SampleCount": 257,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 3,
+      "P90ColorDistance": 3.1622776601683795,
+      "SpatialCoverage": 0.8125,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 528,
+        "Y": 1529,
+        "Width": 76,
+        "Height": 34
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 589,
+      "SampleCount": 203,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1.7320508075688772,
+      "P90ColorDistance": 3.3166247903554,
+      "SpatialCoverage": 0.9375,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 719,
+        "Y": 1731,
+        "Width": 115,
+        "Height": 68
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 2024,
+      "SampleCount": 739,
+      "Background": {
+        "B": 254,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 0.9472259810554804,
+      "P75ColorDistance": 2.449489742783178,
+      "P90ColorDistance": 4.242640687119285,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

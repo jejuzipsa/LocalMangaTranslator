@@ -1,0 +1,636 @@
+{
+  "SourceFile": "page040.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:28:46.5124328+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 358,
+        "Y": 31,
+        "W": 69,
+        "H": 56.5,
+        "Text": "JE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 358,
+            "Y": 31,
+            "W": 69,
+            "H": 56.5,
+            "Text": "JE",
+            "Confidence": 0.91327477,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "JE",
+      "Translation": "\uC81C",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 72.33333333333333,
+        "Y": 145,
+        "W": 130,
+        "H": 81,
+        "Text": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 99.66666666666667,
+            "Y": 145,
+            "W": 74.66666666666667,
+            "H": 32.666666666666686,
+            "Text": "WHAT\u0027S",
+            "Confidence": 0.9793421,
+            "Language": "en"
+          },
+          {
+            "X": 72.33333333333333,
+            "Y": 167.33333333333331,
+            "W": 130,
+            "H": 33.666666666666686,
+            "Text": "HAPPENING? I",
+            "Confidence": 0.9816608,
+            "Language": "en"
+          },
+          {
+            "X": 84,
+            "Y": 190.66666666666666,
+            "W": 101.33333333333334,
+            "H": 35.33333333333334,
+            "Text": "CAN\u0027T SEE!",
+            "Confidence": 0.9048158,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "WHAT\u0027S HAPPENING? I CAN\u0027T SEE!",
+      "Translation": "\uBB34\uC2A8 \uC77C\uC774\uC57C? \uC544\uBB34\uAC83\uB3C4 \uC548 \uBCF4\uC5EC!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 128.33333333333334,
+        "Y": 255.33333333333334,
+        "W": 93,
+        "H": 46.00000000000003,
+        "Text": "I DON\u0027T KNOW!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 128.33333333333334,
+            "Y": 255.33333333333334,
+            "W": 93,
+            "H": 25.00000000000003,
+            "Text": "I DON\u0027T",
+            "Confidence": 0.994203,
+            "Language": "en"
+          },
+          {
+            "X": 134.33333333333334,
+            "Y": 274.33333333333337,
+            "W": 79.66666666666666,
+            "H": 27,
+            "Text": "KNOW!",
+            "Confidence": 0.9991302,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I DON\u0027T KNOW!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "I DON\u0027T KNOW!",
+      "Translation": "\uBAA8\uB974\uACA0\uB2E4\uACE0!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 132,
+        "Y": 392.6666666666667,
+        "W": 15.333333333333343,
+        "H": 12.666666666666629,
+        "Text": "t",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 132,
+            "Y": 392.6666666666667,
+            "W": 15.333333333333343,
+            "H": 12.666666666666629,
+            "Text": "t",
+            "Confidence": 0.42169243,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "t",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 868.6666666666666,
+        "Y": 613.6666666666666,
+        "W": 40,
+        "H": 90.33333333333337,
+        "Text": "BA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 868.6666666666666,
+            "Y": 613.6666666666666,
+            "W": 40,
+            "H": 90.33333333333337,
+            "Text": "BA",
+            "Confidence": 0.3607133,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "BA",
+      "Translation": "\uBC14",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1063.6666666666667,
+        "Y": 614.6666666666666,
+        "W": 114,
+        "H": 65.83333333333337,
+        "Text": "OVER HERE! GET IN!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1089.3333333333333,
+            "Y": 614.6666666666666,
+            "W": 63.333333333333485,
+            "H": 24,
+            "Text": "OVER",
+            "Confidence": 0.9999156,
+            "Language": "en"
+          },
+          {
+            "X": 1063.6666666666667,
+            "Y": 634.6666666666666,
+            "W": 114,
+            "H": 24,
+            "Text": "HERE! GET",
+            "Confidence": 0.9948561,
+            "Language": "en"
+          },
+          {
+            "X": 1102.5,
+            "Y": 654.5,
+            "W": 36,
+            "H": 26,
+            "Text": "IN!",
+            "Confidence": 0.99715644,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OVER HERE! GET IN!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "OVER HERE! GET IN!",
+      "Translation": "\uC774\uCABD\uC774\uC57C! \uBE68\uB9AC \uD0C0!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 471,
+        "Y": 645,
+        "W": 145,
+        "H": 169,
+        "Text": "WA pteuiE",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 471,
+            "Y": 645,
+            "W": 89,
+            "H": 169,
+            "Text": "WA",
+            "Confidence": 0.30042374,
+            "Language": "en"
+          },
+          {
+            "X": 491.6666666666667,
+            "Y": 647,
+            "W": 124.33333333333331,
+            "H": 48.33333333333337,
+            "Text": "pteuiE",
+            "Confidence": 0.3975563,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WATCH OUT!",
+      "Translation": "\uC870\uC2EC\uD574!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 373,
+        "Y": 717,
+        "W": 86.5,
+        "H": 50,
+        "Text": "you THERE!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 389,
+            "Y": 717,
+            "W": 58.66666666666663,
+            "H": 26.66666666666663,
+            "Text": "you",
+            "Confidence": 0.97579676,
+            "Language": "en"
+          },
+          {
+            "X": 373,
+            "Y": 729.5,
+            "W": 86.5,
+            "H": 37.5,
+            "Text": "THERE!",
+            "Confidence": 0.9991256,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU THERE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "YOU THERE!",
+      "Translation": "\uAC70\uAE30 \uB108!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 488.6666666666667,
+        "Y": 1126,
+        "W": 469.99999999999994,
+        "H": 31.666666666666742,
+        "Text": "EEEMNSOS PIn",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 488.6666666666667,
+            "Y": 1126,
+            "W": 379.3333333333333,
+            "H": 31.666666666666742,
+            "Text": "EEEMNSOS",
+            "Confidence": 0.5062431,
+            "Language": "en"
+          },
+          {
+            "X": 884,
+            "Y": 1128.6666666666667,
+            "W": 74.66666666666663,
+            "H": 23,
+            "Text": "PIn",
+            "Confidence": 0.5056984,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "EEMNSOS PIN",
+      "Translation": "\uC774\uAC74 \uB0B4 \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 494.3333333333333,
+        "Y": 1205,
+        "W": 189.33333333333343,
+        "H": 109,
+        "Text": "I SAID GET IN, DAMMIT! BEFORE A HUNDRED MORE SLINGERS COME FOR US!",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 510.3333333333333,
+            "Y": 1205,
+            "W": 158.66666666666669,
+            "H": 27.333333333333258,
+            "Text": "I SAID GET IN,",
+            "Confidence": 0.99934834,
+            "Language": "en"
+          },
+          {
+            "X": 498,
+            "Y": 1226,
+            "W": 184,
+            "H": 24,
+            "Text": "DAMMIT! BEFORE",
+            "Confidence": 0.99675864,
+            "Language": "en"
+          },
+          {
+            "X": 494.3333333333333,
+            "Y": 1245,
+            "W": 189.33333333333343,
+            "H": 25.333333333333258,
+            "Text": "A HUNDRED MORE",
+            "Confidence": 0.9977208,
+            "Language": "en"
+          },
+          {
+            "X": 497,
+            "Y": 1265,
+            "W": 186,
+            "H": 25.666666666666742,
+            "Text": "SLINGERS COME",
+            "Confidence": 0.99944746,
+            "Language": "en"
+          },
+          {
+            "X": 540,
+            "Y": 1281,
+            "W": 98.5,
+            "H": 33,
+            "Text": "FOR US!",
+            "Confidence": 0.99145675,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I SAID GET IN,\nDAMMIT! BEFORE\nA HUNDRED MORE\nSUNGERS COME\nFOR US!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "I SAID GET IN, DAMMIT! BEFORE A HUNDRED MORE SLINGERS COME FOR US!",
+      "Translation": "\uBE68\uB9AC \uD0C0\uB77C\uACE0, \uC81C\uAE38! [BR]\uBC31 \uBA85\uC774\uB098 \uB418\uB294 \uC0AC\uC218\uB4E4\uC774\n\uBAB0\uB824\uC624\uAE30 \uC804\uC5D0!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 637.3333333333334,
+        "Y": 1704,
+        "W": 152.66666666666663,
+        "H": 21.333333333333258,
+        "Text": "SM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 637.3333333333334,
+            "Y": 1704,
+            "W": 152.66666666666663,
+            "H": 21.333333333333258,
+            "Text": "SM",
+            "Confidence": 0.31836164,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "SM",
+      "Translation": "SM",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 843.5,
+        "Y": 1777,
+        "W": 140.5,
+        "H": 46.5,
+        "Text": "ENGAGE INVISIBILITY!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 864,
+            "Y": 1777,
+            "W": 96,
+            "H": 25,
+            "Text": "ENGAGE",
+            "Confidence": 0.99409574,
+            "Language": "en"
+          },
+          {
+            "X": 843.5,
+            "Y": 1797,
+            "W": 140.5,
+            "H": 26.5,
+            "Text": "INVISIBILITY!",
+            "Confidence": 0.9991264,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ENGAGE INVISIBILITY!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "ENGAGE INVISIBILITY!",
+      "Translation": "\uC740\uC2E0 \uBAA8\uB4DC \uAC00\uB3D9!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 824.3333333333333,
+        "Y": 1893.3333333333333,
+        "W": 35,
+        "H": 20,
+        "Text": "DE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 824.3333333333333,
+            "Y": 1893.3333333333333,
+            "W": 35,
+            "H": 20,
+            "Text": "DE",
+            "Confidence": 0.9923003,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "DE",
+      "Translation": "\uC5B4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 502,
+        "Y": 105,
+        "W": 53,
+        "H": 34,
+        "Text": "gak.",
+        "OriginalRegionCount": 1,
+        "Language": "multi",
+        "Lines": [
+          {
+            "X": 502,
+            "Y": 105,
+            "W": 53,
+            "H": 34,
+            "Text": "gak.",
+            "Confidence": 0.82,
+            "Language": "multi"
+          }
+        ],
+        "SecondaryOcrText": "gak.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "secondary_only",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "gak.",
+      "Translation": "\uCEE5.",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1199,
+        "Y": 108,
+        "W": 50,
+        "H": 29,
+        "Text": "gak.",
+        "OriginalRegionCount": 1,
+        "Language": "multi",
+        "Lines": [
+          {
+            "X": 1199,
+            "Y": 108,
+            "W": 50,
+            "H": 29,
+            "Text": "gak.",
+            "Confidence": 0.82,
+            "Language": "multi"
+          }
+        ],
+        "SecondaryOcrText": "gak.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "secondary_only",
+        "RegionId": "RG002"
+      },
+      "CorrectedText": "gak.",
+      "Translation": "\uCEE5.",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 922,
+        "Y": 231,
+        "W": 47,
+        "H": 28,
+        "Text": "gak.",
+        "OriginalRegionCount": 1,
+        "Language": "multi",
+        "Lines": [
+          {
+            "X": 922,
+            "Y": 231,
+            "W": 47,
+            "H": 28,
+            "Text": "gak.",
+            "Confidence": 0.82,
+            "Language": "multi"
+          }
+        ],
+        "SecondaryOcrText": "gak.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "secondary_only",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "gak.",
+      "Translation": "\uCEE5.",
+      "Type": "sfx",
+      "Render": false
+    }
+  ]
+}

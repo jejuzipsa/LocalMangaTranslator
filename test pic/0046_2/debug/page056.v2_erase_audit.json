@@ -1,0 +1,157 @@
+{
+  "Schema": "pipeline-v2-erase-audit-v5",
+  "SourceFile": "page056.jpg",
+  "SourceMode": "hybrid_rtdetr",
+  "DetectedTargetCount": 2,
+  "SelectedTargetCount": 1,
+  "InitialMaskPixels": 11125,
+  "GrayscaleMaskPixels": 11125,
+  "ColorRescueMaskPixels": 0,
+  "ResidualBeforeRetryPixels": 11061,
+  "RetryMaskPixels": 21546,
+  "RetryReconstruction": {
+    "FlatFillRetryTargets": 1,
+    "FlatFillRetryMaskPixels": 21546,
+    "TeleaRetryTargets": 0,
+    "TeleaRetryMaskPixels": 0
+  },
+  "FlatResidualCleanup": {
+    "AppliedTargets": 0,
+    "CleanupMaskPixels": 0,
+    "OutlierDebugFile": "page056.v2_03c_flat_residual_outlier.webp",
+    "CleanupMaskDebugFile": "page056.v2_03d_flat_cleanup_mask.webp"
+  },
+  "IndependentFlatResidualCleanup": {
+    "AppliedTargets": 0,
+    "CleanTargets": 1,
+    "SafeResidualTargets": 0,
+    "MaskUndershootRecoveryTargets": 0,
+    "AmbiguousStructureTargets": 0,
+    "ResidualBeforePixels": 0,
+    "CleanupMaskPixels": 0,
+    "ResidualAfterPixels": 0,
+    "FailedTargetIds": [],
+    "AmbiguousTargetIds": [],
+    "ResidualDebugFile": "page056.v2_03e_independent_flat_residual.webp",
+    "CleanupMaskDebugFile": "page056.v2_03f_independent_flat_cleanup_mask.webp"
+  },
+  "ResidualAfterRetryPixels": 2317,
+  "RetryTargetCount": 1,
+  "Clean": true,
+  "BackgroundReconstruction": {
+    "FlatFillTargets": 1,
+    "TeleaTargets": 0,
+    "BackgroundQualityFailures": 0,
+    "BackgroundQualityFailedTextRegionIds": [],
+    "Items": [
+      {
+        "TextRegionId": "RG001",
+        "Kind": "TextBubble",
+        "Strategy": "FLAT_FILL",
+        "MaskPixels": 11125,
+        "SampleCount": 13000,
+        "Background": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "DominantMatchRatio": 1,
+        "P75ColorDistance": 0,
+        "P90ColorDistance": 0,
+        "SpatialCoverage": 1,
+        "ExclusionRadius": 6,
+        "FlatAccepted": true,
+        "Reason": "dominant_purified_background_cluster",
+        "PostReconstructionP85": 0,
+        "PostRetryChromaticReviewPixels": 29550,
+        "PostRetryChromaticOutlierPixels": 0,
+        "PostRetryChromaticOutlierRatio": 0,
+        "FlatResidualCleanupApplied": false,
+        "FlatResidualCleanupMaskPixels": 0,
+        "PostCleanupChromaticReviewPixels": 29550,
+        "PostCleanupChromaticOutlierPixels": 0,
+        "PostCleanupChromaticOutlierRatio": 0,
+        "IndependentSourceLinkedResidualBeforePixels": 0,
+        "IndependentSourceLinkedDisposition": "CLEAN",
+        "IndependentSourceLinkedCleanupApplied": false,
+        "IndependentSourceLinkedCleanupPixels": 0,
+        "IndependentSourceLinkedResidualAfterPixels": 0,
+        "IndependentSourceLinkedResidualPass": true,
+        "BackgroundQualityPass": true
+      }
+    ]
+  },
+  "LegacyReviewerCheckpoint": {
+    "DetectedBubbleCount": 0,
+    "EraseTargetBubbleCount": 0,
+    "EmptyVerifiedBubbleCount": 0,
+    "BubbleCheckpointPass": true,
+    "EraseTargetBubbleIds": [],
+    "EmptyVerifiedBubbleIds": [],
+    "CheckpointMissingBubbleIds": [],
+    "EraseTargetTextFreeCount": 0,
+    "EmptyVerifiedTextFreeCount": 0,
+    "TextFreeCheckpointPass": true,
+    "EraseTargetTextFreeIds": [],
+    "EmptyVerifiedTextFreeIds": [],
+    "CheckpointMissingTextFreeIds": [],
+    "OverallPass": true,
+    "Items": [
+      {
+        "CheckpointId": "RG001",
+        "Kind": "UnparentedTextBubble",
+        "Bounds": {
+          "X": 383,
+          "Y": 714,
+          "Width": 579,
+          "Height": 160
+        },
+        "TextRegionIds": [
+          "RG001"
+        ],
+        "EmptyVerified": true,
+        "Status": "EMPTY_OK"
+      }
+    ]
+  },
+  "Targets": [
+    {
+      "TextRegionId": "RG001",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 383,
+        "Y": 714,
+        "Width": 579,
+        "Height": 160
+      },
+      "TextScore": 0.52907014,
+      "BubbleRegionId": null,
+      "BubbleBounds": null,
+      "BubbleScore": null,
+      "GrayscaleMaskPixels": 11125,
+      "ColorRescueMaskPixels": 0,
+      "InitialMaskPixels": 11125,
+      "CoreMaskPixels": 6737,
+      "ResidualBeforeRetryPixels": 11061,
+      "EffectiveResidualBeforeRetryPixels": 8771,
+      "CoreOverlapBeforeRetryPixels": 0,
+      "PersistentCoreBeforeRetryPixels": 0,
+      "RetryMaskPixels": 21546,
+      "RetryStrategy": "FLAT_FILL",
+      "ResidualAfterRetryPixels": 2317,
+      "EffectiveResidualAfterRetryPixels": 2317,
+      "CoreOverlapAfterRetryPixels": 0,
+      "PersistentCoreAfterRetryPixels": 0,
+      "SelectedResidualPixels": 2317,
+      "SelectedPersistentCorePixels": 0,
+      "SelectedPersistenceRatio": 0,
+      "SelectedPass": "retry",
+      "Retried": true,
+      "PrimaryReview": "fail",
+      "SecondaryReview": "pass",
+      "RescuedBySecondary": true,
+      "ReviewReason": "secondary_glyph_rescue",
+      "Status": "clean_after_secondary"
+    }
+  ]
+}

@@ -1,0 +1,1166 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page046.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0389,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9006029,
+            "BlockCoverage": 0.9928057553956832,
+            "CenterInside": true,
+            "CenterDistance": 0.8333333333333485,
+            "Affinity": 7.419857793486088
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0451,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9161628,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.0540925533894627,
+            "Affinity": 7.455973209327197
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.1213,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.95752716,
+            "BlockCoverage": 0.9965457685664939,
+            "CenterInside": true,
+            "CenterDistance": 0.8333333333333485,
+            "Affinity": 7.463279987921574
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0818,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.96415246,
+            "BlockCoverage": 0.43915343915343946,
+            "CenterInside": false,
+            "CenterDistance": 97.86115447691976,
+            "Affinity": 2.0429676753248662
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0718,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.96415246,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 11.73432760938795,
+            "Affinity": 7.458607572446172
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0813,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.94769865,
+            "BlockCoverage": 0.010638297872339827,
+            "CenterInside": false,
+            "CenterDistance": 62.418836188374385,
+            "Affinity": 0.3915648454847572
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0453,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.94769865,
+            "BlockCoverage": 0.9183673469387755,
+            "CenterInside": true,
+            "CenterDistance": 2.1081851067789077,
+            "Affinity": 7.14310234391369
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0398,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9374126,
+            "BlockCoverage": 0.9944289693593319,
+            "CenterInside": true,
+            "CenterDistance": 2.134374745810961,
+            "Affinity": 7.442153437741085
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0251,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.95900327,
+            "BlockCoverage": 0.9947506561679793,
+            "CenterInside": true,
+            "CenterDistance": 1.7950549357114627,
+            "Affinity": 7.454914149636691
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 9,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5987,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "ARS",
+        "corrected_text": "ARS",
+        "ocr_confidence": 0.6112741827964783,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 548.3333333333334,
+          "Y": 707,
+          "W": 18,
+          "H": 32.33333333333337
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0183,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9376641,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6871842709362583,
+            "Affinity": 7.4674576772516605
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0954,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.94955623,
+            "BlockCoverage": 0.9968454258675075,
+            "CenterInside": true,
+            "CenterDistance": 2.1666666666666594,
+            "Affinity": 7.457826485886056
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 12,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6331,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "aIn\u0027.",
+        "corrected_text": "...",
+        "ocr_confidence": 0.5356763601303101,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 557.6666666666666,
+          "Y": 866,
+          "W": 21,
+          "H": 44.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 13,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5948,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "e",
+        "corrected_text": "e",
+        "ocr_confidence": 0.46507519483566284,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 549,
+          "Y": 900.3333333333334,
+          "W": 9,
+          "H": 7.3333333333332575
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 14,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5892,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": ".MANW",
+        "corrected_text": ".MANW",
+        "ocr_confidence": 0.5131773352622986,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 690,
+          "Y": 1006,
+          "W": 90.66666666666663,
+          "H": 21.666666666666742
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 15,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.1698,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.96155035,
+            "BlockCoverage": 0.993650793650793,
+            "CenterInside": true,
+            "CenterDistance": 2.1343747458110323,
+            "Affinity": 7.45110960259034
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.1028,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.9523407,
+            "BlockCoverage": 0.9903381642512074,
+            "CenterInside": true,
+            "CenterDistance": 1.4240006242195176,
+            "Affinity": 7.434675016798413
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 17,
+      "RuleDecision": "RG025",
+      "LayaDecision": "RG025",
+      "Confidence": 0.1022,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG025",
+            "BubbleRegionId": "RG024",
+            "DetectorScore": 0.93620765,
+            "BlockCoverage": 0.9967948717948726,
+            "CenterInside": true,
+            "CenterDistance": 9.333333333333258,
+            "Affinity": 7.436616646558814
+          }
+        ],
+        "RegionId": "RG024",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 18,
+      "RuleDecision": "RG026",
+      "LayaDecision": "RG026",
+      "Confidence": 0.054,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG026",
+            "BubbleRegionId": "RG023",
+            "DetectorScore": 0.9139772,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.7453559925000147,
+            "Affinity": 7.455497890891663
+          }
+        ],
+        "RegionId": "RG023",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 4,
+      "RuleDecision": "R4",
+      "LayaDecision": "R4",
+      "Confidence": 0.0309,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG007",
+        "candidates": [
+          {
+            "option": "R3",
+            "Id": 3,
+            "source": "SN MADE FROM A",
+            "corrected": "MADE FROM A",
+            "secondary_agreement": null,
+            "ocr_confidence": 0.6830834746360779,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG008"
+            ],
+            "BubbleRegionId": "RG007",
+            "LayoutBounds": {
+              "Top": 333,
+              "Bottom": 544,
+              "Left": 291,
+              "Right": 587,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 19282.405928782762
+          },
+          {
+            "option": "R4",
+            "Id": 4,
+            "source": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+            "corrected": "MADE FROM A CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERING, EVEN SPACE-TIME, SO IT EXISTS OUTSIDE THE CONTINUUM OF THINGS.",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.989568829536438,
+            "detector_text_region": "RG008",
+            "TextRegionIds": [
+              "RG008"
+            ],
+            "BubbleRegionId": "RG007",
+            "LayoutBounds": {
+              "Top": 333,
+              "Bottom": 544,
+              "Left": 291,
+              "Right": 587,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 96473.6528335549
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.048,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "COME. WALK.",
+        "secondary_ocr": "COME. WALK.",
+        "primary_confidence": 0.9993287324905396,
+        "current_agreement": "agree",
+        "corrected_text": "COME.\nWALK."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0221,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHAT PLACE?",
+        "secondary_ocr": "WHAT IS THIS PLACE?",
+        "primary_confidence": 0.9996500611305237,
+        "current_agreement": "disagree",
+        "corrected_text": "WHAT IS THIS\nPLACE?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0182,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+        "secondary_ocr": "GEMWORLD,\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ...",
+        "primary_confidence": 0.9947018623352051,
+        "current_agreement": "disagree",
+        "corrected_text": "GEMWORLD.\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ... THIS IS\nTHE DEEPEST\nREALM."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0254,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+        "secondary_ocr": "MADE FROM A CRY\u0027STAL FORMED NEAR THE MOOTH CORE OF THE EARTH. IT REFRICTS EVERYTHING EVENGE EVE EVE E EVE STA STAT ERE E CH EATA",
+        "primary_confidence": 0.989568829536438,
+        "current_agreement": "disagree",
+        "corrected_text": "MADE FROM A CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERING, EVEN SPACE-TIME, SO IT EXISTS OUTSIDE THE CONTINUUM OF THINGS."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.1007,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "secondary_ocr": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "primary_confidence": 0.9822965860366821,
+        "current_agreement": "partial",
+        "corrected_text": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1607,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "LOST HOW? WHY CAN\u0027T WE--",
+        "secondary_ocr": "LOST HOW? WHY CAN\u0027T WE--",
+        "primary_confidence": 0.9912887811660767,
+        "current_agreement": "agree",
+        "corrected_text": "LOST HOW? WHY CAN\u0027T WE--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0151,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+        "secondary_ocr": "DIANA,\nI DON\u0027T\nUNDERSTAND\nWHAT HAPPENED\nOUT THERE,\nDIANA.",
+        "primary_confidence": 0.9957412481307983,
+        "current_agreement": "agree",
+        "corrected_text": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0703,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "STOP. IT DOESN\u0027T MATTER.",
+        "secondary_ocr": "STOP IT DOESN\u0027T MATTER.",
+        "primary_confidence": 0.9956395626068115,
+        "current_agreement": "agree",
+        "corrected_text": "STOP. IT DOESN\u0027T MATTER."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0687,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "secondary_ocr": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "primary_confidence": 0.9970544576644897,
+        "current_agreement": "agree",
+        "corrected_text": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 15,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0742,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+        "secondary_ocr": "WHAT\nDOES MATTER IS\nYOU\u0027RE HERE AND\nYOU CAN COME\nWITH US.",
+        "primary_confidence": 0.9791371822357178,
+        "current_agreement": "disagree",
+        "corrected_text": "WHAT DOES MATTER IS YOU\u0027RE HERE AND YOU CAN COME WITH US."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.185,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "you CAN HELP US PROTECT THEM.",
+        "secondary_ocr": "YOU CAN HELP US PROTECT THEM.",
+        "primary_confidence": 0.9613181948661804,
+        "current_agreement": "agree",
+        "corrected_text": "YOU CAN HELP US PROTECT THEM."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 17,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0593,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THE io ONES LEF BRUCE.",
+        "secondary_ocr": "THE ONES LEFT, BRUCE.",
+        "primary_confidence": 0.9339075088500977,
+        "current_agreement": "disagree",
+        "corrected_text": "THE ONES LEFT, BRUCE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 18,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1073,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "PROTECT WHO?",
+        "secondary_ocr": "PROTECT WHO?",
+        "primary_confidence": 0.9991311430931091,
+        "current_agreement": "agree",
+        "corrected_text": "PROTECT WHO?"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5426,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WHAT PLACE?",
+        "corrected_text": "WHAT IS THIS\nPLACE?",
+        "secondary_ocr": "WHAT IS THIS PLACE?",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9996500611305237,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5017,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+        "corrected_text": "GEMWORLD.\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ... THIS IS\nTHE DEEPEST\nREALM.",
+        "secondary_ocr": "GEMWORLD,\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9947018623352051,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5579,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SN MADE FROM A",
+        "corrected_text": "MADE FROM A",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6830834746360779,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5654,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+        "corrected_text": "MADE FROM A CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERING, EVEN SPACE-TIME, SO IT EXISTS OUTSIDE THE CONTINUUM OF THINGS.",
+        "secondary_ocr": "MADE FROM A CRY\u0027STAL FORMED NEAR THE MOOTH CORE OF THE EARTH. IT REFRICTS EVERYTHING EVENGE EVE EVE E EVE STA STAT ERE E CH EATA",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.989568829536438,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5736,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "corrected_text": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "secondary_ocr": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9822965860366821,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6057,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "aIn\u0027.",
+        "corrected_text": "...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5356763601303101,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6105,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+        "corrected_text": "WHAT DOES MATTER IS YOU\u0027RE HERE AND YOU CAN COME WITH US.",
+        "secondary_ocr": "WHAT\nDOES MATTER IS\nYOU\u0027RE HERE AND\nYOU CAN COME\nWITH US.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9791371822357178,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 17,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5305,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THE io ONES LEF BRUCE.",
+        "corrected_text": "THE ONES LEFT, BRUCE.",
+        "secondary_ocr": "THE ONES LEFT, BRUCE.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9339075088500977,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5445,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "COME. WALK.",
+        "corrected_source_text": "COME.\nWALK.",
+        "korean_translation": "\uC774\uB9AC \uC640.\n\uAC78\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "COME. WALK.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5107,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHAT PLACE?",
+        "corrected_source_text": "WHAT IS THIS\nPLACE?",
+        "korean_translation": "\uC5EC\uAE34\n\uC5B4\uB5A4 \uACF3\uC774\uC9C0?",
+        "type": "dialogue",
+        "secondary_ocr": "WHAT IS THIS PLACE?",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5604,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+        "corrected_source_text": "GEMWORLD.\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ... THIS IS\nTHE DEEPEST\nREALM.",
+        "korean_translation": "\uC82C\uC6D4\uB4DC.[BR]\uB300\uB959 \uC544\uB798\uC5D0 \uC788\uB294[BR]\uC6B0\uB9AC\uC758 \uC548\uC2DD\uCC98.[BR]\uC790\uC218\uC815, \uD669\uC218\uC815...[BR]\uC5EC\uAE30\uB294 \uAC00\uC7A5 \uAE4A\uC740[BR]\uC601\uC5ED\uC774\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "GEMWORLD,\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6711,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SN MADE FROM A",
+        "corrected_source_text": "MADE FROM A",
+        "korean_translation": "~\uB85C \uB9CC\uB4E0",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5329,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+        "corrected_source_text": "MADE FROM A CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERING, EVEN SPACE-TIME, SO IT EXISTS OUTSIDE THE CONTINUUM OF THINGS.",
+        "korean_translation": "\uC9C0\uAD6C\uC758 \uC6A9\uC554 \uD575 \uADFC\uCC98\uC5D0\uC11C \uD615\uC131\uB41C \uC218\uC815\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC84C\uC2B5\uB2C8\uB2E4. \uB4E4\uC5B4\uC624\uB294 \uBAA8\uB4E0 \uAC83, \uC2EC\uC9C0\uC5B4 \uC2DC\uACF5\uAC04\uAE4C\uC9C0 \uAD74\uC808\uC2DC\uD0A4\uAE30\uC5D0[BR]\uC774\uAC83\uC740 \uC874\uC7AC\uC758 \uC5F0\uC18D\uC131 \uBC16\uC5D0 \uB193\uC5EC \uC788\uC2B5\uB2C8\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "MADE FROM A CRY\u0027STAL FORMED NEAR THE MOOTH CORE OF THE EARTH. IT REFRICTS EVERYTHING EVENGE EVE EVE E EVE STA STAT ERE E CH EATA",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6212,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "EVA",
+        "corrected_source_text": "EVA",
+        "korean_translation": "\uC5D0\uBC14",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5937,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "corrected_source_text": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "korean_translation": "\uC9C0\uAE08\uAE4C\uC9C0\uB294[BR]\uC5EC\uAE30\uC11C \uC548\uC804\uD588\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5022,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "LOST HOW? WHY CAN\u0027T WE--",
+        "corrected_source_text": "LOST HOW? WHY CAN\u0027T WE--",
+        "korean_translation": "\uC5B4\uB5BB\uAC8C \uC783\uC5B4\uBC84\uB9B0 \uAC70\uC57C?[BR]\uC65C \uC6B0\uB9AC\uAC00 \uBABB--",
+        "type": "dialogue",
+        "secondary_ocr": "LOST HOW? WHY CAN\u0027T WE--",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5924,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+        "corrected_source_text": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+        "korean_translation": "\uB2E4\uC774\uC544\uB098, \uBC29\uAE08 \uBC16\uC5D0\uC11C[BR]\uBB34\uC2A8 \uC77C\uC774 \uC77C\uC5B4\uB09C \uAC74\uC9C0 \uBAA8\uB974\uACA0\uC5B4, \uB2E4\uC774\uC544\uB098.",
+        "type": "dialogue",
+        "secondary_ocr": "DIANA,\nI DON\u0027T\nUNDERSTAND\nWHAT HAPPENED\nOUT THERE,\nDIANA.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5104,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "STOP. IT DOESN\u0027T MATTER.",
+        "corrected_source_text": "STOP. IT DOESN\u0027T MATTER.",
+        "korean_translation": "\uADF8\uB9CC\uD574.[BR]\uC0C1\uAD00\uC5C6\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "STOP IT DOESN\u0027T MATTER.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5296,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "corrected_source_text": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "korean_translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4. \uC0C1\uD669\uC740 \uB05D\uB0AC\uC5B4.[BR]\uC6B0\uB9B0 \uC9C4 \uAC70\uC57C.[BR]\uB2E4 \uB05D\uB0AC\uB2E4\uACE0.",
+        "type": "dialogue",
+        "secondary_ocr": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5884,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+        "corrected_source_text": "WHAT DOES MATTER IS YOU\u0027RE HERE AND YOU CAN COME WITH US.",
+        "korean_translation": "\uC911\uC694\uD55C \uAC74 \uB124\uAC00 \uC5EC\uAE30 \uC788\uACE0,\n\uC6B0\uB9AC\uB791 \uAC19\uC774 \uAC08 \uC218 \uC788\uB2E4\uB294 \uAC70\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "WHAT\nDOES MATTER IS\nYOU\u0027RE HERE AND\nYOU CAN COME\nWITH US.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5487,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "you CAN HELP US PROTECT THEM.",
+        "corrected_source_text": "YOU CAN HELP US PROTECT THEM.",
+        "korean_translation": "\uB2F9\uC2E0\uC774 \uC6B0\uB9AC\uB97C \uB3C4\uC640\n\uADF8\uB4E4\uC744 \uC9C0\uD0AC \uC218\n\uC788\uC2B5\uB2C8\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "YOU CAN HELP US PROTECT THEM.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 17,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5924,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THE io ONES LEF BRUCE.",
+        "corrected_source_text": "THE ONES LEFT, BRUCE.",
+        "korean_translation": "\uB0A8\uC740 \uB188\uB4E4\uC774\uC57C,\n\uBE0C\uB8E8\uC2A4.",
+        "type": "dialogue",
+        "secondary_ocr": "THE ONES LEFT, BRUCE.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 18,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5157,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "PROTECT WHO?",
+        "corrected_source_text": "PROTECT WHO?",
+        "korean_translation": "\uB204\uAD74 \uC9C0\uD0A4\uB77C\uACE0?",
+        "type": "dialogue",
+        "secondary_ocr": "PROTECT WHO?",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

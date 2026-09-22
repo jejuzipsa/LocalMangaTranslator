@@ -1,0 +1,166 @@
+{
+  "Schema": "pipeline-v2-erase-audit-v5",
+  "SourceFile": "page043.jpg",
+  "SourceMode": "hybrid_rtdetr",
+  "DetectedTargetCount": 2,
+  "SelectedTargetCount": 1,
+  "InitialMaskPixels": 10483,
+  "GrayscaleMaskPixels": 10483,
+  "ColorRescueMaskPixels": 0,
+  "ResidualBeforeRetryPixels": 9166,
+  "RetryMaskPixels": 19716,
+  "RetryReconstruction": {
+    "FlatFillRetryTargets": 1,
+    "FlatFillRetryMaskPixels": 19716,
+    "TeleaRetryTargets": 0,
+    "TeleaRetryMaskPixels": 0
+  },
+  "FlatResidualCleanup": {
+    "AppliedTargets": 0,
+    "CleanupMaskPixels": 0,
+    "OutlierDebugFile": "page043.v2_03c_flat_residual_outlier.webp",
+    "CleanupMaskDebugFile": "page043.v2_03d_flat_cleanup_mask.webp"
+  },
+  "IndependentFlatResidualCleanup": {
+    "AppliedTargets": 0,
+    "CleanTargets": 1,
+    "SafeResidualTargets": 0,
+    "MaskUndershootRecoveryTargets": 0,
+    "AmbiguousStructureTargets": 0,
+    "ResidualBeforePixels": 0,
+    "CleanupMaskPixels": 0,
+    "ResidualAfterPixels": 0,
+    "FailedTargetIds": [],
+    "AmbiguousTargetIds": [],
+    "ResidualDebugFile": "page043.v2_03e_independent_flat_residual.webp",
+    "CleanupMaskDebugFile": "page043.v2_03f_independent_flat_cleanup_mask.webp"
+  },
+  "ResidualAfterRetryPixels": 2224,
+  "RetryTargetCount": 1,
+  "Clean": true,
+  "BackgroundReconstruction": {
+    "FlatFillTargets": 1,
+    "TeleaTargets": 0,
+    "BackgroundQualityFailures": 0,
+    "BackgroundQualityFailedTextRegionIds": [],
+    "Items": [
+      {
+        "TextRegionId": "RG001",
+        "Kind": "TextBubble",
+        "Strategy": "FLAT_FILL",
+        "MaskPixels": 10483,
+        "SampleCount": 11501,
+        "Background": {
+          "B": 0,
+          "G": 0,
+          "R": 0
+        },
+        "DominantMatchRatio": 1,
+        "P75ColorDistance": 0,
+        "P90ColorDistance": 0,
+        "SpatialCoverage": 1,
+        "ExclusionRadius": 6,
+        "FlatAccepted": true,
+        "Reason": "dominant_purified_background_cluster",
+        "PostReconstructionP85": 0,
+        "PostRetryChromaticReviewPixels": 28090,
+        "PostRetryChromaticOutlierPixels": 0,
+        "PostRetryChromaticOutlierRatio": 0,
+        "FlatResidualCleanupApplied": false,
+        "FlatResidualCleanupMaskPixels": 0,
+        "PostCleanupChromaticReviewPixels": 28090,
+        "PostCleanupChromaticOutlierPixels": 0,
+        "PostCleanupChromaticOutlierRatio": 0,
+        "IndependentSourceLinkedResidualBeforePixels": 0,
+        "IndependentSourceLinkedDisposition": "CLEAN",
+        "IndependentSourceLinkedCleanupApplied": false,
+        "IndependentSourceLinkedCleanupPixels": 0,
+        "IndependentSourceLinkedResidualAfterPixels": 0,
+        "IndependentSourceLinkedResidualPass": true,
+        "BackgroundQualityPass": true
+      }
+    ]
+  },
+  "LegacyReviewerCheckpoint": {
+    "DetectedBubbleCount": 1,
+    "EraseTargetBubbleCount": 1,
+    "EmptyVerifiedBubbleCount": 1,
+    "BubbleCheckpointPass": true,
+    "EraseTargetBubbleIds": [
+      "RG003"
+    ],
+    "EmptyVerifiedBubbleIds": [
+      "RG003"
+    ],
+    "CheckpointMissingBubbleIds": [],
+    "EraseTargetTextFreeCount": 0,
+    "EmptyVerifiedTextFreeCount": 0,
+    "TextFreeCheckpointPass": true,
+    "EraseTargetTextFreeIds": [],
+    "EmptyVerifiedTextFreeIds": [],
+    "CheckpointMissingTextFreeIds": [],
+    "OverallPass": true,
+    "Items": [
+      {
+        "CheckpointId": "RG003",
+        "Kind": "Bubble",
+        "Bounds": {
+          "X": 412,
+          "Y": 712,
+          "Width": 536,
+          "Height": 158
+        },
+        "TextRegionIds": [
+          "RG001"
+        ],
+        "EmptyVerified": true,
+        "Status": "EMPTY_OK"
+      }
+    ]
+  },
+  "Targets": [
+    {
+      "TextRegionId": "RG001",
+      "Kind": 1,
+      "TextBounds": {
+        "X": 412,
+        "Y": 712,
+        "Width": 536,
+        "Height": 158
+      },
+      "TextScore": 0.5129523,
+      "BubbleRegionId": "RG003",
+      "BubbleBounds": {
+        "X": 412,
+        "Y": 712,
+        "Width": 536,
+        "Height": 158
+      },
+      "BubbleScore": 0.3364043,
+      "GrayscaleMaskPixels": 10483,
+      "ColorRescueMaskPixels": 0,
+      "InitialMaskPixels": 10483,
+      "CoreMaskPixels": 6359,
+      "ResidualBeforeRetryPixels": 9166,
+      "EffectiveResidualBeforeRetryPixels": 7308,
+      "CoreOverlapBeforeRetryPixels": 0,
+      "PersistentCoreBeforeRetryPixels": 0,
+      "RetryMaskPixels": 19716,
+      "RetryStrategy": "FLAT_FILL",
+      "ResidualAfterRetryPixels": 2224,
+      "EffectiveResidualAfterRetryPixels": 2224,
+      "CoreOverlapAfterRetryPixels": 0,
+      "PersistentCoreAfterRetryPixels": 0,
+      "SelectedResidualPixels": 2224,
+      "SelectedPersistentCorePixels": 0,
+      "SelectedPersistenceRatio": 0,
+      "SelectedPass": "retry",
+      "Retried": true,
+      "PrimaryReview": "fail",
+      "SecondaryReview": "pass",
+      "RescuedBySecondary": true,
+      "ReviewReason": "secondary_glyph_rescue",
+      "Status": "clean_after_secondary"
+    }
+  ]
+}

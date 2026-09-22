@@ -1,0 +1,47 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "page056.jpg",
+  "DetectedTextTargets": 2,
+  "CommittedTargets": 1,
+  "PreservedTargets": 1,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG001",
+      "Kind": "TextBubble",
+      "TextScore": 0.52907014,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 383,
+        "Y": 714,
+        "Width": 579,
+        "Height": 160
+      },
+      "BoundTranslationRegionIds": [
+        0
+      ],
+      "BestTranslationRegionId": 0,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextFree",
+      "TextScore": 0.4708839,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 383,
+        "Y": 714,
+        "Width": 579,
+        "Height": 160
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}

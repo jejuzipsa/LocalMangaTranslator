@@ -1,0 +1,30 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "page055.jpg",
+  "DetectedTextTargets": 1,
+  "CommittedTargets": 1,
+  "PreservedTargets": 0,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "TextScore": 0.9018817,
+      "BubbleRegionId": "RG001",
+      "TextBounds": {
+        "X": 298,
+        "Y": 697,
+        "Width": 255,
+        "Height": 67
+      },
+      "BoundTranslationRegionIds": [
+        0
+      ],
+      "BestTranslationRegionId": 0,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}

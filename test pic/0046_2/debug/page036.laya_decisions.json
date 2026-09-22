@@ -1,0 +1,260 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page036.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0229,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.81095374,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.0155644370746373,
+            "Affinity": 7.401445739278469
+          },
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.81203353,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 72.30707088521841,
+            "Affinity": 0.26140262525455704
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0132,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.81203353,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.6100766272276377,
+            "Affinity": 7.400796613770539
+          },
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.81095374,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 75.57488008591214,
+            "Affinity": 0.25432710798079416
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0559,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.90277755,
+            "BlockCoverage": 0.870627284254494,
+            "CenterInside": true,
+            "CenterDistance": 2.666666666666515,
+            "Affinity": 6.928564579986981
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0189,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": ".OVER",
+        "secondary_ocr": "...OVER?",
+        "primary_confidence": 0.9951252341270447,
+        "current_agreement": "agree",
+        "corrected_text": "...OVER?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0276,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HOLY.",
+        "secondary_ocr": "HOLY...",
+        "primary_confidence": 0.9187929630279541,
+        "current_agreement": "agree",
+        "corrected_text": "HOLY..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0409,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HOLY WHAT? WHATD IMI55?",
+        "secondary_ocr": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "primary_confidence": 0.9330089688301086,
+        "current_agreement": "disagree",
+        "corrected_text": "HOLY WHAT? WHAT\u0027D I MISS?"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5224,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": ".OVER",
+        "corrected_text": "...OVER?",
+        "secondary_ocr": "...OVER?",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9951252341270447,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5109,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "HOLY.",
+        "corrected_text": "HOLY...",
+        "secondary_ocr": "HOLY...",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9187929630279541,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.502,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "HOLY WHAT? WHATD IMI55?",
+        "corrected_text": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "secondary_ocr": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9330089688301086,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6086,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": ".OVER",
+        "corrected_source_text": "...OVER?",
+        "korean_translation": "...\uB05D\uB0AC\uC5B4?",
+        "type": "dialogue",
+        "secondary_ocr": "...OVER?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5314,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HOLY.",
+        "corrected_source_text": "HOLY...",
+        "korean_translation": "\uC138\uC0C1\uC5D0...",
+        "type": "dialogue",
+        "secondary_ocr": "HOLY...",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.525,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HOLY WHAT? WHATD IMI55?",
+        "corrected_source_text": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "korean_translation": "\uC138\uC0C1\uC5D0, \uBB50\uC57C?[BR]\uB0B4\uAC00 \uBB58 \uB193\uCE5C \uAC70\uC57C?",
+        "type": "dialogue",
+        "secondary_ocr": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}

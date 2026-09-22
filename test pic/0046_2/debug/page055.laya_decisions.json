@@ -1,0 +1,94 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page055.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0209,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9018817,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.7716909687891866,
+            "Affinity": 7.4473974654592725
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6059,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "JUL",
+        "corrected_text": "JUL",
+        "ocr_confidence": 0.4412550926208496,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 960.5,
+          "Y": 1351,
+          "W": 101,
+          "H": 58.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0753,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "...And so with that, we set out for parts unknown, Batman and I...",
+        "secondary_ocr": "...And so with that, we set out for parts unknown, Batman and I.",
+        "primary_confidence": 0.9892376661300659,
+        "current_agreement": "agree",
+        "corrected_text": "...And so with that, we set out for parts unknown, Batman and I..."
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5911,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "...And so with that, we set out for parts unknown, Batman and I...",
+        "corrected_source_text": "...And so with that, we set out for parts unknown, Batman and I...",
+        "korean_translation": "...\uADF8\uB807\uAC8C \uBC30\uD2B8\uB9E8\uACFC \uB098\uB294[BR]\uBBF8\uC9C0\uC758 \uB545\uC744 \uD5A5\uD574[BR]\uAE38\uC744 \uB5A0\uB0AC\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "...And so with that, we set out for parts unknown, Batman and I.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

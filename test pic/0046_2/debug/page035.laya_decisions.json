@@ -1,0 +1,1078 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page035.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0846,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.90200865,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.8408935028645803,
+            "Affinity": 7.447322539337807
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0364,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.93005776,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.0155644370746373,
+            "Affinity": 7.460997753152523
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0564,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.8757728,
+            "BlockCoverage": 0.9855072463768116,
+            "CenterInside": true,
+            "CenterDistance": 1.346291201783626,
+            "Affinity": 7.377222790213436
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0648,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.8330169,
+            "BlockCoverage": 0.7935409457900802,
+            "CenterInside": true,
+            "CenterDistance": 1.6666666666666288,
+            "Affinity": 6.587338886029991
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 4,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6113,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "WL",
+        "corrected_text": "WL",
+        "ocr_confidence": 0.5583516955375671,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1418,
+          "Y": 851,
+          "W": 95.66666666666674,
+          "H": 43
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 5,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6021,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.3097855746746063,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 277,
+          "Y": 873,
+          "W": 26,
+          "H": 21
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG011",
+      "LayaDecision": "RG011",
+      "Confidence": 0.022,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG011",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9139484,
+            "BlockCoverage": 0.9803921568627451,
+            "CenterInside": true,
+            "CenterDistance": 1.8027756377319946,
+            "Affinity": 7.374937284530467
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG013",
+      "LayaDecision": "RG013",
+      "Confidence": 0.0742,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG013",
+            "BubbleRegionId": "RG010",
+            "DetectorScore": 0.93479615,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6009252125772895,
+            "Affinity": 7.466196226824373
+          }
+        ],
+        "RegionId": "RG010",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.1107,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG012",
+            "DetectorScore": 0.94445705,
+            "BlockCoverage": 0.9390444810543651,
+            "CenterInside": true,
+            "CenterDistance": 2.4166666666666288,
+            "Affinity": 7.22357311795322
+          }
+        ],
+        "RegionId": "RG012",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG017",
+      "LayaDecision": "RG017",
+      "Confidence": 0.0419,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG017",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9043087,
+            "BlockCoverage": 0.9945054945054956,
+            "CenterInside": true,
+            "CenterDistance": 2.223610677354241,
+            "Affinity": 7.425729095027107
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.107,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG016",
+            "DetectorScore": 0.93688846,
+            "BlockCoverage": 0.9798387096774197,
+            "CenterInside": true,
+            "CenterDistance": 1.1785113019776328,
+            "Affinity": 7.385442044278026
+          }
+        ],
+        "RegionId": "RG016",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6146,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "4",
+        "corrected_text": "4",
+        "ocr_confidence": 0.4444851279258728,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 258.6666666666667,
+          "Y": 1004,
+          "W": 18,
+          "H": 17.33333333333337
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 12,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5864,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "i",
+        "corrected_text": "I",
+        "ocr_confidence": 0.5429422855377197,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 271.6666666666667,
+          "Y": 1013.3333333333334,
+          "W": 21.66666666666663,
+          "H": 20.33333333333337
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 13,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5972,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "4",
+        "corrected_text": "4",
+        "ocr_confidence": 0.4015156030654907,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 241,
+          "Y": 1087,
+          "W": 41.333333333333314,
+          "H": 157
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.1693,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.94325644,
+            "BlockCoverage": 0.9890109890109892,
+            "CenterInside": true,
+            "CenterDistance": 0.4714045207911657,
+            "Affinity": 7.42672936589161
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 15,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG022",
+      "Confidence": 0.1327,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.92498374,
+            "BlockCoverage": 0.08826754385964912,
+            "CenterInside": false,
+            "CenterDistance": 86.48843853371386,
+            "Affinity": 0.6425851682976215
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.0201,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.92498374,
+            "BlockCoverage": 0.9857142857142858,
+            "CenterInside": true,
+            "CenterDistance": 1.118033988749895,
+            "Affinity": 7.403112944806096
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 17,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG020",
+      "Confidence": 0.0503,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.94325644,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 71.17935093831638,
+            "Affinity": 0.3292695170126037
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 18,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG025",
+      "Confidence": 0.0369,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG025",
+            "BubbleRegionId": "RG024",
+            "DetectorScore": 0.910488,
+            "BlockCoverage": 0.18504213483146056,
+            "CenterInside": false,
+            "CenterDistance": 65.9496862093454,
+            "Affinity": 1.0635131716335615
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 19,
+      "RuleDecision": "RG026",
+      "LayaDecision": "RG026",
+      "Confidence": 0.0368,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG026",
+            "BubbleRegionId": "RG023",
+            "DetectorScore": 0.9163475,
+            "BlockCoverage": 0.9677419354838701,
+            "CenterInside": true,
+            "CenterDistance": 1.3743685418727098,
+            "Affinity": 7.3263927566827896
+          }
+        ],
+        "RegionId": "RG023",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 20,
+      "RuleDecision": "RG025",
+      "LayaDecision": "RG025",
+      "Confidence": 0.1663,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG025",
+            "BubbleRegionId": "RG024",
+            "DetectorScore": 0.910488,
+            "BlockCoverage": 0.9746835443037974,
+            "CenterInside": true,
+            "CenterDistance": 1.3017082793177273,
+            "Affinity": 7.351374765382964
+          }
+        ],
+        "RegionId": "RG024",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0604,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "He walked the whole way at the same pace.",
+        "secondary_ocr": "He walked the whole way at the same pace.",
+        "primary_confidence": 0.9988782405853271,
+        "current_agreement": "agree",
+        "corrected_text": "He walked the whole way at the same pace."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0543,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I like to think he was thinking the Old days, Of family.",
+        "secondary_ocr": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "primary_confidence": 0.974383533000946,
+        "current_agreement": "disagree",
+        "corrected_text": "I like to think he was thinking of me as he went, thinking of the old days, of family."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0809,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "But that\u0027s selfishness. And I know better.",
+        "secondary_ocr": "But that\u0027s selfishness. And I know better.",
+        "primary_confidence": 0.9907737374305725,
+        "current_agreement": "agree",
+        "corrected_text": "But that\u0027s selfishness. And I know better."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1072,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I TOLD YOU SO.",
+        "secondary_ocr": "I TOLD YOU SO.",
+        "primary_confidence": 0.8330668210983276,
+        "current_agreement": "agree",
+        "corrected_text": "I TOLD YOU SO."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0958,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I HAD TO SEE FOR MYSELF.",
+        "secondary_ocr": "I HAD TO SEE FOR MYSELF.",
+        "primary_confidence": 0.9971416592597961,
+        "current_agreement": "agree",
+        "corrected_text": "I HAD TO SEE FOR MYSELF."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1418,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "JUST.. THERE FOR THE TAKING.",
+        "secondary_ocr": "JUST...\nTHERE FOR THE\nTAKING.",
+        "primary_confidence": 0.9785984754562378,
+        "current_agreement": "agree",
+        "corrected_text": "JUST... THERE FOR THE TAKING."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0245,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT DOESNT MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "secondary_ocr": "IT DOFSN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "primary_confidence": 0.9573781490325928,
+        "current_agreement": "disagree",
+        "corrected_text": "IT DOESN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1639,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BY EVERYONE AND ANYONE.",
+        "secondary_ocr": "BY EVERYONE AND ANYONE.",
+        "primary_confidence": 0.9832696914672852,
+        "current_agreement": "agree",
+        "corrected_text": "BY EVERYONE AND ANYONE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.173,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "secondary_ocr": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "primary_confidence": 0.9875794649124146,
+        "current_agreement": "agree",
+        "corrected_text": "GREEN LANTERN RINGS DROPPING TO EARTH."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.034,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WELL, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OF OFF IN HERE.",
+        "secondary_ocr": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HE",
+        "primary_confidence": 0.9775100946426392,
+        "current_agreement": "disagree",
+        "corrected_text": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HERE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0765,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHAT HAPPENED TO THE BATTERY?",
+        "secondary_ocr": "WHAT HAPPENED TO THE BATTERY?",
+        "primary_confidence": 0.9989493489265442,
+        "current_agreement": "agree",
+        "corrected_text": "WHAT HAPPENED TO THE BATTERY?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 19,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1022,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "secondary_ocr": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "primary_confidence": 0.9805086255073547,
+        "current_agreement": "agree",
+        "corrected_text": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 20,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0271,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "M060 LEECHED TO DEATH BY BRAINIAC.",
+        "secondary_ocr": "MOGO\nLEECHED TO\nDEATH BY\nBRAINIAC.",
+        "primary_confidence": 0.9862037897109985,
+        "current_agreement": "disagree",
+        "corrected_text": "MOGO LEECHED TO DEATH BY BRAINIAC."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5961,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "I like to think he was thinking the Old days, Of family.",
+        "corrected_text": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "secondary_ocr": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.974383533000946,
+        "type": "thought"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5649,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "JUST.. THERE FOR THE TAKING.",
+        "corrected_text": "JUST... THERE FOR THE TAKING.",
+        "secondary_ocr": "JUST...\nTHERE FOR THE\nTAKING.",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9785984754562378,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5557,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IT DOESNT MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "corrected_text": "IT DOESN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "secondary_ocr": "IT DOFSN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9573781490325928,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5465,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WELL, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OF OFF IN HERE.",
+        "corrected_text": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HERE.",
+        "secondary_ocr": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HE",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9775100946426392,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 20,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5322,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "M060 LEECHED TO DEATH BY BRAINIAC.",
+        "corrected_text": "MOGO LEECHED TO DEATH BY BRAINIAC.",
+        "secondary_ocr": "MOGO\nLEECHED TO\nDEATH BY\nBRAINIAC.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9862037897109985,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6557,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "He walked the whole way at the same pace.",
+        "corrected_source_text": "He walked the whole way at the same pace.",
+        "korean_translation": "\uADF8\uB294 \uB0B4\uB0B4 \uC77C\uC815\uD55C \uC18D\uB3C4\uB85C \uAC78\uC5C8\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "He walked the whole way at the same pace.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5189,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I like to think he was thinking the Old days, Of family.",
+        "corrected_source_text": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "korean_translation": "\uADF8\uAC00 \uB5A0\uB098\uBA74\uC11C \uB098\uB97C \uC0DD\uAC01\uD558\uBA70,\n\uC61B \uC2DC\uC808\uACFC \uAC00\uC871\uC744 \uB5A0\uC62C\uB838\uC744 \uAC70\uB77C \uBBFF\uACE0 \uC2F6\uC5B4.",
+        "type": "thought",
+        "secondary_ocr": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5393,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "But that\u0027s selfishness. And I know better.",
+        "corrected_source_text": "But that\u0027s selfishness. And I know better.",
+        "korean_translation": "\uD558\uC9C0\uB9CC \uADF8\uAC74 \uC774\uAE30\uC801\uC778 \uAC70\uC57C.[BR]\uB09C \uB354 \uC798 \uC54C\uACE0 \uC788\uC5B4.",
+        "type": "thought",
+        "secondary_ocr": "But that\u0027s selfishness. And I know better.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.52,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I TOLD YOU SO.",
+        "corrected_source_text": "I TOLD YOU SO.",
+        "korean_translation": "\uAC70\uBD10, \uB0B4 \uB9D0\uC774 \uB9DE\uC9C0?",
+        "type": "dialogue",
+        "secondary_ocr": "I TOLD YOU SO.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.524,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I HAD TO SEE FOR MYSELF.",
+        "corrected_source_text": "I HAD TO SEE FOR MYSELF.",
+        "korean_translation": "\uB0B4 \uB208\uC73C\uB85C \uC9C1\uC811 \uD655\uC778\uD574\uC57C \uD588\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "I HAD TO SEE FOR MYSELF.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5528,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "JUST.. THERE FOR THE TAKING.",
+        "corrected_source_text": "JUST... THERE FOR THE TAKING.",
+        "korean_translation": "\uADF8\uC800...[BR]\uAC00\uC838\uAC00\uAE30\uB9CC \uD558\uBA74 \uB3FC.",
+        "type": "dialogue",
+        "secondary_ocr": "JUST...\nTHERE FOR THE\nTAKING.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.65,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT DOESNT MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "corrected_source_text": "IT DOESN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "korean_translation": "\uD558\uC9C0\uB9CC \uC0C1\uAD00\uC5C6\uC5B4.[BR]\uADF8\uAC74 \uAE34 \uC804\uC7C1 \uC18D\uC758[BR]\uB2E8 \uD55C \uBC88\uC758 \uC804\uD22C\uC600\uC73C\uB2C8\uAE4C...",
+        "type": "dialogue",
+        "secondary_ocr": "IT DOFSN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6203,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BY EVERYONE AND ANYONE.",
+        "corrected_source_text": "BY EVERYONE AND ANYONE.",
+        "korean_translation": "\uADF8 \uB204\uAD6C\uB77C\uB3C4, [BR]\uADF8 \uB204\uAD6C\uC5D0\uAC8C\uB098.",
+        "type": "dialogue",
+        "secondary_ocr": "BY EVERYONE AND ANYONE.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5558,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "corrected_source_text": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "korean_translation": "\uADF8\uB9B0 \uB79C\uD134 \uBC18\uC9C0\uB4E4\uC774[BR]\uC9C0\uAD6C\uB85C \uB5A8\uC5B4\uC9C0\uACE0 \uC788\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6246,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "i",
+        "corrected_source_text": "I",
+        "korean_translation": "\uB098",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5008,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WELL, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OF OFF IN HERE.",
+        "corrected_source_text": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HERE.",
+        "korean_translation": "\uC790, \uADF8\uB7FC \uD655\uC778\uD558\uACE0 \uAC00\uC790. [BR]\uC5EC\uAE30\uC11C \uB540 \uC880 \uBED8\uBED8 \uD758\uB9AC\uACE0 \uC788\uAC70\uB4E0.",
+        "type": "dialogue",
+        "secondary_ocr": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HE",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5579,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHAT HAPPENED TO THE BATTERY?",
+        "corrected_source_text": "WHAT HAPPENED TO THE BATTERY?",
+        "korean_translation": "\uBC30\uD130\uB9AC\uB294 \uC5B4\uB5BB\uAC8C \uB41C \uAC70\uC57C?",
+        "type": "dialogue",
+        "secondary_ocr": "WHAT HAPPENED TO THE BATTERY?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 19,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5202,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "corrected_source_text": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "korean_translation": "\uADF8\uB0E5 \uC870\uAC01\uC870\uAC01 \uC0DD\uAC01\uB0A0 \uBFD0\uC774\uC57C. \uCE74\uB4DC \uBC18 \uC138\uD2B8 \uC815\uB3C4, \uB9DE\uC9C0?",
+        "type": "dialogue",
+        "secondary_ocr": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 20,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5805,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "M060 LEECHED TO DEATH BY BRAINIAC.",
+        "corrected_source_text": "MOGO LEECHED TO DEATH BY BRAINIAC.",
+        "korean_translation": "\uBAA8\uACE0\uB294 \uBE0C\uB808\uC774\uB2C8\uC561\uC5D0\uAC8C\n\uC0DD\uBA85\uB825\uC744 \uBE68\uB824 \uC8FD\uC5C8\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "MOGO\nLEECHED TO\nDEATH BY\nBRAINIAC.",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}

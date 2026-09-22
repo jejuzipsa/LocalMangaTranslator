@@ -1,0 +1,1228 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page047.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.1116,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9617312,
+            "BlockCoverage": 0.9482071432595347,
+            "CenterInside": true,
+            "CenterDistance": 5.190803834132486,
+            "Affinity": 7.263312563094789
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6141,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "R",
+        "corrected_text": "R",
+        "ocr_confidence": 0.30275461077690125,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 346,
+          "Y": 141.66666666666666,
+          "W": 55.333333333333314,
+          "H": 50.00000000000003
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0156,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9565612,
+            "BlockCoverage": 0.9614243323442137,
+            "CenterInside": true,
+            "CenterDistance": 3.2058973436118814,
+            "Affinity": 7.317566138575281
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6217,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "AND",
+        "ocr_confidence": 0.67247074842453,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 865,
+          "Y": 223,
+          "W": 32.66666666666663,
+          "H": 25.666666666666657
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0421,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9396658,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.3048861143232218,
+            "Affinity": 7.465223124957633
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0489,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.89563286,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.1785113019775444,
+            "Affinity": 7.445459408918414
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1414,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.96653426,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.173067468400899,
+            "Affinity": 7.478920993530758
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5964,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "0",
+        "corrected_text": "0",
+        "ocr_confidence": 0.3202504515647888,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 592.6666666666666,
+          "Y": 1023,
+          "W": 18,
+          "H": 15
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.1647,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9644401,
+            "BlockCoverage": 0.9976851851851858,
+            "CenterInside": true,
+            "CenterDistance": 1.8408935028644646,
+            "Affinity": 7.469279007407804
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG014",
+      "Confidence": 0.049,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9236475,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 60.00833275470999,
+            "Affinity": 0.3418070959537453
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0515,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9236475,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.0671873729055694,
+            "Affinity": 7.459689386717354
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.1359,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9658358,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.16666666666674246,
+            "Affinity": 7.482584571520487
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0748,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.9329512,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.4240006242197303,
+            "Affinity": 7.463627604716221
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 13,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.603,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "6",
+        "corrected_text": "6",
+        "ocr_confidence": 0.3189529776573181,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 190,
+          "Y": 1418,
+          "W": 142.66666666666663,
+          "H": 179
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.05,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.94683516,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.118033988749895,
+            "Affinity": 7.471181512150216
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 15,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5964,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "y",
+        "corrected_text": "y",
+        "ocr_confidence": 0.43482017517089844,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1152,
+          "Y": 1538.3333333333333,
+          "W": 15,
+          "H": 9.666666666666742
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.1089,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.9499794,
+            "BlockCoverage": 0.9548716422693506,
+            "CenterInside": true,
+            "CenterDistance": 0.8333333333332121,
+            "Affinity": 7.292809614649048
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 17,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.631,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "IRE:",
+        "corrected_text": "IRE:",
+        "ocr_confidence": 0.5127236843109131,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 355.3333333333333,
+          "Y": 1717,
+          "W": 330.3333333333334,
+          "H": 169
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 18,
+      "RuleDecision": "RG024",
+      "LayaDecision": "RG024",
+      "Confidence": 0.0993,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG024",
+            "BubbleRegionId": "RG023",
+            "DetectorScore": 0.8618424,
+            "BlockCoverage": 0.9558823529411764,
+            "CenterInside": true,
+            "CenterDistance": 4.859126579037901,
+            "Affinity": 7.2447323555441905
+          }
+        ],
+        "RegionId": "RG023",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 19,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6059,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "STKWY 400",
+        "corrected_text": "OTHER TH\nTOO",
+        "ocr_confidence": 0.4044998288154602,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 148,
+          "Y": 1792.6666666666667,
+          "W": 80,
+          "H": 30.333333333333258
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 20,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.607,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": ".",
+        "corrected_text": ".",
+        "ocr_confidence": 0.46184906363487244,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 313,
+          "Y": 1824,
+          "W": 6.333333333333371,
+          "H": 8.666666666666742
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 21,
+      "RuleDecision": "RG027",
+      "LayaDecision": "RG027",
+      "Confidence": 0.1205,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG027",
+            "BubbleRegionId": "RG026",
+            "DetectorScore": 0.93602836,
+            "BlockCoverage": 0.996138996138997,
+            "CenterInside": true,
+            "CenterDistance": 2.5873624493766316,
+            "Affinity": 7.447395440317482
+          }
+        ],
+        "RegionId": "RG026",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0256,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT THE OTHERS. UP THERE.",
+        "secondary_ocr": "THERE ARE ABOUT ONE HUNDRED THOUGHMD DOWN HERE. LOOK AT THEM. BE",
+        "primary_confidence": 0.9951255917549133,
+        "current_agreement": "disagree",
+        "corrected_text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AT THEM. BECAUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT SAVING ALL THE OTHERS. UP THERE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0653,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US..",
+        "secondary_ocr": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "primary_confidence": 0.9943000078201294,
+        "current_agreement": "agree",
+        "corrected_text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0735,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "NOT AFTER WE FAILED THEM.",
+        "secondary_ocr": "...NOT AFTER WE FAILED THEM.",
+        "primary_confidence": 0.9934661388397217,
+        "current_agreement": "agree",
+        "corrected_text": "...NOT AFTER WE FAILED THEM."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0504,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THE HALL...?",
+        "secondary_ocr": "THE HALL...?",
+        "primary_confidence": 0.96938157081604,
+        "current_agreement": "agree",
+        "corrected_text": "THE HALL...?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0172,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "secondary_ocr": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT HOW CHAPE YOU CH CHAP CHOUPET YOUTA BE CHALA CH",
+        "primary_confidence": 0.996444582939148,
+        "current_agreement": "disagree",
+        "corrected_text": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0136,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT.",
+        "secondary_ocr": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PLED CO TO TO RENEN TH TO TA MATENATORALARATARATA RE",
+        "primary_confidence": 0.9729764461517334,
+        "current_agreement": "disagree",
+        "corrected_text": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0647,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DO YOU REMEMBER?",
+        "secondary_ocr": "DO YOU REMEMBER?",
+        "primary_confidence": 0.9803175926208496,
+        "current_agreement": "agree",
+        "corrected_text": "DO YOU REMEMBER?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0347,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SO PUT ME THERE. DO WHAT ALWAYS THAN DONE BETTER AND us, OF SPEAK THE TRUTH.",
+        "secondary_ocr": "SO PUT ME\nTHERE. DO WHAT\nYOU\u0027VE ALWAYS\nDONE BETTER THAN\nAMY OF U",
+        "primary_confidence": 0.9985989332199097,
+        "current_agreement": "disagree",
+        "corrected_text": "SO PUT ME THERE. DO WHAT YOU\u0027RE ALWAYS DONE BETTER THAN ANY OF US, AND SPEAK THE TRUTH."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1584,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HOW DID THE VILLAINS WIN?",
+        "secondary_ocr": "HOW DID THE VILLAINS WIN?",
+        "primary_confidence": 0.9990594387054443,
+        "current_agreement": "agree",
+        "corrected_text": "HOW DID THE VILLAINS WIN?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0405,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THINGS You DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "secondary_ocr": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "primary_confidence": 0.9688434600830078,
+        "current_agreement": "agree",
+        "corrected_text": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0429,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "OH, I REMEMBER. BUT REMEMBER NGS, TOO.",
+        "secondary_ocr": "OH, I\nREMEMBER. BUT\nI REMEMBER\nOTHER THINGS,\nTOO.",
+        "primary_confidence": 0.9954494833946228,
+        "current_agreement": "disagree",
+        "corrected_text": "OH, I REMEMBER. BUT I REMEMBER OTHER THINGS, TOO."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 18,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0397,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS.",
+        "secondary_ocr": "\u0022THE CHAPPL IN FLAMES, PISSED ON, SHIT IN, TORN APART CHEERS AND LAUGHTER ECHOING DOWN THE H LE",
+        "primary_confidence": 0.996123194694519,
+        "current_agreement": "disagree",
+        "corrected_text": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 21,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0365,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022YOU DON\u0027T KNOW HAPPENED YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "secondary_ocr": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "primary_confidence": 0.9950971007347107,
+        "current_agreement": "disagree",
+        "corrected_text": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5212,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT THE OTHERS. UP THERE.",
+        "corrected_text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AT THEM. BECAUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT SAVING ALL THE OTHERS. UP THERE.",
+        "secondary_ocr": "THERE ARE ABOUT ONE HUNDRED THOUGHMD DOWN HERE. LOOK AT THEM. BE",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9951255917549133,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6293,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US..",
+        "corrected_text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "secondary_ocr": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9943000078201294,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5411,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "A",
+        "corrected_text": "AND",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.67247074842453,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5361,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "NOT AFTER WE FAILED THEM.",
+        "corrected_text": "...NOT AFTER WE FAILED THEM.",
+        "secondary_ocr": "...NOT AFTER WE FAILED THEM.",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9934661388397217,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5882,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "corrected_text": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "secondary_ocr": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT HOW CHAPE YOU CH CHAP CHOUPET YOUTA BE CHALA CH",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.996444582939148,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.544,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SO PUT ME THERE. DO WHAT ALWAYS THAN DONE BETTER AND us, OF SPEAK THE TRUTH.",
+        "corrected_text": "SO PUT ME THERE. DO WHAT YOU\u0027RE ALWAYS DONE BETTER THAN ANY OF US, AND SPEAK THE TRUTH.",
+        "secondary_ocr": "SO PUT ME\nTHERE. DO WHAT\nYOU\u0027VE ALWAYS\nDONE BETTER THAN\nAMY OF U",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9985989332199097,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5626,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "OH, I REMEMBER. BUT REMEMBER NGS, TOO.",
+        "corrected_text": "OH, I REMEMBER. BUT I REMEMBER OTHER THINGS, TOO.",
+        "secondary_ocr": "OH, I\nREMEMBER. BUT\nI REMEMBER\nOTHER THINGS,\nTOO.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9954494833946228,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 19,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6464,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "STKWY 400",
+        "corrected_text": "OTHER TH\nTOO",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.4044998288154602,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 21,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5827,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022YOU DON\u0027T KNOW HAPPENED YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "corrected_text": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "secondary_ocr": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9950971007347107,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5245,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT THE OTHERS. UP THERE.",
+        "corrected_source_text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AT THEM. BECAUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT SAVING ALL THE OTHERS. UP THERE.",
+        "korean_translation": "\uC774 \uC544\uB798\uC5D0 \uB300\uB7B5 10\uB9CC \uBA85\uC774\uB098 \uC788\uC5B4.[BR]\uC800\uB4E4\uC744 \uBD10.[BR]\uB09C \uB110 \uC54C\uAC70\uB4E0.[BR]\uB10C \uC800 \uC704\uC5D0 \uC788\uB294[BR]\uB2E4\uB978 \uC774\uB4E4\uC744 \uBAA8\uB450[BR]\uAD6C\uD558\uB824\uB294 \uC0DD\uAC01\uC744 \uD558\uACE0 \uC788\uACA0\uC9C0.",
+        "type": "dialogue",
+        "secondary_ocr": "THERE ARE ABOUT ONE HUNDRED THOUGHMD DOWN HERE. LOOK AT THEM. BE",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5033,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US..",
+        "corrected_source_text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "korean_translation": "\uAC70\uC758 \uB0A8\uC9C0 \uC54A\uC558\uC5B4.[BR]\uC6B0\uB9AC\uC640 \uD568\uAED8 \uAC08 \uC218 \uC788\uB294 \uAC74[BR]\uD558\uB098\uB3C4 \uC5C6\uB2E4\uACE0...",
+        "type": "dialogue",
+        "secondary_ocr": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6486,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "A",
+        "corrected_source_text": "AND",
+        "korean_translation": "\uADF8\uB9AC\uACE0",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5558,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NOT AFTER WE FAILED THEM.",
+        "corrected_source_text": "...NOT AFTER WE FAILED THEM.",
+        "korean_translation": "...\uC6B0\uB9AC\uAC00 \uADF8\uB4E4\uC744 \uC2E4\uB9DD\uC2DC\uD0A8[BR]\uD6C4\uC5D0\uC57C \uB9D0\uC774\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "...NOT AFTER WE FAILED THEM.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5429,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THE HALL...?",
+        "corrected_source_text": "THE HALL...?",
+        "korean_translation": "\uD640...?",
+        "type": "dialogue",
+        "secondary_ocr": "THE HALL...?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.586,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "corrected_source_text": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "korean_translation": "\uB2E4\uC774\uC544\uB098, \uC6B0\uB9AC\uAC00 \uADF8\uACF3\uC744 \uD568\uAED8 \uAC74\uC124\uD560 \uB54C[BR]\uB2F9\uC2E0\uC740 \uACF5\uB3D9 \uC608\uBC30\uB2F9\uC744 \uC9D3\uACA0\uB2E4\uACE0 \uB098\uC130\uC9C0.[BR]\uB2F9\uC2E0\uC758 \uAC1C\uC778 \uAC70\uCC98\uBCF4\uB2E4[BR]\uADF8\uACF3\uC744 \uBA3C\uC800 \uB9C8\uB828\uD588\uC796\uC544.",
+        "type": "dialogue",
+        "secondary_ocr": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT HOW CHAPE YOU CH CHAP CHOUPET YOUTA BE CHALA CH",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5924,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT.",
+        "corrected_source_text": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT.",
+        "korean_translation": "\uC774\uC720\uB97C \uBB3C\uC5C8\uC744 \uB54C, \uB2F9\uC2E0\uC740 \uBB34\uC5C7\uBCF4\uB2E4\uB3C4[BR]\uC0AC\uB78C\uB4E4\uC774 \uC2E0\uB150\uC744 \uD68C\uBCF5\uD560 \uC218 \uC788\uB294[BR]\uC7A5\uC18C\uAC00 \uD544\uC694\uD558\uB2E4\uACE0 \uD588\uC8E0...[BR]\uC5B4\uB5A4 \uC0C1\uD669\uC5D0\uC11C\uB3C4\uC694.",
+        "type": "dialogue",
+        "secondary_ocr": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PLED CO TO TO RENEN TH TO TA MATENATORALARATARATA RE",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5977,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "AM",
+        "corrected_source_text": "AM",
+        "korean_translation": "\uC544",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5284,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DO YOU REMEMBER?",
+        "corrected_source_text": "DO YOU REMEMBER?",
+        "korean_translation": "\uAE30\uC5B5\uB098?",
+        "type": "dialogue",
+        "secondary_ocr": "DO YOU REMEMBER?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6008,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SO PUT ME THERE. DO WHAT ALWAYS THAN DONE BETTER AND us, OF SPEAK THE TRUTH.",
+        "corrected_source_text": "SO PUT ME THERE. DO WHAT YOU\u0027RE ALWAYS DONE BETTER THAN ANY OF US, AND SPEAK THE TRUTH.",
+        "korean_translation": "\uADF8\uB7EC\uB2C8 \uB098\uB97C \uADF8 \uC790\uB9AC\uC5D0 \uC549\uD600\uC918. \uB2F9\uC2E0\uC774 \uC6B0\uB9AC \uC911 \uB204\uAD6C\uBCF4\uB2E4\uB3C4 \uC798\uD574\uC654\uB358 \uAC83\uCC98\uB7FC, \uC9C4\uC2E4\uC744 \uB9D0\uD574.",
+        "type": "dialogue",
+        "secondary_ocr": "SO PUT ME\nTHERE. DO WHAT\nYOU\u0027VE ALWAYS\nDONE BETTER THAN\nAMY OF U",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5472,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HOW DID THE VILLAINS WIN?",
+        "corrected_source_text": "HOW DID THE VILLAINS WIN?",
+        "korean_translation": "\uC545\uB2F9\uB4E4\uC774 \uC5B4\uB5BB\uAC8C \uC774\uAE34 \uAC70\uC9C0?",
+        "type": "dialogue",
+        "secondary_ocr": "HOW DID THE VILLAINS WIN?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5226,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THINGS You DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "corrected_source_text": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "korean_translation": "\uB124\uAC00 \uBAA8\uB974\uB294 \uAC83\uB4E4.[BR]\uB124\uAC00 \uACC1\uC5D0 \uC5C6\uC5C8\uC744 \uB54C \uC77C\uC5B4\uB09C \uC77C\uB4E4.",
+        "type": "dialogue",
+        "secondary_ocr": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6539,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "y",
+        "corrected_source_text": "y",
+        "korean_translation": "\uC751",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5769,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "OH, I REMEMBER. BUT REMEMBER NGS, TOO.",
+        "corrected_source_text": "OH, I REMEMBER. BUT I REMEMBER OTHER THINGS, TOO.",
+        "korean_translation": "\uC544, \uAE30\uC5B5\uB098. \uD558\uC9C0\uB9CC \uB2E4\uB978 \uAC83\uB4E4\uB3C4 \uAE30\uC5B5\uB098.",
+        "type": "dialogue",
+        "secondary_ocr": "OH, I\nREMEMBER. BUT\nI REMEMBER\nOTHER THINGS,\nTOO.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 18,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5975,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS.",
+        "corrected_source_text": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS.",
+        "korean_translation": "\uBD88\uD0C0\uB294 \uC608\uBC30\uB2F9. \uC628 \uC0AC\uBC29\uC5D0 \uC624\uBB3C\uACFC \uBC30\uC124\uBB3C\uC774 \uD769\uBFCC\uB824\uC9C0\uACE0, \uBAA8\uB4E0 \uAC83\uC774 \uC9D3\uBC1F\uD614\uB2E4. \uBCF5\uB3C4\uB9C8\uB2E4 \uD658\uD638\uC640 \uC6C3\uC74C\uC18C\uB9AC\uAC00 \uC6B8\uB824 \uD37C\uC9C4\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "\u0022THE CHAPPL IN FLAMES, PISSED ON, SHIT IN, TORN APART CHEERS AND LAUGHTER ECHOING DOWN THE H LE",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 19,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6846,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "STKWY 400",
+        "corrected_source_text": "OTHER TH\nTOO",
+        "korean_translation": "\uB2E4\uB978\n\uAC83\uB4E4\uB3C4",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 21,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5287,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022YOU DON\u0027T KNOW HAPPENED YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "corrected_source_text": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "korean_translation": "\u0022\uB10C \uBB34\uC2A8 \uC77C\uC774 \uC788\uC5C8\uB294\uC9C0 \uBAB0\uB77C. \uB9C8\uC9C0\uB9C9\uC5D0 \uB10C \uAC70\uAE30 \uC5C6\uC5C8\uC73C\uB2C8\uAE4C.\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}

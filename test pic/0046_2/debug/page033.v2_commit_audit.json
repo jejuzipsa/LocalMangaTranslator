@@ -1,0 +1,41 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page033.jpg",
+  "RequestedUnits": 1,
+  "TranslatedUnits": 1,
+  "PreservedOriginalUnits": 0,
+  "EraseCommittedUnits": 1,
+  "TypesetCommittedUnits": 1,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "THREE: PART THE",
+      "Translation": "\uC81C3\uBD80:\n\uC218\uC6A9\uC18C",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 389,
+        "Y": 447,
+        "Width": 561,
+        "Height": 692
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

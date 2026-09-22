@@ -1,0 +1,196 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=12; legacy_mask_candidates=80; active_region_containers=6",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "Bubble",
+      "x": 968,
+      "y": 194,
+      "width": 98,
+      "height": 84,
+      "score": 0.9379451,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "Bubble",
+      "x": 1053,
+      "y": 207,
+      "width": 193,
+      "height": 133,
+      "score": 0.9633595,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG003",
+      "kind": "TextBubble",
+      "x": 990,
+      "y": 208,
+      "width": 55,
+      "height": 55,
+      "score": 0.8761414,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG004",
+      "kind": "TextBubble",
+      "x": 1062,
+      "y": 224,
+      "width": 172,
+      "height": 101,
+      "score": 0.95565474,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG005",
+      "kind": "Bubble",
+      "x": 386,
+      "y": 971,
+      "width": 269,
+      "height": 170,
+      "score": 0.96354675,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG006",
+      "kind": "TextBubble",
+      "x": 396,
+      "y": 979,
+      "width": 248,
+      "height": 147,
+      "score": 0.9617245,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG007",
+      "kind": "Bubble",
+      "x": 1097,
+      "y": 1195,
+      "width": 110,
+      "height": 80,
+      "score": 0.92871034,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG008",
+      "kind": "TextBubble",
+      "x": 1113,
+      "y": 1207,
+      "width": 79,
+      "height": 58,
+      "score": 0.88360596,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG009",
+      "kind": "Bubble",
+      "x": 581,
+      "y": 1738,
+      "width": 129,
+      "height": 94,
+      "score": 0.944216,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG010",
+      "kind": "TextBubble",
+      "x": 591,
+      "y": 1754,
+      "width": 108,
+      "height": 69,
+      "score": 0.89810777,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG011",
+      "kind": "Bubble",
+      "x": 1164,
+      "y": 1823,
+      "width": 78,
+      "height": 57,
+      "score": 0.91126627,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG012",
+      "kind": "TextBubble",
+      "x": 1173,
+      "y": 1838,
+      "width": 60,
+      "height": 29,
+      "score": 0.78936154,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": [
+    {
+      "id": "PC001",
+      "kind": "Speech",
+      "x": 968,
+      "y": 194,
+      "width": 98,
+      "height": 84,
+      "mode": "rtdetr_region_rect",
+      "score": 6.875890254974365,
+      "fill_ratio": 0.8717201166180758
+    },
+    {
+      "id": "PC002",
+      "kind": "Speech",
+      "x": 1053,
+      "y": 207,
+      "width": 193,
+      "height": 133,
+      "mode": "rtdetr_region_rect",
+      "score": 6.9267189502716064,
+      "fill_ratio": 0.8768943083096342
+    },
+    {
+      "id": "PC003",
+      "kind": "Speech",
+      "x": 391,
+      "y": 975,
+      "width": 259,
+      "height": 167,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.445320129394531,
+      "fill_ratio": 0.7931241763577093
+    },
+    {
+      "id": "PC004",
+      "kind": "Speech",
+      "x": 1100,
+      "y": 1202,
+      "width": 102,
+      "height": 72,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.393065512180328,
+      "fill_ratio": 0.8002450980392157
+    },
+    {
+      "id": "PC005",
+      "kind": "Speech",
+      "x": 586,
+      "y": 1734,
+      "width": 120,
+      "height": 94,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.416324019432068,
+      "fill_ratio": 0.6845301418439717
+    },
+    {
+      "id": "PC006",
+      "kind": "Speech",
+      "x": 1168,
+      "y": 1817,
+      "width": 72,
+      "height": 62,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.366899400949478,
+      "fill_ratio": 0.613239247311828
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "page054.jpg",
+  "TargetCount": 11,
+  "FlatFillTargets": 10,
+  "TeleaTargets": 1,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 122,
+        "Y": 233,
+        "Width": 133,
+        "Height": 52
+      },
+      "Strategy": "TELEA",
+      "MaskPixels": 800,
+      "SampleCount": 1145,
+      "Background": {
+        "B": 88,
+        "G": 88,
+        "R": 88
+      },
+      "DominantMatchRatio": 0.4820960698689956,
+      "P75ColorDistance": 7.874007874011811,
+      "P90ColorDistance": 14.52583904633395,
+      "SpatialCoverage": 0.8125,
+      "ExclusionRadius": 3,
+      "FlatAccepted": false,
+      "Reason": "background_cluster_weak",
+      "PostReconstructionP85": -1,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 1044,
+        "Y": 257,
+        "Width": 94,
+        "Height": 30
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 932,
+      "SampleCount": 129,
+      "Background": {
+        "B": 254,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 2,
+      "P90ColorDistance": 2.8284271247461903,
+      "SpatialCoverage": 0.75,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 1015,
+        "Y": 314,
+        "Width": 136,
+        "Height": 50
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 2150,
+      "SampleCount": 493,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 0.9939148073022313,
+      "P75ColorDistance": 2,
+      "P90ColorDistance": 3.7416573867739413,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG008",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 418,
+        "Y": 902,
+        "Width": 88,
+        "Height": 31
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 852,
+      "SampleCount": 174,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 2,
+      "P90ColorDistance": 3.4641016151377544,
+      "SpatialCoverage": 0.8125,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG010",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 721,
+        "Y": 1418,
+        "Width": 81,
+        "Height": 51
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 1209,
+      "SampleCount": 321,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1,
+      "P90ColorDistance": 1.7320508075688772,
+      "SpatialCoverage": 0.875,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG012",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 465,
+        "Y": 1464,
+        "Width": 173,
+        "Height": 89
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4449,
+      "SampleCount": 1439,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 2,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG014",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 62,
+        "Y": 1826,
+        "Width": 299,
+        "Height": 49
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4290,
+      "SampleCount": 1309,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 0.9297173414820473,
+      "P75ColorDistance": 3,
+      "P90ColorDistance": 5.385164807134504,
+      "SpatialCoverage": 0.9375,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG016",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 548,
+        "Y": 1847,
+        "Width": 262,
+        "Height": 49
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4682,
+      "SampleCount": 692,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1.7320508075688772,
+      "P90ColorDistance": 3.4641016151377544,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG018",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 859,
+        "Y": 1859,
+        "Width": 271,
+        "Height": 49
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4644,
+      "SampleCount": 760,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1.4142135623730951,
+      "P90ColorDistance": 3,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG020",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 304,
+        "Y": 1884,
+        "Width": 206,
+        "Height": 83
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 8127,
+      "SampleCount": 528,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1.4142135623730951,
+      "P90ColorDistance": 3,
+      "SpatialCoverage": 0.9375,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    },
+    {
+      "TextRegionId": "RG022",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 1027,
+        "Y": 1938,
+        "Width": 254,
+        "Height": 47
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 4864,
+      "SampleCount": 542,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 254
+      },
+      "DominantMatchRatio": 1,
+      "P75ColorDistance": 1.4142135623730951,
+      "P90ColorDistance": 1.4142135623730951,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 3,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

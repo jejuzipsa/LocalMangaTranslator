@@ -1,0 +1,121 @@
+{
+  "SourceFile": "page036.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:22:17.0724888+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 589,
+        "Y": 1481,
+        "W": 57.5,
+        "H": 29,
+        "Text": ".OVER",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 589,
+            "Y": 1481,
+            "W": 57.5,
+            "H": 29,
+            "Text": ".OVER",
+            "Confidence": 0.99512523,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...OVER?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "...OVER?",
+      "Translation": "...\uB05D\uB0AC\uC5B4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 535,
+        "Y": 1533.5,
+        "W": 57,
+        "H": 23.5,
+        "Text": "HOLY.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 535,
+            "Y": 1533.5,
+            "W": 57,
+            "H": 23.5,
+            "Text": "HOLY.",
+            "Confidence": 0.91879296,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HOLY...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "HOLY...",
+      "Translation": "\uC138\uC0C1\uC5D0...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 715,
+        "Y": 1726,
+        "W": 123,
+        "H": 72.66666666666674,
+        "Text": "HOLY WHAT? WHATD IMI55?",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 752,
+            "Y": 1726,
+            "W": 55,
+            "H": 38,
+            "Text": "HOLY",
+            "Confidence": 0.9396418,
+            "Language": "en"
+          },
+          {
+            "X": 715,
+            "Y": 1746,
+            "W": 123,
+            "H": 34,
+            "Text": "WHAT? WHATD",
+            "Confidence": 0.9812717,
+            "Language": "en"
+          },
+          {
+            "X": 738,
+            "Y": 1772,
+            "W": 74,
+            "H": 26.666666666666742,
+            "Text": "IMI55?",
+            "Confidence": 0.8781135,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HOLY WHAT? WHAT\u0027D I MISS?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "HOLY WHAT? WHAT\u0027D I MISS?",
+      "Translation": "\uC138\uC0C1\uC5D0, \uBB50\uC57C?[BR]\uB0B4\uAC00 \uBB58 \uB193\uCE5C \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

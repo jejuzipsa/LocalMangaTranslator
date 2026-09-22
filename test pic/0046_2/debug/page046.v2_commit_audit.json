@@ -1,0 +1,398 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page046.jpg",
+  "RequestedUnits": 15,
+  "TranslatedUnits": 13,
+  "PreservedOriginalUnits": 2,
+  "EraseCommittedUnits": 13,
+  "TypesetCommittedUnits": 13,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "COME. WALK.",
+      "Translation": "\uC774\uB9AC \uC640.\n\uAC78\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 93,
+        "Y": 98,
+        "Width": 109,
+        "Height": 82
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "WHAT PLACE?",
+      "Translation": "\uC5EC\uAE34\n\uC5B4\uB5A4 \uACF3\uC774\uC9C0?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 196,
+        "Y": 143,
+        "Width": 128,
+        "Height": 111
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+      "Translation": "\uC82C\uC6D4\uB4DC.[BR]\uB300\uB959 \uC544\uB798\uC5D0 \uC788\uB294[BR]\uC6B0\uB9AC\uC758 \uC548\uC2DD\uCC98.[BR]\uC790\uC218\uC815, \uD669\uC218\uC815...[BR]\uC5EC\uAE30\uB294 \uAC00\uC7A5 \uAE4A\uC740[BR]\uC601\uC5ED\uC774\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 91,
+        "Y": 256,
+        "Width": 234,
+        "Height": 185
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "SN MADE FROM A",
+      "Translation": "~\uB85C \uB9CC\uB4E0",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 291,
+        "Y": 333,
+        "Width": 296,
+        "Height": 211
+      },
+      "Planned": true,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": false,
+      "Status": "original_preserved:container_duplicate"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+      "Translation": "\uC9C0\uAD6C\uC758 \uC6A9\uC554 \uD575 \uADFC\uCC98\uC5D0\uC11C \uD615\uC131\uB41C \uC218\uC815\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC84C\uC2B5\uB2C8\uB2E4. \uB4E4\uC5B4\uC624\uB294 \uBAA8\uB4E0 \uAC83, \uC2EC\uC9C0\uC5B4 \uC2DC\uACF5\uAC04\uAE4C\uC9C0 \uAD74\uC808\uC2DC\uD0A4\uAE30\uC5D0[BR]\uC774\uAC83\uC740 \uC874\uC7AC\uC758 \uC5F0\uC18D\uC131 \uBC16\uC5D0 \uB193\uC5EC \uC788\uC2B5\uB2C8\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 291,
+        "Y": 333,
+        "Width": 296,
+        "Height": 211
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "EVA",
+      "Translation": "\uC5D0\uBC14",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+      "Translation": "\uC9C0\uAE08\uAE4C\uC9C0\uB294[BR]\uC5EC\uAE30\uC11C \uC548\uC804\uD588\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 565,
+        "Y": 452,
+        "Width": 149,
+        "Height": 109
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "LOST HOW? WHY CAN\u0027T WE--",
+      "Translation": "\uC5B4\uB5BB\uAC8C \uC783\uC5B4\uBC84\uB9B0 \uAC70\uC57C?[BR]\uC65C \uC6B0\uB9AC\uAC00 \uBABB--",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "BubbleRegionId": "RG011",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 636,
+        "Y": 632,
+        "Width": 154,
+        "Height": 107
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 8,
+      "SourceText": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uBC29\uAE08 \uBC16\uC5D0\uC11C[BR]\uBB34\uC2A8 \uC77C\uC774 \uC77C\uC5B4\uB09C \uAC74\uC9C0 \uBAA8\uB974\uACA0\uC5B4, \uB2E4\uC774\uC544\uB098.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "BubbleRegionId": "RG013",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 62,
+        "Y": 672,
+        "Width": 209,
+        "Height": 154
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 10,
+      "SourceText": "STOP. IT DOESN\u0027T MATTER.",
+      "Translation": "\uADF8\uB9CC\uD574.[BR]\uC0C1\uAD00\uC5C6\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG016"
+      ],
+      "BubbleRegionId": "RG015",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 715,
+        "Y": 710,
+        "Width": 155,
+        "Height": 100
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 11,
+      "SourceText": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+      "Translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4. \uC0C1\uD669\uC740 \uB05D\uB0AC\uC5B4.[BR]\uC6B0\uB9B0 \uC9C4 \uAC70\uC57C.[BR]\uB2E4 \uB05D\uB0AC\uB2E4\uACE0.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG018"
+      ],
+      "BubbleRegionId": "RG017",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 187,
+        "Y": 814,
+        "Width": 194,
+        "Height": 143
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 15,
+      "SourceText": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+      "Translation": "\uC911\uC694\uD55C \uAC74 \uB124\uAC00 \uC5EC\uAE30 \uC788\uACE0,\n\uC6B0\uB9AC\uB791 \uAC19\uC774 \uAC08 \uC218 \uC788\uB2E4\uB294 \uAC70\uC57C.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG020"
+      ],
+      "BubbleRegionId": "RG019",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 746,
+        "Y": 1055,
+        "Width": 218,
+        "Height": 124
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 16,
+      "SourceText": "you CAN HELP US PROTECT THEM.",
+      "Translation": "\uB2F9\uC2E0\uC774 \uC6B0\uB9AC\uB97C \uB3C4\uC640\n\uADF8\uB4E4\uC744 \uC9C0\uD0AC \uC218\n\uC788\uC2B5\uB2C8\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG022"
+      ],
+      "BubbleRegionId": "RG021",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 960,
+        "Y": 1071,
+        "Width": 158,
+        "Height": 113
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 17,
+      "SourceText": "THE io ONES LEF BRUCE.",
+      "Translation": "\uB0A8\uC740 \uB188\uB4E4\uC774\uC57C,\n\uBE0C\uB8E8\uC2A4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG025"
+      ],
+      "BubbleRegionId": "RG024",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1100,
+        "Y": 1633,
+        "Width": 150,
+        "Height": 106
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 18,
+      "SourceText": "PROTECT WHO?",
+      "Translation": "\uB204\uAD74 \uC9C0\uD0A4\uB77C\uACE0?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG026"
+      ],
+      "BubbleRegionId": "RG023",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 879,
+        "Y": 1632,
+        "Width": 127,
+        "Height": 84
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

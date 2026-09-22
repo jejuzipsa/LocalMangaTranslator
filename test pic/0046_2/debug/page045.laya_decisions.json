@@ -1,0 +1,731 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page045.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.1534,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.892182,
+            "BlockCoverage": 0.925909815861969,
+            "CenterInside": true,
+            "CenterDistance": 3.132491021535417,
+            "Affinity": 7.1434652776702166
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0347,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9628726,
+            "BlockCoverage": 0.9951923076923077,
+            "CenterInside": true,
+            "CenterDistance": 1.8027756377319946,
+            "Affinity": 7.458599991692406
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.204,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9575279,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.5270462766947359,
+            "Affinity": 7.4777098453967445
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0269,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.92902875,
+            "BlockCoverage": 0.9315068493150677,
+            "CenterInside": true,
+            "CenterDistance": 2.3213980461972907,
+            "Affinity": 7.185898975900848
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1505,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9314678,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.75882422620784,
+            "Affinity": 7.46021623731266
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 5,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6034,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "MNY",
+        "corrected_text": "MNY",
+        "ocr_confidence": 0.5657809376716614,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 655,
+          "Y": 1590,
+          "W": 140,
+          "H": 362.66666666666674
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0101,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9203415,
+            "BlockCoverage": 0.9569377990430622,
+            "CenterInside": true,
+            "CenterDistance": 3.171049598406594,
+            "Affinity": 7.281579842825045
+          },
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.8483027,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 87.57932911874163,
+            "Affinity": 0.2489927027511337
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0726,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.95539045,
+            "BlockCoverage": 0.1528818640141709,
+            "CenterInside": false,
+            "CenterDistance": 128.59605143411068,
+            "Affinity": 0.8320305798577738
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.064,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.87152225,
+            "BlockCoverage": 0.7944035346097201,
+            "CenterInside": true,
+            "CenterDistance": 2.692582403567252,
+            "Affinity": 6.607990097527391
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0436,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.8483027,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.23570226039546224,
+            "Affinity": 7.423679956467826
+          },
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9203415,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 84.301871601736,
+            "Affinity": 0.2915670026461374
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0092,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.8483027,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 66.00946901770988,
+            "Affinity": 0.2921324229531972
+          },
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9203415,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 86.96263565463043,
+            "Affinity": 0.28624547454034854
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0853,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.95539045,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.7453559924999892,
+            "Affinity": 7.476204514684311
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0304,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "ENOUGH.",
+        "secondary_ocr": "ENOUGH.",
+        "primary_confidence": 0.9703369140625,
+        "current_agreement": "agree",
+        "corrected_text": "ENOUGH."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0172,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MAGIC IS LONG D THE HELMET IS JUST A HELMET. TH NO DOCTOF ANYMORE.",
+        "secondary_ocr": "MAGIC IS LONG DEAD. THE HELMET IS JUST A HELMET. THERE IS NO DOCTOR FATE ANYMORE.",
+        "primary_confidence": 0.994145393371582,
+        "current_agreement": "disagree",
+        "corrected_text": "MAGIC IS LONG DEAD.\nTHE HELMET IS JUST\nA HELMET.\nTHERE IS NO\nDOCTOR FATE\nANYMORE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1329,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THAT HELMET.. YOU THE NEW DOCTOR FATE?",
+        "secondary_ocr": "THAT HELMET... YOU THE NEW DOCTOR FATE?",
+        "primary_confidence": 0.9785144329071045,
+        "current_agreement": "agree",
+        "corrected_text": "THAT HELMET...\nYOU THE NEW\nDOCTOR FATE?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0355,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "OR WONDER WOMAN.",
+        "secondary_ocr": "...OR WONDER WOMAN.",
+        "primary_confidence": 0.9986023902893066,
+        "current_agreement": "agree",
+        "corrected_text": "...OR WONDER WOMAN."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0341,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "JUST LIKE THEI NO BATMAN..",
+        "secondary_ocr": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "primary_confidence": 0.979810357093811,
+        "current_agreement": "disagree",
+        "corrected_text": "JUST LIKE THERE\u0027S NO BATMAN..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "partial",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0127,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT\u0027S IT\u0027S SIMPLE, BRUCE.",
+        "secondary_ocr": "IT\u0027S SIMPLE, BRUCE.",
+        "primary_confidence": 0.9879459142684937,
+        "current_agreement": "partial",
+        "corrected_text": "IT\u0027S SIMPLE, BRUCE. YOU DID."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0403,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DIANA?!",
+        "secondary_ocr": "DIANA?!",
+        "primary_confidence": 0.9966126084327698,
+        "current_agreement": "agree",
+        "corrected_text": "DIANA?!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0996,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "You DID.",
+        "secondary_ocr": "YOU DID.",
+        "primary_confidence": 0.8389730453491211,
+        "current_agreement": "agree",
+        "corrected_text": "YOU DID."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0278,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+        "secondary_ocr": "THANK\nGOD. PLEASE,\nTELL ME WHO\nDID THIS? WHO\nKILLED THE\nWORLD?",
+        "primary_confidence": 0.9979220032691956,
+        "current_agreement": "agree",
+        "corrected_text": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5003,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MAGIC IS LONG D THE HELMET IS JUST A HELMET. TH NO DOCTOF ANYMORE.",
+        "corrected_text": "MAGIC IS LONG DEAD.\nTHE HELMET IS JUST\nA HELMET.\nTHERE IS NO\nDOCTOR FATE\nANYMORE.",
+        "secondary_ocr": "MAGIC IS LONG DEAD. THE HELMET IS JUST A HELMET. THERE IS NO DOCTOR FATE ANYMORE.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.994145393371582,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5377,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THAT HELMET.. YOU THE NEW DOCTOR FATE?",
+        "corrected_text": "THAT HELMET...\nYOU THE NEW\nDOCTOR FATE?",
+        "secondary_ocr": "THAT HELMET... YOU THE NEW DOCTOR FATE?",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9785144329071045,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5354,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "OR WONDER WOMAN.",
+        "corrected_text": "...OR WONDER WOMAN.",
+        "secondary_ocr": "...OR WONDER WOMAN.",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9986023902893066,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5056,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "JUST LIKE THEI NO BATMAN..",
+        "corrected_text": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "secondary_ocr": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.979810357093811,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.604,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IT\u0027S IT\u0027S SIMPLE, BRUCE.",
+        "corrected_text": "IT\u0027S SIMPLE, BRUCE. YOU DID.",
+        "secondary_ocr": "IT\u0027S SIMPLE, BRUCE.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9879459142684937,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5109,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "ENOUGH.",
+        "corrected_source_text": "ENOUGH.",
+        "korean_translation": "\uADF8\uB9CC\uD574.",
+        "type": "dialogue",
+        "secondary_ocr": "ENOUGH.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5897,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MAGIC IS LONG D THE HELMET IS JUST A HELMET. TH NO DOCTOF ANYMORE.",
+        "corrected_source_text": "MAGIC IS LONG DEAD.\nTHE HELMET IS JUST\nA HELMET.\nTHERE IS NO\nDOCTOR FATE\nANYMORE.",
+        "korean_translation": "\uB9C8\uBC95\uC740 \uC774\uBBF8 \uC0AC\uB77C\uC84C\uC5B4.\n\uC774 \uD22C\uAD6C\uB294 \uADF8\uC800\n\uD22C\uAD6C\uC77C \uBFD0\uC774\uC57C.\n\uB354 \uC774\uC0C1\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB294\n\uC5C6\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "MAGIC IS LONG DEAD. THE HELMET IS JUST A HELMET. THERE IS NO DOCTOR FATE ANYMORE.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6319,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THAT HELMET.. YOU THE NEW DOCTOR FATE?",
+        "corrected_source_text": "THAT HELMET...\nYOU THE NEW\nDOCTOR FATE?",
+        "korean_translation": "\uC800 \uD22C\uAD6C...\n\uB124\uAC00 \uC0C8\uB85C\uC6B4\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB0D0?",
+        "type": "dialogue",
+        "secondary_ocr": "THAT HELMET... YOU THE NEW DOCTOR FATE?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6339,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "OR WONDER WOMAN.",
+        "corrected_source_text": "...OR WONDER WOMAN.",
+        "korean_translation": "...\uC544\uB2C8\uBA74[BR]\uC6D0\uB354\uC6B0\uBA3C\uC774\uAC70\uB098.",
+        "type": "dialogue",
+        "secondary_ocr": "...OR WONDER WOMAN.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5318,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "JUST LIKE THEI NO BATMAN..",
+        "corrected_source_text": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "korean_translation": "\uBC30\uD2B8\uB9E8\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uAC83\uCC98\uB7FC...",
+        "type": "dialogue",
+        "secondary_ocr": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.562,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT\u0027S IT\u0027S SIMPLE, BRUCE.",
+        "corrected_source_text": "IT\u0027S SIMPLE, BRUCE. YOU DID.",
+        "korean_translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4.[BR]\uB124\uAC00 \uADF8\uB7AC\uC796\uC544.",
+        "type": "dialogue",
+        "secondary_ocr": "IT\u0027S SIMPLE, BRUCE.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5246,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DIANA?!",
+        "corrected_source_text": "DIANA?!",
+        "korean_translation": "\uB2E4\uC774\uC544?!",
+        "type": "dialogue",
+        "secondary_ocr": "DIANA?!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.609,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "You DID.",
+        "corrected_source_text": "YOU DID.",
+        "korean_translation": "\uADF8\uB7AC\uC9C0.",
+        "type": "dialogue",
+        "secondary_ocr": "YOU DID.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6504,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+        "corrected_source_text": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+        "korean_translation": "\uB2E4\uD589\uC774\uB2E4. \uC81C\uBC1C, \uB204\uAC00 \uC774\uB7AC\uB294\uC9C0 \uB9D0\uD574\uC918. \uB204\uAC00 \uC138\uC0C1\uC744 \uB9DD\uAC00\uB728\uB9B0 \uAC70\uC57C?",
+        "type": "dialogue",
+        "secondary_ocr": "THANK\nGOD. PLEASE,\nTELL ME WHO\nDID THIS? WHO\nKILLED THE\nWORLD?",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

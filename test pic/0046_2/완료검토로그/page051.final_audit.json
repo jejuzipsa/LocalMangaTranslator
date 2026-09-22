@@ -1,0 +1,448 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page051.jpg",
+  "output_file": "page051.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 49056,
+    "changed_ratio": 0.017740861048004045,
+    "changed_regions": [
+      {
+        "x": 86,
+        "y": 96,
+        "width": 286,
+        "height": 87
+      },
+      {
+        "x": 944,
+        "y": 328,
+        "width": 244,
+        "height": 84
+      },
+      {
+        "x": 155,
+        "y": 636,
+        "width": 149,
+        "height": 98
+      },
+      {
+        "x": 274,
+        "y": 534,
+        "width": 103,
+        "height": 82
+      },
+      {
+        "x": 508,
+        "y": 849,
+        "width": 99,
+        "height": 61
+      },
+      {
+        "x": 270,
+        "y": 163,
+        "width": 80,
+        "height": 18
+      },
+      {
+        "x": 112,
+        "y": 163,
+        "width": 66,
+        "height": 20
+      },
+      {
+        "x": 562,
+        "y": 822,
+        "width": 34,
+        "height": 27
+      },
+      {
+        "x": 162,
+        "y": 714,
+        "width": 42,
+        "height": 18
+      },
+      {
+        "x": 318,
+        "y": 536,
+        "width": 25,
+        "height": 25
+      },
+      {
+        "x": 603,
+        "y": 850,
+        "width": 17,
+        "height": 36
+      },
+      {
+        "x": 204,
+        "y": 713,
+        "width": 22,
+        "height": 19
+      },
+      {
+        "x": 286,
+        "y": 629,
+        "width": 24,
+        "height": 17
+      },
+      {
+        "x": 359,
+        "y": 561,
+        "width": 24,
+        "height": 17
+      },
+      {
+        "x": 600,
+        "y": 821,
+        "width": 27,
+        "height": 15
+      },
+      {
+        "x": 273,
+        "y": 637,
+        "width": 18,
+        "height": 22
+      },
+      {
+        "x": 276,
+        "y": 534,
+        "width": 18,
+        "height": 20
+      },
+      {
+        "x": 94,
+        "y": 163,
+        "width": 18,
+        "height": 20
+      },
+      {
+        "x": 535,
+        "y": 824,
+        "width": 14,
+        "height": 23
+      },
+      {
+        "x": 151,
+        "y": 629,
+        "width": 21,
+        "height": 15
+      },
+      {
+        "x": 550,
+        "y": 822,
+        "width": 11,
+        "height": 27
+      },
+      {
+        "x": 332,
+        "y": 606,
+        "width": 25,
+        "height": 11
+      },
+      {
+        "x": 621,
+        "y": 852,
+        "width": 9,
+        "height": 28
+      },
+      {
+        "x": 362,
+        "y": 578,
+        "width": 23,
+        "height": 10
+      },
+      {
+        "x": 312,
+        "y": 601,
+        "width": 14,
+        "height": 16
+      },
+      {
+        "x": 247,
+        "y": 695,
+        "width": 13,
+        "height": 17
+      },
+      {
+        "x": 604,
+        "y": 837,
+        "width": 19,
+        "height": 11
+      },
+      {
+        "x": 591,
+        "y": 850,
+        "width": 12,
+        "height": 16
+      },
+      {
+        "x": 351,
+        "y": 591,
+        "width": 9,
+        "height": 18
+      },
+      {
+        "x": 509,
+        "y": 823,
+        "width": 14,
+        "height": 11
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page051.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 33773,
+    "erase_changed_ratio": 0.012213839289266157,
+    "typeset_changed_pixels": 28849,
+    "typeset_changed_ratio": 0.01043309891499243
+  },
+  "region_analysis": {
+    "total": 12,
+    "bubbles": 6,
+    "text_regions": 6,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 19,
+      "Global2x": 16,
+      "Focus3x": 118,
+      "Region1x": 26,
+      "Region2x": 25,
+      "Container1x": 25,
+      "Container2x": 37
+    },
+    "canonical_lines": 31,
+    "units": 7,
+    "assigned_lines": 29,
+    "orphan_groups": 1,
+    "secondary_total": 6,
+    "secondary_accepted": 6,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 96,
+          "Bottom": 188,
+          "Left": 76,
+          "Right": 383,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES, NEW HEROES. UP THERE, THAT W",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 327,
+          "Bottom": 417,
+          "Left": 942,
+          "Right": 1192,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US, PLEASE.\u0022",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 534,
+          "Bottom": 620,
+          "Left": 282,
+          "Right": 376,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DIANA,\nI DON\u0027T\nKNOW...\nI...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 629,
+          "Bottom": 737,
+          "Left": 151,
+          "Right": 310,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PLEASE,\nREST. WE\u0027LL\nTALK MORE IN\nTHE MORNING.\nAND BRUCE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 823,
+          "Bottom": 911,
+          "Left": 509,
+          "Right": 627,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1819,
+          "Bottom": 1889,
+          "Left": 119,
+          "Right": 235,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "CAN YOU SEE IN THE DARK?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 7,
+    "requested_render": 6
+  },
+  "render": {
+    "total": 6,
+    "approved": 5,
+    "rejected": 1,
+    "rejection_reasons": {
+      "vision_expansion_untrusted": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 6,
+    "TranslatedUnits": 5,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 5,
+    "TypesetCommittedUnits": 5,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+        "Translation": "\u0022\uD558\uC9C0\uB9CC \uC774 \uC0AC\uB78C\uB4E4\uC5D0\uAC90 \uC601\uC6C5\uC774 \uD544\uC694\uD574. \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uC774. \uC800 \uC704\uC5D0\uC11C \uC2F8\uC6B4 \uAC74 \uADF8\uC758 \uC2F8\uC6C0\uC774\uC5C8\uC5B4. \uC61B\uB0A0\uC758 \uBE0C\uB8E8\uC2A4 \uB9D0\uC774\uC57C.\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+        "Translation": "\u0022\uC774\uACF3\uC5D0 \uC624\uBA74 \uB2F9\uC2E0\uC740 \uC0C8\uB85C\uC6B4 \uC2DC\uB300\uC758 \uC0C8\uB85C\uC6B4 \uBC30\uD2B8\uB9E8\uC774 \uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC800\uD76C\uC640 \uD568\uAED8 \uAC00\uC2DC\uC8E0. \uBD80\uD0C1\uC785\uB2C8\uB2E4.\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "DIANA, I DON\u0027T KNOW... I...",
+        "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "as PS",
+        "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+        "Status": "original_preserved:vision_expansion_untrusted",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+        "Translation": "\uC81C\uBC1C, \uC880 \uC26C\uC5B4. \uB0B4\uC77C \uC544\uCE68\uC5D0 \uB354 \uC598\uAE30\uD558\uC790. \uADF8\uB9AC\uACE0 \uBE0C\uB8E8\uC2A4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "IT\u0027S GOOD TO HAVE YOU BACK.",
+        "Translation": "...\uB2E4\uC2DC \uB3CC\uC544\uC640\uC11C[BR]\uB2E4\uD589\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

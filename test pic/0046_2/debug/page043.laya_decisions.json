@@ -1,0 +1,88 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page043.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG001",
+      "Confidence": 0.0139,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG001",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.5129523,
+            "BlockCoverage": 0.9813664596273292,
+            "CenterInside": true,
+            "CenterDistance": 1.5811388300841898,
+            "Affinity": 7.178779724713284
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0397,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022There\u0027s no going back, people..\u0022",
+        "secondary_ocr": "\u0022There\u0027s no going back, people...\u0022",
+        "primary_confidence": 0.9456371665000916,
+        "current_agreement": "agree",
+        "corrected_text": "\u0022There\u0027s no going back, people...\u0022"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6189,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022There\u0027s no going back, people..\u0022",
+        "corrected_text": "\u0022There\u0027s no going back, people...\u0022",
+        "secondary_ocr": "\u0022There\u0027s no going back, people...\u0022",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9456371665000916,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6213,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022There\u0027s no going back, people..\u0022",
+        "corrected_source_text": "\u0022There\u0027s no going back, people...\u0022",
+        "korean_translation": "\u0022\uC774\uC81C \uB418\uB3CC\uB9B4 \uC218 \uC5C6\uC5B4, \uBAA8\uB450\uB4E4...\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022There\u0027s no going back, people...\u0022",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

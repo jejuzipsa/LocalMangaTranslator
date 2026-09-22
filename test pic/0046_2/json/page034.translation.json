@@ -1,0 +1,80 @@
+{
+  "SourceFile": "page034.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:19:35.1678569+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 771,
+        "Y": 726,
+        "W": 136,
+        "H": 136.66666666666663,
+        "Text": "journ g..",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 783.3333333333334,
+            "Y": 726,
+            "W": 123.66666666666663,
+            "H": 64.66666666666663,
+            "Text": "journ",
+            "Confidence": 0.9990198,
+            "Language": "en"
+          },
+          {
+            "X": 771,
+            "Y": 802.6666666666666,
+            "W": 55.33333333333337,
+            "H": 60,
+            "Text": "g..",
+            "Confidence": 0.815914,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "journey",
+      "Translation": "\uC5EC\uC815",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 829,
+        "Y": 794,
+        "W": 22.33333333333337,
+        "H": 28,
+        "Text": "II",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 829,
+            "Y": 794,
+            "W": 22.33333333333337,
+            "H": 28,
+            "Text": "II",
+            "Confidence": 0.9285377,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "I",
+      "Translation": "\uB098",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

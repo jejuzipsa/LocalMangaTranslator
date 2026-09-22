@@ -1,0 +1,67 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page034.jpg",
+  "RequestedUnits": 2,
+  "TranslatedUnits": 1,
+  "PreservedOriginalUnits": 1,
+  "EraseCommittedUnits": 1,
+  "TypesetCommittedUnits": 1,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 0,
+      "SourceText": "journ g..",
+      "Translation": "\uC5EC\uC815",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG001"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 383,
+        "Y": 715,
+        "Width": 599,
+        "Height": 158
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 1,
+      "SourceText": "II",
+      "Translation": "\uB098",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG001"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 383,
+        "Y": 715,
+        "Width": 599,
+        "Height": 158
+      },
+      "Planned": true,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": false,
+      "Status": "original_preserved:container_duplicate"
+    }
+  ]
+}

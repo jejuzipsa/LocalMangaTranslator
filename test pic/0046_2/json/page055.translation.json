@@ -1,0 +1,89 @@
+{
+  "SourceFile": "page055.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:18:16.6046066+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 300.3333333333333,
+        "Y": 700,
+        "W": 247.66666666666669,
+        "H": 63.33333333333337,
+        "Text": "...And so with that, we set out for parts unknown, Batman and I...",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 304.5,
+            "Y": 700,
+            "W": 243.5,
+            "H": 24.5,
+            "Text": "...And so with that, we set",
+            "Confidence": 0.993768,
+            "Language": "en"
+          },
+          {
+            "X": 300.3333333333333,
+            "Y": 718,
+            "W": 235.33333333333331,
+            "H": 29.33333333333337,
+            "Text": "out for parts unknown,",
+            "Confidence": 0.9967965,
+            "Language": "en"
+          },
+          {
+            "X": 301,
+            "Y": 735.6666666666666,
+            "W": 141.66666666666669,
+            "H": 27.666666666666742,
+            "Text": "Batman and I...",
+            "Confidence": 0.9771485,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...And so with that, we set out for parts unknown, Batman and I.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "...And so with that, we set out for parts unknown, Batman and I...",
+      "Translation": "...\uADF8\uB807\uAC8C \uBC30\uD2B8\uB9E8\uACFC \uB098\uB294[BR]\uBBF8\uC9C0\uC758 \uB545\uC744 \uD5A5\uD574[BR]\uAE38\uC744 \uB5A0\uB0AC\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 960.5,
+        "Y": 1351,
+        "W": 101,
+        "H": 58.5,
+        "Text": "JUL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 960.5,
+            "Y": 1351,
+            "W": 101,
+            "H": 58.5,
+            "Text": "JUL",
+            "Confidence": 0.4412551,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "JUL",
+      "Translation": "\uC904",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

@@ -1,0 +1,958 @@
+{
+  "SourceFile": "page035.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:21:24.082016+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 212,
+        "Y": 57,
+        "W": 163.33333333333331,
+        "H": 36.66666666666667,
+        "Text": "He walked the whole way at the same pace.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 212,
+            "Y": 57,
+            "W": 156,
+            "H": 22,
+            "Text": "He walked the whole",
+            "Confidence": 0.99946856,
+            "Language": "en"
+          },
+          {
+            "X": 214,
+            "Y": 73,
+            "W": 161.33333333333331,
+            "H": 20.66666666666667,
+            "Text": "way at the same pace.",
+            "Confidence": 0.998288,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "He walked the whole way at the same pace.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "He walked the whole way at the same pace.",
+      "Translation": "\uADF8\uB294 \uB0B4\uB0B4 \uC77C\uC815\uD55C \uC18D\uB3C4\uB85C \uAC78\uC5C8\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 311.5,
+        "Y": 246,
+        "W": 218.5,
+        "H": 51,
+        "Text": "I like to think he was thinking the Old days, Of family.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 311.5,
+            "Y": 246,
+            "W": 218.5,
+            "H": 24.5,
+            "Text": "I like to think he was thinking",
+            "Confidence": 0.99737763,
+            "Language": "en"
+          },
+          {
+            "X": 313,
+            "Y": 276,
+            "W": 179,
+            "H": 21,
+            "Text": "the Old days, Of family.",
+            "Confidence": 0.95138943,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "I like to think he was thinking of me as he went, thinking of the old days, of family.",
+      "Translation": "\uADF8\uAC00 \uB5A0\uB098\uBA74\uC11C \uB098\uB97C \uC0DD\uAC01\uD558\uBA70,\n\uC61B \uC2DC\uC808\uACFC \uAC00\uC871\uC744 \uB5A0\uC62C\uB838\uC744 \uAC70\uB77C \uBBFF\uACE0 \uC2F6\uC5B4.",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 248,
+        "Y": 353.5,
+        "W": 162,
+        "H": 34.5,
+        "Text": "But that\u0027s selfishness. And I know better.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 249.5,
+            "Y": 353.5,
+            "W": 160.5,
+            "H": 19.5,
+            "Text": "But that\u0027s selfishness.",
+            "Confidence": 0.98328936,
+            "Language": "en"
+          },
+          {
+            "X": 248,
+            "Y": 367.5,
+            "W": 139.5,
+            "H": 20.5,
+            "Text": "And I know better.",
+            "Confidence": 0.9982581,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "But that\u0027s selfishness. And I know better.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "But that\u0027s selfishness. And I know better.",
+      "Translation": "\uD558\uC9C0\uB9CC \uADF8\uAC74 \uC774\uAE30\uC801\uC778 \uAC70\uC57C.[BR]\uB09C \uB354 \uC798 \uC54C\uACE0 \uC788\uC5B4.",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 384.3333333333333,
+        "Y": 757,
+        "W": 68.00000000000006,
+        "H": 51,
+        "Text": "I TOLD YOU SO.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 388,
+            "Y": 757,
+            "W": 62.66666666666663,
+            "H": 32,
+            "Text": "I TOLD",
+            "Confidence": 0.88348156,
+            "Language": "en"
+          },
+          {
+            "X": 384.3333333333333,
+            "Y": 771,
+            "W": 68.00000000000006,
+            "H": 37,
+            "Text": "YOU SO.",
+            "Confidence": 0.7826521,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I TOLD YOU SO.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "I TOLD YOU SO.",
+      "Translation": "\uAC70\uBD10, \uB0B4 \uB9D0\uC774 \uB9DE\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1418,
+        "Y": 851,
+        "W": 95.66666666666674,
+        "H": 43,
+        "Text": "WL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1418,
+            "Y": 851,
+            "W": 95.66666666666674,
+            "H": 43,
+            "Text": "WL",
+            "Confidence": 0.5583517,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "WL",
+      "Translation": "WL",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 277,
+        "Y": 873,
+        "W": 26,
+        "H": 21,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 277,
+            "Y": 873,
+            "W": 26,
+            "H": 21,
+            "Text": "A",
+            "Confidence": 0.30978557,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "A",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 71,
+        "Y": 922,
+        "W": 102,
+        "H": 49,
+        "Text": "I HAD TO SEE FOR MYSELF.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 96,
+            "Y": 922,
+            "W": 52,
+            "H": 19.5,
+            "Text": "I HAD",
+            "Confidence": 0.9974096,
+            "Language": "en"
+          },
+          {
+            "X": 71,
+            "Y": 934.3333333333334,
+            "W": 102,
+            "H": 24,
+            "Text": "TO SEE FOR",
+            "Confidence": 0.99801236,
+            "Language": "en"
+          },
+          {
+            "X": 89.33333333333333,
+            "Y": 952.3333333333334,
+            "W": 66.00000000000001,
+            "H": 18.66666666666663,
+            "Text": "MYSELF.",
+            "Confidence": 0.9960031,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I HAD TO SEE FOR MYSELF.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "I HAD TO SEE FOR MYSELF.",
+      "Translation": "\uB0B4 \uB208\uC73C\uB85C \uC9C1\uC811 \uD655\uC778\uD574\uC57C \uD588\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1493.6666666666667,
+        "Y": 929.6666666666666,
+        "W": 102.66666666666652,
+        "H": 61.33333333333337,
+        "Text": "JUST.. THERE FOR THE TAKING.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1518,
+            "Y": 929.6666666666666,
+            "W": 53.66666666666674,
+            "H": 25.666666666666742,
+            "Text": "JUST..",
+            "Confidence": 0.9423552,
+            "Language": "en"
+          },
+          {
+            "X": 1493.6666666666667,
+            "Y": 949,
+            "W": 102.66666666666652,
+            "H": 23.66666666666663,
+            "Text": "THERE FOR THE",
+            "Confidence": 0.9952006,
+            "Language": "en"
+          },
+          {
+            "X": 1517,
+            "Y": 965.6666666666666,
+            "W": 53.66666666666674,
+            "H": 25.33333333333337,
+            "Text": "TAKING.",
+            "Confidence": 0.9982397,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "JUST...\nTHERE FOR THE\nTAKING.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "JUST... THERE FOR THE TAKING.",
+      "Translation": "\uADF8\uC800...[BR]\uAC00\uC838\uAC00\uAE30\uB9CC \uD558\uBA74 \uB3FC.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1834.6666666666667,
+        "Y": 930.5,
+        "W": 128.66666666666652,
+        "H": 101.16666666666674,
+        "Text": "IT DOESNT MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1850,
+            "Y": 930.5,
+            "W": 89,
+            "H": 33.5,
+            "Text": "IT DOESNT",
+            "Confidence": 0.9623682,
+            "Language": "en"
+          },
+          {
+            "X": 1835.5,
+            "Y": 952.5,
+            "W": 120.5,
+            "H": 26.5,
+            "Text": "MATTER THOUGH.",
+            "Confidence": 0.9973577,
+            "Language": "en"
+          },
+          {
+            "X": 1834.6666666666667,
+            "Y": 972,
+            "W": 128.66666666666652,
+            "H": 23.66666666666663,
+            "Text": "IT WAS ONE BATTLE",
+            "Confidence": 0.99510014,
+            "Language": "en"
+          },
+          {
+            "X": 1840.3333333333333,
+            "Y": 990,
+            "W": 112,
+            "H": 24.33333333333337,
+            "Text": "IN A WAR THAT\u0027S",
+            "Confidence": 0.98198277,
+            "Language": "en"
+          },
+          {
+            "X": 1869.3333333333333,
+            "Y": 1007.6666666666666,
+            "W": 51.66666666666674,
+            "H": 24.000000000000114,
+            "Text": "LONG...",
+            "Confidence": 0.85008204,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT DOFSN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "IT DOESN\u0027T MATTER THOUGH. IT WAS ONE BATTLE IN A WAR THAT\u0027S LONG...",
+      "Translation": "\uD558\uC9C0\uB9CC \uC0C1\uAD00\uC5C6\uC5B4.[BR]\uADF8\uAC74 \uAE34 \uC804\uC7C1 \uC18D\uC758[BR]\uB2E8 \uD55C \uBC88\uC758 \uC804\uD22C\uC600\uC73C\uB2C8\uAE4C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1604,
+        "Y": 996.6666666666666,
+        "W": 95.66666666666674,
+        "H": 60.66666666666663,
+        "Text": "BY EVERYONE AND ANYONE.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1638,
+            "Y": 996.6666666666666,
+            "W": 28.333333333333258,
+            "H": 22.666666666666742,
+            "Text": "BY",
+            "Confidence": 0.96411973,
+            "Language": "en"
+          },
+          {
+            "X": 1604,
+            "Y": 1013.6666666666666,
+            "W": 95.66666666666674,
+            "H": 26.000000000000114,
+            "Text": "EVERYONE AND",
+            "Confidence": 0.99863434,
+            "Language": "en"
+          },
+          {
+            "X": 1621.6666666666667,
+            "Y": 1031.6666666666667,
+            "W": 58.666666666666515,
+            "H": 25.666666666666515,
+            "Text": "ANYONE.",
+            "Confidence": 0.987055,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BY EVERYONE AND ANYONE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "BY EVERYONE AND ANYONE.",
+      "Translation": "\uADF8 \uB204\uAD6C\uB77C\uB3C4, [BR]\uADF8 \uB204\uAD6C\uC5D0\uAC8C\uB098.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1162.3333333333333,
+        "Y": 1000.3333333333334,
+        "W": 107.66666666666674,
+        "H": 82.66666666666663,
+        "Text": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1192.3333333333333,
+            "Y": 1000.3333333333334,
+            "W": 49.333333333333485,
+            "H": 28.66666666666663,
+            "Text": "GREEN",
+            "Confidence": 0.9884292,
+            "Language": "en"
+          },
+          {
+            "X": 1162.3333333333333,
+            "Y": 1019.3333333333334,
+            "W": 107.66666666666674,
+            "H": 26.999999999999886,
+            "Text": "LANTERN RINGS",
+            "Confidence": 0.98544884,
+            "Language": "en"
+          },
+          {
+            "X": 1169,
+            "Y": 1040,
+            "W": 93,
+            "H": 23,
+            "Text": "DROPPING TO",
+            "Confidence": 0.9986193,
+            "Language": "en"
+          },
+          {
+            "X": 1189.6666666666667,
+            "Y": 1055.6666666666667,
+            "W": 50.666666666666515,
+            "H": 27.333333333333258,
+            "Text": "EARTH.",
+            "Confidence": 0.97782046,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "GREEN LANTERN RINGS DROPPING TO EARTH.",
+      "Translation": "\uADF8\uB9B0 \uB79C\uD134 \uBC18\uC9C0\uB4E4\uC774[BR]\uC9C0\uAD6C\uB85C \uB5A8\uC5B4\uC9C0\uACE0 \uC788\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 258.6666666666667,
+        "Y": 1004,
+        "W": 18,
+        "H": 17.33333333333337,
+        "Text": "4",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 258.6666666666667,
+            "Y": 1004,
+            "W": 18,
+            "H": 17.33333333333337,
+            "Text": "4",
+            "Confidence": 0.44448513,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "4",
+      "Translation": "4",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 271.6666666666667,
+        "Y": 1013.3333333333334,
+        "W": 21.66666666666663,
+        "H": 20.33333333333337,
+        "Text": "i",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 271.6666666666667,
+            "Y": 1013.3333333333334,
+            "W": 21.66666666666663,
+            "H": 20.33333333333337,
+            "Text": "i",
+            "Confidence": 0.5429423,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "I",
+      "Translation": "\uB098",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 241,
+        "Y": 1087,
+        "W": 41.333333333333314,
+        "H": 157,
+        "Text": "4",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 241,
+            "Y": 1087,
+            "W": 41.333333333333314,
+            "H": 157,
+            "Text": "4",
+            "Confidence": 0.4015156,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "4",
+      "Translation": "4",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 286.6666666666667,
+        "Y": 1155,
+        "W": 121.33333333333331,
+        "H": 94.66666666666674,
+        "Text": "WELL, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OF OFF IN HERE.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 306,
+            "Y": 1155,
+            "W": 40,
+            "H": 27,
+            "Text": "WELL,",
+            "Confidence": 0.9651844,
+            "Language": "en"
+          },
+          {
+            "X": 291,
+            "Y": 1172,
+            "W": 111,
+            "H": 25.5,
+            "Text": "THEN, AND LET\u0027S",
+            "Confidence": 0.98872614,
+            "Language": "en"
+          },
+          {
+            "X": 286.6666666666667,
+            "Y": 1191.6666666666667,
+            "W": 121.33333333333331,
+            "H": 21.333333333333258,
+            "Text": "GO. I\u0027M SWEATING",
+            "Confidence": 0.97834533,
+            "Language": "en"
+          },
+          {
+            "X": 291,
+            "Y": 1208.6666666666667,
+            "W": 86,
+            "H": 23,
+            "Text": "MY BALLS OF",
+            "Confidence": 0.9957808,
+            "Language": "en"
+          },
+          {
+            "X": 356.6666666666667,
+            "Y": 1209.3333333333333,
+            "W": 47.99999999999994,
+            "H": 22,
+            "Text": "OFF IN",
+            "Confidence": 0.94043875,
+            "Language": "en"
+          },
+          {
+            "X": 327,
+            "Y": 1227.6666666666667,
+            "W": 38.333333333333314,
+            "H": 22,
+            "Text": "HERE.",
+            "Confidence": 0.9965851,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "WELL, LOOK, THEN, AND LET\u0027S GO. I\u0027M SWEATING MY BALLS OFF IN HERE.",
+      "Translation": "\uC790, \uADF8\uB7FC \uD655\uC778\uD558\uACE0 \uAC00\uC790. [BR]\uC5EC\uAE30\uC11C \uB540 \uC880 \uBED8\uBED8 \uD758\uB9AC\uACE0 \uC788\uAC70\uB4E0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 474,
+        "Y": 1156,
+        "W": 108,
+        "H": 152,
+        "Text": "1",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 474,
+            "Y": 1156,
+            "W": 108,
+            "H": 152,
+            "Text": "1",
+            "Confidence": 0.3988681,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "1",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 399,
+        "Y": 1225,
+        "W": 96,
+        "H": 70,
+        "Text": "WHAT HAPPENED TO THE BATTERY?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 421.33333333333337,
+            "Y": 1225,
+            "W": 49,
+            "H": 20.666666666666742,
+            "Text": "WHAT",
+            "Confidence": 0.99923015,
+            "Language": "en"
+          },
+          {
+            "X": 399,
+            "Y": 1236,
+            "W": 92,
+            "H": 27,
+            "Text": "HAPPENED",
+            "Confidence": 0.9986767,
+            "Language": "en"
+          },
+          {
+            "X": 415,
+            "Y": 1256,
+            "W": 59.5,
+            "H": 19.5,
+            "Text": "TO THE",
+            "Confidence": 0.999023,
+            "Language": "en"
+          },
+          {
+            "X": 399,
+            "Y": 1267,
+            "W": 96,
+            "H": 28,
+            "Text": "BATTERY?",
+            "Confidence": 0.9988676,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT HAPPENED TO THE BATTERY?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "WHAT HAPPENED TO THE BATTERY?",
+      "Translation": "\uBC30\uD130\uB9AC\uB294 \uC5B4\uB5BB\uAC8C \uB41C \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 297,
+        "Y": 1252,
+        "W": 25,
+        "H": 21,
+        "Text": "9",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 297,
+            "Y": 1252,
+            "W": 25,
+            "H": 21,
+            "Text": "9",
+            "Confidence": 0.5374196,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "9",
+      "Translation": "9",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 786,
+        "Y": 1329,
+        "W": 89,
+        "H": 117.33333333333326,
+        "Text": "re",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 786,
+            "Y": 1329,
+            "W": 89,
+            "H": 117.33333333333326,
+            "Text": "re",
+            "Confidence": 0.47879088,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "re",
+      "Translation": "",
+      "Type": "background",
+      "Render": false
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 622,
+        "Y": 1382.3333333333333,
+        "W": 98.66666666666674,
+        "H": 82.66666666666674,
+        "Text": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 640,
+            "Y": 1382.3333333333333,
+            "W": 61,
+            "H": 31,
+            "Text": "I JUST",
+            "Confidence": 0.97328246,
+            "Language": "en"
+          },
+          {
+            "X": 634,
+            "Y": 1404.3333333333333,
+            "W": 74.66666666666663,
+            "H": 23.666666666666742,
+            "Text": "REMEMBER",
+            "Confidence": 0.9972831,
+            "Language": "en"
+          },
+          {
+            "X": 622,
+            "Y": 1422.3333333333333,
+            "W": 98.66666666666674,
+            "H": 23,
+            "Text": "PIECES. HALF A",
+            "Confidence": 0.96070224,
+            "Language": "en"
+          },
+          {
+            "X": 622.3333333333334,
+            "Y": 1439,
+            "W": 95.33333333333337,
+            "H": 26,
+            "Text": "DECK, RIGHT?",
+            "Confidence": 0.99076664,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "I JUST REMEMBER PIECES. HALF A DECK, RIGHT?",
+      "Translation": "\uADF8\uB0E5 \uC870\uAC01\uC870\uAC01 \uC0DD\uAC01\uB0A0 \uBFD0\uC774\uC57C. \uCE74\uB4DC \uBC18 \uC138\uD2B8 \uC815\uB3C4, \uB9DE\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 844,
+        "Y": 1384,
+        "W": 83.33333333333337,
+        "H": 79,
+        "Text": "M060 LEECHED TO DEATH BY BRAINIAC.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 864,
+            "Y": 1384,
+            "W": 43,
+            "H": 20,
+            "Text": "M060",
+            "Confidence": 0.9777819,
+            "Language": "en"
+          },
+          {
+            "X": 844,
+            "Y": 1400,
+            "W": 83.33333333333337,
+            "H": 28,
+            "Text": "LEECHED TO",
+            "Confidence": 0.9908584,
+            "Language": "en"
+          },
+          {
+            "X": 850.3333333333333,
+            "Y": 1419.3333333333333,
+            "W": 68.66666666666674,
+            "H": 24.666666666666742,
+            "Text": "DEATH BY",
+            "Confidence": 0.98195994,
+            "Language": "en"
+          },
+          {
+            "X": 851,
+            "Y": 1435.3333333333333,
+            "W": 67.66666666666663,
+            "H": 27.666666666666742,
+            "Text": "BRAINIAC.",
+            "Confidence": 0.994215,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MOGO\nLEECHED TO\nDEATH BY\nBRAINIAC.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG024"
+      },
+      "CorrectedText": "MOGO LEECHED TO DEATH BY BRAINIAC.",
+      "Translation": "\uBAA8\uACE0\uB294 \uBE0C\uB808\uC774\uB2C8\uC561\uC5D0\uAC8C\n\uC0DD\uBA85\uB825\uC744 \uBE68\uB824 \uC8FD\uC5C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "SourceFile": "page051.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:49:03.5692402+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 70,
+        "Y": 97.33333333333333,
+        "W": 311,
+        "H": 86.33333333333336,
+        "Text": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 96.66666666666667,
+            "Y": 97.33333333333333,
+            "W": 268,
+            "H": 27,
+            "Text": "\u0022BUT THESE PEOPLE, THEY",
+            "Confidence": 0.99646455,
+            "Language": "en"
+          },
+          {
+            "X": 70,
+            "Y": 112,
+            "W": 311,
+            "H": 34,
+            "Text": "NEED HEROES. NEW HEROES.",
+            "Confidence": 0.9858774,
+            "Language": "en"
+          },
+          {
+            "X": 103.66666666666667,
+            "Y": 138,
+            "W": 254.33333333333331,
+            "H": 25.666666666666686,
+            "Text": "UP THERE, THAT WAS HIS",
+            "Confidence": 0.9952279,
+            "Language": "en"
+          },
+          {
+            "X": 110,
+            "Y": 158,
+            "W": 242.33333333333331,
+            "H": 25.666666666666686,
+            "Text": "FIGHT. THE OLD BRUCE.",
+            "Confidence": 0.99636555,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022BUT THESE PEOPLE, THEY NEED HEROES, NEW HEROES. UP THERE, THAT W",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "\u0022BUT THESE PEOPLE, THEY NEED HEROES. NEW HEROES. UP THERE, THAT WAS HIS FIGHT. THE OLD BRUCE.\u0022",
+      "Translation": "\u0022\uD558\uC9C0\uB9CC \uC774 \uC0AC\uB78C\uB4E4\uC5D0\uAC90 \uC601\uC6C5\uC774 \uD544\uC694\uD574. \uC0C8\uB85C\uC6B4 \uC601\uC6C5\uC774. \uC800 \uC704\uC5D0\uC11C \uC2F8\uC6B4 \uAC74 \uADF8\uC758 \uC2F8\uC6C0\uC774\uC5C8\uC5B4. \uC61B\uB0A0\uC758 \uBE0C\uB8E8\uC2A4 \uB9D0\uC774\uC57C.\u0022",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 942,
+        "Y": 328.5,
+        "W": 246.5,
+        "H": 85.16666666666663,
+        "Text": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 942,
+            "Y": 328.5,
+            "W": 246.5,
+            "H": 25.5,
+            "Text": "\u0022DOWN HERE, YOU\u0027D BE",
+            "Confidence": 0.99582535,
+            "Language": "en"
+          },
+          {
+            "X": 952.3333333333333,
+            "Y": 350.3333333333333,
+            "W": 225.66666666666674,
+            "H": 22.666666666666686,
+            "Text": "A NEW BATMAN FOR A",
+            "Confidence": 0.9963373,
+            "Language": "en"
+          },
+          {
+            "X": 953,
+            "Y": 369.3333333333333,
+            "W": 225.33333333333326,
+            "H": 24,
+            "Text": "NEW AGE. COME WITH",
+            "Confidence": 0.99580437,
+            "Language": "en"
+          },
+          {
+            "X": 996.6666666666667,
+            "Y": 389.33333333333337,
+            "W": 133.66666666666674,
+            "H": 24.333333333333258,
+            "Text": "US. PLEASE.\u0022",
+            "Confidence": 0.986424,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US, PLEASE.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "\u0022DOWN HERE, YOU\u0027D BE A NEW BATMAN FOR A NEW AGE. COME WITH US. PLEASE.\u0022",
+      "Translation": "\u0022\uC774\uACF3\uC5D0 \uC624\uBA74 \uB2F9\uC2E0\uC740 \uC0C8\uB85C\uC6B4 \uC2DC\uB300\uC758 \uC0C8\uB85C\uC6B4 \uBC30\uD2B8\uB9E8\uC774 \uB420 \uC218 \uC788\uC2B5\uB2C8\uB2E4. \uC800\uD76C\uC640 \uD568\uAED8 \uAC00\uC2DC\uC8E0. \uBD80\uD0C1\uC785\uB2C8\uB2E4.\u0022",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 283.6666666666667,
+        "Y": 535,
+        "W": 88,
+        "H": 87.66666666666663,
+        "Text": "DIANA, I DON\u0027T KNOW... I...",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 290.66666666666663,
+            "Y": 535,
+            "W": 76.33333333333337,
+            "H": 27.33333333333337,
+            "Text": "DIANA,",
+            "Confidence": 0.99892163,
+            "Language": "en"
+          },
+          {
+            "X": 283.6666666666667,
+            "Y": 556,
+            "W": 88,
+            "H": 23,
+            "Text": "I DON\u0027T",
+            "Confidence": 0.9928234,
+            "Language": "en"
+          },
+          {
+            "X": 284.66666666666663,
+            "Y": 575.6666666666666,
+            "W": 85.66666666666669,
+            "H": 25.666666666666742,
+            "Text": "KNOW...",
+            "Confidence": 0.9553949,
+            "Language": "en"
+          },
+          {
+            "X": 307.6666666666667,
+            "Y": 594.3333333333334,
+            "W": 38,
+            "H": 28.333333333333258,
+            "Text": "I...",
+            "Confidence": 0.92875886,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DIANA,\nI DON\u0027T\nKNOW...\nI...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "DIANA, I DON\u0027T KNOW... I...",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 340,
+        "Y": 550,
+        "W": 206.66666666666663,
+        "H": 442,
+        "Text": "as PS",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 340,
+            "Y": 550,
+            "W": 93,
+            "H": 184,
+            "Text": "as",
+            "Confidence": 0.47629717,
+            "Language": "en"
+          },
+          {
+            "X": 360,
+            "Y": 802,
+            "W": 186.66666666666663,
+            "H": 190,
+            "Text": "PS",
+            "Confidence": 0.53330994,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "DIANA, I DON\u0027T KNOW... I...",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uC798 \uBAA8\uB974\uACA0\uC5B4... \uB09C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 153,
+        "Y": 631,
+        "W": 151.66666666666669,
+        "H": 103,
+        "Text": "PLEASE, REST. WE\u0027LL MORE IN TALK THE MORNING. AND BRUCE..",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 185.66666666666666,
+            "Y": 631,
+            "W": 85.00000000000003,
+            "H": 24.33333333333337,
+            "Text": "PLEASE,",
+            "Confidence": 0.99945563,
+            "Language": "en"
+          },
+          {
+            "X": 167,
+            "Y": 651,
+            "W": 125,
+            "H": 23.66666666666663,
+            "Text": "REST. WE\u0027LL",
+            "Confidence": 0.9941884,
+            "Language": "en"
+          },
+          {
+            "X": 208.33333333333334,
+            "Y": 670.3333333333334,
+            "W": 95.66666666666666,
+            "H": 24.333333333333258,
+            "Text": "MORE IN",
+            "Confidence": 0.9992533,
+            "Language": "en"
+          },
+          {
+            "X": 155,
+            "Y": 671.6666666666666,
+            "W": 57.66666666666666,
+            "H": 22.33333333333337,
+            "Text": "TALK",
+            "Confidence": 0.9997555,
+            "Language": "en"
+          },
+          {
+            "X": 153,
+            "Y": 691,
+            "W": 40,
+            "H": 22.33333333333337,
+            "Text": "THE",
+            "Confidence": 0.9995528,
+            "Language": "en"
+          },
+          {
+            "X": 192.66666666666666,
+            "Y": 691.3333333333334,
+            "W": 112.00000000000003,
+            "H": 21.66666666666663,
+            "Text": "MORNING.",
+            "Confidence": 0.99862933,
+            "Language": "en"
+          },
+          {
+            "X": 158.33333333333334,
+            "Y": 711,
+            "W": 48.333333333333314,
+            "H": 23,
+            "Text": "AND",
+            "Confidence": 0.99648446,
+            "Language": "en"
+          },
+          {
+            "X": 207.66666666666666,
+            "Y": 711.3333333333334,
+            "W": 89.00000000000003,
+            "H": 20.333333333333258,
+            "Text": "BRUCE..",
+            "Confidence": 0.9380484,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PLEASE,\nREST. WE\u0027LL\nTALK MORE IN\nTHE MORNING.\nAND BRUCE...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "PLEASE, REST. WE\u0027LL TALK MORE IN THE MORNING. AND BRUCE...",
+      "Translation": "\uC81C\uBC1C, \uC880 \uC26C\uC5B4. \uB0B4\uC77C \uC544\uCE68\uC5D0 \uB354 \uC598\uAE30\uD558\uC790. \uADF8\uB9AC\uACE0 \uBE0C\uB8E8\uC2A4...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 510.66666666666663,
+        "Y": 821.6666666666666,
+        "W": 113.00000000000011,
+        "H": 88.33333333333337,
+        "Text": "IT\u0027S GOOD TO HAVE YOU BACK.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 532,
+            "Y": 821.6666666666666,
+            "W": 68.66666666666674,
+            "H": 31.33333333333337,
+            "Text": "IT\u0027S",
+            "Confidence": 0.96313894,
+            "Language": "en"
+          },
+          {
+            "X": 510.66666666666663,
+            "Y": 843.6666666666666,
+            "W": 113.00000000000011,
+            "H": 26.33333333333337,
+            "Text": "GOOD TO",
+            "Confidence": 0.99893755,
+            "Language": "en"
+          },
+          {
+            "X": 513,
+            "Y": 861.3333333333334,
+            "W": 108.66666666666674,
+            "H": 30.333333333333258,
+            "Text": "HAVE YOU",
+            "Confidence": 0.919097,
+            "Language": "en"
+          },
+          {
+            "X": 530,
+            "Y": 882,
+            "W": 74,
+            "H": 28,
+            "Text": "BACK.",
+            "Confidence": 0.9983799,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "...IT\u0027S GOOD TO HAVE YOU BACK.",
+      "Translation": "...\uB2E4\uC2DC \uB3CC\uC544\uC640\uC11C[BR]\uB2E4\uD589\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 97.5,
+        "Y": 1799.5,
+        "W": 156,
+        "H": 108.5,
+        "Text": "SNE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 97.5,
+            "Y": 1799.5,
+            "W": 156,
+            "H": 108.5,
+            "Text": "SNE",
+            "Confidence": 0.37482154,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "CAN YOU SEE IN THE DARK?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "SNE",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    }
+  ]
+}

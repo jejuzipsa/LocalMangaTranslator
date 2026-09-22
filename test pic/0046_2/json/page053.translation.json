@@ -1,0 +1,974 @@
+{
+  "SourceFile": "page053.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:52:58.0630435+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 170,
+        "Y": 256,
+        "W": 34,
+        "H": 30,
+        "Text": "\u0022",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 170,
+            "Y": 256,
+            "W": 34,
+            "H": 30,
+            "Text": "\u0022",
+            "Confidence": 0.3625636,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "\u0022",
+      "Translation": "\u0022",
+      "Type": "dialogue",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 147,
+        "Y": 261,
+        "W": 175,
+        "H": 67.33333333333337,
+        "Text": "IS YONE OUT",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 220,
+            "Y": 261,
+            "W": 36,
+            "H": 35,
+            "Text": "IS",
+            "Confidence": 0.9901841,
+            "Language": "en"
+          },
+          {
+            "X": 147,
+            "Y": 288,
+            "W": 97.66666666666669,
+            "H": 40.33333333333337,
+            "Text": "YONE",
+            "Confidence": 0.99817914,
+            "Language": "en"
+          },
+          {
+            "X": 240.66666666666669,
+            "Y": 291.6666666666667,
+            "W": 81.33333333333331,
+            "H": 34.333333333333314,
+            "Text": "OUT",
+            "Confidence": 0.9967609,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022...IS ANYONE OUT THERE?\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "\u0022...IS ANYONE OUT THERE?\u0022",
+      "Translation": "...\uAC70\uAE30 \uB204\uAD6C \uC5C6\uC5B4\uC694?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 722,
+        "Y": 267,
+        "W": 183.5,
+        "H": 65.5,
+        "Text": "WE HAVE TO GET READY IF READY IF WE\u0027RE GOING--",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 765.3333333333333,
+            "Y": 267,
+            "W": 93.66666666666674,
+            "H": 25.666666666666686,
+            "Text": "WE HAVE",
+            "Confidence": 0.9998498,
+            "Language": "en"
+          },
+          {
+            "X": 722,
+            "Y": 286.5,
+            "W": 183.5,
+            "H": 27,
+            "Text": "TO GET READY IF",
+            "Confidence": 0.9865906,
+            "Language": "en"
+          },
+          {
+            "X": 806,
+            "Y": 288,
+            "W": 97.66666666666674,
+            "H": 23.666666666666686,
+            "Text": "READY IF",
+            "Confidence": 0.9930283,
+            "Language": "en"
+          },
+          {
+            "X": 728,
+            "Y": 307.5,
+            "W": 170.5,
+            "H": 25,
+            "Text": "WE\u0027RE GOING--",
+            "Confidence": 0.96874267,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WE HAVE TO GET READY IF WE\u0027RE GOING--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG004"
+      },
+      "CorrectedText": "WE HAVE TO GET READY IF WE\u0027RE GOING--",
+      "Translation": "\uAC00\uB824\uBA74[BR]\uC900\uBE44\uBD80\uD130 \uD574\uC57C\uC9C0\u2014",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 143,
+        "Y": 326.3333333333333,
+        "W": 99.33333333333334,
+        "H": 26.333333333333314,
+        "Text": "THERE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 143,
+            "Y": 326.3333333333333,
+            "W": 99.33333333333334,
+            "H": 26.333333333333314,
+            "Text": "THERE",
+            "Confidence": 0.99495137,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "THERE",
+      "Translation": "\uC800\uAE30",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 407.3333333333333,
+        "Y": 363.3333333333333,
+        "W": 169.99999999999994,
+        "H": 145.33333333333331,
+        "Text": "E POEM, MAN! I WAS TELLING YOU EI ABOUT AROIT TUE ONE T THE WROTE ABOUT YOU AND ME.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 475,
+            "Y": 363.3333333333333,
+            "W": 66,
+            "H": 29.33333333333337,
+            "Text": "E POEM,",
+            "Confidence": 0.9800524,
+            "Language": "en"
+          },
+          {
+            "X": 423.3333333333333,
+            "Y": 389,
+            "W": 45.666666666666686,
+            "H": 28.333333333333314,
+            "Text": "MAN!",
+            "Confidence": 0.9961736,
+            "Language": "en"
+          },
+          {
+            "X": 407.3333333333333,
+            "Y": 409,
+            "W": 169.99999999999994,
+            "H": 30.666666666666686,
+            "Text": "I WAS TELLING YOU",
+            "Confidence": 0.9937327,
+            "Language": "en"
+          },
+          {
+            "X": 538,
+            "Y": 432.3333333333333,
+            "W": 38,
+            "H": 33,
+            "Text": "EI",
+            "Confidence": 0.9501149,
+            "Language": "en"
+          },
+          {
+            "X": 415,
+            "Y": 433,
+            "W": 54,
+            "H": 30.666666666666686,
+            "Text": "ABOUT",
+            "Confidence": 0.8792757,
+            "Language": "en"
+          },
+          {
+            "X": 419,
+            "Y": 433.33333333333337,
+            "W": 153,
+            "H": 15.666666666666629,
+            "Text": "AROIT TUE ONE T",
+            "Confidence": 0.84949845,
+            "Language": "en"
+          },
+          {
+            "X": 475.3333333333333,
+            "Y": 439,
+            "W": 44.666666666666686,
+            "H": 22.666666666666686,
+            "Text": "THE",
+            "Confidence": 0.9990497,
+            "Language": "en"
+          },
+          {
+            "X": 413.3333333333333,
+            "Y": 456.3333333333333,
+            "W": 160.99999999999994,
+            "H": 29.000000000000057,
+            "Text": "WROTE ABOUT YOU",
+            "Confidence": 0.99643743,
+            "Language": "en"
+          },
+          {
+            "X": 454,
+            "Y": 479.66666666666663,
+            "W": 73.66666666666674,
+            "H": 29,
+            "Text": "AND ME.",
+            "Confidence": 0.9954427,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THE POEM,\nMAN! THE POEM\nI WAS TELLING YOU\nABOUT. THE ONE I\nWROTE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG006"
+      },
+      "CorrectedText": "THE POEM, MAN! THE POEM I WAS TELLING YOU ABOUT. THE ONE I WROTE ABOUT YOU AND ME.",
+      "Translation": "\uADF8 \uC2DC \uB9D0\uC774\uC57C! \uB0B4\uAC00 \uB9D0\uD588\uB358 \uADF8 \uC2DC! \uC6B0\uB9AC \uB458\uC5D0 \uB300\uD574 \uC4F4 \uAC70.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 785,
+        "Y": 378,
+        "W": 156.66666666666674,
+        "H": 66.33333333333337,
+        "Text": "NO NO.. I NEED IT TO YOU TELL TO BEFORE I FORGET.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 800,
+            "Y": 378,
+            "W": 69,
+            "H": 18,
+            "Text": "NO NO..",
+            "Confidence": 0.9829041,
+            "Language": "en"
+          },
+          {
+            "X": 861,
+            "Y": 378,
+            "W": 64,
+            "H": 19.333333333333314,
+            "Text": "I NEED",
+            "Confidence": 0.97085005,
+            "Language": "en"
+          },
+          {
+            "X": 848.3333333333333,
+            "Y": 390,
+            "W": 93.33333333333348,
+            "H": 31,
+            "Text": "IT TO YOU",
+            "Confidence": 0.987181,
+            "Language": "en"
+          },
+          {
+            "X": 807.3333333333333,
+            "Y": 392.3333333333333,
+            "W": 48,
+            "H": 29.33333333333337,
+            "Text": "TELL",
+            "Confidence": 0.9985819,
+            "Language": "en"
+          },
+          {
+            "X": 785,
+            "Y": 393.6666666666667,
+            "W": 28.66666666666663,
+            "H": 26,
+            "Text": "TO",
+            "Confidence": 0.9904319,
+            "Language": "en"
+          },
+          {
+            "X": 785,
+            "Y": 415,
+            "W": 152.33333333333326,
+            "H": 29.33333333333337,
+            "Text": "BEFORE I FORGET.",
+            "Confidence": 0.99572927,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO NO. I NEED TO TELL IT TO YOU BEFORE I FORGET.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "NO, NO. I NEED TO TELL IT TO YOU BEFORE I FORGET.",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC. \uC78A\uC5B4\uBC84\uB9AC\uAE30 \uC804\uC5D0\n\uAF2D \uB9D0\uD574\uC918\uC57C \uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1021.6666666666666,
+        "Y": 401.3333333333333,
+        "W": 165.33333333333337,
+        "H": 121.66666666666669,
+        "Text": "THERE ONCE WAS A MAN FROM WHO MADRAS, STUFFED DYNAMITE OLD-- UP HIS",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1054.6666666666667,
+            "Y": 401.3333333333333,
+            "W": 56.33333333333326,
+            "H": 29.666666666666686,
+            "Text": "THERE",
+            "Confidence": 0.99567336,
+            "Language": "en"
+          },
+          {
+            "X": 1103.3333333333333,
+            "Y": 401.3333333333333,
+            "W": 53.333333333333485,
+            "H": 29.33333333333337,
+            "Text": "ONCE",
+            "Confidence": 0.99150157,
+            "Language": "en"
+          },
+          {
+            "X": 1029.6666666666667,
+            "Y": 424,
+            "W": 150.66666666666674,
+            "H": 29.66666666666663,
+            "Text": "WAS A MAN FROM",
+            "Confidence": 0.9965136,
+            "Language": "en"
+          },
+          {
+            "X": 1120.6666666666667,
+            "Y": 447.3333333333333,
+            "W": 46,
+            "H": 28,
+            "Text": "WHO",
+            "Confidence": 0.978435,
+            "Language": "en"
+          },
+          {
+            "X": 1040.3333333333333,
+            "Y": 449,
+            "W": 84.33333333333348,
+            "H": 27,
+            "Text": "MADRAS,",
+            "Confidence": 0.99546283,
+            "Language": "en"
+          },
+          {
+            "X": 1021.6666666666666,
+            "Y": 472,
+            "W": 165.33333333333337,
+            "H": 28.33333333333337,
+            "Text": "STUFFED DYNAMITE",
+            "Confidence": 0.99818456,
+            "Language": "en"
+          },
+          {
+            "X": 1105.6666666666667,
+            "Y": 492.66666666666663,
+            "W": 56.33333333333326,
+            "H": 30.33333333333337,
+            "Text": "OLD--",
+            "Confidence": 0.93362904,
+            "Language": "en"
+          },
+          {
+            "X": 1045.3333333333333,
+            "Y": 495,
+            "W": 65.33333333333348,
+            "H": 28,
+            "Text": "UP HIS",
+            "Confidence": 0.9380373,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THERE ONCE WAS A MAN FROM MADRAS, WHO STUFFED DYNAMITE UP HIS OLD--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "THERE ONCE WAS A MAN FROM MADRAS, WHO STUFFED DYNAMITE UP HIS OLD--",
+      "Translation": "\uC61B\uB0A0 \uB9C8\uB4DC\uB77C\uC2A4\uC5D0 \uD55C \uB0A8\uC790\uAC00 \uC0B4\uC558\uB294\uB370,\n\uADF8\uB294 \uC790\uAE30\uC758 \uB0A1\uC740...\uC5D0\n\uB2E4\uC774\uB108\uB9C8\uC774\uD2B8\uB97C \uCC44\uC6CC \uB123\uC5C8\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 123.33333333333333,
+        "Y": 442.6666666666667,
+        "W": 123.33333333333333,
+        "H": 100.33333333333331,
+        "Text": "OKAY, OKAY. I THINK EMBER NOW.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 157.33333333333334,
+            "Y": 442.6666666666667,
+            "W": 53.66666666666666,
+            "H": 29.66666666666663,
+            "Text": "OKAY,",
+            "Confidence": 0.9985435,
+            "Language": "en"
+          },
+          {
+            "X": 123.33333333333333,
+            "Y": 465.6666666666667,
+            "W": 123.33333333333333,
+            "H": 29.333333333333314,
+            "Text": "OKAY. I THINK",
+            "Confidence": 0.9894302,
+            "Language": "en"
+          },
+          {
+            "X": 182,
+            "Y": 489.3333333333333,
+            "W": 60,
+            "H": 30.666666666666686,
+            "Text": "EMBER",
+            "Confidence": 0.993554,
+            "Language": "en"
+          },
+          {
+            "X": 156,
+            "Y": 511,
+            "W": 54,
+            "H": 32,
+            "Text": "NOW.",
+            "Confidence": 0.98824805,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OKAY,\nOKAY. I THINK\nI REMEMBER\nNOW.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "OKAY, OKAY. I THINK I REMEMBER NOW.",
+      "Translation": "\uC54C\uC558\uC5B4, \uC54C\uC558\uC5B4. \uC774\uC81C \uAE30\uC5B5\uB098\uB294 \uAC83 \uAC19\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 718.6666666666666,
+        "Y": 477.33333333333337,
+        "W": 121,
+        "H": 64.33333333333326,
+        "Text": "SIGH THEN. GO AHEAD.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 731,
+            "Y": 477.33333333333337,
+            "W": 93.66666666666663,
+            "H": 26,
+            "Text": "SIGH",
+            "Confidence": 0.99101955,
+            "Language": "en"
+          },
+          {
+            "X": 782,
+            "Y": 497.66666666666663,
+            "W": 57.66666666666663,
+            "H": 24,
+            "Text": "THEN.",
+            "Confidence": 0.99753225,
+            "Language": "en"
+          },
+          {
+            "X": 718.6666666666666,
+            "Y": 517.6666666666666,
+            "W": 119.33333333333337,
+            "H": 24,
+            "Text": "GO AHEAD.",
+            "Confidence": 0.98878425,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SIGH-OKAY THEN. GO AHEAD.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG014"
+      },
+      "CorrectedText": "SIGH-OKAY THEN. GO AHEAD.",
+      "Translation": "*\uD55C\uC228* \uC54C\uC558\uC5B4.[BR]\uADF8\uB7FC \uD574\uBD10.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 476.6666666666667,
+        "Y": 515.3333333333334,
+        "W": 147.66666666666669,
+        "H": 146.66666666666663,
+        "Text": "IT\u0027S 7 PRETTY EPIC, LYRIC 24. LYRIC FROM THE HEART, YOU KNO",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 527.3333333333334,
+            "Y": 515.3333333333334,
+            "W": 42.66666666666663,
+            "H": 31,
+            "Text": "IT\u0027S",
+            "Confidence": 0.98132646,
+            "Language": "en"
+          },
+          {
+            "X": 476.6666666666667,
+            "Y": 519.6666666666666,
+            "W": 14,
+            "H": 13.333333333333371,
+            "Text": "7",
+            "Confidence": 0.9866542,
+            "Language": "en"
+          },
+          {
+            "X": 488.5,
+            "Y": 535,
+            "W": 117.5,
+            "H": 36,
+            "Text": "PRETTY EPIC,",
+            "Confidence": 0.9938079,
+            "Language": "en"
+          },
+          {
+            "X": 572,
+            "Y": 559.6666666666666,
+            "W": 51.66666666666663,
+            "H": 34.33333333333337,
+            "Text": "LYRIC",
+            "Confidence": 0.9965955,
+            "Language": "en"
+          },
+          {
+            "X": 545,
+            "Y": 562.3333333333334,
+            "W": 75.33333333333337,
+            "H": 23.66666666666663,
+            "Text": "24. LYRIC",
+            "Confidence": 0.9290989,
+            "Language": "en"
+          },
+          {
+            "X": 572,
+            "Y": 585.6666666666666,
+            "W": 52.33333333333337,
+            "H": 29,
+            "Text": "FROM",
+            "Confidence": 0.9995809,
+            "Language": "en"
+          },
+          {
+            "X": 481.33333333333337,
+            "Y": 608.6666666666666,
+            "W": 136.33333333333337,
+            "H": 31,
+            "Text": "THE HEART, YOU",
+            "Confidence": 0.9797913,
+            "Language": "en"
+          },
+          {
+            "X": 511.6666666666667,
+            "Y": 631.3333333333334,
+            "W": 40.333333333333314,
+            "H": 30.66666666666663,
+            "Text": "KNO",
+            "Confidence": 0.9953364,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT\u0027S PRETTY EPIC, HONESTLY. LYRIC VERSE, BUT FROM THE HEART, YOU KNOW?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "IT\u0027S PRETTY EPIC, HONESTLY. LYRIC VERSE, BUT FROM THE HEART, YOU KNOW?",
+      "Translation": "\uC194\uC9C1\uD788 \uAF64 \uBA4B\uC838.[BR]\uAC00\uC0AC \uAC19\uC740 \uB290\uB08C\uC774\uC9C0\uB9CC, \uC9C4\uC2EC\uC774 \uB2F4\uAE34 \uAC70 \uB9D0\uC774\uC57C, \uC54C\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 786.6666666666666,
+        "Y": 570,
+        "W": 149.66666666666663,
+        "H": 77.66666666666663,
+        "Text": "ALL RIGHT, ALL RIGHT. GOES.. HERE",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 844.6666666666667,
+            "Y": 570,
+            "W": 34,
+            "H": 29.66666666666663,
+            "Text": "ALL",
+            "Confidence": 0.99869394,
+            "Language": "en"
+          },
+          {
+            "X": 786.6666666666666,
+            "Y": 592,
+            "W": 149.66666666666663,
+            "H": 30.33333333333337,
+            "Text": "RIGHT, ALL RIGHT.",
+            "Confidence": 0.99143654,
+            "Language": "en"
+          },
+          {
+            "X": 847.6666666666667,
+            "Y": 617,
+            "W": 69.66666666666652,
+            "H": 30.66666666666663,
+            "Text": "GOES..",
+            "Confidence": 0.94707674,
+            "Language": "en"
+          },
+          {
+            "X": 806.6666666666666,
+            "Y": 617.6666666666666,
+            "W": 47.000000000000114,
+            "H": 28.666666666666742,
+            "Text": "HERE",
+            "Confidence": 0.9979267,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ALL RIGHT, ALL RIGHT. HERE GOES...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "ALL RIGHT, ALL RIGHT. HERE GOES...",
+      "Translation": "\uC88B\uC544, \uC88B\uC544.[BR]\uC790, \uC2DC\uC791\uD55C\uB2E4...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1117,
+        "Y": 574.3333333333334,
+        "W": 79.33333333333326,
+        "H": 19.66666666666663,
+        "Text": "JOKER.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1117,
+            "Y": 574.3333333333334,
+            "W": 79.33333333333326,
+            "H": 19.66666666666663,
+            "Text": "JOKER.",
+            "Confidence": 0.99953055,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "JOKER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG018"
+      },
+      "CorrectedText": "JOKER.",
+      "Translation": "\uC870\uCEE4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 191.66666666666666,
+        "Y": 597.6666666666666,
+        "W": 119.99999999999997,
+        "H": 45.66666666666674,
+        "Text": "REMEMBER WHAT?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 191.66666666666666,
+            "Y": 597.6666666666666,
+            "W": 119.99999999999997,
+            "H": 25.33333333333337,
+            "Text": "REMEMBER",
+            "Confidence": 0.99992317,
+            "Language": "en"
+          },
+          {
+            "X": 211,
+            "Y": 617.3333333333334,
+            "W": 76.66666666666669,
+            "H": 26,
+            "Text": "WHAT?",
+            "Confidence": 0.99933714,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "REMEMBER WHAT?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG022"
+      },
+      "CorrectedText": "REMEMBER WHAT?",
+      "Translation": "\uBB50\uB97C \uAE30\uC5B5\uD558\uB77C\uACE0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 1208.6666666666667,
+        "Y": 1639,
+        "W": 36.666666666666515,
+        "H": 13,
+        "Text": "does",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1208.6666666666667,
+            "Y": 1639,
+            "W": 36.666666666666515,
+            "H": 13,
+            "Text": "does",
+            "Confidence": 0.43863335,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...WAIT,",
+      "Translation": "...\uC7A0\uAE50,",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1104.3333333333333,
+        "Y": 1656.3333333333333,
+        "W": 177.66666666666674,
+        "H": 151.33333333333348,
+        "Text": "WAIT, MAYBE THAT\u0027S A DIFFERENT ONE? ILL REMEMBER. JUST GIVE ME A SECOND. HAHA!",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1160.6666666666667,
+            "Y": 1656.3333333333333,
+            "W": 72.33333333333326,
+            "H": 34.66666666666674,
+            "Text": "WAIT,",
+            "Confidence": 0.90620965,
+            "Language": "en"
+          },
+          {
+            "X": 1124.3333333333333,
+            "Y": 1682.3333333333333,
+            "W": 142.33333333333348,
+            "H": 28.666666666666742,
+            "Text": "MAYBE THAT\u0027S A",
+            "Confidence": 0.9920565,
+            "Language": "en"
+          },
+          {
+            "X": 1104.3333333333333,
+            "Y": 1705.3333333333333,
+            "W": 177.66666666666674,
+            "H": 29.333333333333485,
+            "Text": "DIFFERENT ONE? ILL",
+            "Confidence": 0.9955182,
+            "Language": "en"
+          },
+          {
+            "X": 1117.5,
+            "Y": 1728,
+            "W": 155,
+            "H": 30,
+            "Text": "REMEMBER. JUST",
+            "Confidence": 0.99790347,
+            "Language": "en"
+          },
+          {
+            "X": 1111.6666666666667,
+            "Y": 1752,
+            "W": 163,
+            "H": 29.333333333333258,
+            "Text": "GIVE ME A SECOND.",
+            "Confidence": 0.9878279,
+            "Language": "en"
+          },
+          {
+            "X": 1155.3333333333333,
+            "Y": 1773.6666666666667,
+            "W": 79.33333333333348,
+            "H": 34,
+            "Text": "HAHA!",
+            "Confidence": 0.9953367,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...WAIT,\nMAYBE THAT\u0027S A DIFFERENT ONE? I\u0027LL REMEMBER. JUST GIVE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG024"
+      },
+      "CorrectedText": "...WAIT, MAYBE THAT\u0027S A DIFFERENT ONE? I\u0027LL REMEMBER. JUST GIVE ME A SECOND. HAHA!",
+      "Translation": "...\uC7A0\uAE50, \uC5B4\uCA4C\uBA74 \uC800\uAC74[BR]\uB2E4\uB978 \uAC70 \uC544\uB0D0? \uAE30\uC5B5\uD574\uB0BC\uAC8C.[BR]\uC7A0\uC2DC\uB9CC \uAE30\uB2E4\uB824\uC918.[BR]\uD558\uD558!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 1007,
+        "Y": 1696,
+        "W": 85.66666666666674,
+        "H": 39.33333333333326,
+        "Text": "S",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1007,
+            "Y": 1696,
+            "W": 85.66666666666674,
+            "H": 39.33333333333326,
+            "Text": "S",
+            "Confidence": 0.5423385,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "S",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 1191,
+        "Y": 1871,
+        "W": 65.33333333333326,
+        "H": 49,
+        "Text": "COME ON...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1191,
+            "Y": 1871,
+            "W": 65.33333333333326,
+            "H": 26,
+            "Text": "COME",
+            "Confidence": 0.99997175,
+            "Language": "en"
+          },
+          {
+            "X": 1192,
+            "Y": 1888.5,
+            "W": 60.5,
+            "H": 31.5,
+            "Text": "ON...",
+            "Confidence": 0.91758406,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "COME ON...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG026"
+      },
+      "CorrectedText": "COME ON...",
+      "Translation": "\uC81C\uBC1C...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

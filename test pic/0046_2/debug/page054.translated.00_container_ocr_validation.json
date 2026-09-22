@@ -1,0 +1,1088 @@
+{
+  "schema": "ocr-evidence-v3",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC003",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC004",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC005",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    },
+    {
+      "CandidateId": "PC006",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC007",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC008",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC009",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC010",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC011",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC002",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC003",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC004",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC006",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC007",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC008",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC009",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC009",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC010",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC011",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9045245901639344
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 0.9667788057190917
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.59296
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.7644084934277048
+    },
+    {
+      "ObservationId": "CO0005",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.5996363636363636
+    },
+    {
+      "ObservationId": "CO0006",
+      "CandidateId": "PC003",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.7781385281385281
+    },
+    {
+      "ObservationId": "CO0007",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0008",
+      "CandidateId": "PC004",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.6728581153359915
+    },
+    {
+      "ObservationId": "CO0009",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9297956493078444
+    },
+    {
+      "ObservationId": "CO0010",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0011",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0012",
+      "CandidateId": "PC006",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0013",
+      "CandidateId": "PC007",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9998827117053718
+    },
+    {
+      "ObservationId": "CO0014",
+      "CandidateId": "PC007",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0015",
+      "CandidateId": "PC007",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0016",
+      "CandidateId": "PC007",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0017",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0018",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0019",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0020",
+      "CandidateId": "PC008",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0021",
+      "CandidateId": "PC009",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0022",
+      "CandidateId": "PC009",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0023",
+      "CandidateId": "PC009",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0024",
+      "CandidateId": "PC009",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0025",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9819444444444444
+    },
+    {
+      "ObservationId": "CO0026",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0027",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0028",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0029",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0030",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0031",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0032",
+      "CandidateId": "PC010",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0033",
+      "CandidateId": "PC011",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 0.9825662482566249
+    },
+    {
+      "ObservationId": "CO0034",
+      "CandidateId": "PC011",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0035",
+      "CandidateId": "PC011",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0036",
+      "CandidateId": "PC011",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG002",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG002",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG008",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG010",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG010",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG012",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG014",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG016",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG018",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG018",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG020",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG020",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 4,
+      "Error": null
+    },
+    {
+      "RegionId": "RG022",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG022",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0005",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0006",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0007",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0008",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0009",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0010",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0011",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0012",
+      "RegionId": "RG008",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0013",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0014",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0015",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0016",
+      "RegionId": "RG010",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0017",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0018",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0019",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0020",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0021",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0022",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0023",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0024",
+      "RegionId": "RG012",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0025",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0026",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0027",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0028",
+      "RegionId": "RG014",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0029",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0030",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0031",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0032",
+      "RegionId": "RG016",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0033",
+      "RegionId": "RG018",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0034",
+      "RegionId": "RG018",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0035",
+      "RegionId": "RG018",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0036",
+      "RegionId": "RG018",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0037",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0038",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0039",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0040",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0041",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0042",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0043",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0044",
+      "RegionId": "RG020",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0045",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0046",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0047",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0048",
+      "RegionId": "RG022",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    }
+  ],
+  "secondary_ocr": [
+    {
+      "EvidenceId": "BO0001",
+      "RegionId": "RG001",
+      "Bounds": {
+        "Top": 233,
+        "Bottom": 285,
+        "Left": 122,
+        "Right": 255,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "\u0022...IT\u0027S TIME TO GO.\u0022",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0002",
+      "RegionId": "RG003",
+      "Bounds": {
+        "Top": 257,
+        "Bottom": 287,
+        "Left": 1044,
+        "Right": 1138,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "DAMMIT.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0003",
+      "RegionId": "RG005",
+      "Bounds": {
+        "Top": 314,
+        "Bottom": 364,
+        "Left": 1015,
+        "Right": 1151,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "GOOD-BYE, BRUCE.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0004",
+      "RegionId": "RG007",
+      "Bounds": {
+        "Top": 902,
+        "Bottom": 933,
+        "Left": 418,
+        "Right": 506,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "BRUCE.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0005",
+      "RegionId": "RG009",
+      "Bounds": {
+        "Top": 1418,
+        "Bottom": 1469,
+        "Left": 721,
+        "Right": 802,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "...THE PLANS.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0006",
+      "RegionId": "RG011",
+      "Bounds": {
+        "Top": 1464,
+        "Bottom": 1553,
+        "Left": 465,
+        "Right": 638,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "ARE YOU AWAKE? I WANT TO SHOW YOU...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0007",
+      "RegionId": "RG013",
+      "Bounds": {
+        "Top": 1826,
+        "Bottom": 1875,
+        "Left": 62,
+        "Right": 361,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "We\u0027ve had many adventures together, he and I.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0008",
+      "RegionId": "RG015",
+      "Bounds": {
+        "Top": 1847,
+        "Bottom": 1896,
+        "Left": 548,
+        "Right": 810,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "This case, like I said, it felt different from the start.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0009",
+      "RegionId": "RG017",
+      "Bounds": {
+        "Top": 1859,
+        "Bottom": 1908,
+        "Left": 859,
+        "Right": 1130,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "We bott sensed it, That this one was...stranger...Darket...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0010",
+      "RegionId": "RG019",
+      "Bounds": {
+        "Top": 1884,
+        "Bottom": 1967,
+        "Left": 304,
+        "Right": 510,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "I\u0027ve been at his side practically his whole life. Through the bad times, and the good.",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0011",
+      "RegionId": "RG021",
+      "Bounds": {
+        "Top": 1938,
+        "Bottom": 1985,
+        "Left": 1027,
+        "Right": 1281,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "But there was no turning back now. It was too late...",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    }
+  ]
+}

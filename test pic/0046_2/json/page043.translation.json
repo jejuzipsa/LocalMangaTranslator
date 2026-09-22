@@ -1,0 +1,48 @@
+{
+  "SourceFile": "page043.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:31:13.7618845+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 418,
+        "Y": 712,
+        "W": 523,
+        "H": 161,
+        "Text": "\u0022There\u0027s no going back, people..\u0022",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 418,
+            "Y": 712,
+            "W": 523,
+            "H": 84,
+            "Text": "\u0022There\u0027s no going back,",
+            "Confidence": 0.9969213,
+            "Language": "en"
+          },
+          {
+            "X": 563,
+            "Y": 779,
+            "W": 234,
+            "H": 94,
+            "Text": "people..\u0022",
+            "Confidence": 0.89435303,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022There\u0027s no going back, people...\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "\u0022There\u0027s no going back, people...\u0022",
+      "Translation": "\u0022\uC774\uC81C \uB418\uB3CC\uB9B4 \uC218 \uC5C6\uC5B4, \uBAA8\uB450\uB4E4...\u0022",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

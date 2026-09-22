@@ -1,0 +1,614 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page041.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.1234,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.95273006,
+            "BlockCoverage": 0.8188775510204083,
+            "CenterInside": true,
+            "CenterDistance": 9.501461875826168,
+            "Affinity": 6.73287231014184
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0631,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.96052647,
+            "BlockCoverage": 0.9699248120300751,
+            "CenterInside": true,
+            "CenterDistance": 2.6352313834736614,
+            "Affinity": 7.354692018538167
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0467,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.95273006,
+            "BlockCoverage": 0.04458598726114667,
+            "CenterInside": false,
+            "CenterDistance": 87.60787001684771,
+            "Affinity": 0.4794932388227503
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5419,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "Le 0 d",
+        "corrected_text": "SHUT UP.",
+        "ocr_confidence": 0.6449278593063354,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 298,
+          "Y": 757,
+          "W": 180,
+          "H": 211
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG007",
+      "LayaDecision": "RG007",
+      "Confidence": 0.0361,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG007",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.89248073,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.9718253158074851,
+            "Affinity": 7.4442967148736034
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0543,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.95390415,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.3333333333333144,
+            "Affinity": 7.476285409291585
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0201,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.95707715,
+            "BlockCoverage": 0.9871465295629814,
+            "CenterInside": true,
+            "CenterDistance": 1.5811388300841898,
+            "Affinity": 7.423962413379996
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6393,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "...",
+        "ocr_confidence": 0.5768684148788452,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 865.6666666666667,
+          "Y": 837,
+          "W": 271.33333333333326,
+          "H": 216
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0344,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.87307066,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.4240006242195176,
+            "Affinity": 7.433687327378194
+          },
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.95390415,
+            "BlockCoverage": 0.0600444773906597,
+            "CenterInside": false,
+            "CenterDistance": 106.7006456296202,
+            "Affinity": 0.5037286942616503
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 9,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5859,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "CRHOL",
+        "corrected_text": "CRACK",
+        "ocr_confidence": 0.7238699793815613,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 544,
+          "Y": 1525,
+          "W": 441,
+          "H": 340
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0452,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS? ANE AND SCARECROW... WERE SIGHTED JUST A FEW DAYS AGO. m",
+        "secondary_ocr": "DON\u0027T YOU KNOW OMEGA HIS SCOUTS ALL OVER THESE PIRTS? HELL, BANE",
+        "primary_confidence": 0.8834531307220459,
+        "current_agreement": "disagree",
+        "corrected_text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS?\nHELL, BANE AND SCARECROW...\nTHEY WERE SIGHTED JUST\nA FEW DAYS AGO."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0209,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "YOU\u0027VE GOT YOU\u0027VE GOT NERVE, THOLGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "secondary_ocr": "YOU\u0027VE GOT NERVE, THOUGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "primary_confidence": 0.9873283505439758,
+        "current_agreement": "disagree",
+        "corrected_text": "YOU\u0027VE GOT NERVE, THOUGH,\nDRESSING LIKE THAT.\nI\u0027LL GIVE YOU THAT MUCH.\nSO WHO ARE YOU?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0383,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WAIT, WAIT..",
+        "secondary_ocr": "WAIT, WAIT...",
+        "primary_confidence": 0.9879566431045532,
+        "current_agreement": "agree",
+        "corrected_text": "WAIT, WAIT..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0178,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "ON SAY IT. ALREADY. SAY: BATMAN.\u0022 \u0022IM YOU KNOW YOU WANT T..",
+        "secondary_ocr": "PSST. GO ON\nALREADY! SHY IT.\nSAY: \u0022I\u0027M BATMAN.\u0022\nYOU KNOW YOU WAN",
+        "primary_confidence": 0.9379932880401611,
+        "current_agreement": "disagree",
+        "corrected_text": "PSST. GO ON\nALREADY. SAY IT.\nSAY: \u0022I\u0027M\nBATMAN.\u0022\nYOU KNOW YOU\nWANT IT."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0255,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT CAN\u0027T BE. PAMELA!TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?",
+        "secondary_ocr": "IT CAN\u0027T BE.\nPAMELA! TELL\nME HE DOESN\u0027T\nLOOK LIKE THE\nREAL ARTICLE\nBACK HERE?",
+        "primary_confidence": 0.9980336427688599,
+        "current_agreement": "agree",
+        "corrected_text": "IT CAN\u0027T BE. PAMELA! TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0523,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SHUT UP.",
+        "secondary_ocr": "SHUT UP.",
+        "primary_confidence": 0.940536618232727,
+        "current_agreement": "agree",
+        "corrected_text": "SHUT UP."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5274,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS? ANE AND SCARECROW... WERE SIGHTED JUST A FEW DAYS AGO. m",
+        "corrected_text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS?\nHELL, BANE AND SCARECROW...\nTHEY WERE SIGHTED JUST\nA FEW DAYS AGO.",
+        "secondary_ocr": "DON\u0027T YOU KNOW OMEGA HIS SCOUTS ALL OVER THESE PIRTS? HELL, BANE",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.8834531307220459,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5389,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "YOU\u0027VE GOT YOU\u0027VE GOT NERVE, THOLGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "corrected_text": "YOU\u0027VE GOT NERVE, THOUGH,\nDRESSING LIKE THAT.\nI\u0027LL GIVE YOU THAT MUCH.\nSO WHO ARE YOU?",
+        "secondary_ocr": "YOU\u0027VE GOT NERVE, THOUGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9873283505439758,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.613,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "Le 0 d",
+        "corrected_text": "SHUT UP.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6449278593063354,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5239,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WAIT, WAIT..",
+        "corrected_text": "WAIT, WAIT...",
+        "secondary_ocr": "WAIT, WAIT...",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9879566431045532,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5274,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "ON SAY IT. ALREADY. SAY: BATMAN.\u0022 \u0022IM YOU KNOW YOU WANT T..",
+        "corrected_text": "PSST. GO ON\nALREADY. SAY IT.\nSAY: \u0022I\u0027M\nBATMAN.\u0022\nYOU KNOW YOU\nWANT IT.",
+        "secondary_ocr": "PSST. GO ON\nALREADY! SHY IT.\nSAY: \u0022I\u0027M BATMAN.\u0022\nYOU KNOW YOU WAN",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9379932880401611,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6458,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "a",
+        "corrected_text": "...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5768684148788452,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5458,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "CRHOL",
+        "corrected_text": "CRACK",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.7238699793815613,
+        "type": "sfx"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5629,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS? ANE AND SCARECROW... WERE SIGHTED JUST A FEW DAYS AGO. m",
+        "corrected_source_text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS?\nHELL, BANE AND SCARECROW...\nTHEY WERE SIGHTED JUST\nA FEW DAYS AGO.",
+        "korean_translation": "\uC624\uBA54\uAC00 \uB188\uB4E4\uC774 \uC774 \uADFC\uBC29\uC5D0\n\uC815\uCC30\uBCD1\uC744 \uAE54\uC544\uB480\uB2E4\uB294 \uAC78\n\uBAA8\uB974\uB098? \uBE4C\uC5B4\uBA39\uC744 \uBCA0\uC778\uACFC\n\uC2A4\uCE90\uB85C\uC6B0 \uB140\uC11D\uB4E4\uC774...\n\uBD88\uACFC \uBA70\uCE60 \uC804\uC5D0\uB3C4\n\uBAA9\uACA9\uB410\uB2E8 \uB9D0\uC774\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "DON\u0027T YOU KNOW OMEGA HIS SCOUTS ALL OVER THESE PIRTS? HELL, BANE",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5987,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "YOU\u0027VE GOT YOU\u0027VE GOT NERVE, THOLGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "corrected_source_text": "YOU\u0027VE GOT NERVE, THOUGH,\nDRESSING LIKE THAT.\nI\u0027LL GIVE YOU THAT MUCH.\nSO WHO ARE YOU?",
+        "korean_translation": "\uADF8\uB807\uAC8C \uC785\uACE0 \uB2E4\uB2C8\uB294 \uAC78 \uBCF4\uB2C8\n\uBC30\uC9F1 \uD558\uB098\uB294 \uC788\uB124.\n\uADF8\uAC74 \uC778\uC815\uD558\uC9C0.\n\uADF8\uB798\uC11C, \uB10C \uB204\uAD6C\uB0D0?",
+        "type": "dialogue",
+        "secondary_ocr": "YOU\u0027VE GOT NERVE, THOUGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6011,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "Le 0 d",
+        "corrected_source_text": "SHUT UP.",
+        "korean_translation": "\uB2E5\uCCD0.",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5566,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WAIT, WAIT..",
+        "corrected_source_text": "WAIT, WAIT...",
+        "korean_translation": "\uC7A0\uAE50, \uC7A0\uAE50\uB9CC...",
+        "type": "dialogue",
+        "secondary_ocr": "WAIT, WAIT...",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5565,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "ON SAY IT. ALREADY. SAY: BATMAN.\u0022 \u0022IM YOU KNOW YOU WANT T..",
+        "corrected_source_text": "PSST. GO ON\nALREADY. SAY IT.\nSAY: \u0022I\u0027M\nBATMAN.\u0022\nYOU KNOW YOU\nWANT IT.",
+        "korean_translation": "\uC27F. \uC5B4\uC11C.\n\uB9D0\uD574\uBD10.\n\u0022\uB098\uB294\n\uBC30\uD2B8\uB9E8\uC774\uB2E4.\u0022\n\uB77C\uACE0 \uB9D0\uD558\uACE0\n\uC2F6\uC740 \uAC70 \uC54C\uC796\uC544.",
+        "type": "dialogue",
+        "secondary_ocr": "PSST. GO ON\nALREADY! SHY IT.\nSAY: \u0022I\u0027M BATMAN.\u0022\nYOU KNOW YOU WAN",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5185,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT CAN\u0027T BE. PAMELA!TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?",
+        "corrected_source_text": "IT CAN\u0027T BE. PAMELA! TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?",
+        "korean_translation": "\uB9D0\uB3C4 \uC548 \uB3FC. \uD30C\uBA5C\uB77C! \uC774 \uC790\uAC00[BR]\uC9C4\uC9DC\uAC00 \uC544\uB2C8\uB77C\uACE0 \uB9D0\uD574\uC918!",
+        "type": "dialogue",
+        "secondary_ocr": "IT CAN\u0027T BE.\nPAMELA! TELL\nME HE DOESN\u0027T\nLOOK LIKE THE\nREAL ARTICLE\nBACK HERE?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5056,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SHUT UP.",
+        "corrected_source_text": "SHUT UP.",
+        "korean_translation": "\uB2E5\uCCD0.",
+        "type": "dialogue",
+        "secondary_ocr": "SHUT UP.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

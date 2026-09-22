@@ -1,0 +1,485 @@
+{
+  "SourceFile": "page038.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:25:14.5432779+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 812,
+        "Y": 121,
+        "W": 137.33333333333337,
+        "H": 236,
+        "Text": "N",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 812,
+            "Y": 121,
+            "W": 137.33333333333337,
+            "H": 236,
+            "Text": "N",
+            "Confidence": 0.70173055,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "N",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 987,
+        "Y": 205.66666666666669,
+        "W": 55.33333333333326,
+        "H": 59.333333333333314,
+        "Text": "NICE ONE!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 992.6666666666666,
+            "Y": 205.66666666666669,
+            "W": 49.66666666666663,
+            "H": 35.66666666666663,
+            "Text": "NICE",
+            "Confidence": 0.9941079,
+            "Language": "en"
+          },
+          {
+            "X": 987,
+            "Y": 228,
+            "W": 53,
+            "H": 37,
+            "Text": "ONE!",
+            "Confidence": 0.9807489,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NICE ONE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "NICE ONE!",
+      "Translation": "\uD55C \uBC29 \uBA39\uC5C8\uB124!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 1062,
+        "Y": 217,
+        "W": 171.5,
+        "H": 109,
+        "Text": "NOW SLIT THAT GUY\u0027S THROAT! NO, ACID HIS FACE! NO, CHOP",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1073,
+            "Y": 217,
+            "W": 145,
+            "H": 43.5,
+            "Text": "NOW SLIT THAT",
+            "Confidence": 0.9821487,
+            "Language": "en"
+          },
+          {
+            "X": 1062,
+            "Y": 246,
+            "W": 171.5,
+            "H": 33,
+            "Text": "GUY\u0027S THROAT! NO,",
+            "Confidence": 0.97811866,
+            "Language": "en"
+          },
+          {
+            "X": 1065.3333333333333,
+            "Y": 270.33333333333337,
+            "W": 164.66666666666674,
+            "H": 31.333333333333258,
+            "Text": "ACID HIS FACE! NO,",
+            "Confidence": 0.9940563,
+            "Language": "en"
+          },
+          {
+            "X": 1078,
+            "Y": 292,
+            "W": 58,
+            "H": 34,
+            "Text": "CHOP",
+            "Confidence": 0.977472,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NOW SLIT THAT GUY\u0027S THROAT! NO, ACID HIS FACE! NO, CHOP OFF HIS--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG002"
+      },
+      "CorrectedText": "NOW SLIT THAT GUY\u0027S THROAT! NO, ACID HIS FACE! NO, CHOP OFF HIS--",
+      "Translation": "\uB2F9\uC7A5 \uC800\uB188 \uBAA9\uC744 \uADF8\uC5B4\uBC84\uB824! \uC544\uB2C8, \uC5BC\uAD74\uC5D0 \uC0B0\uC744 \uBFCC\uB824! \uC544\uB2C8, \uD314\uC744 \uC798\uB77C--",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 388,
+        "Y": 916,
+        "W": 179,
+        "H": 43.66666666666663,
+        "Text": "S",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 388,
+            "Y": 916,
+            "W": 179,
+            "H": 43.66666666666663,
+            "Text": "S",
+            "Confidence": 0.3840214,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "S",
+      "Translation": "\uC27F",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 397,
+        "Y": 974,
+        "W": 247,
+        "H": 150.66666666666674,
+        "Text": "OWWWWW. WATCH THE GLASS, MAN, WILL YOU? I\u0027M JUST TRYING TO HELP. WE NEED TO WORK AS A TEAM. I KNOW IT\u0027S NEW, BUT. YOU KNoOW..",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 416.6666666666667,
+            "Y": 974,
+            "W": 204.33333333333331,
+            "H": 35.66666666666663,
+            "Text": "OWWWWW. WATCH THE",
+            "Confidence": 0.9850824,
+            "Language": "en"
+          },
+          {
+            "X": 397.3333333333333,
+            "Y": 999.6666666666666,
+            "W": 243.00000000000006,
+            "H": 31.33333333333337,
+            "Text": "GLASS, MAN, WILL YOU? I\u0027M",
+            "Confidence": 0.9921237,
+            "Language": "en"
+          },
+          {
+            "X": 404,
+            "Y": 1022,
+            "W": 229,
+            "H": 32,
+            "Text": "JUST TRYING TO HELP. WE",
+            "Confidence": 0.9934067,
+            "Language": "en"
+          },
+          {
+            "X": 397,
+            "Y": 1048.3333333333333,
+            "W": 247,
+            "H": 30.333333333333485,
+            "Text": "NEED TO WORK AS A TEAM. I",
+            "Confidence": 0.9737931,
+            "Language": "en"
+          },
+          {
+            "X": 427.5,
+            "Y": 1072,
+            "W": 182,
+            "H": 30,
+            "Text": "KNOW IT\u0027S NEW, BUT.",
+            "Confidence": 0.9584994,
+            "Language": "en"
+          },
+          {
+            "X": 465,
+            "Y": 1092.6666666666667,
+            "W": 109.33333333333337,
+            "H": 32,
+            "Text": "YOU KNoOW..",
+            "Confidence": 0.8694264,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OWWWWW.WATCH THE GLASS, MAN, WHIL YOU? I\u0027M JUST TRYING TO HELP W",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "OWWWWW. WATCH THE GLASS, MAN, WILL YOU? I\u0027M JUST TRYING TO HELP. WE NEED TO WORK AS A TEAM. I KNOW IT\u0027S NEW, BUT, YOU KNOW...",
+      "Translation": "\uC73C\uC544\uC544\uC544. [BR]\uC720\uB9AC \uC870\uC2EC \uC880 \uD574\uC904\uB798? [BR]\uB09C \uADF8\uB0E5 \uB3C4\uC640\uC8FC\uB824\uB294 \uAC83\uBFD0\uC774\uB77C\uACE0. [BR]\uC6B0\uB9B0 \uD300\uC73C\uB85C \uC6C0\uC9C1\uC5EC\uC57C \uD574. [BR]\uC775\uC219\uD558\uC9C4 \uC54A\uACA0\uC9C0\uB9CC, [BR]\uC54C\uC796\uC544...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1096.6666666666667,
+        "Y": 1145,
+        "W": 63,
+        "H": 1,
+        "Text": "c",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1096.6666666666667,
+            "Y": 1145,
+            "W": 63,
+            "H": 1,
+            "Text": "c",
+            "Confidence": 0.52242947,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "c",
+      "Translation": "\u314B",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 988,
+        "Y": 1171,
+        "W": 113.66666666666674,
+        "H": 130.66666666666674,
+        "Text": "M",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 988,
+            "Y": 1171,
+            "W": 113.66666666666674,
+            "H": 130.66666666666674,
+            "Text": "M",
+            "Confidence": 0.9133115,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "M",
+      "Translation": "\uC74C",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1122.6666666666667,
+        "Y": 1171,
+        "W": 52.33333333333326,
+        "H": 1,
+        "Text": "c",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1122.6666666666667,
+            "Y": 1171,
+            "W": 52.33333333333326,
+            "H": 1,
+            "Text": "c",
+            "Confidence": 0.5404273,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "c",
+      "Translation": "\u314B",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1114,
+        "Y": 1209.5,
+        "W": 70,
+        "H": 51.5,
+        "Text": ".BABY STEPS?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1130.5,
+            "Y": 1209.5,
+            "W": 51.5,
+            "H": 29,
+            "Text": ".BABY",
+            "Confidence": 0.99256366,
+            "Language": "en"
+          },
+          {
+            "X": 1114,
+            "Y": 1233,
+            "W": 70,
+            "H": 28,
+            "Text": "STEPS?",
+            "Confidence": 0.9973677,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...BABY STEPS?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "...BABY STEPS?",
+      "Translation": "...\uD55C \uAC78\uC74C\uC529?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 484,
+        "Y": 1670,
+        "W": 319,
+        "H": 196,
+        "Text": "NOs W AND I\u0027LL SHOW MYSELF OUT.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 484,
+            "Y": 1670,
+            "W": 136.33333333333337,
+            "H": 196,
+            "Text": "NOs",
+            "Confidence": 0.4526905,
+            "Language": "en"
+          },
+          {
+            "X": 731.6666666666666,
+            "Y": 1670,
+            "W": 71.33333333333337,
+            "H": 196,
+            "Text": "W",
+            "Confidence": 0.49435914,
+            "Language": "en"
+          },
+          {
+            "X": 611,
+            "Y": 1756.3333333333333,
+            "W": 65,
+            "H": 24.333333333333485,
+            "Text": "AND I\u0027LL",
+            "Confidence": 0.9349616,
+            "Language": "en"
+          },
+          {
+            "X": 589.5,
+            "Y": 1776.5,
+            "W": 110,
+            "H": 25.5,
+            "Text": "SHOW MYSELF",
+            "Confidence": 0.9887801,
+            "Language": "en"
+          },
+          {
+            "X": 620.3333333333334,
+            "Y": 1792,
+            "W": 45,
+            "H": 33.66666666666674,
+            "Text": "OUT.",
+            "Confidence": 0.9977602,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "AND I\u0027LL SHOW MYSELF OUT.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "AND I\u0027LL SHOW MYSELF OUT.",
+      "Translation": "\uADF8\uB7FC \uC774\uB9CC[BR]\uBB3C\uB7EC\uAC00\uACA0\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1179,
+        "Y": 1841,
+        "W": 37,
+        "H": 18,
+        "Text": "Unh",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1179,
+            "Y": 1841,
+            "W": 37,
+            "H": 18,
+            "Text": "Unh",
+            "Confidence": 0.8016852,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Unh...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "Unh...",
+      "Translation": "\uC73C\uC73D...",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

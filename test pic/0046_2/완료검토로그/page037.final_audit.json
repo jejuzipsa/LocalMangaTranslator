@@ -1,0 +1,494 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page037.jpg",
+  "output_file": "page037.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 54962,
+    "changed_ratio": 0.019876736890908315,
+    "changed_regions": [
+      {
+        "x": 962,
+        "y": 999,
+        "width": 285,
+        "height": 84
+      },
+      {
+        "x": 95,
+        "y": 947,
+        "width": 198,
+        "height": 98
+      },
+      {
+        "x": 728,
+        "y": 1566,
+        "width": 145,
+        "height": 103
+      },
+      {
+        "x": 734,
+        "y": 1866,
+        "width": 112,
+        "height": 101
+      },
+      {
+        "x": 695,
+        "y": 363,
+        "width": 145,
+        "height": 50
+      },
+      {
+        "x": 698,
+        "y": 1139,
+        "width": 99,
+        "height": 57
+      },
+      {
+        "x": 794,
+        "y": 1630,
+        "width": 71,
+        "height": 59
+      },
+      {
+        "x": 641,
+        "y": 1139,
+        "width": 67,
+        "height": 57
+      },
+      {
+        "x": 840,
+        "y": 1630,
+        "width": 53,
+        "height": 39
+      },
+      {
+        "x": 766,
+        "y": 1630,
+        "width": 35,
+        "height": 59
+      },
+      {
+        "x": 367,
+        "y": 142,
+        "width": 54,
+        "height": 37
+      },
+      {
+        "x": 870,
+        "y": 1566,
+        "width": 31,
+        "height": 64
+      },
+      {
+        "x": 754,
+        "y": 412,
+        "width": 48,
+        "height": 25
+      },
+      {
+        "x": 722,
+        "y": 363,
+        "width": 29,
+        "height": 25
+      },
+      {
+        "x": 820,
+        "y": 1937,
+        "width": 23,
+        "height": 30
+      },
+      {
+        "x": 756,
+        "y": 365,
+        "width": 30,
+        "height": 22
+      },
+      {
+        "x": 728,
+        "y": 413,
+        "width": 27,
+        "height": 23
+      },
+      {
+        "x": 1014,
+        "y": 1063,
+        "width": 34,
+        "height": 17
+      },
+      {
+        "x": 728,
+        "y": 1673,
+        "width": 27,
+        "height": 21
+      },
+      {
+        "x": 838,
+        "y": 1573,
+        "width": 27,
+        "height": 18
+      },
+      {
+        "x": 1210,
+        "y": 1042,
+        "width": 26,
+        "height": 18
+      },
+      {
+        "x": 1177,
+        "y": 1063,
+        "width": 27,
+        "height": 17
+      },
+      {
+        "x": 804,
+        "y": 414,
+        "width": 19,
+        "height": 23
+      },
+      {
+        "x": 705,
+        "y": 414,
+        "width": 19,
+        "height": 23
+      },
+      {
+        "x": 780,
+        "y": 1179,
+        "width": 25,
+        "height": 17
+      },
+      {
+        "x": 877,
+        "y": 1677,
+        "width": 24,
+        "height": 17
+      },
+      {
+        "x": 792,
+        "y": 1133,
+        "width": 24,
+        "height": 15
+      },
+      {
+        "x": 825,
+        "y": 360,
+        "width": 20,
+        "height": 17
+      },
+      {
+        "x": 691,
+        "y": 360,
+        "width": 19,
+        "height": 17
+      },
+      {
+        "x": 635,
+        "y": 1133,
+        "width": 23,
+        "height": 14
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page037.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 36893,
+    "erase_changed_ratio": 0.01334217193909029,
+    "typeset_changed_pixels": 31659,
+    "typeset_changed_ratio": 0.011449321589994293
+  },
+  "region_analysis": {
+    "total": 16,
+    "bubbles": 7,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 23,
+      "Global2x": 22,
+      "Focus3x": 116,
+      "Region1x": 36,
+      "Region2x": 78,
+      "Container2x": 36,
+      "Container1x": 25
+    },
+    "canonical_lines": 42,
+    "units": 13,
+    "assigned_lines": 36,
+    "orphan_groups": 6,
+    "secondary_total": 7,
+    "secondary_accepted": 7,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 135,
+          "Bottom": 184,
+          "Left": 362,
+          "Right": 432,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "COME ON!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 360,
+          "Bottom": 441,
+          "Left": 691,
+          "Right": 845,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 940,
+          "Bottom": 1056,
+          "Left": 87,
+          "Right": 301,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 996,
+          "Bottom": 1090,
+          "Left": 954,
+          "Right": 1254,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1133,
+          "Bottom": 1201,
+          "Left": 635,
+          "Right": 816,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WITH HIM\nDEAD, THOUGH...\nTHESE PEOPLE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1566,
+          "Bottom": 1694,
+          "Left": 728,
+          "Right": 901,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO W",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1866,
+          "Bottom": 1967,
+          "Left": 734,
+          "Right": 843,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 13,
+    "requested_render": 8
+  },
+  "render": {
+    "total": 7,
+    "approved": 7,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 8,
+    "TranslatedUnits": 7,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 7,
+    "TypesetCommittedUnits": 7,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "COME ON!",
+        "Translation": "\uC5B4\uC11C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "W",
+        "Translation": "\uBC14",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "Translation": "\uC544\uAE30 \uC18C\uB9AC\uAC00 \uB4E4\uB824?![BR]\uB09C \uC544\uAE30 \uC815\uB9D0 \uC88B\uC544\uD574!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!",
+        "Translation": "\u0022\uC560\uB4E4\uC774 \uC544\uB2C8\uC57C. \uB9C1\uC744 \uC81C\uC5B4\uD558\uB824\uBA74\n\uC644\uBCBD\uD558\uAC8C \uBC1C\uB2EC\uD55C \uC758\uC9C0\uAC00\n\uD544\uC694\uD558\uB2E4\uACE0!\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..",
+        "Translation": "\u0022\uBAA8\uACE0\uC758 \uC784\uBB34\uB294 \uBC18\uC9C0\uB97C \uC0AC\uC6A9\uD560 \uC900\uBE44\uAC00 \uB41C \uC790\uB4E4\uC5D0\uAC8C[BR]\uBC18\uC9C0\uB97C \uC804\uB2EC\uD558\uB294 \uAC83\uC774\uC5C8\uC9C0. \uADF8\uAC00 \uC8FD\uC73C\uBA74\uC11C...\u0022",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "WITH HIM DEAD, THOUGH.. THES\u00C9 PEOPLE...",
+        "Translation": "\uADF8\uAC00 \uC8FD\uC5C8\uC73C\uB2C8...[BR]\uC774 \uC0AC\uB78C\uB4E4\uC740...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+        "Translation": "\uADF8\uAC8C \uB204\uAD6C\uB4E0, \uADF8\uAC78 \uD718\uB450\uB97C \uC815\uB3C4\uC758\n\uD798\uC774\uB098 \uC758\uC9C0\uB294 \uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "Translation": "\uADF8\uB188\uB4E4 \uC9C4\uC9DC \uC7AC\uC218 \uC5C6\uC9C0. \uC54C\uC558\uC73C\uB2C8\uAE4C![BR]\uBE44\uCF1C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "SourceFile": "page041.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:30:13.5676231+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 111,
+        "Y": 81.33333333333334,
+        "W": 344,
+        "H": 130.66666666666666,
+        "Text": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS? ANE AND SCARECROW... WERE SIGHTED JUST A FEW DAYS AGO. m",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 117.33333333333333,
+            "Y": 81.33333333333334,
+            "W": 328,
+            "H": 27,
+            "Text": "DON\u0027T YOU KNOW OMEGA HAS",
+            "Confidence": 0.9949785,
+            "Language": "en"
+          },
+          {
+            "X": 111,
+            "Y": 103.33333333333333,
+            "W": 344,
+            "H": 24.66666666666667,
+            "Text": "SCOUTS ALL OVER THESE PARTS?",
+            "Confidence": 0.99933577,
+            "Language": "en"
+          },
+          {
+            "X": 197,
+            "Y": 124,
+            "W": 237.66666666666663,
+            "H": 23.666666666666686,
+            "Text": "ANE AND SCARECROW...",
+            "Confidence": 0.9949711,
+            "Language": "en"
+          },
+          {
+            "X": 197,
+            "Y": 143.33333333333331,
+            "W": 222,
+            "H": 22.666666666666686,
+            "Text": "WERE SIGHTED JUST",
+            "Confidence": 0.9993444,
+            "Language": "en"
+          },
+          {
+            "X": 189.66666666666666,
+            "Y": 162.66666666666666,
+            "W": 189.99999999999997,
+            "H": 25.666666666666686,
+            "Text": "A FEW DAYS AGO.",
+            "Confidence": 0.99772257,
+            "Language": "en"
+          },
+          {
+            "X": 111.66666666666667,
+            "Y": 169.66666666666666,
+            "W": 43.999999999999986,
+            "H": 42.33333333333334,
+            "Text": "m",
+            "Confidence": 0.31436637,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DON\u0027T YOU KNOW OMEGA HIS SCOUTS ALL OVER THESE PIRTS? HELL, BANE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "DON\u0027T YOU KNOW OMEGA HAS SCOUTS ALL OVER THESE PARTS?\nHELL, BANE AND SCARECROW...\nTHEY WERE SIGHTED JUST\nA FEW DAYS AGO.",
+      "Translation": "\uC624\uBA54\uAC00 \uB188\uB4E4\uC774 \uC774 \uADFC\uBC29\uC5D0\n\uC815\uCC30\uBCD1\uC744 \uAE54\uC544\uB480\uB2E4\uB294 \uAC78\n\uBAA8\uB974\uB098? \uBE4C\uC5B4\uBA39\uC744 \uBCA0\uC778\uACFC\n\uC2A4\uCE90\uB85C\uC6B0 \uB140\uC11D\uB4E4\uC774...\n\uBD88\uACFC \uBA70\uCE60 \uC804\uC5D0\uB3C4\n\uBAA9\uACA9\uB410\uB2E8 \uB9D0\uC774\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 435,
+        "Y": 132,
+        "W": 222.33333333333326,
+        "H": 133,
+        "Text": "YOU\u0027VE GOT YOU\u0027VE GOT NERVE, THOLGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 469,
+            "Y": 132,
+            "W": 152,
+            "H": 34,
+            "Text": "YOU\u0027VE GOT",
+            "Confidence": 0.9698087,
+            "Language": "en"
+          },
+          {
+            "X": 478,
+            "Y": 137,
+            "W": 136,
+            "H": 27.333333333333314,
+            "Text": "YOU\u0027VE GOT",
+            "Confidence": 0.9952729,
+            "Language": "en"
+          },
+          {
+            "X": 457,
+            "Y": 159,
+            "W": 178,
+            "H": 24.666666666666657,
+            "Text": "NERVE, THOLGH,",
+            "Confidence": 0.9732593,
+            "Language": "en"
+          },
+          {
+            "X": 435,
+            "Y": 179,
+            "W": 222.33333333333326,
+            "H": 22.666666666666657,
+            "Text": "DRESSING LIKE THAT.",
+            "Confidence": 0.9990046,
+            "Language": "en"
+          },
+          {
+            "X": 442.66666666666663,
+            "Y": 198.33333333333334,
+            "W": 206.66666666666663,
+            "H": 22.666666666666657,
+            "Text": "I\u0027LL GIVE YOU THAT",
+            "Confidence": 0.99674386,
+            "Language": "en"
+          },
+          {
+            "X": 465.33333333333337,
+            "Y": 218.33333333333334,
+            "W": 161.66666666666663,
+            "H": 23.99999999999997,
+            "Text": "MUCH. SO WHO",
+            "Confidence": 0.9962953,
+            "Language": "en"
+          },
+          {
+            "X": 488,
+            "Y": 232,
+            "W": 119,
+            "H": 33,
+            "Text": "ARE YOU?",
+            "Confidence": 0.9809139,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU\u0027VE GOT NERVE, THOUGH, DRESSING LIKE THAT. I\u0027LL GIVE YOU THAT MUCH. SO WHO ARE YOU?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "YOU\u0027VE GOT NERVE, THOUGH,\nDRESSING LIKE THAT.\nI\u0027LL GIVE YOU THAT MUCH.\nSO WHO ARE YOU?",
+      "Translation": "\uADF8\uB807\uAC8C \uC785\uACE0 \uB2E4\uB2C8\uB294 \uAC78 \uBCF4\uB2C8\n\uBC30\uC9F1 \uD558\uB098\uB294 \uC788\uB124.\n\uADF8\uAC74 \uC778\uC815\uD558\uC9C0.\n\uADF8\uB798\uC11C, \uB10C \uB204\uAD6C\uB0D0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 232.66666666666666,
+        "Y": 188.66666666666666,
+        "W": 177.99999999999997,
+        "H": 52.33333333333334,
+        "Text": "VE",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 232.66666666666666,
+            "Y": 188.66666666666666,
+            "W": 177.99999999999997,
+            "H": 52.33333333333334,
+            "Text": "VE",
+            "Confidence": 0.7746695,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "VE",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 298,
+        "Y": 757,
+        "W": 180,
+        "H": 211,
+        "Text": "Le 0 d",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 316.3333333333333,
+            "Y": 757,
+            "W": 138.66666666666669,
+            "H": 140.66666666666663,
+            "Text": "Le",
+            "Confidence": 0.66769564,
+            "Language": "en"
+          },
+          {
+            "X": 394.3333333333333,
+            "Y": 853,
+            "W": 83.66666666666669,
+            "H": 101.66666666666663,
+            "Text": "0",
+            "Confidence": 0.8342078,
+            "Language": "en"
+          },
+          {
+            "X": 298,
+            "Y": 866.6666666666666,
+            "W": 60,
+            "H": 101.33333333333337,
+            "Text": "d",
+            "Confidence": 0.4328802,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "SHUT UP.",
+      "Translation": "\uB2E5\uCCD0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 728,
+        "Y": 775.3333333333334,
+        "W": 124,
+        "H": 27.66666666666663,
+        "Text": "WAIT, WAIT..",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 728,
+            "Y": 775.3333333333334,
+            "W": 124,
+            "H": 27.66666666666663,
+            "Text": "WAIT, WAIT..",
+            "Confidence": 0.98795664,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WAIT, WAIT...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "WAIT, WAIT...",
+      "Translation": "\uC7A0\uAE50, \uC7A0\uAE50\uB9CC...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 109.66666666666667,
+        "Y": 779.6666666666666,
+        "W": 140,
+        "H": 100.66666666666674,
+        "Text": "ON SAY IT. ALREADY. SAY: BATMAN.\u0022 \u0022IM YOU KNOW YOU WANT T..",
+        "OriginalRegionCount": 11,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 200.33333333333334,
+            "Y": 779.6666666666666,
+            "W": 28,
+            "H": 20.666666666666742,
+            "Text": "ON",
+            "Confidence": 0.9993527,
+            "Language": "en"
+          },
+          {
+            "X": 184.66666666666666,
+            "Y": 796.6666666666666,
+            "W": 54.666666666666686,
+            "H": 25.666666666666742,
+            "Text": "SAY IT.",
+            "Confidence": 0.9893409,
+            "Language": "en"
+          },
+          {
+            "X": 120.66666666666667,
+            "Y": 798.6666666666666,
+            "W": 63.999999999999986,
+            "H": 22.33333333333337,
+            "Text": "ALREADY.",
+            "Confidence": 0.9976907,
+            "Language": "en"
+          },
+          {
+            "X": 109.66666666666667,
+            "Y": 817,
+            "W": 37.33333333333333,
+            "H": 24,
+            "Text": "SAY:",
+            "Confidence": 0.9908382,
+            "Language": "en"
+          },
+          {
+            "X": 181.66666666666666,
+            "Y": 817.3333333333334,
+            "W": 68.00000000000003,
+            "H": 25,
+            "Text": "BATMAN.\u0022",
+            "Confidence": 0.94935554,
+            "Language": "en"
+          },
+          {
+            "X": 145.66666666666666,
+            "Y": 817.6666666666666,
+            "W": 38.33333333333334,
+            "H": 23,
+            "Text": "\u0022IM",
+            "Confidence": 0.80157125,
+            "Language": "en"
+          },
+          {
+            "X": 200.33333333333334,
+            "Y": 837,
+            "W": 34.333333333333314,
+            "H": 24,
+            "Text": "YOU",
+            "Confidence": 0.96248424,
+            "Language": "en"
+          },
+          {
+            "X": 157.33333333333334,
+            "Y": 837.3333333333334,
+            "W": 48.333333333333314,
+            "H": 23,
+            "Text": "KNOW",
+            "Confidence": 0.9777931,
+            "Language": "en"
+          },
+          {
+            "X": 126,
+            "Y": 837.6666666666666,
+            "W": 33.33333333333334,
+            "H": 22.666666666666742,
+            "Text": "YOU",
+            "Confidence": 0.96702886,
+            "Language": "en"
+          },
+          {
+            "X": 147.33333333333334,
+            "Y": 858,
+            "W": 43,
+            "H": 22.33333333333337,
+            "Text": "WANT",
+            "Confidence": 0.9990913,
+            "Language": "en"
+          },
+          {
+            "X": 189,
+            "Y": 861.6666666666666,
+            "W": 21.333333333333314,
+            "H": 15.666666666666742,
+            "Text": "T..",
+            "Confidence": 0.68337965,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PSST. GO ON\nALREADY! SHY IT.\nSAY: \u0022I\u0027M BATMAN.\u0022\nYOU KNOW YOU WAN",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG006"
+      },
+      "CorrectedText": "PSST. GO ON\nALREADY. SAY IT.\nSAY: \u0022I\u0027M\nBATMAN.\u0022\nYOU KNOW YOU\nWANT IT.",
+      "Translation": "\uC27F. \uC5B4\uC11C.\n\uB9D0\uD574\uBD10.\n\u0022\uB098\uB294\n\uBC30\uD2B8\uB9E8\uC774\uB2E4.\u0022\n\uB77C\uACE0 \uB9D0\uD558\uACE0\n\uC2F6\uC740 \uAC70 \uC54C\uC796\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 693,
+        "Y": 830.6666666666666,
+        "W": 163,
+        "H": 129.66666666666674,
+        "Text": "IT CAN\u0027T BE. PAMELA!TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 711.3333333333333,
+            "Y": 830.6666666666666,
+            "W": 131.66666666666674,
+            "H": 29.666666666666742,
+            "Text": "IT CAN\u0027T BE.",
+            "Confidence": 0.9974346,
+            "Language": "en"
+          },
+          {
+            "X": 696.5,
+            "Y": 852.5,
+            "W": 156,
+            "H": 26.5,
+            "Text": "PAMELA!TELL",
+            "Confidence": 0.99888945,
+            "Language": "en"
+          },
+          {
+            "X": 693,
+            "Y": 871.6666666666666,
+            "W": 163,
+            "H": 26,
+            "Text": "ME HE DOESN\u0027T",
+            "Confidence": 0.9946105,
+            "Language": "en"
+          },
+          {
+            "X": 694.3333333333334,
+            "Y": 892.3333333333334,
+            "W": 159.33333333333337,
+            "H": 21.66666666666663,
+            "Text": "LOOK LIKE THE",
+            "Confidence": 0.9993083,
+            "Language": "en"
+          },
+          {
+            "X": 699,
+            "Y": 909,
+            "W": 151,
+            "H": 29,
+            "Text": "REAL ARTICLE",
+            "Confidence": 0.999474,
+            "Language": "en"
+          },
+          {
+            "X": 705,
+            "Y": 928.6666666666666,
+            "W": 141.33333333333326,
+            "H": 31.666666666666742,
+            "Text": "BACK HERE?",
+            "Confidence": 0.9984849,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT CAN\u0027T BE.\nPAMELA! TELL\nME HE DOESN\u0027T\nLOOK LIKE THE\nREAL ARTICLE\nBACK HERE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "IT CAN\u0027T BE. PAMELA! TELL ME HE DOESN\u0027T LOOK LIKE THE REAL ARTICLE BACK HERE?",
+      "Translation": "\uB9D0\uB3C4 \uC548 \uB3FC. \uD30C\uBA5C\uB77C! \uC774 \uC790\uAC00[BR]\uC9C4\uC9DC\uAC00 \uC544\uB2C8\uB77C\uACE0 \uB9D0\uD574\uC918!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 865.6666666666667,
+        "Y": 837,
+        "W": 271.33333333333326,
+        "H": 216,
+        "Text": "a",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 865.6666666666667,
+            "Y": 837,
+            "W": 271.33333333333326,
+            "H": 216,
+            "Text": "a",
+            "Confidence": 0.5768684,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 234,
+        "Y": 874,
+        "W": 57,
+        "H": 47.33333333333337,
+        "Text": "SHUT UP.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 234,
+            "Y": 874,
+            "W": 57,
+            "H": 29,
+            "Text": "SHUT",
+            "Confidence": 0.995115,
+            "Language": "en"
+          },
+          {
+            "X": 244.66666666666666,
+            "Y": 895.6666666666666,
+            "W": 35.66666666666666,
+            "H": 25.666666666666742,
+            "Text": "UP.",
+            "Confidence": 0.8859583,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SHUT UP.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "SHUT UP.",
+      "Translation": "\uB2E5\uCCD0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 544,
+        "Y": 1525,
+        "W": 441,
+        "H": 340,
+        "Text": "CRHOL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 544,
+            "Y": 1525,
+            "W": 441,
+            "H": 340,
+            "Text": "CRHOL",
+            "Confidence": 0.72387,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "CRACK",
+      "Translation": "\uCF70\uC9C1",
+      "Type": "sfx",
+      "Render": false
+    }
+  ]
+}

@@ -1,0 +1,479 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page050.jpg",
+  "output_file": "page050.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 87075,
+    "changed_ratio": 0.031490245347255225,
+    "changed_regions": [
+      {
+        "x": 81,
+        "y": 466,
+        "width": 261,
+        "height": 103
+      },
+      {
+        "x": 795,
+        "y": 1077,
+        "width": 170,
+        "height": 126
+      },
+      {
+        "x": 169,
+        "y": 651,
+        "width": 256,
+        "height": 77
+      },
+      {
+        "x": 797,
+        "y": 501,
+        "width": 171,
+        "height": 97
+      },
+      {
+        "x": 614,
+        "y": 131,
+        "width": 199,
+        "height": 81
+      },
+      {
+        "x": 708,
+        "y": 986,
+        "width": 158,
+        "height": 77
+      },
+      {
+        "x": 992,
+        "y": 319,
+        "width": 144,
+        "height": 77
+      },
+      {
+        "x": 232,
+        "y": 592,
+        "width": 173,
+        "height": 58
+      },
+      {
+        "x": 168,
+        "y": 601,
+        "width": 68,
+        "height": 49
+      },
+      {
+        "x": 366,
+        "y": 586,
+        "width": 65,
+        "height": 46
+      },
+      {
+        "x": 153,
+        "y": 586,
+        "width": 61,
+        "height": 43
+      },
+      {
+        "x": 970,
+        "y": 320,
+        "width": 31,
+        "height": 76
+      },
+      {
+        "x": 679,
+        "y": 211,
+        "width": 83,
+        "height": 25
+      },
+      {
+        "x": 384,
+        "y": 694,
+        "width": 47,
+        "height": 40
+      },
+      {
+        "x": 153,
+        "y": 697,
+        "width": 45,
+        "height": 37
+      },
+      {
+        "x": 740,
+        "y": 962,
+        "width": 75,
+        "height": 22
+      },
+      {
+        "x": 847,
+        "y": 599,
+        "width": 45,
+        "height": 23
+      },
+      {
+        "x": 313,
+        "y": 542,
+        "width": 36,
+        "height": 28
+      },
+      {
+        "x": 791,
+        "y": 590,
+        "width": 27,
+        "height": 32
+      },
+      {
+        "x": 74,
+        "y": 550,
+        "width": 30,
+        "height": 20
+      },
+      {
+        "x": 792,
+        "y": 1184,
+        "width": 26,
+        "height": 23
+      },
+      {
+        "x": 939,
+        "y": 1078,
+        "width": 26,
+        "height": 23
+      },
+      {
+        "x": 956,
+        "y": 595,
+        "width": 18,
+        "height": 27
+      },
+      {
+        "x": 969,
+        "y": 314,
+        "width": 20,
+        "height": 24
+      },
+      {
+        "x": 941,
+        "y": 1188,
+        "width": 24,
+        "height": 19
+      },
+      {
+        "x": 837,
+        "y": 962,
+        "width": 20,
+        "height": 22
+      },
+      {
+        "x": 893,
+        "y": 600,
+        "width": 23,
+        "height": 19
+      },
+      {
+        "x": 815,
+        "y": 962,
+        "width": 18,
+        "height": 24
+      },
+      {
+        "x": 792,
+        "y": 1079,
+        "width": 19,
+        "height": 20
+      },
+      {
+        "x": 712,
+        "y": 1036,
+        "width": 18,
+        "height": 21
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page050.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 56285,
+    "erase_changed_ratio": 0.020355193331843355,
+    "typeset_changed_pixels": 49856,
+    "typeset_changed_ratio": 0.018030177112061514
+  },
+  "region_analysis": {
+    "total": 14,
+    "bubbles": 7,
+    "text_regions": 7,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 36,
+      "Global2x": 38,
+      "Focus3x": 291,
+      "Region1x": 38,
+      "Region2x": 43,
+      "Container1x": 38,
+      "Container2x": 43
+    },
+    "canonical_lines": 63,
+    "units": 12,
+    "assigned_lines": 57,
+    "orphan_groups": 5,
+    "secondary_total": 7,
+    "secondary_accepted": 7,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 127,
+          "Bottom": 238,
+          "Left": 609,
+          "Right": 818,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE\nUNDERWORLD?\nYOU WANT TO TAKE\nTHESE PEOPLE TO\nHADES?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 314,
+          "Bottom": 402,
+          "Left": 969,
+          "Right": 1137,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S PITCH-BLACK DOWN THERE, ETERNAL DARKNESS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 461,
+          "Bottom": 570,
+          "Left": 74,
+          "Right": 349,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I HAVE MADE A DEAL WITH THE GOD OF THE DEAD, HE HAS OPENED A REALM FOR US. THERE WILL BE...... S...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 495,
+          "Bottom": 622,
+          "Left": 791,
+          "Right": 974,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DIANA, THIS IS CRAZY. WE HAVE TO FIGHT! WE HAVE TO TAKE THE WORLD BACK!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 586,
+          "Bottom": 734,
+          "Left": 153,
+          "Right": 431,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MORE\nIMPORTANTLY, IT WILL\nBE A SAFE PLACE FOR\nEVERYONE WE\u0027LL GO H",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 958,
+          "Bottom": 1068,
+          "Left": 705,
+          "Right": 866,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HEAR ME, BRUCE WAYNE. YOU KNOW I SPEAK THE TRUTH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1080,
+          "Bottom": 1207,
+          "Left": 792,
+          "Right": 965,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE WORLD OUT THERE, IT DOESN\u0027T WANT SAVING. MAYBE IT NEVER DID.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 12,
+    "requested_render": 7
+  },
+  "render": {
+    "total": 7,
+    "approved": 7,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 7,
+    "TranslatedUnits": 7,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 7,
+    "TypesetCommittedUnits": 7,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "THE UNDERWORLD? YOU WANT TO TAKE THESE PEOPLE TO HADES?! A",
+        "Translation": "\uC9C0\uD558 \uC138\uACC4\uB77C\uACE0? [BR]\uC774 \uC0AC\uB78C\uB4E4\uC744 \uD558\uB370\uC2A4\uB85C \uB370\uB824\uAC00\uACA0\uB2E4\uACE0?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "IT\u0027S PITCH- BLACK DOWN THERE. ETERNAL DARKNESS.",
+        "Translation": "\uC800 \uC544\uB798\uB294 \uCE60\uD751 \uAC19\uC740 \uC5B4\uB460\uBFD0\uC774\uC57C.[BR]\uC601\uC6D0\uD55C \uC5B4\uB460.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "A DEAL WITH MADE THE GOD OF THE DEAD. HAS OPENED A REALM WILL BE... THERE FOK US. SOME LIGHT THERE. THERE.",
+        "Translation": "\uB09C \uC8FD\uC74C\uC758 \uC2E0\uACFC\n\uACC4\uC57D\uC744 \uB9FA\uC5C8\uC5B4.\n\uADF8\uAC00 \uC6B0\uB9AC\uB97C \uC704\uD55C\n\uCC28\uC6D0\uC744 \uC5F4\uC5B4\uC8FC\uC5C8\uC9C0.\n\uADF8\uACF3\uC5D4...\n\uBE5B\uC774 \uC788\uC744 \uAC70\uC57C.\n\n\uB354\n\uC911\uC694\uD55C \uAC74,\n\uADF8\uACF3\uC740 \uBAA8\uB450\uC5D0\uAC8C\n\uC548\uC804\uD55C \uC7A5\uC18C\uAC00\n\uB420 \uAC70\uB77C\uB294 \uAC70\uC57C.\n\uC6B0\uB9AC\uB294 \uAE38\uC744 \uCC3E\uC744 \uAC70\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "DIANA, THIS IS HAVE WE CRAZY. WE TO TAKE HAVE TO TH WORLD BACK!",
+        "Translation": "\uB2E4\uC774\uC544\uB098, \uC774\uAC74\n\uBBF8\uCE5C \uC9D3\uC774\uC57C. \uC6B0\uB9B0\n\uC2F8\uC6CC\uC57C \uD574! \uC138\uC0C1\uC744\n\uB418\uCC3E\uC544\uC57C \uD55C\uB2E4\uACE0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "MORE WILL BE A SAFE PLACE FOR EVERYONE. WE\u0027LL GO AND SHUT THE DOOR BEHIND US. ONCE AND FOR ALL.",
+        "Translation": "\uBB34\uC5C7\uBCF4\uB2E4\uB3C4, \uC774\uACF3\uC740 \uBAA8\uB450\uC5D0\uAC8C \uC548\uC804\uD55C \uC7A5\uC18C\uAC00 \uB420 \uAC70\uC57C.[BR]\uC6B0\uB9AC\uAC00 \uAC00\uC11C \uBB38\uC744 \uB2EB\uC544\uBC84\uB9B4 \uAC70\uC57C.[BR]\uC774\uBC88\uC5D0\uC57C\uB9D0\uB85C, \uC644\uC804\uD788.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "HEAR ME, ME, BRUCE WAYNE. YOU KNOW I SPEAK THE TRUTH.",
+        "Translation": "\uB0B4 \uB9D0\uC744 \uB4E4\uC5B4\uB77C, \uBE0C\uB8E8\uC2A4 \uC6E8\uC778. \uB0B4 \uB9D0\uC774 \uC9C4\uC2E4\uC774\uB77C\uB294 \uAC78 \uB108\uB3C4 \uC54C\uC796\uC544.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "THE WORLD THERE, IT DOESN\u0027T WANT SAVING. MAYBE IT NEVER DID.",
+        "Translation": "\uBC14\uAE65 \uC138\uC0C1\uC740 \uAD6C\uC6D0\uBC1B\uAE38 \uC6D0\uCE58 \uC54A\uC544.[BR]\uC5B4\uCA4C\uBA74 \uCC98\uC74C\uBD80\uD130 \uADF8\uB7AC\uC744\uC9C0\uB3C4 \uBAA8\uB974\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

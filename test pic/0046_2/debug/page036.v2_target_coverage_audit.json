@@ -1,0 +1,68 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "page036.jpg",
+  "DetectedTextTargets": 3,
+  "CommittedTargets": 3,
+  "PreservedTargets": 0,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "TextScore": 0.81095374,
+      "BubbleRegionId": "RG001",
+      "TextBounds": {
+        "X": 578,
+        "Y": 1477,
+        "Width": 83,
+        "Height": 35
+      },
+      "BoundTranslationRegionIds": [
+        0
+      ],
+      "BestTranslationRegionId": 0,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextBubble",
+      "TextScore": 0.81203353,
+      "BubbleRegionId": "RG003",
+      "TextBounds": {
+        "X": 528,
+        "Y": 1529,
+        "Width": 76,
+        "Height": 34
+      },
+      "BoundTranslationRegionIds": [
+        1
+      ],
+      "BestTranslationRegionId": 1,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": "TextBubble",
+      "TextScore": 0.90277755,
+      "BubbleRegionId": "RG005",
+      "TextBounds": {
+        "X": 719,
+        "Y": 1731,
+        "Width": 115,
+        "Height": 68
+      },
+      "BoundTranslationRegionIds": [
+        2
+      ],
+      "BestTranslationRegionId": 2,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}

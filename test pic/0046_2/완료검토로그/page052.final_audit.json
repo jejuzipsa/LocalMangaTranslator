@@ -1,0 +1,611 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page052.jpg",
+  "output_file": "page052.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 86251,
+    "changed_ratio": 0.03119224980127603,
+    "changed_regions": [
+      {
+        "x": 1057,
+        "y": 230,
+        "width": 200,
+        "height": 106
+      },
+      {
+        "x": 935,
+        "y": 854,
+        "width": 209,
+        "height": 98
+      },
+      {
+        "x": 209,
+        "y": 95,
+        "width": 143,
+        "height": 124
+      },
+      {
+        "x": 1109,
+        "y": 854,
+        "width": 163,
+        "height": 103
+      },
+      {
+        "x": 367,
+        "y": 214,
+        "width": 103,
+        "height": 96
+      },
+      {
+        "x": 965,
+        "y": 162,
+        "width": 163,
+        "height": 57
+      },
+      {
+        "x": 248,
+        "y": 1440,
+        "width": 118,
+        "height": 71
+      },
+      {
+        "x": 149,
+        "y": 1364,
+        "width": 155,
+        "height": 38
+      },
+      {
+        "x": 253,
+        "y": 1325,
+        "width": 131,
+        "height": 38
+      },
+      {
+        "x": 576,
+        "y": 1484,
+        "width": 62,
+        "height": 77
+      },
+      {
+        "x": 627,
+        "y": 1482,
+        "width": 58,
+        "height": 79
+      },
+      {
+        "x": 129,
+        "y": 142,
+        "width": 80,
+        "height": 57
+      },
+      {
+        "x": 122,
+        "y": 95,
+        "width": 95,
+        "height": 47
+      },
+      {
+        "x": 920,
+        "y": 910,
+        "width": 80,
+        "height": 47
+      },
+      {
+        "x": 107,
+        "y": 1326,
+        "width": 100,
+        "height": 37
+      },
+      {
+        "x": 345,
+        "y": 1369,
+        "width": 60,
+        "height": 39
+      },
+      {
+        "x": 100,
+        "y": 1370,
+        "width": 58,
+        "height": 38
+      },
+      {
+        "x": 195,
+        "y": 1325,
+        "width": 57,
+        "height": 38
+      },
+      {
+        "x": 185,
+        "y": 1553,
+        "width": 87,
+        "height": 24
+      },
+      {
+        "x": 965,
+        "y": 855,
+        "width": 55,
+        "height": 37
+      },
+      {
+        "x": 347,
+        "y": 55,
+        "width": 90,
+        "height": 22
+      },
+      {
+        "x": 928,
+        "y": 854,
+        "width": 47,
+        "height": 39
+      },
+      {
+        "x": 351,
+        "y": 362,
+        "width": 63,
+        "height": 28
+      },
+      {
+        "x": 345,
+        "y": 251,
+        "width": 43,
+        "height": 39
+      },
+      {
+        "x": 373,
+        "y": 335,
+        "width": 61,
+        "height": 26
+      },
+      {
+        "x": 1235,
+        "y": 875,
+        "width": 30,
+        "height": 52
+      },
+      {
+        "x": 303,
+        "y": 1365,
+        "width": 55,
+        "height": 25
+      },
+      {
+        "x": 482,
+        "y": 206,
+        "width": 50,
+        "height": 27
+      },
+      {
+        "x": 315,
+        "y": 226,
+        "width": 52,
+        "height": 25
+      },
+      {
+        "x": 471,
+        "y": 226,
+        "width": 45,
+        "height": 25
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page052.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 58939,
+    "erase_changed_ratio": 0.02131499937435401,
+    "typeset_changed_pixels": 44502,
+    "typeset_changed_ratio": 0.0160939293533569
+  },
+  "region_analysis": {
+    "total": 22,
+    "bubbles": 11,
+    "text_regions": 11,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 33,
+      "Global2x": 32,
+      "Focus3x": 269,
+      "Region1x": 39,
+      "Region2x": 47,
+      "Container1x": 35,
+      "Container2x": 45
+    },
+    "canonical_lines": 65,
+    "units": 15,
+    "assigned_lines": 61,
+    "orphan_groups": 4,
+    "secondary_total": 11,
+    "secondary_accepted": 11,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 51,
+          "Bottom": 81,
+          "Left": 340,
+          "Right": 443,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SORRY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 95,
+          "Bottom": 224,
+          "Left": 122,
+          "Right": 352,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU\u0027RE BATMAN, RIGHT? PEOPLE ARE SAYING THAT YOU\u0027RE HIM. SO CAN Y",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 157,
+          "Bottom": 224,
+          "Left": 960,
+          "Right": 1130,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ACTUALLY...I\u0027M THE ONE WHO\u0027S SCARED.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 206,
+          "Bottom": 316,
+          "Left": 295,
+          "Right": 532,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY\nLITTLE BROTHER IS\nSCARED THAT IT\u0027LL BE\nDARK WHERE WE\u0027RE\nGOING NEXT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 230,
+          "Bottom": 340,
+          "Left": 1057,
+          "Right": 1257,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT YOU CAN SEE IN THE DARK, RIGHT? CAN YOU TEACH US HOW?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 336,
+          "Bottom": 385,
+          "Left": 345,
+          "Right": 435,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DOWN THERE?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 849,
+          "Bottom": 957,
+          "Left": 920,
+          "Right": 1272,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WELL BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE THOR HOW HOW THEX THO THEMA THEX THOHO THEX T.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1320,
+          "Bottom": 1408,
+          "Left": 100,
+          "Right": 405,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1441,
+          "Bottom": 1510,
+          "Left": 243,
+          "Right": 390,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HEH. YOU WANT TO TRY ANYWAY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1487,
+          "Bottom": 1556,
+          "Left": 577,
+          "Right": 703,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "READY?\nON THREE.\nONE, TWO...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1547,
+          "Bottom": 1579,
+          "Left": 178,
+          "Right": 278,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "REALLY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 15,
+    "requested_render": 11
+  },
+  "render": {
+    "total": 11,
+    "approved": 11,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 11,
+    "TranslatedUnits": 11,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 11,
+    "TypesetCommittedUnits": 11,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "SORRY?",
+        "Translation": "\uBB50\uB77C\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "YOU\u0027RE BATMAN, PEOPLE ARE IGHT? THAT SAYING \u0027RE HIM. SO CAN YOU SEE THINGS LIKE A BAT?",
+        "Translation": "\uB2F9\uC2E0\uC774 \uBC30\uD2B8\uB9E8 \uB9DE\uC8E0? \uC0AC\uB78C\uB4E4\uC774 \uB2E4 \uB2F9\uC2E0\uC774\uB77C\uACE0 \uD558\uB358\uB370. \uADF8\uB7FC \uBC15\uC950\uCC98\uB7FC \uC0AC\uBB3C\uC744 \uBCFC \uC218 \uC788\uB098\uC694?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "2n HC TUHLL7.. IM THE ONE WHO\u0027S SCARED.",
+        "Translation": "\uC0AC\uC2E4\uC740... \uBB34\uC11C\uC6B4 \uAC74[BR]\uB098\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "MY MY BROTHER IS LITTLE DE IT\u0027LL E TUNT SCARED DARK WHERE WE\u0027RE GOING NEXT. 4",
+        "Translation": "\uB0B4 \uB3D9\uC0DD\uC774 \uB2E4\uC74C \uC7A5\uC18C\uB294\n\uC5B4\uB450\uC6B8\uAE4C \uBD10 \uBB34\uC11C\uC6CC\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "BUT SEE IN CAN THE DARK, RIGHT? TEACH CAN YOU HOW?",
+        "Translation": "\uD558\uC9C0\uB9CC \uC5B4\uB460 \uC18D\uC5D0\uC11C\uB3C4 \uBCFC \uC218 \uC788\uC796\uC544, \uADF8\uCE58? \uC6B0\uB9AC\uD55C\uD14C\uB3C4 \uAC00\uB974\uCCD0 \uC904 \uC218 \uC788\uC5B4?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "DOWN THERE?",
+        "Translation": "\uC800 \uC544\uB798\uC5D0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "WELL, BATS... THEY CAN\u0027T ACTUALLY SEE IN THE DARK. THEY USE THEIR VOICES. THEY USE ECHOES. IT\u0027S HOW THEY FIND THEIR WAY THROUGH.",
+        "Translation": "\uAE00\uC384, \uBC15\uC950\uB4E4\uC740...[BR]\uC0AC\uC2E4 \uC5B4\uB460 \uC18D\uC744 \uBCFC \uC218 \uC5C6\uC5B4.[BR]\uBAA9\uC18C\uB9AC\uB97C \uC774\uC6A9\uD558\uACE0,[BR]\uBA54\uC544\uB9AC\uB97C \uC774\uC6A9\uD558\uB294 \uAC70\uC9C0.[BR]\uADF8\uAC8C \uAE38\uC744 \uCC3E\uB294 \uBC29\uC2DD\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "WE\u0027RE NOT REALLY ALLOWED TO MAKE ECHOES DOWN HERE. THEY DISTURB EVERYONE.",
+        "Translation": "\uC5EC\uAE30\uC120 \uC18C\uB9AC \uB0B4\uBA74 \uC548 \uB3FC.[BR]\uBAA8\uB450\uB97C \uBC29\uD574\uD558\uAC70\uB4E0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "HEH. you WANT TO TRY ANYWAY?",
+        "Translation": "\uD6D7. \uADF8\uB798\uB3C4 \uD55C\uBC88 \uD574\uBCF4\uACA0\uB2E4\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "READY? ON THREE. VE, TWO...",
+        "Translation": "\uC900\uBE44\uB410\uC5B4?[BR]\uC14B\uC5D0 \uB9DE\uCDB0\uC11C.[BR]\uD558\uB098, \uB458...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "REALLY?",
+        "Translation": "\uC9C4\uC9DC?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

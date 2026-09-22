@@ -1,0 +1,70 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page042.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0567,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.87303823,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 4.203999418543183,
+            "Affinity": 7.428111117326168
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0318,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "PART FOUR: ECHOLOCATION",
+        "secondary_ocr": "PART FOUR: EGHOLOGATION",
+        "primary_confidence": 0.9997652769088745,
+        "current_agreement": "disagree",
+        "corrected_text": "PART FOUR: ECHOLOCATION"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5513,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "PART FOUR: ECHOLOCATION",
+        "corrected_source_text": "PART FOUR: ECHOLOCATION",
+        "korean_translation": "\uC81C4\uBD80: \uBC18\uD5A5 \uC704\uCE58",
+        "type": "caption",
+        "secondary_ocr": "PART FOUR: EGHOLOGATION",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}

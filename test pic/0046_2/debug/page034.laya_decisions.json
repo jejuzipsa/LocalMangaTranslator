@@ -1,0 +1,229 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page034.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG001",
+      "Confidence": 0.0501,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG001",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.5800932,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 157.50220457010894,
+            "Affinity": 6.975042193347346
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG001",
+      "Confidence": 0.0681,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG001",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.5800932,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 159.32784160689283,
+            "Affinity": 6.971390919273778
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 0,
+      "RuleDecision": "R0",
+      "LayaDecision": "R1",
+      "Confidence": 0.0032,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG003",
+        "candidates": [
+          {
+            "option": "R0",
+            "Id": 0,
+            "source": "journ g..",
+            "corrected": "journey",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.9074668884277344,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG001"
+            ],
+            "BubbleRegionId": "RG003",
+            "LayoutBounds": {
+              "Top": 715,
+              "Bottom": 873,
+              "Left": 383,
+              "Right": 982,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 44907.005136528125
+          },
+          {
+            "option": "R1",
+            "Id": 1,
+            "source": "II",
+            "corrected": "I",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.9285377264022827,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG001"
+            ],
+            "BubbleRegionId": "RG003",
+            "LayoutBounds": {
+              "Top": 715,
+              "Bottom": 873,
+              "Left": 383,
+              "Right": 982,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 44250.44982583508
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0671,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "journ g..",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "primary_confidence": 0.9074668884277344,
+        "current_agreement": "disagree",
+        "corrected_text": "journey"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0796,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "II",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "primary_confidence": 0.9285377264022827,
+        "current_agreement": "disagree",
+        "corrected_text": "I"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5079,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "journ g..",
+        "corrected_text": "journey",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9074668884277344,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.578,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "II",
+        "corrected_text": "I",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9285377264022827,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6609,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "journ g..",
+        "corrected_source_text": "journey",
+        "korean_translation": "\uC5EC\uC815",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.7086,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "II",
+        "corrected_source_text": "I",
+        "korean_translation": "\uB098",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022It was two claus\u0027 journing to Corset Ofty...\u0022",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}

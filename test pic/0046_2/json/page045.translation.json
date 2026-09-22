@@ -1,0 +1,625 @@
+{
+  "SourceFile": "page045.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:33:30.6025062+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 737.5,
+        "Y": 132,
+        "W": 104.5,
+        "H": 33,
+        "Text": "ENOUGH.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 737.5,
+            "Y": 132,
+            "W": 104.5,
+            "H": 33,
+            "Text": "ENOUGH.",
+            "Confidence": 0.9703369,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "ENOUGH.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "ENOUGH.",
+      "Translation": "\uADF8\uB9CC\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 323,
+        "Y": 414,
+        "W": 208,
+        "H": 127,
+        "Text": "MAGIC IS LONG D THE HELMET IS JUST A HELMET. TH NO DOCTOF ANYMORE.",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 389.3333333333333,
+            "Y": 414,
+            "W": 79.33333333333337,
+            "H": 28.666666666666686,
+            "Text": "MAGIC",
+            "Confidence": 0.9986087,
+            "Language": "en"
+          },
+          {
+            "X": 344,
+            "Y": 437.6666666666667,
+            "W": 98,
+            "H": 22.66666666666663,
+            "Text": "IS LONG",
+            "Confidence": 0.99952114,
+            "Language": "en"
+          },
+          {
+            "X": 437,
+            "Y": 439.6666666666667,
+            "W": 23,
+            "H": 18.66666666666663,
+            "Text": "D",
+            "Confidence": 0.9989881,
+            "Language": "en"
+          },
+          {
+            "X": 323,
+            "Y": 455.6666666666667,
+            "W": 208,
+            "H": 26.66666666666663,
+            "Text": "THE HELMET IS JUST",
+            "Confidence": 0.9991406,
+            "Language": "en"
+          },
+          {
+            "X": 327.6666666666667,
+            "Y": 476.3333333333333,
+            "W": 132.33333333333331,
+            "H": 24.33333333333337,
+            "Text": "A HELMET. TH",
+            "Confidence": 0.99774086,
+            "Language": "en"
+          },
+          {
+            "X": 331.3333333333333,
+            "Y": 497.3333333333333,
+            "W": 40,
+            "H": 22.666666666666686,
+            "Text": "NO",
+            "Confidence": 0.9998363,
+            "Language": "en"
+          },
+          {
+            "X": 369,
+            "Y": 497.3333333333333,
+            "W": 91,
+            "H": 21.666666666666686,
+            "Text": "DOCTOF",
+            "Confidence": 0.95987856,
+            "Language": "en"
+          },
+          {
+            "X": 370,
+            "Y": 514.3333333333334,
+            "W": 113.33333333333331,
+            "H": 26.66666666666663,
+            "Text": "ANYMORE.",
+            "Confidence": 0.99944866,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MAGIC IS LONG DEAD. THE HELMET IS JUST A HELMET. THERE IS NO DOCTOR FATE ANYMORE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "MAGIC IS LONG DEAD.\nTHE HELMET IS JUST\nA HELMET.\nTHERE IS NO\nDOCTOR FATE\nANYMORE.",
+      "Translation": "\uB9C8\uBC95\uC740 \uC774\uBBF8 \uC0AC\uB77C\uC84C\uC5B4.\n\uC774 \uD22C\uAD6C\uB294 \uADF8\uC800\n\uD22C\uAD6C\uC77C \uBFD0\uC774\uC57C.\n\uB354 \uC774\uC0C1\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB294\n\uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 113,
+        "Y": 439.3333333333333,
+        "W": 137.66666666666666,
+        "H": 106.33333333333331,
+        "Text": "THAT HELMET.. YOU THE NEW DOCTOR FATE?",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 153.66666666666666,
+            "Y": 439.3333333333333,
+            "W": 55.666666666666686,
+            "H": 25.33333333333337,
+            "Text": "THAT",
+            "Confidence": 0.99984753,
+            "Language": "en"
+          },
+          {
+            "X": 133,
+            "Y": 458.5,
+            "W": 94,
+            "H": 26.5,
+            "Text": "HELMET..",
+            "Confidence": 0.97938067,
+            "Language": "en"
+          },
+          {
+            "X": 113,
+            "Y": 479.6666666666667,
+            "W": 91,
+            "H": 24.333333333333314,
+            "Text": "YOU THE",
+            "Confidence": 0.892779,
+            "Language": "en"
+          },
+          {
+            "X": 199.66666666666666,
+            "Y": 480,
+            "W": 51,
+            "H": 24,
+            "Text": "NEW",
+            "Confidence": 0.99987954,
+            "Language": "en"
+          },
+          {
+            "X": 130.33333333333334,
+            "Y": 500.6666666666667,
+            "W": 103,
+            "H": 23.333333333333314,
+            "Text": "DOCTOR",
+            "Confidence": 0.9998426,
+            "Language": "en"
+          },
+          {
+            "X": 143,
+            "Y": 516.3333333333334,
+            "W": 79,
+            "H": 29.333333333333258,
+            "Text": "FATE?",
+            "Confidence": 0.99935716,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THAT HELMET... YOU THE NEW DOCTOR FATE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "THAT HELMET...\nYOU THE NEW\nDOCTOR FATE?",
+      "Translation": "\uC800 \uD22C\uAD6C...\n\uB124\uAC00 \uC0C8\uB85C\uC6B4\n\uB2E5\uD130 \uD398\uC774\uD2B8\uB0D0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 750.3333333333334,
+        "Y": 470.3333333333333,
+        "W": 101.66666666666663,
+        "H": 73.00000000000006,
+        "Text": "OR WONDER WOMAN.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 768,
+            "Y": 470.3333333333333,
+            "W": 65.66666666666663,
+            "H": 37.33333333333337,
+            "Text": "OR",
+            "Confidence": 0.99706244,
+            "Language": "en"
+          },
+          {
+            "X": 750.3333333333334,
+            "Y": 493.3333333333333,
+            "W": 101.66666666666663,
+            "H": 29.000000000000057,
+            "Text": "WONDER",
+            "Confidence": 0.99937946,
+            "Language": "en"
+          },
+          {
+            "X": 754,
+            "Y": 513.3333333333334,
+            "W": 94,
+            "H": 30,
+            "Text": "WOMAN.",
+            "Confidence": 0.99936527,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...OR WONDER WOMAN.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "...OR WONDER WOMAN.",
+      "Translation": "...\uC544\uB2C8\uBA74[BR]\uC6D0\uB354\uC6B0\uBA3C\uC774\uAC70\uB098.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 334,
+        "Y": 578.6666666666666,
+        "W": 126,
+        "H": 61.33333333333337,
+        "Text": "JUST LIKE THEI NO BATMAN..",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 345.6666666666667,
+            "Y": 578.6666666666666,
+            "W": 105.66666666666663,
+            "H": 23,
+            "Text": "JUST LIKE",
+            "Confidence": 0.9994906,
+            "Language": "en"
+          },
+          {
+            "X": 334,
+            "Y": 597.6666666666666,
+            "W": 43,
+            "H": 24,
+            "Text": "THEI",
+            "Confidence": 0.99604374,
+            "Language": "en"
+          },
+          {
+            "X": 417,
+            "Y": 598.6666666666666,
+            "W": 43,
+            "H": 22.666666666666742,
+            "Text": "NO",
+            "Confidence": 0.99929637,
+            "Language": "en"
+          },
+          {
+            "X": 344.33333333333337,
+            "Y": 617.6666666666666,
+            "W": 105.33333333333331,
+            "H": 22.33333333333337,
+            "Text": "BATMAN..",
+            "Confidence": 0.9244108,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "JUST LIKE THERE\u0027S NO BATMAN...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "JUST LIKE THERE\u0027S NO BATMAN...",
+      "Translation": "\uBC30\uD2B8\uB9E8\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uB294 \uAC83\uCC98\uB7FC...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 655,
+        "Y": 1590,
+        "W": 140,
+        "H": 362.66666666666674,
+        "Text": "MNY",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 655,
+            "Y": 1590,
+            "W": 140,
+            "H": 362.66666666666674,
+            "Text": "MNY",
+            "Confidence": 0.56578094,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "MNY",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 810.3333333333334,
+        "Y": 1652,
+        "W": 87.66666666666663,
+        "H": 69.66666666666674,
+        "Text": "IT\u0027S IT\u0027S SIMPLE, BRUCE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 824,
+            "Y": 1652,
+            "W": 57,
+            "H": 30,
+            "Text": "IT\u0027S",
+            "Confidence": 0.9628792,
+            "Language": "en"
+          },
+          {
+            "X": 829.3333333333334,
+            "Y": 1655.3333333333333,
+            "W": 49.66666666666663,
+            "H": 27.666666666666742,
+            "Text": "IT\u0027S",
+            "Confidence": 0.99431044,
+            "Language": "en"
+          },
+          {
+            "X": 810.3333333333334,
+            "Y": 1673.3333333333333,
+            "W": 87.66666666666663,
+            "H": 30.333333333333485,
+            "Text": "SIMPLE,",
+            "Confidence": 0.9995853,
+            "Language": "en"
+          },
+          {
+            "X": 813,
+            "Y": 1697,
+            "W": 81,
+            "H": 24.666666666666742,
+            "Text": "BRUCE.",
+            "Confidence": 0.99500865,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT\u0027S SIMPLE, BRUCE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "IT\u0027S SIMPLE, BRUCE. YOU DID.",
+      "Translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4.[BR]\uB124\uAC00 \uADF8\uB7AC\uC796\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 229.66666666666666,
+        "Y": 1697,
+        "W": 150.33333333333334,
+        "H": 179,
+        "Text": "7",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 229.66666666666666,
+            "Y": 1697,
+            "W": 150.33333333333334,
+            "H": 179,
+            "Text": "7",
+            "Confidence": 0.36158994,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "7",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 99,
+        "Y": 1720,
+        "W": 97,
+        "H": 35,
+        "Text": "DIANA?!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 99,
+            "Y": 1720,
+            "W": 97,
+            "H": 35,
+            "Text": "DIANA?!",
+            "Confidence": 0.9966126,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DIANA?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "DIANA?!",
+      "Translation": "\uB2E4\uC774\uC544?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 810.6666666666666,
+        "Y": 1748.6666666666667,
+        "W": 55.33333333333337,
+        "H": 48.33333333333326,
+        "Text": "You DID.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 810.6666666666666,
+            "Y": 1748.6666666666667,
+            "W": 55.33333333333337,
+            "H": 29,
+            "Text": "You",
+            "Confidence": 0.68970215,
+            "Language": "en"
+          },
+          {
+            "X": 812.3333333333334,
+            "Y": 1769,
+            "W": 51.66666666666663,
+            "H": 28,
+            "Text": "DID.",
+            "Confidence": 0.988244,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU DID.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "YOU DID.",
+      "Translation": "\uADF8\uB7AC\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 893,
+        "Y": 1751,
+        "W": 21,
+        "H": 21,
+        "Text": "d",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 893,
+            "Y": 1751,
+            "W": 21,
+            "H": 21,
+            "Text": "d",
+            "Confidence": 0.43477052,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "d",
+      "Translation": "\u3137",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 106,
+        "Y": 1775.3333333333333,
+        "W": 160.66666666666669,
+        "H": 124.66666666666674,
+        "Text": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 149.66666666666666,
+            "Y": 1775.3333333333333,
+            "W": 74.33333333333334,
+            "H": 25.666666666666742,
+            "Text": "THANK",
+            "Confidence": 0.99992406,
+            "Language": "en"
+          },
+          {
+            "X": 112,
+            "Y": 1795.3333333333333,
+            "W": 149.66666666666669,
+            "H": 26.333333333333485,
+            "Text": "GOD. PLEASE,",
+            "Confidence": 0.99760556,
+            "Language": "en"
+          },
+          {
+            "X": 114.33333333333333,
+            "Y": 1816,
+            "W": 143,
+            "H": 24.333333333333258,
+            "Text": "TELL ME WHO",
+            "Confidence": 0.9995395,
+            "Language": "en"
+          },
+          {
+            "X": 106,
+            "Y": 1835,
+            "W": 160.66666666666669,
+            "H": 25.333333333333258,
+            "Text": "DID THIS? WHO",
+            "Confidence": 0.99620485,
+            "Language": "en"
+          },
+          {
+            "X": 121,
+            "Y": 1849,
+            "W": 132,
+            "H": 36,
+            "Text": "KILLED THE",
+            "Confidence": 0.994972,
+            "Language": "en"
+          },
+          {
+            "X": 138.5,
+            "Y": 1875,
+            "W": 98.5,
+            "H": 25,
+            "Text": "WORLD?",
+            "Confidence": 0.9992861,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THANK\nGOD. PLEASE,\nTELL ME WHO\nDID THIS? WHO\nKILLED THE\nWORLD?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "THANK GOD. PLEASE, TELL ME WHO DID THIS? WHO KILLED THE WORLD?",
+      "Translation": "\uB2E4\uD589\uC774\uB2E4. \uC81C\uBC1C, \uB204\uAC00 \uC774\uB7AC\uB294\uC9C0 \uB9D0\uD574\uC918. \uB204\uAC00 \uC138\uC0C1\uC744 \uB9DD\uAC00\uB728\uB9B0 \uAC70\uC57C?",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page044.jpg",
+  "output_file": "page044.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 34749,
+    "changed_ratio": 0.01256680488741627,
+    "changed_regions": [
+      {
+        "x": 959,
+        "y": 500,
+        "width": 178,
+        "height": 144
+      },
+      {
+        "x": 531,
+        "y": 525,
+        "width": 154,
+        "height": 90
+      },
+      {
+        "x": 160,
+        "y": 114,
+        "width": 144,
+        "height": 64
+      },
+      {
+        "x": 165,
+        "y": 180,
+        "width": 136,
+        "height": 57
+      },
+      {
+        "x": 183,
+        "y": 1377,
+        "width": 112,
+        "height": 30
+      },
+      {
+        "x": 974,
+        "y": 509,
+        "width": 42,
+        "height": 56
+      },
+      {
+        "x": 136,
+        "y": 1377,
+        "width": 50,
+        "height": 30
+      },
+      {
+        "x": 953,
+        "y": 500,
+        "width": 51,
+        "height": 28
+      },
+      {
+        "x": 231,
+        "y": 650,
+        "width": 39,
+        "height": 24
+      },
+      {
+        "x": 664,
+        "y": 510,
+        "width": 34,
+        "height": 27
+      },
+      {
+        "x": 1107,
+        "y": 618,
+        "width": 30,
+        "height": 30
+      },
+      {
+        "x": 953,
+        "y": 618,
+        "width": 30,
+        "height": 30
+      },
+      {
+        "x": 161,
+        "y": 210,
+        "width": 19,
+        "height": 33
+      },
+      {
+        "x": 671,
+        "y": 555,
+        "width": 24,
+        "height": 26
+      },
+      {
+        "x": 527,
+        "y": 510,
+        "width": 16,
+        "height": 38
+      },
+      {
+        "x": 161,
+        "y": 114,
+        "width": 29,
+        "height": 18
+      },
+      {
+        "x": 527,
+        "y": 593,
+        "width": 19,
+        "height": 27
+      },
+      {
+        "x": 598,
+        "y": 519,
+        "width": 24,
+        "height": 17
+      },
+      {
+        "x": 961,
+        "y": 537,
+        "width": 16,
+        "height": 23
+      },
+      {
+        "x": 294,
+        "y": 1379,
+        "width": 14,
+        "height": 25
+      },
+      {
+        "x": 683,
+        "y": 602,
+        "width": 15,
+        "height": 18
+      },
+      {
+        "x": 662,
+        "y": 526,
+        "width": 22,
+        "height": 11
+      },
+      {
+        "x": 1009,
+        "y": 511,
+        "width": 13,
+        "height": 16
+      },
+      {
+        "x": 283,
+        "y": 231,
+        "width": 17,
+        "height": 12
+      },
+      {
+        "x": 623,
+        "y": 519,
+        "width": 11,
+        "height": 18
+      },
+      {
+        "x": 658,
+        "y": 560,
+        "width": 12,
+        "height": 15
+      },
+      {
+        "x": 546,
+        "y": 526,
+        "width": 13,
+        "height": 11
+      },
+      {
+        "x": 295,
+        "y": 212,
+        "width": 10,
+        "height": 13
+      },
+      {
+        "x": 218,
+        "y": 664,
+        "width": 12,
+        "height": 8
+      },
+      {
+        "x": 1123,
+        "y": 537,
+        "width": 4,
+        "height": 23
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page044.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 23463,
+    "erase_changed_ratio": 0.008485278513725516,
+    "typeset_changed_pixels": 17930,
+    "typeset_changed_ratio": 0.006484296285688041
+  },
+  "region_analysis": {
+    "total": 10,
+    "bubbles": 5,
+    "text_regions": 5,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 9,
+      "Global2x": 17,
+      "Focus3x": 113,
+      "Region1x": 20,
+      "Region2x": 22,
+      "Container1x": 20,
+      "Container2x": 21
+    },
+    "canonical_lines": 26,
+    "units": 7,
+    "assigned_lines": 24,
+    "orphan_groups": 2,
+    "secondary_total": 5,
+    "secondary_accepted": 5,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 114,
+          "Bottom": 243,
+          "Left": 161,
+          "Right": 300,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...SO MAKE SURE YOU HAVE EVERYTHING YOU NEED. OKAY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 500,
+          "Bottom": 648,
+          "Left": 953,
+          "Right": 1137,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW YOU WILL TELL US WHO YOU REALLY ARE AND HOW YOU JUST HAPPENED TO WANDER--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG004",
+        "Bounds": {
+          "Top": 510,
+          "Bottom": 620,
+          "Left": 527,
+          "Right": 698,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE MORE YOU STRUGGLE, THE FASTER IT GROWS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 647,
+          "Bottom": 676,
+          "Left": 208,
+          "Right": 275,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...huh.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1371,
+          "Bottom": 1411,
+          "Left": 131,
+          "Right": 312,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AMAZONS!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 7,
+    "requested_render": 7
+  },
+  "render": {
+    "total": 5,
+    "approved": 5,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 7,
+    "TranslatedUnits": 5,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 5,
+    "TypesetCommittedUnits": 5,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "SO MAKE SURE YOU HAVE EVERYTHING YOU NEED. OKAY?",
+        "Translation": "...\uADF8\uB7EC\uB2C8\uAE4C \uD544\uC694\uD55C \uAC70 \uB2E4 \uCC59\uACBC\uB294\uC9C0[BR]\uAF2D \uD655\uC778\uD574. \uC54C\uC558\uC9C0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "NOW TELL WILL WHO YOu EALLY ARE AN REALLY ARE AND HOWY HAPPENED TO WAN",
+        "Translation": "\uC790, \uC774\uC81C \uB124 \uC815\uCCB4\uAC00 \uBB54\uC9C0, \uADF8\uB9AC\uACE0 \uC5B4\uB5BB\uAC8C \uC5EC\uAE30\uAE4C\uC9C0 \uD758\uB7EC \uB4E4\uC5B4\uC654\uB294\uC9C0 \uB9D0\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "THE MORE YOU THE STRUGGLE, FASTER IT GROWS.",
+        "Translation": "\uBC1C\uBC84\uB465 \uCE60\uC218\uB85D[BR]\uB354 \uBE68\uB9AC \uC790\uB77C\uB09C\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "Y",
+        "Translation": "\uC751",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "Y",
+        "Translation": "\uC751",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "..huh.",
+        "Translation": "...\uD5C8.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "AMAZONS!",
+        "Translation": "\uC544\uB9C8\uC874\uB4E4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

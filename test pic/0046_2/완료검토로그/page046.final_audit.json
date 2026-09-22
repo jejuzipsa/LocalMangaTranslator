@@ -1,0 +1,709 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page046.jpg",
+  "output_file": "page046.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 98257,
+    "changed_ratio": 0.03553416063261851,
+    "changed_regions": [
+      {
+        "x": 302,
+        "y": 355,
+        "width": 269,
+        "height": 164
+      },
+      {
+        "x": 79,
+        "y": 681,
+        "width": 174,
+        "height": 127
+      },
+      {
+        "x": 766,
+        "y": 1066,
+        "width": 182,
+        "height": 98
+      },
+      {
+        "x": 114,
+        "y": 275,
+        "width": 190,
+        "height": 85
+      },
+      {
+        "x": 207,
+        "y": 828,
+        "width": 152,
+        "height": 90
+      },
+      {
+        "x": 971,
+        "y": 1082,
+        "width": 134,
+        "height": 88
+      },
+      {
+        "x": 580,
+        "y": 468,
+        "width": 116,
+        "height": 78
+      },
+      {
+        "x": 122,
+        "y": 361,
+        "width": 125,
+        "height": 57
+      },
+      {
+        "x": 739,
+        "y": 733,
+        "width": 111,
+        "height": 57
+      },
+      {
+        "x": 1115,
+        "y": 1657,
+        "width": 110,
+        "height": 57
+      },
+      {
+        "x": 893,
+        "y": 1650,
+        "width": 86,
+        "height": 48
+      },
+      {
+        "x": 650,
+        "y": 674,
+        "width": 71,
+        "height": 45
+      },
+      {
+        "x": 210,
+        "y": 167,
+        "width": 52,
+        "height": 57
+      },
+      {
+        "x": 260,
+        "y": 168,
+        "width": 49,
+        "height": 56
+      },
+      {
+        "x": 720,
+        "y": 674,
+        "width": 56,
+        "height": 45
+      },
+      {
+        "x": 423,
+        "y": 495,
+        "width": 56,
+        "height": 37
+      },
+      {
+        "x": 374,
+        "y": 495,
+        "width": 50,
+        "height": 37
+      },
+      {
+        "x": 129,
+        "y": 112,
+        "width": 57,
+        "height": 25
+      },
+      {
+        "x": 116,
+        "y": 140,
+        "width": 56,
+        "height": 25
+      },
+      {
+        "x": 941,
+        "y": 1649,
+        "width": 50,
+        "height": 26
+      },
+      {
+        "x": 248,
+        "y": 362,
+        "width": 26,
+        "height": 49
+      },
+      {
+        "x": 698,
+        "y": 651,
+        "width": 49,
+        "height": 21
+      },
+      {
+        "x": 253,
+        "y": 920,
+        "width": 57,
+        "height": 18
+      },
+      {
+        "x": 527,
+        "y": 349,
+        "width": 28,
+        "height": 29
+      },
+      {
+        "x": 850,
+        "y": 1142,
+        "width": 30,
+        "height": 22
+      },
+      {
+        "x": 347,
+        "y": 495,
+        "width": 27,
+        "height": 24
+      },
+      {
+        "x": 761,
+        "y": 1060,
+        "width": 30,
+        "height": 21
+      },
+      {
+        "x": 577,
+        "y": 462,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 104,
+        "y": 112,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 761,
+        "y": 1147,
+        "width": 28,
+        "height": 20
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page046.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 62445,
+    "erase_changed_ratio": 0.022582927025085874,
+    "typeset_changed_pixels": 56609,
+    "typeset_changed_ratio": 0.02047236633778663
+  },
+  "region_analysis": {
+    "total": 26,
+    "bubbles": 13,
+    "text_regions": 13,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 44,
+      "Global2x": 50,
+      "Focus3x": 381,
+      "Region1x": 63,
+      "Region2x": 59,
+      "Container1x": 58,
+      "Container2x": 60
+    },
+    "canonical_lines": 77,
+    "units": 19,
+    "assigned_lines": 70,
+    "orphan_groups": 6,
+    "secondary_total": 13,
+    "secondary_accepted": 13,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 114,
+          "Bottom": 161,
+          "Left": 108,
+          "Right": 185,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "COME. WALK.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 160,
+          "Bottom": 230,
+          "Left": 216,
+          "Right": 306,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT IS THIS PLACE?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 275,
+          "Bottom": 424,
+          "Left": 111,
+          "Right": 304,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "GEMWORLD,\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 349,
+          "Bottom": 537,
+          "Left": 299,
+          "Right": 578,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MADE FROM A CRY\u0027STAL FORMED NEAR THE MOOTH CORE OF THE EARTH. IT REFRICTS EVERYTHING EVENGE EVE EVE E EVE STA STAT ERE E CH EATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 462,
+          "Bottom": 552,
+          "Left": 575,
+          "Right": 700,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 648,
+          "Bottom": 716,
+          "Left": 650,
+          "Right": 771,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOST HOW? WHY CAN\u0027T WE--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 681,
+          "Bottom": 810,
+          "Left": 79,
+          "Right": 253,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DIANA,\nI DON\u0027T\nUNDERSTAND\nWHAT HAPPENED\nOUT THERE,\nDIANA.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 726,
+          "Bottom": 795,
+          "Left": 727,
+          "Right": 855,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "STOP IT DOESN\u0027T MATTER.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 835,
+          "Bottom": 944,
+          "Left": 209,
+          "Right": 359,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1060,
+          "Bottom": 1167,
+          "Left": 761,
+          "Right": 952,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT\nDOES MATTER IS\nYOU\u0027RE HERE AND\nYOU CAN COME\nWITH US.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1083,
+          "Bottom": 1173,
+          "Left": 967,
+          "Right": 1105,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU CAN HELP US PROTECT THEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1651,
+          "Bottom": 1702,
+          "Left": 891,
+          "Right": 995,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PROTECT WHO?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 1649,
+          "Bottom": 1720,
+          "Left": 1113,
+          "Right": 1235,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE ONES LEFT, BRUCE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 19,
+    "requested_render": 15
+  },
+  "render": {
+    "total": 14,
+    "approved": 13,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 15,
+    "TranslatedUnits": 13,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 13,
+    "TypesetCommittedUnits": 13,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "COME. WALK.",
+        "Translation": "\uC774\uB9AC \uC640.\n\uAC78\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "WHAT PLACE?",
+        "Translation": "\uC5EC\uAE34\n\uC5B4\uB5A4 \uACF3\uC774\uC9C0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+        "Translation": "\uC82C\uC6D4\uB4DC.[BR]\uB300\uB959 \uC544\uB798\uC5D0 \uC788\uB294[BR]\uC6B0\uB9AC\uC758 \uC548\uC2DD\uCC98.[BR]\uC790\uC218\uC815, \uD669\uC218\uC815...[BR]\uC5EC\uAE30\uB294 \uAC00\uC7A5 \uAE4A\uC740[BR]\uC601\uC5ED\uC774\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "SN MADE FROM A",
+        "Translation": "~\uB85C \uB9CC\uB4E0",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+        "Translation": "\uC9C0\uAD6C\uC758 \uC6A9\uC554 \uD575 \uADFC\uCC98\uC5D0\uC11C \uD615\uC131\uB41C \uC218\uC815\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC84C\uC2B5\uB2C8\uB2E4. \uB4E4\uC5B4\uC624\uB294 \uBAA8\uB4E0 \uAC83, \uC2EC\uC9C0\uC5B4 \uC2DC\uACF5\uAC04\uAE4C\uC9C0 \uAD74\uC808\uC2DC\uD0A4\uAE30\uC5D0[BR]\uC774\uAC83\uC740 \uC874\uC7AC\uC758 \uC5F0\uC18D\uC131 \uBC16\uC5D0 \uB193\uC5EC \uC788\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "EVA",
+        "Translation": "\uC5D0\uBC14",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "Translation": "\uC9C0\uAE08\uAE4C\uC9C0\uB294[BR]\uC5EC\uAE30\uC11C \uC548\uC804\uD588\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "LOST HOW? WHY CAN\u0027T WE--",
+        "Translation": "\uC5B4\uB5BB\uAC8C \uC783\uC5B4\uBC84\uB9B0 \uAC70\uC57C?[BR]\uC65C \uC6B0\uB9AC\uAC00 \uBABB--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+        "Translation": "\uB2E4\uC774\uC544\uB098, \uBC29\uAE08 \uBC16\uC5D0\uC11C[BR]\uBB34\uC2A8 \uC77C\uC774 \uC77C\uC5B4\uB09C \uAC74\uC9C0 \uBAA8\uB974\uACA0\uC5B4, \uB2E4\uC774\uC544\uB098.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "STOP. IT DOESN\u0027T MATTER.",
+        "Translation": "\uADF8\uB9CC\uD574.[BR]\uC0C1\uAD00\uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "Translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4. \uC0C1\uD669\uC740 \uB05D\uB0AC\uC5B4.[BR]\uC6B0\uB9B0 \uC9C4 \uAC70\uC57C.[BR]\uB2E4 \uB05D\uB0AC\uB2E4\uACE0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+        "Translation": "\uC911\uC694\uD55C \uAC74 \uB124\uAC00 \uC5EC\uAE30 \uC788\uACE0,\n\uC6B0\uB9AC\uB791 \uAC19\uC774 \uAC08 \uC218 \uC788\uB2E4\uB294 \uAC70\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "you CAN HELP US PROTECT THEM.",
+        "Translation": "\uB2F9\uC2E0\uC774 \uC6B0\uB9AC\uB97C \uB3C4\uC640\n\uADF8\uB4E4\uC744 \uC9C0\uD0AC \uC218\n\uC788\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "THE io ONES LEF BRUCE.",
+        "Translation": "\uB0A8\uC740 \uB188\uB4E4\uC774\uC57C,\n\uBE0C\uB8E8\uC2A4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "PROTECT WHO?",
+        "Translation": "\uB204\uAD74 \uC9C0\uD0A4\uB77C\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

@@ -1,0 +1,675 @@
+{
+  "SourceFile": "page037.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:23:54.1559131+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 459,
+        "Y": 25,
+        "W": 514,
+        "H": 149,
+        "Text": "AAODELIESE.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 459,
+            "Y": 25,
+            "W": 514,
+            "H": 149,
+            "Text": "AAODELIESE.",
+            "Confidence": 0.60239697,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "AAOOEEIIEE.",
+      "Translation": "\uC544\uC544\uC624\uC5D0\uC774\uC774\uC5D0.",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 366,
+        "Y": 140,
+        "W": 61,
+        "H": 40.5,
+        "Text": "COME ON!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 366,
+            "Y": 140,
+            "W": 61,
+            "H": 19,
+            "Text": "COME",
+            "Confidence": 0.9999641,
+            "Language": "en"
+          },
+          {
+            "X": 374,
+            "Y": 157,
+            "W": 41.5,
+            "H": 23.5,
+            "Text": "ON!",
+            "Confidence": 0.9936561,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "COME ON!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "COME ON!",
+      "Translation": "\uC5B4\uC11C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 574,
+        "Y": 308,
+        "W": 105.33333333333337,
+        "H": 230,
+        "Text": "W",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 574,
+            "Y": 308,
+            "W": 105.33333333333337,
+            "H": 230,
+            "Text": "W",
+            "Confidence": 0.50129354,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "BA",
+      "Translation": "\uBC14",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 693.6666666666667,
+        "Y": 355.5,
+        "W": 150.33333333333326,
+        "H": 83.5,
+        "Text": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 718.5,
+            "Y": 355.5,
+            "W": 100,
+            "H": 37.5,
+            "Text": "DO I HEAR",
+            "Confidence": 0.96658546,
+            "Language": "en"
+          },
+          {
+            "X": 693.6666666666667,
+            "Y": 382.3333333333333,
+            "W": 150.33333333333326,
+            "H": 33.666666666666686,
+            "Text": "BABIES?! I LOVE",
+            "Confidence": 0.9848254,
+            "Language": "en"
+          },
+          {
+            "X": 729,
+            "Y": 407,
+            "W": 75.66666666666663,
+            "H": 32,
+            "Text": "BABIES!",
+            "Confidence": 0.99806017,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DO I HEAR BABIES?! I LOVE BABIES!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "DO I HEAR BABIES?! I LOVE BABIES!",
+      "Translation": "\uC544\uAE30 \uC18C\uB9AC\uAC00 \uB4E4\uB824?![BR]\uB09C \uC544\uAE30 \uC815\uB9D0 \uC88B\uC544\uD574!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 668.3333333333334,
+        "Y": 895.3333333333334,
+        "W": 14.666666666666629,
+        "H": 19.66666666666663,
+        "Text": "9",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 668.3333333333334,
+            "Y": 895.3333333333334,
+            "W": 14.666666666666629,
+            "H": 19.66666666666663,
+            "Text": "9",
+            "Confidence": 0.36056495,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "9",
+      "Translation": "9",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 90.66666666666667,
+        "Y": 940,
+        "W": 204.33333333333331,
+        "H": 106.33333333333326,
+        "Text": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 121,
+            "Y": 940,
+            "W": 150.66666666666669,
+            "H": 28.66666666666663,
+            "Text": "\u0022THEY\u0027RE NOT",
+            "Confidence": 0.99239117,
+            "Language": "en"
+          },
+          {
+            "X": 90.66666666666667,
+            "Y": 963,
+            "W": 204.33333333333331,
+            "H": 24.66666666666663,
+            "Text": "BABIES. IT TAKES A",
+            "Confidence": 0.99699664,
+            "Language": "en"
+          },
+          {
+            "X": 96.66666666666667,
+            "Y": 982.3333333333334,
+            "W": 192,
+            "H": 24.333333333333258,
+            "Text": "FULLY DEVELOPED",
+            "Confidence": 0.99605143,
+            "Language": "en"
+          },
+          {
+            "X": 98.33333333333333,
+            "Y": 1003.3333333333334,
+            "W": 72.66666666666667,
+            "H": 21.999999999999886,
+            "Text": "SENSE",
+            "Confidence": 0.9995144,
+            "Language": "en"
+          },
+          {
+            "X": 164.33333333333334,
+            "Y": 1004.3333333333334,
+            "W": 39.333333333333314,
+            "H": 20.66666666666663,
+            "Text": "OF",
+            "Confidence": 0.9985634,
+            "Language": "en"
+          },
+          {
+            "X": 205.33333333333334,
+            "Y": 1004.3333333333334,
+            "W": 50.66666666666666,
+            "H": 20.66666666666663,
+            "Text": "WILL",
+            "Confidence": 0.9986065,
+            "Language": "en"
+          },
+          {
+            "X": 253.66666666666666,
+            "Y": 1004.6666666666666,
+            "W": 34.00000000000003,
+            "H": 19.66666666666663,
+            "Text": "TO",
+            "Confidence": 0.9999655,
+            "Language": "en"
+          },
+          {
+            "X": 97.33333333333333,
+            "Y": 1023,
+            "W": 105.33333333333333,
+            "H": 23.333333333333258,
+            "Text": "CONTROL",
+            "Confidence": 0.99991935,
+            "Language": "en"
+          },
+          {
+            "X": 203.33333333333334,
+            "Y": 1023,
+            "W": 86.33333333333334,
+            "H": 22.666666666666742,
+            "Text": "A RING!",
+            "Confidence": 0.99648243,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "\u0022THEY\u0027RE NOT BABIES. IT TAKES A FULLY DEVELOPED SENSE OF WILL TO CONTROL A RING!\u0022",
+      "Translation": "\u0022\uC560\uB4E4\uC774 \uC544\uB2C8\uC57C. \uB9C1\uC744 \uC81C\uC5B4\uD558\uB824\uBA74\n\uC644\uBCBD\uD558\uAC8C \uBC1C\uB2EC\uD55C \uC758\uC9C0\uAC00\n\uD544\uC694\uD558\uB2E4\uACE0!\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 962.5,
+        "Y": 968.5,
+        "W": 37.5,
+        "H": 21.5,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 962.5,
+            "Y": 968.5,
+            "W": 37.5,
+            "H": 21.5,
+            "Text": "A",
+            "Confidence": 0.3214329,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "A",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 958.6666666666667,
+        "Y": 998,
+        "W": 290.33333333333326,
+        "H": 85.33333333333326,
+        "Text": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 975.3333333333333,
+            "Y": 998,
+            "W": 257.33333333333326,
+            "H": 25.33333333333337,
+            "Text": "\u0022MOGO\u0027S MISSION WAS",
+            "Confidence": 0.9973924,
+            "Language": "en"
+          },
+          {
+            "X": 958.6666666666667,
+            "Y": 1018,
+            "W": 290.33333333333326,
+            "H": 25.666666666666742,
+            "Text": "DIRECTING RINGS TOWARD",
+            "Confidence": 0.9992276,
+            "Language": "en"
+          },
+          {
+            "X": 968.6666666666667,
+            "Y": 1036.6666666666667,
+            "W": 270.9999999999998,
+            "H": 26.666666666666515,
+            "Text": "THOSE PREPARED TO USE",
+            "Confidence": 0.99851245,
+            "Language": "en"
+          },
+          {
+            "X": 986.3333333333333,
+            "Y": 1057,
+            "W": 232.66666666666674,
+            "H": 26.333333333333258,
+            "Text": "THEM. WITH HIM DEAD..",
+            "Confidence": 0.9902349,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG008"
+      },
+      "CorrectedText": "\u0022MOGO\u0027S MISSION WAS DIRECTING RINGS TOWARD THOSE PREPARED TO USE THEM. WITH HIM DEAD..\u0022",
+      "Translation": "\u0022\uBAA8\uACE0\uC758 \uC784\uBB34\uB294 \uBC18\uC9C0\uB97C \uC0AC\uC6A9\uD560 \uC900\uBE44\uAC00 \uB41C \uC790\uB4E4\uC5D0\uAC8C[BR]\uBC18\uC9C0\uB97C \uC804\uB2EC\uD558\uB294 \uAC83\uC774\uC5C8\uC9C0. \uADF8\uAC00 \uC8FD\uC73C\uBA74\uC11C...\u0022",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 636.3333333333334,
+        "Y": 1134,
+        "W": 177.33333333333337,
+        "H": 64,
+        "Text": "WITH HIM DEAD, THOUGH.. THES\u00C9 PEOPLE...",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 677.3333333333334,
+            "Y": 1134,
+            "W": 96.99999999999989,
+            "H": 24.666666666666742,
+            "Text": "WITH HIM",
+            "Confidence": 0.9991287,
+            "Language": "en"
+          },
+          {
+            "X": 636.3333333333334,
+            "Y": 1150,
+            "W": 177.33333333333337,
+            "H": 32,
+            "Text": "DEAD, THOUGH..",
+            "Confidence": 0.96635425,
+            "Language": "en"
+          },
+          {
+            "X": 642,
+            "Y": 1174,
+            "W": 69.66666666666663,
+            "H": 24,
+            "Text": "THES\u00C9",
+            "Confidence": 0.9823788,
+            "Language": "en"
+          },
+          {
+            "X": 708,
+            "Y": 1174,
+            "W": 100.33333333333326,
+            "H": 24,
+            "Text": "PEOPLE...",
+            "Confidence": 0.9898997,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WITH HIM\nDEAD, THOUGH...\nTHESE PEOPLE...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "WITH HIM DEAD, THOUGH... THESE PEOPLE...",
+      "Translation": "\uADF8\uAC00 \uC8FD\uC5C8\uC73C\uB2C8...[BR]\uC774 \uC0AC\uB78C\uB4E4\uC740...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 731.3333333333334,
+        "Y": 1567,
+        "W": 168.33333333333337,
+        "H": 123,
+        "Text": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 761,
+            "Y": 1567,
+            "W": 108.33333333333326,
+            "H": 25,
+            "Text": "WHOEVER",
+            "Confidence": 0.9998269,
+            "Language": "en"
+          },
+          {
+            "X": 734.3333333333334,
+            "Y": 1588,
+            "W": 109.33333333333337,
+            "H": 24.666666666666742,
+            "Text": "THEY ARE,",
+            "Confidence": 0.9986827,
+            "Language": "en"
+          },
+          {
+            "X": 837.6666666666667,
+            "Y": 1588,
+            "W": 58.666666666666515,
+            "H": 24.333333333333258,
+            "Text": "THEY",
+            "Confidence": 0.9991167,
+            "Language": "en"
+          },
+          {
+            "X": 731.3333333333334,
+            "Y": 1607.6666666666667,
+            "W": 127.99999999999989,
+            "H": 24.666666666666515,
+            "Text": "DON\u0027T HAVE",
+            "Confidence": 0.9978024,
+            "Language": "en"
+          },
+          {
+            "X": 853,
+            "Y": 1608,
+            "W": 46.66666666666674,
+            "H": 24.333333333333258,
+            "Text": "THE",
+            "Confidence": 0.9678655,
+            "Language": "en"
+          },
+          {
+            "X": 736.3333333333333,
+            "Y": 1626.3333333333333,
+            "W": 157.66666666666674,
+            "H": 25,
+            "Text": "STRENGTH OR",
+            "Confidence": 0.9994065,
+            "Language": "en"
+          },
+          {
+            "X": 736.6666666666666,
+            "Y": 1647.3333333333333,
+            "W": 124.00000000000011,
+            "H": 23.666666666666742,
+            "Text": "WILLPOWER",
+            "Confidence": 0.9997606,
+            "Language": "en"
+          },
+          {
+            "X": 856.6666666666667,
+            "Y": 1648,
+            "W": 36.666666666666515,
+            "H": 23,
+            "Text": "TO",
+            "Confidence": 0.9999121,
+            "Language": "en"
+          },
+          {
+            "X": 762.6666666666666,
+            "Y": 1667.3333333333333,
+            "W": 102.33333333333337,
+            "H": 22.666666666666742,
+            "Text": "WIELD A--",
+            "Confidence": 0.9962469,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO W",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "WHOEVER THEY ARE, THEY DON\u0027T HAVE THE STRENGTH OR WILLPOWER TO WIELD A--",
+      "Translation": "\uADF8\uAC8C \uB204\uAD6C\uB4E0, \uADF8\uAC78 \uD718\uB450\uB97C \uC815\uB3C4\uC758\n\uD798\uC774\uB098 \uC758\uC9C0\uB294 \uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 893.6666666666667,
+        "Y": 1764,
+        "W": 93.33333333333326,
+        "H": 166.33333333333326,
+        "Text": "EET",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 893.6666666666667,
+            "Y": 1764,
+            "W": 93.33333333333326,
+            "H": 166.33333333333326,
+            "Text": "EET",
+            "Confidence": 0.35884604,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "EET",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 793.6666666666666,
+        "Y": 1784,
+        "W": 12.333333333333371,
+        "H": 10,
+        "Text": "2",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 793.6666666666666,
+            "Y": 1784,
+            "W": 12.333333333333371,
+            "H": 10,
+            "Text": "2",
+            "Confidence": 0.36137018,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "2",
+      "Translation": "2",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 734.5,
+        "Y": 1864.3333333333333,
+        "W": 108.5,
+        "H": 105.66666666666674,
+        "Text": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 754.6666666666666,
+            "Y": 1864.3333333333333,
+            "W": 74.66666666666674,
+            "H": 33.333333333333485,
+            "Text": "THEY\u0027RE",
+            "Confidence": 0.9698202,
+            "Language": "en"
+          },
+          {
+            "X": 734.5,
+            "Y": 1890,
+            "W": 108.5,
+            "H": 31,
+            "Text": "ASSHOLES.",
+            "Confidence": 0.9946266,
+            "Language": "en"
+          },
+          {
+            "X": 743,
+            "Y": 1908,
+            "W": 92,
+            "H": 39,
+            "Text": "I GET IT!",
+            "Confidence": 0.9278482,
+            "Language": "en"
+          },
+          {
+            "X": 754,
+            "Y": 1928,
+            "W": 70,
+            "H": 42,
+            "Text": "MOVE!",
+            "Confidence": 0.9812857,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "THEY\u0027RE ASSHOLES. I GET IT! MOVE!",
+      "Translation": "\uADF8\uB188\uB4E4 \uC9C4\uC9DC \uC7AC\uC218 \uC5C6\uC9C0. \uC54C\uC558\uC73C\uB2C8\uAE4C![BR]\uBE44\uCF1C!",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

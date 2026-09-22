@@ -1,0 +1,1092 @@
+{
+  "SourceFile": "page046.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:35:46.0178473+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 111,
+        "Y": 113.66666666666666,
+        "W": 72,
+        "H": 46.33333333333334,
+        "Text": "COME. WALK.",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 111,
+            "Y": 113.66666666666666,
+            "W": 72,
+            "H": 26,
+            "Text": "COME.",
+            "Confidence": 0.99942183,
+            "Language": "en"
+          },
+          {
+            "X": 112.66666666666667,
+            "Y": 134.33333333333334,
+            "W": 68.33333333333333,
+            "H": 25.666666666666657,
+            "Text": "WALK.",
+            "Confidence": 0.9992356,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "COME. WALK.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "COME.\nWALK.",
+      "Translation": "\uC774\uB9AC \uC640.\n\uAC78\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 218,
+        "Y": 162.33333333333331,
+        "W": 84,
+        "H": 64.66666666666669,
+        "Text": "WHAT PLACE?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 228,
+            "Y": 162.33333333333331,
+            "W": 61.66666666666663,
+            "H": 24.33333333333337,
+            "Text": "WHAT",
+            "Confidence": 0.99954754,
+            "Language": "en"
+          },
+          {
+            "X": 218,
+            "Y": 203,
+            "W": 84,
+            "H": 24,
+            "Text": "PLACE?",
+            "Confidence": 0.9997526,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT IS THIS PLACE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "WHAT IS THIS\nPLACE?",
+      "Translation": "\uC5EC\uAE34\n\uC5B4\uB5A4 \uACF3\uC774\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 110.33333333333333,
+        "Y": 278.3333333333333,
+        "W": 193,
+        "H": 143.33333333333331,
+        "Text": "GEMWORLD. A HAVEN FOR US MAIN THE BELOW LANDS. AMETHYST, TOPAZ.. THIS IS THE DEEPEST REALM.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 139,
+            "Y": 278.3333333333333,
+            "W": 136.66666666666669,
+            "H": 23.666666666666686,
+            "Text": "GEMWORLD.",
+            "Confidence": 0.99973184,
+            "Language": "en"
+          },
+          {
+            "X": 120.66666666666667,
+            "Y": 298,
+            "W": 173.66666666666669,
+            "H": 23.333333333333314,
+            "Text": "A HAVEN FOR US",
+            "Confidence": 0.99468315,
+            "Language": "en"
+          },
+          {
+            "X": 240,
+            "Y": 316.6666666666667,
+            "W": 55,
+            "H": 23,
+            "Text": "MAIN",
+            "Confidence": 0.9992907,
+            "Language": "en"
+          },
+          {
+            "X": 197.66666666666666,
+            "Y": 317.3333333333333,
+            "W": 42.666666666666686,
+            "H": 23.666666666666686,
+            "Text": "THE",
+            "Confidence": 0.9997666,
+            "Language": "en"
+          },
+          {
+            "X": 121.33333333333333,
+            "Y": 317.6666666666667,
+            "W": 77.33333333333333,
+            "H": 22,
+            "Text": "BELOW",
+            "Confidence": 0.9995631,
+            "Language": "en"
+          },
+          {
+            "X": 110.33333333333333,
+            "Y": 337.6666666666667,
+            "W": 193,
+            "H": 24.333333333333314,
+            "Text": "LANDS. AMETHYST,",
+            "Confidence": 0.99858934,
+            "Language": "en"
+          },
+          {
+            "X": 125,
+            "Y": 355.6666666666667,
+            "W": 165.33333333333331,
+            "H": 26.333333333333314,
+            "Text": "TOPAZ.. THIS IS",
+            "Confidence": 0.9627789,
+            "Language": "en"
+          },
+          {
+            "X": 138.33333333333331,
+            "Y": 377.6666666666667,
+            "W": 137.66666666666669,
+            "H": 23.333333333333314,
+            "Text": "THE DEEPEST",
+            "Confidence": 0.9986018,
+            "Language": "en"
+          },
+          {
+            "X": 167.33333333333334,
+            "Y": 395.3333333333333,
+            "W": 80,
+            "H": 26.333333333333314,
+            "Text": "REALM.",
+            "Confidence": 0.99931145,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "GEMWORLD,\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "GEMWORLD.\nA HAVEN FOR US\nBELOW THE MAIN\nLANDS. AMETHYST,\nTOPAZ... THIS IS\nTHE DEEPEST\nREALM.",
+      "Translation": "\uC82C\uC6D4\uB4DC.[BR]\uB300\uB959 \uC544\uB798\uC5D0 \uC788\uB294[BR]\uC6B0\uB9AC\uC758 \uC548\uC2DD\uCC98.[BR]\uC790\uC218\uC815, \uD669\uC218\uC815...[BR]\uC5EC\uAE30\uB294 \uAC00\uC7A5 \uAE4A\uC740[BR]\uC601\uC5ED\uC774\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 361,
+        "Y": 313.6666666666667,
+        "W": 150.33333333333331,
+        "H": 63,
+        "Text": "SN MADE FROM A",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 407,
+            "Y": 313.6666666666667,
+            "W": 103.66666666666669,
+            "H": 27,
+            "Text": "SN",
+            "Confidence": 0.36670166,
+            "Language": "en"
+          },
+          {
+            "X": 361,
+            "Y": 353.3333333333333,
+            "W": 150.33333333333331,
+            "H": 23.33333333333337,
+            "Text": "MADE FROM A",
+            "Confidence": 0.9994653,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "MADE FROM A",
+      "Translation": "~\uB85C \uB9CC\uB4E0",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 300.33333333333337,
+        "Y": 373,
+        "W": 271.66666666666663,
+        "H": 163,
+        "Text": "CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERIN EVEN SPACE-TIME, SO IT EXISTS THE SIDE CONTINUUM OF THINGS.",
+        "OriginalRegionCount": 10,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 339.3333333333333,
+            "Y": 373,
+            "W": 192.33333333333331,
+            "H": 23.66666666666663,
+            "Text": "CRYSTAL FORMED",
+            "Confidence": 0.9996344,
+            "Language": "en"
+          },
+          {
+            "X": 307,
+            "Y": 390.3333333333333,
+            "W": 257.33333333333337,
+            "H": 27,
+            "Text": "NEAR THE MOLTEN CORE",
+            "Confidence": 0.9992862,
+            "Language": "en"
+          },
+          {
+            "X": 300.33333333333337,
+            "Y": 412.33333333333337,
+            "W": 271.66666666666663,
+            "H": 22.333333333333258,
+            "Text": "OF THE EARTH. IT REFRACTS",
+            "Confidence": 0.9987611,
+            "Language": "en"
+          },
+          {
+            "X": 310,
+            "Y": 432.3333333333333,
+            "W": 221,
+            "H": 22.666666666666686,
+            "Text": "EVERYTHING ENTERIN",
+            "Confidence": 0.99931854,
+            "Language": "en"
+          },
+          {
+            "X": 304.6666666666667,
+            "Y": 450.6666666666667,
+            "W": 263.00000000000006,
+            "H": 26,
+            "Text": "EVEN SPACE-TIME, SO IT",
+            "Confidence": 0.9955436,
+            "Language": "en"
+          },
+          {
+            "X": 326.3333333333333,
+            "Y": 470.66666666666663,
+            "W": 89.66666666666669,
+            "H": 24,
+            "Text": "EXISTS",
+            "Confidence": 0.99899733,
+            "Language": "en"
+          },
+          {
+            "X": 503.3333333333333,
+            "Y": 470.6666666666667,
+            "W": 41.333333333333314,
+            "H": 23.66666666666663,
+            "Text": "THE",
+            "Confidence": 0.99976176,
+            "Language": "en"
+          },
+          {
+            "X": 457,
+            "Y": 471.3333333333333,
+            "W": 47.666666666666686,
+            "H": 23.33333333333337,
+            "Text": "SIDE",
+            "Confidence": 0.91587305,
+            "Language": "en"
+          },
+          {
+            "X": 355.3333333333333,
+            "Y": 489,
+            "W": 163.00000000000006,
+            "H": 26,
+            "Text": "CONTINUUM OF",
+            "Confidence": 0.98908705,
+            "Language": "en"
+          },
+          {
+            "X": 390,
+            "Y": 508.33333333333337,
+            "W": 93.66666666666669,
+            "H": 27.66666666666663,
+            "Text": "THINGS.",
+            "Confidence": 0.99942553,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MADE FROM A CRY\u0027STAL FORMED NEAR THE MOOTH CORE OF THE EARTH. IT REFRICTS EVERYTHING EVENGE EVE EVE E EVE STA STAT ERE E CH EATA",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "MADE FROM A CRYSTAL FORMED NEAR THE MOLTEN CORE OF THE EARTH. IT REFRACTS EVERYTHING ENTERING, EVEN SPACE-TIME, SO IT EXISTS OUTSIDE THE CONTINUUM OF THINGS.",
+      "Translation": "\uC9C0\uAD6C\uC758 \uC6A9\uC554 \uD575 \uADFC\uCC98\uC5D0\uC11C \uD615\uC131\uB41C \uC218\uC815\uC73C\uB85C \uB9CC\uB4E4\uC5B4\uC84C\uC2B5\uB2C8\uB2E4. \uB4E4\uC5B4\uC624\uB294 \uBAA8\uB4E0 \uAC83, \uC2EC\uC9C0\uC5B4 \uC2DC\uACF5\uAC04\uAE4C\uC9C0 \uAD74\uC808\uC2DC\uD0A4\uAE30\uC5D0[BR]\uC774\uAC83\uC740 \uC874\uC7AC\uC758 \uC5F0\uC18D\uC131 \uBC16\uC5D0 \uB193\uC5EC \uC788\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 580,
+        "Y": 431,
+        "W": 83,
+        "H": 31.333333333333314,
+        "Text": "EVA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 580,
+            "Y": 431,
+            "W": 83,
+            "H": 31.333333333333314,
+            "Text": "EVA",
+            "Confidence": 0.52091074,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "EVA",
+      "Translation": "\uC5D0\uBC14",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 576.3333333333334,
+        "Y": 456,
+        "W": 121,
+        "H": 98,
+        "Text": "WE\u0027VE WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 596,
+            "Y": 456,
+            "W": 82,
+            "H": 36,
+            "Text": "WE\u0027VE",
+            "Confidence": 0.9308274,
+            "Language": "en"
+          },
+          {
+            "X": 603.3333333333334,
+            "Y": 463.3333333333333,
+            "W": 67,
+            "H": 24.000000000000057,
+            "Text": "WE\u0027VE",
+            "Confidence": 0.9955134,
+            "Language": "en"
+          },
+          {
+            "X": 579.3333333333334,
+            "Y": 484.6666666666667,
+            "W": 60,
+            "H": 24,
+            "Text": "BEEN",
+            "Confidence": 0.9996832,
+            "Language": "en"
+          },
+          {
+            "X": 638.6666666666666,
+            "Y": 485.3333333333333,
+            "W": 55.66666666666674,
+            "H": 23,
+            "Text": "SAFE",
+            "Confidence": 0.99969393,
+            "Language": "en"
+          },
+          {
+            "X": 576.3333333333334,
+            "Y": 503.6666666666667,
+            "W": 59,
+            "H": 24.666666666666686,
+            "Text": "HERE,",
+            "Confidence": 0.9987829,
+            "Language": "en"
+          },
+          {
+            "X": 637.3333333333334,
+            "Y": 505.3333333333333,
+            "W": 60,
+            "H": 22.666666666666686,
+            "Text": "UNTIL",
+            "Confidence": 0.96881014,
+            "Language": "en"
+          },
+          {
+            "X": 598,
+            "Y": 518,
+            "W": 78,
+            "H": 36,
+            "Text": "NOW.",
+            "Confidence": 0.9827654,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "WE\u0027VE BEEN SAFE HERE, UNTIL NOW.",
+      "Translation": "\uC9C0\uAE08\uAE4C\uC9C0\uB294[BR]\uC5EC\uAE30\uC11C \uC548\uC804\uD588\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 652,
+        "Y": 653,
+        "W": 119.66666666666663,
+        "H": 61.33333333333337,
+        "Text": "LOST HOW? WHY CAN\u0027T WE--",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 681.6666666666666,
+            "Y": 653,
+            "W": 64.33333333333337,
+            "H": 21,
+            "Text": "LOST",
+            "Confidence": 0.9999566,
+            "Language": "en"
+          },
+          {
+            "X": 654,
+            "Y": 669,
+            "W": 115,
+            "H": 25.5,
+            "Text": "HOW? WHY",
+            "Confidence": 0.9956639,
+            "Language": "en"
+          },
+          {
+            "X": 652,
+            "Y": 688.6666666666666,
+            "W": 119.66666666666663,
+            "H": 25.666666666666742,
+            "Text": "CAN\u0027T WE--",
+            "Confidence": 0.9782459,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LOST HOW? WHY CAN\u0027T WE--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "LOST HOW? WHY CAN\u0027T WE--",
+      "Translation": "\uC5B4\uB5BB\uAC8C \uC783\uC5B4\uBC84\uB9B0 \uAC70\uC57C?[BR]\uC65C \uC6B0\uB9AC\uAC00 \uBABB--",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 79.66666666666667,
+        "Y": 680.3333333333334,
+        "W": 171.33333333333331,
+        "H": 127,
+        "Text": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 126,
+            "Y": 680.3333333333334,
+            "W": 81,
+            "H": 31.333333333333258,
+            "Text": "DIANA,",
+            "Confidence": 0.99781597,
+            "Language": "en"
+          },
+          {
+            "X": 118.66666666666667,
+            "Y": 702.3333333333334,
+            "W": 93.66666666666667,
+            "H": 26.333333333333258,
+            "Text": "I DON\u0027T",
+            "Confidence": 0.99393517,
+            "Language": "en"
+          },
+          {
+            "X": 94.66666666666667,
+            "Y": 724.6666666666666,
+            "W": 142,
+            "H": 22,
+            "Text": "UNDERSTAND",
+            "Confidence": 0.9993843,
+            "Language": "en"
+          },
+          {
+            "X": 79.66666666666667,
+            "Y": 743.3333333333334,
+            "W": 171.33333333333331,
+            "H": 23.66666666666663,
+            "Text": "WHAT HAPPENED",
+            "Confidence": 0.9996568,
+            "Language": "en"
+          },
+          {
+            "X": 103,
+            "Y": 762.6666666666666,
+            "W": 124.66666666666666,
+            "H": 26.33333333333337,
+            "Text": "OUT THERE,",
+            "Confidence": 0.9877402,
+            "Language": "en"
+          },
+          {
+            "X": 128,
+            "Y": 782.6666666666666,
+            "W": 75,
+            "H": 24.666666666666742,
+            "Text": "DIANA.",
+            "Confidence": 0.9959152,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DIANA,\nI DON\u0027T\nUNDERSTAND\nWHAT HAPPENED\nOUT THERE,\nDIANA.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "DIANA, I DON\u0027T UNDERSTAND WHAT HAPPENED OUT THERE, DIANA.",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uBC29\uAE08 \uBC16\uC5D0\uC11C[BR]\uBB34\uC2A8 \uC77C\uC774 \uC77C\uC5B4\uB09C \uAC74\uC9C0 \uBAA8\uB974\uACA0\uC5B4, \uB2E4\uC774\uC544\uB098.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 548.3333333333334,
+        "Y": 707,
+        "W": 18,
+        "H": 32.33333333333337,
+        "Text": "ARS",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 548.3333333333334,
+            "Y": 707,
+            "W": 18,
+            "H": 32.33333333333337,
+            "Text": "ARS",
+            "Confidence": 0.6112742,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "ARS",
+      "Translation": "ARS",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 730.6666666666666,
+        "Y": 727.3333333333334,
+        "W": 121.00000000000011,
+        "H": 65,
+        "Text": "STOP. IT DOESN\u0027T MATTER.",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 756,
+            "Y": 727.3333333333334,
+            "W": 71,
+            "H": 27,
+            "Text": "STOP.",
+            "Confidence": 0.99181855,
+            "Language": "en"
+          },
+          {
+            "X": 730.6666666666666,
+            "Y": 748,
+            "W": 121.00000000000011,
+            "H": 24,
+            "Text": "IT DOESN\u0027T",
+            "Confidence": 0.9961969,
+            "Language": "en"
+          },
+          {
+            "X": 743.6666666666667,
+            "Y": 768.6666666666666,
+            "W": 93.33333333333326,
+            "H": 23.666666666666742,
+            "Text": "MATTER.",
+            "Confidence": 0.99890316,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "STOP IT DOESN\u0027T MATTER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "STOP. IT DOESN\u0027T MATTER.",
+      "Translation": "\uADF8\uB9CC\uD574.[BR]\uC0C1\uAD00\uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 210.66666666666666,
+        "Y": 834.6666666666666,
+        "W": 145.00000000000003,
+        "H": 105.66666666666674,
+        "Text": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 219.33333333333334,
+            "Y": 834.6666666666666,
+            "W": 134.33333333333334,
+            "H": 28.666666666666742,
+            "Text": "IT\u0027S SIMPLE,",
+            "Confidence": 0.9983905,
+            "Language": "en"
+          },
+          {
+            "X": 212,
+            "Y": 855.6666666666666,
+            "W": 143.33333333333331,
+            "H": 25.666666666666742,
+            "Text": "BRUCE. WHAT",
+            "Confidence": 0.99474376,
+            "Language": "en"
+          },
+          {
+            "X": 215.33333333333331,
+            "Y": 877,
+            "W": 137.33333333333331,
+            "H": 22,
+            "Text": "HAPPENED IS",
+            "Confidence": 0.9982987,
+            "Language": "en"
+          },
+          {
+            "X": 210.66666666666666,
+            "Y": 894.3333333333334,
+            "W": 145.00000000000003,
+            "H": 27.333333333333258,
+            "Text": "WE LOST. IT\u0027S",
+            "Confidence": 0.9945673,
+            "Language": "en"
+          },
+          {
+            "X": 249.33333333333334,
+            "Y": 915.6666666666666,
+            "W": 69.00000000000003,
+            "H": 24.666666666666742,
+            "Text": "OVER.",
+            "Confidence": 0.999272,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "IT\u0027S SIMPLE, BRUCE. WHAT HAPPENED IS WE LOST. IT\u0027S OVER.",
+      "Translation": "\uB2E8\uC21C\uD55C \uBB38\uC81C\uC57C, \uBE0C\uB8E8\uC2A4. \uC0C1\uD669\uC740 \uB05D\uB0AC\uC5B4.[BR]\uC6B0\uB9B0 \uC9C4 \uAC70\uC57C.[BR]\uB2E4 \uB05D\uB0AC\uB2E4\uACE0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 557.6666666666666,
+        "Y": 866,
+        "W": 21,
+        "H": 44.66666666666663,
+        "Text": "aIn\u0027.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 557.6666666666666,
+            "Y": 866,
+            "W": 21,
+            "H": 44.66666666666663,
+            "Text": "aIn\u0027.",
+            "Confidence": 0.53567636,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...",
+      "Translation": "...",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 549,
+        "Y": 900.3333333333334,
+        "W": 9,
+        "H": 7.3333333333332575,
+        "Text": "e",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 549,
+            "Y": 900.3333333333334,
+            "W": 9,
+            "H": 7.3333333333332575,
+            "Text": "e",
+            "Confidence": 0.4650752,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "e",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 690,
+        "Y": 1006,
+        "W": 90.66666666666663,
+        "H": 21.666666666666742,
+        "Text": ".MANW",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 690,
+            "Y": 1006,
+            "W": 90.66666666666663,
+            "H": 21.666666666666742,
+            "Text": ".MANW",
+            "Confidence": 0.51317734,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": ".MANW",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 766,
+        "Y": 1059.3333333333333,
+        "W": 183.66666666666674,
+        "H": 105,
+        "Text": "WHAT DOES MATTER IS HERE AND YOU CAN COME WITH US.",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 829,
+            "Y": 1059.3333333333333,
+            "W": 61.33333333333326,
+            "H": 26.666666666666742,
+            "Text": "WHAT",
+            "Confidence": 0.9998499,
+            "Language": "en"
+          },
+          {
+            "X": 766,
+            "Y": 1079.6666666666667,
+            "W": 69,
+            "H": 25,
+            "Text": "DOES",
+            "Confidence": 0.9992589,
+            "Language": "en"
+          },
+          {
+            "X": 833.3333333333334,
+            "Y": 1080,
+            "W": 115.33333333333337,
+            "H": 24.666666666666742,
+            "Text": "MATTER IS",
+            "Confidence": 0.9618312,
+            "Language": "en"
+          },
+          {
+            "X": 844,
+            "Y": 1101,
+            "W": 58.33333333333326,
+            "H": 22.333333333333258,
+            "Text": "HERE",
+            "Confidence": 0.99891937,
+            "Language": "en"
+          },
+          {
+            "X": 902.3333333333333,
+            "Y": 1102,
+            "W": 47.333333333333485,
+            "H": 21.333333333333258,
+            "Text": "AND",
+            "Confidence": 0.99903905,
+            "Language": "en"
+          },
+          {
+            "X": 775.3333333333334,
+            "Y": 1120.3333333333333,
+            "W": 97.66666666666663,
+            "H": 23.666666666666742,
+            "Text": "YOU CAN",
+            "Confidence": 0.8918847,
+            "Language": "en"
+          },
+          {
+            "X": 870.6666666666666,
+            "Y": 1121.3333333333333,
+            "W": 66.33333333333337,
+            "H": 21.666666666666742,
+            "Text": "COME",
+            "Confidence": 0.9998323,
+            "Language": "en"
+          },
+          {
+            "X": 809.6666666666666,
+            "Y": 1140.3333333333333,
+            "W": 93.33333333333337,
+            "H": 24,
+            "Text": "WITH US.",
+            "Confidence": 0.98248214,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT\nDOES MATTER IS\nYOU\u0027RE HERE AND\nYOU CAN COME\nWITH US.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "WHAT DOES MATTER IS YOU\u0027RE HERE AND YOU CAN COME WITH US.",
+      "Translation": "\uC911\uC694\uD55C \uAC74 \uB124\uAC00 \uC5EC\uAE30 \uC788\uACE0,\n\uC6B0\uB9AC\uB791 \uAC19\uC774 \uAC08 \uC218 \uC788\uB2E4\uB294 \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 965.6666666666666,
+        "Y": 1084.6666666666667,
+        "W": 138.0000000000001,
+        "H": 85.66666666666652,
+        "Text": "you CAN HELP US PROTECT THEM.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1008.3333333333334,
+            "Y": 1084.6666666666667,
+            "W": 54.000000000000114,
+            "H": 27.333333333333258,
+            "Text": "you",
+            "Confidence": 0.85307115,
+            "Language": "en"
+          },
+          {
+            "X": 965.6666666666666,
+            "Y": 1105,
+            "W": 138.0000000000001,
+            "H": 26,
+            "Text": "CAN HELP US",
+            "Confidence": 0.9944747,
+            "Language": "en"
+          },
+          {
+            "X": 981,
+            "Y": 1127.3333333333333,
+            "W": 109.33333333333326,
+            "H": 22.333333333333485,
+            "Text": "PROTECT",
+            "Confidence": 0.999368,
+            "Language": "en"
+          },
+          {
+            "X": 1002.6666666666666,
+            "Y": 1143.3333333333333,
+            "W": 65.66666666666686,
+            "H": 27,
+            "Text": "THEM.",
+            "Confidence": 0.99835885,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU CAN HELP US PROTECT THEM.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "YOU CAN HELP US PROTECT THEM.",
+      "Translation": "\uB2F9\uC2E0\uC774 \uC6B0\uB9AC\uB97C \uB3C4\uC640\n\uADF8\uB4E4\uC744 \uC9C0\uD0AC \uC218\n\uC788\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 1112.6666666666667,
+        "Y": 1652,
+        "W": 104,
+        "H": 65,
+        "Text": "THE io ONES LEF BRUCE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1152.5,
+            "Y": 1652,
+            "W": 43.5,
+            "H": 23,
+            "Text": "THE",
+            "Confidence": 0.999893,
+            "Language": "en"
+          },
+          {
+            "X": 1112.6666666666667,
+            "Y": 1668.6666666666667,
+            "W": 26.333333333333258,
+            "H": 48.33333333333326,
+            "Text": "io",
+            "Confidence": 0.73807573,
+            "Language": "en"
+          },
+          {
+            "X": 1115.3333333333333,
+            "Y": 1673.3333333333333,
+            "W": 97.66666666666674,
+            "H": 23,
+            "Text": "ONES LEF",
+            "Confidence": 0.9995383,
+            "Language": "en"
+          },
+          {
+            "X": 1132.6666666666667,
+            "Y": 1691.6666666666667,
+            "W": 84,
+            "H": 25,
+            "Text": "BRUCE.",
+            "Confidence": 0.99812293,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THE ONES LEFT, BRUCE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG024"
+      },
+      "CorrectedText": "THE ONES LEFT, BRUCE.",
+      "Translation": "\uB0A8\uC740 \uB188\uB4E4\uC774\uC57C,\n\uBE0C\uB8E8\uC2A4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 892,
+        "Y": 1654.3333333333333,
+        "W": 101.33333333333326,
+        "H": 43,
+        "Text": "PROTECT WHO?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 892,
+            "Y": 1654.3333333333333,
+            "W": 101.33333333333326,
+            "H": 23,
+            "Text": "PROTECT",
+            "Confidence": 0.9998299,
+            "Language": "en"
+          },
+          {
+            "X": 907.6666666666666,
+            "Y": 1673.3333333333333,
+            "W": 74,
+            "H": 24,
+            "Text": "WHO?",
+            "Confidence": 0.9984324,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PROTECT WHO?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "PROTECT WHO?",
+      "Translation": "\uB204\uAD74 \uC9C0\uD0A4\uB77C\uACE0?",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

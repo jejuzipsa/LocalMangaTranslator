@@ -1,0 +1,281 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page042.jpg",
+  "output_file": "page042.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 35080,
+    "changed_ratio": 0.012686509408920047,
+    "changed_regions": [
+      {
+        "x": 871,
+        "y": 789,
+        "width": 46,
+        "height": 67
+      },
+      {
+        "x": 716,
+        "y": 789,
+        "width": 46,
+        "height": 67
+      },
+      {
+        "x": 626,
+        "y": 788,
+        "width": 44,
+        "height": 68
+      },
+      {
+        "x": 547,
+        "y": 788,
+        "width": 44,
+        "height": 68
+      },
+      {
+        "x": 454,
+        "y": 788,
+        "width": 43,
+        "height": 69
+      },
+      {
+        "x": 823,
+        "y": 788,
+        "width": 43,
+        "height": 68
+      },
+      {
+        "x": 672,
+        "y": 788,
+        "width": 42,
+        "height": 69
+      },
+      {
+        "x": 501,
+        "y": 789,
+        "width": 42,
+        "height": 67
+      },
+      {
+        "x": 759,
+        "y": 789,
+        "width": 36,
+        "height": 67
+      },
+      {
+        "x": 420,
+        "y": 788,
+        "width": 33,
+        "height": 68
+      },
+      {
+        "x": 608,
+        "y": 473,
+        "width": 43,
+        "height": 46
+      },
+      {
+        "x": 597,
+        "y": 789,
+        "width": 29,
+        "height": 67
+      },
+      {
+        "x": 669,
+        "y": 474,
+        "width": 40,
+        "height": 45
+      },
+      {
+        "x": 689,
+        "y": 727,
+        "width": 29,
+        "height": 50
+      },
+      {
+        "x": 569,
+        "y": 728,
+        "width": 30,
+        "height": 48
+      },
+      {
+        "x": 414,
+        "y": 475,
+        "width": 32,
+        "height": 43
+      },
+      {
+        "x": 799,
+        "y": 789,
+        "width": 20,
+        "height": 67
+      },
+      {
+        "x": 723,
+        "y": 727,
+        "width": 26,
+        "height": 50
+      },
+      {
+        "x": 601,
+        "y": 728,
+        "width": 27,
+        "height": 48
+      },
+      {
+        "x": 754,
+        "y": 728,
+        "width": 26,
+        "height": 49
+      },
+      {
+        "x": 546,
+        "y": 727,
+        "width": 25,
+        "height": 50
+      },
+      {
+        "x": 628,
+        "y": 727,
+        "width": 23,
+        "height": 50
+      },
+      {
+        "x": 716,
+        "y": 474,
+        "width": 30,
+        "height": 36
+      },
+      {
+        "x": 667,
+        "y": 727,
+        "width": 21,
+        "height": 50
+      },
+      {
+        "x": 459,
+        "y": 480,
+        "width": 26,
+        "height": 35
+      },
+      {
+        "x": 488,
+        "y": 498,
+        "width": 42,
+        "height": 21
+      },
+      {
+        "x": 494,
+        "y": 475,
+        "width": 30,
+        "height": 21
+      },
+      {
+        "x": 564,
+        "y": 476,
+        "width": 22,
+        "height": 24
+      },
+      {
+        "x": 570,
+        "y": 501,
+        "width": 30,
+        "height": 17
+      },
+      {
+        "x": 673,
+        "y": 475,
+        "width": 25,
+        "height": 20
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page042.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 29112,
+    "erase_changed_ratio": 0.010528211571051323,
+    "typeset_changed_pixels": 5968,
+    "typeset_changed_ratio": 0.0021582978378687245
+  },
+  "region_analysis": {
+    "total": 2,
+    "bubbles": 1,
+    "text_regions": 1,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 2,
+      "Global2x": 2,
+      "Focus3x": 4,
+      "Region1x": 2,
+      "Region2x": 3,
+      "Container1x": 2,
+      "Container2x": 2
+    },
+    "canonical_lines": 2,
+    "units": 1,
+    "assigned_lines": 2,
+    "orphan_groups": 0,
+    "secondary_total": 1,
+    "secondary_accepted": 1,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 707,
+          "Bottom": 887,
+          "Left": 407,
+          "Right": 933,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PART FOUR: EGHOLOGATION",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 1,
+    "requested_render": 1
+  },
+  "render": {
+    "total": 1,
+    "approved": 1,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 1,
+    "TranslatedUnits": 1,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 1,
+    "TypesetCommittedUnits": 1,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "PART FOUR: ECHOLOCATION",
+        "Translation": "\uC81C4\uBD80: \uBC18\uD5A5 \uC704\uCE58",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

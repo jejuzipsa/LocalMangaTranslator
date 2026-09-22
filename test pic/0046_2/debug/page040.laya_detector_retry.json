@@ -1,0 +1,69 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "page040.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": false,
+  "Requests": 1,
+  "RecoveredRequests": 0,
+  "AdvisoryEligibleRequests": 0,
+  "AppliedRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 8,
+      "SourceText": "EEEMNSOS PIn",
+      "CorrectedText": "EEMNSOS PIN",
+      "LayaConfidence": 0.5133,
+      "Block": {
+        "X": 488.6666666666667,
+        "Y": 1126,
+        "W": 469.99999999999994,
+        "H": 31.666666666666742
+      },
+      "Recovered": false,
+      "TwoScaleAgreement": false,
+      "CrossScaleTextIoU": 0,
+      "CrossScaleBubbleIoU": 0,
+      "MinimumTextScore": 0,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "retry_not_recovered",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 160,
+            "Y": 578,
+            "Width": 1128,
+            "Height": 1128
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.5673758865248227,
+          "RegionCount": 6,
+          "TextBubbleCount": 3,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 348,
+            "Y": 766,
+            "Width": 752,
+            "Height": 752
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 0.851063829787234,
+          "RegionCount": 2,
+          "TextBubbleCount": 1,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        }
+      ]
+    }
+  ]
+}

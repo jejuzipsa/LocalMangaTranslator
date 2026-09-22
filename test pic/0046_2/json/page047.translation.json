@@ -1,0 +1,1215 @@
+{
+  "SourceFile": "page047.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T00:38:24.9006562+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 412,
+        "Y": 81,
+        "W": 366,
+        "H": 129.33333333333331,
+        "Text": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT THE OTHERS. UP THERE.",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 412,
+            "Y": 81,
+            "W": 366,
+            "H": 33,
+            "Text": "THERE ARE ABOUT ONE HUNDRED",
+            "Confidence": 0.99496984,
+            "Language": "en"
+          },
+          {
+            "X": 432.6666666666667,
+            "Y": 105.66666666666667,
+            "W": 328.6666666666666,
+            "H": 24.999999999999986,
+            "Text": "THOUSAND DOWN HERE. LOOK",
+            "Confidence": 0.99849814,
+            "Language": "en"
+          },
+          {
+            "X": 597,
+            "Y": 126.33333333333333,
+            "W": 141,
+            "H": 23.000000000000014,
+            "Text": "AUSE I KNOW",
+            "Confidence": 0.99768615,
+            "Language": "en"
+          },
+          {
+            "X": 437.5,
+            "Y": 144.5,
+            "W": 317.5,
+            "H": 27,
+            "Text": "YOU. YOU\u0027RE THINKING ABOUT",
+            "Confidence": 0.98939157,
+            "Language": "en"
+          },
+          {
+            "X": 597,
+            "Y": 165.33333333333334,
+            "W": 129.66666666666663,
+            "H": 23.99999999999997,
+            "Text": "THE OTHERS.",
+            "Confidence": 0.99827224,
+            "Language": "en"
+          },
+          {
+            "X": 543,
+            "Y": 183.66666666666669,
+            "W": 106.33333333333326,
+            "H": 26.66666666666663,
+            "Text": "UP THERE.",
+            "Confidence": 0.9919357,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THERE ARE ABOUT ONE HUNDRED THOUGHMD DOWN HERE. LOOK AT THEM. BE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "THERE ARE ABOUT ONE HUNDRED THOUSAND DOWN HERE. LOOK AT THEM. BECAUSE I KNOW YOU. YOU\u0027RE THINKING ABOUT SAVING ALL THE OTHERS. UP THERE.",
+      "Translation": "\uC774 \uC544\uB798\uC5D0 \uB300\uB7B5 10\uB9CC \uBA85\uC774\uB098 \uC788\uC5B4.[BR]\uC800\uB4E4\uC744 \uBD10.[BR]\uB09C \uB110 \uC54C\uAC70\uB4E0.[BR]\uB10C \uC800 \uC704\uC5D0 \uC788\uB294[BR]\uB2E4\uB978 \uC774\uB4E4\uC744 \uBAA8\uB450[BR]\uAD6C\uD558\uB824\uB294 \uC0DD\uAC01\uC744 \uD558\uACE0 \uC788\uACA0\uC9C0.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 346,
+        "Y": 141.66666666666666,
+        "W": 55.333333333333314,
+        "H": 50.00000000000003,
+        "Text": "R",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 346,
+            "Y": 141.66666666666666,
+            "W": 55.333333333333314,
+            "H": 50.00000000000003,
+            "Text": "R",
+            "Confidence": 0.3027546,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "R",
+      "Translation": "R",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 909.3333333333333,
+        "Y": 151.66666666666669,
+        "W": 160.33333333333348,
+        "H": 112.33333333333331,
+        "Text": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US..",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 953,
+            "Y": 151.66666666666669,
+            "W": 72.66666666666674,
+            "H": 32.66666666666663,
+            "Text": "THERE",
+            "Confidence": 0.9997024,
+            "Language": "en"
+          },
+          {
+            "X": 924.3333333333333,
+            "Y": 177.66666666666669,
+            "W": 132,
+            "H": 25,
+            "Text": "ARE BARELY",
+            "Confidence": 0.9993738,
+            "Language": "en"
+          },
+          {
+            "X": 909.3333333333333,
+            "Y": 196,
+            "W": 160.33333333333348,
+            "H": 26.333333333333314,
+            "Text": "ANY LEFT. NONE",
+            "Confidence": 0.99663574,
+            "Language": "en"
+          },
+          {
+            "X": 913,
+            "Y": 214.66666666666666,
+            "W": 151.66666666666674,
+            "H": 28.666666666666686,
+            "Text": "THAT WILL GO",
+            "Confidence": 0.9987899,
+            "Language": "en"
+          },
+          {
+            "X": 935.6666666666667,
+            "Y": 235,
+            "W": 104.33333333333326,
+            "H": 29,
+            "Text": "WITH US..",
+            "Confidence": 0.9769981,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "THERE ARE BARELY ANY LEFT. NONE THAT WILL GO WITH US...",
+      "Translation": "\uAC70\uC758 \uB0A8\uC9C0 \uC54A\uC558\uC5B4.[BR]\uC6B0\uB9AC\uC640 \uD568\uAED8 \uAC08 \uC218 \uC788\uB294 \uAC74[BR]\uD558\uB098\uB3C4 \uC5C6\uB2E4\uACE0...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 865,
+        "Y": 223,
+        "W": 32.66666666666663,
+        "H": 25.666666666666657,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 865,
+            "Y": 223,
+            "W": 32.66666666666663,
+            "H": 25.666666666666657,
+            "Text": "A",
+            "Confidence": 0.67247075,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "AND",
+      "Translation": "\uADF8\uB9AC\uACE0",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 222.5,
+        "Y": 423.5,
+        "W": 103,
+        "H": 84.5,
+        "Text": "NOT AFTER WE FAILED THEM.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 238,
+            "Y": 423.5,
+            "W": 71.5,
+            "H": 30,
+            "Text": "NOT",
+            "Confidence": 0.97513336,
+            "Language": "en"
+          },
+          {
+            "X": 222.5,
+            "Y": 444,
+            "W": 103,
+            "H": 26.5,
+            "Text": "AFTER WE",
+            "Confidence": 0.9992104,
+            "Language": "en"
+          },
+          {
+            "X": 238.33333333333334,
+            "Y": 465.6666666666667,
+            "W": 71.66666666666666,
+            "H": 22.333333333333314,
+            "Text": "FAILED",
+            "Confidence": 0.99978137,
+            "Language": "en"
+          },
+          {
+            "X": 242.33333333333334,
+            "Y": 484.3333333333333,
+            "W": 64.00000000000003,
+            "H": 23.666666666666686,
+            "Text": "THEM.",
+            "Confidence": 0.99973935,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...NOT AFTER WE FAILED THEM.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "...NOT AFTER WE FAILED THEM.",
+      "Translation": "...\uC6B0\uB9AC\uAC00 \uADF8\uB4E4\uC744 \uC2E4\uB9DD\uC2DC\uD0A8[BR]\uD6C4\uC5D0\uC57C \uB9D0\uC774\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 150.33333333333331,
+        "Y": 527.3333333333334,
+        "W": 83.00000000000003,
+        "H": 46,
+        "Text": "THE HALL...?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 168.33333333333334,
+            "Y": 527.3333333333334,
+            "W": 43.66666666666666,
+            "H": 26,
+            "Text": "THE",
+            "Confidence": 0.9998897,
+            "Language": "en"
+          },
+          {
+            "X": 150.33333333333331,
+            "Y": 547.6666666666666,
+            "W": 83.00000000000003,
+            "H": 25.666666666666742,
+            "Text": "HALL...?",
+            "Confidence": 0.9388735,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THE HALL...?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "THE HALL...?",
+      "Translation": "\uD640...?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 51.333333333333336,
+        "Y": 603.6666666666666,
+        "W": 259,
+        "H": 160,
+        "Text": "WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 171.33333333333331,
+            "Y": 603.6666666666666,
+            "W": 61.33333333333334,
+            "H": 22.33333333333337,
+            "Text": "WHEN",
+            "Confidence": 0.9998023,
+            "Language": "en"
+          },
+          {
+            "X": 232,
+            "Y": 603.6666666666666,
+            "W": 35.33333333333337,
+            "H": 21.666666666666742,
+            "Text": "WE",
+            "Confidence": 0.99995106,
+            "Language": "en"
+          },
+          {
+            "X": 89.66666666666667,
+            "Y": 622,
+            "W": 186.33333333333331,
+            "H": 23.66666666666663,
+            "Text": "BUILT THAT PLACE",
+            "Confidence": 0.99902153,
+            "Language": "en"
+          },
+          {
+            "X": 61.333333333333336,
+            "Y": 640.3333333333334,
+            "W": 240.33333333333334,
+            "H": 26,
+            "Text": "TOGETHER, YOU TOOK",
+            "Confidence": 0.9875749,
+            "Language": "en"
+          },
+          {
+            "X": 64.33333333333333,
+            "Y": 661.6666666666666,
+            "W": 235,
+            "H": 24,
+            "Text": "IT UPON YOURSELF TO",
+            "Confidence": 0.99679345,
+            "Language": "en"
+          },
+          {
+            "X": 51.333333333333336,
+            "Y": 681.3333333333334,
+            "W": 259,
+            "H": 24,
+            "Text": "CONSTRUCT A COMMUNAL",
+            "Confidence": 0.9917451,
+            "Language": "en"
+          },
+          {
+            "X": 58.333333333333336,
+            "Y": 701.3333333333334,
+            "W": 246.99999999999997,
+            "H": 25,
+            "Text": "CHAPEL. YOU SET IT UP IT",
+            "Confidence": 0.99636185,
+            "Language": "en"
+          },
+          {
+            "X": 58.666666666666664,
+            "Y": 719.6666666666666,
+            "W": 245.66666666666666,
+            "H": 26.33333333333337,
+            "Text": "BEFORE YOUR OWN HALL",
+            "Confidence": 0.9975039,
+            "Language": "en"
+          },
+          {
+            "X": 119,
+            "Y": 741.3333333333334,
+            "W": 126,
+            "H": 22.333333333333258,
+            "Text": "RESIDENCE.",
+            "Confidence": 0.99924695,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT HOW CHAPE YOU CH CHAP CHOUPET YOUTA BE CHALA CH",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "DIANA, WHEN WE BUILT THAT PLACE TOGETHER, YOU TOOK IT UPON YOURSELF TO CONSTRUCT A COMMUNAL CHAPEL. YOU SET IT UP IT BEFORE YOUR OWN HALL RESIDENCE.",
+      "Translation": "\uB2E4\uC774\uC544\uB098, \uC6B0\uB9AC\uAC00 \uADF8\uACF3\uC744 \uD568\uAED8 \uAC74\uC124\uD560 \uB54C[BR]\uB2F9\uC2E0\uC740 \uACF5\uB3D9 \uC608\uBC30\uB2F9\uC744 \uC9D3\uACA0\uB2E4\uACE0 \uB098\uC130\uC9C0.[BR]\uB2F9\uC2E0\uC758 \uAC1C\uC778 \uAC70\uCC98\uBCF4\uB2E4[BR]\uADF8\uACF3\uC744 \uBA3C\uC800 \uB9C8\uB828\uD588\uC796\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 592.6666666666666,
+        "Y": 1023,
+        "W": 18,
+        "H": 15,
+        "Text": "0",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 592.6666666666666,
+            "Y": 1023,
+            "W": 18,
+            "H": 15,
+            "Text": "0",
+            "Confidence": 0.32025045,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "0",
+      "Translation": "0",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 382,
+        "Y": 1044.3333333333333,
+        "W": 267.33333333333326,
+        "H": 144,
+        "Text": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 437.6666666666667,
+            "Y": 1044.3333333333333,
+            "W": 154.00000000000006,
+            "H": 23.333333333333485,
+            "Text": "WHEN I ASKED",
+            "Confidence": 0.9995934,
+            "Language": "en"
+          },
+          {
+            "X": 413.3333333333333,
+            "Y": 1063.3333333333333,
+            "W": 201.99999999999994,
+            "H": 24.666666666666742,
+            "Text": "YOU WHY, YOU SAID",
+            "Confidence": 0.8437401,
+            "Language": "en"
+          },
+          {
+            "X": 389,
+            "Y": 1086,
+            "W": 252.66666666666663,
+            "H": 21.666666666666742,
+            "Text": "THAT BEFORE ANYTHING",
+            "Confidence": 0.99917614,
+            "Language": "en"
+          },
+          {
+            "X": 382,
+            "Y": 1102.6666666666667,
+            "W": 267.33333333333326,
+            "H": 24.666666666666515,
+            "Text": "ELSE, WE NEEDED A PLACE",
+            "Confidence": 0.9985508,
+            "Language": "en"
+          },
+          {
+            "X": 395.3333333333333,
+            "Y": 1118,
+            "W": 245.00000000000006,
+            "H": 34.66666666666674,
+            "Text": "PEOPLE COULD GO TO",
+            "Confidence": 0.987898,
+            "Language": "en"
+          },
+          {
+            "X": 392.66666666666663,
+            "Y": 1142.6666666666667,
+            "W": 245.33333333333337,
+            "H": 24.666666666666515,
+            "Text": "RENEW THEIR FAITH...NO",
+            "Confidence": 0.9847915,
+            "Language": "en"
+          },
+          {
+            "X": 438.6666666666667,
+            "Y": 1159.6666666666667,
+            "W": 151.99999999999994,
+            "H": 28.666666666666515,
+            "Text": "MATTER WHAT.",
+            "Confidence": 0.9970852,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PLED CO TO TO RENEN TH TO TA MATENATORALARATARATA RE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "WHEN I ASKED YOU WHY, YOU SAID THAT BEFORE ANYTHING ELSE, WE NEEDED A PLACE PEOPLE COULD GO TO RENEW THEIR FAITH...NO MATTER WHAT.",
+      "Translation": "\uC774\uC720\uB97C \uBB3C\uC5C8\uC744 \uB54C, \uB2F9\uC2E0\uC740 \uBB34\uC5C7\uBCF4\uB2E4\uB3C4[BR]\uC0AC\uB78C\uB4E4\uC774 \uC2E0\uB150\uC744 \uD68C\uBCF5\uD560 \uC218 \uC788\uB294[BR]\uC7A5\uC18C\uAC00 \uD544\uC694\uD558\uB2E4\uACE0 \uD588\uC8E0...[BR]\uC5B4\uB5A4 \uC0C1\uD669\uC5D0\uC11C\uB3C4\uC694.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 662,
+        "Y": 1086,
+        "W": 124,
+        "H": 41,
+        "Text": "AM",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 662,
+            "Y": 1086,
+            "W": 124,
+            "H": 41,
+            "Text": "AM",
+            "Confidence": 0.6302021,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "AM",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 655.6666666666667,
+        "Y": 1142,
+        "W": 133.33333333333326,
+        "H": 47.33333333333326,
+        "Text": "DO YOU REMEMBER?",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 676.6666666666666,
+            "Y": 1142,
+            "W": 90.33333333333337,
+            "H": 27.333333333333258,
+            "Text": "DO YOU",
+            "Confidence": 0.9609641,
+            "Language": "en"
+          },
+          {
+            "X": 655.6666666666667,
+            "Y": 1164.3333333333333,
+            "W": 133.33333333333326,
+            "H": 25,
+            "Text": "REMEMBER?",
+            "Confidence": 0.9996711,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DO YOU REMEMBER?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "DO YOU REMEMBER?",
+      "Translation": "\uAE30\uC5B5\uB098?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1014.6666666666666,
+        "Y": 1244,
+        "W": 204.0000000000001,
+        "H": 144,
+        "Text": "SO PUT ME THERE. DO WHAT ALWAYS THAN DONE BETTER AND us, OF SPEAK THE TRUTH.",
+        "OriginalRegionCount": 11,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1056.6666666666667,
+            "Y": 1244,
+            "W": 116.33333333333326,
+            "H": 23,
+            "Text": "SO PUT ME",
+            "Confidence": 0.9988635,
+            "Language": "en"
+          },
+          {
+            "X": 1028.3333333333333,
+            "Y": 1264,
+            "W": 174.33333333333348,
+            "H": 23,
+            "Text": "THERE. DO WHAT",
+            "Confidence": 0.998958,
+            "Language": "en"
+          },
+          {
+            "X": 1111.3333333333333,
+            "Y": 1283,
+            "W": 88.33333333333348,
+            "H": 23.333333333333258,
+            "Text": "ALWAYS",
+            "Confidence": 0.99877185,
+            "Language": "en"
+          },
+          {
+            "X": 1162,
+            "Y": 1302,
+            "W": 56.66666666666674,
+            "H": 24.666666666666742,
+            "Text": "THAN",
+            "Confidence": 0.9997777,
+            "Language": "en"
+          },
+          {
+            "X": 1014.6666666666666,
+            "Y": 1302.6666666666667,
+            "W": 64.33333333333337,
+            "H": 21.666666666666515,
+            "Text": "DONE",
+            "Confidence": 0.99959683,
+            "Language": "en"
+          },
+          {
+            "X": 1076.3333333333333,
+            "Y": 1302.6666666666667,
+            "W": 84.33333333333348,
+            "H": 23.333333333333258,
+            "Text": "BETTER",
+            "Confidence": 0.9996327,
+            "Language": "en"
+          },
+          {
+            "X": 1154,
+            "Y": 1322,
+            "W": 47.66666666666674,
+            "H": 22,
+            "Text": "AND",
+            "Confidence": 0.9985471,
+            "Language": "en"
+          },
+          {
+            "X": 1113.3333333333333,
+            "Y": 1322.3333333333333,
+            "W": 40.333333333333485,
+            "H": 21.666666666666742,
+            "Text": "us,",
+            "Confidence": 0.99689984,
+            "Language": "en"
+          },
+          {
+            "X": 1081.3333333333333,
+            "Y": 1323.6666666666667,
+            "W": 32.66666666666674,
+            "H": 20.333333333333258,
+            "Text": "OF",
+            "Confidence": 0.99990165,
+            "Language": "en"
+          },
+          {
+            "X": 1057.5,
+            "Y": 1342.5,
+            "W": 115,
+            "H": 22.5,
+            "Text": "SPEAK THE",
+            "Confidence": 0.9988504,
+            "Language": "en"
+          },
+          {
+            "X": 1075,
+            "Y": 1358,
+            "W": 81,
+            "H": 30,
+            "Text": "TRUTH.",
+            "Confidence": 0.99478877,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SO PUT ME\nTHERE. DO WHAT\nYOU\u0027VE ALWAYS\nDONE BETTER THAN\nAMY OF U",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "SO PUT ME THERE. DO WHAT YOU\u0027RE ALWAYS DONE BETTER THAN ANY OF US, AND SPEAK THE TRUTH.",
+      "Translation": "\uADF8\uB7EC\uB2C8 \uB098\uB97C \uADF8 \uC790\uB9AC\uC5D0 \uC549\uD600\uC918. \uB2F9\uC2E0\uC774 \uC6B0\uB9AC \uC911 \uB204\uAD6C\uBCF4\uB2E4\uB3C4 \uC798\uD574\uC654\uB358 \uAC83\uCC98\uB7FC, \uC9C4\uC2E4\uC744 \uB9D0\uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 1132,
+        "Y": 1404,
+        "W": 93.33333333333326,
+        "H": 83,
+        "Text": "HOW DID THE VILLAINS WIN?",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1152,
+            "Y": 1404,
+            "W": 53.66666666666674,
+            "H": 24,
+            "Text": "HOW",
+            "Confidence": 0.99989814,
+            "Language": "en"
+          },
+          {
+            "X": 1135.3333333333333,
+            "Y": 1423,
+            "W": 87.33333333333348,
+            "H": 25.333333333333258,
+            "Text": "DID THE",
+            "Confidence": 0.9994247,
+            "Language": "en"
+          },
+          {
+            "X": 1132,
+            "Y": 1444,
+            "W": 93.33333333333326,
+            "H": 23,
+            "Text": "VILLAINS",
+            "Confidence": 0.99939185,
+            "Language": "en"
+          },
+          {
+            "X": 1151,
+            "Y": 1463,
+            "W": 57.66666666666674,
+            "H": 24,
+            "Text": "WIN?",
+            "Confidence": 0.99752307,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HOW DID THE VILLAINS WIN?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "HOW DID THE VILLAINS WIN?",
+      "Translation": "\uC545\uB2F9\uB4E4\uC774 \uC5B4\uB5BB\uAC8C \uC774\uAE34 \uAC70\uC9C0?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 190,
+        "Y": 1418,
+        "W": 142.66666666666663,
+        "H": 179,
+        "Text": "6",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 190,
+            "Y": 1418,
+            "W": 142.66666666666663,
+            "H": 179,
+            "Text": "6",
+            "Confidence": 0.31895298,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "6",
+      "Translation": "6",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 417.6666666666667,
+        "Y": 1435,
+        "W": 159.66666666666657,
+        "H": 85,
+        "Text": "THINGS You DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 430.33333333333337,
+            "Y": 1435,
+            "W": 134.33333333333337,
+            "H": 27.333333333333258,
+            "Text": "THINGS You",
+            "Confidence": 0.9021873,
+            "Language": "en"
+          },
+          {
+            "X": 417.6666666666667,
+            "Y": 1454.3333333333333,
+            "W": 159.66666666666657,
+            "H": 27.333333333333485,
+            "Text": "DON\u0027T. THINGS",
+            "Confidence": 0.99430865,
+            "Language": "en"
+          },
+          {
+            "X": 425,
+            "Y": 1475.3333333333333,
+            "W": 143.33333333333326,
+            "H": 26,
+            "Text": "YOU WEREN\u0027T",
+            "Confidence": 0.97951144,
+            "Language": "en"
+          },
+          {
+            "X": 434.66666666666663,
+            "Y": 1495.3333333333333,
+            "W": 124.00000000000011,
+            "H": 24.666666666666742,
+            "Text": "THERE FOR.",
+            "Confidence": 0.99936634,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG019"
+      },
+      "CorrectedText": "THINGS YOU DON\u0027T. THINGS YOU WEREN\u0027T THERE FOR.",
+      "Translation": "\uB124\uAC00 \uBAA8\uB974\uB294 \uAC83\uB4E4.[BR]\uB124\uAC00 \uACC1\uC5D0 \uC5C6\uC5C8\uC744 \uB54C \uC77C\uC5B4\uB09C \uC77C\uB4E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 1152,
+        "Y": 1538.3333333333333,
+        "W": 15,
+        "H": 9.666666666666742,
+        "Text": "y",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1152,
+            "Y": 1538.3333333333333,
+            "W": 15,
+            "H": 9.666666666666742,
+            "Text": "y",
+            "Confidence": 0.43482018,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "y",
+      "Translation": "\uC751",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 160.33333333333334,
+        "Y": 1682,
+        "W": 172.3333333333333,
+        "H": 112.66666666666674,
+        "Text": "OH, I REMEMBER. BUT REMEMBER NGS, TOO.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 211,
+            "Y": 1682,
+            "W": 73,
+            "H": 32,
+            "Text": "OH, I",
+            "Confidence": 0.98356736,
+            "Language": "en"
+          },
+          {
+            "X": 160.33333333333334,
+            "Y": 1707,
+            "W": 172.3333333333333,
+            "H": 25.333333333333258,
+            "Text": "REMEMBER. BUT",
+            "Confidence": 0.9968029,
+            "Language": "en"
+          },
+          {
+            "X": 196,
+            "Y": 1730,
+            "W": 120.66666666666669,
+            "H": 23.333333333333258,
+            "Text": "REMEMBER",
+            "Confidence": 0.99986595,
+            "Language": "en"
+          },
+          {
+            "X": 274,
+            "Y": 1741.6666666666667,
+            "W": 55.333333333333314,
+            "H": 33.33333333333326,
+            "Text": "NGS,",
+            "Confidence": 0.99831665,
+            "Language": "en"
+          },
+          {
+            "X": 215.66666666666666,
+            "Y": 1765,
+            "W": 61.33333333333334,
+            "H": 29.666666666666742,
+            "Text": "TOO.",
+            "Confidence": 0.9986946,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "OH, I\nREMEMBER. BUT\nI REMEMBER\nOTHER THINGS,\nTOO.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG021"
+      },
+      "CorrectedText": "OH, I REMEMBER. BUT I REMEMBER OTHER THINGS, TOO.",
+      "Translation": "\uC544, \uAE30\uC5B5\uB098. \uD558\uC9C0\uB9CC \uB2E4\uB978 \uAC83\uB4E4\uB3C4 \uAE30\uC5B5\uB098.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 355.3333333333333,
+        "Y": 1717,
+        "W": 330.3333333333334,
+        "H": 169,
+        "Text": "IRE:",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 355.3333333333333,
+            "Y": 1717,
+            "W": 330.3333333333334,
+            "H": 169,
+            "Text": "IRE:",
+            "Confidence": 0.5127237,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "IRE:",
+      "Translation": "\uBD84\uB178:",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 688,
+        "Y": 1742,
+        "W": 267,
+        "H": 113.33333333333326,
+        "Text": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 693,
+            "Y": 1742,
+            "W": 262,
+            "H": 40,
+            "Text": "THE CHAPEL IN FLAMES.",
+            "Confidence": 0.99173033,
+            "Language": "en"
+          },
+          {
+            "X": 714.3333333333333,
+            "Y": 1770.3333333333333,
+            "W": 210.33333333333337,
+            "H": 24.666666666666742,
+            "Text": "PISSED ON, SHIT IN.",
+            "Confidence": 0.9962317,
+            "Language": "en"
+          },
+          {
+            "X": 706.6666666666667,
+            "Y": 1790.3333333333333,
+            "W": 224.9999999999999,
+            "H": 24.666666666666742,
+            "Text": "TORN APART. CHEERS",
+            "Confidence": 0.99604225,
+            "Language": "en"
+          },
+          {
+            "X": 688,
+            "Y": 1806.3333333333333,
+            "W": 263,
+            "H": 31.666666666666742,
+            "Text": "AND LAUGHTER ECHOING",
+            "Confidence": 0.9972583,
+            "Language": "en"
+          },
+          {
+            "X": 726.6666666666667,
+            "Y": 1826.6666666666667,
+            "W": 185.66666666666663,
+            "H": 28.666666666666515,
+            "Text": "DOWN THE HALLS.",
+            "Confidence": 0.9993535,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022THE CHAPPL IN FLAMES, PISSED ON, SHIT IN, TORN APART CHEERS AND LAUGHTER ECHOING DOWN THE H LE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG023"
+      },
+      "CorrectedText": "THE CHAPEL IN FLAMES. PISSED ON, SHIT IN. TORN APART. CHEERS AND LAUGHTER ECHOING DOWN THE HALLS.",
+      "Translation": "\uBD88\uD0C0\uB294 \uC608\uBC30\uB2F9. \uC628 \uC0AC\uBC29\uC5D0 \uC624\uBB3C\uACFC \uBC30\uC124\uBB3C\uC774 \uD769\uBFCC\uB824\uC9C0\uACE0, \uBAA8\uB4E0 \uAC83\uC774 \uC9D3\uBC1F\uD614\uB2E4. \uBCF5\uB3C4\uB9C8\uB2E4 \uD658\uD638\uC640 \uC6C3\uC74C\uC18C\uB9AC\uAC00 \uC6B8\uB824 \uD37C\uC9C4\uB2E4.",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 148,
+        "Y": 1792.6666666666667,
+        "W": 80,
+        "H": 30.333333333333258,
+        "Text": "STKWY 400",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 178,
+            "Y": 1792.6666666666667,
+            "W": 50,
+            "H": 16.333333333333258,
+            "Text": "STKWY",
+            "Confidence": 0.46276218,
+            "Language": "en"
+          },
+          {
+            "X": 148,
+            "Y": 1799,
+            "W": 55,
+            "H": 24,
+            "Text": "400",
+            "Confidence": 0.34623748,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "OTHER TH\nTOO",
+      "Translation": "\uB2E4\uB978\n\uAC83\uB4E4\uB3C4",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 313,
+        "Y": 1824,
+        "W": 6.333333333333371,
+        "H": 8.666666666666742,
+        "Text": ".",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 313,
+            "Y": 1824,
+            "W": 6.333333333333371,
+            "H": 8.666666666666742,
+            "Text": ".",
+            "Confidence": 0.46184906,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": ".",
+      "Translation": ".",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 21,
+      "Source": {
+        "Id": 21,
+        "X": 731.3333333333334,
+        "Y": 1881,
+        "W": 211.33333333333337,
+        "H": 86.33333333333326,
+        "Text": "\u0022YOU DON\u0027T KNOW HAPPENED YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 737.3333333333333,
+            "Y": 1881,
+            "W": 200.33333333333337,
+            "H": 27,
+            "Text": "\u0022YOU DON\u0027T KNOW",
+            "Confidence": 0.99463964,
+            "Language": "en"
+          },
+          {
+            "X": 812.6666666666667,
+            "Y": 1903.3333333333333,
+            "W": 107.33333333333326,
+            "H": 22,
+            "Text": "HAPPENED",
+            "Confidence": 0.9993475,
+            "Language": "en"
+          },
+          {
+            "X": 731.3333333333334,
+            "Y": 1922.3333333333333,
+            "W": 211.33333333333337,
+            "H": 24.333333333333485,
+            "Text": "YOU WEREN\u0027T THERE",
+            "Confidence": 0.99211663,
+            "Language": "en"
+          },
+          {
+            "X": 769.3333333333333,
+            "Y": 1940.6666666666667,
+            "W": 136,
+            "H": 26.666666666666515,
+            "Text": "AT THE END.\u0022",
+            "Confidence": 0.9942847,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG026"
+      },
+      "CorrectedText": "\u0022YOU DON\u0027T KNOW WHAT HAPPENED. YOU WEREN\u0027T THERE AT THE END.\u0022",
+      "Translation": "\u0022\uB10C \uBB34\uC2A8 \uC77C\uC774 \uC788\uC5C8\uB294\uC9C0 \uBAB0\uB77C. \uB9C8\uC9C0\uB9C9\uC5D0 \uB10C \uAC70\uAE30 \uC5C6\uC5C8\uC73C\uB2C8\uAE4C.\u0022",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
