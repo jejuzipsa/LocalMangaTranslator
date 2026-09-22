@@ -1592,3 +1592,304 @@ page032
 2. page028 ANYTHING cleaned_text_redetected
 3. 0035 재검증에서 target coverage unresolved가 새로 남는지 확인
 4. detector owner가 없는 genuine OCR-only dialogue 처리 정책
+
+
+============================================================
+0036 - Dual Track Experiment / LayaExperimental Shadow Track
+============================================================
+
+목표
+------------------------------------------------------------
+0035까지의 Classic 판단 파이프라인을 유지하면서,
+Laya를 별도 System-1 decision track으로 추가한다.
+
+0036 초기 단계는 Shadow Mode다.
+즉 실제 번역/erase/typeset 결과는 Classic 규칙이 계속 결정하고,
+Laya는 같은 evidence를 별도로 판정해 비교 로그만 남긴다.
+
+이 단계에서 Laya는 이미지/Vision/OCR 자체를 수행하지 않는다.
+Laya의 역할은 detector/OCR/Vision 결과를 바탕으로 빠른 분류/판정만 수행하는 것이다.
+
+구조
+------------------------------------------------------------
+PipelineDecisionTrack:
+- Classic
+- LayaExperimental
+
+LayaDecisionMode:
+- Off
+- Shadow
+- Advisory
+- Active
+
+0036 기본값:
+- DecisionTrack = LayaExperimental
+- LayaMode = Shadow
+
+현재 실제 적용은 Shadow만 사용한다.
+Advisory / Active enum은 후속 실험을 위한 예약값이며
+0036에서 Classic 결과를 override하지 않는다.
+
+
+Laya runtime
+------------------------------------------------------------
+공식 오픈소스 Laya 0.3.5 사용.
+- upstream: NandhaKishorM/laya
+- model: convaiinnovations/laya / typed-decisions subfolder
+- license: Apache-2.0
+
+C# 프로세스 내부에 모델을 직접 넣지 않고 Python sidecar worker를 사용한다.
+
+신규 파일:
+- tools/laya_bridge.py
+- src/LocalMangaTranslator/Services/LayaDecisionService.cs
+
+laya_bridge.py:
+- laya typed-decisions checkpoint를 최초 1회 로드
+- stdin/stdout JSONL 프로토콜
+- worker를 페이지마다 재시작하지 않고 프로세스 수명 동안 checkpoint 유지
+- Laya 내부 stdout은 stderr로 redirect하여 JSONL protocol 오염 방지
+- CUDA 요청 후 Laya 자체 fallback으로 CPU 사용 가능
+
+LayaDecisionService:
+- worker 시작/유지
+- Python에서 laya import 실패 시 laya==0.3.5 자동 설치
+- LMT_LAYA_PYTHON 환경변수로 Python interpreter override 가능
+- LMT_LAYA_DEVICE 환경변수로 device override 가능
+- 기본 device 요청은 cuda
+- Laya 실패는 Classic 결과를 실패시키지 않는다
+- 실패 시 debug summary에 Available=false / Error 기록
+
+최초 실행 시:
+1. Python 존재 확인
+2. laya package 확인
+3. 필요 시 pip install laya==0.3.5
+4. Hugging Face typed-decisions checkpoint 다운로드/로드
+5. 이후 같은 worker를 재사용
+
+중요:
+Portable ZIP에는 모델 weight 자체를 포함하지 않는다.
+모델은 최초 실행 시 upstream에서 내려받는다.
+
+
+0036 Shadow decision 종류
+------------------------------------------------------------
+
+1. ownership
+OCR block이 어느 immutable RT-DETR TextBubble에 속하는지 Laya가 별도로 판정.
+
+입력 evidence:
+- source / corrected text
+- primary OCR 평균 confidence
+- secondary OCR text/agreement
+- current Classic owner
+- OCR block geometry
+- 근접 RT-DETR TextBubble 후보 최대 4개
+- 각 후보 parent Bubble
+- detector score
+- block coverage
+- center containment
+- center distance
+
+Laya choice:
+- 실제 TextRegionId
+- UNBOUND
+
+중요:
+Laya가 geometry를 만들 수 없다.
+선택 가능한 owner는 RT-DETR이 이미 검출한 immutable TextBubble뿐이다.
+
+
+2. detector_retry
+Classic 기준 UNBOUND이고,
+주변에 안전한 RT-DETR TextBubble 후보가 없는 OCR unit에 대해
+다른 detector scale 재검사가 필요한지 noul(true/false)로 판정.
+
+이 판단 역시 geometry 생성 권한이 없다.
+후속 multi-scale detector 실험을 위한 triage signal만 기록한다.
+
+page014 NONONO처럼:
+- OCR은 강하게 존재
+- 번역도 가능
+- RT-DETR target 자체는 사라짐
+인 케이스가 이 로그의 주요 대상이다.
+
+
+3. render_recovery
+Vision이 dialogue/thought/caption을 Render=false로 반환한 경우,
+detector/OCR evidence를 바탕으로 재활성화할지 Laya가 별도 판정.
+
+Classic의
+PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit()
+결과와 비교해 Match/Mismatch 기록.
+
+page021
+"I DON'T KNOW ANYMORE. I DON'T--"
+같은 케이스가 주요 대상이다.
+
+
+4. duplicate
+같은 physical Bubble RegionId 아래에 여러 번역 candidate가 존재할 경우,
+어떤 candidate를 살릴지 Laya choice로 판정.
+
+Classic winner:
+RenderPipelineService의 실제 V2CandidateKeepScore 기준.
+
+Laya evidence:
+- source/corrected text
+- secondary OCR agreement
+- OCR confidence
+- detector TextRegion link
+
+page032 "AM I RIGHT?" 약한/강한 후보,
+page012 혼합 OCR 잔재 같은 케이스 비교 목적.
+
+
+Shadow log
+------------------------------------------------------------
+각 페이지 debug 폴더에 추가:
+
+- <page>.laya_decisions.json
+- <page>.laya_summary.json
+
+laya_decisions.json:
+- Schema = pipeline-v2-laya-shadow-v1
+- SourceFile
+- Track
+- Mode
+- Runtime
+- Available
+- Error
+- Decisions
+
+각 decision:
+- Kind
+- RegionId
+- RuleDecision
+- LayaDecision
+- Confidence
+- Match
+- Status
+- Evidence
+
+Shadow에서는 항상 Status=shadow_only이며
+LayaDecision은 실제 pipeline action에 반영하지 않는다.
+
+
+laya_summary.json:
+- Schema = pipeline-v2-laya-summary-v1
+- TotalDecisions
+- Matched
+- Mismatched
+- NoAnswer
+- ByKind
+  - Compared
+  - Matched
+  - Mismatched
+  - NoAnswer
+  - MeanConfidence
+
+
+Portable packaging
+------------------------------------------------------------
+LocalMangaTranslator.csproj에서
+tools/laya_bridge.py를 output/tools/laya_bridge.py로 복사.
+
+따라서 Portable build에서도 동일 bridge를 실행할 수 있다.
+
+
+UI / 실행 로그
+------------------------------------------------------------
+작업 시작 로그에 현재 판단 track을 표시:
+
+판단트랙: LayaExperimental/Shadow
+
+사용자는 현재 테스트 빌드가 Classic-only인지
+Laya shadow track인지 로그에서 바로 확인 가능.
+
+
+Regression / CI
+------------------------------------------------------------
+PipelineChecks에 0036 기본 설정 고정:
+- PipelineDecisionTrack.LayaExperimental
+- LayaDecisionMode.Shadow
+
+CI에서는 실제 Laya model을 다운로드하거나 inference하지 않는다.
+빌드/회귀 테스트는 sidecar integration의 C# 구조만 검증한다.
+
+실제 Laya accuracy/latency 평가는 사용자 로컬 RTX 4070 환경에서
+0036 회귀 페이지를 돌린 뒤 laya_decisions/laya_summary 로그로 비교한다.
+
+
+1차 실전 검증 페이지
+------------------------------------------------------------
+- page012
+- page014
+- page017
+- page021
+- page028
+- page032
+
+관찰 포인트:
+
+page012
+- TextFree 원본 보존 유지
+- 혼합 OCR duplicate 후보에서 Laya winner 확인
+
+page014
+- NONONO unbound에 대해 detector_retry 판정 확인
+- 아직 geometry는 Classic RT-DETR 1회 결과만 사용
+
+page017
+- 0035에서 고친 ownership을 Laya가 동일하게 선택하는지 확인
+
+page021
+- "I DON'T KNOW ANYMORE..." Render=false에 대해
+  Classic recovery와 Laya recovery 판단 비교
+
+page028
+- "SO FIRST..." ownership 정상 유지 확인
+- 남은 ANYTHING cleaned-state 문제는 0036 Laya shadow가 직접 수정하지 않음
+
+page032
+- "AM I RIGHT?" exact candidate를 Laya도 선택하는지 확인
+
+
+0036에서 의도적으로 하지 않은 것
+------------------------------------------------------------
+- Laya가 Classic 결정을 override하지 않음
+- Laya가 새 Bubble/TextBubble geometry를 생성하지 않음
+- RT-DETR multi-scale inference 아직 미적용
+- cleaned-state verifier 판정을 Laya가 변경하지 않음
+- Laya가 번역문을 생성하지 않음
+- final Korean translation 모델 변경 없음
+
+
+관련 커밋
+------------------------------------------------------------
+7a7351f2c4257956d7839bfb20602b8454a7ba11
+V2 0036: add persistent Laya decision bridge
+
+f89883a3a540fb60c6339f978f16f0bf0d4623aa
+V2 0036: add Laya shadow decision service
+
+0cc1b7811b27357a8f4af36de98dcd5091103ff2
+Refactor 0036: expose classic duplicate score for shadow comparison
+
+d374e31cb07390ef0f5c504ceb1138dad7b75bce
+V2 0036: add dual-track Laya shadow options
+
+3ec17b3c78e42b4bfa8b95e4f4ee1df456971c82
+Build 0036: package Laya bridge with portable app
+
+02346793cf8e21fdc2fd678795ba8dcffc9a7c8e
+V2 0036: run Laya experimental shadow track per page
+
+3b29aaae446c3e09e120acfb93f0c35cfa532000
+UI 0036: show active Laya experimental track in run log
+
+84ba248c459a4182bfa7b4ed1ddedcd913af5de1
+Docs 0036: add Laya third-party notice
+
+951a85067112a7bf643f20b1791ad29a55f20e1c
+Tests: lock 0036 Laya shadow track defaults
