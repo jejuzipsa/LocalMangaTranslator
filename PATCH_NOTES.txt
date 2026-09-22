@@ -2468,3 +2468,250 @@ Shadow schema
 3a9c2dcac178f74a974813d0e99391c156acec4b
 V2 0039: complete Laya shadow decision coverage
 
+============================================================
+0040 - Laya Shadow Recovery Probes / Local-Scale RT-DETR Retry
+============================================================
+
+0039 실전 결과 요약
+------------------------------------------------------------
+같은 6페이지(page012/014/017/021/028/032)에서
+Laya Shadow decision coverage를 확장한 결과:
+
+- TotalDecisions = 259
+- Matched = 169
+- Mismatched = 90
+- NoAnswer = 0
+- 0038과 0039 최종 이미지 6장 모두 SHA 동일.
+
+핵심 관찰:
+- detector_retry는 0038과 동일하게 가장 유망한 구조 판단.
+- page014 NONONO 계열은 Laya retry=true 유지.
+- page021 RG014
+  "I DON'T KNOW ANYMORE. I DON'T-"
+  최종 Render=false 상태를 0039 post_translation_final hook이 관찰했고
+  Laya render_recovery=true / confidence 약 0.534.
+- duplicate는 page012에서 실제 V2 physical-container 경쟁을 관찰했으나
+  Laya가 Classic winner와 반대 후보를 선택.
+- vision_correction / translation_consistency는 reject 과다로
+  Active 판단에 사용하지 않음.
+
+따라서 0040은 Laya가 잘하는 "다시 봐야 할 곳을 라우팅"하는 역할을
+실제 Shadow action으로 검증한다.
+
+
+0040 원칙
+------------------------------------------------------------
+결정 권한은 여전히 Classic/V2에 있다.
+
+Laya:
+- detector_retry=true -> 추가 RT-DETR Shadow pass 요청
+- post_translation_final render_recovery=true -> 별도 Shadow 번역/바인딩 probe 요청
+
+하지만:
+- 새 detector geometry를 원래 PageAnalysisResult에 합치지 않음.
+- V2DetectionSnapshot을 변경하지 않음.
+- 최종 Render/erase/typeset 입력을 변경하지 않음.
+- Shadow probe 결과는 debug JSON으로만 저장.
+
+
+Local-scale RT-DETR Shadow retry
+------------------------------------------------------------
+RT-DETR ONNX 입력은 640x640 고정이다.
+
+전체 페이지를 단순히 다시 640x640으로 resize하면
+대상의 상대 크기가 바뀌지 않아 실제 scale retry 의미가 약하다.
+
+0040은 Laya가 detector_retry=true로 고른 OCR block 주변을
+서로 다른 크기의 정사각 local window로 crop한 뒤
+각 crop을 640x640 detector 입력으로 보낸다.
+
+passes:
+- local_2p40
+  OCR block 최대 변 길이의 2.40배 context
+- local_1p60
+  OCR block 최대 변 길이의 1.60배 context
+
+최소 crop side:
+- 256 source pixels
+
+효과:
+작은 OCR text가 full-page detector 때보다
+RT-DETR 입력에서 더 큰 픽셀 비율을 차지한다.
+
+각 crop의 RT-DETR 결과 box는
+원본 page 좌표로 다시 offset 변환한다.
+
+Shadow region ID:
+- SH_<pass>_xxx
+
+원래 RGxxx namespace와 분리한다.
+
+
+Shadow retry match
+------------------------------------------------------------
+추가 RT-DETR 결과 중 TextBubble만 recovery 후보가 된다.
+
+OCR block과 새 TextBubble이:
+- 충분히 overlap하거나
+- 서로 center-related
+
+일 때 Shadow recovery match로 기록한다.
+
+여러 후보가 있으면:
+- geometric overlap affinity
+- detector score
+
+를 합친 diagnostic affinity로 정렬한다.
+
+이 affinity는 Shadow audit용이며
+실제 ownership/erase 권한을 부여하지 않는다.
+
+
+Detector retry output
+------------------------------------------------------------
+새 debug JSON:
+<page>.laya_detector_retry.json
+
+Schema:
+pipeline-v2-laya-detector-retry-shadow-v1
+
+기록:
+- TranslationRegionId
+- SourceText / CorrectedText
+- LayaConfidence
+- OCR block geometry
+- pass id
+- crop bounds
+- context multiplier
+- input pixels per source pixel
+- detector RegionCount
+- detector TextBubbleCount
+- Recovered true/false
+- BestMatch bounds/score/source/affinity
+- 모든 matching candidate
+
+문서 최상위:
+- Requests
+- RecoveredRequests
+- UnrecoveredRequests
+- MutationApplied = false
+
+
+page014 검증 목표
+------------------------------------------------------------
+0039에서 Laya가 retry=true로 분류했던:
+NONONO NNNNOOO!
+
+에 대해
+local_2p40 또는 local_1p60 pass에서
+새 TextBubble match가 실제로 검출되는지 확인한다.
+
+이 단계에서 새 TextBubble이 발견되어도
+최종 이미지에는 아직 반영하지 않는다.
+
+
+post-translation render recovery Shadow probe
+------------------------------------------------------------
+0039 page021에서 최종 Render=false인 RG014 계열에 대해
+Laya가 render_recovery=true를 반환했다.
+
+0040은 post_translation_final true request만 대상으로:
+
+1. 해당 region을 Shadow copy에서 Render=true로 re-arm
+2. translationRefiner를 해당 unit 1개에 별도 실행
+3. 실제 Korean translation candidate 생성 여부 확인
+4. 기존 immutable V2DetectionSnapshot에
+   V2EraseSelector.Select()를 Shadow로 실행
+5. TextRegion/Bubble binding 가능 여부 확인
+
+본 translated list에는 결과를 넣지 않는다.
+
+새 debug JSON:
+<page>.laya_render_recovery.json
+
+Schema:
+pipeline-v2-laya-render-recovery-shadow-v1
+
+기록:
+- source/corrected text
+- Laya confidence
+- original final Render
+- Shadow translation candidate
+- candidate Render / Translation / Type
+- V2 TextRegionIds
+- V2 BubbleRegionId
+- TextBounds / LayoutBounds
+- LayoutMode
+- WouldBecomeRenderable
+- MutationApplied = false
+
+
+LayaShadowAuditResult
+------------------------------------------------------------
+LayaDecisionService는 JSON 기록 외에
+실행 가능한 Shadow request 목록을 PagePipelineService로 반환한다.
+
+- DetectorRetryRequests
+- RenderRecoveryRequests
+
+runtime error 발생 시 actionable request는 Empty로 반환하여
+Classic 결과에 영향을 주지 않는다.
+
+
+RT-DETR 구조 변경
+------------------------------------------------------------
+RtdetrPageRegionAnalyzer:
+- 기존 full-page Analyze 동작 유지.
+- 공통 AnalyzeMat 경로로 detector inference 재사용.
+- AnalyzeShadowRetry 추가.
+- crop detector 결과를 source page 좌표로 복원.
+- BuildShadowRetryWindows helper 추가.
+- IsShadowRetryMatch / ShadowRetryAffinity helper 추가.
+
+기존 full-page RT-DETR output과 V2 snapshot 동작은 변경하지 않는다.
+
+
+PipelineChecks
+------------------------------------------------------------
+0040 regression:
+- page014 크기와 유사한 OCR block에서 local retry window 2개 생성.
+- 두 window 모두 full page보다 작음.
+- 두 window 모두 OCR block center를 포함.
+- 실제로 겹치는 TextBubble은 retry match로 판정.
+- 무관한 TextBubble은 retry match에서 제외.
+
+live RT-DETR model inference는 CI 기본 PipelineChecks에서 수행하지 않는다.
+
+
+0040에서 하지 않는 것
+------------------------------------------------------------
+- detector retry 결과를 PageAnalysisResult에 merge하지 않음.
+- 새 TextBubble에 실제 ownership 부여 안 함.
+- retry geometry로 erase/layout 실행 안 함.
+- render recovery candidate를 최종 translated list에 넣지 않음.
+- Laya ownership/duplicate/semantic decisions Active 승격 없음.
+- page028 cleaned-state 문제 수정 없음.
+
+
+0040 다음 판단 기준
+------------------------------------------------------------
+같은 6페이지를 재실행해 확인:
+
+1. page014 detector retry가 실제 TextBubble을 recover하는가.
+2. false-positive retry 후보는 얼마나 생기는가.
+3. page021 render recovery Shadow에서
+   Korean translation + RG014 V2 binding이 실제로 만들어지는가.
+4. 최종 결과 이미지는 0039와 동일해야 한다.
+
+위 두 recovery probe가 안정적이면
+0041에서 detector_retry만 제한적 Advisory로 승격할 수 있다.
+
+
+관련 커밋
+------------------------------------------------------------
+164e52812fd5af3af121a4ad51ceb58d9f68e17c
+V2 0040: execute Laya shadow recovery probes
+
+7deb5eef81f9b934ab12f3e7b14422ff7869f107
+Fix 0040 RT-DETR shadow retry session call
+
