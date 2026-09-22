@@ -233,18 +233,52 @@ public sealed class PagePipelineService
                             PipelineStageKind.VisionReview,
                             message)));
 
-            await laya.WriteShadowAuditAsync(
-                sourcePath,
-                outputDirectory,
-                pageAnalysisResult,
-                ocrStage,
-                visionReviewedBeforeRecovery,
-                reviewed,
-                translated,
-                v2Selection,
-                options,
-                layaProgress,
-                token);
+            var layaAudit =
+                await laya.WriteShadowAuditAsync(
+                    sourcePath,
+                    outputDirectory,
+                    pageAnalysisResult,
+                    ocrStage,
+                    visionReviewedBeforeRecovery,
+                    reviewed,
+                    translated,
+                    v2Selection,
+                    options,
+                    layaProgress,
+                    token);
+
+            if (layaAudit.DetectorRetryRequests.Count >
+                    0 &&
+                pageAnalysisResult.ExternalDetectorUsed)
+            {
+                var retryProgress =
+                    new Progress<string>(message =>
+                        progress?.Report(
+                            new PipelineProgress(
+                                PipelineStageKind.PageAnalysis,
+                                message)));
+
+                await pageAnalysis
+                    .WriteShadowDetectorRetryAuditAsync(
+                        sourcePath,
+                        outputDirectory,
+                        layaAudit.DetectorRetryRequests,
+                        retryProgress,
+                        token);
+            }
+
+            if (layaAudit.RenderRecoveryRequests.Count >
+                0)
+            {
+                await WriteShadowRenderRecoveryAuditAsync(
+                    sourcePath,
+                    outputDirectory,
+                    translationModel,
+                    v2Snapshot,
+                    layaAudit.RenderRecoveryRequests,
+                    progress,
+                    token);
+            }
         }
 
         var document =
@@ -350,6 +384,167 @@ public sealed class PagePipelineService
             translated,
             jsonPath,
             imagePath);
+    }
+
+    async Task WriteShadowRenderRecoveryAuditAsync(
+        string sourcePath,
+        string outputDirectory,
+        ModelProfile translationModel,
+        V2DetectionSnapshot? snapshot,
+        IReadOnlyList<LayaRenderRecoveryRequest> requests,
+        IProgress<PipelineProgress>? progress,
+        CancellationToken token)
+    {
+        var items =
+            new List<object>();
+
+        foreach (var request in requests)
+        {
+            token.ThrowIfCancellationRequested();
+
+            progress?.Report(
+                new PipelineProgress(
+                    PipelineStageKind.Translation,
+                    $"Laya render-recovery Shadow 번역 · id={request.Region.Id}"));
+
+            var rearmed =
+                request.Region with
+                {
+                    Render =
+                        true
+                };
+
+            var shadowProgress =
+                new Progress<string>(message =>
+                    progress?.Report(
+                        new PipelineProgress(
+                            PipelineStageKind.Translation,
+                            $"Laya render-recovery Shadow · {message}")));
+
+            var shadowTranslated =
+                await translationRefiner
+                    .TranslateAsync(
+                        [rearmed],
+                        translationModel,
+                        shadowProgress,
+                        token);
+
+            var candidate =
+                shadowTranslated
+                    .FirstOrDefault();
+
+            V2EraseSelection? shadowSelection =
+                snapshot is not null &&
+                candidate is not null
+                    ? V2EraseSelector.Select(
+                        snapshot,
+                        [candidate])
+                    : null;
+
+            V2RegionBinding? binding =
+                null;
+
+            if (candidate is not null &&
+                shadowSelection is not null)
+            {
+                shadowSelection.Bindings.TryGetValue(
+                    candidate.Id,
+                    out binding);
+            }
+
+            items.Add(
+                new
+                {
+                    TranslationRegionId =
+                        request.Region.Id,
+                    request.Confidence,
+                    SourceText =
+                        request.Region.Source.Text,
+                    CorrectedText =
+                        request.Region.CorrectedText,
+                    OriginalFinalRender =
+                        request.Region.Render,
+                    ShadowCandidate =
+                        candidate is null
+                            ? null
+                            : new
+                            {
+                                candidate.Render,
+                                candidate.Translation,
+                                candidate.Type
+                            },
+                    V2Binding =
+                        binding is null
+                            ? null
+                            : new
+                            {
+                                binding.TextRegionIds,
+                                binding.BubbleRegionId,
+                                TextBounds =
+                                    new
+                                    {
+                                        binding.TextBounds.X,
+                                        binding.TextBounds.Y,
+                                        binding.TextBounds.Width,
+                                        binding.TextBounds.Height
+                                    },
+                                LayoutBounds =
+                                    new
+                                    {
+                                        binding.LayoutBounds.X,
+                                        binding.LayoutBounds.Y,
+                                        binding.LayoutBounds.Width,
+                                        binding.LayoutBounds.Height
+                                    },
+                                binding.LayoutMode
+                            },
+                    WouldBecomeRenderable =
+                        candidate is not null &&
+                        candidate.Render &&
+                        !string.IsNullOrWhiteSpace(
+                            candidate.Translation) &&
+                        binding is not null,
+                    MutationApplied =
+                        false
+                });
+        }
+
+        string page =
+            Path.GetFileNameWithoutExtension(
+                sourcePath);
+
+        string path =
+            Path.Combine(
+                OutputDirectoryLayout.Debug(
+                    outputDirectory),
+                page +
+                ".laya_render_recovery.json");
+
+        await File.WriteAllTextAsync(
+            path,
+            JsonSerializer.Serialize(
+                new
+                {
+                    Schema =
+                        "pipeline-v2-laya-render-recovery-shadow-v1",
+                    SourceFile =
+                        Path.GetFileName(
+                            sourcePath),
+                    Mode =
+                        "Shadow",
+                    MutationApplied =
+                        false,
+                    Requests =
+                        requests.Count,
+                    Items =
+                        items
+                },
+                new JsonSerializerOptions
+                {
+                    WriteIndented =
+                        true
+                }),
+            token);
     }
 
     static List<VisionTranslation> RecoverDetectorOwnedRenderableUnits(

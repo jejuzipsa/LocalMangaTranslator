@@ -176,6 +176,95 @@ Check("V2 0039 Laya duplicate shadow follows immutable V2 physical container",
     layaDuplicateGroups[0].SequenceEqual(
         new[] { 900, 901 }));
 
+var shadowRetryBlock =
+    new OcrTextBlock(
+        9040,
+        974,
+        1034,
+        336,
+        190,
+        "NONONO NNNNOOO!",
+        2,
+        "en",
+        [new OcrLine(
+            974,
+            1034,
+            336,
+            190,
+            "NONONO NNNNOOO!",
+            0.92f,
+            "en")]);
+
+var shadowWindows =
+    RtdetrPageRegionAnalyzer
+        .BuildShadowRetryWindows(
+            1300,
+            2000,
+            shadowRetryBlock);
+
+Check("V2 0040 detector retry builds two local scales",
+    shadowWindows.Count == 2 &&
+    shadowWindows.All(x =>
+        x.CropBounds.Width <
+            1300 &&
+        x.CropBounds.Height <
+            2000));
+
+Check("V2 0040 detector retry windows contain OCR center",
+    shadowWindows.All(x =>
+        shadowRetryBlock.X +
+            shadowRetryBlock.W /
+            2.0 >=
+            x.CropBounds.Left &&
+        shadowRetryBlock.X +
+            shadowRetryBlock.W /
+            2.0 <=
+            x.CropBounds.Right &&
+        shadowRetryBlock.Y +
+            shadowRetryBlock.H /
+            2.0 >=
+            x.CropBounds.Top &&
+        shadowRetryBlock.Y +
+            shadowRetryBlock.H /
+            2.0 <=
+            x.CropBounds.Bottom));
+
+var shadowRetryHit =
+    new PageRegion(
+        "SH_TEST",
+        PageRegionKind.TextBubble,
+        new Rect(
+            990,
+            1045,
+            300,
+            160),
+        0.91f,
+        "shadow");
+
+var shadowRetryMiss =
+    new PageRegion(
+        "SH_MISS",
+        PageRegionKind.TextBubble,
+        new Rect(
+            100,
+            100,
+            120,
+            60),
+        0.95f,
+        "shadow");
+
+Check("V2 0040 detector retry match accepts overlapping TextBubble",
+    RtdetrPageRegionAnalyzer
+        .IsShadowRetryMatch(
+            shadowRetryBlock,
+            shadowRetryHit));
+
+Check("V2 0040 detector retry match rejects unrelated TextBubble",
+    !RtdetrPageRegionAnalyzer
+        .IsShadowRetryMatch(
+            shadowRetryBlock,
+            shadowRetryMiss));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);

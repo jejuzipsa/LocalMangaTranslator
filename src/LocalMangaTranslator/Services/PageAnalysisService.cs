@@ -1,3 +1,4 @@
+using System.Text.Json;
 using LocalMangaTranslator.Models;
 using OpenCvSharp;
 
@@ -73,6 +74,219 @@ public sealed class PageAnalysisService : IDisposable
             "hybrid_rtdetr",
             true,
             $"regions={regions.Count}; legacy_mask_candidates={legacy.Count}; active_region_containers={fused.Count}");
+    }
+
+    public async Task WriteShadowDetectorRetryAuditAsync(
+        string sourcePath,
+        string outputDirectory,
+        IReadOnlyList<LayaDetectorRetryRequest> requests,
+        IProgress<string>? progress = null,
+        CancellationToken token = default)
+    {
+        if (requests.Count == 0 ||
+            !rtdetr.IsReady)
+        {
+            return;
+        }
+
+        await Task.Run(
+            () =>
+            {
+                var requestAudits =
+                    new List<object>();
+
+                int recovered =
+                    0;
+
+                foreach (var request in requests)
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    progress?.Report(
+                        $"Laya detector Shadow retry · id={request.Region.Id}");
+
+                    var passes =
+                        rtdetr.AnalyzeShadowRetry(
+                            sourcePath,
+                            request.Region.Source,
+                            token);
+
+                    var passAudits =
+                        passes.Select(pass =>
+                        {
+                            var textBubbles =
+                                pass.Regions
+                                    .Where(x =>
+                                        x.Kind ==
+                                            PageRegionKind.TextBubble)
+                                    .ToList();
+
+                            var matches =
+                                textBubbles
+                                    .Where(x =>
+                                        RtdetrPageRegionAnalyzer
+                                            .IsShadowRetryMatch(
+                                                request.Region.Source,
+                                                x))
+                                    .OrderByDescending(x =>
+                                        RtdetrPageRegionAnalyzer
+                                            .ShadowRetryAffinity(
+                                                request.Region.Source,
+                                                x))
+                                    .ToList();
+
+                            var best =
+                                matches.FirstOrDefault();
+
+                            return new
+                            {
+                                pass.Window.PassId,
+                                CropBounds =
+                                    new
+                                    {
+                                        pass.Window.CropBounds.X,
+                                        pass.Window.CropBounds.Y,
+                                        pass.Window.CropBounds.Width,
+                                        pass.Window.CropBounds.Height
+                                    },
+                                pass.Window.ContextMultiplier,
+                                pass.Window.InputPixelsPerSourcePixel,
+                                RegionCount =
+                                    pass.Regions.Count,
+                                TextBubbleCount =
+                                    textBubbles.Count,
+                                Recovered =
+                                    best is not null,
+                                BestMatch =
+                                    best is null
+                                        ? null
+                                        : new
+                                        {
+                                            best.RegionId,
+                                            Kind =
+                                                best.Kind.ToString(),
+                                            Bounds =
+                                                new
+                                                {
+                                                    best.Bounds.X,
+                                                    best.Bounds.Y,
+                                                    best.Bounds.Width,
+                                                    best.Bounds.Height
+                                                },
+                                            best.Score,
+                                            best.Source,
+                                            Affinity =
+                                                RtdetrPageRegionAnalyzer
+                                                    .ShadowRetryAffinity(
+                                                        request.Region.Source,
+                                                        best)
+                                        },
+                                Matches =
+                                    matches.Select(x =>
+                                        new
+                                        {
+                                            x.RegionId,
+                                            Bounds =
+                                                new
+                                                {
+                                                    x.Bounds.X,
+                                                    x.Bounds.Y,
+                                                    x.Bounds.Width,
+                                                    x.Bounds.Height
+                                                },
+                                            x.Score,
+                                            Affinity =
+                                                RtdetrPageRegionAnalyzer
+                                                    .ShadowRetryAffinity(
+                                                        request.Region.Source,
+                                                        x)
+                                        })
+                                    .ToArray()
+                            };
+                        })
+                        .ToArray();
+
+                    bool requestRecovered =
+                        passAudits.Any(x =>
+                            x.Recovered);
+
+                    if (requestRecovered)
+                        recovered++;
+
+                    requestAudits.Add(
+                        new
+                        {
+                            TranslationRegionId =
+                                request.Region.Id,
+                            SourceText =
+                                request.Region.Source.Text,
+                            CorrectedText =
+                                request.Region.CorrectedText,
+                            LayaConfidence =
+                                request.Confidence,
+                            Block =
+                                new
+                                {
+                                    request.Region.Source.X,
+                                    request.Region.Source.Y,
+                                    request.Region.Source.W,
+                                    request.Region.Source.H
+                                },
+                            Recovered =
+                                requestRecovered,
+                            Passes =
+                                passAudits
+                        });
+                }
+
+                string page =
+                    Path.GetFileNameWithoutExtension(
+                        sourcePath);
+
+                string path =
+                    Path.Combine(
+                        OutputDirectoryLayout.Debug(
+                            outputDirectory),
+                        page +
+                        ".laya_detector_retry.json");
+
+                var document =
+                    new
+                    {
+                        Schema =
+                            "pipeline-v2-laya-detector-retry-shadow-v1",
+                        SourceFile =
+                            Path.GetFileName(
+                                sourcePath),
+                        Mode =
+                            "Shadow",
+                        MutationApplied =
+                            false,
+                        Requests =
+                            requests.Count,
+                        RecoveredRequests =
+                            recovered,
+                        UnrecoveredRequests =
+                            requests.Count -
+                            recovered,
+                        Items =
+                            requestAudits
+                    };
+
+                File.WriteAllText(
+                    path,
+                    JsonSerializer.Serialize(
+                        document,
+                        new JsonSerializerOptions
+                        {
+                            WriteIndented =
+                                true
+                        }));
+
+                progress?.Report(
+                    $"Laya detector Shadow retry 완료 · {recovered}/{requests.Count} 재검출");
+            },
+            token);
     }
 
     public static IReadOnlyList<ContainerCandidate> FuseContainers(

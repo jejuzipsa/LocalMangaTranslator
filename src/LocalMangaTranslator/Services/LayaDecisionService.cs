@@ -19,6 +19,22 @@ public sealed class LayaPythonNotFoundException : InvalidOperationException
     }
 }
 
+public sealed record LayaDetectorRetryRequest(
+    VisionTranslation Region,
+    double? Confidence);
+
+public sealed record LayaRenderRecoveryRequest(
+    VisionTranslation Region,
+    double? Confidence);
+
+public sealed record LayaShadowAuditResult(
+    IReadOnlyList<LayaDetectorRetryRequest> DetectorRetryRequests,
+    IReadOnlyList<LayaRenderRecoveryRequest> RenderRecoveryRequests)
+{
+    public static LayaShadowAuditResult Empty { get; } =
+        new([], []);
+}
+
 /// <summary>
 /// 0036/0037 experimental System-1 decision track.
 ///
@@ -315,7 +331,7 @@ public sealed class LayaDecisionService
                 .Select(char.ToLowerInvariant)
                 .ToArray());
 
-    public async Task WriteShadowAuditAsync(
+    public async Task<LayaShadowAuditResult> WriteShadowAuditAsync(
         string sourcePath,
         string outputDirectory,
         PageAnalysisResult analysis,
@@ -333,7 +349,7 @@ public sealed class LayaDecisionService
             options.LayaMode ==
                 LayaDecisionMode.Off)
         {
-            return;
+            return LayaShadowAuditResult.Empty;
         }
 
         string page =
@@ -356,6 +372,12 @@ public sealed class LayaDecisionService
 
         var decisions =
             new List<LayaShadowDecision>();
+
+        var detectorRetryRequests =
+            new List<LayaDetectorRetryRequest>();
+
+        var renderRecoveryRequests =
+            new List<LayaRenderRecoveryRequest>();
 
         string? runtimeError =
             null;
@@ -572,6 +594,14 @@ public sealed class LayaDecisionService
                             Evidence =
                                 state
                         });
+
+                    if (answer.Value == true)
+                    {
+                        detectorRetryRequests.Add(
+                            new LayaDetectorRetryRequest(
+                                region,
+                                answer.Confidence));
+                    }
                 }
             }
 
@@ -787,6 +817,14 @@ public sealed class LayaDecisionService
                         Evidence =
                             state
                     });
+
+                if (answer.Value == true)
+                {
+                    renderRecoveryRequests.Add(
+                        new LayaRenderRecoveryRequest(
+                            region,
+                            answer.Confidence));
+                }
             }
 
             var duplicateGroups =
@@ -1309,6 +1347,15 @@ public sealed class LayaDecisionService
                 summaryDocument,
                 jsonOptions),
             token);
+
+        if (runtimeError is not null)
+        {
+            return LayaShadowAuditResult.Empty;
+        }
+
+        return new LayaShadowAuditResult(
+            detectorRetryRequests,
+            renderRecoveryRequests);
     }
 
     async Task EnsureWorkerAsync(
