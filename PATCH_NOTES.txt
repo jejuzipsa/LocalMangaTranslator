@@ -3758,3 +3758,68 @@ Notes:
 - initial 0044 CI failed because the new verifier referenced a nonexistent ClampRect helper.
 - replaced it with explicit image-bound clamping.
 - no algorithmic rollback was required.
+
+
+0044 correction - separate detection from intervention
+------------------------------------------------------------
+Live baseline:
+- test pic/0044
+- commit e45f3ae28cef45a6dfb6b3ecff7fcedca3eb47c3
+
+Observed behavior:
+- page005 RG008: independent residual 425 px over 185x107 TextBounds (~2.15%),
+  DominantMatchRatio=0.9704. Cleanup applied and residual became 0.
+- page005 RG020: independent residual 5671 px over 290x63 TextBounds (~31.0%),
+  DominantMatchRatio=0.6967. 0044 treated this as a blocking failure even though
+  the pre-0044 erase/cleaned-state checks were clean and 0043 committed it normally.
+- Therefore the independent verifier was useful as a detector, but too strong as
+  an unconditional commit gate.
+
+Correction:
+- independent verification still runs on every FLAT_FILL TextBubble.
+- detection coverage is NOT reduced to only retried targets.
+- results are classified into:
+  * CLEAN
+  * SAFE_RESIDUAL
+  * AMBIGUOUS_STRUCTURE
+- SAFE_RESIDUAL:
+  * residual >= 2 px
+  * dominant flat-background ratio >= 0.80
+  * independent residual <= 5% of immutable TextBounds area
+  * eligible for guarded FLAT_FILL cleanup and post-cleanup recheck.
+- AMBIGUOUS_STRUCTURE:
+  * dominant background ratio < 0.80, or
+  * residual > 5% of TextBounds area
+  * remains visible in audit/debug,
+  * is not automatically repainted,
+  * does not by itself enter BackgroundQualityFailedTextRegionIds,
+  * therefore does not block an otherwise clean atomic commit.
+- A SAFE_RESIDUAL that remains after cleanup still fails the background-quality
+  gate and blocks commit.
+
+Audit:
+- schema bumped to pipeline-v2-erase-audit-v4.
+- IndependentFlatResidualCleanup now records:
+  * CleanTargets
+  * SafeResidualTargets
+  * AmbiguousStructureTargets
+  * FailedTargetIds
+  * AmbiguousTargetIds
+- each background item records IndependentSourceLinkedDisposition.
+
+Expected page005 behavior:
+- RG008 => SAFE_RESIDUAL, cleanup, residual 0, translated commit retained.
+- RG020 => AMBIGUOUS_STRUCTURE, no cleanup, diagnostic only, 0043-style translated
+  commit retained if all legacy/cleaned-state gates remain clean.
+
+Code commits:
+- 679e568857bfce30836e998e692635661ba245ef
+  V2 0044: separate independent residual detection from intervention
+- 70b58219061bf1a8b5892dba65dcae99b3c0ec12
+  Tests 0044: cover independent residual dispositions
+
+CI verification:
+- Pipeline V2 Windows Portable run 35737909740
+- Pipeline evidence checks: success
+- Publish win-x64: success
+- artifact upload: success
