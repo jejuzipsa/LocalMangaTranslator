@@ -1,0 +1,70 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page004.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.1776,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9116138,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 8.06225774829855,
+            "Affinity": 7.439682395495072
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0478,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "ONE: CAVE THE",
+        "secondary_ocr": "PART ONE\nTHE CAVE",
+        "primary_confidence": 0.9997019171714783,
+        "current_agreement": "disagree",
+        "corrected_text": "PART ONE:\nTHE CAVE"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5322,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "ONE: CAVE THE",
+        "corrected_text": "PART ONE:\nTHE CAVE",
+        "secondary_ocr": "PART ONE\nTHE CAVE",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9997019171714783,
+        "type": "logo"
+      }
+    }
+  ]
+}

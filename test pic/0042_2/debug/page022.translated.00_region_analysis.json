@@ -1,0 +1,41 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=2; legacy_mask_candidates=80; active_region_containers=1",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "Bubble",
+      "x": 390,
+      "y": 448,
+      "width": 558,
+      "height": 687,
+      "score": 0.96503353,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "TextBubble",
+      "x": 479,
+      "y": 707,
+      "width": 379,
+      "height": 253,
+      "score": 0.9359861,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": [
+    {
+      "id": "PC001",
+      "kind": "Speech",
+      "x": 390,
+      "y": 448,
+      "width": 558,
+      "height": 687,
+      "mode": "rtdetr_region_rect",
+      "score": 6.93006706237793,
+      "fill_ratio": 0.9360890683612194
+    }
+  ]
+}

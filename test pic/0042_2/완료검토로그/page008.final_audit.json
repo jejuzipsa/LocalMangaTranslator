@@ -1,0 +1,203 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page008.jpg",
+  "output_file": "page008.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 2384,
+    "changed_ratio": 0.0008621618708912598,
+    "changed_regions": [
+      {
+        "x": 637,
+        "y": 329,
+        "width": 59,
+        "height": 33
+      },
+      {
+        "x": 527,
+        "y": 325,
+        "width": 62,
+        "height": 21
+      },
+      {
+        "x": 550,
+        "y": 301,
+        "width": 43,
+        "height": 21
+      },
+      {
+        "x": 591,
+        "y": 328,
+        "width": 9,
+        "height": 16
+      },
+      {
+        "x": 697,
+        "y": 337,
+        "width": 3,
+        "height": 21
+      },
+      {
+        "x": 545,
+        "y": 315,
+        "width": 4,
+        "height": 5
+      },
+      {
+        "x": 703,
+        "y": 353,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "x": 540,
+        "y": 316,
+        "width": 4,
+        "height": 4
+      },
+      {
+        "x": 534,
+        "y": 316,
+        "width": 4,
+        "height": 4
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page008.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 1047,
+    "erase_changed_ratio": 0.00037864239883521355,
+    "typeset_changed_pixels": 1810,
+    "typeset_changed_ratio": 0.0006545775949300253
+  },
+  "region_analysis": {
+    "total": 4,
+    "bubbles": 2,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 4,
+      "Global2x": 3,
+      "Focus3x": 14,
+      "Region1x": 4,
+      "Region2x": 4,
+      "Container1x": 4,
+      "Container2x": 4
+    },
+    "canonical_lines": 6,
+    "units": 4,
+    "assigned_lines": 4,
+    "orphan_groups": 2,
+    "secondary_total": 2,
+    "secondary_accepted": 2,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 301,
+          "Bottom": 344,
+          "Left": 533,
+          "Right": 592,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026TO HELP?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 323,
+          "Bottom": 368,
+          "Left": 642,
+          "Right": 698,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY\nGOD.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 4,
+    "requested_render": 3
+  },
+  "render": {
+    "total": 2,
+    "approved": 2,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 3,
+    "TranslatedUnits": 2,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 2,
+    "TypesetCommittedUnits": 2,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "TO HELP?",
+        "Translation": "...\uB3C4\uC640\uC8FC\uB824\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "MY GOD.",
+        "Translation": "\uC138\uC0C1\uC5D0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "O",
+        "Translation": "\uB9D9\uC18C\uC0AC.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}

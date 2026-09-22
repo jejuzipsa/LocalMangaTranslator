@@ -1,0 +1,57 @@
+{
+  "Schema": "pipeline-v2-laya-summary-v2",
+  "SourceFile": "page012.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "TotalDecisions": 44,
+  "Matched": 28,
+  "Mismatched": 16,
+  "NoAnswer": 0,
+  "ByKind": {
+    "detector_retry": {
+      "Compared": 7,
+      "Matched": 6,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5946714285714286
+    },
+    "ownership": {
+      "Compared": 8,
+      "Matched": 8,
+      "Mismatched": 0,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.06915
+    },
+    "duplicate": {
+      "Compared": 1,
+      "Matched": 0,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.0752
+    },
+    "ocr_consensus": {
+      "Compared": 8,
+      "Matched": 5,
+      "Mismatched": 3,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.0825375
+    },
+    "vision_correction": {
+      "Compared": 8,
+      "Matched": 4,
+      "Mismatched": 4,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.522325
+    },
+    "translation_consistency": {
+      "Compared": 12,
+      "Matched": 5,
+      "Mismatched": 7,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5597666666666666
+    }
+  }
+}

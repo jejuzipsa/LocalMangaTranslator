@@ -1,0 +1,700 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page018.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0087,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.79602516,
+            "BlockCoverage": 0.4485379594026648,
+            "CenterInside": true,
+            "CenterDistance": 2.0155644370746373,
+            "Affinity": 5.1881332872239065
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6022,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "DA",
+        "corrected_text": "DA",
+        "ocr_confidence": 0.6812812685966492,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 499.6666666666667,
+          "Y": 623,
+          "W": 112.33333333333331,
+          "H": 220
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0145,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.93579435,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.8856180831640195,
+            "Affinity": 7.464125940576226
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.1084,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9197433,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.134374745810997,
+            "Affinity": 7.455602900250504
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0784,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9379062,
+            "BlockCoverage": 0.05542521994134896,
+            "CenterInside": false,
+            "CenterDistance": 131.0513046270217,
+            "Affinity": 0.42855137333842463
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0464,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9379062,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.0540925533894359,
+            "Affinity": 7.466844917720294
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5695,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "a",
+        "ocr_confidence": 0.401230126619339,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 854.6666666666666,
+          "Y": 785,
+          "W": 8.666666666666742,
+          "H": 11.666666666666629
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5842,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "a",
+        "ocr_confidence": 0.39023131132125854,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 871,
+          "Y": 856.6666666666666,
+          "W": 22.33333333333337,
+          "H": 15.333333333333371
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 8,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5615,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "NEVERRU",
+        "corrected_text": "NEVER!!",
+        "ocr_confidence": 0.8890165090560913,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 59.5,
+          "Y": 1277.5,
+          "W": 350,
+          "H": 137
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG011",
+      "LayaDecision": "RG011",
+      "Confidence": 0.0548,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG011",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.8820742,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.6666666666667425,
+            "Affinity": 7.43770375529925
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0344,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG010",
+            "DetectorScore": 0.92169225,
+            "BlockCoverage": 0.993506493506495,
+            "CenterInside": true,
+            "CenterDistance": 4.006938426723761,
+            "Affinity": 7.426858223252092
+          }
+        ],
+        "RegionId": "RG010",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6136,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "Ley",
+        "corrected_text": "Ley",
+        "ocr_confidence": 0.4393594264984131,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 933.6666666666667,
+          "Y": 1357,
+          "W": 61.999999999999886,
+          "H": 41
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0561,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.87769085,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.166666666666515,
+            "Affinity": 7.434512092510859
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 13,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6038,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "2",
+        "corrected_text": "2",
+        "ocr_confidence": 0.47005173563957214,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 974.5,
+          "Y": 1768.5,
+          "W": 43.5,
+          "H": 48.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0174,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "NO!",
+        "secondary_ocr": "NO!",
+        "primary_confidence": 0.9970108270645142,
+        "current_agreement": "agree",
+        "corrected_text": "NO!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0592,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I\u0027LL NEVER BELIEVE You!!!",
+        "secondary_ocr": "I\u0027LL NEVER BELIEVE YOU!!!",
+        "primary_confidence": 0.9718214273452759,
+        "current_agreement": "agree",
+        "corrected_text": "I\u0027LL NEVER BELIEVE YOU!!!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0599,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I DON\u0027T BELIEVE you!",
+        "secondary_ocr": "I DON\u0027T BELIEVE YOU!",
+        "primary_confidence": 0.9586543440818787,
+        "current_agreement": "agree",
+        "corrected_text": "I DON\u0027T BELIEVE YOU!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1186,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DO YOU HEAR ME?! NEVER!",
+        "secondary_ocr": "DO YOU HEAR ME?! NEVER!",
+        "primary_confidence": 0.9896250367164612,
+        "current_agreement": "agree",
+        "corrected_text": "DO YOU HEAR ME?! NEVER!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1259,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "secondary_ocr": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "primary_confidence": 0.994687557220459,
+        "current_agreement": "agree",
+        "corrected_text": "\u0022MORE THAN YOU CAN IMAGINE.\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.0546,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "E TO SEE YOU THIS WAY, SIR.",
+        "secondary_ocr": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.",
+        "primary_confidence": 0.9764498472213745,
+        "current_agreement": "partial",
+        "corrected_text": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1664,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022PAINS US ALL. TRULY.",
+        "secondary_ocr": "\u0022PAINS US ALL. TRULY.",
+        "primary_confidence": 0.9699841737747192,
+        "current_agreement": "agree",
+        "corrected_text": "\u0022PAINS US ALL. TRULY.\u0022"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.518,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "NEVERRU",
+        "corrected_text": "NEVER!!",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.8890165090560913,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5341,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "E TO SEE YOU THIS WAY, SIR.",
+        "corrected_text": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.\u0022",
+        "secondary_ocr": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9764498472213745,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.518,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "\u0022PAINS US ALL. TRULY.",
+        "corrected_text": "\u0022PAINS US ALL. TRULY.\u0022",
+        "secondary_ocr": "\u0022PAINS US ALL. TRULY.",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9699841737747192,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6245,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NO!",
+        "corrected_source_text": "NO!",
+        "korean_translation": "\uC548 \uB3FC!",
+        "type": "dialogue",
+        "secondary_ocr": "NO!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5864,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I\u0027LL NEVER BELIEVE You!!!",
+        "corrected_source_text": "I\u0027LL NEVER BELIEVE YOU!!!",
+        "korean_translation": "\uC808\uB300 \uC548 \uBBFF\uC5B4!!!\n\uB124 \uB9D0\uC744\n\uC808\uB300\n\uBBFF\uC9C0 \uC54A\uC744 \uAC70\uC57C!!!",
+        "type": "dialogue",
+        "secondary_ocr": "I\u0027LL NEVER BELIEVE YOU!!!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5014,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I DON\u0027T BELIEVE you!",
+        "corrected_source_text": "I DON\u0027T BELIEVE YOU!",
+        "korean_translation": "\uBBFF\uC744 \uC218\uAC00 \uC5C6\uC5B4!",
+        "type": "dialogue",
+        "secondary_ocr": "I DON\u0027T BELIEVE YOU!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.559,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DO YOU HEAR ME?! NEVER!",
+        "corrected_source_text": "DO YOU HEAR ME?! NEVER!",
+        "korean_translation": "\uB0B4 \uB9D0 \uB4E4\uB824?! \uC808\uB300 \uC548 \uB3FC!",
+        "type": "dialogue",
+        "secondary_ocr": "DO YOU HEAR ME?! NEVER!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5977,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "a",
+        "corrected_source_text": "a",
+        "korean_translation": "\uC544",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5024,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NEVERRU",
+        "corrected_source_text": "NEVER!!",
+        "korean_translation": "\uC808\uB300 \uC548 \uB3FC!!",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6876,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "corrected_source_text": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "korean_translation": "\u0022\uC0C1\uC0C1\uD558\uB294 \uAC83\uBCF4\uB2E4 \uD6E8\uC52C \uB354.\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022MORE THAN YOU CAN IMAGINE.\u0022",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5807,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "E TO SEE YOU THIS WAY, SIR.",
+        "corrected_source_text": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.\u0022",
+        "korean_translation": "\u0022\uC774\uB7F0 \uBAA8\uC2B5\uC73C\uB85C \uACC4\uC2DC\uB294 \uAC78 \uBCF4\uB2C8[BR]\uB9C8\uC74C\uC774 \uC544\uD515\uB2C8\uB2E4, \uC8FC\uC778\uB2D8.\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022IT PAINS ME TO SEE YOU THIS WAY, SIR.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5234,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "Ley",
+        "corrected_source_text": "Ley",
+        "korean_translation": "\uB808\uC774",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5613,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022PAINS US ALL. TRULY.",
+        "corrected_source_text": "\u0022PAINS US ALL. TRULY.\u0022",
+        "korean_translation": "\u0022\uBAA8\uB450\uB97C \uC544\uD504\uAC8C \uD558\uC9C0.[BR]\uC815\uB9D0\uB85C.\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022PAINS US ALL. TRULY.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

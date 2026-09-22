@@ -1,0 +1,590 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page009.jpg",
+  "output_file": "page009.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 59839,
+    "changed_ratio": 0.021640479946418666,
+    "changed_regions": [
+      {
+        "x": 110,
+        "y": 159,
+        "width": 260,
+        "height": 95
+      },
+      {
+        "x": 779,
+        "y": 283,
+        "width": 184,
+        "height": 104
+      },
+      {
+        "x": 552,
+        "y": 107,
+        "width": 294,
+        "height": 58
+      },
+      {
+        "x": 632,
+        "y": 205,
+        "width": 139,
+        "height": 96
+      },
+      {
+        "x": 353,
+        "y": 904,
+        "width": 159,
+        "height": 57
+      },
+      {
+        "x": 361,
+        "y": 865,
+        "width": 140,
+        "height": 37
+      },
+      {
+        "x": 775,
+        "y": 276,
+        "width": 56,
+        "height": 63
+      },
+      {
+        "x": 350,
+        "y": 1251,
+        "width": 70,
+        "height": 49
+      },
+      {
+        "x": 99,
+        "y": 98,
+        "width": 89,
+        "height": 38
+      },
+      {
+        "x": 719,
+        "y": 1003,
+        "width": 73,
+        "height": 26
+      },
+      {
+        "x": 601,
+        "y": 1264,
+        "width": 58,
+        "height": 26
+      },
+      {
+        "x": 570,
+        "y": 1292,
+        "width": 75,
+        "height": 18
+      },
+      {
+        "x": 811,
+        "y": 259,
+        "width": 54,
+        "height": 22
+      },
+      {
+        "x": 735,
+        "y": 973,
+        "width": 27,
+        "height": 31
+      },
+      {
+        "x": 778,
+        "y": 973,
+        "width": 27,
+        "height": 29
+      },
+      {
+        "x": 895,
+        "y": 259,
+        "width": 33,
+        "height": 23
+      },
+      {
+        "x": 510,
+        "y": 904,
+        "width": 32,
+        "height": 22
+      },
+      {
+        "x": 714,
+        "y": 973,
+        "width": 22,
+        "height": 29
+      },
+      {
+        "x": 502,
+        "y": 881,
+        "width": 31,
+        "height": 20
+      },
+      {
+        "x": 166,
+        "y": 120,
+        "width": 37,
+        "height": 16
+      },
+      {
+        "x": 866,
+        "y": 260,
+        "width": 28,
+        "height": 20
+      },
+      {
+        "x": 926,
+        "y": 362,
+        "width": 22,
+        "height": 25
+      },
+      {
+        "x": 582,
+        "y": 1262,
+        "width": 18,
+        "height": 28
+      },
+      {
+        "x": 934,
+        "y": 258,
+        "width": 20,
+        "height": 24
+      },
+      {
+        "x": 653,
+        "y": 208,
+        "width": 19,
+        "height": 20
+      },
+      {
+        "x": 784,
+        "y": 258,
+        "width": 15,
+        "height": 23
+      },
+      {
+        "x": 141,
+        "y": 120,
+        "width": 20,
+        "height": 17
+      },
+      {
+        "x": 762,
+        "y": 985,
+        "width": 17,
+        "height": 17
+      },
+      {
+        "x": 566,
+        "y": 1264,
+        "width": 15,
+        "height": 19
+      },
+      {
+        "x": 193,
+        "y": 99,
+        "width": 15,
+        "height": 19
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page009.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 38346,
+    "erase_changed_ratio": 0.013867642240434668,
+    "typeset_changed_pixels": 34150,
+    "typeset_changed_ratio": 0.012350179484453239
+  },
+  "region_analysis": {
+    "total": 19,
+    "bubbles": 9,
+    "text_regions": 10,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 29,
+      "Global2x": 33,
+      "Focus3x": 281,
+      "Region1x": 34,
+      "Region2x": 32,
+      "Container1x": 32,
+      "Container2x": 32
+    },
+    "canonical_lines": 52,
+    "units": 15,
+    "assigned_lines": 46,
+    "orphan_groups": 6,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 96,
+          "Bottom": 143,
+          "Left": 93,
+          "Right": 211,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "And then I felt it, too.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 107,
+          "Bottom": 171,
+          "Left": 544,
+          "Right": 857,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I was wrong, About this case. Maybe about a lot of things. But n",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 159,
+          "Bottom": 256,
+          "Left": 104,
+          "Right": 370,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Alarm. I\u0027ve learned to smile in company to hide it, So often that I now feel thefist watet thatatelefat tatetet tatatata theatat",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 199,
+          "Bottom": 306,
+          "Left": 633,
+          "Right": 773,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIR, I THINK YOU SHOULD GET OUT OF THERE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 256,
+          "Bottom": 383,
+          "Left": 771,
+          "Right": 967,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIGNAL JIM.\nVICTIM APPEARS\nTO BE TEN, MAYBE\nELEVEN YEARS\nOLD. BAD",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 856,
+          "Bottom": 966,
+          "Left": 346,
+          "Right": 548,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HE\u0027S\nBEEN POSED BY\nMEANS OF A PROP,\nSOME KIND OF\nMECHANICAL--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 978,
+          "Bottom": 1027,
+          "Left": 711,
+          "Right": 804,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIR, HIS ARM!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1253,
+          "Bottom": 1303,
+          "Left": 344,
+          "Right": 430,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE, MOVE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1266,
+          "Bottom": 1314,
+          "Left": 564,
+          "Right": 661,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW, BRUCE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 15,
+    "requested_render": 12
+  },
+  "render": {
+    "total": 9,
+    "approved": 9,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 12,
+    "TranslatedUnits": 9,
+    "PreservedOriginalUnits": 3,
+    "EraseCommittedUnits": 9,
+    "TypesetCommittedUnits": 9,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "And then I felt it, too.",
+        "Translation": "\uADF8\uB9AC\uACE0 \uB098\uB3C4 \uB290\uAF08\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "I was wrong. About a 101 or enr But now it was too late. i",
+        "Translation": "\uB0B4 \uD310\uB2E8\uC774 \uD2C0\uB838\uB2E4.\n\uC774 \uC0AC\uAC74\uC5D0 \uB300\uD574\uC11C\uB3C4,\n\uC5B4\uCA4C\uBA74 \uB2E4\uB978 \uB9CE\uC740 \uAC83\uB4E4\uC5D0 \uB300\uD574\uC11C\uB3C4.\n\uD558\uC9C0\uB9CC \uC774\uC81C \uC640\uC11C \uD6C4\uD68C\uD574\uB3C4 \uC18C\uC6A9\uC5C6\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "Alarm. I\u0027ve learned to smile in company to hide it. So often that I now feel the first warnings at the corners of my mouth.",
+        "Translation": "\uACBD\uACE0. \uB098\uB294 \uADF8\uAC83\uC744 \uC228\uAE30\uAE30 \uC704\uD574\n\uC0AC\uB78C\uB4E4 \uC55E\uC5D0\uC11C \uC6C3\uB294 \uBC95\uC744 \uC775\uD614\uB2E4.\n\uC774\uC81C\uB294 \uC785\uAC00\uC5D0 \uAC10\uB3C4\uB294\n\uCCAB \uC2E0\uD638\uB4E4\uC744 \uB290\uB084 \uC815\uB3C4\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "SIR, I THINK You SHOULD GET OUT OF THERE.",
+        "Translation": "\uAC01\uD558, \uC81C \uC0DD\uAC01\uC5D4\n\uAC70\uAE30\uC5D0\uC11C\n\uD53C\uC2E0\uD558\uC2DC\uB294 \uAC8C\n\uC88B\uC744 \uAC83 \uAC19\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "JIM. SIGNAL VICTIM APPEARS TO BE TEN, MAYBE ELEVEN YEARS OLD. BADLY DECOMPO",
+        "Translation": "\uC9D0, \uC2E0\uD638 \uBCF4\uB0B4. [BR]\uD53C\uD574\uC790\uB294 \uC5F4 \uC0B4, [BR]\uC544\uB2C8\uBA74 \uC5F4\uD55C \uC0B4 \uC815\uB3C4\uB85C \uBCF4\uC5EC. [BR]\uBD80\uD328\uAC00 \uC2EC\uD558\uAC8C \uC9C4\uD589\uB410\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "Y",
+        "Translation": "\uC751",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "HE\u0027S B BEEN POSED BY MEANS OF A PROR, SOME KIND OF MECHANICAL--",
+        "Translation": "\uC18C\uD488\uC744 \uC774\uC6A9\uD574 \uACE0\uC815\uB41C \uAC70\uC57C, \uC5B4\uB5A4 \uAE30\uACC4\uC801\uC778--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "SIR, HIS ARM!",
+        "Translation": "\uAC01\uD558, \uD314\uC785\uB2C8\uB2E4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "BRUCE, MOVE!",
+        "Translation": "\uBE0C\uB8E8\uC2A4, \uD53C\uD574!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "NOW, BRUCE!",
+        "Translation": "\uC790, \uBE0C\uB8E8\uC2A4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "BRUCE!",
+        "Translation": "\uBE0C\uB8E8\uC2A4!",
+        "Status": "original_preserved:stylized_graphic",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "hi",
+        "Translation": "\uC548\uB155",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}

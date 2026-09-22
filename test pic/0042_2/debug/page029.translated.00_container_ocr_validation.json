@@ -1,0 +1,269 @@
+{
+  "schema": "ocr-evidence-v3",
+  "candidate_decisions": [
+    {
+      "CandidateId": "PC001",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC002",
+      "Eligible": true,
+      "Reason": "eligible_for_ocr"
+    },
+    {
+      "CandidateId": "PC003",
+      "Eligible": false,
+      "Reason": "weak_or_border_geometry"
+    }
+  ],
+  "attempts": [
+    {
+      "CandidateId": "PC001",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC001",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 6,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "CandidateId": "PC002",
+      "Pass": 7,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    }
+  ],
+  "line_decisions": [
+    {
+      "ObservationId": "CO0001",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0002",
+      "CandidateId": "PC001",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0003",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0004",
+      "CandidateId": "PC001",
+      "Accepted": false,
+      "Reason": "no_cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0005",
+      "CandidateId": "PC001",
+      "Accepted": true,
+      "Reason": "cross_scale_agreement",
+      "MaskCoverage": 1
+    },
+    {
+      "ObservationId": "CO0006",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.5823578595317725
+    },
+    {
+      "ObservationId": "CO0007",
+      "CandidateId": "PC002",
+      "Accepted": false,
+      "Reason": "outside_candidate_interior",
+      "MaskCoverage": 0.5823578595317725
+    }
+  ],
+  "region_attempts": [
+    {
+      "RegionId": "RG002",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG002",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 3,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG004",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 1,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 3,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    },
+    {
+      "RegionId": "RG006",
+      "Pass": 4,
+      "Status": "completed",
+      "Count": 2,
+      "Error": null
+    }
+  ],
+  "region_line_decisions": [
+    {
+      "ObservationId": "RO0001",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_global_agreement"
+    },
+    {
+      "ObservationId": "RO0002",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0003",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0004",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "strong_region_ocr"
+    },
+    {
+      "ObservationId": "RO0005",
+      "RegionId": "RG002",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0006",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0007",
+      "RegionId": "RG004",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0008",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0009",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0010",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    },
+    {
+      "ObservationId": "RO0011",
+      "RegionId": "RG006",
+      "Accepted": true,
+      "Reason": "region_cross_scale"
+    }
+  ],
+  "secondary_ocr": [
+    {
+      "EvidenceId": "BO0001",
+      "RegionId": "RG001",
+      "Bounds": {
+        "Top": 103,
+        "Bottom": 160,
+        "Left": 463,
+        "Right": 660,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "\u0022...AND THEN I\u0027LL SAY GOOD-BYE.\u0022",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0002",
+      "RegionId": "RG003",
+      "Bounds": {
+        "Top": 764,
+        "Bottom": 802,
+        "Left": 403,
+        "Right": 507,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "GASP!",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    },
+    {
+      "EvidenceId": "BO0003",
+      "RegionId": "RG005",
+      "Bounds": {
+        "Top": 810,
+        "Bottom": 860,
+        "Left": 451,
+        "Right": 525,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "Text": "-huff huff",
+      "Source": "baberu",
+      "Accepted": true,
+      "Reason": "bubble_text_region"
+    }
+  ]
+}

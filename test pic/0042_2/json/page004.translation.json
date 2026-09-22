@@ -1,0 +1,57 @@
+{
+  "SourceFile": "page004.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T20:14:38.3212968+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 503,
+        "Y": 714,
+        "W": 330,
+        "H": 152,
+        "Text": "ONE: CAVE THE",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 667.3333333333334,
+            "Y": 714,
+            "W": 120.66666666666663,
+            "H": 70.33333333333337,
+            "Text": "ONE:",
+            "Confidence": 0.9996573,
+            "Language": "en"
+          },
+          {
+            "X": 633,
+            "Y": 777,
+            "W": 200,
+            "H": 89,
+            "Text": "CAVE",
+            "Confidence": 0.9997839,
+            "Language": "en"
+          },
+          {
+            "X": 503,
+            "Y": 779,
+            "W": 142.5,
+            "H": 85.5,
+            "Text": "THE",
+            "Confidence": 0.99966466,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "PART ONE\nTHE CAVE",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "PART ONE:\nTHE CAVE",
+      "Translation": "\uC81C1\uBD80:\n\uB3D9\uAD74",
+      "Type": "logo",
+      "Render": false
+    }
+  ]
+}

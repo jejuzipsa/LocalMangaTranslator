@@ -1,0 +1,904 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page006.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.027,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9018472,
+            "BlockCoverage": 0.9779411764705881,
+            "CenterInside": true,
+            "CenterDistance": 1.9507833184532863,
+            "Affinity": 7.358786731097634
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.1501,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.9580772,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.3743685418725442,
+            "Affinity": 7.476289859069515
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0701,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9319219,
+            "BlockCoverage": 0.964467005076142,
+            "CenterInside": true,
+            "CenterDistance": 2,
+            "Affinity": 7.3198289699639165
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0594,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9426692,
+            "BlockCoverage": 0.9947780678851169,
+            "CenterInside": true,
+            "CenterDistance": 1.0833333333333626,
+            "Affinity": 7.448280211282873
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.049,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9163462,
+            "BlockCoverage": 0.8879762401967607,
+            "CenterInside": true,
+            "CenterDistance": 3.7647856660255092,
+            "Affinity": 7.0025484856349545
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0834,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9497453,
+            "BlockCoverage": 0.9726562500000008,
+            "CenterInside": true,
+            "CenterDistance": 1.4337208778404291,
+            "Affinity": 7.362630206960295
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0757,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.8471079,
+            "BlockCoverage": 0.6528627015008336,
+            "CenterInside": true,
+            "CenterDistance": 3.9616214413349744,
+            "Affinity": 6.027081506754698
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6006,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.6449629068374634,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 914.6666666666666,
+          "Y": 1051.3333333333333,
+          "W": 60.66666666666674,
+          "H": 19.666666666666742
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 8,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5937,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "MAMN",
+        "corrected_text": "VIEWING",
+        "ocr_confidence": 0.6591435670852661,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1040,
+          "Y": 1077.6666666666667,
+          "W": 171,
+          "H": 85.33333333333326
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0552,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9380019,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.2133516482132845,
+            "Affinity": 7.466574232258078
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0531,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.9271796,
+            "BlockCoverage": 0.9790419161676632,
+            "CenterInside": true,
+            "CenterDistance": 0.23570226039546224,
+            "Affinity": 7.379286047633077
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.1328,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.8828804,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.3535533905932738,
+            "Affinity": 7.440733088064013
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.0911,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.90330863,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6871842709361481,
+            "Affinity": 7.45027994645294
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "RG024",
+      "LayaDecision": "RG024",
+      "Confidence": 0.0659,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG024",
+            "BubbleRegionId": "RG023",
+            "DetectorScore": 0.9549972,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.8333333333332121,
+            "Affinity": 7.4758319242795315
+          }
+        ],
+        "RegionId": "RG023",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 14,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5918,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "E",
+        "corrected_text": "E",
+        "ocr_confidence": 0.5202202200889587,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 331.3333333333333,
+          "Y": 1495,
+          "W": 122.66666666666669,
+          "H": 147
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 15,
+      "RuleDecision": "RG026",
+      "LayaDecision": "RG026",
+      "Confidence": 0.0286,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG026",
+            "BubbleRegionId": "RG025",
+            "DetectorScore": 0.82159686,
+            "BlockCoverage": 0.9405940594059408,
+            "CenterInside": true,
+            "CenterDistance": 3.0046260628866492,
+            "Affinity": 7.1671654159408
+          }
+        ],
+        "RegionId": "RG025",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0846,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "As he neared the scene, he reviewed the files.",
+        "secondary_ocr": "As he neared the scene, he reviewed the files.",
+        "primary_confidence": 0.9879622459411621,
+        "current_agreement": "agree",
+        "corrected_text": "As he neared the scene, he reviewed the files."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1118,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "Every 363 days, some chalk line across a different, random five-foot stretch of Gotham.",
+        "secondary_ocr": "Every morning, for the past\nses, days, someone thad did wan a\nchalk line aross a dfferet. dffarattatarattatatefatafffatatatatata",
+        "primary_confidence": 0.9933336973190308,
+        "current_agreement": "disagree",
+        "corrected_text": "Every morning, for the past 363 days, someone had drawn a chalk line across a different, random five-foot stretch of Gotham."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0957,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "Gone by the next day. That\u0027s all this mystery was. Nothing more.",
+        "secondary_ocr": "Gone by the next day. That\u0027s all this mystery was. Nothing more.",
+        "primary_confidence": 0.9957050681114197,
+        "current_agreement": "agree",
+        "corrected_text": "Gone by the next day. That\u0027s all this mystery was. Nothing more."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0808,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "But when he used his satellite to compile the photos...he saw.",
+        "secondary_ocr": "But when he used his sate/life to complie the photos...he saw.",
+        "primary_confidence": 0.9913581013679504,
+        "current_agreement": "disagree",
+        "corrected_text": "But when he used his satellite to compile the photos...he saw."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0504,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "The chalk outline was him. Batman. Dead.",
+        "secondary_ocr": "The chalk outline was him. Batman. Dead.",
+        "primary_confidence": 0.9976131916046143,
+        "current_agreement": "agree",
+        "corrected_text": "The chalk outline was him. Batman. Dead."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0408,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the exact spot his parents died...",
+        "secondary_ocr": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the ek the ekecat....t.",
+        "primary_confidence": 0.9860261678695679,
+        "current_agreement": "disagree",
+        "corrected_text": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the exact spot his parents died..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0429,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "...Crime Alley.",
+        "secondary_ocr": "...Crime Alley.",
+        "primary_confidence": 0.9264650940895081,
+        "current_agreement": "agree",
+        "corrected_text": "...Crime Alley."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0918,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SOMEONE ELSE IS HERE, TOO.",
+        "secondary_ocr": "SOMEONE ELSE IS HERE, TOO.",
+        "primary_confidence": 0.9989467263221741,
+        "current_agreement": "agree",
+        "corrected_text": "SOMEONE ELSE IS HERE, TOO."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1438,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "GIVING YOU EYES, ALFRED.",
+        "secondary_ocr": "GIVING YOU EYES, ALFRED.",
+        "primary_confidence": 0.9904442429542542,
+        "current_agreement": "agree",
+        "corrected_text": "GIVING YOU EYES, ALFRED."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0631,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I\u0027M HERE.",
+        "secondary_ocr": "I\u0027M HERE.",
+        "primary_confidence": 0.9977542161941528,
+        "current_agreement": "agree",
+        "corrected_text": "I\u0027M HERE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1306,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BRINGING UP VISUA--",
+        "secondary_ocr": "BRINGING UP VISUA--",
+        "primary_confidence": 0.9978727102279663,
+        "current_agreement": "agree",
+        "corrected_text": "BRINGING UP VISUA--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 13,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0393,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "AS I SIR ARE SENSORS UP PICKING NOTH--",
+        "secondary_ocr": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--",
+        "primary_confidence": 0.991502583026886,
+        "current_agreement": "disagree",
+        "corrected_text": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 15,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0247,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "--OH NO.",
+        "secondary_ocr": "--OH NO.",
+        "primary_confidence": 0.9704568982124329,
+        "current_agreement": "agree",
+        "corrected_text": "--OH NO."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5179,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "Every 363 days, some chalk line across a different, random five-foot stretch of Gotham.",
+        "corrected_text": "Every morning, for the past 363 days, someone had drawn a chalk line across a different, random five-foot stretch of Gotham.",
+        "secondary_ocr": "Every morning, for the past\nses, days, someone thad did wan a\nchalk line aross a dfferet. dffarattatarattatatefatafffatatatatata",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9933336973190308,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6102,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MAMN",
+        "corrected_text": "VIEWING",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6591435670852661,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5818,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "AS I SIR ARE SENSORS UP PICKING NOTH--",
+        "corrected_text": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--",
+        "secondary_ocr": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.991502583026886,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.555,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "As he neared the scene, he reviewed the files.",
+        "corrected_source_text": "As he neared the scene, he reviewed the files.",
+        "korean_translation": "\uD604\uC7A5\uC5D0 \uAC00\uAE4C\uC6CC\uC9C0\uBA70, \uADF8\uB294 \uD30C\uC77C\uB4E4\uC744 \uAC80\uD1A0\uD588\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "As he neared the scene, he reviewed the files.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5348,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "Every 363 days, some chalk line across a different, random five-foot stretch of Gotham.",
+        "corrected_source_text": "Every morning, for the past 363 days, someone had drawn a chalk line across a different, random five-foot stretch of Gotham.",
+        "korean_translation": "\uC9C0\uB09C 363\uC77C \uB3D9\uC548 \uB9E4\uC77C \uC544\uCE68,\n\uB204\uAD70\uAC00 \uACE0\uB2F4\uC2DC\uC758 \uBB34\uC791\uC704\uB85C \uC120\uC815\uB41C\n5\uD53C\uD2B8 \uAE38\uC774\uC758 \uAD6C\uAC04\uC5D0\n\uBD84\uD544\uB85C \uC120\uC744 \uADF8\uC5B4\uC654\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "Every morning, for the past\nses, days, someone thad did wan a\nchalk line aross a dfferet. dffarattatarattatatefatafffatatatatata",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5129,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "Gone by the next day. That\u0027s all this mystery was. Nothing more.",
+        "corrected_source_text": "Gone by the next day. That\u0027s all this mystery was. Nothing more.",
+        "korean_translation": "\uB2E4\uC74C \uB0A0\uC774\uBA74 \uC0AC\uB77C\uC9C8 \uC77C. [BR]\uC774 \uBBF8\uC2A4\uD130\uB9AC\uC758 \uC804\uBD80\uC600\uB2E4. [BR]\uADF8 \uC774\uC0C1\uC740 \uC544\uBB34\uAC83\uB3C4 \uC5C6\uC5C8\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "Gone by the next day. That\u0027s all this mystery was. Nothing more.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6252,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "But when he used his satellite to compile the photos...he saw.",
+        "corrected_source_text": "But when he used his satellite to compile the photos...he saw.",
+        "korean_translation": "\uD558\uC9C0\uB9CC \uC704\uC131\uC744 \uC774\uC6A9\uD574 \uC0AC\uC9C4\uC744\n\uD569\uC131\uD588\uC744 \uB54C... \uADF8\uB294\n\uBCF4\uAC8C \uB418\uC5C8\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "But when he used his sate/life to complie the photos...he saw.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5207,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "The chalk outline was him. Batman. Dead.",
+        "corrected_source_text": "The chalk outline was him. Batman. Dead.",
+        "korean_translation": "\uBD84\uD544\uB85C \uADF8\uB824\uC9C4 \uC724\uACFD\uC740 \uADF8\uC600\uB2E4. \uBC30\uD2B8\uB9E8.[BR] \uC8FD\uC740 \uC0C1\uD0DC\uB85C.",
+        "type": "caption",
+        "secondary_ocr": "The chalk outline was him. Batman. Dead.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5683,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the exact spot his parents died...",
+        "corrected_source_text": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the exact spot his parents died...",
+        "korean_translation": "\uAC8C\uB2E4\uAC00 \uC724\uACFD\uC758 \uCE58\uC218\uB294 \uBC30\uD2B8\uB9E8\uC758 \uBA48\uCD98 \uC2EC\uC7A5\uC744[BR]\uBD80\uBAA8\uB2D8\uC774 \uB3CC\uC544\uAC00\uC2E0 \uBC14\uB85C \uADF8 \uC9C0\uC810\uC5D0[BR]\uC815\uD655\uD788 \uC77C\uCE58\uD558\uAC8C \uBC30\uCE58\uB418\uC5B4 \uC788\uC5C8\uB2E4...",
+        "type": "caption",
+        "secondary_ocr": "What\u0027s more, the dimensions of the outline would put Batman\u0027s stopped heart at the ek the ekecat....t.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6715,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "...Crime Alley.",
+        "corrected_source_text": "...Crime Alley.",
+        "korean_translation": "...\uBC94\uC8C4\uC758 \uACE8\uBAA9.",
+        "type": "caption",
+        "secondary_ocr": "...Crime Alley.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5043,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SOMEONE ELSE IS HERE, TOO.",
+        "corrected_source_text": "SOMEONE ELSE IS HERE, TOO.",
+        "korean_translation": "\uB2E4\uB978 \uC0AC\uB78C\uB3C4[BR]\uC5EC\uAE30\uC5D0 \uC788\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "SOMEONE ELSE IS HERE, TOO.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5177,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "GIVING YOU EYES, ALFRED.",
+        "corrected_source_text": "GIVING YOU EYES, ALFRED.",
+        "korean_translation": "\uB124\uAC8C \uB208\uC744 \uC8FC\uB9C8,[BR]\uC568\uD504\uB9AC\uB4DC.",
+        "type": "dialogue",
+        "secondary_ocr": "GIVING YOU EYES, ALFRED.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.602,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I\u0027M HERE.",
+        "corrected_source_text": "I\u0027M HERE.",
+        "korean_translation": "\uB098 \uC654\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "I\u0027M HERE.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5356,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BRINGING UP VISUA--",
+        "corrected_source_text": "BRINGING UP VISUA--",
+        "korean_translation": "\uC2DC\uAC01\uC744 \uBD88\uB7EC\uC624--",
+        "type": "dialogue",
+        "secondary_ocr": "BRINGING UP VISUA--",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6004,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "AS I SIR ARE SENSORS UP PICKING NOTH--",
+        "corrected_source_text": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--",
+        "korean_translation": "\uB9D0\uC500\uB4DC\uB9B0 \uB300\uB85C\uC785\uB2C8\uB2E4, \uAC01\uD558. \uC13C\uC11C\uAC00 \uBB34\uC5B8-\uC744 \uAC10\uC9C0\uD558\uACE0 \uC788--",
+        "type": "dialogue",
+        "secondary_ocr": "AS I SAID, SIR, SENSORS ARE PICKING UP NOTH--",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5256,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "--OH NO.",
+        "corrected_source_text": "--OH NO.",
+        "korean_translation": "--\uC548 \uB3FC.",
+        "type": "dialogue",
+        "secondary_ocr": "--OH NO.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "page029.jpg",
+  "RequestedUnits": 5,
+  "TranslatedUnits": 3,
+  "PreservedOriginalUnits": 2,
+  "EraseCommittedUnits": 3,
+  "TypesetCommittedUnits": 3,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 1,
+      "SourceText": ".AND THEN I\u0027LL SAY GOOD-BYE.",
+      "Translation": "\u0022...\uADF8\uB9AC\uACE0 \uC791\uBCC4 \uC778\uC0AC\uB97C \uD560 \uAC70\uC57C.\u0022",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 453,
+        "Y": 92,
+        "Width": 217,
+        "Height": 80
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 3,
+      "SourceText": "he us",
+      "Translation": "\uADF8\uB294",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 5,
+      "SourceText": "GASP!",
+      "Translation": "\uD5C9!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 393,
+        "Y": 750,
+        "Width": 125,
+        "Height": 59
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 6,
+      "SourceText": "-huf huff",
+      "Translation": "\u2014\uD5C8\uC5B5\n\uD5C8\uC5B5\u2014",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 435,
+        "Y": 802,
+        "Width": 107,
+        "Height": 71
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "MNE E",
+      "Translation": "\uD5C8\uC5B5...",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    }
+  ]
+}

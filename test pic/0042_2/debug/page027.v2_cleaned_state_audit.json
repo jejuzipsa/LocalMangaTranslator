@@ -1,0 +1,298 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-v2",
+  "SourceFile": "page027.jpg",
+  "VerifierAvailable": true,
+  "VerifierMode": "cleaned_rtdetr_plus_erase_evidence",
+  "OriginalDetectedBubbleCount": 6,
+  "SelectedTargetCount": 6,
+  "ResidualTextDetectionCount": 0,
+  "DetectorOnlyFalsePositiveRescueCount": 0,
+  "EraseTargetBubbleCount": 6,
+  "EmptyVerifiedBubbleCount": 6,
+  "BubbleCheckpointPass": true,
+  "EraseTargetBubbleIds": [
+    "RG001",
+    "RG003",
+    "RG005",
+    "RG006",
+    "RG009",
+    "RG011"
+  ],
+  "EmptyVerifiedBubbleIds": [
+    "RG001",
+    "RG003",
+    "RG005",
+    "RG006",
+    "RG009",
+    "RG011"
+  ],
+  "CheckpointMissingBubbleIds": [],
+  "EraseTargetTextFreeCount": 0,
+  "EmptyVerifiedTextFreeCount": 0,
+  "TextFreeCheckpointPass": true,
+  "OverallPass": true,
+  "LegacyReviewerDisagreements": 0,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "OriginalBounds": {
+        "Top": 273,
+        "Bottom": 323,
+        "Left": 190,
+        "Right": 280,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 1555,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG004",
+      "OriginalBounds": {
+        "Top": 304,
+        "Bottom": 393,
+        "Left": 770,
+        "Right": 922,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 3551,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG007",
+      "OriginalBounds": {
+        "Top": 785,
+        "Bottom": 871,
+        "Left": 640,
+        "Right": 776,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 4157,
+      "LegacySelectedResidualPixels": 17,
+      "LegacyResidualRatio": 0.004089487611258119,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG008",
+      "OriginalBounds": {
+        "Top": 785,
+        "Bottom": 913,
+        "Left": 782,
+        "Right": 1004,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 9063,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG010",
+      "OriginalBounds": {
+        "Top": 904,
+        "Bottom": 1071,
+        "Left": 882,
+        "Right": 1100,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 12549,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    },
+    {
+      "TextRegionId": "RG012",
+      "OriginalBounds": {
+        "Top": 1568,
+        "Bottom": 1694,
+        "Left": 989,
+        "Right": 1285,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "LegacyInitialMaskPixels": 14319,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    }
+  ],
+  "Checkpoints": [
+    {
+      "CheckpointId": "RG001",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 249,
+        "Bottom": 345,
+        "Left": 170,
+        "Right": 303,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG003",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 291,
+        "Bottom": 411,
+        "Left": 761,
+        "Right": 936,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG006",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 779,
+        "Bottom": 887,
+        "Left": 637,
+        "Right": 781,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG007"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG005",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 778,
+        "Bottom": 920,
+        "Left": 774,
+        "Right": 1016,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG009",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 893,
+        "Bottom": 1089,
+        "Left": 862,
+        "Right": 1120,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    },
+    {
+      "CheckpointId": "RG011",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1564,
+        "Bottom": 1704,
+        "Left": 976,
+        "Right": 1291,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    }
+  ],
+  "ResidualDetections": []
+}

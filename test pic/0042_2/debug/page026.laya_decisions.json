@@ -1,0 +1,722 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page026.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG003",
+      "LayaDecision": "RG003",
+      "Confidence": 0.0665,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG003",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.95854336,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.0137937550497016,
+            "Affinity": 7.477244092606554
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0751,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG002",
+            "DetectorScore": 0.9456323,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.8498365855987157,
+            "Affinity": 7.471116466288413
+          }
+        ],
+        "RegionId": "RG002",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0875,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9329528,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.4907119849998258,
+            "Affinity": 7.463494986657365
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6179,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.4014902114868164,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 370.6666666666667,
+          "Y": 401,
+          "W": 26,
+          "H": 36
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0545,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.90628433,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.8333333333333712,
+            "Affinity": 7.451475499471028
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0196,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9118738,
+            "BlockCoverage": 0.9558823529411765,
+            "CenterInside": true,
+            "CenterDistance": 1.8333333333332575,
+            "Affinity": 7.275799653819964
+          },
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9265524,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 81.81958472422379,
+            "Affinity": 0.2996370379986044
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0071,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9265524,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.23570226039554265,
+            "Affinity": 7.462804802926261
+          },
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9118738,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 80.4164507769122,
+            "Affinity": 0.2951040071680994
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6181,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.3120308220386505,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 685.3333333333334,
+          "Y": 940.6666666666666,
+          "W": 11.666666666666629,
+          "H": 12
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.1078,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.91077316,
+            "BlockCoverage": 0.9735449735449737,
+            "CenterInside": true,
+            "CenterDistance": 0.3004626062887078,
+            "Affinity": 7.34896554800403
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 9,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5793,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "c6",
+        "corrected_text": "c6",
+        "ocr_confidence": 0.37634792923927307,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 673,
+          "Y": 1175,
+          "W": 41,
+          "H": 41
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0931,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.90920794,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.2747548783981961,
+            "Affinity": 7.452054460294016
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0932,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.9243311,
+            "BlockCoverage": 0.9577464788732394,
+            "CenterInside": true,
+            "CenterDistance": 1.5206906325745548,
+            "Affinity": 7.290110098526439
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0255,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "NO MISSION EXCEPT TO BE WHO YOu NEVER GOT BE.. TO",
+        "secondary_ocr": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE...",
+        "primary_confidence": 0.9837547540664673,
+        "current_agreement": "disagree",
+        "corrected_text": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1095,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BRUCE WAYNE. NOT BATMAN. PLEASE...",
+        "secondary_ocr": "BRUCE\nWAYNE. NOT\nBATMAN.\nPLEASE...",
+        "primary_confidence": 0.9892696142196655,
+        "current_agreement": "agree",
+        "corrected_text": "BRUCE WAYNE. NOT BATMAN. PLEASE..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1201,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "TAKE MY HAND, BRUCE.",
+        "secondary_ocr": "TAKE MY HAND, BRUCE.",
+        "primary_confidence": 0.998602569103241,
+        "current_agreement": "agree",
+        "corrected_text": "TAKE MY HAND, BRUCE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0677,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "PLEASE. TAKE IT.",
+        "secondary_ocr": "PLEASE, TAKE IT.",
+        "primary_confidence": 0.9803816676139832,
+        "current_agreement": "agree",
+        "corrected_text": "PLEASE. TAKE IT."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0318,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SEE LET ME you.",
+        "secondary_ocr": "LET ME SEE YOU.",
+        "primary_confidence": 0.9782111644744873,
+        "current_agreement": "disagree",
+        "corrected_text": "LET ME SEE YOU."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1287,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WAIT, BRUCE, DON\u0027T--",
+        "secondary_ocr": "WAIT, BRUCE, DON\u0027T--",
+        "primary_confidence": 0.9918841123580933,
+        "current_agreement": "agree",
+        "corrected_text": "WAIT, BRUCE, DON\u0027T--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0384,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "LET ME SEE.",
+        "secondary_ocr": "LET ME SEE.",
+        "primary_confidence": 0.9984911680221558,
+        "current_agreement": "agree",
+        "corrected_text": "LET ME SEE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "partial",
+      "LayaDecision": "agree",
+      "Confidence": 0.0995,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DON\u0027T",
+        "secondary_ocr": "SIGH-DON\u0027T LOOK.",
+        "primary_confidence": 0.9953815937042236,
+        "current_agreement": "partial",
+        "corrected_text": "\u2014SIGH\u2014\nDON\u0027T LOOK."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0856,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BRUCE PLEASE... DON.T..",
+        "secondary_ocr": "BRUCE PLEASE... DON\u0027T...",
+        "primary_confidence": 0.9326198101043701,
+        "current_agreement": "agree",
+        "corrected_text": "BRUCE PLEASE...\nDON\u0027T..."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5047,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "NO MISSION EXCEPT TO BE WHO YOu NEVER GOT BE.. TO",
+        "corrected_text": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE...",
+        "secondary_ocr": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9837547540664673,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5985,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SEE LET ME you.",
+        "corrected_text": "LET ME SEE YOU.",
+        "secondary_ocr": "LET ME SEE YOU.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9782111644744873,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5117,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "DON\u0027T",
+        "corrected_text": "\u2014SIGH\u2014\nDON\u0027T LOOK.",
+        "secondary_ocr": "SIGH-DON\u0027T LOOK.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9953815937042236,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5157,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "BRUCE PLEASE... DON.T..",
+        "corrected_text": "BRUCE PLEASE...\nDON\u0027T...",
+        "secondary_ocr": "BRUCE PLEASE... DON\u0027T...",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9326198101043701,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6255,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NO MISSION EXCEPT TO BE WHO YOu NEVER GOT BE.. TO",
+        "corrected_source_text": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE...",
+        "korean_translation": "\uC0B4\uC544\uB0A8\uB294 \uAC83, \uADF8\uB9AC\uACE0 \uADF8\uB3D9\uC548\n\uD558\uC9C0 \uBABB\uD588\uB358 \uB124 \uBAA8\uC2B5\uC774 \uB418\uB294 \uAC83\n\uADF8\uAC83\uB9CC\uC774 \uC720\uC77C\uD55C \uC784\uBB34\uB2E4...",
+        "type": "dialogue",
+        "secondary_ocr": "NO MISSION EXCEPT TO LIVE, TO BE WHO YOU NEVER GOT TO BE...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6306,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BRUCE WAYNE. NOT BATMAN. PLEASE...",
+        "corrected_source_text": "BRUCE WAYNE. NOT BATMAN. PLEASE...",
+        "korean_translation": "\uBE0C\uB8E8\uC2A4 \uC6E8\uC778\uC774\uB77C\uACE0 \uBD88\uB7EC\uC918.[BR]\uBC30\uD2B8\uB9E8 \uB9D0\uACE0.[BR]\uC81C\uBC1C...",
+        "type": "dialogue",
+        "secondary_ocr": "BRUCE\nWAYNE. NOT\nBATMAN.\nPLEASE...",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5109,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "TAKE MY HAND, BRUCE.",
+        "corrected_source_text": "TAKE MY HAND, BRUCE.",
+        "korean_translation": "\uB0B4 \uC190\uC744 \uC7A1\uC544, \uBE0C\uB8E8\uC2A4.",
+        "type": "dialogue",
+        "secondary_ocr": "TAKE MY HAND, BRUCE.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5332,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "PLEASE. TAKE IT.",
+        "corrected_source_text": "PLEASE. TAKE IT.",
+        "korean_translation": "\uC81C\uBC1C.[BR]\uBC1B\uC544 \uAC00.",
+        "type": "dialogue",
+        "secondary_ocr": "PLEASE, TAKE IT.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5288,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SEE LET ME you.",
+        "corrected_source_text": "LET ME SEE YOU.",
+        "korean_translation": "\uC5BC\uAD74 \uC880 \uBCF4\uC790.",
+        "type": "dialogue",
+        "secondary_ocr": "LET ME SEE YOU.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6093,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WAIT, BRUCE, DON\u0027T--",
+        "corrected_source_text": "WAIT, BRUCE, DON\u0027T--",
+        "korean_translation": "\uC7A0\uAE50\uB9CC, \uBE0C\uB8E8\uC2A4, \uD558\uC9C0 \uB9C8--",
+        "type": "dialogue",
+        "secondary_ocr": "WAIT, BRUCE, DON\u0027T--",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.637,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "A",
+        "corrected_source_text": "A",
+        "korean_translation": "\uC544",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.527,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "LET ME SEE.",
+        "corrected_source_text": "LET ME SEE.",
+        "korean_translation": "\uC5B4\uB514 \uBCF4\uC790.",
+        "type": "dialogue",
+        "secondary_ocr": "LET ME SEE.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5961,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DON\u0027T",
+        "corrected_source_text": "\u2014SIGH\u2014\nDON\u0027T LOOK.",
+        "korean_translation": "\u2014\uD558\uC544\u2014\n\uBCF4\uC9C0 \uB9C8.",
+        "type": "dialogue",
+        "secondary_ocr": "SIGH-DON\u0027T LOOK.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5437,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BRUCE PLEASE... DON.T..",
+        "corrected_source_text": "BRUCE PLEASE...\nDON\u0027T...",
+        "korean_translation": "\uBE0C\uB8E8\uC2A4, \uC81C\uBC1C...\n\uD558\uC9C0 \uB9C8...",
+        "type": "dialogue",
+        "secondary_ocr": "BRUCE PLEASE... DON\u0027T...",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

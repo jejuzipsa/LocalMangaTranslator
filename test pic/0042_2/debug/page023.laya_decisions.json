@@ -1,0 +1,1063 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "page023.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG003",
+      "LayaDecision": "RG003",
+      "Confidence": 0.109,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG003",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9158143,
+            "BlockCoverage": 0.9761904761904763,
+            "CenterInside": true,
+            "CenterDistance": 1.5365907428821808,
+            "Affinity": 7.359595863531115
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG005",
+      "LayaDecision": "RG005",
+      "Confidence": 0.0976,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG005",
+            "BubbleRegionId": "RG002",
+            "DetectorScore": 0.9234856,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.5,
+            "Affinity": 7.460742788553238
+          }
+        ],
+        "RegionId": "RG002",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0769,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG004",
+            "DetectorScore": 0.9406644,
+            "BlockCoverage": 0.9556650246305419,
+            "CenterInside": true,
+            "CenterDistance": 2.460803843372221,
+            "Affinity": 7.288070696130985
+          }
+        ],
+        "RegionId": "RG004",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6002,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "WII",
+        "corrected_text": "WII",
+        "ocr_confidence": 0.5524200201034546,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 783,
+          "Y": 113,
+          "W": 54.33333333333337,
+          "H": 98.66666666666669
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.2352,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9496351,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6666666666666856,
+            "Affinity": 7.473484210888545
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0429,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9496351,
+            "BlockCoverage": 0.05970149253731503,
+            "CenterInside": false,
+            "CenterDistance": 95.18432410620736,
+            "Affinity": 0.5232548661587234
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0325,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.8968302,
+            "BlockCoverage": 0.1044744438784174,
+            "CenterInside": false,
+            "CenterDistance": 78.35336623272799,
+            "Affinity": 0.709606143622707
+          },
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9166517,
+            "BlockCoverage": 0.09386143657666836,
+            "CenterInside": false,
+            "CenterDistance": 86.57944328765345,
+            "Affinity": 0.660612722615888
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.058,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9166517,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6871842709363687,
+            "Affinity": 7.456951494342649
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 8,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6061,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "a",
+        "ocr_confidence": 0.6613414287567139,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 819.3333333333334,
+          "Y": 651.3333333333334,
+          "W": 7,
+          "H": 19.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0822,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.8968302,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.0883273476902113,
+            "Affinity": 7.444238445879113
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 10,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5844,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "N2 E",
+        "corrected_text": "N2 E",
+        "ocr_confidence": 0.49237287044525146,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 842,
+          "Y": 1021,
+          "W": 171,
+          "H": 212
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5951,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "E",
+        "corrected_text": "E",
+        "ocr_confidence": 0.36653897166252136,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 222.5,
+          "Y": 1117.5,
+          "W": 77,
+          "H": 76.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 12,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5824,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": ")Dy",
+        "corrected_text": ")Dy",
+        "ocr_confidence": 0.54990154504776,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 735.6666666666666,
+          "Y": 1181.3333333333333,
+          "W": 90.66666666666674,
+          "H": 50.66666666666674
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0464,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9255552,
+            "BlockCoverage": 0.9782608695652174,
+            "CenterInside": true,
+            "CenterDistance": 0.5270462766947359,
+            "Affinity": 7.374767000300985
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0807,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9364651,
+            "BlockCoverage": 0.9922480620155039,
+            "CenterInside": true,
+            "CenterDistance": 0.9013878188659973,
+            "Affinity": 7.4354220147006655
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 15,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0812,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.9537171,
+            "BlockCoverage": 0.9389671361502347,
+            "CenterInside": true,
+            "CenterDistance": 0.7682953714410657,
+            "Affinity": 7.231190510128656
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG020",
+      "LayaDecision": "RG020",
+      "Confidence": 0.0918,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG020",
+            "BubbleRegionId": "RG019",
+            "DetectorScore": 0.9203038,
+            "BlockCoverage": 0.8958333333333334,
+            "CenterInside": true,
+            "CenterDistance": 4.527692569068709,
+            "Affinity": 7.034429858977057
+          }
+        ],
+        "RegionId": "RG019",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 17,
+      "RuleDecision": "RG022",
+      "LayaDecision": "RG022",
+      "Confidence": 0.1146,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG022",
+            "BubbleRegionId": "RG021",
+            "DetectorScore": 0.8861903,
+            "BlockCoverage": 0.7721017514595496,
+            "CenterInside": true,
+            "CenterDistance": 2.462214450449026,
+            "Affinity": 6.526577724547011
+          }
+        ],
+        "RegionId": "RG021",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 9,
+      "RuleDecision": "R9",
+      "LayaDecision": "R6",
+      "Confidence": 0.0048,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG011",
+        "candidates": [
+          {
+            "option": "R6",
+            "Id": 6,
+            "source": "3 A",
+            "corrected": "NOT GOOD\nODDS.",
+            "secondary_agreement": null,
+            "ocr_confidence": 0.8090068101882935,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG012"
+            ],
+            "BubbleRegionId": "RG011",
+            "LayoutBounds": {
+              "Top": 649,
+              "Bottom": 718,
+              "Left": 1015,
+              "Right": 1155,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": -77489.35010494906
+          },
+          {
+            "option": "R9",
+            "Id": 9,
+            "source": "RIGHT. FOR you.",
+            "corrected": "RIGHT.\nFOR YOU.",
+            "secondary_agreement": "agree",
+            "ocr_confidence": 0.9656725525856018,
+            "detector_text_region": "RG012",
+            "TextRegionIds": [
+              "RG012"
+            ],
+            "BubbleRegionId": "RG011",
+            "LayoutBounds": {
+              "Top": 649,
+              "Bottom": 718,
+              "Left": 1015,
+              "Right": 1155,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 137337.47786345184
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0288,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "he police arrive as he\u0027s reaching the ninth. ninth.",
+        "secondary_ocr": "The police arrive as he\u0027s reaching the ninth.",
+        "primary_confidence": 0.9990168809890747,
+        "current_agreement": "disagree",
+        "corrected_text": "The police arrive as he\u0027s reaching the ninth."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 1,
+      "RuleDecision": "partial",
+      "LayaDecision": "agree",
+      "Confidence": 0.0601,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "In seven, he\u0027s on",
+        "secondary_ocr": "In seven, he\u0027s on the fifth.",
+        "primary_confidence": 0.9978632926940918,
+        "current_agreement": "partial",
+        "corrected_text": "In seven, he\u0027s on the fifth."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1259,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "In less than five minutes he\u0027s made it to the third floor.",
+        "secondary_ocr": "In less than five minutes he\u0027s made it to the third floor.",
+        "primary_confidence": 0.995520293712616,
+        "current_agreement": "agree",
+        "corrected_text": "In less than five minutes he\u0027s made it to the third floor."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0831,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MR. THERE WAYNE, TEN OF ARE AND ONE us OF vou",
+        "secondary_ocr": "MR.\nWAYNE, THERE\nARE TEN OF\nUS AND ONE\nOF YOU.",
+        "primary_confidence": 0.9815679788589478,
+        "current_agreement": "disagree",
+        "corrected_text": "MR. WAYNE, THERE ARE TEN OF US AND ONE OF YOU."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "partial",
+      "LayaDecision": "agree",
+      "Confidence": 0.0828,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "NOT NOT GOOD ODDS.",
+        "secondary_ocr": "NOT GOOD ODDS.",
+        "primary_confidence": 0.9995719194412231,
+        "current_agreement": "partial",
+        "corrected_text": "NOT GOOD ODDS."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0578,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "RIGHT. FOR you.",
+        "secondary_ocr": "RIGHT.\nFOR YOU.",
+        "primary_confidence": 0.9656725525856018,
+        "current_agreement": "agree",
+        "corrected_text": "RIGHT.\nFOR YOU."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 13,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1069,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "secondary_ocr": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "primary_confidence": 0.979880690574646,
+        "current_agreement": "agree",
+        "corrected_text": "He takes the \u0022bat\u0022 from one of them on nine."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0792,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "The belt he gets from Sergeant Bullock on the tenthfloor. It\u0027s big, so he wraps it around his waist twice.",
+        "secondary_ocr": "The bolt the gets from Sergent Bulldock on the terth floor. It\u0027s big, so he wrapst around hit and totat.",
+        "primary_confidence": 0.9891840219497681,
+        "current_agreement": "disagree",
+        "corrected_text": "The belt he gets from Sergeant Bullock on the tenth floor. It\u0027s big, so he wraps it around his waist twice."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 15,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0178,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+        "secondary_ocr": "Captain Gordom, a longtine advocate, makes an effort to talk to him on elever \u0022Remente te temetet \u0022\u0022thene temethe \u0022\u0022ameteneateme",
+        "primary_confidence": 0.9910728931427002,
+        "current_agreement": "disagree",
+        "corrected_text": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0425,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "He takes Gordon\u0027s boots sentence ends.",
+        "secondary_ocr": "He takes Gordon\u0027s boots before the sentence ends.",
+        "primary_confidence": 0.9993889331817627,
+        "current_agreement": "disagree",
+        "corrected_text": "He takes Gordon\u0027s boots before the sentence ends."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 17,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0857,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "In moments he\u0027s on twelve.",
+        "secondary_ocr": "In moments he\u0027s on twelve...",
+        "primary_confidence": 0.9861781597137451,
+        "current_agreement": "agree",
+        "corrected_text": "In moments he\u0027s on twelve..."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5063,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "he police arrive as he\u0027s reaching the ninth. ninth.",
+        "corrected_text": "The police arrive as he\u0027s reaching the ninth.",
+        "secondary_ocr": "The police arrive as he\u0027s reaching the ninth.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9990168809890747,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6121,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "In seven, he\u0027s on",
+        "corrected_text": "In seven, he\u0027s on the fifth.",
+        "secondary_ocr": "In seven, he\u0027s on the fifth.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9978632926940918,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5044,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MR. THERE WAYNE, TEN OF ARE AND ONE us OF vou",
+        "corrected_text": "MR. WAYNE, THERE ARE TEN OF US AND ONE OF YOU.",
+        "secondary_ocr": "MR.\nWAYNE, THERE\nARE TEN OF\nUS AND ONE\nOF YOU.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9815679788589478,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6298,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "3 A",
+        "corrected_text": "NOT GOOD\nODDS.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.8090068101882935,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6292,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "NOT NOT GOOD ODDS.",
+        "corrected_text": "NOT GOOD ODDS.",
+        "secondary_ocr": "NOT GOOD ODDS.",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9995719194412231,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.501,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "He takes Gordon\u0027s boots sentence ends.",
+        "corrected_text": "He takes Gordon\u0027s boots before the sentence ends.",
+        "secondary_ocr": "He takes Gordon\u0027s boots before the sentence ends.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9993889331817627,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 17,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5338,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "In moments he\u0027s on twelve.",
+        "corrected_text": "In moments he\u0027s on twelve...",
+        "secondary_ocr": "In moments he\u0027s on twelve...",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9861781597137451,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5377,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "he police arrive as he\u0027s reaching the ninth. ninth.",
+        "corrected_source_text": "The police arrive as he\u0027s reaching the ninth.",
+        "korean_translation": "\uADF8\uAC00 9\uCE35\uC5D0 \uB3C4\uB2EC\uD560 \uBB34\uB835[BR]\uACBD\uCC30\uC774 \uB3C4\uCC29\uD588\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "The police arrive as he\u0027s reaching the ninth.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5615,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "In seven, he\u0027s on",
+        "corrected_source_text": "In seven, he\u0027s on the fifth.",
+        "korean_translation": "7\uCD08 \uB0A8\uC558\uACE0,[BR]\uADF8\uB294 \uBC8C\uC368 5\uBC88\uC9F8\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "In seven, he\u0027s on the fifth.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5663,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "In less than five minutes he\u0027s made it to the third floor.",
+        "corrected_source_text": "In less than five minutes he\u0027s made it to the third floor.",
+        "korean_translation": "5\uBD84\uB3C4 \uCC44 \uC548 \uB3FC\uC11C[BR]\uBC8C\uC368 3\uCE35\uAE4C\uC9C0 \uB3C4\uB2EC\uD588\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "In less than five minutes he\u0027s made it to the third floor.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5368,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MR. THERE WAYNE, TEN OF ARE AND ONE us OF vou",
+        "corrected_source_text": "MR. WAYNE, THERE ARE TEN OF US AND ONE OF YOU.",
+        "korean_translation": "\uC6E8\uC778 \uC528, \uC6B0\uB9AC \uC5F4 \uBA85\uC5D0 \uB2F9\uC2E0\uC740 \uB2E8 \uD55C \uBA85\uBFD0\uC785\uB2C8\uB2E4.",
+        "type": "dialogue",
+        "secondary_ocr": "MR.\nWAYNE, THERE\nARE TEN OF\nUS AND ONE\nOF YOU.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6992,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "3 A",
+        "corrected_source_text": "NOT GOOD\nODDS.",
+        "korean_translation": "\uC2B9\uC0B0\uC774\n\uC5C6\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5238,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NOT NOT GOOD ODDS.",
+        "corrected_source_text": "NOT GOOD ODDS.",
+        "korean_translation": "\uC2B9\uC0B0\uC774 \uC5C6\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": "NOT GOOD ODDS.",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5977,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "a",
+        "corrected_source_text": "a",
+        "korean_translation": "\uC544",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5686,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "RIGHT. FOR you.",
+        "corrected_source_text": "RIGHT.\nFOR YOU.",
+        "korean_translation": "\uB9DE\uC544.\n\uB108\uB97C \uC704\uD574\uC11C.",
+        "type": "dialogue",
+        "secondary_ocr": "RIGHT.\nFOR YOU.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5127,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "corrected_source_text": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "korean_translation": "\uADF8\uB294 9\uCD08 \uB9CC\uC5D0[BR]\uADF8\uC911 \uD55C \uBA85\uC5D0\uAC8C\uC11C \u0022\uBAA8\uC790\u0022\uB97C \uBE8F\uB294\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "He takes the \u0022bat\u0022 from one of them on nine.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6131,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "The belt he gets from Sergeant Bullock on the tenthfloor. It\u0027s big, so he wraps it around his waist twice.",
+        "corrected_source_text": "The belt he gets from Sergeant Bullock on the tenth floor. It\u0027s big, so he wraps it around his waist twice.",
+        "korean_translation": "10\uCE35\uC5D0\uC11C \uBD88\uB85D \uBCD1\uC7A5\uC5D0\uAC8C \uC5BB\uC740 \uBCA8\uD2B8. [BR] \uAF64 \uD06C\uAE30 \uB54C\uBB38\uC5D0 \uD5C8\uB9AC\uC5D0 \uB450 \uBC88 \uAC10\uC558\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "The bolt the gets from Sergent Bulldock on the terth floor. It\u0027s big, so he wrapst around hit and totat.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5203,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+        "corrected_source_text": "Captain Gordon, a longtime advocate, makes an effort to talk to him on eleven. \u0022Remember me, son?\u0022 he says, \u0022The talks on the roof? By the skyligh--\u0022",
+        "korean_translation": "\uC624\uB79C \uC9C0\uC9C0\uC790\uC600\uB358 \uACE0\uB4E0 \uB300\uC704\uAC00 11\uC5D0\uC11C \uADF8\uC640 \uB300\uD654\uD558\uB824\uACE0 \uC560\uB97C \uC4F4\uB2E4. \u0022\uB098 \uAE30\uC5B5\uB098\uB098, \uC544\uB4E4\uC544?\u0022 \uADF8\uAC00 \uB9D0\uD55C\uB2E4. \u0022\uC625\uC0C1\uC5D0\uC11C \uB098\uB234\uB358 \uB300\uD654 \uB9D0\uC774\uC57C. \uCC9C\uC7A5\uCC3D \uADFC\uCC98\uC5D0\uC11C...\u0022",
+        "type": "caption",
+        "secondary_ocr": "Captain Gordom, a longtine advocate, makes an effort to talk to him on elever \u0022Remente te temetet \u0022\u0022thene temethe \u0022\u0022ameteneateme",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5293,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "He takes Gordon\u0027s boots sentence ends.",
+        "corrected_source_text": "He takes Gordon\u0027s boots before the sentence ends.",
+        "korean_translation": "\uBB38\uC7A5\uC774 \uB05D\uB098\uAE30\uB3C4 \uC804\uC5D0[BR]\uADF8\uB294 \uACE0\uB4E0\uC758 \uBD80\uCE20\uB97C \uB09A\uC544\uCC58\uB2E4.",
+        "type": "caption",
+        "secondary_ocr": "He takes Gordon\u0027s boots before the sentence ends.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 17,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6271,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "In moments he\u0027s on twelve.",
+        "corrected_source_text": "In moments he\u0027s on twelve...",
+        "korean_translation": "\uC21C\uC2DD\uAC04\uC5D0[BR]\uC5F4\uB450 \uBA85\uC774\uB098...",
+        "type": "dialogue",
+        "secondary_ocr": "In moments he\u0027s on twelve...",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

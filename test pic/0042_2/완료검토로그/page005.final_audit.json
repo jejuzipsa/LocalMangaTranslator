@@ -1,0 +1,677 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page005.jpg",
+  "output_file": "page005.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 96397,
+    "changed_ratio": 0.03486150078368489,
+    "changed_regions": [
+      {
+        "x": 892,
+        "y": 933,
+        "width": 373,
+        "height": 55
+      },
+      {
+        "x": 335,
+        "y": 505,
+        "width": 181,
+        "height": 103
+      },
+      {
+        "x": 61,
+        "y": 697,
+        "width": 216,
+        "height": 57
+      },
+      {
+        "x": 924,
+        "y": 1086,
+        "width": 126,
+        "height": 77
+      },
+      {
+        "x": 283,
+        "y": 765,
+        "width": 200,
+        "height": 47
+      },
+      {
+        "x": 1024,
+        "y": 1577,
+        "width": 145,
+        "height": 63
+      },
+      {
+        "x": 224,
+        "y": 424,
+        "width": 122,
+        "height": 73
+      },
+      {
+        "x": 120,
+        "y": 1782,
+        "width": 141,
+        "height": 57
+      },
+      {
+        "x": 112,
+        "y": 1840,
+        "width": 138,
+        "height": 58
+      },
+      {
+        "x": 308,
+        "y": 325,
+        "width": 131,
+        "height": 50
+      },
+      {
+        "x": 1021,
+        "y": 1628,
+        "width": 181,
+        "height": 29
+      },
+      {
+        "x": 406,
+        "y": 325,
+        "width": 97,
+        "height": 50
+      },
+      {
+        "x": 206,
+        "y": 269,
+        "width": 98,
+        "height": 46
+      },
+      {
+        "x": 865,
+        "y": 1618,
+        "width": 95,
+        "height": 38
+      },
+      {
+        "x": 283,
+        "y": 789,
+        "width": 155,
+        "height": 23
+      },
+      {
+        "x": 139,
+        "y": 270,
+        "width": 67,
+        "height": 45
+      },
+      {
+        "x": 959,
+        "y": 1618,
+        "width": 82,
+        "height": 34
+      },
+      {
+        "x": 789,
+        "y": 1205,
+        "width": 104,
+        "height": 23
+      },
+      {
+        "x": 57,
+        "y": 293,
+        "width": 83,
+        "height": 23
+      },
+      {
+        "x": 804,
+        "y": 1918,
+        "width": 62,
+        "height": 29
+      },
+      {
+        "x": 940,
+        "y": 989,
+        "width": 93,
+        "height": 18
+      },
+      {
+        "x": 892,
+        "y": 933,
+        "width": 88,
+        "height": 18
+      },
+      {
+        "x": 804,
+        "y": 1948,
+        "width": 56,
+        "height": 27
+      },
+      {
+        "x": 452,
+        "y": 325,
+        "width": 57,
+        "height": 26
+      },
+      {
+        "x": 1205,
+        "y": 995,
+        "width": 86,
+        "height": 17
+      },
+      {
+        "x": 893,
+        "y": 971,
+        "width": 68,
+        "height": 21
+      },
+      {
+        "x": 1194,
+        "y": 952,
+        "width": 79,
+        "height": 18
+      },
+      {
+        "x": 865,
+        "y": 1598,
+        "width": 66,
+        "height": 21
+      },
+      {
+        "x": 1132,
+        "y": 933,
+        "width": 77,
+        "height": 18
+      },
+      {
+        "x": 298,
+        "y": 424,
+        "width": 54,
+        "height": 25
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page005.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 59648,
+    "erase_changed_ratio": 0.021571405736124944,
+    "typeset_changed_pixels": 56721,
+    "typeset_changed_ratio": 0.020512870586754675
+  },
+  "region_analysis": {
+    "total": 26,
+    "bubbles": 13,
+    "text_regions": 13,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 42,
+      "Global2x": 42,
+      "Focus3x": 231,
+      "Region1x": 43,
+      "Region2x": 48,
+      "Container1x": 41,
+      "Container2x": 46
+    },
+    "canonical_lines": 55,
+    "units": 18,
+    "assigned_lines": 50,
+    "orphan_groups": 5,
+    "secondary_total": 13,
+    "secondary_accepted": 13,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 271,
+          "Bottom": 316,
+          "Left": 51,
+          "Right": 318,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "We\u0027ve had many adventures together, Batman and I.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 327,
+          "Bottom": 374,
+          "Left": 301,
+          "Right": 546,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027ve been at his side practically his whole life.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 424,
+          "Bottom": 494,
+          "Left": 191,
+          "Right": 356,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NEARING FINAL DESTINATION, ALFRED.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 505,
+          "Bottom": 612,
+          "Left": 335,
+          "Right": 520,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027M HERE.\nSENSORS SHOW\nNO MOVEMENT\nAT THE SITE,\nSIR.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 697,
+          "Bottom": 758,
+          "Left": 53,
+          "Right": 285,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "From the start, though, something about this case felt different.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 764,
+          "Bottom": 812,
+          "Left": 275,
+          "Right": 526,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "He\u0027d been following it for almost exactly a year.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 930,
+          "Bottom": 1012,
+          "Left": 884,
+          "Right": 1291,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "The most unsertiung thing about it was their there was so girldngsting villing wid wo chouritatangatad cata tout touta tatatatad",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1080,
+          "Bottom": 1168,
+          "Left": 921,
+          "Right": 1050,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NO HEAT SIGNATURE EITHER, SIR.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1203,
+          "Bottom": 1231,
+          "Left": 755,
+          "Right": 919,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "UNDERSTOOD.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1558,
+          "Bottom": 1621,
+          "Left": 157,
+          "Right": 447,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027ll tell you a secret about him. About Batman. You know where h",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1575,
+          "Bottom": 1657,
+          "Left": 856,
+          "Right": 1202,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "In hit scar tissue. A gririn warring system carved ittto his body kelod, hypert-tohis...can\u0027s fatata fatard: fatatart.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1775,
+          "Bottom": 1902,
+          "Left": 106,
+          "Right": 302,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SIR,\nI\u0027M JUST\nSUGGESTING\nTHERE\u0027S NO NEED\nTO SPEED, I\nSEE NO--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 1925,
+          "Bottom": 1973,
+          "Left": 798,
+          "Right": 870,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "OKAY THEN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 18,
+    "requested_render": 13
+  },
+  "render": {
+    "total": 13,
+    "approved": 13,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 13,
+    "TranslatedUnits": 13,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 13,
+    "TypesetCommittedUnits": 13,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "We\u0027ve had many adventures together, Batman and I.",
+        "Translation": "\uBC30\uD2B8\uB9E8\uACFC \uB098, [BR]\uC6B0\uB9B0 \uD568\uAED8 \uB9CE\uC740 \uBAA8\uD5D8\uC744 \uD574\uC654\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "I\u0027ve been at his side practically his whole life.",
+        "Translation": "\uB09C \uAC70\uC758 \uD3C9\uC0DD\uC744[BR]\uADF8\uC758 \uACC1\uC5D0\uC11C \uD568\uAED8\uD574 \uC654\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "NEARING FINAL DESTINATION, ALFRED.",
+        "Translation": "\uBAA9\uC801\uC9C0\uC5D0 \uAC70\uC758 \uB2E4 \uC654\uB124, \uC54C\uD504\uB808\uB4DC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "I\u0027M HERE. SENSORS SHOW MOVEMENT NO THE SITE, SIR.",
+        "Translation": "\uB3C4\uCC29\uD588\uC2B5\uB2C8\uB2E4. \uC13C\uC11C\uC5D0\n\uD604\uC7A5 \uC6C0\uC9C1\uC784\uC740\n\uAC10\uC9C0\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4, \uB300\uC7A5.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "From the start, though, something about this case felt different.",
+        "Translation": "\uD558\uC9C0\uB9CC \uCC98\uC74C\uBD80\uD130[BR]\uC774 \uC0AC\uAC74\uC740 \uBB54\uAC00[BR]\uBB18\uD55C \uAD6C\uC11D\uC774 \uC788\uC5C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "He\u0027d been following it for almost exactly a year.",
+        "Translation": "\uADF8\uB294 \uAC70\uC758 \uC815\uD655\uD788 1\uB144 \uB3D9\uC548\n\uADF8\uAC83\uC744 \uCAD3\uC544\uC654\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "The most unsettling thing about it was that there was no grandstanding villain, no corpse, no real victim at all. It shouldn\u0027t have alarmed him so. And yet...",
+        "Translation": "\uAC00\uC7A5 \uC18C\uB984 \uB07C\uCE58\uB294 \uC810\uC740[BR]\uAC70\uCC3D\uD558\uAC8C \uB0A0\uB6F0\uB294 \uC545\uB2F9\uB3C4, \uC2DC\uCCB4\uB3C4,[BR]\uC9C4\uC9DC \uD76C\uC0DD\uC790\uC870\uCC28 \uC804\uD600 \uC5C6\uB2E4\uB294 \uAC83\uC774\uC5C8\uB2E4. \uADF8\uAC00 \uC774\uD1A0\uB85D[BR]\uB2F9\uD669\uD560 \uC774\uC720\uAC00 \uC5C6\uC5C8\uB294\uB370. \uADF8\uB7F0\uB370\uB3C4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "NO HEAT SIGNATURE EITHER, SIR.",
+        "Translation": "\uC5F4 \uC2E0\uD638\uB3C4 \uAC10\uC9C0\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4, \uB300\uC7A5\uB2D8.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "OD.",
+        "Translation": "\uC54C\uC558\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "secret about him. About Batman. You know where he feels alarm?",
+        "Translation": "\uADF8\uC5D0 \uB300\uD574 \uBE44\uBC00 \uD558\uB098 \uB9D0\uD574\uC904\uAC8C.[BR]\uBC30\uD2B8\uB9E8\uC5D0 \uB300\uD574\uC11C \uB9D0\uC774\uC57C.[BR]\uADF8\uAC00 \uC5B4\uB514\uC5D0\uC11C \uC704\uD611\uC744 \uB290\uB07C\uB294\uC9C0 \uC54C\uC544?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "In his scar tissue. A grim warning system carved into his body. Keloid, hypert responsible for.",
+        "Translation": "\uADF8\uC758 \uD749\uD130 \uC870\uC9C1\uC5D0. [BR]\uADF8\uC758 \uBAB8\uC5D0 \uC0C8\uACA8\uC9C4 [BR]\uC5C4\uC911\uD55C \uACBD\uACE0 \uC2DC\uC2A4\uD15C. [BR]\uCF08\uB85C\uC774\uB4DC, \uBE44\uD6C4\uC131... [BR]\uB0B4\uAC00 \uCC45\uC784\uAC10\uC744 \uB290\uB07C\uB294 [BR]\uD749\uD130\uB4E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "SIR JUST I\u0027M SUGGESTING NEED THERE\u0027S NO SPEED. TO I SEE NO--",
+        "Translation": "\uAC01\uD558, \uC11C\uB450\uB974\uC2E4 \uD544\uC694\uB294 \uC5C6\uB2E4\uACE0 \uB9D0\uC500\uB4DC\uB9AC\uB294 \uAC81\uB2C8\uB2E4. \uC81C\uAC00 \uBCF4\uAE30\uC5D4\u2014",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "OKAY THEN.",
+        "Translation": "\uC88B\uC544, \uADF8\uB7FC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
