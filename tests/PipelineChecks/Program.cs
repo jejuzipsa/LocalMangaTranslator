@@ -1865,6 +1865,59 @@ using (var independentCleaned =
             independentBounds,
             0.97));
 
+    Check("V2 0046 classifies severe high-confidence mask undershoot as recoverable",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                5671,
+                new Rect(
+                    0,
+                    0,
+                    290,
+                    63),
+                0.6967,
+                356,
+                0.951f),
+            "MASK_UNDERSHOOT_RECOVERY",
+            StringComparison.Ordinal) &&
+        ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            5671,
+            new Rect(
+                0,
+                0,
+                290,
+                63),
+            0.6967,
+            356,
+            0.951f));
+
+    Check("V2 0046 keeps broad residual diagnostic when ordinary mask coverage is normal",
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                2419,
+                new Rect(
+                    0,
+                    0,
+                    196,
+                    127),
+                0.8339,
+                6955,
+                0.95f),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal) &&
+        string.Equals(
+            ErasePipelineV2.ClassifyIndependentFlatResidual(
+                4518,
+                new Rect(
+                    0,
+                    0,
+                    310,
+                    149),
+                0.7751,
+                14641,
+                0.95f),
+            "AMBIGUOUS_STRUCTURE",
+            StringComparison.Ordinal));
+
     Check("V2 0044 independent verifier reports clean when no source-linked residual exists",
         string.Equals(
             ErasePipelineV2.ClassifyIndependentFlatResidual(
