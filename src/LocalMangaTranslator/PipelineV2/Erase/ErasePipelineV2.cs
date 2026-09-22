@@ -151,6 +151,16 @@ public sealed class ErasePipelineV2
                 debugDir,
                 $"{name}.v2_03d_flat_cleanup_mask.webp");
 
+        string independentFlatResidualPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03e_independent_flat_residual.webp");
+
+        string independentFlatCleanupPath =
+            Path.Combine(
+                debugDir,
+                $"{name}.v2_03f_independent_flat_cleanup_mask.webp");
+
         string cleanedPath =
             Path.Combine(
                 debugDir,
@@ -1152,6 +1162,129 @@ public sealed class ErasePipelineV2
             new Scalar(255, 255, 0),
             flatCleanupMaskPath);
 
+        // 0044: independent flat-background residual verification.
+        // Unlike the legacy residual/persistence reviewers, this stage never
+        // uses the erase mask as evidence. It compares source vs cleaned
+        // pixels directly inside immutable TextBubble bounds and looks for
+        // source-colored components that survived while remaining strongly
+        // inconsistent with the stored flat background. This closes the
+        // page005 blind spot where the original mask simply never owned the
+        // surviving glyph fragment.
+        using var independentFlatResidualDebugMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var independentFlatCleanupDebugMask =
+            Mat.Zeros(
+                source.Rows,
+                source.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        var independentFlatResidualBeforeByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
+        var independentFlatCleanupPixelsByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
+        var independentFlatResidualAfterByTarget =
+            new Dictionary<string, int>(
+                StringComparer.Ordinal);
+
+        int independentFlatCleanupTargetCount = 0;
+
+        foreach (var target in targets)
+        {
+            if (target.Kind !=
+                    LocalMangaTranslator.Models.PageRegionKind.TextBubble ||
+                !backgroundAuditByTarget.TryGetValue(
+                    target.TextRegionId,
+                    out var backgroundAudit) ||
+                !backgroundAudit.FlatAccepted)
+            {
+                continue;
+            }
+
+            using var independentResidual =
+                BuildIndependentFlatPersistenceMask(
+                    source,
+                    finalCleaned,
+                    target.TextBounds,
+                    backgroundAudit);
+
+            int beforePixels =
+                Cv2.CountNonZero(
+                    independentResidual);
+
+            independentFlatResidualBeforeByTarget[
+                target.TextRegionId] =
+                beforePixels;
+
+            Cv2.BitwiseOr(
+                independentFlatResidualDebugMask,
+                independentResidual,
+                independentFlatResidualDebugMask);
+
+            if (!ShouldApplyIndependentFlatCleanup(
+                    beforePixels,
+                    target.TextBounds))
+            {
+                independentFlatCleanupPixelsByTarget[
+                    target.TextRegionId] = 0;
+
+                independentFlatResidualAfterByTarget[
+                    target.TextRegionId] =
+                    beforePixels;
+
+                continue;
+            }
+
+            BackgroundReconstructionV2.ApplyFlatFill(
+                finalCleaned,
+                independentResidual,
+                backgroundAudit);
+
+            Cv2.BitwiseOr(
+                independentFlatCleanupDebugMask,
+                independentResidual,
+                independentFlatCleanupDebugMask);
+
+            independentFlatCleanupPixelsByTarget[
+                target.TextRegionId] =
+                beforePixels;
+
+            independentFlatCleanupTargetCount++;
+
+            using var afterResidual =
+                BuildIndependentFlatPersistenceMask(
+                    source,
+                    finalCleaned,
+                    target.TextBounds,
+                    backgroundAudit);
+
+            independentFlatResidualAfterByTarget[
+                target.TextRegionId] =
+                Cv2.CountNonZero(
+                    afterResidual);
+        }
+
+        SaveColoredMaskDebug(
+            finalCleaned,
+            independentFlatResidualDebugMask,
+            new Scalar(0, 128, 255),
+            independentFlatResidualPath);
+
+        SaveColoredMaskDebug(
+            finalCleaned,
+            independentFlatCleanupDebugMask,
+            new Scalar(255, 0, 255),
+            independentFlatCleanupPath);
+
         var flatChromaticResidualByTarget =
             new Dictionary<string, (int ReviewPixels, int OutlierPixels, double Ratio)>(
                 StringComparer.Ordinal);
@@ -1181,6 +1314,15 @@ public sealed class ErasePipelineV2
                     backgroundAudit);
         }
 
+        var independentFlatResidualFailedTextRegionIds =
+            independentFlatResidualAfterByTarget
+                .Where(x =>
+                    x.Value >= 2)
+                .Select(x =>
+                    x.Key)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
         var backgroundQualityFailedTextRegionIds =
             flatChromaticResidualByTarget
                 .Where(x =>
@@ -1190,6 +1332,10 @@ public sealed class ErasePipelineV2
                         x.Value.Ratio))
                 .Select(x =>
                     x.Key)
+                .Concat(
+                    independentFlatResidualFailedTextRegionIds)
+                .Distinct(
+                    StringComparer.Ordinal)
                 .OrderBy(x => x)
                 .ToArray();
 
@@ -1305,7 +1451,7 @@ public sealed class ErasePipelineV2
             new
             {
                 Schema =
-                    "pipeline-v2-erase-audit-v2",
+                    "pipeline-v2-erase-audit-v3",
                 SourceFile =
                     Path.GetFileName(sourcePath),
                 snapshot.SourceMode,
@@ -1351,6 +1497,28 @@ public sealed class ErasePipelineV2
                         CleanupMaskDebugFile =
                             Path.GetFileName(
                                 flatCleanupMaskPath)
+                    },
+                IndependentFlatResidualCleanup =
+                    new
+                    {
+                        AppliedTargets =
+                            independentFlatCleanupTargetCount,
+                        ResidualBeforePixels =
+                            independentFlatResidualBeforeByTarget.Values.Sum(),
+                        CleanupMaskPixels =
+                            independentFlatCleanupPixelsByTarget.Values.Sum(),
+                        ResidualAfterPixels =
+                            independentFlatResidualAfterByTarget.Values.Sum(),
+                        FailedTargetIds =
+                            independentFlatResidualFailedTextRegionIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        ResidualDebugFile =
+                            Path.GetFileName(
+                                independentFlatResidualPath),
+                        CleanupMaskDebugFile =
+                            Path.GetFileName(
+                                independentFlatCleanupPath)
                     },
                 ResidualAfterRetryPixels =
                     residualAfterTotal,
@@ -1444,6 +1612,21 @@ public sealed class ErasePipelineV2
                                             out var chromaticRatioAfter)
                                             ? chromaticRatioAfter.Ratio
                                             : 0,
+                                    IndependentSourceLinkedResidualBeforePixels =
+                                        independentFlatResidualBeforeByTarget.GetValueOrDefault(
+                                            x.TextRegionId),
+                                    IndependentSourceLinkedCleanupApplied =
+                                        independentFlatCleanupPixelsByTarget.GetValueOrDefault(
+                                            x.TextRegionId) > 0,
+                                    IndependentSourceLinkedCleanupPixels =
+                                        independentFlatCleanupPixelsByTarget.GetValueOrDefault(
+                                            x.TextRegionId),
+                                    IndependentSourceLinkedResidualAfterPixels =
+                                        independentFlatResidualAfterByTarget.GetValueOrDefault(
+                                            x.TextRegionId),
+                                    IndependentSourceLinkedResidualPass =
+                                        !independentFlatResidualFailedTextRegionIds.Contains(
+                                            x.TextRegionId),
                                     BackgroundQualityPass =
                                         !backgroundQualityFailedTextRegionIds.Contains(
                                             x.TextRegionId,
@@ -2742,6 +2925,367 @@ public sealed class ErasePipelineV2
         }
 
         return outlierMask;
+    }
+
+    /// <summary>
+    /// 0044 source-linked flat residual verifier. This intentionally does not
+    /// consume the original erase/glyph mask. A pixel is suspicious only when
+    /// both the source and cleaned image remain far from the independently
+    /// estimated flat background while the cleaned pixel is still close to
+    /// the original source color. Large edge-spanning components are rejected
+    /// so bubble borders or panel rules cannot become cleanup seeds.
+    /// </summary>
+    public static Mat BuildIndependentFlatPersistenceMask(
+        Mat source,
+        Mat cleaned,
+        Rect textBounds,
+        V2BackgroundReconstructionAudit audit)
+    {
+        var empty =
+            Mat.Zeros(
+                cleaned.Rows,
+                cleaned.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        if (!audit.FlatAccepted ||
+            source.Empty() ||
+            cleaned.Empty() ||
+            source.Rows != cleaned.Rows ||
+            source.Cols != cleaned.Cols)
+        {
+            return empty;
+        }
+
+        Rect bounds =
+            ClampRect(
+                textBounds,
+                cleaned.Cols,
+                cleaned.Rows);
+
+        if (bounds.Width <= 2 ||
+            bounds.Height <= 2)
+        {
+            return empty;
+        }
+
+        using var seed =
+            Mat.Zeros(
+                cleaned.Rows,
+                cleaned.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        using var candidate =
+            Mat.Zeros(
+                cleaned.Rows,
+                cleaned.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        double strongBackgroundDistance =
+            Math.Clamp(
+                audit.P90ColorDistance + 34.0,
+                46.0,
+                72.0);
+
+        double candidateBackgroundDistance =
+            Math.Clamp(
+                audit.P90ColorDistance + 22.0,
+                34.0,
+                56.0);
+
+        const double strongSourceSimilarity =
+            34.0;
+
+        const double candidateSourceSimilarity =
+            58.0;
+
+        for (int y = bounds.Top;
+             y < bounds.Bottom;
+             y++)
+        {
+            for (int x = bounds.Left;
+                 x < bounds.Right;
+                 x++)
+            {
+                var before =
+                    source.At<Vec3b>(
+                        y,
+                        x);
+
+                var after =
+                    cleaned.At<Vec3b>(
+                        y,
+                        x);
+
+                double sourceBackgroundDistance =
+                    ColorDistance(
+                        before,
+                        audit.BackgroundB,
+                        audit.BackgroundG,
+                        audit.BackgroundR);
+
+                double cleanedBackgroundDistance =
+                    ColorDistance(
+                        after,
+                        audit.BackgroundB,
+                        audit.BackgroundG,
+                        audit.BackgroundR);
+
+                double sourceSimilarity =
+                    ColorDistance(
+                        before,
+                        after);
+
+                if (sourceBackgroundDistance >=
+                        candidateBackgroundDistance &&
+                    cleanedBackgroundDistance >=
+                        candidateBackgroundDistance &&
+                    sourceSimilarity <=
+                        candidateSourceSimilarity)
+                {
+                    candidate.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+
+                if (sourceBackgroundDistance >=
+                        strongBackgroundDistance &&
+                    cleanedBackgroundDistance >=
+                        strongBackgroundDistance &&
+                    sourceSimilarity <=
+                        strongSourceSimilarity)
+                {
+                    seed.Set(
+                        y,
+                        x,
+                        (byte)255);
+                }
+            }
+        }
+
+        if (Cv2.CountNonZero(
+                seed) < 2)
+        {
+            return empty;
+        }
+
+        using var filteredSeed =
+            FilterIndependentFlatComponents(
+                seed,
+                bounds);
+
+        if (Cv2.CountNonZero(
+                filteredSeed) < 2)
+        {
+            return empty;
+        }
+
+        using var boundsMask =
+            BuildBoundsMask(
+                cleaned.Rows,
+                cleaned.Cols,
+                bounds);
+
+        var linked =
+            filteredSeed.Clone();
+
+        using var kernel =
+            Cv2.GetStructuringElement(
+                MorphShapes.Rect,
+                new Size(3, 3));
+
+        for (int i = 0;
+             i < 3;
+             i++)
+        {
+            using var dilated =
+                new Mat();
+
+            Cv2.Dilate(
+                linked,
+                dilated,
+                kernel,
+                iterations: 1);
+
+            Cv2.BitwiseAnd(
+                dilated,
+                candidate,
+                dilated);
+
+            Cv2.BitwiseAnd(
+                dilated,
+                boundsMask,
+                dilated);
+
+            Cv2.BitwiseOr(
+                linked,
+                dilated,
+                linked);
+        }
+
+        empty.Dispose();
+
+        return linked;
+    }
+
+    static Mat FilterIndependentFlatComponents(
+        Mat seed,
+        Rect textBounds)
+    {
+        var filtered =
+            Mat.Zeros(
+                seed.Rows,
+                seed.Cols,
+                MatType.CV_8UC1)
+            .ToMat();
+
+        Cv2.FindContours(
+            seed,
+            out Point[][] contours,
+            out _,
+            RetrievalModes.External,
+            ContourApproximationModes.ApproxSimple);
+
+        int textArea =
+            Math.Max(
+                1,
+                textBounds.Width *
+                textBounds.Height);
+
+        int maximumComponentPixels =
+            Math.Max(
+                96,
+                (int)Math.Ceiling(
+                    textArea *
+                    0.08));
+
+        foreach (var contour in contours)
+        {
+            if (contour.Length == 0)
+                continue;
+
+            Rect box =
+                Cv2.BoundingRect(
+                    contour);
+
+            if (box.Width >=
+                    Math.Max(
+                        8,
+                        (int)Math.Ceiling(
+                            textBounds.Width *
+                            0.85)) ||
+                box.Height >=
+                    Math.Max(
+                        8,
+                        (int)Math.Ceiling(
+                            textBounds.Height *
+                            0.85)))
+            {
+                continue;
+            }
+
+            using var component =
+                Mat.Zeros(
+                    seed.Rows,
+                    seed.Cols,
+                    MatType.CV_8UC1)
+                .ToMat();
+
+            Cv2.DrawContours(
+                component,
+                [contour],
+                -1,
+                Scalar.White,
+                thickness: -1);
+
+            int pixels =
+                Cv2.CountNonZero(
+                    component);
+
+            if (pixels < 2 ||
+                pixels >
+                    maximumComponentPixels)
+            {
+                continue;
+            }
+
+            Cv2.BitwiseOr(
+                filtered,
+                component,
+                filtered);
+        }
+
+        return filtered;
+    }
+
+    public static bool ShouldApplyIndependentFlatCleanup(
+        int residualPixels,
+        Rect textBounds)
+    {
+        if (residualPixels < 2)
+            return false;
+
+        int textArea =
+            Math.Max(
+                1,
+                textBounds.Width *
+                textBounds.Height);
+
+        int safetyCeiling =
+            Math.Max(
+                96,
+                (int)Math.Ceiling(
+                    textArea *
+                    0.14));
+
+        return residualPixels <=
+               safetyCeiling;
+    }
+
+    static double ColorDistance(
+        Vec3b a,
+        int b,
+        int g,
+        int r)
+    {
+        double db =
+            a.Item0 - b;
+
+        double dg =
+            a.Item1 - g;
+
+        double dr =
+            a.Item2 - r;
+
+        return Math.Sqrt(
+            db * db +
+            dg * dg +
+            dr * dr);
+    }
+
+    static double ColorDistance(
+        Vec3b a,
+        Vec3b b)
+    {
+        double db =
+            a.Item0 -
+            b.Item0;
+
+        double dg =
+            a.Item1 -
+            b.Item1;
+
+        double dr =
+            a.Item2 -
+            b.Item2;
+
+        return Math.Sqrt(
+            db * db +
+            dg * dg +
+            dr * dr);
     }
 
     /// <summary>
