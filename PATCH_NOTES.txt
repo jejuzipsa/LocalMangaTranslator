@@ -3900,3 +3900,78 @@ CI verification:
 - Pipeline evidence checks: success
 - Publish win-x64: success
 - artifact upload: success
+
+
+0047 - flat-background cleaned-state detector false-positive rescue
+------------------------------------------------------------------
+Live baseline:
+- test pic/0046_2
+- commit 57a3718ed99c06922fddbeaa029adc5aa22632aa
+- 24 pages (page033-page056), 219 requested V2 units
+- erase-review failures: 0
+- cleaned-state text redetections: 4 total
+  * page048: 3
+  * page053: 1
+
+Observed false-positive pattern:
+- all affected targets were TextBubble.
+- legacy erase reviewer was clean.
+- persistent source-glyph evidence was zero.
+- background reconstruction quality passed.
+- cleaned RT-DETR alone redetected text and therefore restored the original.
+- page048 affected:
+  * RG006, max cleaned score 0.36653554
+  * RG010, max cleaned score 0.45646143
+  * RG016, max cleaned score 0.43498868
+- page053 affected:
+  * RG002, max cleaned score 0.4196732
+- these are dark/colored FLAT_FILL bubbles, matching the earlier detector-only
+  false-positive family but with larger legacy residual counts than the narrow
+  0042 tiny-residual rescue allowed.
+
+0047 implementation:
+- ErasePipelineV2 now passes structured cleaned-state rescue evidence per
+  immutable TextRegionId:
+  * FlatAccepted / Strategy
+  * DominantMatchRatio
+  * BackgroundQualityPass
+  * independent residual disposition
+  * independent residual before/after pixels
+- existing 0042 legacy tiny-residual rescue remains unchanged and has priority.
+- new rescue mode:
+  flat_background_ambiguous_structure
+- a cleaned RT-DETR redetection is rescued only when all conditions hold:
+  * target is TextBubble
+  * legacy erase audit is clean
+  * FLAT_FILL is accepted
+  * background quality passed
+  * independent disposition is AMBIGUOUS_STRUCTURE
+  * independent residual remains diagnostic (>0), not a failed actionable cleanup
+  * InitialMaskPixels >= 40
+  * SelectedPersistentCorePixels == 0
+  * SelectedPersistenceRatio <= 0.005
+  * SelectedResidualPixels / InitialMaskPixels <= 0.08
+  * cleaned detector max score > 0 and <= 0.50
+- high-confidence cleaned detections, background-quality failures, actionable
+  SAFE_RESIDUAL cases, persistent glyph evidence, or excessive legacy residual
+  density still block commit.
+- rescued targets report:
+  Status=EMPTY_OK_FLAT_BACKGROUND_DETECTOR_ONLY_FALSE_POSITIVE
+  DetectorOnlyFalsePositiveRescue=true
+  DetectorOnlyFalsePositiveRescueMode=flat_background_ambiguous_structure
+- cleaned-state audit schema bumped to pipeline-v2-cleaned-state-v3.
+- new top-level count:
+  FlatBackgroundDetectorOnlyFalsePositiveRescueCount.
+
+Code commits:
+- b0230d59db0064dff89ea98b59a353864f91e73b
+  V2 0047: rescue flat-background detector-only redetections
+- a9371bac5f33861be7ee45f9f0de199a727476b7
+  Tests 0047: cover flat-background cleaned-state rescue
+
+CI verification:
+- Pipeline V2 Windows Portable run 35793079433
+- conclusion: success
+- Pipeline evidence checks: success
+- Publish win-x64: success
+- artifact upload: success
