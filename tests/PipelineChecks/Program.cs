@@ -25,6 +25,11 @@ bool AllAccepted(params OcrObservation[] lines)
 bool NoneAccepted(params OcrObservation[] lines)
     => ContainerOcrValidator.ValidateLines([candidate], lines).All(x => !x.Accepted);
 
+var default0036Options = new PipelineOptions();
+Check("V2 0036 defaults to Laya experimental shadow track",
+    default0036Options.DecisionTrack == PipelineDecisionTrack.LayaExperimental &&
+    default0036Options.LayaMode == LayaDecisionMode.Shadow);
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);
