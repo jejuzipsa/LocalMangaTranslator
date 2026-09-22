@@ -441,7 +441,10 @@ public sealed class ErasePipelineV2
                     initialTargetPixels,
                     residualPixels,
                     effectiveResidualPixels,
-                    target.TextBounds);
+                    target.TextBounds,
+                    strictTextBubble:
+                        target.Kind ==
+                        LocalMangaTranslator.Models.PageRegionKind.TextBubble);
 
             bool retry =
                 initialTargetPixels >= 2 &&
@@ -857,7 +860,10 @@ public sealed class ErasePipelineV2
                     previous.InitialMaskPixels,
                     selectedRawResidual,
                     selectedEffectiveResidual,
-                    target.TextBounds);
+                    target.TextBounds,
+                    strictTextBubble:
+                        target.Kind ==
+                        LocalMangaTranslator.Models.PageRegionKind.TextBubble);
 
             int coreMaskPixels = 0;
             int coreOverlapPixels = 0;
@@ -2112,9 +2118,43 @@ public sealed class ErasePipelineV2
         int rawResidualPixels,
         int effectiveResidualPixels,
         Rect textBounds)
+        => IsResidualAcceptable(
+            initialMaskPixels,
+            rawResidualPixels,
+            effectiveResidualPixels,
+            textBounds,
+            strictTextBubble: false);
+
+    public static bool IsResidualAcceptable(
+        int initialMaskPixels,
+        int rawResidualPixels,
+        int effectiveResidualPixels,
+        Rect textBounds,
+        bool strictTextBubble)
     {
         if (rawResidualPixels < 2)
             return true;
+
+        // 0043: ordinary detector-owned speech balloons need a tighter
+        // outside-mask residue gate than generic caption/artwork review.
+        // page005 RG008 left visible source glyph fragments while the legacy
+        // density rule still called the first pass clean. Keep the generic
+        // policy intact, but force a retry for TextBubble targets when
+        // effective residue exceeds 5% of the immutable source glyph mask.
+        if (strictTextBubble)
+        {
+            double strictEffectiveAllowance =
+                Math.Max(
+                    24.0,
+                    initialMaskPixels *
+                    0.05);
+
+            if (effectiveResidualPixels >
+                strictEffectiveAllowance)
+            {
+                return false;
+            }
+        }
 
         int textArea =
             Math.Max(
