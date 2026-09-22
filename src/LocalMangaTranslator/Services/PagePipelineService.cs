@@ -20,6 +20,7 @@ public sealed class PagePipelineService
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
     readonly FinalAuditService finalAudit = new();
+    readonly LayaDecisionService laya = new();
 
     public PagePipelineService(
         PageAnalysisService pageAnalysis,
@@ -147,6 +148,11 @@ public sealed class PagePipelineService
                 visionProgress,
                 token);
 
+        // 0036 shadow track compares Laya against the raw Vision decision
+        // before any Classic detector-owned recovery mutates Render.
+        var visionReviewedBeforeRecovery =
+            reviewed.ToList();
+
         int corrected =
             reviewed.Count(x =>
                 !string.Equals(
@@ -211,6 +217,30 @@ public sealed class PagePipelineService
                 PipelineStageKind.Render,
                 $"Pipeline V2 · TextBubble erase / parent Bubble layout 연결 " +
                 $"{v2Selection.Bindings.Count} Unit · TextBubble {v2Selection.TextRegionIds.Count}개"));
+        }
+
+        if (options.DecisionTrack ==
+                PipelineDecisionTrack.LayaExperimental &&
+            options.LayaMode !=
+                LayaDecisionMode.Off)
+        {
+            var layaProgress =
+                new Progress<string>(message =>
+                    progress?.Report(
+                        new PipelineProgress(
+                            PipelineStageKind.VisionReview,
+                            message)));
+
+            await laya.WriteShadowAuditAsync(
+                sourcePath,
+                outputDirectory,
+                pageAnalysisResult,
+                ocrStage,
+                visionReviewedBeforeRecovery,
+                translated,
+                options,
+                layaProgress,
+                token);
         }
 
         var document =
