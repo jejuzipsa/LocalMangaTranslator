@@ -1,0 +1,577 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "page015.jpg",
+  "output_file": "page015.translated.webp",
+  "image": {
+    "width": 1341,
+    "height": 2062,
+    "changed_pixels": 53254,
+    "changed_ratio": 0.019259047094145616,
+    "changed_regions": [
+      {
+        "x": 583,
+        "y": 1273,
+        "width": 212,
+        "height": 115
+      },
+      {
+        "x": 732,
+        "y": 630,
+        "width": 189,
+        "height": 104
+      },
+      {
+        "x": 240,
+        "y": 731,
+        "width": 135,
+        "height": 98
+      },
+      {
+        "x": 216,
+        "y": 591,
+        "width": 121,
+        "height": 80
+      },
+      {
+        "x": 847,
+        "y": 209,
+        "width": 104,
+        "height": 84
+      },
+      {
+        "x": 1073,
+        "y": 1866,
+        "width": 80,
+        "height": 59
+      },
+      {
+        "x": 935,
+        "y": 1804,
+        "width": 82,
+        "height": 57
+      },
+      {
+        "x": 960,
+        "y": 1774,
+        "width": 78,
+        "height": 57
+      },
+      {
+        "x": 841,
+        "y": 369,
+        "width": 97,
+        "height": 33
+      },
+      {
+        "x": 804,
+        "y": 232,
+        "width": 47,
+        "height": 61
+      },
+      {
+        "x": 681,
+        "y": 1273,
+        "width": 72,
+        "height": 39
+      },
+      {
+        "x": 743,
+        "y": 1263,
+        "width": 56,
+        "height": 41
+      },
+      {
+        "x": 580,
+        "y": 1263,
+        "width": 55,
+        "height": 39
+      },
+      {
+        "x": 881,
+        "y": 402,
+        "width": 55,
+        "height": 36
+      },
+      {
+        "x": 750,
+        "y": 1373,
+        "width": 49,
+        "height": 40
+      },
+      {
+        "x": 936,
+        "y": 369,
+        "width": 41,
+        "height": 33
+      },
+      {
+        "x": 882,
+        "y": 622,
+        "width": 39,
+        "height": 30
+      },
+      {
+        "x": 225,
+        "y": 751,
+        "width": 36,
+        "height": 28
+      },
+      {
+        "x": 727,
+        "y": 622,
+        "width": 38,
+        "height": 25
+      },
+      {
+        "x": 580,
+        "y": 1376,
+        "width": 24,
+        "height": 37
+      },
+      {
+        "x": 210,
+        "y": 590,
+        "width": 30,
+        "height": 26
+      },
+      {
+        "x": 220,
+        "y": 724,
+        "width": 31,
+        "height": 22
+      },
+      {
+        "x": 934,
+        "y": 1833,
+        "width": 24,
+        "height": 28
+      },
+      {
+        "x": 351,
+        "y": 724,
+        "width": 30,
+        "height": 19
+      },
+      {
+        "x": 315,
+        "y": 593,
+        "width": 30,
+        "height": 19
+      },
+      {
+        "x": 760,
+        "y": 1288,
+        "width": 23,
+        "height": 22
+      },
+      {
+        "x": 665,
+        "y": 1391,
+        "width": 29,
+        "height": 17
+      },
+      {
+        "x": 1130,
+        "y": 1866,
+        "width": 26,
+        "height": 18
+      },
+      {
+        "x": 815,
+        "y": 211,
+        "width": 23,
+        "height": 20
+      },
+      {
+        "x": 614,
+        "y": 1288,
+        "width": 20,
+        "height": 22
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "page015.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 33232,
+    "erase_changed_ratio": 0.012018189300947293,
+    "typeset_changed_pixels": 29969,
+    "typeset_changed_ratio": 0.010838141404672888
+  },
+  "region_analysis": {
+    "total": 18,
+    "bubbles": 9,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 20,
+      "Global2x": 15,
+      "Focus3x": 129,
+      "Region1x": 38,
+      "Region2x": 43,
+      "Container1x": 32,
+      "Container2x": 33
+    },
+    "canonical_lines": 50,
+    "units": 16,
+    "assigned_lines": 42,
+    "orphan_groups": 8,
+    "secondary_total": 9,
+    "secondary_accepted": 8,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 202,
+          "Bottom": 293,
+          "Left": 803,
+          "Right": 959,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "Yor\nNOTT AIFfed.\nHoo Are yu?!\nWH--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 360,
+          "Bottom": 447,
+          "Left": 842,
+          "Right": 977,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "STOP IT!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 595,
+          "Bottom": 666,
+          "Left": 210,
+          "Right": 345,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUST STOP, GOD DAMN IT!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 622,
+          "Bottom": 734,
+          "Left": 727,
+          "Right": 921,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOOK\nAROUND YOU!\nAT EVERYONE\nYOU\u0027RE HURTING\nWITH THIS!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 724,
+          "Bottom": 836,
+          "Left": 220,
+          "Right": 381,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ALL\nTHESE YEARS...\nENOUGH.\nLOOK, WILL\nYOU?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1171,
+          "Bottom": 1192,
+          "Left": 660,
+          "Right": 696,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u2026",
+        "Source": "baberu",
+        "Accepted": false,
+        "Reason": "empty_result"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1263,
+          "Bottom": 1413,
+          "Left": 580,
+          "Right": 799,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THAT\u0027S RIGHT, LOOK. REALLY LOOK SEE THEM FOR WHO THEY ARE. THE P",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1786,
+          "Bottom": 1856,
+          "Left": 927,
+          "Right": 1046,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "No...\nnnno s\u0027not\ntru...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1860,
+          "Bottom": 1930,
+          "Left": 1068,
+          "Right": 1160,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT\u0027S TRUE IS THIS...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 16,
+    "requested_render": 11
+  },
+  "render": {
+    "total": 9,
+    "approved": 8,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 11,
+    "TranslatedUnits": 8,
+    "PreservedOriginalUnits": 3,
+    "EraseCommittedUnits": 8,
+    "TypesetCommittedUnits": 8,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "O",
+        "Translation": "\uC5B4",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "Yor NOTT Alffred. Hoo ArE yu?!! WH--",
+        "Translation": "\uC694\uB974\uAC00 \uC544\uB2C8\uC57C, \uC54C\uD504\uB808\uB4DC.\n\uC5B4, \uB108...!!\n\uBB50--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "STOP IT!",
+        "Translation": "\uADF8\uB9CC\uD574!\n\uB2F9\uC7A5!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "JUST STOP GOD DAMN IT!",
+        "Translation": "\uC81C\uBC1C \uC880 \uADF8\uB9CC\uD574, \uBE4C\uC5B4\uBA39\uC744!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "LOOK AROUND YOU! AT EVERYONE YOU\u0027RE HURTING WITH THIS!",
+        "Translation": "\uC8FC\uBCC0\uC744 \uBD10! [BR]\uB124\uAC00 \uD718\uB450\uB974\uB294 \uC774 \uBB34\uAE30\uB85C [BR]\uC0C1\uCC98 \uC785\uD788\uACE0 \uC788\uB294 [BR]\uBAA8\uB4E0 \uC0AC\uB78C\uB4E4\uC744!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "ALL YEARS.. THESE ENOUGH. LOOK, WILL YO\u00FA?!",
+        "Translation": "\uADF8 \uBAA8\uB4E0 \uC138\uC6D4\uC774... \uC774\uC81C \uB05D\uC774\uC57C.\n\uBD10, \uD560 \uAC70\uC57C?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "I",
+        "Translation": "\uB098",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "THAT\u0027S RIGHT, LOOK. SEE REALLY LOOK. FOR THEY WHO PEOPLE ARE. THE HELP TO you.",
+        "Translation": "\uB9DE\uC544, \uBD10.\n\uC81C\uB300\uB85C \uBD10, \uADF8\uB4E4\uC774\n\uB204\uAD6C\uC778\uC9C0 \uB611\uBC14\uB85C \uBD10.\n\uB108\uB97C \uB3C4\uC6B0\uB824\uB294\n\uC0AC\uB78C\uB4E4\uC774\uB77C\uACE0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "T",
+        "Translation": "\uD574\uBCFC\uAC8C",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "No... nnno s\u0027not tru...",
+        "Translation": "\uC544\uB2C8...\n\uC544\uB2C8, \uADF8\uAC74\n\uAC70\uC9D3\uC510...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "WHAT\u0027S TRUE IS THIS...",
+        "Translation": "\uC9C4\uC2E4\uC740\n\uC774\uAC70\uC57C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
