@@ -1691,6 +1691,186 @@ using (var cleanupOriginalMask =
         preservedNeutral0033.Item2 == 10);
 }
 
+using (var independentSource =
+       new Mat(
+           120,
+           180,
+           MatType.CV_8UC3,
+           new Scalar(
+               255,
+               255,
+               255)))
+using (var independentCleaned =
+       independentSource.Clone())
+{
+    var independentBounds =
+        new Rect(
+            40,
+            25,
+            100,
+            75);
+
+    // Simulate source glyph fragments that were never included in the erase
+    // mask: they remain pixel-identical after the ordinary erase/retry pass.
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            72,
+            48,
+            8,
+            22),
+        new Scalar(
+            18,
+            18,
+            18),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            72,
+            48,
+            8,
+            22),
+        new Scalar(
+            18,
+            18,
+            18),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            86,
+            48,
+            7,
+            22),
+        new Scalar(
+            35,
+            35,
+            35),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            86,
+            48,
+            7,
+            22),
+        new Scalar(
+            35,
+            35,
+            35),
+        thickness: -1);
+
+    // A long source/background structure crossing most of the detector box is
+    // deliberately preserved: the independent verifier rejects edge-spanning
+    // components instead of repainting panel/bubble rules.
+    Cv2.Rectangle(
+        independentSource,
+        new Rect(
+            45,
+            82,
+            88,
+            3),
+        new Scalar(
+            25,
+            25,
+            25),
+        thickness: -1);
+
+    Cv2.Rectangle(
+        independentCleaned,
+        new Rect(
+            45,
+            82,
+            88,
+            3),
+        new Scalar(
+            25,
+            25,
+            25),
+        thickness: -1);
+
+    var independentAudit =
+        new V2BackgroundReconstructionAudit(
+            "V2-0044-INDEPENDENT",
+            PageRegionKind.TextBubble.ToString(),
+            independentBounds,
+            "FLAT_FILL",
+            1200,
+            300,
+            255,
+            255,
+            255,
+            0.97,
+            2,
+            5,
+            1.0,
+            4,
+            true,
+            "dominant_purified_background_cluster");
+
+    using var independentResidual =
+        ErasePipelineV2.BuildIndependentFlatPersistenceMask(
+            independentSource,
+            independentCleaned,
+            independentBounds,
+            independentAudit);
+
+    int independentResidualPixels =
+        Cv2.CountNonZero(
+            independentResidual);
+
+    Check("V2 0044 independent verifier catches source-linked missed glyph fragments",
+        independentResidualPixels > 20 &&
+        independentResidual.At<byte>(
+            55,
+            75) != 0 &&
+        independentResidual.At<byte>(
+            83,
+            60) == 0);
+
+    Check("V2 0044 independent cleanup stays under geometry safety ceiling",
+        ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            independentResidualPixels,
+            independentBounds) &&
+        !ErasePipelineV2.ShouldApplyIndependentFlatCleanup(
+            5000,
+            independentBounds));
+
+    BackgroundReconstructionV2.ApplyFlatFill(
+        independentCleaned,
+        independentResidual,
+        independentAudit);
+
+    using var independentAfter =
+        ErasePipelineV2.BuildIndependentFlatPersistenceMask(
+            independentSource,
+            independentCleaned,
+            independentBounds,
+            independentAudit);
+
+    Check("V2 0044 independent flat cleanup removes its source-linked residual",
+        Cv2.CountNonZero(
+            independentAfter) == 0 &&
+        independentCleaned.At<Vec3b>(
+            55,
+            75).Equals(
+                new Vec3b(
+                    255,
+                    255,
+                    255)) &&
+        independentCleaned.At<Vec3b>(
+            83,
+            60).Equals(
+                new Vec3b(
+                    25,
+                    25,
+                    25)));
+}
+
 using (var artworkSource =
        Mat.Zeros(
            160,
