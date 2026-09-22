@@ -2957,11 +2957,40 @@ public sealed class ErasePipelineV2
             return empty;
         }
 
-        Rect bounds =
-            ClampRect(
-                textBounds,
-                cleaned.Cols,
+        int left =
+            Math.Clamp(
+                textBounds.Left,
+                0,
+                cleaned.Cols);
+
+        int top =
+            Math.Clamp(
+                textBounds.Top,
+                0,
                 cleaned.Rows);
+
+        int right =
+            Math.Clamp(
+                textBounds.Right,
+                left,
+                cleaned.Cols);
+
+        int bottom =
+            Math.Clamp(
+                textBounds.Bottom,
+                top,
+                cleaned.Rows);
+
+        Rect bounds =
+            new(
+                left,
+                top,
+                Math.Max(
+                    0,
+                    right - left),
+                Math.Max(
+                    0,
+                    bottom - top));
 
         if (bounds.Width <= 2 ||
             bounds.Height <= 2)
