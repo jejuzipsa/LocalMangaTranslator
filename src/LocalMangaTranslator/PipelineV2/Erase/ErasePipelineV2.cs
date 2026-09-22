@@ -1196,6 +1196,10 @@ public sealed class ErasePipelineV2
             new Dictionary<string, int>(
                 StringComparer.Ordinal);
 
+        var independentFlatDispositionByTarget =
+            new Dictionary<string, string>(
+                StringComparer.Ordinal);
+
         int independentFlatCleanupTargetCount = 0;
 
         foreach (var target in targets)
@@ -1230,9 +1234,20 @@ public sealed class ErasePipelineV2
                 independentResidual,
                 independentFlatResidualDebugMask);
 
-            if (!ShouldApplyIndependentFlatCleanup(
+            string independentDisposition =
+                ClassifyIndependentFlatResidual(
                     beforePixels,
-                    target.TextBounds))
+                    target.TextBounds,
+                    backgroundAudit.DominantMatchRatio);
+
+            independentFlatDispositionByTarget[
+                target.TextRegionId] =
+                independentDisposition;
+
+            if (!string.Equals(
+                    independentDisposition,
+                    "SAFE_RESIDUAL",
+                    StringComparison.Ordinal))
             {
                 independentFlatCleanupPixelsByTarget[
                     target.TextRegionId] = 0;
@@ -1317,7 +1332,26 @@ public sealed class ErasePipelineV2
         var independentFlatResidualFailedTextRegionIds =
             independentFlatResidualAfterByTarget
                 .Where(x =>
-                    x.Value >= 2)
+                    x.Value >= 2 &&
+                    independentFlatDispositionByTarget.TryGetValue(
+                        x.Key,
+                        out var disposition) &&
+                    string.Equals(
+                        disposition,
+                        "SAFE_RESIDUAL",
+                        StringComparison.Ordinal))
+                .Select(x =>
+                    x.Key)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+        var independentFlatAmbiguousTextRegionIds =
+            independentFlatDispositionByTarget
+                .Where(x =>
+                    string.Equals(
+                        x.Value,
+                        "AMBIGUOUS_STRUCTURE",
+                        StringComparison.Ordinal))
                 .Select(x =>
                     x.Key)
                 .ToHashSet(
@@ -1451,7 +1485,7 @@ public sealed class ErasePipelineV2
             new
             {
                 Schema =
-                    "pipeline-v2-erase-audit-v3",
+                    "pipeline-v2-erase-audit-v4",
                 SourceFile =
                     Path.GetFileName(sourcePath),
                 snapshot.SourceMode,
@@ -1503,6 +1537,24 @@ public sealed class ErasePipelineV2
                     {
                         AppliedTargets =
                             independentFlatCleanupTargetCount,
+                        CleanTargets =
+                            independentFlatDispositionByTarget.Count(x =>
+                                string.Equals(
+                                    x.Value,
+                                    "CLEAN",
+                                    StringComparison.Ordinal)),
+                        SafeResidualTargets =
+                            independentFlatDispositionByTarget.Count(x =>
+                                string.Equals(
+                                    x.Value,
+                                    "SAFE_RESIDUAL",
+                                    StringComparison.Ordinal)),
+                        AmbiguousStructureTargets =
+                            independentFlatDispositionByTarget.Count(x =>
+                                string.Equals(
+                                    x.Value,
+                                    "AMBIGUOUS_STRUCTURE",
+                                    StringComparison.Ordinal)),
                         ResidualBeforePixels =
                             independentFlatResidualBeforeByTarget.Values.Sum(),
                         CleanupMaskPixels =
@@ -1511,6 +1563,10 @@ public sealed class ErasePipelineV2
                             independentFlatResidualAfterByTarget.Values.Sum(),
                         FailedTargetIds =
                             independentFlatResidualFailedTextRegionIds
+                                .OrderBy(x => x)
+                                .ToArray(),
+                        AmbiguousTargetIds =
+                            independentFlatAmbiguousTextRegionIds
                                 .OrderBy(x => x)
                                 .ToArray(),
                         ResidualDebugFile =
@@ -1615,6 +1671,10 @@ public sealed class ErasePipelineV2
                                     IndependentSourceLinkedResidualBeforePixels =
                                         independentFlatResidualBeforeByTarget.GetValueOrDefault(
                                             x.TextRegionId),
+                                    IndependentSourceLinkedDisposition =
+                                        independentFlatDispositionByTarget.GetValueOrDefault(
+                                            x.TextRegionId,
+                                            "CLEAN"),
                                     IndependentSourceLinkedCleanupApplied =
                                         independentFlatCleanupPixelsByTarget.GetValueOrDefault(
                                             x.TextRegionId) > 0,
@@ -3250,12 +3310,13 @@ public sealed class ErasePipelineV2
         return filtered;
     }
 
-    public static bool ShouldApplyIndependentFlatCleanup(
+    public static string ClassifyIndependentFlatResidual(
         int residualPixels,
-        Rect textBounds)
+        Rect textBounds,
+        double dominantMatchRatio)
     {
         if (residualPixels < 2)
-            return false;
+            return "CLEAN";
 
         int textArea =
             Math.Max(
@@ -3263,15 +3324,35 @@ public sealed class ErasePipelineV2
                 textBounds.Width *
                 textBounds.Height);
 
-        int safetyCeiling =
-            Math.Max(
-                96,
-                (int)Math.Ceiling(
-                    textArea *
-                    0.14));
+        double residualRatio =
+            residualPixels /
+            (double)textArea;
 
-        return residualPixels <=
-               safetyCeiling;
+        // 0044 correction: source-linked evidence remains visible on every
+        // flat TextBubble, but broad dark structures are diagnostic rather
+        // than destructive evidence. page005/RG008 is ~2.1% with a 0.97
+        // dominant flat background; RG020 is ~31% with only 0.697 dominance.
+        if (dominantMatchRatio < 0.80 ||
+            residualRatio > 0.05)
+        {
+            return "AMBIGUOUS_STRUCTURE";
+        }
+
+        return "SAFE_RESIDUAL";
+    }
+
+    public static bool ShouldApplyIndependentFlatCleanup(
+        int residualPixels,
+        Rect textBounds,
+        double dominantMatchRatio)
+    {
+        return string.Equals(
+            ClassifyIndependentFlatResidual(
+                residualPixels,
+                textBounds,
+                dominantMatchRatio),
+            "SAFE_RESIDUAL",
+            StringComparison.Ordinal);
     }
 
     static double ColorDistance(
