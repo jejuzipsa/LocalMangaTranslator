@@ -5,8 +5,21 @@ using LocalMangaTranslator.Models;
 
 namespace LocalMangaTranslator.Services;
 
+public sealed record LayaPythonRuntime(
+    string FileName,
+    string[] PrefixArguments,
+    string DisplayName);
+
+public sealed class LayaPythonNotFoundException : InvalidOperationException
+{
+    public LayaPythonNotFoundException(string message)
+        : base(message)
+    {
+    }
+}
+
 /// <summary>
-/// 0036 experimental System-1 decision track.
+/// 0036/0037 experimental System-1 decision track.
 ///
 /// Laya never creates geometry and never mutates the Classic result in Shadow
 /// mode. It receives compact evidence only, then records typed decisions beside
@@ -26,6 +39,147 @@ public sealed class LayaDecisionService
     Task<string>? workerErrorDrain;
     bool packageChecked;
     string? runtimeDescription;
+    LayaPythonRuntime? pythonRuntime;
+
+    public bool IsReady =>
+        worker is not null &&
+        !worker.HasExited &&
+        workerInput is not null &&
+        workerOutput is not null;
+
+    public string? RuntimeDescription =>
+        runtimeDescription;
+
+    public async Task<string> PrepareAsync(
+        IProgress<string>? progress = null,
+        CancellationToken token = default)
+    {
+        await EnsureWorkerAsync(
+            progress,
+            token);
+
+        return runtimeDescription ??
+               "Laya ready";
+    }
+
+    public static IReadOnlyList<LayaPythonRuntime> BuildPythonCandidates(
+        string? configured = null,
+        string? localAppData = null,
+        string? programFiles = null)
+    {
+        configured ??=
+            Environment.GetEnvironmentVariable(
+                "LMT_LAYA_PYTHON");
+
+        localAppData ??=
+            Environment.GetFolderPath(
+                Environment.SpecialFolder.LocalApplicationData);
+
+        programFiles ??=
+            Environment.GetFolderPath(
+                Environment.SpecialFolder.ProgramFiles);
+
+        var result =
+            new List<LayaPythonRuntime>();
+
+        var seen =
+            new HashSet<string>(
+                StringComparer.OrdinalIgnoreCase);
+
+        void Add(
+            string? fileName,
+            string[] prefixArguments,
+            string displayName)
+        {
+            if (string.IsNullOrWhiteSpace(
+                    fileName))
+            {
+                return;
+            }
+
+            string normalized =
+                fileName
+                    .Trim()
+                    .Trim('"');
+
+            string key =
+                normalized +
+                "\u001f" +
+                string.Join(
+                    "\u001f",
+                    prefixArguments);
+
+            if (!seen.Add(
+                    key))
+            {
+                return;
+            }
+
+            result.Add(
+                new LayaPythonRuntime(
+                    normalized,
+                    prefixArguments,
+                    displayName));
+        }
+
+        Add(
+            configured,
+            Array.Empty<string>(),
+            "LMT_LAYA_PYTHON");
+
+        Add(
+            "python",
+            Array.Empty<string>(),
+            "python");
+
+        Add(
+            "py",
+            new[] { "-3" },
+            "py -3");
+
+        Add(
+            "python3",
+            Array.Empty<string>(),
+            "python3");
+
+        foreach (string version in
+                 new[]
+                 {
+                     "313",
+                     "312",
+                     "311",
+                     "310"
+                 })
+        {
+            if (!string.IsNullOrWhiteSpace(
+                    localAppData))
+            {
+                Add(
+                    Path.Combine(
+                        localAppData,
+                        "Programs",
+                        "Python",
+                        $"Python{version}",
+                        "python.exe"),
+                    Array.Empty<string>(),
+                    $"Python {version[..1]}.{version[1..]} (LocalAppData)");
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                    programFiles))
+            {
+                Add(
+                    Path.Combine(
+                        programFiles,
+                        $"Python{version}",
+                        "python.exe"),
+                    Array.Empty<string>(),
+                    $"Python {version[..1]}.{version[1..]} (Program Files)");
+            }
+        }
+
+        return result;
+    }
 
     public async Task WriteShadowAuditAsync(
         string sourcePath,
@@ -666,29 +820,29 @@ public sealed class LayaDecisionService
                 return;
             }
 
-            string python =
-                Environment.GetEnvironmentVariable(
-                    "LMT_LAYA_PYTHON") ??
-                "python";
+            var python =
+                await ResolvePythonRuntimeAsync(
+                    progress,
+                    token);
 
             if (!packageChecked)
             {
                 var check =
-                    await RunProcessAsync(
+                    await RunPythonAsync(
                         python,
                         [
                             "-c",
-                            "import laya; print(laya.__version__)"
+                            $"import laya,sys; v=getattr(laya,'__version__','unknown'); print(v); sys.exit(0 if v=='{LayaPackageVersion}' else 3)"
                         ],
                         token);
 
                 if (check.ExitCode != 0)
                 {
                     progress?.Report(
-                        $"Laya {LayaPackageVersion} 설치 중 · 최초 1회");
+                        $"Laya {LayaPackageVersion} 설치/버전 고정 중 · 최초 1회");
 
                     var install =
-                        await RunProcessAsync(
+                        await RunPythonAsync(
                             python,
                             [
                                 "-m",
@@ -704,8 +858,16 @@ public sealed class LayaDecisionService
                         throw new InvalidOperationException(
                             "Laya Python 패키지 설치 실패 · " +
                             Compact(
-                                install.StdErr));
+                                string.IsNullOrWhiteSpace(
+                                    install.StdErr)
+                                    ? install.StdOut
+                                    : install.StdErr));
                     }
+                }
+                else
+                {
+                    progress?.Report(
+                        $"Laya {LayaPackageVersion} 패키지 확인 완료");
                 }
 
                 packageChecked =
@@ -730,7 +892,7 @@ public sealed class LayaDecisionService
                 new ProcessStartInfo
                 {
                     FileName =
-                        python,
+                        python.FileName,
                     UseShellExecute =
                         false,
                     RedirectStandardInput =
@@ -746,6 +908,16 @@ public sealed class LayaDecisionService
                     StandardErrorEncoding =
                         Encoding.UTF8
                 };
+
+            foreach (string prefixArgument in
+                     python.PrefixArguments)
+            {
+                start.ArgumentList.Add(
+                    prefixArgument);
+            }
+
+            start.Environment["USE_TF"] =
+                "0";
 
             start.ArgumentList.Add(
                 "-u");
@@ -837,7 +1009,7 @@ public sealed class LayaDecisionService
                     : "unknown";
 
             runtimeDescription =
-                $"laya {version} · typed-decisions · {device}";
+                $"{python.DisplayName} · laya {version} · typed-decisions · {device}";
 
             progress?.Report(
                 $"LayaExperimental 준비 완료 · {runtimeDescription}");
@@ -1263,6 +1435,81 @@ public sealed class LayaDecisionService
                     0,
                     1));
 
+    async Task<LayaPythonRuntime> ResolvePythonRuntimeAsync(
+        IProgress<string>? progress,
+        CancellationToken token)
+    {
+        if (pythonRuntime is not null)
+        {
+            return pythonRuntime;
+        }
+
+        var attempted =
+            new List<string>();
+
+        foreach (var candidate in
+                 BuildPythonCandidates())
+        {
+            token.ThrowIfCancellationRequested();
+
+            var probe =
+                await RunPythonAsync(
+                    candidate,
+                    [
+                        "-c",
+                        "import sys; print(f'Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}'); raise SystemExit(0 if sys.version_info >= (3,10) else 4)"
+                    ],
+                    token);
+
+            if (probe.ExitCode == 0)
+            {
+                string version =
+                    Compact(
+                        probe.StdOut);
+
+                pythonRuntime =
+                    candidate with
+                    {
+                        DisplayName =
+                            string.IsNullOrWhiteSpace(
+                                version)
+                                ? candidate.DisplayName
+                                : $"{candidate.DisplayName} · {version}"
+                    };
+
+                progress?.Report(
+                    $"Laya Python 확인 · {pythonRuntime.DisplayName}");
+
+                return pythonRuntime;
+            }
+
+            attempted.Add(
+                candidate.DisplayName);
+        }
+
+        throw new LayaPythonNotFoundException(
+            "Laya용 Python 3.10+ 실행 환경을 찾지 못했습니다. " +
+            "[선택 모델 확인/설치]에서 Python 3.12를 자동 설치할 수 있습니다. " +
+            $"확인 경로: {string.Join(", ", attempted)}");
+    }
+
+    static Task<ProcessResult> RunPythonAsync(
+        LayaPythonRuntime runtime,
+        IReadOnlyList<string> arguments,
+        CancellationToken token)
+    {
+        var combined =
+            runtime.PrefixArguments
+                .Concat(
+                    arguments)
+                .ToArray();
+
+        return RunProcessAsync(
+            runtime.FileName,
+            combined,
+            token);
+    }
+
     static async Task<ProcessResult> RunProcessAsync(
         string fileName,
         IReadOnlyList<string> arguments,
@@ -1286,6 +1533,9 @@ public sealed class LayaDecisionService
                 StandardErrorEncoding =
                     Encoding.UTF8
             };
+
+        start.Environment["USE_TF"] =
+            "0";
 
         foreach (string argument in arguments)
         {

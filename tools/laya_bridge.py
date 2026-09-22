@@ -4,6 +4,10 @@ import os
 import sys
 import traceback
 
+# transformers may probe TensorFlow during import. Laya upstream recommends
+# disabling that probe when TF is present because it can deadlock model load.
+os.environ.setdefault("USE_TF", "0")
+
 def emit(payload):
     sys.stdout.write(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n")
     sys.stdout.flush()

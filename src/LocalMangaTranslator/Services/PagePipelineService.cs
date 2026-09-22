@@ -20,20 +20,22 @@ public sealed class PagePipelineService
     readonly TranslationRefinementService translationRefiner;
     readonly RenderPipelineService renderer;
     readonly FinalAuditService finalAudit = new();
-    readonly LayaDecisionService laya = new();
+    readonly LayaDecisionService laya;
 
     public PagePipelineService(
         PageAnalysisService pageAnalysis,
         OcrPipelineService ocrPipeline,
         VisionTranslationService vision,
         TranslationRefinementService translationRefiner,
-        RenderPipelineService renderer)
+        RenderPipelineService renderer,
+        LayaDecisionService? laya = null)
     {
         this.pageAnalysis = pageAnalysis;
         this.ocrPipeline = ocrPipeline;
         this.vision = vision;
         this.translationRefiner = translationRefiner;
         this.renderer = renderer;
+        this.laya = laya ?? new LayaDecisionService();
     }
 
     public async Task<PagePipelineResult> ProcessAsync(

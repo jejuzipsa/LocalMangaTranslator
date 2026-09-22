@@ -30,6 +30,34 @@ Check("V2 0036 defaults to Laya experimental shadow track",
     default0036Options.DecisionTrack == PipelineDecisionTrack.LayaExperimental &&
     default0036Options.LayaMode == LayaDecisionMode.Shadow);
 
+var layaPythonCandidates =
+    LayaDecisionService.BuildPythonCandidates(
+        @"C:\custom\python.exe",
+        @"C:\Users\tester\AppData\Local",
+        @"C:\Program Files");
+
+Check("V2 0037 Laya Python discovery prefers explicit override",
+    layaPythonCandidates.Count > 0 &&
+    string.Equals(
+        layaPythonCandidates[0].FileName,
+        @"C:\custom\python.exe",
+        StringComparison.OrdinalIgnoreCase));
+
+Check("V2 0037 Laya Python discovery supports Windows py launcher",
+    layaPythonCandidates.Any(x =>
+        string.Equals(
+            x.FileName,
+            "py",
+            StringComparison.OrdinalIgnoreCase) &&
+        x.PrefixArguments.SequenceEqual(
+            new[] { "-3" })));
+
+Check("V2 0037 Laya Python discovery scans standard Python 3.12 install",
+    layaPythonCandidates.Any(x =>
+        x.FileName.EndsWith(
+            @"Programs\Python\Python312\python.exe",
+            StringComparison.OrdinalIgnoreCase)));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);
