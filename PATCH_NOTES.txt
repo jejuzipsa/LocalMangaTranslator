@@ -3035,3 +3035,159 @@ Fix 0041 advisory geometry helpers
 9263fd4c42336c29133248fd6ba31abe48d7c556
 Harden 0041 advisory commit boundary
 
+0041 실전 검증 결과
+------------------------------------------------------------
+검증 커밋:
+f149851c888ae4bee00f5ab4e1591ea1ccc2bb59
+test pic 0041
+
+결론:
+0041의 두 핵심 목표 모두 실제 최종 결과까지 성공.
+
+1. page014 detector retry Advisory 성공
+- Laya detector_retry request: 1
+- RecoveredRequests: 1
+- AdvisoryEligibleRequests: 1
+- AppliedRequests: 1
+- MutationApplied: true
+
+NONONO NNNNOOO!:
+- TwoScaleAgreement = true
+- CrossScaleTextIoU = 0.97095
+- CrossScaleBubbleIoU = 0.65367
+- MinimumTextScore = 0.54227
+- ExistingFullPageDuplicate = false
+- AdvisoryEligible = true
+- Applied = true
+
+생성:
+- TextBubble LRT006
+  x=986 y=1033 w=317 h=184
+  score=0.61580
+- Bubble LRB006
+  x=985 y=945 w=319 h=298
+
+V2 target coverage:
+- 기존 TextBubble 7개 -> effective target 8개
+- LRT006 translated_committed
+- DetectedTextTargets=8
+- CommittedTargets=8
+- PreservedTargets=0
+- UnresolvedTargets=0
+- CoverageComplete=true
+
+V2 commit:
+- Region 6 "NONONO NNNNOOO!"
+- Translation = "안 돼, 안 돼 / 안 돼, 안 돼!"
+- Bound=true
+- LayoutApproved=true
+- EraseClean=true
+- Committed=true
+- Status=translated
+
+0040 -> 0041:
+- page014 final image SHA 변경
+- V2TranslatedUnits 7 -> 8
+- V2EraseCommittedUnits 7 -> 8
+- V2TypesetCommittedUnits 7 -> 8
+- V2UnboundUnits 2 -> 1
+
+즉 0040에서 Shadow로만 확인했던 detector miss가
+0041에서 실제 최종 번역/erase/typeset 개선으로 연결됨.
+
+
+2. page012 기존 geometry 재발견 차단 성공
+- retry 자체는 두 scale 모두 recovery
+- TwoScaleAgreement=true
+- CrossScaleTextIoU=0.96459
+- CrossScaleBubbleIoU=0.98925
+- MinimumTextScore=0.87668
+- ExistingFullPageDuplicate=true
+
+결과:
+- AdvisoryEligible=false
+- Applied=false
+- RejectReason=duplicate_existing_fullpage
+- MutationApplied=false
+
+기존 RG002 / duplicate suppression 동작 유지.
+0040과 page012 final image SHA 동일.
+
+즉 retry detector가 강하게 같은 영역을 재발견하더라도
+기존 full-page target과 중복이면 Advisory가 새 geometry를 만들지 않는다.
+
+
+3. page021 DON'T KNOW validator 수정 성공
+0040:
+- RG014 preserved_render_false:dialogue
+- 최종 Render=false
+- Shadow re-arm 후에도 validator가 다시 Render=false로 떨어뜨림.
+
+0041:
+Region 6:
+- CorrectedText = "I DON'T KNOW ANYMORE. I DON'T-"
+- Translation = "더는 모르겠어. 난 / 모른—"
+- Render=true
+
+V2 target RG014:
+- BoundTranslationRegionIds=[6]
+- Status=translated_committed
+
+coverage:
+- DetectedTextTargets=15
+- CommittedTargets=15
+- PreservedTargets=0
+- UnresolvedTargets=0
+- CoverageComplete=true
+
+0040 -> 0041:
+- V2TranslatedUnits 14 -> 15
+- V2EraseCommittedUnits 14 -> 15
+- V2TypesetCommittedUnits 14 -> 15
+- page021 final image SHA 변경
+
+0041에서는 post_translation_final render_recovery decision 자체가 0건.
+의미:
+validator fix 덕분에 해당 unit이 정상 translation path에서 살아남아
+Laya recovery probe가 필요 없어짐.
+
+
+4. 회귀 확인
+0040 -> 0041 final image SHA:
+- page012 동일
+- page014 변경 (의도된 신규 detector recovery)
+- page017 동일
+- page021 변경 (의도된 validator fix)
+- page028 동일
+- page032 동일
+
+즉 의도된 두 페이지만 최종 출력이 변경되고
+나머지 4개 regression page는 binary 동일.
+
+
+5. 남은 기존 문제
+page028:
+- RG010 unresolved_detected_no_translation_unit 유지
+- RG026 preserved_cleaned_state_or_background_quality 유지
+- V2CleanedTextRedetectedUnits=1
+- V2UnboundUnits=1
+- CoverageComplete=false
+
+0041 detector Advisory / negation validator 작업과는 독립 문제.
+
+
+6. 진단 로그 주의점
+page014 final audit의 initial page-analysis metric:
+- RegionCount=14
+- TextRegionCount=7
+
+은 Advisory 이전 full-page RT-DETR 결과를 표시한다.
+
+실제 effective V2 target coverage에는:
+- LRT006 추가
+- DetectedTextTargets=8
+
+이므로 기능상 문제는 아니지만,
+향후 audit summary에 Advisory-added target count를 별도로 표시하면
+초기 detector count와 effective V2 target count의 차이를 더 명확히 볼 수 있다.
+
