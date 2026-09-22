@@ -35,3 +35,13 @@ LocalMangaTranslator can download and run the ONNX release of
 
 Baberu receives RT-DETR-confirmed bubble crops. Its output is treated as
 independent OCR evidence and does not grant erase permission by itself.
+
+
+## Laya
+
+- Project: Laya decision engine
+- Upstream: https://github.com/NandhaKishorM/laya
+- Package/model family: `laya` / `convaiinnovations/laya`
+- License: Apache License 2.0
+- Usage in this project: optional experimental System-1 shadow decisions for OCR ownership, duplicate arbitration, render recovery, and detector-retry triage.
+- The model is downloaded at runtime and is not redistributed in this repository.
