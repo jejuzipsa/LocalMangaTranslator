@@ -159,7 +159,8 @@ public sealed class PagePipelineService
 
         var detectorRecovered =
             RecoverDetectorOwnedRenderableUnits(
-                reviewed);
+                reviewed,
+                pageAnalysisResult.Regions);
 
         int detectorRecoveredCount =
             detectorRecovered.Count(x =>
@@ -318,29 +319,55 @@ public sealed class PagePipelineService
     }
 
     static List<VisionTranslation> RecoverDetectorOwnedRenderableUnits(
-        IReadOnlyList<VisionTranslation> reviewed)
+        IReadOnlyList<VisionTranslation> reviewed,
+        IReadOnlyList<PageRegion> regions)
     {
         return reviewed
             .Select(region =>
-                ShouldRecoverDetectorOwnedRenderableUnit(
-                    region)
-                    ? region with
-                    {
-                        Render = true
-                    }
-                    : region)
+            {
+                var detectorTextRegion =
+                    ResolveDetectorOwnedTextRegion(
+                        region.Source,
+                        regions);
+
+                if (!ShouldRecoverDetectorOwnedRenderableUnit(
+                        region,
+                        regions))
+                {
+                    return region;
+                }
+
+                return region with
+                {
+                    Render = true,
+                    Source =
+                        detectorTextRegion is null
+                            ? region.Source
+                            : region.Source with
+                            {
+                                RegionTextRegion =
+                                    detectorTextRegion
+                            }
+                };
+            })
             .OrderBy(x =>
                 x.Id)
             .ToList();
     }
 
     public static bool ShouldRecoverDetectorOwnedRenderableUnit(
-        VisionTranslation region)
+        VisionTranslation region,
+        IReadOnlyList<PageRegion>? regions = null)
     {
         if (region.Render)
             return false;
 
-        if (region.Source.RegionTextRegion is not { } textRegion ||
+        var textRegion =
+            ResolveDetectorOwnedTextRegion(
+                region.Source,
+                regions);
+
+        if (textRegion is null ||
             textRegion.Kind !=
                 PageRegionKind.TextBubble ||
             region.Source.RegionContainer is null)
@@ -386,13 +413,165 @@ public sealed class PagePipelineService
             region.Source.Lines.Count > 0 &&
             averageConfidence >= 0.80;
 
-        // 0034: an immutable RT-DETR TextBubble with meaningful OCR and
-        // independent/strong text evidence may not disappear only because one
-        // Vision review returned Render=false. It is re-armed for the isolated
-        // final translator; erase/layout still pass their own detector-owned
-        // safety gates later.
+        // 0035: a detector-owned Bubble with one unambiguous TextBubble child
+        // is sufficient structural evidence even when the runtime
+        // RegionTextRegion link was lost earlier.  The unit is only re-armed
+        // for final translation; erase/layout still need the immutable target.
         return secondaryEvidence ||
                strongPrimary;
     }
+
+    static PageRegion? ResolveDetectorOwnedTextRegion(
+        OcrTextBlock source,
+        IReadOnlyList<PageRegion>? regions)
+    {
+        if (source.RegionTextRegion is { } direct &&
+            direct.Kind ==
+                PageRegionKind.TextBubble)
+        {
+            return direct;
+        }
+
+        if (regions is null ||
+            string.IsNullOrWhiteSpace(
+                source.RegionId))
+        {
+            return null;
+        }
+
+        var parentBubble =
+            regions.FirstOrDefault(x =>
+                x.Kind ==
+                    PageRegionKind.Bubble &&
+                string.Equals(
+                    x.RegionId,
+                    source.RegionId,
+                    StringComparison.Ordinal));
+
+        if (parentBubble is null)
+            return null;
+
+        var candidates =
+            regions
+                .Where(x =>
+                    x.Kind ==
+                        PageRegionKind.TextBubble)
+                .Select(text => new
+                {
+                    Text = text,
+                    Parent =
+                        FindParentBubble(
+                            text,
+                            regions)
+                })
+                .Where(x =>
+                    x.Parent is not null &&
+                    string.Equals(
+                        x.Parent.RegionId,
+                        parentBubble.RegionId,
+                        StringComparison.Ordinal))
+                .Select(x =>
+                    x.Text)
+                .ToList();
+
+        return candidates.Count == 1
+            ? candidates[0]
+            : null;
+    }
+
+    static PageRegion? FindParentBubble(
+        PageRegion textRegion,
+        IReadOnlyList<PageRegion> regions)
+    {
+        return regions
+            .Where(x =>
+                x.Kind ==
+                    PageRegionKind.Bubble)
+            .Select(x => new
+            {
+                Region = x,
+                Coverage =
+                    RegionCoverage(
+                        textRegion.Bounds,
+                        x.Bounds),
+                CenterInside =
+                    ContainsRegionCenter(
+                        x.Bounds,
+                        textRegion.Bounds)
+            })
+            .Where(x =>
+                x.CenterInside ||
+                x.Coverage >= 0.45)
+            .OrderByDescending(x =>
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.Coverage)
+            .ThenByDescending(x =>
+                x.Region.Score)
+            .Select(x =>
+                x.Region)
+            .FirstOrDefault();
+    }
+
+    static double RegionCoverage(
+        OpenCvSharp.Rect inner,
+        OpenCvSharp.Rect outer)
+    {
+        int left =
+            Math.Max(
+                inner.Left,
+                outer.Left);
+
+        int top =
+            Math.Max(
+                inner.Top,
+                outer.Top);
+
+        int right =
+            Math.Min(
+                inner.Right,
+                outer.Right);
+
+        int bottom =
+            Math.Min(
+                inner.Bottom,
+                outer.Bottom);
+
+        double intersection =
+            Math.Max(
+                0,
+                right - left) *
+            (double)Math.Max(
+                0,
+                bottom - top);
+
+        double area =
+            Math.Max(
+                1.0,
+                inner.Width *
+                (double)inner.Height);
+
+        return intersection /
+               area;
+    }
+
+    static bool ContainsRegionCenter(
+        OpenCvSharp.Rect container,
+        OpenCvSharp.Rect subject)
+    {
+        double cx =
+            subject.X +
+            subject.Width / 2.0;
+
+        double cy =
+            subject.Y +
+            subject.Height / 2.0;
+
+        return cx >= container.Left &&
+               cx <= container.Right &&
+               cy >= container.Top &&
+               cy <= container.Bottom;
+    }
+
 }
 
