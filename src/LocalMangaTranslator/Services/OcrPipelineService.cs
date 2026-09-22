@@ -308,7 +308,6 @@ public sealed class OcrPipelineService
                         detectorTextRegion =
                             FindBestTextRegion(
                                 block,
-                                candidate,
                                 regions);
                     }
 
@@ -545,52 +544,181 @@ public sealed class OcrPipelineService
             return input;
         }
 
-        var byId =
+        var candidateById =
             candidates.ToDictionary(
                 x => x.CandidateId,
                 StringComparer.Ordinal);
 
+        var candidateByRegionId =
+            candidates
+                .Where(x =>
+                    !string.IsNullOrWhiteSpace(
+                        x.RegionId))
+                .GroupBy(
+                    x => x.RegionId!,
+                    StringComparer.Ordinal)
+                .ToDictionary(
+                    x => x.Key,
+                    x => x
+                        .OrderByDescending(y =>
+                            y.Score)
+                        .First(),
+                    StringComparer.Ordinal);
+
         var units =
-            input.Units
-                .Select((block, index) =>
-                {
-                    var ownership =
-                        input.UnitOwnership[index];
+            input.Units.ToList();
 
-                    if (string.IsNullOrWhiteSpace(
-                            ownership.CandidateId) ||
-                        !byId.TryGetValue(
-                            ownership.CandidateId,
-                            out var candidate))
-                    {
-                        return block;
-                    }
+        var ownership =
+            input.UnitOwnership.ToList();
 
-                    return block with
+        var lineOwnership =
+            input.LineOwnership.ToList();
+
+        for (int i = 0;
+             i < units.Count &&
+             i < ownership.Count;
+             i++)
+        {
+            var block =
+                units[i];
+
+            var owner =
+                ownership[i];
+
+            ContainerCandidate? legacyCandidate =
+                null;
+
+            if (!string.IsNullOrWhiteSpace(
+                    owner.CandidateId))
+            {
+                candidateById.TryGetValue(
+                    owner.CandidateId,
+                    out legacyCandidate);
+            }
+
+            // 0035: detector text ownership is authoritative.  The legacy
+            // page candidate may have grouped neighboring balloons, so choose
+            // the immutable RT-DETR TextBubble from the OCR block geometry
+            // first, then derive its parent Bubble and candidate.
+            var detectorTextRegion =
+                FindBestTextRegion(
+                    block,
+                    regions);
+
+            if (detectorTextRegion is null)
+            {
+                if (legacyCandidate is null)
+                    continue;
+
+                units[i] =
+                    block with
                     {
                         RegionId =
-                            candidate.RegionId,
+                            legacyCandidate.RegionId,
                         RegionContainer =
-                            candidate,
+                            legacyCandidate,
                         RegionTextRegion =
-                            FindBestTextRegion(
-                                block,
-                                candidate,
-                                regions)
+                            null
                     };
-                })
-                .ToList();
+
+                continue;
+            }
+
+            var parentBubble =
+                FindParentBubble(
+                    detectorTextRegion,
+                    regions);
+
+            ContainerCandidate? detectorCandidate =
+                null;
+
+            if (parentBubble is not null)
+            {
+                candidateByRegionId.TryGetValue(
+                    parentBubble.RegionId,
+                    out detectorCandidate);
+            }
+
+            var effectiveCandidate =
+                detectorCandidate ??
+                legacyCandidate;
+
+            string? detectorBubbleRegionId =
+                parentBubble?.RegionId ??
+                effectiveCandidate?.RegionId;
+
+            units[i] =
+                block with
+                {
+                    RegionId =
+                        detectorBubbleRegionId,
+                    RegionContainer =
+                        effectiveCandidate,
+                    RegionTextRegion =
+                        detectorTextRegion
+                };
+
+            if (detectorCandidate is null ||
+                string.Equals(
+                    owner.CandidateId,
+                    detectorCandidate.CandidateId,
+                    StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            ownership[i] =
+                owner with
+                {
+                    CandidateId =
+                        detectorCandidate.CandidateId,
+                    IsOrphan =
+                        false,
+                    Reason =
+                        "rtdetr_textregion_owner_authority"
+                };
+
+            foreach (string lineId in
+                     owner.LineIds)
+            {
+                int lineIndex =
+                    lineOwnership.FindIndex(x =>
+                        string.Equals(
+                            x.LineId,
+                            lineId,
+                            StringComparison.Ordinal));
+
+                if (lineIndex < 0)
+                    continue;
+
+                var previous =
+                    lineOwnership[lineIndex];
+
+                lineOwnership[lineIndex] =
+                    previous with
+                    {
+                        CandidateId =
+                            detectorCandidate.CandidateId,
+                        Assigned =
+                            true,
+                        Reason =
+                            "rtdetr_textregion_owner_authority"
+                    };
+            }
+        }
 
         return new OcrUnitBuildResult(
             units,
             input.ContainerCount,
-            input.AssignedLineCount,
-            input.OrphanGroupCount)
+            lineOwnership.Count(x =>
+                x.Assigned),
+            ownership.Count(x =>
+                x.IsOrphan))
         {
             LineOwnership =
-                input.LineOwnership,
+                lineOwnership,
             UnitOwnership =
-                input.UnitOwnership
+                ownership
         };
     }
 
@@ -606,6 +734,22 @@ public sealed class OcrPipelineService
             return input;
         }
 
+        var candidateByRegionId =
+            candidates
+                .Where(x =>
+                    !string.IsNullOrWhiteSpace(
+                        x.RegionId))
+                .GroupBy(
+                    x => x.RegionId!,
+                    StringComparer.Ordinal)
+                .ToDictionary(
+                    x => x.Key,
+                    x => x
+                        .OrderByDescending(y =>
+                            y.Score)
+                        .First(),
+                    StringComparer.Ordinal);
+
         var units =
             input.Units.ToList();
 
@@ -617,7 +761,8 @@ public sealed class OcrPipelineService
 
         for (int i = 0; i < units.Count; i++)
         {
-            var owner = ownership[i];
+            var owner =
+                ownership[i];
 
             if (!owner.IsOrphan ||
                 !string.IsNullOrWhiteSpace(
@@ -626,7 +771,8 @@ public sealed class OcrPipelineService
                 continue;
             }
 
-            var block = units[i];
+            var block =
+                units[i];
 
             if (block.Lines.Count == 0 ||
                 MeaningfulLength(
@@ -642,71 +788,64 @@ public sealed class OcrPipelineService
             if (avgConfidence < 0.30)
                 continue;
 
-            var matches =
-                candidates
-                    .Select(candidate =>
-                    {
-                        var textRegion =
-                            FindBestTextRegion(
-                                block,
-                                candidate,
-                                regions);
+            var textRegion =
+                FindBestTextRegion(
+                    block,
+                    regions);
 
-                        if (textRegion is null)
-                            return null;
-
-                        double coverage =
-                            Coverage(
-                                ToRect(block),
-                                textRegion.Bounds);
-
-                        double score =
-                            coverage * 4.0 +
-                            textRegion.Score * 2.0 +
-                            Math.Clamp(
-                                candidate.Score,
-                                0,
-                                10) * 0.08;
-
-                        return new
-                        {
-                            Candidate = candidate,
-                            TextRegion = textRegion,
-                            Coverage = coverage,
-                            Score = score
-                        };
-                    })
-                    .Where(x =>
-                        x is not null &&
-                        x.Coverage >= 0.52 &&
-                        x.TextRegion.Score >= 0.72f)
-                    .OrderByDescending(x =>
-                        x!.Score)
-                    .ToList();
-
-            if (matches.Count == 0)
-                continue;
-
-            var best = matches[0]!;
-
-            if (matches.Count > 1 &&
-                best.Score - matches[1]!.Score < 0.30)
+            if (textRegion is null ||
+                textRegion.Score < 0.72f)
             {
                 continue;
             }
+
+            double coverage =
+                Coverage(
+                    ToRect(block),
+                    textRegion.Bounds);
+
+            if (coverage < 0.52 &&
+                !ContainsCenter(
+                    textRegion.Bounds,
+                    ToRect(block)))
+            {
+                continue;
+            }
+
+            var parentBubble =
+                FindParentBubble(
+                    textRegion,
+                    regions);
+
+            if (parentBubble is null ||
+                !candidateByRegionId.TryGetValue(
+                    parentBubble.RegionId,
+                    out var candidate))
+            {
+                continue;
+            }
+
+            double score =
+                coverage * 4.0 +
+                textRegion.Score * 2.0 +
+                Math.Clamp(
+                    candidate.Score,
+                    0,
+                    10) * 0.08;
 
             ownership[i] =
                 owner with
                 {
                     CandidateId =
-                        best.Candidate.CandidateId,
+                        candidate.CandidateId,
                     IsOrphan =
                         false,
                     Reason =
                         "rtdetr_textbubble_recovered"
                 };
 
-            foreach (string lineId in owner.LineIds)
+            foreach (string lineId in
+                     owner.LineIds)
             {
                 int lineIndex =
                     lineOwnership.FindIndex(x =>
@@ -724,11 +863,11 @@ public sealed class OcrPipelineService
                 lineOwnership[lineIndex] =
                     new LineOwnershipDecision(
                         lineId,
-                        best.Candidate.CandidateId,
+                        candidate.CandidateId,
                         true,
                         "rtdetr_textbubble_recovered",
-                        best.Coverage,
-                        best.Score);
+                        coverage,
+                        score);
             }
         }
 
@@ -749,13 +888,8 @@ public sealed class OcrPipelineService
 
     static PageRegion? FindBestTextRegion(
         OcrTextBlock block,
-        ContainerCandidate candidate,
         IReadOnlyList<PageRegion> regions)
     {
-        var bubble =
-            candidate.LearnedBounds ??
-            candidate.Bounds;
-
         var blockRect =
             ToRect(
                 block);
@@ -768,24 +902,57 @@ public sealed class OcrPipelineService
             .Select(x => new
             {
                 Region = x,
-                BubbleCoverage =
-                    Coverage(
-                        x.Bounds,
-                        bubble),
                 BlockCoverage =
                     Coverage(
                         blockRect,
-                        x.Bounds)
+                        x.Bounds),
+                CenterInside =
+                    ContainsCenter(
+                        x.Bounds,
+                        blockRect)
             })
             .Where(x =>
-                x.BubbleCoverage >= 0.60 &&
-                (x.BlockCoverage >= 0.45 ||
-                 ContainsCenter(
-                     x.Region.Bounds,
-                     blockRect)))
+                x.BlockCoverage >= 0.45 ||
+                x.CenterInside)
             .OrderByDescending(x =>
-                x.BlockCoverage * 3.0 +
-                x.BubbleCoverage +
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.BlockCoverage)
+            .ThenByDescending(x =>
+                x.Region.Score)
+            .Select(x =>
+                x.Region)
+            .FirstOrDefault();
+    }
+
+    static PageRegion? FindParentBubble(
+        PageRegion textRegion,
+        IReadOnlyList<PageRegion> regions)
+    {
+        return regions
+            .Where(x =>
+                x.Kind ==
+                    PageRegionKind.Bubble)
+            .Select(x => new
+            {
+                Region = x,
+                Coverage =
+                    Coverage(
+                        textRegion.Bounds,
+                        x.Bounds),
+                CenterInside =
+                    ContainsCenter(
+                        x.Bounds,
+                        textRegion.Bounds)
+            })
+            .Where(x =>
+                x.CenterInside ||
+                x.Coverage >= 0.45)
+            .OrderByDescending(x =>
+                x.CenterInside)
+            .ThenByDescending(x =>
+                x.Coverage)
+            .ThenByDescending(x =>
                 x.Region.Score)
             .Select(x =>
                 x.Region)
