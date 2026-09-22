@@ -1,0 +1,133 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "page014.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": true,
+  "Requests": 1,
+  "RecoveredRequests": 1,
+  "AdvisoryEligibleRequests": 1,
+  "AppliedRequests": 1,
+  "Items": [
+    {
+      "TranslationRegionId": 6,
+      "SourceText": "NONONO NNNNOOO!",
+      "CorrectedText": "NONONO\nNNNNOOO!",
+      "LayaConfidence": 0.5867,
+      "Block": {
+        "X": 974,
+        "Y": 1034,
+        "W": 336.3333333333335,
+        "H": 189.66666666666674
+      },
+      "Recovered": true,
+      "TwoScaleAgreement": true,
+      "CrossScaleTextIoU": 0.9709525412319084,
+      "CrossScaleBubbleIoU": 0.6536748562467328,
+      "MinimumTextScore": 0.5422686,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": true,
+      "Applied": true,
+      "RejectReason": null,
+      "AdvisoryTextRegion": {
+        "RegionId": "LRT006",
+        "Bounds": {
+          "X": 986,
+          "Y": 1033,
+          "Width": 317,
+          "Height": 184
+        },
+        "Score": 0.61580426,
+        "Source": "ogkalu-rtdetr-v2-laya-advisory"
+      },
+      "AdvisoryBubbleRegion": {
+        "RegionId": "LRB006",
+        "Bounds": {
+          "X": 985,
+          "Y": 945,
+          "Width": 319,
+          "Height": 298
+        },
+        "Score": 0.37266025,
+        "Source": "ogkalu-rtdetr-v2-laya-advisory"
+      },
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 533,
+            "Y": 725,
+            "Width": 808,
+            "Height": 808
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.7920792079207921,
+          "RegionCount": 4,
+          "TextBubbleCount": 2,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_2p40_004",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 985,
+              "Y": 1035,
+              "Width": 323,
+              "Height": 182
+            },
+            "Score": 0.5422686,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40",
+            "Affinity": 10.542268574237823
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_2p40_003",
+            "Bounds": {
+              "X": 985,
+              "Y": 1034,
+              "Width": 322,
+              "Height": 196
+            },
+            "Score": 0.44598722,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40"
+          }
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 802,
+            "Y": 859,
+            "Width": 539,
+            "Height": 539
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 1.1873840445269017,
+          "RegionCount": 3,
+          "TextBubbleCount": 1,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_1p60_002",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 986,
+              "Y": 1033,
+              "Width": 317,
+              "Height": 184
+            },
+            "Score": 0.61580426,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60",
+            "Affinity": 10.56145642892174
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_1p60_001",
+            "Bounds": {
+              "X": 985,
+              "Y": 945,
+              "Width": 319,
+              "Height": 298
+            },
+            "Score": 0.37266025,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60"
+          }
+        }
+      ]
+    }
+  ]
+}
