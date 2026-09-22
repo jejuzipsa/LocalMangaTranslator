@@ -314,6 +314,58 @@ Check("V2 0040 detector retry match rejects unrelated TextBubble",
             shadowRetryBlock,
             shadowRetryMiss));
 
+var anythingEraseAudit =
+    new V2EraseTargetAudit(
+        TextRegionId: "RG026",
+        InitialMaskPixels: 260,
+        CoreMaskPixels: 0,
+        ResidualBeforeRetryPixels: 6,
+        EffectiveResidualBeforeRetryPixels: 6,
+        CoreOverlapBeforeRetryPixels: 0,
+        PersistentCoreBeforeRetryPixels: 0,
+        RetryMaskPixels: 0,
+        ResidualAfterRetryPixels: 6,
+        EffectiveResidualAfterRetryPixels: 6,
+        CoreOverlapAfterRetryPixels: 0,
+        PersistentCoreAfterRetryPixels: 0,
+        Retried: false,
+        Status: "clean_after_first_pass",
+        SelectedResidualPixels: 6,
+        SelectedPersistentCorePixels: 0,
+        SelectedPersistenceRatio: 0,
+        SelectedPass: "first",
+        PrimaryReview: "pass",
+        SecondaryReview: "not_run",
+        RescuedBySecondary: false,
+        ReviewReason: "primary_residual_clean");
+
+Check("V2 0042 rescues detector-only redetection when source-linked residual is tiny",
+    CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit));
+
+Check("V2 0042 does not rescue meaningful residual pixels",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            SelectedResidualPixels = 20
+        }));
+
+Check("V2 0042 does not rescue persistent source glyph evidence",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            SelectedPersistentCorePixels = 2,
+            SelectedPersistenceRatio = 0.01
+        }));
+
+Check("V2 0042 requires legacy erase reviewer clean",
+    !CleanedStateVerifier.CanRescueDetectorOnlyRedetection(
+        anythingEraseAudit with
+        {
+            Status = "review_required",
+            PrimaryReview = "fail"
+        }));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);

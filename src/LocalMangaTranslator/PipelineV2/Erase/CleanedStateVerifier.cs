@@ -13,7 +13,12 @@ public sealed record V2CleanedTargetVerification(
     string Status,
     IReadOnlyList<string> ResidualRegionIds,
     float MaxResidualScore,
-    bool LegacyReviewerClean);
+    bool LegacyReviewerClean,
+    bool DetectorOnlyFalsePositiveRescue,
+    int LegacyInitialMaskPixels,
+    int LegacySelectedResidualPixels,
+    double LegacyResidualRatio,
+    int LegacyPersistentGlyphPixels);
 
 public sealed record V2CleanedStateCheckpoint(
     string CheckpointId,
@@ -129,7 +134,7 @@ public sealed class CleanedStateVerifier
                 }
 
                 verifierMode =
-                    "cleaned_rtdetr_text_redetection";
+                    "cleaned_rtdetr_plus_erase_evidence";
             }
             catch (OperationCanceledException)
             {
@@ -180,7 +185,13 @@ public sealed class CleanedStateVerifier
                                 : "ERASE_CHECK_LEGACY_FALLBACK",
                             [],
                             0,
-                            legacyClean);
+                            legacyClean,
+                            false,
+                            legacy?.InitialMaskPixels ?? 0,
+                            legacy?.SelectedResidualPixels ?? 0,
+                            LegacyResidualRatio(
+                                legacy),
+                            legacy?.SelectedPersistentCorePixels ?? 0);
                     }
 
                     var matches =
@@ -193,16 +204,27 @@ public sealed class CleanedStateVerifier
                                 x.Score)
                             .ToList();
 
+                    bool detectorOnlyRescue =
+                        matches.Count > 0 &&
+                        target.Kind ==
+                            PageRegionKind.TextBubble &&
+                        legacy is not null &&
+                        CanRescueDetectorOnlyRedetection(
+                            legacy);
+
                     bool empty =
-                        matches.Count == 0;
+                        matches.Count == 0 ||
+                        detectorOnlyRescue;
 
                     return new V2CleanedTargetVerification(
                         target.TextRegionId,
                         target.TextBounds,
                         empty,
-                        empty
+                        matches.Count == 0
                             ? "EMPTY_OK"
-                            : "TEXT_REDETECTED",
+                            : detectorOnlyRescue
+                                ? "EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE"
+                                : "TEXT_REDETECTED",
                         matches
                             .Select(x =>
                                 x.RegionId)
@@ -211,7 +233,13 @@ public sealed class CleanedStateVerifier
                             ? 0
                             : matches.Max(x =>
                                 x.Score),
-                        legacyClean);
+                        legacyClean,
+                        detectorOnlyRescue,
+                        legacy?.InitialMaskPixels ?? 0,
+                        legacy?.SelectedResidualPixels ?? 0,
+                        LegacyResidualRatio(
+                            legacy),
+                        legacy?.SelectedPersistentCorePixels ?? 0);
                 })
                 .ToArray();
 
@@ -253,6 +281,59 @@ public sealed class CleanedStateVerifier
             debugPath,
             jsonPath);
     }
+
+    public static bool CanRescueDetectorOnlyRedetection(
+        V2EraseTargetAudit audit)
+    {
+        if (!ErasePipelineV2.IsAuditClean(
+                audit))
+        {
+            return false;
+        }
+
+        if (audit.InitialMaskPixels <
+            40)
+        {
+            return false;
+        }
+
+        int residualAllowance =
+            Math.Max(
+                1,
+                Math.Min(
+                    12,
+                    (int)Math.Ceiling(
+                        audit.InitialMaskPixels *
+                        0.03)));
+
+        if (audit.SelectedResidualPixels >
+            residualAllowance)
+        {
+            return false;
+        }
+
+        if (audit.SelectedPersistentCorePixels >
+            0)
+        {
+            return false;
+        }
+
+        if (audit.SelectedPersistenceRatio >
+            0.005)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    static double LegacyResidualRatio(
+        V2EraseTargetAudit? audit)
+        => audit is null ||
+           audit.InitialMaskPixels <= 0
+            ? 0
+            : audit.SelectedResidualPixels /
+              (double)audit.InitialMaskPixels;
 
     public static bool IsResidualMatch(
         Rect originalTarget,
@@ -649,7 +730,7 @@ public sealed class CleanedStateVerifier
             new
             {
                 Schema =
-                    "pipeline-v2-cleaned-state-v1",
+                    "pipeline-v2-cleaned-state-v2",
                 SourceFile =
                     Path.GetFileName(
                         sourcePath),
@@ -665,6 +746,9 @@ public sealed class CleanedStateVerifier
                     targets.Count,
                 ResidualTextDetectionCount =
                     residualTextRegions.Count,
+                DetectorOnlyFalsePositiveRescueCount =
+                    targetChecks.Count(x =>
+                        x.DetectorOnlyFalsePositiveRescue),
                 EraseTargetBubbleCount =
                     eraseTargetBubbleIds.Count,
                 EmptyVerifiedBubbleCount =
