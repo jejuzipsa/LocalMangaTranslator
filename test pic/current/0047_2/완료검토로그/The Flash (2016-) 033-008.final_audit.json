@@ -1,0 +1,560 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-008.jpg",
+  "output_file": "The Flash (2016-) 033-008.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 80015,
+    "changed_ratio": 0.01317048231799172,
+    "changed_regions": [
+      {
+        "x": 864,
+        "y": 1077,
+        "width": 190,
+        "height": 124
+      },
+      {
+        "x": 791,
+        "y": 2115,
+        "width": 153,
+        "height": 113
+      },
+      {
+        "x": 1111,
+        "y": 2757,
+        "width": 189,
+        "height": 77
+      },
+      {
+        "x": 678,
+        "y": 2115,
+        "width": 112,
+        "height": 113
+      },
+      {
+        "x": 1115,
+        "y": 1084,
+        "width": 102,
+        "height": 117
+      },
+      {
+        "x": 1113,
+        "y": 688,
+        "width": 107,
+        "height": 83
+      },
+      {
+        "x": 1026,
+        "y": 1084,
+        "width": 94,
+        "height": 61
+      },
+      {
+        "x": 881,
+        "y": 307,
+        "width": 88,
+        "height": 63
+      },
+      {
+        "x": 1580,
+        "y": 1818,
+        "width": 65,
+        "height": 82
+      },
+      {
+        "x": 913,
+        "y": 2156,
+        "width": 61,
+        "height": 71
+      },
+      {
+        "x": 1342,
+        "y": 1807,
+        "width": 71,
+        "height": 55
+      },
+      {
+        "x": 706,
+        "y": 197,
+        "width": 92,
+        "height": 40
+      },
+      {
+        "x": 843,
+        "y": 307,
+        "width": 44,
+        "height": 81
+      },
+      {
+        "x": 748,
+        "y": 307,
+        "width": 68,
+        "height": 52
+      },
+      {
+        "x": 1209,
+        "y": 1118,
+        "width": 70,
+        "height": 42
+      },
+      {
+        "x": 1396,
+        "y": 1865,
+        "width": 83,
+        "height": 35
+      },
+      {
+        "x": 721,
+        "y": 163,
+        "width": 85,
+        "height": 33
+      },
+      {
+        "x": 1070,
+        "y": 1146,
+        "width": 50,
+        "height": 54
+      },
+      {
+        "x": 719,
+        "y": 123,
+        "width": 67,
+        "height": 40
+      },
+      {
+        "x": 1218,
+        "y": 1077,
+        "width": 65,
+        "height": 41
+      },
+      {
+        "x": 1425,
+        "y": 1829,
+        "width": 68,
+        "height": 33
+      },
+      {
+        "x": 1410,
+        "y": 1792,
+        "width": 54,
+        "height": 40
+      },
+      {
+        "x": 1181,
+        "y": 2838,
+        "width": 63,
+        "height": 31
+      },
+      {
+        "x": 1046,
+        "y": 1145,
+        "width": 33,
+        "height": 56
+      },
+      {
+        "x": 960,
+        "y": 306,
+        "width": 34,
+        "height": 53
+      },
+      {
+        "x": 814,
+        "y": 307,
+        "width": 31,
+        "height": 51
+      },
+      {
+        "x": 1354,
+        "y": 1866,
+        "width": 45,
+        "height": 34
+      },
+      {
+        "x": 679,
+        "y": 123,
+        "width": 39,
+        "height": 39
+      },
+      {
+        "x": 678,
+        "y": 163,
+        "width": 42,
+        "height": 33
+      },
+      {
+        "x": 937,
+        "y": 2105,
+        "width": 37,
+        "height": 37
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-008.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 54065,
+    "erase_changed_ratio": 0.008899107998778008,
+    "typeset_changed_pixels": 38282,
+    "typeset_changed_ratio": 0.006301223571797276
+  },
+  "region_analysis": {
+    "total": 18,
+    "bubbles": 9,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 28,
+      "Global2x": 24,
+      "Focus3x": 124,
+      "Region1x": 34,
+      "Region2x": 34,
+      "Container1x": 42,
+      "Container2x": 42
+    },
+    "canonical_lines": 40,
+    "units": 14,
+    "assigned_lines": 36,
+    "orphan_groups": 4,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 126,
+          "Bottom": 230,
+          "Left": 624,
+          "Right": 848,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT DARK MAGIC IS THIS?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 297,
+          "Bottom": 397,
+          "Left": 743,
+          "Right": 1002,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 678,
+          "Bottom": 780,
+          "Left": 1093,
+          "Right": 1232,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "CY, IS THIS YOU?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1077,
+          "Bottom": 1209,
+          "Left": 864,
+          "Right": 1283,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1695,
+          "Bottom": 1825,
+          "Left": 224,
+          "Right": 582,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WARNING!\nINTERDIMENSIONAL\nENERGY\nUNKNOWN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1798,
+          "Bottom": 1899,
+          "Left": 1332,
+          "Right": 1508,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOT HELPING, RING!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 1806,
+          "Bottom": 1907,
+          "Left": 1534,
+          "Right": 1681,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT\u0027S PULLING US IN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 2105,
+          "Bottom": 2235,
+          "Left": 678,
+          "Right": 968,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 2769,
+          "Bottom": 2870,
+          "Left": 1114,
+          "Right": 1306,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY RATE IS GOING UP!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 14,
+    "requested_render": 10
+  },
+  "render": {
+    "total": 8,
+    "approved": 8,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 10,
+    "TranslatedUnits": 8,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 8,
+    "TypesetCommittedUnits": 8,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "WHAT DARK MAGIC THIS?! IS",
+        "Translation": "\uC774\uAC74 \uB300\uCCB4 \uBB34\uC2A8\n\uC5B4\uB460\uC758 \uB9C8\uBC95\uC774\uC9C0?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "Translation": "\uB290\uAEF4\uC9C0\uB098, \uC6D0\uB354\uC6B0\uBA3C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "CY IS THIS You?!",
+        "Translation": "\uC0AC\uC774, [BR]\uC774 \uB108\uC57C?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "As",
+        "Translation": "\uADF8\uB54C",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "Translation": "\uB0B4 T-\uC2A4\uD53C\uC5B4\uAC00[BR]\uC774\uAC78 \uC0AC\uC774\uBCF4\uADF8\uC758[BR]\uBD90 \uD29C\uBE0C\uB85C[BR]\uC778\uC2DD\uD558\uC9C0 \uBABB\uD558\uACE0 \uC788\uC5B4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "NOT LPINGI RING!",
+        "Translation": "\uB3C4\uC6C0 \uC548 \uB418\uB2C8\uAE4C\n\uADF8\uB0E5 \uC880\n\uC6B8\uC5B4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "IT\u0027S PULLING us IN!",
+        "Translation": "\uB2F9\uAE30\uACE0 \uC788\uC5B4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "THIS IS WORSE TIDE THAN ANY DRAG I\u0027VE EVER ENCOUNTERED!",
+        "Translation": "\uC9C0\uAE08\uAE4C\uC9C0 \uACAA\uC5B4\uBCF8 \uADF8 \uC5B4\uB5A4 \uC870\uB958\uB3C4\n\uC774\uAC83\uBCF4\uB2E4 \uC2EC\uD558\uC9C4 \uC54A\uC558\uC5B4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "U",
+        "Translation": "\uC73D",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "MY RATE IS GOING UP!",
+        "Translation": "\uB0B4 \uBAB8\uAC12\uC774 \uC624\uB974\uACE0 \uC788\uB2E4\uACE0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

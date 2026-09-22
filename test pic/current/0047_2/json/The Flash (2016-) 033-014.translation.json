@@ -1,0 +1,166 @@
+{
+  "SourceFile": "The Flash (2016-) 033-014.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T08:37:42.7771123+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 68.66666666666667,
+        "Y": 362.6666666666667,
+        "W": 614,
+        "H": 941.3333333333333,
+        "Text": "THE Bal E END: ALL ROADS LEAD BAGK",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 68.66666666666667,
+            "Y": 362.6666666666667,
+            "W": 327.66666666666663,
+            "H": 186.33333333333331,
+            "Text": "THE",
+            "Confidence": 0.8183287,
+            "Language": "en"
+          },
+          {
+            "X": 398.3333333333333,
+            "Y": 434.3333333333333,
+            "W": 182.66666666666669,
+            "H": 109.66666666666669,
+            "Text": "Bal",
+            "Confidence": 0.35211873,
+            "Language": "en"
+          },
+          {
+            "X": 597.6666666666666,
+            "Y": 436,
+            "W": 85,
+            "H": 81,
+            "Text": "E",
+            "Confidence": 0.3133618,
+            "Language": "en"
+          },
+          {
+            "X": 117,
+            "Y": 465.5,
+            "W": 297.5,
+            "H": 234.5,
+            "Text": "END:",
+            "Confidence": 0.97022825,
+            "Language": "en"
+          },
+          {
+            "X": 70.5,
+            "Y": 785.5,
+            "W": 220,
+            "H": 160,
+            "Text": "ALL",
+            "Confidence": 0.9303951,
+            "Language": "en"
+          },
+          {
+            "X": 132,
+            "Y": 888,
+            "W": 308.6666666666667,
+            "H": 187.66666666666652,
+            "Text": "ROADS",
+            "Confidence": 0.99275273,
+            "Language": "en"
+          },
+          {
+            "X": 119.66666666666667,
+            "Y": 1021.3333333333333,
+            "W": 257.66666666666663,
+            "H": 168.33333333333326,
+            "Text": "LEAD",
+            "Confidence": 0.9791744,
+            "Language": "en"
+          },
+          {
+            "X": 147.66666666666666,
+            "Y": 1118.3333333333333,
+            "W": 292.33333333333337,
+            "H": 185.66666666666674,
+            "Text": "BAGK",
+            "Confidence": 0.89251345,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...IN THE END...[BR]ALL ROADS LEAD BACK...",
+      "Translation": "...\uACB0\uAD6D...[BR]\uBAA8\uB4E0 \uAE38\uC740 \uB2E4\uC2DC...[BR]\uC2DC\uC791\uC810\uC73C\uB85C \uC774\uC5B4\uC9C4\uB2E4...",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1372,
+        "Y": 1161.5,
+        "W": 459,
+        "H": 416.5,
+        "Text": "AEMI",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1372,
+            "Y": 1161.5,
+            "W": 459,
+            "H": 416.5,
+            "Text": "AEMI",
+            "Confidence": 0.3782511,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "AGHHHHHHH!",
+      "Translation": "\uC544\uC544\uC544\uC544\uC544\uC545!",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 1219,
+        "Y": 2657,
+        "W": 730,
+        "H": 369,
+        "Text": "DARkNEBS.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1219,
+            "Y": 2657,
+            "W": 730,
+            "H": 369,
+            "Text": "DARkNEBS.",
+            "Confidence": 0.638745,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "...TO DARKNESS.",
+      "Translation": "...\uC5B4\uB460 \uC18D\uC73C\uB85C.",
+      "Type": "caption",
+      "Render": true
+    }
+  ]
+}

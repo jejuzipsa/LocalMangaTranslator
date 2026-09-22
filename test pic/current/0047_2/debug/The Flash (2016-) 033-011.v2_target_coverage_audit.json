@@ -1,0 +1,28 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "The Flash (2016-) 033-011.jpg",
+  "DetectedTextTargets": 1,
+  "CommittedTargets": 0,
+  "PreservedTargets": 1,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "TextScore": 0.9120134,
+      "BubbleRegionId": "RG001",
+      "TextBounds": {
+        "X": 1126,
+        "Y": 1743,
+        "Width": 250,
+        "Height": 101
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": 4,
+      "Status": "preserved_render_false:other",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}

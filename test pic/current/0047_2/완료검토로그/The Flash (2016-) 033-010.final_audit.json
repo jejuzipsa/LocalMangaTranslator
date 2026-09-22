@@ -1,0 +1,575 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-010.jpg",
+  "output_file": "The Flash (2016-) 033-010.translated.webp",
+  "image": {
+    "width": 3975,
+    "height": 3056,
+    "changed_pixels": 174394,
+    "changed_ratio": 0.014356251440613784,
+    "changed_regions": [
+      {
+        "x": 873,
+        "y": 1953,
+        "width": 431,
+        "height": 186
+      },
+      {
+        "x": 1657,
+        "y": 1758,
+        "width": 218,
+        "height": 113
+      },
+      {
+        "x": 1400,
+        "y": 1744,
+        "width": 216,
+        "height": 111
+      },
+      {
+        "x": 3563,
+        "y": 1835,
+        "width": 143,
+        "height": 157
+      },
+      {
+        "x": 2712,
+        "y": 1866,
+        "width": 240,
+        "height": 85
+      },
+      {
+        "x": 2324,
+        "y": 2411,
+        "width": 164,
+        "height": 75
+      },
+      {
+        "x": 1165,
+        "y": 2653,
+        "width": 99,
+        "height": 116
+      },
+      {
+        "x": 527,
+        "y": 1750,
+        "width": 139,
+        "height": 82
+      },
+      {
+        "x": 3489,
+        "y": 1840,
+        "width": 92,
+        "height": 107
+      },
+      {
+        "x": 422,
+        "y": 1751,
+        "width": 103,
+        "height": 82
+      },
+      {
+        "x": 3696,
+        "y": 1846,
+        "width": 68,
+        "height": 109
+      },
+      {
+        "x": 642,
+        "y": 1750,
+        "width": 84,
+        "height": 82
+      },
+      {
+        "x": 3474,
+        "y": 1938,
+        "width": 83,
+        "height": 58
+      },
+      {
+        "x": 3760,
+        "y": 1920,
+        "width": 60,
+        "height": 76
+      },
+      {
+        "x": 3755,
+        "y": 1840,
+        "width": 48,
+        "height": 83
+      },
+      {
+        "x": 715,
+        "y": 1737,
+        "width": 86,
+        "height": 45
+      },
+      {
+        "x": 387,
+        "y": 1737,
+        "width": 85,
+        "height": 44
+      },
+      {
+        "x": 1167,
+        "y": 2585,
+        "width": 40,
+        "height": 84
+      },
+      {
+        "x": 1233,
+        "y": 2100,
+        "width": 70,
+        "height": 47
+      },
+      {
+        "x": 873,
+        "y": 2100,
+        "width": 70,
+        "height": 47
+      },
+      {
+        "x": 1253,
+        "y": 2700,
+        "width": 60,
+        "height": 50
+      },
+      {
+        "x": 1264,
+        "y": 2630,
+        "width": 47,
+        "height": 63
+      },
+      {
+        "x": 1227,
+        "y": 2585,
+        "width": 41,
+        "height": 72
+      },
+      {
+        "x": 729,
+        "y": 1860,
+        "width": 72,
+        "height": 41
+      },
+      {
+        "x": 387,
+        "y": 1860,
+        "width": 71,
+        "height": 41
+      },
+      {
+        "x": 1268,
+        "y": 2577,
+        "width": 63,
+        "height": 45
+      },
+      {
+        "x": 3189,
+        "y": 106,
+        "width": 63,
+        "height": 43
+      },
+      {
+        "x": 3118,
+        "y": 191,
+        "width": 67,
+        "height": 37
+      },
+      {
+        "x": 1295,
+        "y": 2717,
+        "width": 36,
+        "height": 58
+      },
+      {
+        "x": 2471,
+        "y": 2411,
+        "width": 38,
+        "height": 54
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-010.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 119875,
+    "erase_changed_ratio": 0.00986820441897988,
+    "typeset_changed_pixels": 84557,
+    "typeset_changed_ratio": 0.00696079884092331
+  },
+  "region_analysis": {
+    "total": 21,
+    "bubbles": 9,
+    "text_regions": 12,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 29,
+      "Global2x": 36,
+      "Focus3x": 275,
+      "Region1x": 66,
+      "Region2x": 64,
+      "Container1x": 65,
+      "Container2x": 49
+    },
+    "canonical_lines": 78,
+    "units": 17,
+    "assigned_lines": 70,
+    "orphan_groups": 7,
+    "secondary_total": 9,
+    "secondary_accepted": 9,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 106,
+          "Bottom": 312,
+          "Left": 3016,
+          "Right": 3261,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 1719,
+          "Bottom": 1878,
+          "Left": 1647,
+          "Right": 1907,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...THERE WASN\u0027T A UERSION OF YOU ON MY VORLD, STEEL.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG006",
+        "Bounds": {
+          "Top": 1731,
+          "Bottom": 1868,
+          "Left": 1400,
+          "Right": 1625,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1737,
+          "Bottom": 1901,
+          "Left": 387,
+          "Right": 801,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1827,
+          "Bottom": 1996,
+          "Left": 3474,
+          "Right": 3820,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1850,
+          "Bottom": 1960,
+          "Left": 2699,
+          "Right": 2959,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1956,
+          "Bottom": 2147,
+          "Left": 873,
+          "Right": 1303,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HAS THAT DOCMEDIATION\nWIRLE NIFECTED YOUR MIND,\nDEVATATIOR OR DO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG018",
+        "Bounds": {
+          "Top": 2373,
+          "Bottom": 2476,
+          "Left": 2317,
+          "Right": 2540,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG020",
+        "Bounds": {
+          "Top": 2577,
+          "Bottom": 2775,
+          "Left": 1105,
+          "Right": 1331,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 17,
+    "requested_render": 11
+  },
+  "render": {
+    "total": 9,
+    "approved": 9,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 11,
+    "TranslatedUnits": 9,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 9,
+    "TypesetCommittedUnits": 9,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "Translation": "\uC774\uAC74 \uB124 \uAC70\uC57C. [BR]\uC800\uB188\uB4E4 \uC911 \uD558\uB098\uB294 \uC774\uBBF8 \uCC98\uB9AC\uD574 \uB480\uC73C\uB2C8\uAE4C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "THERE WASN\u0027T A VERSION you OF WORLD, MY ON STEEL.",
+        "Translation": "...\uB0B4 \uC138\uC0C1\uC5D0 \uB108 \uAC19\uC740 \uAC74[BR]\uC874\uC7AC\uD55C \uC801 \uC5C6\uC5B4, \uC2A4\uD2F8.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "JOUR TECHNOLOGY IMPRESSIVE, IS ET AND",
+        "Translation": "\uAE30\uC220\uB825\uC740 \uB300\uB2E8\uD558\uAD70, \uD558\uC9C0\uB9CC...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "CARE I DON\u0027T WORLD YOU\u0027RE WHAT WILL FROM, HAMMER MY KNOCK BACK THERE!",
+        "Translation": "\uB124\uAC00 \uC5B4\uB290 \uC138\uACC4\uC5D0\uC11C \uC654\uB4E0 \uC0C1\uAD00\uC5C6\uC5B4, \uB0B4 \uB9DD\uCE58\uB85C \uB124 \uACE0\uD5A5\uAE4C\uC9C0 \uB0A0\uB824\uBC84\uB824 \uC8FC\uB9C8!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "I\u0027LL PRESENI JHE COSMIC TUNING FORK TO THE MASTER...",
+        "Translation": "\uC6B0\uC8FC \uC870\uC728\uC6A9 \uD3EC\uD06C\uB97C[BR]\uB9C8\uC2A4\uD130\uC5D0\uAC8C \uBC14\uCE58\uACA0\uC18C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "you JUST WERE NOT IMPORTANT ENOUGHI.",
+        "Translation": "\uB124\uAC00 \uBCC4\uB85C \uC911\uC694\uD558\uC9C0 \uC54A\uC558\uC744 \uBFD0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "D2 A HAT DOOMSDAY VIRUS MIND, VIRUS INFECTED YOUR THAT DEVASTATOR, OR TOR, OR DO YOU AVE A PLAN TO BRING THAT SMIC FORK COSMIC TUNING FO BARBATOS? wro",
+        "Translation": "\uADF8 \uC885\uB9D0\uC758 \uBC14\uC774\uB7EC\uC2A4\uAC00[BR]\uB124 \uC815\uC2E0\uC744 \uC880\uBA39\uC5C8\uB098, \uB370\uBE0C\uC2A4\uD14C\uC774\uD130?[BR]\uC544\uB2C8\uBA74 \uADF8 \uC6B0\uC8FC \uC870\uC728[BR]\uD3EC\uD06C\uB97C \uBC14\uB974\uBC14\uD1A0\uC2A4\uB85C[BR]\uAC00\uC838\uC62C \uACC4\uD68D\uC774\uB77C\uB3C4[BR]\uC788\uB294 \uAC74\uAC00?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "SX",
+        "Translation": "\uADF8\uB9AC\uACE0 \uC124\uC815...",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "a",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "Translation": "\uC800 \uB140\uC11D\uB3C4[BR]\uC288\uD37C\uB9E8\uB9CC\uD07C\uC774\uB098 \uBE68\uB77C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "YOU WILL LEARN NOT TO DOUST ME, BATMAN WHO LAUGHS.",
+        "Translation": "\uB098\uB97C \uC758\uC2EC\uD558\uC9C0 \uC54A\uAC8C \uB420 \uAC70\uB2E4,[BR]\uC6C3\uB294 \uBC30\uD2B8\uB9E8.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "The Flash (2016-) 033-003.jpg",
+  "RequestedUnits": 5,
+  "TranslatedUnits": 4,
+  "PreservedOriginalUnits": 1,
+  "EraseCommittedUnits": 4,
+  "TypesetCommittedUnits": 4,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 15,
+      "SourceText": "MY NAME IS BARRY ALLEN. FLASH. THE I\u0027M",
+      "Translation": "\uB0B4 \uC774\uB984\uC740\n\uBC30\uB9AC \uC568\uB7F0.\n\uB098\uB294 \uD50C\uB798\uC2DC\uB2E4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1502,
+        "Y": 1150,
+        "Width": 329,
+        "Height": 132
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 17,
+      "SourceText": "SUPERMAN AND I HAVE RACED MANY TIMES.",
+      "Translation": "\uC288\uD37C\uB9E8\uC774\uB791 \uB098\uB791[BR]\uC5EC\uB7EC \uBC88 \uACBD\uC8FC\uD55C \uC801\uC774 \uC788\uC5B4...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1561,
+        "Y": 1290,
+        "Width": 307,
+        "Height": 143
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 18,
+      "SourceText": "TODAY I BUT HIM NEED WIN. TC",
+      "Translation": "...\uD558\uC9C0\uB9CC \uC624\uB298\uC740 \uADF8\uAC00 \uC774\uACA8\uC57C\uB9CC \uD574.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "BubbleRegionId": "RG011",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1538,
+        "Y": 1448,
+        "Width": 345,
+        "Height": 111
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 19,
+      "SourceText": "RBIS",
+      "Translation": "\uADF8",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 20,
+      "SourceText": "MULTIVERSE THE DEPENDS ON IT.",
+      "Translation": "\uBA40\uD2F0\uBC84\uC2A4\uC758 \uC6B4\uBA85\uC774\n\uB2EC\uB824 \uC788\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG014"
+      ],
+      "BubbleRegionId": "RG013",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1471,
+        "Y": 1571,
+        "Width": 330,
+        "Height": 108
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    }
+  ]
+}

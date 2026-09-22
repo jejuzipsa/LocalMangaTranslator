@@ -1,0 +1,853 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-006.jpg",
+  "output_file": "The Flash (2016-) 033-006.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 276822,
+    "changed_ratio": 0.045564947275274686,
+    "changed_regions": [
+      {
+        "x": 1585,
+        "y": 130,
+        "width": 255,
+        "height": 170
+      },
+      {
+        "x": 1558,
+        "y": 1484,
+        "width": 302,
+        "height": 111
+      },
+      {
+        "x": 77,
+        "y": 317,
+        "width": 208,
+        "height": 126
+      },
+      {
+        "x": 949,
+        "y": 216,
+        "width": 150,
+        "height": 140
+      },
+      {
+        "x": 1016,
+        "y": 2604,
+        "width": 157,
+        "height": 115
+      },
+      {
+        "x": 144,
+        "y": 1040,
+        "width": 236,
+        "height": 73
+      },
+      {
+        "x": 887,
+        "y": 1586,
+        "width": 154,
+        "height": 110
+      },
+      {
+        "x": 994,
+        "y": 1585,
+        "width": 139,
+        "height": 111
+      },
+      {
+        "x": 957,
+        "y": 535,
+        "width": 173,
+        "height": 83
+      },
+      {
+        "x": 1038,
+        "y": 2344,
+        "width": 145,
+        "height": 82
+      },
+      {
+        "x": 213,
+        "y": 646,
+        "width": 139,
+        "height": 82
+      },
+      {
+        "x": 233,
+        "y": 474,
+        "width": 126,
+        "height": 82
+      },
+      {
+        "x": 1079,
+        "y": 2521,
+        "width": 127,
+        "height": 81
+      },
+      {
+        "x": 1071,
+        "y": 1382,
+        "width": 123,
+        "height": 83
+      },
+      {
+        "x": 1090,
+        "y": 216,
+        "width": 71,
+        "height": 140
+      },
+      {
+        "x": 133,
+        "y": 473,
+        "width": 105,
+        "height": 83
+      },
+      {
+        "x": 953,
+        "y": 2489,
+        "width": 139,
+        "height": 56
+      },
+      {
+        "x": 1408,
+        "y": 880,
+        "width": 103,
+        "height": 69
+      },
+      {
+        "x": 945,
+        "y": 434,
+        "width": 106,
+        "height": 67
+      },
+      {
+        "x": 956,
+        "y": 2546,
+        "width": 121,
+        "height": 57
+      },
+      {
+        "x": 939,
+        "y": 2638,
+        "width": 73,
+        "height": 81
+      },
+      {
+        "x": 1703,
+        "y": 396,
+        "width": 107,
+        "height": 52
+      },
+      {
+        "x": 928,
+        "y": 2344,
+        "width": 104,
+        "height": 52
+      },
+      {
+        "x": 1172,
+        "y": 2452,
+        "width": 55,
+        "height": 91
+      },
+      {
+        "x": 141,
+        "y": 657,
+        "width": 71,
+        "height": 70
+      },
+      {
+        "x": 928,
+        "y": 2698,
+        "width": 58,
+        "height": 84
+      },
+      {
+        "x": 1160,
+        "y": 1487,
+        "width": 81,
+        "height": 60
+      },
+      {
+        "x": 1024,
+        "y": 2721,
+        "width": 86,
+        "height": 55
+      },
+      {
+        "x": 879,
+        "y": 1487,
+        "width": 79,
+        "height": 55
+      },
+      {
+        "x": 928,
+        "y": 2452,
+        "width": 53,
+        "height": 81
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-006.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 197527,
+    "erase_changed_ratio": 0.03251297707712242,
+    "typeset_changed_pixels": 117000,
+    "typeset_changed_ratio": 0.01925821947391153
+  },
+  "region_analysis": {
+    "total": 32,
+    "bubbles": 16,
+    "text_regions": 16,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 72,
+      "Global2x": 71,
+      "Focus3x": 376,
+      "Region1x": 94,
+      "Region2x": 118,
+      "Container1x": 93,
+      "Container2x": 136
+    },
+    "canonical_lines": 137,
+    "units": 34,
+    "assigned_lines": 117,
+    "orphan_groups": 18,
+    "secondary_total": 16,
+    "secondary_accepted": 16,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 122,
+          "Bottom": 308,
+          "Left": 1577,
+          "Right": 1864,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT BATMAN STUDYING IT IS PART OF WHY WE\u0027RE ALL IN THIS MESS TO BE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 121,
+          "Bottom": 163,
+          "Left": 913,
+          "Right": 1131,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IGNORE IT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 178,
+          "Bottom": 392,
+          "Left": 941,
+          "Right": 1166,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE KNOWN MULTIVERSE EXISTS ON DIFFERENT VIBRATIONAL PLANES...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 320,
+          "Bottom": 450,
+          "Left": 69,
+          "Right": 319,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I WISH I SHARED YOUR OPTIMISM, FLASH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 327,
+          "Bottom": 456,
+          "Left": 1645,
+          "Right": 1847,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE VIBRATIONS COMING OFF IT...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 412,
+          "Bottom": 625,
+          "Left": 940,
+          "Right": 1163,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...AND\nTHIS COSMIC\nTUNING\nTOWER WAS\nDESIGNED\nTO ALIGN\nTHEM.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 464,
+          "Bottom": 621,
+          "Left": 59,
+          "Right": 407,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE PORTAL\nTO THE DARK\nMULTIVERSE IS\nHOLDING STRONG...\nFOR NOW.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 635,
+          "Bottom": 736,
+          "Left": 134,
+          "Right": 391,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027D LOVE TO STUDY THIS MACHINE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 867,
+          "Bottom": 957,
+          "Left": 1352,
+          "Right": 1545,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...I\u0027VE FELT THEM... BEFORE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1049,
+          "Bottom": 1149,
+          "Left": 142,
+          "Right": 384,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT CALLS TO THE METAL IN MY HAMMER...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1374,
+          "Bottom": 1475,
+          "Left": 1009,
+          "Right": 1238,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WE\u0027RE MEN OF SCIENCE, FLASH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 1415,
+          "Bottom": 1630,
+          "Left": 1556,
+          "Right": 1921,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WE\u0027LL DEAL\nWITH THAT AFTER\nSUPERMAN FINDS\nHIM...THEY\u0027RE GOING\nTO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 1487,
+          "Bottom": 1704,
+          "Left": 879,
+          "Right": 1241,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT WE\nDON\u0027T NEED OUR\nDEGREES TO SEE\nTHAT BATMAN HAD\nNO BUSINESS WITH\nA DEVICE OF THIS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG027",
+        "Bounds": {
+          "Top": 2129,
+          "Bottom": 2286,
+          "Left": 1499,
+          "Right": 1850,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HOPEFULLY,\nTHE JUSTICE\nLEAGUE\u0027S SATELLITE\nRELAY IS STILL\nWORKING...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG029",
+        "Bounds": {
+          "Top": 2333,
+          "Bottom": 2435,
+          "Left": 917,
+          "Right": 1236,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "FLASH TO JUSTICE LEAGUE. DO YOU READ ME?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0016",
+        "RegionId": "RG031",
+        "Bounds": {
+          "Top": 2452,
+          "Bottom": 2782,
+          "Left": 928,
+          "Right": 1227,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SUPERMAN\u0027S ENTERED THE PHANTOM ZONE TO FIND BATMAN. PLEASE TELL ME YOU\u0027VE FOUND MOUNTALY ALALALALALA ALALA ATALATALATALA ANDA AR",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 34,
+    "requested_render": 21
+  },
+  "render": {
+    "total": 17,
+    "approved": 16,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 21,
+    "TranslatedUnits": 16,
+    "PreservedOriginalUnits": 5,
+    "EraseCommittedUnits": 16,
+    "TypesetCommittedUnits": 16,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "BUT BATMAN STUDYING IT IS PART OF WHY WE\u0027RE ALL IN THIS TO MESS BEGIN WITH.",
+        "Translation": "\uD558\uC9C0\uB9CC \uBC30\uD2B8\uB9E8\uC774 \uADF8\uAC78 \uC5F0\uAD6C\uD55C \uAC8C[BR] \uC6B0\uB9AC\uAC00 \uC774 \uC5C9\uB9DD\uC9C4\uCC3D\uC778 \uC0C1\uD669\uC5D0[BR] \uCC98\uD558\uAC8C \uB41C \uC6D0\uC778 \uC911 \uD558\uB098\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "IGNORE IT.",
+        "Translation": "\uC2E0\uACBD \uAEBC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "THE KNOWN MULTIVERSE EXISTS ON DIFFERENT VIBRATIONAL PLANES...",
+        "Translation": "\uC54C\uB824\uC9C4 \uBA40\uD2F0\uBC84\uC2A4\uB294\n\uC11C\uB85C \uB2E4\uB978\n\uC9C4\uB3D9\n\uD3C9\uBA74 \uC704\uC5D0\n\uC874\uC7AC\uD55C\uB2E4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "I WISH I SHARED YOUR OPTIMISM, FLASH.",
+        "Translation": "\uB098\uB3C4 \uB124 \uB099\uCC9C\uC801\uC778 \uC131\uACA9\uC744\n\uBC30\uC6B8 \uC218 \uC788\uC73C\uBA74\n\uC88B\uACA0\uB294\uB370, \uD50C\uB798\uC2DC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "THE VIBRATIONS COMING OFF IT...",
+        "Translation": "\uC5EC\uAE30\uC11C \uB290\uAEF4\uC9C0\uB294\n\uC9C4\uB3D9\uC774...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "I\u0027A ON AND COSMIC THIS TUNING WAS TOWER DESIGNED ALIGN TO THEM.",
+        "Translation": "...\uADF8\uB9AC\uACE0 \uC774 \uCF54\uC988\uBBF9 \uD29C\uB2DD \uD0C0\uC6CC\uB294[BR]\uADF8\uAC83\uB4E4\uC744 \uC815\uB82C\uD558\uAE30 \uC704\uD574 \uC124\uACC4\uB418\uC5C8\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "PORTAL THE DARK TO THE MULTIVERSE IS HOLDING STRONG.. FOR NOW.",
+        "Translation": "\uB2E4\uD06C\n\uBA40\uD2F0\uBC84\uC2A4\uB85C\n\uD1B5\uD558\uB294\n\uD3EC\uD138\uC774\n\uAC15\uD558\uAC8C\n\uBC84\uD2F0\uACE0\n\uC788\uC5B4...\n\uC9C0\uAE08\uC740.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "E",
+        "Translation": "\uADF8\uB188\uB4E4.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "I\u0027D LOVE STUDY THIS TO MACHIN",
+        "Translation": "\uC774 \uAE30\uACC4\uB97C\n\uACF5\uBD80\uD574 \uBCF4\uACE0\n\uC2F6\uC5B4 \uC8FD\uACA0\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "...I\u0027VE FELT THEM... BEFORE.",
+        "Translation": "...\uC804\uC5D0[BR]\uB290\uAEF4\uBCF8[BR] \uC801\uC774 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "MY HAMMER...",
+        "Translation": "\uB0B4 \uB9DD\uCE58 \uC18D \uAE08\uC18D\uC774 \uBC18\uC751\uD558\uACE0 \uC788\uC5B4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "I",
+        "Translation": "\uB098",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "A",
+        "Translation": "\uC544",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "CAIAL",
+        "Translation": "\uB098\uC911\uC5D0 \uC598\uAE30\uD558\uC790",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "WE\u0027RE MEN SCIENCE. OF FLASH.",
+        "Translation": "\uC6B0\uB9B0 \uACFC\uD559\uC790\uC57C, \uD50C\uB798\uC2DC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 23,
+        "SourceText": "WE\u0027LL DEAL WITH THAT AFTER SUPERMAN FINDS GOING . THEY\u0027RE HIM. NEED THIS PORTAL TO OPEN TO COME HOME.",
+        "Translation": "\uC288\uD37C\uB9E8\uC774 \uADF8\uB97C \uCC3E\uC544\uB0B8 \uB4A4\uC5D0 \uCC98\uB9AC\uD558\uC790\uACE0. \uC9D1\uC73C\uB85C \uB3CC\uC544\uC624\uB824\uBA74 \uC774 \uD3EC\uD138\uC774 \uC5F4\uB824 \uC788\uC5B4\uC57C \uD558\uB2C8\uAE4C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 25,
+        "SourceText": "WE BUT NEED OUR SEE TO DEGRE HAD THAT BATMAN NO BUSINESS WITH A DEVICE OF THIS MAGNITUDE.",
+        "Translation": "\uD558\uC9C0\uB9CC \uBC30\uD2B8\uB9E8\uC774 \uC774\uB7F0 \uADDC\uBAA8\uC758 \uC7A5\uCE58\uB97C[BR]\uB2E4\uB8F0 \uC790\uACA9\uC774 \uC5C6\uB2E4\uB294 \uAC74[BR]\uD559\uC704\uAC00 \uC5C6\uC5B4\uB3C4[BR]\uB204\uAD6C\uB098 \uC54C \uC218 \uC788\uB294 \uC0AC\uC2E4\uC774\uC5C8\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 26,
+        "SourceText": "HOPEFULLY, THE JUSTICE SATELLITE LEAGUE\u0027S RELAY WORKING...",
+        "Translation": "\uC81C\uBC1C, \uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8\uC758[BR]\uC704\uC131 \uC911\uACC4\uAE30\uAC00 \uC544\uC9C1 \uC791\uB3D9\uD558\uACE0 \uC788\uAE38...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 28,
+        "SourceText": "IrtMT",
+        "Translation": "\uD68C\uC0C1",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 29,
+        "SourceText": "FLASH TO JUSTICE LEAGUE. DO Y0U READ ME?",
+        "Translation": "\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8, \uB0B4 \uB9D0 \uB4E4\uB9AC\uB098?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 30,
+        "SourceText": "SUPERMAN\u0027S ENTERED THE PHANTOM ZONE TO FIND BATMAN. PLEASE TELL ME YOU\u0027VE FOUND MOUNTAINS OF NTH METAL AND ARE ALREADY ON YOUR WAY BACK.",
+        "Translation": "\uC288\uD37C\uB9E8\uC774 \uBC30\uD2B8\uB9E8\uC744 \uCC3E\uC73C\uB7EC\n\uD32C\uD140 \uC874\uC5D0 \uB4E4\uC5B4\uAC14\uC5B4.\nN-\uAE08\uC18D\uC744 \uC0B0\uB354\uBBF8\uCC98\uB7FC\n\uCC3E\uC544\uC11C \uB3CC\uC544\uC624\uB294 \uC911\uC774\uB77C\uACE0\n\uB9D0\uD574\uC918.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

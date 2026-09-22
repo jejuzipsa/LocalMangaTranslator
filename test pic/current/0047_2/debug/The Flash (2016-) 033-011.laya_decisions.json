@@ -1,0 +1,226 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-011.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "detector_retry",
+      "RegionId": 0,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6427,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "a",
+        "ocr_confidence": 0.337490975856781,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 338,
+          "Y": 475.66666666666663,
+          "W": 115,
+          "H": 88.00000000000011
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5919,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "y",
+        "corrected_text": "y",
+        "ocr_confidence": 0.9526423215866089,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 754.3333333333334,
+          "Y": 487,
+          "W": 22.333333333333258,
+          "H": 25.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5827,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "IK",
+        "corrected_text": "IK",
+        "ocr_confidence": 0.5078590512275696,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 199,
+          "Y": 689,
+          "W": 234,
+          "H": 174
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5427,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "KRR",
+        "corrected_text": "KRR",
+        "ocr_confidence": 0.48666149377822876,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1280,
+          "Y": 704,
+          "W": 708,
+          "H": 760
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0857,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9120134,
+            "BlockCoverage": 0.44788562508869023,
+            "CenterInside": true,
+            "CenterDistance": 4.924428900898052,
+            "Affinity": 5.237700348313921
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 5,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.584,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "HHSSA",
+        "corrected_text": "HHHSSSRR",
+        "ocr_confidence": 0.8077231645584106,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 553,
+          "Y": 2070,
+          "W": 1435,
+          "H": 986
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0252,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "RSE",
+        "secondary_ocr": "...AFTER I REBUILD IT!",
+        "primary_confidence": 0.40335068106651306,
+        "current_agreement": "disagree",
+        "corrected_text": "RSE"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5504,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "HHSSA",
+        "corrected_text": "HHHSSSRR",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.8077231645584106,
+        "type": "sfx"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6539,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "y",
+        "corrected_source_text": "y",
+        "korean_translation": "\uC751",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5136,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IK",
+        "corrected_source_text": "IK",
+        "korean_translation": "\uC73D",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    }
+  ]
+}

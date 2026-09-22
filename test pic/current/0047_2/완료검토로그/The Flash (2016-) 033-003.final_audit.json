@@ -1,0 +1,413 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-003.jpg",
+  "output_file": "The Flash (2016-) 033-003.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 43991,
+    "changed_ratio": 0.0072409259220242925,
+    "changed_regions": [
+      {
+        "x": 1533,
+        "y": 1165,
+        "width": 224,
+        "height": 96
+      },
+      {
+        "x": 1586,
+        "y": 1312,
+        "width": 157,
+        "height": 63
+      },
+      {
+        "x": 1676,
+        "y": 1312,
+        "width": 98,
+        "height": 64
+      },
+      {
+        "x": 1749,
+        "y": 1178,
+        "width": 54,
+        "height": 83
+      },
+      {
+        "x": 1501,
+        "y": 1594,
+        "width": 137,
+        "height": 29
+      },
+      {
+        "x": 1660,
+        "y": 1504,
+        "width": 120,
+        "height": 28
+      },
+      {
+        "x": 1588,
+        "y": 1474,
+        "width": 97,
+        "height": 27
+      },
+      {
+        "x": 1694,
+        "y": 1474,
+        "width": 87,
+        "height": 29
+      },
+      {
+        "x": 1775,
+        "y": 1312,
+        "width": 69,
+        "height": 34
+      },
+      {
+        "x": 1613,
+        "y": 1626,
+        "width": 80,
+        "height": 29
+      },
+      {
+        "x": 1766,
+        "y": 1346,
+        "width": 66,
+        "height": 30
+      },
+      {
+        "x": 1706,
+        "y": 1594,
+        "width": 68,
+        "height": 29
+      },
+      {
+        "x": 1640,
+        "y": 1594,
+        "width": 68,
+        "height": 29
+      },
+      {
+        "x": 1704,
+        "y": 1379,
+        "width": 56,
+        "height": 30
+      },
+      {
+        "x": 1570,
+        "y": 1626,
+        "width": 45,
+        "height": 29
+      },
+      {
+        "x": 1588,
+        "y": 1508,
+        "width": 42,
+        "height": 23
+      },
+      {
+        "x": 1674,
+        "y": 1379,
+        "width": 28,
+        "height": 30
+      },
+      {
+        "x": 1784,
+        "y": 1476,
+        "width": 28,
+        "height": 28
+      },
+      {
+        "x": 1813,
+        "y": 1474,
+        "width": 28,
+        "height": 27
+      },
+      {
+        "x": 1597,
+        "y": 1346,
+        "width": 25,
+        "height": 30
+      },
+      {
+        "x": 1726,
+        "y": 1629,
+        "width": 33,
+        "height": 22
+      },
+      {
+        "x": 1792,
+        "y": 1507,
+        "width": 28,
+        "height": 24
+      },
+      {
+        "x": 1601,
+        "y": 1381,
+        "width": 30,
+        "height": 22
+      },
+      {
+        "x": 1692,
+        "y": 1628,
+        "width": 25,
+        "height": 24
+      },
+      {
+        "x": 1826,
+        "y": 1507,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 1566,
+        "y": 1507,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 1627,
+        "y": 1506,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 1650,
+        "y": 1380,
+        "width": 24,
+        "height": 24
+      },
+      {
+        "x": 1758,
+        "y": 1380,
+        "width": 23,
+        "height": 24
+      },
+      {
+        "x": 1550,
+        "y": 1629,
+        "width": 23,
+        "height": 23
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-003.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 27939,
+    "erase_changed_ratio": 0.004598764050270207,
+    "typeset_changed_pixels": 25565,
+    "typeset_changed_ratio": 0.0042080032551328915
+  },
+  "region_analysis": {
+    "total": 14,
+    "bubbles": 5,
+    "text_regions": 9,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 32,
+      "Global2x": 31,
+      "Focus3x": 211,
+      "Region1x": 71,
+      "Region2x": 86,
+      "Container1x": 18,
+      "Container2x": 24
+    },
+    "canonical_lines": 52,
+    "units": 21,
+    "assigned_lines": 19,
+    "orphan_groups": 16,
+    "secondary_total": 5,
+    "secondary_accepted": 5,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 456,
+          "Bottom": 551,
+          "Left": 487,
+          "Right": 604,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PART ONE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1165,
+          "Bottom": 1268,
+          "Left": 1533,
+          "Right": 1816,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MY NAME IS\nBARRY ALLEN.\nI\u0027M THE FLASH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1306,
+          "Bottom": 1417,
+          "Left": 1581,
+          "Right": 1852,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SUPERMAN AND I HAVE RACED MANY TIMES...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1464,
+          "Bottom": 1541,
+          "Left": 1554,
+          "Right": 1865,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...BUT TODAY I NEED HIM TO WIN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1584,
+          "Bottom": 1665,
+          "Left": 1491,
+          "Right": 1783,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE MULTIVERSE DEPENDS ON IT.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 21,
+    "requested_render": 5
+  },
+  "render": {
+    "total": 4,
+    "approved": 4,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 5,
+    "TranslatedUnits": 4,
+    "PreservedOriginalUnits": 1,
+    "EraseCommittedUnits": 4,
+    "TypesetCommittedUnits": 4,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 15,
+        "SourceText": "MY NAME IS BARRY ALLEN. FLASH. THE I\u0027M",
+        "Translation": "\uB0B4 \uC774\uB984\uC740\n\uBC30\uB9AC \uC568\uB7F0.\n\uB098\uB294 \uD50C\uB798\uC2DC\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "SUPERMAN AND I HAVE RACED MANY TIMES.",
+        "Translation": "\uC288\uD37C\uB9E8\uC774\uB791 \uB098\uB791[BR]\uC5EC\uB7EC \uBC88 \uACBD\uC8FC\uD55C \uC801\uC774 \uC788\uC5B4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "TODAY I BUT HIM NEED WIN. TC",
+        "Translation": "...\uD558\uC9C0\uB9CC \uC624\uB298\uC740 \uADF8\uAC00 \uC774\uACA8\uC57C\uB9CC \uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "RBIS",
+        "Translation": "\uADF8",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "MULTIVERSE THE DEPENDS ON IT.",
+        "Translation": "\uBA40\uD2F0\uBC84\uC2A4\uC758 \uC6B4\uBA85\uC774\n\uB2EC\uB824 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

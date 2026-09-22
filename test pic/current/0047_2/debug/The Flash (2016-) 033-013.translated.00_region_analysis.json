@@ -1,0 +1,454 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=29; legacy_mask_candidates=80; active_region_containers=14",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "TextFree",
+      "x": 143,
+      "y": 47,
+      "width": 557,
+      "height": 105,
+      "score": 0.49962768,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "Bubble",
+      "x": 3025,
+      "y": 573,
+      "width": 411,
+      "height": 167,
+      "score": 0.81875926,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG003",
+      "kind": "TextBubble",
+      "x": 3076,
+      "y": 591,
+      "width": 329,
+      "height": 132,
+      "score": 0.87614334,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG004",
+      "kind": "Bubble",
+      "x": 3259,
+      "y": 747,
+      "width": 365,
+      "height": 129,
+      "score": 0.87810075,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG005",
+      "kind": "TextBubble",
+      "x": 3274,
+      "y": 760,
+      "width": 339,
+      "height": 102,
+      "score": 0.8707186,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG006",
+      "kind": "Bubble",
+      "x": 2559,
+      "y": 1596,
+      "width": 393,
+      "height": 206,
+      "score": 0.95705295,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG007",
+      "kind": "Bubble",
+      "x": 129,
+      "y": 1598,
+      "width": 217,
+      "height": 66,
+      "score": 0.5455615,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG008",
+      "kind": "Bubble",
+      "x": 1528,
+      "y": 1601,
+      "width": 366,
+      "height": 134,
+      "score": 0.9500702,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG009",
+      "kind": "TextBubble",
+      "x": 137,
+      "y": 1608,
+      "width": 196,
+      "height": 48,
+      "score": 0.64859754,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG010",
+      "kind": "TextBubble",
+      "x": 1551,
+      "y": 1619,
+      "width": 323,
+      "height": 103,
+      "score": 0.93144035,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG011",
+      "kind": "TextBubble",
+      "x": 2579,
+      "y": 1620,
+      "width": 343,
+      "height": 161,
+      "score": 0.94333357,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG012",
+      "kind": "Bubble",
+      "x": 1172,
+      "y": 1623,
+      "width": 229,
+      "height": 87,
+      "score": 0.8991565,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG013",
+      "kind": "Bubble",
+      "x": 3427,
+      "y": 1641,
+      "width": 194,
+      "height": 93,
+      "score": 0.86427534,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG014",
+      "kind": "TextBubble",
+      "x": 1196,
+      "y": 1646,
+      "width": 184,
+      "height": 46,
+      "score": 0.7888417,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG015",
+      "kind": "TextBubble",
+      "x": 3445,
+      "y": 1662,
+      "width": 163,
+      "height": 49,
+      "score": 0.7427258,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG016",
+      "kind": "Bubble",
+      "x": 823,
+      "y": 1709,
+      "width": 198,
+      "height": 91,
+      "score": 0.91518116,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG017",
+      "kind": "Bubble",
+      "x": 1227,
+      "y": 1709,
+      "width": 188,
+      "height": 87,
+      "score": 0.85928553,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG018",
+      "kind": "TextBubble",
+      "x": 1261,
+      "y": 1722,
+      "width": 127,
+      "height": 44,
+      "score": 0.77100563,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG019",
+      "kind": "TextBubble",
+      "x": 847,
+      "y": 1726,
+      "width": 154,
+      "height": 52,
+      "score": 0.8173897,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG020",
+      "kind": "Bubble",
+      "x": 1540,
+      "y": 1736,
+      "width": 303,
+      "height": 195,
+      "score": 0.94234467,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG021",
+      "kind": "TextBubble",
+      "x": 1571,
+      "y": 1746,
+      "width": 244,
+      "height": 159,
+      "score": 0.9384542,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG022",
+      "kind": "Bubble",
+      "x": 2078,
+      "y": 1867,
+      "width": 376,
+      "height": 237,
+      "score": 0.95672286,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG023",
+      "kind": "TextBubble",
+      "x": 2097,
+      "y": 1882,
+      "width": 338,
+      "height": 218,
+      "score": 0.9541441,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG024",
+      "kind": "Bubble",
+      "x": 2072,
+      "y": 2101,
+      "width": 356,
+      "height": 187,
+      "score": 0.9351938,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG025",
+      "kind": "TextBubble",
+      "x": 2087,
+      "y": 2109,
+      "width": 315,
+      "height": 157,
+      "score": 0.9337584,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG026",
+      "kind": "Bubble",
+      "x": 2699,
+      "y": 2484,
+      "width": 341,
+      "height": 202,
+      "score": 0.94315547,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG027",
+      "kind": "TextBubble",
+      "x": 2721,
+      "y": 2505,
+      "width": 292,
+      "height": 159,
+      "score": 0.9471265,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG028",
+      "kind": "Bubble",
+      "x": 447,
+      "y": 2700,
+      "width": 189,
+      "height": 93,
+      "score": 0.84627545,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG029",
+      "kind": "TextBubble",
+      "x": 463,
+      "y": 2725,
+      "width": 153,
+      "height": 47,
+      "score": 0.7717364,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": [
+    {
+      "id": "PC001",
+      "kind": "Speech",
+      "x": 3026,
+      "y": 584,
+      "width": 396,
+      "height": 194,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.228138893842697,
+      "fill_ratio": 0.743732427366448
+    },
+    {
+      "id": "PC002",
+      "kind": "Speech",
+      "x": 3263,
+      "y": 752,
+      "width": 354,
+      "height": 126,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 7.40213389467905,
+      "fill_ratio": 0.9785893641825846
+    },
+    {
+      "id": "PC003",
+      "kind": "Speech",
+      "x": 2559,
+      "y": 1596,
+      "width": 393,
+      "height": 206,
+      "mode": "rtdetr_region_rect",
+      "score": 6.9141058921813965,
+      "fill_ratio": 0.8847797623459077
+    },
+    {
+      "id": "PC004",
+      "kind": "Speech",
+      "x": 129,
+      "y": 1598,
+      "width": 217,
+      "height": 66,
+      "mode": "rtdetr_region_rect",
+      "score": 6.091122984886169,
+      "fill_ratio": 0.922077922077922
+    },
+    {
+      "id": "PC005",
+      "kind": "Speech",
+      "x": 1528,
+      "y": 1601,
+      "width": 366,
+      "height": 134,
+      "mode": "rtdetr_region_rect",
+      "score": 6.900140404701233,
+      "fill_ratio": 0.900089715357638
+    },
+    {
+      "id": "PC006",
+      "kind": "Speech",
+      "x": 1172,
+      "y": 1623,
+      "width": 229,
+      "height": 87,
+      "mode": "rtdetr_region_rect",
+      "score": 6.798313021659851,
+      "fill_ratio": 0.9066405661797922
+    },
+    {
+      "id": "PC007",
+      "kind": "Speech",
+      "x": 3426,
+      "y": 1655,
+      "width": 184,
+      "height": 71,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.296413004398346,
+      "fill_ratio": 0.7442973055725658
+    },
+    {
+      "id": "PC008",
+      "kind": "Speech",
+      "x": 823,
+      "y": 1709,
+      "width": 198,
+      "height": 91,
+      "mode": "rtdetr_region_rect",
+      "score": 6.830362319946289,
+      "fill_ratio": 0.9057609057609057
+    },
+    {
+      "id": "PC009",
+      "kind": "Speech",
+      "x": 1227,
+      "y": 1709,
+      "width": 188,
+      "height": 87,
+      "mode": "rtdetr_region_rect",
+      "score": 6.718571066856384,
+      "fill_ratio": 0.9013206162876009
+    },
+    {
+      "id": "PC010",
+      "kind": "Speech",
+      "x": 1540,
+      "y": 1736,
+      "width": 303,
+      "height": 195,
+      "mode": "rtdetr_region_rect",
+      "score": 6.8846893310546875,
+      "fill_ratio": 0.8694761783870695
+    },
+    {
+      "id": "PC011",
+      "kind": "Speech",
+      "x": 2078,
+      "y": 1867,
+      "width": 376,
+      "height": 237,
+      "mode": "rtdetr_region_rect",
+      "score": 6.913445711135864,
+      "fill_ratio": 0.87981416644223
+    },
+    {
+      "id": "PC012",
+      "kind": "Speech",
+      "x": 2072,
+      "y": 2101,
+      "width": 356,
+      "height": 187,
+      "mode": "rtdetr_region_rect",
+      "score": 6.870387554168701,
+      "fill_ratio": 0.8887520278795891
+    },
+    {
+      "id": "PC013",
+      "kind": "Speech",
+      "x": 2707,
+      "y": 2448,
+      "width": 325,
+      "height": 234,
+      "mode": "rtdetr_region\u002Blegacy_mask",
+      "score": 6.414733201265335,
+      "fill_ratio": 0.6718803418803418
+    },
+    {
+      "id": "PC014",
+      "kind": "Speech",
+      "x": 447,
+      "y": 2700,
+      "width": 189,
+      "height": 93,
+      "mode": "rtdetr_region_rect",
+      "score": 6.692550897598267,
+      "fill_ratio": 0.9057859703020993
+    }
+  ]
+}

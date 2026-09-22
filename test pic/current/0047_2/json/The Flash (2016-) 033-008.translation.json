@@ -1,0 +1,689 @@
+{
+  "SourceFile": "The Flash (2016-) 033-008.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-23T08:21:42.692628+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 623,
+        "Y": 127,
+        "W": 231,
+        "H": 96.66666666666666,
+        "Text": "WHAT DARK MAGIC THIS?! IS",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 682.6666666666667,
+            "Y": 127,
+            "W": 102.33333333333326,
+            "H": 41,
+            "Text": "WHAT",
+            "Confidence": 0.99981844,
+            "Language": "en"
+          },
+          {
+            "X": 623,
+            "Y": 153,
+            "W": 231,
+            "H": 49,
+            "Text": "DARK MAGIC",
+            "Confidence": 0.98967445,
+            "Language": "en"
+          },
+          {
+            "X": 700,
+            "Y": 191.33333333333334,
+            "W": 112,
+            "H": 32.333333333333314,
+            "Text": "THIS?!",
+            "Confidence": 0.9989721,
+            "Language": "en"
+          },
+          {
+            "X": 661,
+            "Y": 193.33333333333334,
+            "W": 38.66666666666663,
+            "H": 29.333333333333314,
+            "Text": "IS",
+            "Confidence": 0.9772435,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WHAT DARK MAGIC IS THIS?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "WHAT DARK MAGIC IS THIS?!",
+      "Translation": "\uC774\uAC74 \uB300\uCCB4 \uBB34\uC2A8\n\uC5B4\uB460\uC758 \uB9C8\uBC95\uC774\uC9C0?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 209,
+        "Y": 209.33333333333334,
+        "W": 42.66666666666666,
+        "H": 95.66666666666666,
+        "Text": "MK",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 209,
+            "Y": 209.33333333333334,
+            "W": 42.66666666666666,
+            "H": 95.66666666666666,
+            "Text": "MK",
+            "Confidence": 0.35462654,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "MK",
+      "Translation": "MK",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 748.6666666666667,
+        "Y": 298,
+        "W": 246.33333333333326,
+        "H": 93.33333333333337,
+        "Text": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 760.3333333333333,
+            "Y": 298,
+            "W": 221.33333333333348,
+            "H": 37.333333333333314,
+            "Text": "DO YOU FEEL",
+            "Confidence": 0.99836254,
+            "Language": "en"
+          },
+          {
+            "X": 748.6666666666667,
+            "Y": 328.6666666666667,
+            "W": 246.33333333333326,
+            "H": 33.66666666666663,
+            "Text": "THAT, WONDER",
+            "Confidence": 0.9985388,
+            "Language": "en"
+          },
+          {
+            "X": 798.6666666666667,
+            "Y": 360,
+            "W": 146.33333333333326,
+            "H": 31.33333333333337,
+            "Text": "WOMAN?",
+            "Confidence": 0.99942094,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "DO YOU FEEL THAT, WONDER WOMAN?",
+      "Translation": "\uB290\uAEF4\uC9C0\uB098, \uC6D0\uB354\uC6B0\uBA3C?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 1109,
+        "Y": 381,
+        "W": 119.33333333333348,
+        "H": 104.66666666666663,
+        "Text": "%%",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1109,
+            "Y": 381,
+            "W": 119.33333333333348,
+            "H": 104.66666666666663,
+            "Text": "%%",
+            "Confidence": 0.5916455,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "%%",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 750.6666666666667,
+        "Y": 402.33333333333337,
+        "W": 15.333333333333258,
+        "H": 11.333333333333258,
+        "Text": "n",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 750.6666666666667,
+            "Y": 402.33333333333337,
+            "W": 15.333333333333258,
+            "H": 11.333333333333258,
+            "Text": "n",
+            "Confidence": 0.8746584,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "n",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1098,
+        "Y": 680,
+        "W": 127.5,
+        "H": 97.66666666666663,
+        "Text": "CY IS THIS You?!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1130,
+            "Y": 680,
+            "W": 50,
+            "H": 32,
+            "Text": "CY",
+            "Confidence": 0.98612297,
+            "Language": "en"
+          },
+          {
+            "X": 1098,
+            "Y": 708.5,
+            "W": 127.5,
+            "H": 40,
+            "Text": "IS THIS",
+            "Confidence": 0.989365,
+            "Language": "en"
+          },
+          {
+            "X": 1105.6666666666667,
+            "Y": 737.3333333333334,
+            "W": 112,
+            "H": 40.33333333333326,
+            "Text": "You?!",
+            "Confidence": 0.9095077,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "CY, IS THIS YOU?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "CY, IS THIS YOU?!",
+      "Translation": "\uC0AC\uC774, [BR]\uC774 \uB108\uC57C?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 313,
+        "Y": 1072.6666666666667,
+        "W": 315.33333333333326,
+        "H": 240.33333333333326,
+        "Text": "As",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 313,
+            "Y": 1072.6666666666667,
+            "W": 315.33333333333326,
+            "H": 240.33333333333326,
+            "Text": "As",
+            "Confidence": 0.54940045,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "As",
+      "Translation": "\uADF8\uB54C",
+      "Type": "caption",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 869.3333333333334,
+        "Y": 1080.5,
+        "W": 406.33333333333314,
+        "H": 126.16666666666674,
+        "Text": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 907.5,
+            "Y": 1080.5,
+            "W": 329.5,
+            "H": 35.5,
+            "Text": "MY T-SPHERES ARE",
+            "Confidence": 0.9963993,
+            "Language": "en"
+          },
+          {
+            "X": 869.3333333333334,
+            "Y": 1107,
+            "W": 406.33333333333314,
+            "H": 41.66666666666674,
+            "Text": "NOT RECOGNIZING IT AS",
+            "Confidence": 0.9974442,
+            "Language": "en"
+          },
+          {
+            "X": 916,
+            "Y": 1139,
+            "W": 313,
+            "H": 35,
+            "Text": "ONE OF CYBORG\u0027S",
+            "Confidence": 0.9903196,
+            "Language": "en"
+          },
+          {
+            "X": 937,
+            "Y": 1166.3333333333333,
+            "W": 270.3333333333335,
+            "H": 40.333333333333485,
+            "Text": "BOOM TUBES!",
+            "Confidence": 0.9909858,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+      "Translation": "\uB0B4 T-\uC2A4\uD53C\uC5B4\uAC00[BR]\uC774\uAC78 \uC0AC\uC774\uBCF4\uADF8\uC758[BR]\uBD90 \uD29C\uBE0C\uB85C[BR]\uC778\uC2DD\uD558\uC9C0 \uBABB\uD558\uACE0 \uC788\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 225,
+        "Y": 1693.5,
+        "W": 363,
+        "H": 125.5,
+        "Text": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 307.5,
+            "Y": 1693.5,
+            "W": 188.5,
+            "H": 40,
+            "Text": "WARNING!",
+            "Confidence": 0.9998213,
+            "Language": "en"
+          },
+          {
+            "X": 225,
+            "Y": 1716,
+            "W": 363,
+            "H": 52,
+            "Text": "INTERDIMENSIONAL",
+            "Confidence": 0.9991076,
+            "Language": "en"
+          },
+          {
+            "X": 326,
+            "Y": 1758,
+            "W": 151,
+            "H": 35,
+            "Text": "ENERGY",
+            "Confidence": 0.99900913,
+            "Language": "en"
+          },
+          {
+            "X": 304.5,
+            "Y": 1789,
+            "W": 197.5,
+            "H": 30,
+            "Text": "UNKNOWN!",
+            "Confidence": 0.998902,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WARNING!\nINTERDIMENSIONAL\nENERGY\nUNKNOWN!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!",
+      "Translation": "\uACBD\uACE0! \uBBF8\uD655\uC778[BR]\uCC28\uC6D0 \uAC04 \uC5D0\uB108\uC9C0 \uAC10\uC9C0!",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1368.3333333333333,
+        "Y": 1799,
+        "W": 136,
+        "H": 95.66666666666674,
+        "Text": "NOT LPINGI RING!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1378,
+            "Y": 1799,
+            "W": 91,
+            "H": 37,
+            "Text": "NOT",
+            "Confidence": 0.9997567,
+            "Language": "en"
+          },
+          {
+            "X": 1389,
+            "Y": 1829.3333333333333,
+            "W": 115.33333333333326,
+            "H": 38,
+            "Text": "LPINGI",
+            "Confidence": 0.9795187,
+            "Language": "en"
+          },
+          {
+            "X": 1368.3333333333333,
+            "Y": 1859.6666666666667,
+            "W": 112,
+            "H": 35,
+            "Text": "RING!",
+            "Confidence": 0.99948126,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NOT HELPING, RING!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "NOT HELPING, RING!",
+      "Translation": "\uB3C4\uC6C0 \uC548 \uB418\uB2C8\uAE4C\n\uADF8\uB0E5 \uC880\n\uC6B8\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1536.3333333333333,
+        "Y": 1811.3333333333333,
+        "W": 138.33333333333348,
+        "H": 93.33333333333348,
+        "Text": "IT\u0027S PULLING us IN!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1573,
+            "Y": 1811.3333333333333,
+            "W": 68.33333333333326,
+            "H": 33.333333333333485,
+            "Text": "IT\u0027S",
+            "Confidence": 0.9970134,
+            "Language": "en"
+          },
+          {
+            "X": 1536.3333333333333,
+            "Y": 1840.6666666666667,
+            "W": 138.33333333333348,
+            "H": 33,
+            "Text": "PULLING",
+            "Confidence": 0.999392,
+            "Language": "en"
+          },
+          {
+            "X": 1553,
+            "Y": 1867,
+            "W": 107,
+            "H": 37.66666666666674,
+            "Text": "us IN!",
+            "Confidence": 0.97773415,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT\u0027S PULLING US IN!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "IT\u0027S PULLING US IN!",
+      "Translation": "\uB2F9\uAE30\uACE0 \uC788\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 685,
+        "Y": 2105,
+        "W": 275.66666666666663,
+        "H": 127.66666666666652,
+        "Text": "THIS IS WORSE TIDE THAN ANY DRAG I\u0027VE EVER ENCOUNTERED!",
+        "OriginalRegionCount": 8,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 695,
+            "Y": 2105,
+            "W": 89,
+            "H": 43,
+            "Text": "THIS",
+            "Confidence": 0.99963236,
+            "Language": "en"
+          },
+          {
+            "X": 776,
+            "Y": 2105,
+            "W": 51,
+            "H": 42,
+            "Text": "IS",
+            "Confidence": 0.94309354,
+            "Language": "en"
+          },
+          {
+            "X": 818.5,
+            "Y": 2111,
+            "W": 129.5,
+            "H": 31,
+            "Text": "WORSE",
+            "Confidence": 0.99989253,
+            "Language": "en"
+          },
+          {
+            "X": 859.5,
+            "Y": 2139.5,
+            "W": 87,
+            "H": 33.5,
+            "Text": "TIDE",
+            "Confidence": 0.99974537,
+            "Language": "en"
+          },
+          {
+            "X": 698,
+            "Y": 2140,
+            "W": 97,
+            "H": 32,
+            "Text": "THAN",
+            "Confidence": 0.9996812,
+            "Language": "en"
+          },
+          {
+            "X": 790,
+            "Y": 2142.5,
+            "W": 79,
+            "H": 28.5,
+            "Text": "ANY",
+            "Confidence": 0.9993055,
+            "Language": "en"
+          },
+          {
+            "X": 685,
+            "Y": 2165.6666666666665,
+            "W": 275.66666666666663,
+            "H": 38,
+            "Text": "DRAG I\u0027VE EVER",
+            "Confidence": 0.99348545,
+            "Language": "en"
+          },
+          {
+            "X": 694.6666666666667,
+            "Y": 2194.6666666666665,
+            "W": 258.33333333333326,
+            "H": 38,
+            "Text": "ENCOUNTERED!",
+            "Confidence": 0.99806094,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG015"
+      },
+      "CorrectedText": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+      "Translation": "\uC9C0\uAE08\uAE4C\uC9C0 \uACAA\uC5B4\uBCF8 \uADF8 \uC5B4\uB5A4 \uC870\uB958\uB3C4\n\uC774\uAC83\uBCF4\uB2E4 \uC2EC\uD558\uC9C4 \uC54A\uC558\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 823.3333333333334,
+        "Y": 2255.3333333333335,
+        "W": 71,
+        "H": 39.666666666666515,
+        "Text": "U",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 823.3333333333334,
+            "Y": 2255.3333333333335,
+            "W": 71,
+            "H": 39.666666666666515,
+            "Text": "U",
+            "Confidence": 0.33092043,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "U",
+      "Translation": "\uC73D",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 1117.3333333333333,
+        "Y": 2766.5,
+        "W": 184.66666666666674,
+        "H": 104.16666666666652,
+        "Text": "MY RATE IS GOING UP!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1122,
+            "Y": 2766.5,
+            "W": 176,
+            "H": 44,
+            "Text": "MY RATE",
+            "Confidence": 0.9977429,
+            "Language": "en"
+          },
+          {
+            "X": 1117.3333333333333,
+            "Y": 2796.6666666666665,
+            "W": 184.66666666666674,
+            "H": 44.66666666666697,
+            "Text": "IS GOING",
+            "Confidence": 0.97349256,
+            "Language": "en"
+          },
+          {
+            "X": 1172.3333333333333,
+            "Y": 2830,
+            "W": 77,
+            "H": 40.666666666666515,
+            "Text": "UP!",
+            "Confidence": 0.9700797,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "MY RATE IS GOING UP!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG017"
+      },
+      "CorrectedText": "MY RATE IS GOING UP!",
+      "Translation": "\uB0B4 \uBAB8\uAC12\uC774 \uC624\uB974\uACE0 \uC788\uB2E4\uACE0!",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

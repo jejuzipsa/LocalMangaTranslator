@@ -1,0 +1,743 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-012.jpg",
+  "output_file": "The Flash (2016-) 033-012.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 162826,
+    "changed_ratio": 0.026801186701359992,
+    "changed_regions": [
+      {
+        "x": 1034,
+        "y": 1333,
+        "width": 272,
+        "height": 139
+      },
+      {
+        "x": 697,
+        "y": 772,
+        "width": 211,
+        "height": 140
+      },
+      {
+        "x": 691,
+        "y": 2032,
+        "width": 209,
+        "height": 136
+      },
+      {
+        "x": 696,
+        "y": 1852,
+        "width": 207,
+        "height": 111
+      },
+      {
+        "x": 461,
+        "y": 1203,
+        "width": 167,
+        "height": 113
+      },
+      {
+        "x": 448,
+        "y": 1360,
+        "width": 168,
+        "height": 111
+      },
+      {
+        "x": 1057,
+        "y": 309,
+        "width": 171,
+        "height": 70
+      },
+      {
+        "x": 1011,
+        "y": 203,
+        "width": 149,
+        "height": 67
+      },
+      {
+        "x": 1768,
+        "y": 754,
+        "width": 57,
+        "height": 113
+      },
+      {
+        "x": 728,
+        "y": 679,
+        "width": 111,
+        "height": 57
+      },
+      {
+        "x": 922,
+        "y": 392,
+        "width": 114,
+        "height": 45
+      },
+      {
+        "x": 1769,
+        "y": 867,
+        "width": 125,
+        "height": 32
+      },
+      {
+        "x": 1103,
+        "y": 1546,
+        "width": 92,
+        "height": 38
+      },
+      {
+        "x": 1776,
+        "y": 901,
+        "width": 92,
+        "height": 36
+      },
+      {
+        "x": 1141,
+        "y": 717,
+        "width": 54,
+        "height": 54
+      },
+      {
+        "x": 1040,
+        "y": 717,
+        "width": 92,
+        "height": 30
+      },
+      {
+        "x": 972,
+        "y": 682,
+        "width": 82,
+        "height": 31
+      },
+      {
+        "x": 1027,
+        "y": 1294,
+        "width": 63,
+        "height": 39
+      },
+      {
+        "x": 1845,
+        "y": 814,
+        "width": 46,
+        "height": 53
+      },
+      {
+        "x": 1817,
+        "y": 810,
+        "width": 41,
+        "height": 57
+      },
+      {
+        "x": 1191,
+        "y": 682,
+        "width": 69,
+        "height": 31
+      },
+      {
+        "x": 1856,
+        "y": 786,
+        "width": 53,
+        "height": 38
+      },
+      {
+        "x": 1259,
+        "y": 1294,
+        "width": 51,
+        "height": 37
+      },
+      {
+        "x": 1052,
+        "y": 2269,
+        "width": 51,
+        "height": 35
+      },
+      {
+        "x": 1107,
+        "y": 748,
+        "width": 51,
+        "height": 34
+      },
+      {
+        "x": 1182,
+        "y": 717,
+        "width": 57,
+        "height": 30
+      },
+      {
+        "x": 1159,
+        "y": 215,
+        "width": 29,
+        "height": 56
+      },
+      {
+        "x": 1888,
+        "y": 746,
+        "width": 40,
+        "height": 40
+      },
+      {
+        "x": 795,
+        "y": 1965,
+        "width": 59,
+        "height": 27
+      },
+      {
+        "x": 1735,
+        "y": 746,
+        "width": 40,
+        "height": 36
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-012.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 118192,
+    "erase_changed_ratio": 0.01945442287231241,
+    "typeset_changed_pixels": 81465,
+    "typeset_changed_ratio": 0.013409152559335068
+  },
+  "region_analysis": {
+    "total": 31,
+    "bubbles": 15,
+    "text_regions": 16,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 54,
+      "Global2x": 56,
+      "Focus3x": 319,
+      "Region1x": 74,
+      "Region2x": 88,
+      "Container1x": 75,
+      "Container2x": 85
+    },
+    "canonical_lines": 91,
+    "units": 29,
+    "assigned_lines": 77,
+    "orphan_groups": 14,
+    "secondary_total": 15,
+    "secondary_accepted": 15,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 193,
+          "Bottom": 278,
+          "Left": 1003,
+          "Right": 1211,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE PORTAL!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 297,
+          "Bottom": 387,
+          "Left": 1063,
+          "Right": 1226,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SUPERMAN AND BATMAN...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 378,
+          "Bottom": 444,
+          "Left": 914,
+          "Right": 1074,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEY\u0027RE TRAPPED...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 675,
+          "Bottom": 745,
+          "Left": 721,
+          "Right": 881,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u30EA\uFF21\uFF2C\uFF35\uFF35\uFF2F\uFF32\uFF22\uFF21\uFF32\uFF34\uFF0E\uFF0E\uFF0E\uFF1F",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 679,
+          "Bottom": 780,
+          "Left": 955,
+          "Right": 1300,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "FLASH, GET THE HELL OUT OF HERE! FIND HELP...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG012",
+        "Bounds": {
+          "Top": 707,
+          "Bottom": 748,
+          "Left": 514,
+          "Right": 612,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "UHN...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG014",
+        "Bounds": {
+          "Top": 746,
+          "Bottom": 933,
+          "Left": 1735,
+          "Right": 1928,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YEAH,\nWELL, I\nHAVE A\nBAD HABIT\nOF RACING\nDEATH...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 761,
+          "Bottom": 919,
+          "Left": 689,
+          "Right": 912,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOUR SPEED FORCE IMPRINT READINGS SHOW...AH, BARRY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG018",
+        "Bounds": {
+          "Top": 1197,
+          "Bottom": 1324,
+          "Left": 456,
+          "Right": 626,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LOOK AT YOU...SUCH A FAST LEARNER.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG020",
+        "Bounds": {
+          "Top": 1294,
+          "Bottom": 1510,
+          "Left": 1027,
+          "Right": 1310,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u300C\u30EA\u30C9\u30E9\u30A4\u30F3\u300D\u300C\uFF34\uFF28\uFF25\uFF22\uFF21\uFF32\uFF21\uFF2E\uFF21\uFF2C\uFF25\uFF2E\uFF2F\uFF2E\uFF21\uFF39\uFF21\uFF2E\uFF21\uFF34\uFF21\uFF2E\uFF21\uFF34\uFF21\uFF2E\uFF21\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF29\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF21\uFF34\uFF21\uFF34\uFF21\uFF34\uFF21\uFF34\uFF21\uFF34\uFF21\uFF34\uFF2F\uFF21\uFF21\uFF21\uFF21\uFF21\uFF2E\uFF21\uFF21\uFF21\uFF2E\uFF21\uFF2E\uFF21\uFF2E\uFF21\uFF34\uFF21\uFF2E\uFF21\uFF34\uFF21\uFF2E\uFF25\uFF34\uFF2F\uFF2F\uFF2F\uFF2F\uFF2F\uFF2F\uFF2F",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG022",
+        "Bounds": {
+          "Top": 1350,
+          "Bottom": 1478,
+          "Left": 443,
+          "Right": 621,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u30EA\u30EA\uFF28\uFF29\uFF23\uFF28\uFF26\uFF2C\uFF21\uFF33\uFF28\uFF21\uFF32\uFF25\uFF35\uFF2F\uFF35\uFF0C\uFF22\uFF35\uFF34\uFF28\uFF25",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 1539,
+          "Bottom": 1588,
+          "Left": 1098,
+          "Right": 1214,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DYING.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG026",
+        "Bounds": {
+          "Top": 1815,
+          "Bottom": 1999,
+          "Left": 690,
+          "Right": 910,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "\u300C\u300C\uFF2D\uFF33\uFF2F\uFF27\uFF2C\uFF21\uFF24\u300D\u306E\uFF35\uFF25\uFF32\uFF25\uFF2E\uFF34\uFF21\uFF2C\uFF29\uFF36\uFF25\uFF34\uFF2F\uFF33\uFF25\uFF37\uFF28\uFF21\uFF34\uFF28\uFF21\uFF30\uFF30\uFF25\uFF2E\uFF25\uFF24\uFF34\uFF2F\uFF21\uFF2C\uFF26\uFF32\uFF25\uFF24",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG028",
+        "Bounds": {
+          "Top": 2025,
+          "Bottom": 2180,
+          "Left": 684,
+          "Right": 915,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT I MISSED OUR CHATS ABOUT FORENSICS, OLD FRIEND.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG030",
+        "Bounds": {
+          "Top": 2266,
+          "Bottom": 2342,
+          "Left": 954,
+          "Right": 1141,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...AND WINNING!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 29,
+    "requested_render": 15
+  },
+  "render": {
+    "total": 15,
+    "approved": 15,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 15,
+    "TranslatedUnits": 15,
+    "PreservedOriginalUnits": 0,
+    "EraseCommittedUnits": 15,
+    "TypesetCommittedUnits": 15,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "THE PORTAL!",
+        "Translation": "\uD3EC\uD138\uC774\uB2E4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "SUPERMAN AND BATMAN...",
+        "Translation": "\uC288\uD37C\uB9E8\uACFC \uBC30\uD2B8\uB9E8...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "THEY\u0027RE TRAPPED...",
+        "Translation": "\uAC07\uD614\uC5B4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "WALLY OR BART. .?",
+        "Translation": "\uC6D4\uB9AC\uC778\uAC00\n\uC544\uB2C8\uBA74\n\uBC14\uD2B8...?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "THE GET FLASH, OF HERE! HELL ou FIND HELP",
+        "Translation": "\uD50C\uB798\uC2DC, \uB2F9\uC7A5\n\uC5EC\uAE30\uC11C \uB098\uAC00!\n\uB3C4\uC640\uC904 \uC0AC\uB78C\uC744\n\uCC3E\uC544...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "UHN...",
+        "Translation": "\uC73C\uC73D...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "YEAH, WELL, I HAVE A BAD HABIT OF RACING DEATH...",
+        "Translation": "\uADF8\uB798, \uBB50, \uC8FD\uC74C\uACFC \uACBD\uC8FC\uD558\uB294\n\uB098\uC05C \uBC84\uB987\uC774 \uC880 \uC788\uC5B4\uC11C \uB9D0\uC774\uC57C...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "YOUR SPEED IMPRINT FORCE READINGS SHOWJ... AH, BARRY.",
+        "Translation": "\uB124 \uC2A4\uD53C\uB4DC \uD3EC\uC2A4 \uAC01\uC778 \uC218\uCE58\uAC00... [BR] \uC544, \uBC30\uB9AC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "LG LOOK you. SUCH FAST LEARNER.",
+        "Translation": "\uB108\uB97C \uC880 \uBD10... [BR]\uBC30\uC6B0\uB294 \uAC8C \uC544\uC8FC \uBE60\uB974\uB124.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "THE BARRY WORLD\u0027S GREATEST ACCOMPLISHMENT WAS ONE THING AND ONE THING ONLY.",
+        "Translation": "\uADF8\uB798, \uB0B4 \uC138\uACC4\uC758 \uBC30\uB9AC \uC568\uB7F0\uC774[BR]\uC774\uB8EC \uAC00\uC7A5 \uD070 \uC5C5\uC801\uC740[BR]\uC624\uC9C1 \uB2E8 \uD55C \uAC00\uC9C0\uBFD0\uC774\uC5C8\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "WHIICH ARE FLASH THE you, By WAY?",
+        "Translation": "\uADF8\uB098\uC800\uB098, \uB10C \uC5B4\uB5A4 \uD50C\uB798\uC2DC\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": true,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "DYING.",
+        "Translation": "\uC8FD\uC74C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "I\u0027M SO GLAD YOU WEREN\u0027T ALIVE WHAT TO sEE HAPPE TO ALFRED.",
+        "Translation": "\uC54C\uD504\uB808\uB4DC\uC5D0\uAC8C \uBB34\uC2A8 \uC77C\uC774 \uC77C\uC5B4\uB0AC\uB294\uC9C0 \uB124\uAC00 \uBCF4\uC9C0 \uBABB\uD574\uC11C \uC815\uB9D0 \uB2E4\uD589\uC774\uC57C. \uD558\uC9C0\uB9CC \uB09C \uC6B0\uB9AC\uC758 \uC2DC\uAC04\uC774 \uADF8\uB9AC\uC6CC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 24,
+        "SourceText": "BUT MISSED OUR CHATS ABOUT FORENSICS, OLD FRIEND.",
+        "Translation": "\uD558\uC9C0\uB9CC \uC6B0\uB9AC \uBC95\uC758\uD559\uC5D0 \uB300\uD574[BR]\uB098\uB234\uB358 \uB300\uD654\uB4E4\uC740 \uB193\uCCE4\uC5B4, \uC624\uB79C \uCE5C\uAD6C\uC5EC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 26,
+        "SourceText": "AND WINNING!",
+        "Translation": "...\uADF8\uB9AC\uACE0 \uC2B9\uB9AC!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

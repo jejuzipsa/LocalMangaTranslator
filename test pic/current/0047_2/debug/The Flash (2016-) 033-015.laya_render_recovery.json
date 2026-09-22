@@ -1,0 +1,57 @@
+{
+  "Schema": "pipeline-v2-laya-render-recovery-shadow-v1",
+  "SourceFile": "The Flash (2016-) 033-015.jpg",
+  "Mode": "Shadow",
+  "MutationApplied": false,
+  "Requests": 2,
+  "Items": [
+    {
+      "TranslationRegionId": 3,
+      "Confidence": 0.5068,
+      "SourceText": "\u2022",
+      "CorrectedText": "...",
+      "OriginalFinalRender": false,
+      "ShadowCandidate": {
+        "Render": false,
+        "Translation": "",
+        "Type": "dialogue"
+      },
+      "V2Binding": null,
+      "WouldBecomeRenderable": false,
+      "MutationApplied": false
+    },
+    {
+      "TranslationRegionId": 27,
+      "Confidence": 0.5357,
+      "SourceText": "DON\u0027T WORRY HAL",
+      "CorrectedText": "DON\u0027T WORRY, HAL...",
+      "OriginalFinalRender": false,
+      "ShadowCandidate": {
+        "Render": true,
+        "Translation": "\uAC71\uC815\uD558\uC9C0 \uB9C8, \uD560...",
+        "Type": "dialogue"
+      },
+      "V2Binding": {
+        "TextRegionIds": [
+          "RG038"
+        ],
+        "BubbleRegionId": "RG037",
+        "TextBounds": {
+          "X": 141,
+          "Y": 2871,
+          "Width": 118,
+          "Height": 103
+        },
+        "LayoutBounds": {
+          "X": 123,
+          "Y": 2851,
+          "Width": 159,
+          "Height": 140
+        },
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      "WouldBecomeRenderable": true,
+      "MutationApplied": false
+    }
+  ]
+}
