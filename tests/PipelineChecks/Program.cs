@@ -83,6 +83,99 @@ Check("V2 0038 forces UTF-8 Python diagnostics",
         "utf-8",
         StringComparison.OrdinalIgnoreCase));
 
+var layaDuplicateBlockA = new OcrTextBlock(
+    900,
+    100,
+    100,
+    80,
+    30,
+    "RU LETT ME OUTTT!",
+    1,
+    "en",
+    [new OcrLine(100, 100, 80, 30, "RU LETT ME OUTTT!", 0.85f, "en")]);
+
+var layaDuplicateBlockB = new OcrTextBlock(
+    901,
+    110,
+    105,
+    75,
+    25,
+    "Nononono... no...",
+    1,
+    "en",
+    [new OcrLine(110, 105, 75, 25, "Nononono... no...", 0.95f, "en")])
+{
+    RegionId = "RG001",
+    SecondaryOcrText = "Nononono... no...",
+    SecondaryOcrSource = "baberu",
+    SecondaryOcrAgreement = "agree"
+};
+
+var layaDuplicateA =
+    new VisionTranslation(
+        900,
+        layaDuplicateBlockA,
+        "Nononono... no... LET ME OUTTT!",
+        "테스트 A",
+        "dialogue",
+        true);
+
+var layaDuplicateB =
+    new VisionTranslation(
+        901,
+        layaDuplicateBlockB,
+        "Nononono... no...",
+        "테스트 B",
+        "dialogue",
+        true);
+
+var layaDuplicateSelection =
+    new V2EraseSelection(
+        new HashSet<string>(
+            StringComparer.Ordinal)
+        {
+            "RG002"
+        },
+        new HashSet<int>
+        {
+            900,
+            901
+        },
+        new Dictionary<int, V2RegionBinding>
+        {
+            [900] =
+                new(
+                    900,
+                    new[] { "RG002" },
+                    new Rect(110, 100, 80, 40),
+                    "RG001",
+                    new Rect(90, 80, 160, 100),
+                    "rtdetr_parent_bubble"),
+            [901] =
+                new(
+                    901,
+                    new[] { "RG002" },
+                    new Rect(110, 100, 80, 40),
+                    "RG001",
+                    new Rect(90, 80, 160, 100),
+                    "rtdetr_parent_bubble")
+        });
+
+var layaDuplicateGroups =
+    LayaDecisionService
+        .FindV2DuplicateCandidateGroups(
+            new[]
+            {
+                layaDuplicateA,
+                layaDuplicateB
+            },
+            layaDuplicateSelection);
+
+Check("V2 0039 Laya duplicate shadow follows immutable V2 physical container",
+    layaDuplicateGroups.Count == 1 &&
+    layaDuplicateGroups[0].SequenceEqual(
+        new[] { 900, 901 }));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);

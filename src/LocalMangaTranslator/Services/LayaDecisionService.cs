@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using LocalMangaTranslator.Models;
+using LocalMangaTranslator.PipelineV2.Erase;
 
 namespace LocalMangaTranslator.Services;
 
@@ -200,13 +201,129 @@ public sealed class LayaDecisionService
             "utf-8";
     }
 
+    public static IReadOnlyList<IReadOnlyList<int>> FindV2DuplicateCandidateGroups(
+        IReadOnlyList<VisionTranslation> translated,
+        V2EraseSelection selection)
+        => BuildV2DuplicateGroups(
+                translated,
+                selection)
+            .Select(x =>
+                (IReadOnlyList<int>)x.Candidates
+                    .Select(y => y.Id)
+                    .OrderBy(y => y)
+                    .ToArray())
+            .ToArray();
+
+    static List<LayaV2DuplicateGroup> BuildV2DuplicateGroups(
+        IReadOnlyList<VisionTranslation> translated,
+        V2EraseSelection? selection)
+    {
+        if (selection is null)
+            return [];
+
+        return translated
+            .Where(x =>
+                x.Render &&
+                !string.IsNullOrWhiteSpace(
+                    x.Translation) &&
+                selection.Bindings.ContainsKey(
+                    x.Id))
+            .Select(x =>
+            {
+                var binding =
+                    selection.Bindings[x.Id];
+
+                return new
+                {
+                    Region =
+                        x,
+                    Binding =
+                        binding,
+                    Key =
+                        V2PhysicalOwnerKey(
+                            binding)
+                };
+            })
+            .GroupBy(
+                x =>
+                    x.Key,
+                StringComparer.Ordinal)
+            .Where(x =>
+                x.Count() > 1)
+            .Select(x =>
+                new LayaV2DuplicateGroup(
+                    x.Key,
+                    x.Select(y =>
+                            y.Region)
+                        .OrderBy(y =>
+                            y.Id)
+                        .ToList()))
+            .OrderBy(x =>
+                x.PhysicalOwnerKey,
+                StringComparer.Ordinal)
+            .ToList();
+    }
+
+    static string V2PhysicalOwnerKey(
+        V2RegionBinding binding)
+    {
+        if (!string.IsNullOrWhiteSpace(
+                binding.BubbleRegionId))
+        {
+            return "bubble:" +
+                   binding.BubbleRegionId;
+        }
+
+        var r =
+            binding.LayoutBounds;
+
+        return
+            $"layout:{r.X},{r.Y},{r.Width},{r.Height}";
+    }
+
+    static string NormalizeOcrAgreement(
+        string? agreement)
+    {
+        string value =
+            agreement?
+                .Trim()
+                .ToLowerInvariant() ??
+            "";
+
+        return value switch
+        {
+            "agree" =>
+                "agree",
+            "partial" =>
+                "partial",
+            "disagree" =>
+                "disagree",
+            "secondary_only" =>
+                "secondary_only",
+            _ =>
+                "unknown"
+        };
+    }
+
+    static string NormalizeComparableText(
+        string? text)
+        => new(
+            (text ?? "")
+                .Where(x =>
+                    !char.IsWhiteSpace(
+                        x))
+                .Select(char.ToLowerInvariant)
+                .ToArray());
+
     public async Task WriteShadowAuditAsync(
         string sourcePath,
         string outputDirectory,
         PageAnalysisResult analysis,
         OcrStageResult ocrStage,
         IReadOnlyList<VisionTranslation> visionReviewedBeforeRecovery,
+        IReadOnlyList<VisionTranslation> reviewedAfterRecovery,
         IReadOnlyList<VisionTranslation> translated,
+        V2EraseSelection? v2Selection,
         PipelineOptions options,
         IProgress<string>? progress = null,
         CancellationToken token = default)
@@ -479,6 +596,8 @@ public sealed class LayaDecisionService
                     {
                         task =
                             "comic_render_recovery",
+                        stage =
+                            "vision_pre_recovery",
                         source_text =
                             region.Source.Text,
                         corrected_text =
@@ -560,28 +679,128 @@ public sealed class LayaDecisionService
                     });
             }
 
-            var duplicateGroups =
-                translated
-                    .Where(x =>
-                        x.Render &&
-                        !string.IsNullOrWhiteSpace(
-                            x.Translation) &&
-                        !string.IsNullOrWhiteSpace(
-                            x.Source.RegionId))
-                    .GroupBy(
-                        x =>
-                            x.Source.RegionId!,
-                        StringComparer.Ordinal)
-                    .Where(x =>
-                        x.Count() > 1)
-                    .ToList();
+            foreach (var region in
+                     translated.Where(x =>
+                         !x.Render &&
+                         x.Type is
+                             "dialogue" or
+                             "thought" or
+                             "caption"))
+            {
+                token.ThrowIfCancellationRequested();
 
-            foreach (var group in duplicateGroups)
+                var enteredTranslation =
+                    reviewedAfterRecovery
+                        .FirstOrDefault(x =>
+                            x.Id ==
+                            region.Id);
+
+                bool classicRecoveryEligible =
+                    PagePipelineService
+                        .ShouldRecoverDetectorOwnedRenderableUnit(
+                            region,
+                            analysis.Regions);
+
+                var state =
+                    new
+                    {
+                        task =
+                            "comic_render_recovery",
+                        stage =
+                            "post_translation_final",
+                        source_text =
+                            region.Source.Text,
+                        corrected_text =
+                            region.CorrectedText,
+                        type =
+                            region.Type,
+                        entered_translation_renderable =
+                            enteredTranslation?.Render,
+                        final_render =
+                            region.Render,
+                        classic_recovery_eligible =
+                            classicRecoveryEligible,
+                        ocr_confidence =
+                            AverageConfidence(
+                                region.Source),
+                        secondary_ocr =
+                            region.Source.SecondaryOcrText,
+                        secondary_agreement =
+                            region.Source.SecondaryOcrAgreement,
+                        bubble_region_id =
+                            region.Source.RegionId,
+                        text_region_id =
+                            region.Source.RegionTextRegion?.RegionId,
+                        detector_text_candidates =
+                            BuildOwnershipCandidates(
+                                region.Source,
+                                analysis.Regions)
+                    };
+
+                var response =
+                    await PredictAsync(
+                        state,
+                        new Dictionary<string, object>
+                        {
+                            ["recover_render"] =
+                                new
+                                {
+                                    type = "noul",
+                                    instructions =
+                                        "This dialogue/thought/caption reached the final post-translation state as render=false. " +
+                                        "Should it be re-armed instead? Judge only whether the text is a real translatable comic unit " +
+                                        "supported by OCR and immutable detector evidence. Return false for noise, SFX, logos or unsupported text."
+                                }
+                        },
+                        token);
+
+                var answer =
+                    ReadBoolean(
+                        response,
+                        "recover_render");
+
+                decisions.Add(
+                    new LayaShadowDecision
+                    {
+                        Kind =
+                            "render_recovery",
+                        RegionId =
+                            region.Id,
+                        RuleDecision =
+                            "false",
+                        LayaDecision =
+                            answer.Value.HasValue
+                                ? answer.Value.Value
+                                    ? "true"
+                                    : "false"
+                                : null,
+                        Confidence =
+                            answer.Confidence,
+                        Match =
+                            answer.Value.HasValue
+                                ? !answer.Value.Value
+                                : null,
+                        Status =
+                            answer.Value.HasValue
+                                ? "shadow_only"
+                                : "laya_no_answer",
+                        Evidence =
+                            state
+                    });
+            }
+
+            var duplicateGroups =
+                BuildV2DuplicateGroups(
+                    translated,
+                    v2Selection);
+
+            foreach (var group in
+                     duplicateGroups)
             {
                 token.ThrowIfCancellationRequested();
 
                 var candidates =
-                    group
+                    group.Candidates
                         .OrderBy(x =>
                             x.Id)
                         .ToList();
@@ -604,7 +823,8 @@ public sealed class LayaDecisionService
                             $"source={Compact(x.Source.Text)}; corrected={Compact(x.CorrectedText)}; " +
                             $"secondary_agreement={x.Source.SecondaryOcrAgreement ?? "none"}; " +
                             $"ocr_confidence={AverageConfidence(x.Source):0.000}; " +
-                            $"detector_text_region={x.Source.RegionTextRegion?.RegionId ?? "none"}",
+                            $"detector_text_region={x.Source.RegionTextRegion?.RegionId ?? "none"}; " +
+                            $"classic_keep_score={RenderPipelineService.GetV2CandidateKeepScore(x):0.0}",
                         StringComparer.Ordinal);
 
                 var state =
@@ -612,11 +832,18 @@ public sealed class LayaDecisionService
                     {
                         task =
                             "comic_duplicate_arbitration",
-                        physical_bubble_region_id =
-                            group.Key,
+                        stage =
+                            "v2_physical_container",
+                        physical_owner_key =
+                            group.PhysicalOwnerKey,
                         candidates =
                             candidates.Select(x =>
-                                new
+                            {
+                                var binding =
+                                    v2Selection!.Bindings[
+                                        x.Id];
+
+                                return new
                                 {
                                     option =
                                         $"R{x.Id}",
@@ -631,8 +858,16 @@ public sealed class LayaDecisionService
                                         AverageConfidence(
                                             x.Source),
                                     detector_text_region =
-                                        x.Source.RegionTextRegion?.RegionId
-                                })
+                                        x.Source.RegionTextRegion?.RegionId,
+                                    binding.TextRegionIds,
+                                    binding.BubbleRegionId,
+                                    binding.LayoutBounds,
+                                    classic_keep_score =
+                                        RenderPipelineService
+                                            .GetV2CandidateKeepScore(
+                                                x)
+                                };
+                            })
                     };
 
                 var response =
@@ -645,9 +880,9 @@ public sealed class LayaDecisionService
                                 {
                                     type = "choice",
                                     instructions =
-                                        "These candidates compete for the same physical comic bubble. " +
-                                        "Choose the candidate with the strongest faithful OCR and detector evidence. " +
-                                        "Prefer exact independent OCR agreement and reject corrupted or hallucinated expansions.",
+                                        "These candidates map to the same immutable V2 physical comic container. " +
+                                        "Choose the single candidate that should survive duplicate arbitration. " +
+                                        "Prefer faithful complete OCR, independent OCR agreement, exact detector ownership and no hallucinated expansion.",
                                     criteria
                                 }
                         },
@@ -690,6 +925,267 @@ public sealed class LayaDecisionService
                     });
             }
 
+            foreach (var region in
+                     translated.Where(x =>
+                         !string.IsNullOrWhiteSpace(
+                             x.Source.SecondaryOcrText)))
+            {
+                token.ThrowIfCancellationRequested();
+
+                string ruleAgreement =
+                    NormalizeOcrAgreement(
+                        region.Source.SecondaryOcrAgreement);
+
+                var state =
+                    new
+                    {
+                        task =
+                            "comic_ocr_consensus",
+                        primary_ocr =
+                            region.Source.Text,
+                        secondary_ocr =
+                            region.Source.SecondaryOcrText,
+                        primary_confidence =
+                            AverageConfidence(
+                                region.Source),
+                        current_agreement =
+                            ruleAgreement,
+                        corrected_text =
+                            region.CorrectedText
+                    };
+
+                var response =
+                    await PredictAsync(
+                        state,
+                        new Dictionary<string, object>
+                        {
+                            ["ocr_consensus"] =
+                                new
+                                {
+                                    type = "choice",
+                                    instructions =
+                                        "Classify the relation between primary and independent secondary OCR. " +
+                                        "Choose agree when they express the same full reading, partial when there is meaningful overlap " +
+                                        "with omissions/additions, disagree when the readings materially conflict, secondary_only when " +
+                                        "the primary has no meaningful reading, otherwise unknown.",
+                                    criteria =
+                                        new Dictionary<string, string>(
+                                            StringComparer.Ordinal)
+                                        {
+                                            ["agree"] =
+                                                "same full text after harmless punctuation/spacing differences",
+                                            ["partial"] =
+                                                "substantial shared reading but one side is incomplete or has meaningful extras",
+                                            ["disagree"] =
+                                                "materially conflicting reading",
+                                            ["secondary_only"] =
+                                                "secondary OCR contains the meaningful reading while primary is effectively absent/noise",
+                                            ["unknown"] =
+                                                "insufficient evidence for the other labels"
+                                        }
+                                }
+                        },
+                        token);
+
+                var answer =
+                    ReadChoice(
+                        response,
+                        "ocr_consensus");
+
+                decisions.Add(
+                    new LayaShadowDecision
+                    {
+                        Kind =
+                            "ocr_consensus",
+                        RegionId =
+                            region.Id,
+                        RuleDecision =
+                            ruleAgreement,
+                        LayaDecision =
+                            answer.Value,
+                        Confidence =
+                            answer.Confidence,
+                        Match =
+                            answer.Value is null
+                                ? null
+                                : string.Equals(
+                                    ruleAgreement,
+                                    answer.Value,
+                                    StringComparison.Ordinal),
+                        Status =
+                            answer.Value is null
+                                ? "laya_no_answer"
+                                : "shadow_only",
+                        Evidence =
+                            state
+                    });
+            }
+
+            foreach (var region in
+                     translated.Where(x =>
+                         NormalizeComparableText(
+                             x.Source.Text) !=
+                         NormalizeComparableText(
+                             x.CorrectedText)))
+            {
+                token.ThrowIfCancellationRequested();
+
+                var state =
+                    new
+                    {
+                        task =
+                            "comic_vision_correction",
+                        source_text =
+                            region.Source.Text,
+                        corrected_text =
+                            region.CorrectedText,
+                        secondary_ocr =
+                            region.Source.SecondaryOcrText,
+                        secondary_agreement =
+                            region.Source.SecondaryOcrAgreement,
+                        ocr_confidence =
+                            AverageConfidence(
+                                region.Source),
+                        type =
+                            region.Type
+                    };
+
+                var response =
+                    await PredictAsync(
+                        state,
+                        new Dictionary<string, object>
+                        {
+                            ["accept_correction"] =
+                                new
+                                {
+                                    type = "noul",
+                                    instructions =
+                                        "Should the Vision-corrected comic text be accepted as a faithful correction of OCR? " +
+                                        "Use the primary OCR, independent secondary OCR and their confidence/agreement. " +
+                                        "Return false for unsupported invented words, large hallucinated expansions or corrections " +
+                                        "that contradict stronger OCR evidence."
+                                }
+                        },
+                        token);
+
+                var answer =
+                    ReadBoolean(
+                        response,
+                        "accept_correction");
+
+                decisions.Add(
+                    new LayaShadowDecision
+                    {
+                        Kind =
+                            "vision_correction",
+                        RegionId =
+                            region.Id,
+                        RuleDecision =
+                            "accept",
+                        LayaDecision =
+                            answer.Value.HasValue
+                                ? answer.Value.Value
+                                    ? "accept"
+                                    : "reject"
+                                : null,
+                        Confidence =
+                            answer.Confidence,
+                        Match =
+                            answer.Value.HasValue
+                                ? answer.Value.Value
+                                : null,
+                        Status =
+                            answer.Value.HasValue
+                                ? "shadow_only"
+                                : "laya_no_answer",
+                        Evidence =
+                            state
+                    });
+            }
+
+            foreach (var region in
+                     translated.Where(x =>
+                         x.Render &&
+                         !string.IsNullOrWhiteSpace(
+                             x.Translation) &&
+                         x.Type is
+                             "dialogue" or
+                             "thought" or
+                             "caption"))
+            {
+                token.ThrowIfCancellationRequested();
+
+                var state =
+                    new
+                    {
+                        task =
+                            "comic_translation_consistency",
+                        source_text =
+                            region.Source.Text,
+                        corrected_source_text =
+                            region.CorrectedText,
+                        korean_translation =
+                            region.Translation,
+                        type =
+                            region.Type,
+                        secondary_ocr =
+                            region.Source.SecondaryOcrText,
+                        secondary_agreement =
+                            region.Source.SecondaryOcrAgreement
+                    };
+
+                var response =
+                    await PredictAsync(
+                        state,
+                        new Dictionary<string, object>
+                        {
+                            ["translation_consistent"] =
+                                new
+                                {
+                                    type = "noul",
+                                    instructions =
+                                        "Does the Korean translation preserve the corrected source meaning closely enough for comic rendering? " +
+                                        "Check major omissions/additions, negation, names, intent and sentence polarity. " +
+                                        "Judge semantic faithfulness, not stylistic preference. Return false for a materially wrong translation."
+                                }
+                        },
+                        token);
+
+                var answer =
+                    ReadBoolean(
+                        response,
+                        "translation_consistent");
+
+                decisions.Add(
+                    new LayaShadowDecision
+                    {
+                        Kind =
+                            "translation_consistency",
+                        RegionId =
+                            region.Id,
+                        RuleDecision =
+                            "accept",
+                        LayaDecision =
+                            answer.Value.HasValue
+                                ? answer.Value.Value
+                                    ? "accept"
+                                    : "reject"
+                                : null,
+                        Confidence =
+                            answer.Confidence,
+                        Match =
+                            answer.Value.HasValue
+                                ? answer.Value.Value
+                                : null,
+                        Status =
+                            answer.Value.HasValue
+                                ? "shadow_only"
+                                : "laya_no_answer",
+                        Evidence =
+                            state
+                    });
+            }
+
             progress?.Report(
                 $"LayaExperimental · shadow 판단 {decisions.Count}건 완료");
         }
@@ -710,7 +1206,7 @@ public sealed class LayaDecisionService
             new
             {
                 Schema =
-                    "pipeline-v2-laya-shadow-v1",
+                    "pipeline-v2-laya-shadow-v2",
                 SourceFile =
                     Path.GetFileName(
                         sourcePath),
@@ -764,7 +1260,7 @@ public sealed class LayaDecisionService
             new
             {
                 Schema =
-                    "pipeline-v2-laya-summary-v1",
+                    "pipeline-v2-laya-summary-v2",
                 SourceFile =
                     Path.GetFileName(
                         sourcePath),
@@ -1629,6 +2125,10 @@ public sealed class LayaDecisionService
             : oneLine[..320] +
               "...";
     }
+
+    sealed record LayaV2DuplicateGroup(
+        string PhysicalOwnerKey,
+        IReadOnlyList<VisionTranslation> Candidates);
 
     sealed class LayaShadowDecision
     {

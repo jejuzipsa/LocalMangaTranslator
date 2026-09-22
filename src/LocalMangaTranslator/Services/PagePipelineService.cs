@@ -239,7 +239,9 @@ public sealed class PagePipelineService
                 pageAnalysisResult,
                 ocrStage,
                 visionReviewedBeforeRecovery,
+                reviewed,
                 translated,
+                v2Selection,
                 options,
                 layaProgress,
                 token);
