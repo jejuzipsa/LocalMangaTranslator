@@ -1,0 +1,293 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v1",
+  "SourceFile": "page017.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Shadow",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0021,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.8889004,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.0671873729054586,
+            "Affinity": 7.442315824858223
+          },
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.8072902,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 89.81771663888048,
+            "Affinity": 0.22400966493162014
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 1,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0272,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.8072902,
+            "BlockCoverage": 0.9666666666666667,
+            "CenterInside": true,
+            "CenterDistance": 2.5,
+            "Affinity": 7.265311764876048
+          },
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.8889004,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 87.46427842267951,
+            "Affinity": 0.2695216427586754
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG007",
+      "LayaDecision": "RG007",
+      "Confidence": 0.0947,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG007",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9309852,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 9.001543077593853,
+            "Affinity": 7.447489520007837
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6073,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "...",
+        "ocr_confidence": 0.4962821304798126,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 827.6666666666667,
+          "Y": 566.3333333333334,
+          "W": 74.33333333333326,
+          "H": 111.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.1788,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.9644938,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.6066758241066578,
+            "Affinity": 7.481033553917048
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG007",
+      "Confidence": 0.0137,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG007",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9309852,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 63.314251511365455,
+            "Affinity": 0.338864103140294
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5985,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "10",
+        "corrected_text": "10",
+        "ocr_confidence": 0.3334614038467407,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 399,
+          "Y": 682.3333333333334,
+          "W": 37.333333333333314,
+          "H": 30.333333333333258
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0956,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9081564,
+            "BlockCoverage": 0.058196181698485845,
+            "CenterInside": false,
+            "CenterDistance": 91.70741518546906,
+            "Affinity": 0.5034480939022533
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1627,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9081564,
+            "BlockCoverage": 0.984924623115578,
+            "CenterInside": true,
+            "CenterDistance": 2.477678124553079,
+            "Affinity": 7.388821333692454
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.1265,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.8441956,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0,
+            "Affinity": 7.42209780216217
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "secondary_only"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.1197,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.8180206,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0,
+            "Affinity": 7.409010291099548
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "secondary_only"
+      }
+    }
+  ]
+}

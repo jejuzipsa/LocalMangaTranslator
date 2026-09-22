@@ -1,0 +1,29 @@
+{
+  "Schema": "pipeline-v2-laya-summary-v1",
+  "SourceFile": "page014.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Shadow",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "TotalDecisions": 11,
+  "Matched": 10,
+  "Mismatched": 1,
+  "NoAnswer": 0,
+  "ByKind": {
+    "ownership": {
+      "Compared": 7,
+      "Matched": 7,
+      "Mismatched": 0,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.10067142857142856
+    },
+    "detector_retry": {
+      "Compared": 4,
+      "Matched": 3,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5825
+    }
+  }
+}
