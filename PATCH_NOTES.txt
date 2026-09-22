@@ -2202,3 +2202,269 @@ PipelineChecks 추가:
 bf50b687c7368314ac454d26b9882ee6b8f1a1f2
 V2 0038: disable HF symlink cache for Laya
 
+============================================================
+0039 - Laya Shadow Coverage Completion / Language Evidence Track
+============================================================
+
+0038 실전 Shadow 결과
+------------------------------------------------------------
+검증 페이지:
+- page012
+- page014
+- page017
+- page021
+- page028
+- page032
+
+Laya runtime:
+- Python 3.12.10
+- laya 0.3.5
+- typed-decisions
+- 실제 runtime device = cpu
+
+6페이지 전체:
+- TotalDecisions = 86
+- Matched = 79
+- Mismatched = 7
+- NoAnswer = 0
+- 전 페이지 Available = true / Error = null
+
+0038에서 확인한 장점:
+- page014 NONONO NNNNOOO!
+  - OCR confidence 약 0.926
+  - RT-DETR TextBubble candidate 0
+  - Classic detector_retry = false
+  - Laya detector_retry = true
+  - confidence 약 0.587
+- page012 혼합 OCR / LET ME OUTTT 계열에서도 detector_retry=true 신호 발생.
+
+0038에서 확인한 제한:
+- ownership은 page017에서 4건 mismatch.
+  강한 실제 owner 대신 주변 약한 후보를 선택한 경우가 있어
+  Active/override 대상으로 사용하지 않는다.
+- page028에서도 UNBOUND를 약한 근접 candidate에 연결하려는 ownership mismatch 확인.
+- 따라서 ownership은 계속 Shadow diagnostic 전용.
+
+Shadow 결과 불변성:
+- page012/014/017/021/028은 0036과 최종 이미지 SHA까지 동일.
+- page032 차이는 erase가 아니라 Gemma 최종 번역/조판 text 변화.
+- Laya Shadow가 결과 이미지를 변경한 흔적 없음.
+
+
+0038 계측 누락 문제
+------------------------------------------------------------
+1. render_recovery
+   page021 RG014는 최종 target coverage에서
+   preserved_render_false:dialogue 상태인데
+   0038 Laya log에는 render_recovery decision이 0건이었다.
+
+   원인:
+   기존 hook은 raw Vision result 직후만 관찰했다.
+   final translation refinement에서 다시 Render=false가 된 unit은 보지 못했다.
+
+2. duplicate
+   page012 실제 V2 commit에서
+   Region 0이 original_preserved:container_duplicate로 억제되고
+   Region 1이 같은 RG002 / parent Bubble RG001의 winner로 commit됐다.
+
+   그러나 0038 Laya duplicate decision은 0건이었다.
+
+   원인:
+   기존 Shadow grouping은 Source.RegionId만 사용했다.
+   Region 0처럼 Source.RegionId가 없어도
+   V2 selector가 동일 immutable TextBubble/parent Bubble에 bind한 후보를 놓쳤다.
+
+
+0039 목표
+------------------------------------------------------------
+Laya를 Active로 승격하지 않는다.
+
+먼저 Shadow가 Classic/V2에서 실제로 일어나는 판단을 빠짐없이 관찰하게 하고,
+OCR1 / OCR2 / Vision correction / final translation을 language evidence track으로 추가한다.
+
+
+render_recovery 2-stage Shadow
+------------------------------------------------------------
+Stage 1:
+stage = vision_pre_recovery
+
+raw Vision에서 Render=false인 dialogue/thought/caption을 보고
+Classic ShouldRecoverDetectorOwnedRenderableUnit()과 Laya를 비교한다.
+
+Stage 2:
+stage = post_translation_final
+
+TranslationRefinement 이후에도 최종 Render=false로 남은
+dialogue/thought/caption을 다시 Laya에 전달한다.
+
+evidence:
+- source/corrected text
+- entered_translation_renderable
+- final_render
+- classic_recovery_eligible
+- primary OCR confidence
+- secondary OCR/agreement
+- Bubble/TextBubble ids
+- nearby immutable detector candidates
+
+이 Stage 2가 page021 RG014 같은 최종 residual을 관찰한다.
+
+Shadow이므로 Stage 2 Laya true도 실제 Render를 변경하지 않는다.
+
+
+duplicate Shadow - V2 physical container 기준
+------------------------------------------------------------
+기존 Source.RegionId grouping 제거.
+
+0039은 V2EraseSelection.Bindings를 사용한다.
+
+physical owner key:
+1. parent BubbleRegionId가 있으면 bubble:<id>
+2. 없으면 immutable LayoutBounds key
+
+같은 physical owner에 bind된 renderable translation candidate가 2개 이상이면
+duplicate arbitration Shadow를 생성한다.
+
+Classic winner:
+RenderPipelineService.GetV2CandidateKeepScore()
+
+Laya evidence:
+- candidate source/corrected text
+- secondary OCR agreement
+- OCR confidence
+- detector TextRegion
+- V2 binding TextRegionIds
+- V2 BubbleRegionId
+- immutable LayoutBounds
+- Classic keep score
+
+page012 Region 0 / Region 1처럼
+Source.RegionId가 한쪽에 없어도 동일 V2 physical container 경쟁을 기록할 수 있다.
+
+PipelineChecks:
+동일 immutable RG002 / Bubble RG001에 bind된 두 translation unit이
+한 duplicate candidate group으로 묶이는 것을 고정한다.
+
+
+신규 language evidence Shadow decisions
+------------------------------------------------------------
+
+1. ocr_consensus
+primary OCR과 Baberu secondary OCR의 관계를 Laya가 별도 분류.
+
+choice:
+- agree
+- partial
+- disagree
+- secondary_only
+- unknown
+
+Classic RuleDecision은 기존 SecondaryOcrAgreement.
+Laya 결과와 Match/Mismatch 기록.
+
+
+2. vision_correction
+Source.Text와 CorrectedText가 실제로 달라진 unit만 대상.
+
+질문:
+Vision corrected text가 primary/secondary OCR evidence로 정당화되는가.
+
+Laya:
+- accept
+- reject
+
+Classic RuleDecision:
+- accept
+
+unsupported word invention / large hallucinated expansion /
+stronger OCR evidence contradiction 여부를 Shadow로 검사한다.
+
+
+3. translation_consistency
+최종 Render=true이며 translation이 존재하는
+dialogue/thought/caption 대상.
+
+evidence:
+- source OCR
+- corrected source
+- Korean translation
+- secondary OCR/agreement
+- type
+
+질문:
+한국어 번역이 corrected source 의미를 보존하는가.
+
+검사 포인트:
+- 의미 누락/추가
+- negation
+- 이름/고유명사
+- 의도
+- 문장 polarity
+
+스타일 취향은 평가하지 않고 semantic faithfulness만 본다.
+
+Classic RuleDecision:
+- accept
+
+Laya:
+- accept
+- reject
+
+이 decision도 0039에서는 Shadow only.
+
+
+Shadow schema
+------------------------------------------------------------
+0039:
+- pipeline-v2-laya-shadow-v2
+- pipeline-v2-laya-summary-v2
+
+기존 decision 종류:
+- ownership
+- detector_retry
+- render_recovery
+- duplicate
+
+추가:
+- ocr_consensus
+- vision_correction
+- translation_consistency
+
+
+0039에서 의도적으로 하지 않은 것
+------------------------------------------------------------
+- Laya Active/Advisory 승격 없음.
+- ownership override 없음.
+- detector_retry=true가 실제 RT-DETR 재실행을 발생시키지 않음.
+- multi-scale RT-DETR은 다음 단계 후보.
+- Laya가 번역을 생성하거나 수정하지 않음.
+- Laya가 Vision corrected text를 직접 덮어쓰지 않음.
+- page028 cleaned-state verifier 문제 수정 없음.
+- CUDA 강제 수정 없음. 0038 runtime CPU 원인은 별도 확인 가능.
+
+
+0039 재검증
+------------------------------------------------------------
+같은 6페이지 재사용:
+- page012
+- page014
+- page017
+- page021
+- page028
+- page032
+
+확인 포인트:
+1. page021에 post_translation_final render_recovery decision 생성.
+2. page012에 V2 physical-container duplicate decision 생성.
+3. ocr_consensus가 Baberu evidence가 있는 unit에 생성.
+4. Vision 교정 unit에 vision_correction 생성.
+5. 최종 dialogue/thought/caption에 translation_consistency 생성.
+6. 최종 이미지 결과는 Shadow 때문에 변경되지 않음.
+7. ownership mismatch는 기록만 하고 실제 owner는 Classic 유지.
+
+
+관련 커밋
+------------------------------------------------------------
+3a9c2dcac178f74a974813d0e99391c156acec4b
+V2 0039: complete Laya shadow decision coverage
+
