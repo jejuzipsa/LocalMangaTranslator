@@ -37,6 +37,16 @@ public sealed record V2CleanedCheckpointAudit(
     bool EmptyVerified,
     string Status);
 
+public sealed record V2CleanedStateRescueEvidence(
+    string TextRegionId,
+    bool FlatAccepted,
+    string Strategy,
+    double DominantMatchRatio,
+    bool BackgroundQualityPass,
+    string IndependentDisposition,
+    int IndependentResidualBeforePixels,
+    int IndependentResidualAfterPixels);
+
 public sealed record ErasePipelineV2Result(
     int DetectedTargetCount,
     int TargetCount,
@@ -54,7 +64,8 @@ public sealed record ErasePipelineV2Result(
     string DetectionJsonPath,
     IReadOnlyList<V2EraseTargetAudit> TargetAudits,
     IReadOnlyList<V2CleanedCheckpointAudit> CleanedCheckpointAudits,
-    IReadOnlyList<string> BackgroundQualityFailedTextRegionIds);
+    IReadOnlyList<string> BackgroundQualityFailedTextRegionIds,
+    IReadOnlyList<V2CleanedStateRescueEvidence> CleanedStateRescueEvidence);
 
 /// <summary>
 /// Main Pipeline V2 erase stage.
@@ -1863,6 +1874,32 @@ public sealed class ErasePipelineV2
                     WriteIndented = true
                 }));
 
+        var cleanedStateRescueEvidence =
+            targets
+                .Select(target =>
+                {
+                    backgroundAuditByTarget.TryGetValue(
+                        target.TextRegionId,
+                        out var backgroundAudit);
+
+                    return new V2CleanedStateRescueEvidence(
+                        target.TextRegionId,
+                        backgroundAudit?.FlatAccepted ?? false,
+                        backgroundAudit?.Strategy ?? "UNKNOWN",
+                        backgroundAudit?.DominantMatchRatio ?? 0,
+                        !backgroundQualityFailedTextRegionIds.Contains(
+                            target.TextRegionId,
+                            StringComparer.Ordinal),
+                        independentFlatDispositionByTarget.GetValueOrDefault(
+                            target.TextRegionId,
+                            "CLEAN"),
+                        independentFlatResidualBeforeByTarget.GetValueOrDefault(
+                            target.TextRegionId),
+                        independentFlatResidualAfterByTarget.GetValueOrDefault(
+                            target.TextRegionId));
+                })
+                .ToArray();
+
         return new ErasePipelineV2Result(
             snapshot.TextTargets.Count,
             targets.Count,
@@ -1881,7 +1918,8 @@ public sealed class ErasePipelineV2
             jsonPath,
             audits.ToArray(),
             checkpointAudits,
-            backgroundQualityFailedTextRegionIds);
+            backgroundQualityFailedTextRegionIds,
+            cleanedStateRescueEvidence);
     }
 
     public static bool CheckpointIdsMatch(

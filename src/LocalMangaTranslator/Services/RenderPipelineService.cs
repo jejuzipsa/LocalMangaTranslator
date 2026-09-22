@@ -368,6 +368,7 @@ public sealed class RenderPipelineService
                         v2Snapshot!,
                         eraseTargetIds,
                         v2Erase.TargetAudits,
+                        v2Erase.CleanedStateRescueEvidence,
                         token),
                     token);
 

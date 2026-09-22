@@ -15,6 +15,7 @@ public sealed record V2CleanedTargetVerification(
     float MaxResidualScore,
     bool LegacyReviewerClean,
     bool DetectorOnlyFalsePositiveRescue,
+    string DetectorOnlyFalsePositiveRescueMode,
     int LegacyInitialMaskPixels,
     int LegacySelectedResidualPixels,
     double LegacyResidualRatio,
@@ -76,6 +77,7 @@ public sealed class CleanedStateVerifier
         V2DetectionSnapshot snapshot,
         IReadOnlySet<string> selectedTextRegionIds,
         IReadOnlyList<V2EraseTargetAudit> legacyAudits,
+        IReadOnlyList<V2CleanedStateRescueEvidence>? rescueEvidence = null,
         CancellationToken token = default)
     {
         token.ThrowIfCancellationRequested();
@@ -112,6 +114,13 @@ public sealed class CleanedStateVerifier
             legacyAudits.ToDictionary(
                 x => x.TextRegionId,
                 StringComparer.Ordinal);
+
+        var rescueEvidenceByTarget =
+            (rescueEvidence ??
+             Array.Empty<V2CleanedStateRescueEvidence>())
+                .ToDictionary(
+                    x => x.TextRegionId,
+                    StringComparer.Ordinal);
 
         bool verifierAvailable =
             Detector.IsReady;
@@ -187,6 +196,7 @@ public sealed class CleanedStateVerifier
                             0,
                             legacyClean,
                             false,
+                            "none",
                             legacy?.InitialMaskPixels ?? 0,
                             legacy?.SelectedResidualPixels ?? 0,
                             LegacyResidualRatio(
@@ -204,13 +214,44 @@ public sealed class CleanedStateVerifier
                                 x.Score)
                             .ToList();
 
-                    bool detectorOnlyRescue =
+                    float maxResidualScore =
+                        matches.Count == 0
+                            ? 0
+                            : matches.Max(x =>
+                                x.Score);
+
+                    bool classicDetectorOnlyRescue =
                         matches.Count > 0 &&
                         target.Kind ==
                             PageRegionKind.TextBubble &&
                         legacy is not null &&
                         CanRescueDetectorOnlyRedetection(
                             legacy);
+
+                    bool flatBackgroundDetectorOnlyRescue =
+                        matches.Count > 0 &&
+                        !classicDetectorOnlyRescue &&
+                        target.Kind ==
+                            PageRegionKind.TextBubble &&
+                        legacy is not null &&
+                        rescueEvidenceByTarget.TryGetValue(
+                            target.TextRegionId,
+                            out var evidence) &&
+                        CanRescueFlatBackgroundDetectorOnlyRedetection(
+                            legacy,
+                            evidence,
+                            maxResidualScore);
+
+                    bool detectorOnlyRescue =
+                        classicDetectorOnlyRescue ||
+                        flatBackgroundDetectorOnlyRescue;
+
+                    string rescueMode =
+                        classicDetectorOnlyRescue
+                            ? "legacy_tiny_residual"
+                            : flatBackgroundDetectorOnlyRescue
+                                ? "flat_background_ambiguous_structure"
+                                : "none";
 
                     bool empty =
                         matches.Count == 0 ||
@@ -222,19 +263,19 @@ public sealed class CleanedStateVerifier
                         empty,
                         matches.Count == 0
                             ? "EMPTY_OK"
-                            : detectorOnlyRescue
+                            : classicDetectorOnlyRescue
                                 ? "EMPTY_OK_DETECTOR_ONLY_FALSE_POSITIVE"
-                                : "TEXT_REDETECTED",
+                                : flatBackgroundDetectorOnlyRescue
+                                    ? "EMPTY_OK_FLAT_BACKGROUND_DETECTOR_ONLY_FALSE_POSITIVE"
+                                    : "TEXT_REDETECTED",
                         matches
                             .Select(x =>
                                 x.RegionId)
                             .ToArray(),
-                        matches.Count == 0
-                            ? 0
-                            : matches.Max(x =>
-                                x.Score),
+                        maxResidualScore,
                         legacyClean,
                         detectorOnlyRescue,
+                        rescueMode,
                         legacy?.InitialMaskPixels ?? 0,
                         legacy?.SelectedResidualPixels ?? 0,
                         LegacyResidualRatio(
@@ -320,6 +361,80 @@ public sealed class CleanedStateVerifier
 
         if (audit.SelectedPersistenceRatio >
             0.005)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static bool CanRescueFlatBackgroundDetectorOnlyRedetection(
+        V2EraseTargetAudit audit,
+        V2CleanedStateRescueEvidence evidence,
+        float maxResidualScore)
+    {
+        if (!ErasePipelineV2.IsAuditClean(
+                audit))
+        {
+            return false;
+        }
+
+        if (!evidence.FlatAccepted ||
+            !string.Equals(
+                evidence.Strategy,
+                "FLAT_FILL",
+                StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        if (!evidence.BackgroundQualityPass)
+            return false;
+
+        if (!string.Equals(
+                evidence.IndependentDisposition,
+                "AMBIGUOUS_STRUCTURE",
+                StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        if (evidence.IndependentResidualAfterPixels <= 0)
+            return false;
+
+        if (audit.InitialMaskPixels <
+            40)
+        {
+            return false;
+        }
+
+        if (audit.SelectedPersistentCorePixels >
+            0)
+        {
+            return false;
+        }
+
+        if (audit.SelectedPersistenceRatio >
+            0.005)
+        {
+            return false;
+        }
+
+        double residualRatio =
+            audit.SelectedResidualPixels /
+            (double)Math.Max(
+                1,
+                audit.InitialMaskPixels);
+
+        if (residualRatio >
+            0.08)
+        {
+            return false;
+        }
+
+        if (maxResidualScore <= 0 ||
+            maxResidualScore >
+            0.50f)
         {
             return false;
         }
@@ -730,7 +845,7 @@ public sealed class CleanedStateVerifier
             new
             {
                 Schema =
-                    "pipeline-v2-cleaned-state-v2",
+                    "pipeline-v2-cleaned-state-v3",
                 SourceFile =
                     Path.GetFileName(
                         sourcePath),
@@ -749,6 +864,12 @@ public sealed class CleanedStateVerifier
                 DetectorOnlyFalsePositiveRescueCount =
                     targetChecks.Count(x =>
                         x.DetectorOnlyFalsePositiveRescue),
+                FlatBackgroundDetectorOnlyFalsePositiveRescueCount =
+                    targetChecks.Count(x =>
+                        string.Equals(
+                            x.DetectorOnlyFalsePositiveRescueMode,
+                            "flat_background_ambiguous_structure",
+                            StringComparison.Ordinal)),
                 EraseTargetBubbleCount =
                     eraseTargetBubbleIds.Count,
                 EmptyVerifiedBubbleCount =
