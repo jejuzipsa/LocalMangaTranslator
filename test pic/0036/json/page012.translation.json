@@ -1,0 +1,721 @@
+{
+  "SourceFile": "page012.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-22T16:26:51.1000067+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 803,
+        "Y": 51.666666666666664,
+        "W": 392.6666666666665,
+        "H": 344.3333333333333,
+        "Text": "RU LETT ME OUTTT!",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1022,
+            "Y": 51.666666666666664,
+            "W": 90,
+            "H": 178.33333333333334,
+            "Text": "RU",
+            "Confidence": 0.5978726,
+            "Language": "en"
+          },
+          {
+            "X": 803,
+            "Y": 136,
+            "W": 392.6666666666665,
+            "H": 188.33333333333331,
+            "Text": "LETT ME",
+            "Confidence": 0.98233294,
+            "Language": "en"
+          },
+          {
+            "X": 834,
+            "Y": 229,
+            "W": 328,
+            "H": 167,
+            "Text": "OUTTT!",
+            "Confidence": 0.9596496,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "Nononono... no...\nLET ME OUTTT!",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC, \uC548 \uB3FC...[BR]\uC548 \uB3FC...[BR]\uB0B4\uBCF4\uB0B4 \uC918\uC5B4\uC5B4!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 911,
+        "Y": 92,
+        "W": 132,
+        "H": 58.33333333333334,
+        "Text": "Nononono.. no...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 911,
+            "Y": 92,
+            "W": 132,
+            "H": 45,
+            "Text": "Nononono..",
+            "Confidence": 0.9904467,
+            "Language": "en"
+          },
+          {
+            "X": 953,
+            "Y": 122.66666666666667,
+            "W": 51,
+            "H": 27.66666666666667,
+            "Text": "no...",
+            "Confidence": 0.93740624,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Nononono...\nno...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "Nononono... no...",
+      "Translation": "\uC548 \uB3FC, \uC548 \uB3FC, \uC548 \uB3FC...[BR]\uC548 \uB3FC...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 263.6666666666667,
+        "Y": 627,
+        "W": 49.333333333333314,
+        "H": 29,
+        "Text": "d",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 263.6666666666667,
+            "Y": 627,
+            "W": 49.333333333333314,
+            "H": 29,
+            "Text": "d",
+            "Confidence": 0.6331747,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "d",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 502.6666666666667,
+        "Y": 691.6666666666666,
+        "W": 323.3333333333333,
+        "H": 147.83333333333337,
+        "Text": "LOOK, I UNDERSTAND THIS IS A LOT. WE ALL DO. AND BEHIND THAT DOOR ARE A BEEN LOT OF I WAITING TO MEET YOU-- THE A VERY LONG TIME.",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 547.3333333333333,
+            "Y": 691.6666666666666,
+            "W": 240.33333333333337,
+            "H": 29.33333333333337,
+            "Text": "LOOK, I UNDERSTAND",
+            "Confidence": 0.9989198,
+            "Language": "en"
+          },
+          {
+            "X": 502.6666666666667,
+            "Y": 713.3333333333334,
+            "W": 323.3333333333333,
+            "H": 29.333333333333258,
+            "Text": "THIS IS A LOT. WE ALL DO. AND",
+            "Confidence": 0.9953886,
+            "Language": "en"
+          },
+          {
+            "X": 523.6666666666666,
+            "Y": 728,
+            "W": 283.33333333333337,
+            "H": 35.33333333333337,
+            "Text": "BEHIND THAT DOOR ARE A",
+            "Confidence": 0.985752,
+            "Language": "en"
+          },
+          {
+            "X": 751,
+            "Y": 752,
+            "W": 73,
+            "H": 31.33333333333337,
+            "Text": "BEEN",
+            "Confidence": 0.99853,
+            "Language": "en"
+          },
+          {
+            "X": 511.3333333333333,
+            "Y": 755.6666666666666,
+            "W": 86.66666666666669,
+            "H": 23.666666666666742,
+            "Text": "LOT OF I",
+            "Confidence": 0.96059823,
+            "Language": "en"
+          },
+          {
+            "X": 538,
+            "Y": 781,
+            "W": 97,
+            "H": 17.66666666666663,
+            "Text": "WAITING",
+            "Confidence": 0.999743,
+            "Language": "en"
+          },
+          {
+            "X": 635,
+            "Y": 781,
+            "W": 158,
+            "H": 17.66666666666663,
+            "Text": "TO MEET YOU--",
+            "Confidence": 0.9661805,
+            "Language": "en"
+          },
+          {
+            "X": 558.3333333333334,
+            "Y": 793,
+            "W": 39.66666666666663,
+            "H": 27.33333333333337,
+            "Text": "THE",
+            "Confidence": 0.99852014,
+            "Language": "en"
+          },
+          {
+            "X": 563,
+            "Y": 813.5,
+            "W": 205,
+            "H": 26,
+            "Text": "A VERY LONG TIME.",
+            "Confidence": 0.99634004,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LOOK, I UNDERSTAND THIS IS A F. I WE GAL DO. AND BEHIND THAT DOO",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG004"
+      },
+      "CorrectedText": "LOOK, I UNDERSTAND THIS IS A LOT. WE ALL DO. AND BEHIND THAT DOOR ARE A LOT OF PEOPLE WHO\u0027VE BEEN WAITING TO MEET YOU-- THE REAL YOU-- FOR A VERY LONG TIME.",
+      "Translation": "\uC798 \uB4E4\uC73C\uC138\uC694, \uC774\uAC8C \uBD80\uB2F4\uC2A4\uB7EC\uC6B4 \uC77C\uC774\uB77C\uB294 \uAC70 \uC555\uB2C8\uB2E4. \uC6B0\uB9AC \uBAA8\uB450\uAC00\uC694. \uADF8\uB9AC\uACE0 \uC800 \uBB38 \uB108\uBA38\uC5D0\uB294 \uB2F9\uC2E0\uC744, \uC9C4\uC9DC \uB2F9\uC2E0\uC744 \uB9CC\uB098\uAE30 \uC704\uD574 \uC544\uC8FC \uC624\uB7AB\uB3D9\uC548 \uAE30\uB2E4\uB824 \uC628 \uC218\uB9CE\uC740 \uC0AC\uB78C\uB4E4\uC774 \uC788\uC2B5\uB2C8\uB2E4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 96,
+        "Y": 719,
+        "W": 172,
+        "H": 91.33333333333337,
+        "Text": "SHHH. BRUCE, PLEASE. THE OF-- START",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 142,
+            "Y": 719,
+            "W": 80,
+            "H": 35,
+            "Text": "SHHH.",
+            "Confidence": 0.986555,
+            "Language": "en"
+          },
+          {
+            "X": 96,
+            "Y": 750,
+            "W": 172,
+            "H": 21.66666666666663,
+            "Text": "BRUCE, PLEASE.",
+            "Confidence": 0.9983629,
+            "Language": "en"
+          },
+          {
+            "X": 199,
+            "Y": 767,
+            "W": 44.33333333333334,
+            "H": 22.33333333333337,
+            "Text": "THE",
+            "Confidence": 0.9996579,
+            "Language": "en"
+          },
+          {
+            "X": 190.66666666666666,
+            "Y": 784.6666666666666,
+            "W": 53,
+            "H": 25.33333333333337,
+            "Text": "OF--",
+            "Confidence": 0.9969523,
+            "Language": "en"
+          },
+          {
+            "X": 119.66666666666667,
+            "Y": 785.3333333333334,
+            "W": 81.33333333333333,
+            "H": 25,
+            "Text": "START",
+            "Confidence": 0.9989492,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "SHHH.\nBRUCE, PLEASE.\nTHIS IS THE\nSTART OF--",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "RegionId": "RG006"
+      },
+      "CorrectedText": "SHHH. BRUCE, PLEASE. THIS IS THE START OF--",
+      "Translation": "\uC27F. \uBE0C\uB8E8\uC2A4, \uC81C\uBC1C. \uC9C0\uAE08\uC740\n\uC2DC\uC791\uD558\uB294 \uB2E8\uACC4\uB2C8\uAE4C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 399.6666666666667,
+        "Y": 733.6666666666666,
+        "W": 82.66666666666663,
+        "H": 92.66666666666674,
+        "Text": "F",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 399.6666666666667,
+            "Y": 733.6666666666666,
+            "W": 82.66666666666663,
+            "H": 92.66666666666674,
+            "Text": "F",
+            "Confidence": 0.43946102,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "E!",
+      "Translation": "\uD5C9!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1135,
+        "Y": 743,
+        "W": 44.33333333333326,
+        "H": 21.66666666666663,
+        "Text": ".. no",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1135,
+            "Y": 743,
+            "W": 24,
+            "H": 21.66666666666663,
+            "Text": "..",
+            "Confidence": 0.64650726,
+            "Language": "en"
+          },
+          {
+            "X": 1154.6666666666667,
+            "Y": 745,
+            "W": 24.666666666666515,
+            "H": 15.333333333333371,
+            "Text": "no",
+            "Confidence": 0.9996575,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "\u2026no.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "...no.",
+      "Translation": "...\uC544\uB2C8.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 953,
+        "Y": 776.3333333333334,
+        "W": 88.66666666666652,
+        "H": 21.66666666666663,
+        "Text": "BRUCE?",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 953,
+            "Y": 776.3333333333334,
+            "W": 88.66666666666652,
+            "H": 21.66666666666663,
+            "Text": "BRUCE?",
+            "Confidence": 0.99911547,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BRUCE?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG010"
+      },
+      "CorrectedText": "BRUCE?",
+      "Translation": "\uBE0C\uB8E8\uC2A4?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 285.3333333333333,
+        "Y": 819.3333333333334,
+        "W": 94.00000000000006,
+        "H": 48.66666666666663,
+        "Text": "Don\u0027t tuch mE!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 299.3333333333333,
+            "Y": 819.3333333333334,
+            "W": 68,
+            "H": 27.333333333333258,
+            "Text": "Don\u0027t",
+            "Confidence": 0.99723804,
+            "Language": "en"
+          },
+          {
+            "X": 285.3333333333333,
+            "Y": 839,
+            "W": 94.00000000000006,
+            "H": 29,
+            "Text": "tuch mE!",
+            "Confidence": 0.98365736,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "Don\u0027t tuch me!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG012"
+      },
+      "CorrectedText": "Don\u0027t touch me!",
+      "Translation": "\uAC74\uB4DC\uB9AC\uC9C0 \uB9C8!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 563,
+        "Y": 862.6666666666666,
+        "W": 189.66666666666663,
+        "H": 144.66666666666674,
+        "Text": "BUT FIRST...YOU SHOULD MEET THE PERSON WHO\u0027S BEEN WAITING LONGEST OF ALL.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 633.3333333333334,
+            "Y": 862.6666666666666,
+            "W": 48.66666666666663,
+            "H": 26.33333333333337,
+            "Text": "BUT",
+            "Confidence": 0.9905715,
+            "Language": "en"
+          },
+          {
+            "X": 598.3333333333334,
+            "Y": 883.6666666666666,
+            "W": 118.33333333333326,
+            "H": 22.666666666666742,
+            "Text": "FIRST...YOU",
+            "Confidence": 0.949415,
+            "Language": "en"
+          },
+          {
+            "X": 563,
+            "Y": 906,
+            "W": 189.66666666666663,
+            "H": 21.66666666666663,
+            "Text": "SHOULD MEET THE",
+            "Confidence": 0.9957448,
+            "Language": "en"
+          },
+          {
+            "X": 575,
+            "Y": 923.6666666666666,
+            "W": 166,
+            "H": 22,
+            "Text": "PERSON WHO\u0027S",
+            "Confidence": 0.9971016,
+            "Language": "en"
+          },
+          {
+            "X": 582,
+            "Y": 943,
+            "W": 150.66666666666663,
+            "H": 22.33333333333337,
+            "Text": "BEEN WAITING",
+            "Confidence": 0.9992792,
+            "Language": "en"
+          },
+          {
+            "X": 580.6666666666667,
+            "Y": 957.6666666666666,
+            "W": 151.66666666666663,
+            "H": 32,
+            "Text": "LONGEST OF",
+            "Confidence": 0.9991861,
+            "Language": "en"
+          },
+          {
+            "X": 636.6666666666667,
+            "Y": 979.3333333333334,
+            "W": 46.666666666666515,
+            "H": 28,
+            "Text": "ALL.",
+            "Confidence": 0.999582,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "BUT\nFIRST...YOU\nSHOULD MEET THE\nPERSON WHO\u0027S\nBEEN WAITING\nLONGEST OF\nALL.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG014"
+      },
+      "CorrectedText": "BUT FIRST...YOU SHOULD MEET THE PERSON WHO\u0027S BEEN WAITING LONGEST OF ALL.",
+      "Translation": "\uD558\uC9C0\uB9CC \uBA3C\uC800...[BR]\uAC00\uC7A5 \uC624\uB798 \uAE30\uB2E4\uB824 \uC628 \uC0AC\uB78C\uC744[BR]\uB9CC\uB098\uC57C \uD574.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 201.33333333333334,
+        "Y": 874,
+        "W": 18.333333333333343,
+        "H": 13,
+        "Text": "\u2013",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 201.33333333333334,
+            "Y": 874,
+            "W": 18.333333333333343,
+            "H": 13,
+            "Text": "\u2013",
+            "Confidence": 0.32828996,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "\u2013",
+      "Translation": "\u2013",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1125,
+        "Y": 878.6666666666666,
+        "W": 33.333333333333485,
+        "H": 35.66666666666674,
+        "Text": "n",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1125,
+            "Y": 878.6666666666666,
+            "W": 33.333333333333485,
+            "H": 35.66666666666674,
+            "Text": "n",
+            "Confidence": 0.43545756,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "n",
+      "Translation": "\u3134",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 754.5,
+        "Y": 965.6666666666666,
+        "W": 97.5,
+        "H": 87.00000000000011,
+        "Text": "HERE, LET ME GET YOU UP",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 769.3333333333333,
+            "Y": 965.6666666666666,
+            "W": 66.33333333333337,
+            "H": 27.666666666666742,
+            "Text": "HERE,",
+            "Confidence": 0.9996733,
+            "Language": "en"
+          },
+          {
+            "X": 764.6666666666666,
+            "Y": 984.3333333333334,
+            "W": 76,
+            "H": 26.66666666666663,
+            "Text": "LET ME",
+            "Confidence": 0.9826986,
+            "Language": "en"
+          },
+          {
+            "X": 754.5,
+            "Y": 1006.5,
+            "W": 97.5,
+            "H": 25.5,
+            "Text": "GET YOU",
+            "Confidence": 0.9949092,
+            "Language": "en"
+          },
+          {
+            "X": 785.6666666666666,
+            "Y": 1025.6666666666667,
+            "W": 35.000000000000114,
+            "H": 27,
+            "Text": "UP",
+            "Confidence": 0.79624724,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HERE, LET ME GET YOU UP.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "HERE, LET ME GET YOU UP.",
+      "Translation": "\uC790, \uB0B4\uAC00 \uC77C\uC73C\uCF1C \uC904\uAC8C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 597.3333333333334,
+        "Y": 1044.6666666666667,
+        "W": 34.33333333333326,
+        "H": 19.666666666666515,
+        "Text": "I",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 597.3333333333334,
+            "Y": 1044.6666666666667,
+            "W": 34.33333333333326,
+            "H": 19.666666666666515,
+            "Text": "I",
+            "Confidence": 0.6430362,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "I",
+      "Translation": "\uB098",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 852,
+        "Y": 1326,
+        "W": 22,
+        "H": 35,
+        "Text": "M",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 852,
+            "Y": 1326,
+            "W": 22,
+            "H": 35,
+            "Text": "M",
+            "Confidence": 0.92557794,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "RegionId": null
+      },
+      "CorrectedText": "M",
+      "Translation": "\uC73D",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}
