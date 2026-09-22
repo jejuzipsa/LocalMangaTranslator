@@ -1,0 +1,24 @@
+{
+  "Schema": "pipeline-v2-laya-render-recovery-shadow-v1",
+  "SourceFile": "page021.jpg",
+  "Mode": "Shadow",
+  "MutationApplied": false,
+  "Requests": 1,
+  "Items": [
+    {
+      "TranslationRegionId": 6,
+      "Confidence": 0.5337,
+      "SourceText": "T DON\u0027T KNOW ANYMORE. I DON\u0027T-",
+      "CorrectedText": "I DON\u0027T KNOW ANYMORE. I DON\u0027T-",
+      "OriginalFinalRender": false,
+      "ShadowCandidate": {
+        "Render": false,
+        "Translation": "",
+        "Type": "dialogue"
+      },
+      "V2Binding": null,
+      "WouldBecomeRenderable": false,
+      "MutationApplied": false
+    }
+  ]
+}

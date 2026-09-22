@@ -1,0 +1,106 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-shadow-v1",
+  "SourceFile": "page012.jpg",
+  "Mode": "Shadow",
+  "MutationApplied": false,
+  "Requests": 1,
+  "RecoveredRequests": 1,
+  "UnrecoveredRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 0,
+      "SourceText": "RU LETT ME OUTTT!",
+      "CorrectedText": "Nononono... no...\nLET ME OUTTT!",
+      "LayaConfidence": 0.542,
+      "Block": {
+        "X": 803,
+        "Y": 51.666666666666664,
+        "W": 392.6666666666665,
+        "H": 344.3333333333333
+      },
+      "Recovered": true,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 398,
+            "Y": 0,
+            "Width": 943,
+            "Height": 943
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.6786850477200425,
+          "RegionCount": 11,
+          "TextBubbleCount": 5,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_2p40_002",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 915,
+              "Y": 104,
+              "Width": 128,
+              "Height": 48
+            },
+            "Score": 0.8915205,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40",
+            "Affinity": 10.891520500183105
+          },
+          "Matches": [
+            {
+              "RegionId": "SH_local_2p40_002",
+              "Bounds": {
+                "X": 915,
+                "Y": 104,
+                "Width": 128,
+                "Height": 48
+              },
+              "Score": 0.8915205,
+              "Affinity": 10.891520500183105
+            }
+          ]
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 685,
+            "Y": 0,
+            "Width": 629,
+            "Height": 629
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 1.0174880763116056,
+          "RegionCount": 3,
+          "TextBubbleCount": 1,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_1p60_002",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 916,
+              "Y": 103,
+              "Width": 126,
+              "Height": 49
+            },
+            "Score": 0.8766825,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_1p60",
+            "Affinity": 10.87668251991272
+          },
+          "Matches": [
+            {
+              "RegionId": "SH_local_1p60_002",
+              "Bounds": {
+                "X": 916,
+                "Y": 103,
+                "Width": 126,
+                "Height": 49
+              },
+              "Score": 0.8766825,
+              "Affinity": 10.87668251991272
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
