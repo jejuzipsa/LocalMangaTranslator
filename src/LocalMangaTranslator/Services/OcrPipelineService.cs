@@ -1107,11 +1107,24 @@ public sealed class OcrPipelineService
                     ownership.CandidateId) ||
                 !candidateById.TryGetValue(
                     ownership.CandidateId,
-                    out var candidate) ||
-                string.IsNullOrWhiteSpace(
-                    candidate.RegionId) ||
+                    out var candidate))
+            {
+                continue;
+            }
+
+            // 0035: Baberu evidence follows the detector-authoritative Bubble
+            // assigned to the block. The legacy candidate RegionId is only a
+            // fallback when no detector Bubble was resolved.
+            string? evidenceRegionId =
+                !string.IsNullOrWhiteSpace(
+                    units[i].RegionId)
+                    ? units[i].RegionId
+                    : candidate.RegionId;
+
+            if (string.IsNullOrWhiteSpace(
+                    evidenceRegionId) ||
                 !evidenceByRegion.TryGetValue(
-                    candidate.RegionId,
+                    evidenceRegionId,
                     out var secondary))
             {
                 continue;
