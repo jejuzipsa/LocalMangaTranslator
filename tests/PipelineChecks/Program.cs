@@ -2826,6 +2826,150 @@ try
             renderDroppedWithoutDirectTextLink,
             [bubbleA, textA, bubbleB, textB]));
 
+    var page011SecondaryBlock =
+        new OcrTextBlock(
+            2049,
+            1091,
+            1702,
+            324,
+            174,
+            "RSE",
+            1,
+            "en",
+            [
+                new OcrLine(
+                    1091,
+                    1702,
+                    324,
+                    174,
+                    "RSE",
+                    0.40335068f,
+                    "en")
+            ])
+        {
+            SecondaryOcrText =
+                "...AFTER I REBUILD IT!",
+            SecondaryOcrSource =
+                "baberu",
+            SecondaryOcrAgreement =
+                "disagree",
+            RegionContainer =
+                detectorOwnedCandidate,
+            RegionTextRegion =
+                textA
+        };
+
+    var page011SecondaryDropped =
+        new VisionTranslation(
+            2049,
+            page011SecondaryBlock,
+            "RSE",
+            "",
+            "other",
+            false);
+
+    Check("V2 0049 promotes page011-like low-confidence primary from Baberu",
+        PagePipelineService.ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
+            page011SecondaryDropped));
+
+    Check("V2 0049 does not promote a high-confidence short primary",
+        !PagePipelineService.ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
+            page011SecondaryDropped with
+            {
+                Source =
+                    page011SecondaryBlock with
+                    {
+                        Lines =
+                        [
+                            new OcrLine(
+                                1091,
+                                1702,
+                                324,
+                                174,
+                                "RSE",
+                                0.80f,
+                                "en")
+                        ]
+                    }
+            }));
+
+    Check("V2 0049 requires a substantially longer secondary sentence",
+        !PagePipelineService.ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
+            page011SecondaryDropped with
+            {
+                Source =
+                    page011SecondaryBlock with
+                    {
+                        SecondaryOcrText =
+                            "RISE!"
+                    }
+            }));
+
+    var greenWarningText =
+        "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!";
+
+    var greenWarningBlock =
+        new OcrTextBlock(
+            2050,
+            224,
+            1695,
+            358,
+            130,
+            greenWarningText,
+            4,
+            "en",
+            [
+                new OcrLine(
+                    224,
+                    1695,
+                    358,
+                    130,
+                    greenWarningText,
+                    0.9992f,
+                    "en")
+            ])
+        {
+            SecondaryOcrText =
+                greenWarningText,
+            SecondaryOcrSource =
+                "baberu",
+            SecondaryOcrAgreement =
+                "agree",
+            RegionContainer =
+                detectorOwnedCandidate,
+            RegionTextRegion =
+                textA
+        };
+
+    var greenWarningSign =
+        new VisionTranslation(
+            2050,
+            greenWarningBlock,
+            greenWarningText,
+            "경고! 미확인 차원 간 에너지 감지!",
+            "sign",
+            false);
+
+    Check("V2 0049 recovers detector-owned agreed sign as renderable caption",
+        PagePipelineService.ShouldRecoverDetectorOwnedSignAsCaption(
+            greenWarningSign));
+
+    Check("V2 0049 global detector-owned recovery still does not render sign directly",
+        !PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            greenWarningSign));
+
+    Check("V2 0049 sign recovery requires independent OCR agreement",
+        !PagePipelineService.ShouldRecoverDetectorOwnedSignAsCaption(
+            greenWarningSign with
+            {
+                Source =
+                    greenWarningBlock with
+                    {
+                        SecondaryOcrAgreement =
+                            "disagree"
+                    }
+            }));
+
     // 0034 regression: a broad orphan OCR block can overlap a normal
     // TextBubble and nearby free-standing stylized text. Geometry fallback may
     // choose one immutable owner, but it must never bind both owners into one

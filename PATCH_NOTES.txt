@@ -4080,3 +4080,107 @@ Intentionally not changed:
 - page015 "DON'T WORRY, HAL..." translation/render recovery issue.
 - no OCR, translation, ownership, geometry, erase-mask, or layout thresholds
   were broadened in 0048.
+
+
+============================================================
+0049 - detector-owned evidence recovery for secondary OCR and sign misclassification
+============================================================
+
+Validated baseline:
+- test pic/current/0048
+- commit f289a109b68d77f0dd441d39274fbede8e1dc933
+- 15 pages
+- page015 RG012 0048 rescue confirmed:
+  * translated 17 -> 18
+  * cleaned text redetected 1 -> 0
+- detector/OCR structure remained stable across the 15-page comparison:
+  * RegionCount=338
+  * BubbleCount=161
+  * TextRegionCount=177
+  * CanonicalLineCount=1063
+  * UnitCount=332
+  * SecondaryAccepted=161
+
+Observed page011 failure:
+- The Flash (2016-) 033-011
+- immutable Bubble RG001 / TextBubble RG002
+- primary OCR: "RSE"
+- primary confidence: 0.40335068
+- Baberu: "...AFTER I REBUILD IT!"
+- secondary agreement: disagree
+- Vision final:
+  * corrected="RSE"
+  * type=other
+  * render=false
+- V2 requested units: 2
+- translated units: 0
+- this is not an OCR acquisition miss. The correct independent reading is
+  already present but loses the semantic arbitration step.
+
+0049 secondary OCR promotion:
+- do not replace RT-DETR geometry, ownership, erase bounds, or OCR line geometry.
+- after raw Vision review, promote secondary OCR only when every condition holds:
+  * Vision render=false
+  * Vision type=other
+  * immutable detector owner resolves to TextBubble
+  * parent/container kind is Speech
+  * secondary OCR exists
+  * primary/secondary agreement is disagree
+  * primary meaningful length is 1..6
+  * Vision corrected text did not materially expand beyond the short primary
+  * secondary meaningful length >= max(10, primary length * 3)
+  * primary average OCR confidence < 0.55
+  * secondary contains at least 3 meaningful whitespace-separated words
+- promoted units:
+  * keep immutable detector geometry
+  * CorrectedText becomes the independent secondary text
+  * Type becomes dialogue
+  * Render becomes true
+  * draft Translation is cleared so the final translation model must produce
+    the Korean output
+- high-confidence short primaries and short secondary guesses remain untouched.
+
+Observed page008 failure:
+- The Flash (2016-) 033-008
+- text: "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!"
+- primary RapidOCR is effectively exact (~0.999 confidence).
+- Baberu reads the same text.
+- secondary agreement=agree.
+- immutable Bubble RG009 / TextBubble RG010.
+- candidate kind=Speech.
+- Vision translated it but classified it as sign and therefore Render=false.
+- coverage status:
+  preserved_render_false:sign
+
+0049 detector-owned sign recovery:
+- the global Vision rule remains unchanged:
+  sign/sfx/logo/background/other => render=false.
+- add a narrow structural override only when every condition holds:
+  * Vision render=false
+  * Vision type=sign
+  * immutable detector owner resolves to TextBubble
+  * parent/container kind is Speech
+  * secondary OCR exists and agreement=agree
+  * primary meaningful length >= 8
+  * secondary meaningful length >= 8
+  * primary average OCR confidence >= 0.90
+- qualifying units are reclassified to renderable caption before final
+  translation.
+- this does not make ordinary TextFree signs or weakly-read signs renderable.
+
+Regression checks:
+- page011-shaped RSE / 0.403 / Baberu full sentence => secondary promotion.
+- the same short primary at confidence 0.80 => no promotion.
+- a short secondary guess such as "RISE!" => no promotion.
+- page008-shaped high-confidence agreed sign inside Speech/TextBubble => sign
+  recovery.
+- generic detector-owned recovery still refuses sign directly.
+- secondary disagreement blocks sign recovery.
+
+Intentionally not changed:
+- page010 "THE MAN OF STEEL IS MINE." OCR acquisition miss.
+- page014 TextFree preservation policy.
+- page015 "DON'T WORRY, HAL..." Laya render-recovery shadow remains advisory.
+- global sign policy is not broadened.
+- no RT-DETR geometry, erase, cleaned-state, mask, background, or layout
+  thresholds are changed.

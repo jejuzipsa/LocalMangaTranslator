@@ -770,29 +770,229 @@ public sealed class PagePipelineService
                         region.Source,
                         regions);
 
+                bool promoteSecondary =
+                    ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
+                        region,
+                        regions);
+
+                bool recoverBubbleSign =
+                    ShouldRecoverDetectorOwnedSignAsCaption(
+                        region,
+                        regions);
+
                 if (!ShouldRecoverDetectorOwnedRenderableUnit(
                         region,
-                        regions))
+                        regions) &&
+                    !promoteSecondary &&
+                    !recoverBubbleSign)
                 {
                     return region;
+                }
+
+                var recoveredSource =
+                    detectorTextRegion is null
+                        ? region.Source
+                        : region.Source with
+                        {
+                            RegionTextRegion =
+                                detectorTextRegion
+                        };
+
+                // 0049: when primary OCR is only a low-confidence fragment but
+                // an independent Baberu pass reads a substantially longer
+                // sentence inside the same immutable speech TextBubble, promote
+                // only the semantic text. Detector geometry and erase ownership
+                // remain unchanged.
+                if (promoteSecondary)
+                {
+                    return region with
+                    {
+                        Source =
+                            recoveredSource,
+                        CorrectedText =
+                            region.Source.SecondaryOcrText!.Trim(),
+                        Translation = "",
+                        Type = "dialogue",
+                        Render = true
+                    };
+                }
+
+                // 0049: a high-confidence primary/secondary agreement inside a
+                // detector-owned speech TextBubble overrides Vision's generic
+                // sign label. Treat it as a renderable device/narrative caption
+                // without broadening the global sign policy.
+                if (recoverBubbleSign)
+                {
+                    return region with
+                    {
+                        Source =
+                            recoveredSource,
+                        Type = "caption",
+                        Render = true
+                    };
                 }
 
                 return region with
                 {
                     Render = true,
                     Source =
-                        detectorTextRegion is null
-                            ? region.Source
-                            : region.Source with
-                            {
-                                RegionTextRegion =
-                                    detectorTextRegion
-                            }
+                        recoveredSource
                 };
             })
             .OrderBy(x =>
                 x.Id)
             .ToList();
+    }
+
+    public static bool ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
+        VisionTranslation region,
+        IReadOnlyList<PageRegion>? regions = null)
+    {
+        if (region.Render ||
+            !string.Equals(
+                region.Type,
+                "other",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        var textRegion =
+            ResolveDetectorOwnedTextRegion(
+                region.Source,
+                regions);
+
+        if (textRegion is null ||
+            textRegion.Kind !=
+                PageRegionKind.TextBubble ||
+            region.Source.RegionContainer?.Kind !=
+                ContainerCandidateKind.Speech)
+        {
+            return false;
+        }
+
+        if (!string.Equals(
+                region.Source.SecondaryOcrAgreement,
+                "disagree",
+                StringComparison.OrdinalIgnoreCase) ||
+            string.IsNullOrWhiteSpace(
+                region.Source.SecondaryOcrText))
+        {
+            return false;
+        }
+
+        int primaryLength =
+            region.Source.Text.Count(
+                char.IsLetterOrDigit);
+
+        int correctedLength =
+            (string.IsNullOrWhiteSpace(
+                 region.CorrectedText)
+                ? region.Source.Text
+                : region.CorrectedText)
+            .Count(
+                char.IsLetterOrDigit);
+
+        int secondaryLength =
+            region.Source.SecondaryOcrText.Count(
+                char.IsLetterOrDigit);
+
+        if (primaryLength is < 1 or > 6 ||
+            correctedLength >
+                Math.Max(
+                    6,
+                    primaryLength + 3) ||
+            secondaryLength <
+                Math.Max(
+                    10,
+                    primaryLength * 3))
+        {
+            return false;
+        }
+
+        double averageConfidence =
+            region.Source.Lines.Count == 0
+                ? 0
+                : region.Source.Lines.Average(x =>
+                    x.Confidence);
+
+        if (region.Source.Lines.Count == 0 ||
+            averageConfidence >= 0.55)
+        {
+            return false;
+        }
+
+        int secondaryWords =
+            region.Source.SecondaryOcrText
+                .Split(
+                    (char[]?)null,
+                    StringSplitOptions.RemoveEmptyEntries |
+                    StringSplitOptions.TrimEntries)
+                .Count(x =>
+                    x.Any(
+                        char.IsLetterOrDigit));
+
+        return secondaryWords >= 3;
+    }
+
+    public static bool ShouldRecoverDetectorOwnedSignAsCaption(
+        VisionTranslation region,
+        IReadOnlyList<PageRegion>? regions = null)
+    {
+        if (region.Render ||
+            !string.Equals(
+                region.Type,
+                "sign",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        var textRegion =
+            ResolveDetectorOwnedTextRegion(
+                region.Source,
+                regions);
+
+        if (textRegion is null ||
+            textRegion.Kind !=
+                PageRegionKind.TextBubble ||
+            region.Source.RegionContainer?.Kind !=
+                ContainerCandidateKind.Speech)
+        {
+            return false;
+        }
+
+        if (!string.Equals(
+                region.Source.SecondaryOcrAgreement,
+                "agree",
+                StringComparison.OrdinalIgnoreCase) ||
+            string.IsNullOrWhiteSpace(
+                region.Source.SecondaryOcrText))
+        {
+            return false;
+        }
+
+        int primaryLength =
+            region.Source.Text.Count(
+                char.IsLetterOrDigit);
+
+        int secondaryLength =
+            region.Source.SecondaryOcrText.Count(
+                char.IsLetterOrDigit);
+
+        if (primaryLength < 8 ||
+            secondaryLength < 8)
+        {
+            return false;
+        }
+
+        double averageConfidence =
+            region.Source.Lines.Count == 0
+                ? 0
+                : region.Source.Lines.Average(x =>
+                    x.Confidence);
+
+        return averageConfidence >= 0.90;
     }
 
     public static bool ShouldRecoverDetectorOwnedRenderableUnit(
