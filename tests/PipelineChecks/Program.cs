@@ -452,6 +452,91 @@ Check("V2 0047 rejects excessive legacy residual density",
         page048FlatRescueEvidence,
         0.45646143f));
 
+var page015IndependentCleanEraseAudit =
+    new V2EraseTargetAudit(
+        TextRegionId: "RG012",
+        InitialMaskPixels: 22610,
+        CoreMaskPixels: 0,
+        ResidualBeforeRetryPixels: 228,
+        EffectiveResidualBeforeRetryPixels: 167,
+        CoreOverlapBeforeRetryPixels: 0,
+        PersistentCoreBeforeRetryPixels: 0,
+        RetryMaskPixels: 0,
+        ResidualAfterRetryPixels: 228,
+        EffectiveResidualAfterRetryPixels: 167,
+        CoreOverlapAfterRetryPixels: 0,
+        PersistentCoreAfterRetryPixels: 0,
+        Retried: false,
+        Status: "clean_after_first_pass",
+        SelectedResidualPixels: 167,
+        SelectedPersistentCorePixels: 0,
+        SelectedPersistenceRatio: 0,
+        SelectedPass: "first",
+        PrimaryReview: "pass",
+        SecondaryReview: "not_run",
+        RescuedBySecondary: false,
+        ReviewReason: "primary_residual_clean");
+
+var page015IndependentCleanEvidence =
+    new V2CleanedStateRescueEvidence(
+        TextRegionId: "RG012",
+        FlatAccepted: true,
+        Strategy: "FLAT_FILL",
+        DominantMatchRatio: 1.0,
+        BackgroundQualityPass: true,
+        IndependentDisposition: "CLEAN",
+        IndependentResidualBeforePixels: 0,
+        IndependentResidualAfterPixels: 0);
+
+Check("V2 0048 rescues page015-like independently clean flat-background redetection",
+    CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit,
+        page015IndependentCleanEvidence,
+        0.33985737f));
+
+Check("V2 0048 requires independently clean residual evidence",
+    !CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit,
+        page015IndependentCleanEvidence with
+        {
+            IndependentResidualBeforePixels = 1
+        },
+        0.33985737f));
+
+Check("V2 0048 requires highly dominant flat background",
+    !CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit,
+        page015IndependentCleanEvidence with
+        {
+            DominantMatchRatio = 0.94
+        },
+        0.33985737f));
+
+Check("V2 0048 keeps stronger cleaned redetection blocking",
+    !CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit,
+        page015IndependentCleanEvidence,
+        0.41f));
+
+Check("V2 0048 rejects legacy residual density above one percent",
+    !CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit with
+        {
+            SelectedResidualPixels = 227
+        },
+        page015IndependentCleanEvidence,
+        0.33985737f));
+
+Check("V2 0048 never applies to TELEA",
+    !CleanedStateVerifier.CanRescueFlatBackgroundIndependentCleanRedetection(
+        page015IndependentCleanEraseAudit,
+        page015IndependentCleanEvidence with
+        {
+            FlatAccepted = false,
+            Strategy = "TELEA"
+        },
+        0.33985737f));
+
 Check("geometry eligible without existing OCR", ContainerOcrValidator.ValidateCandidate(candidate).Eligible);
 Check("bad mask rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { Mask = [255] }).Eligible);
 Check("page border rejected", !ContainerOcrValidator.ValidateCandidate(candidate with { BorderTouches = 1 }).Eligible);

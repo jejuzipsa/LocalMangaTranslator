@@ -3986,3 +3986,97 @@ Repository housekeeping - test pic organization
 - archive/: older 0028-0045 test outputs.
 - Added test pic/README.txt describing the folder convention.
 - Git history remains intact; this change only cleans the current repository tree.
+
+
+
+============================================================
+0048 - independently clean flat-background cleaned-state rescue
+============================================================
+
+Live baseline:
+- test pic/current/0047_2
+- commit 88de0afda51c91ed2b38a17a13042b58004a4930
+
+Observed page015 failure:
+- The Flash (2016-) 033-015
+- translation RegionId=7
+- immutable TextBubble RG012 / parent Bubble RG011
+- source:
+  "...SUPERMAN SAID HE HAD HORRIFIC VISIONS IN METROPOLIS THAT SHOWED HIM LOSING OVER AND OVER AGAIN."
+- translation and layout were already valid.
+- erase audit:
+  * InitialMaskPixels=22610
+  * SelectedResidualPixels=167 (~0.7386%)
+  * SelectedPersistentCorePixels=0
+  * SelectedPersistenceRatio=0
+  * PrimaryReview=pass
+  * Status=clean_after_first_pass
+- background reconstruction:
+  * Strategy=FLAT_FILL
+  * FlatAccepted=true
+  * DominantMatchRatio=1.0
+  * BackgroundQualityPass=true
+- independent flat verifier:
+  * disposition=CLEAN
+  * residual before=0
+  * residual after=0
+- cleaned RT-DETR alone redetected text:
+  * score=0.33985737
+- final status:
+  original_preserved:cleaned_text_redetected
+
+Cause:
+- 0047 only rescued the AMBIGUOUS_STRUCTURE family.
+- RG012 is the opposite case: the independent source-linked verifier reports
+  no residual at all, yet cleaned RT-DETR still emits a low-confidence box.
+- therefore the final detector was allowed to override stronger erase evidence.
+
+0048 implementation:
+- keep 0042 tiny-residual rescue unchanged.
+- keep 0047 flat_background_ambiguous_structure rescue unchanged.
+- add a separate rescue mode:
+  flat_background_independent_clean
+- it applies only when every condition is true:
+  * immutable target is TextBubble
+  * legacy erase audit is clean
+  * FLAT_FILL accepted
+  * background quality passed
+  * independent disposition is CLEAN
+  * independent residual before == 0
+  * independent residual after == 0
+  * DominantMatchRatio >= 0.95
+  * InitialMaskPixels >= 40
+  * SelectedPersistentCorePixels == 0
+  * SelectedPersistenceRatio <= 0.005
+  * SelectedResidualPixels / InitialMaskPixels <= 0.01
+  * cleaned detector max score > 0 and <= 0.40
+- TELEA, TextFree, non-clean independent evidence, weaker background dominance,
+  meaningful legacy residual, persistent glyph evidence, and stronger cleaned
+  detections remain blocking.
+
+Audit:
+- cleaned-state schema bumped to pipeline-v2-cleaned-state-v4.
+- new target rescue mode:
+  flat_background_independent_clean
+- new status:
+  EMPTY_OK_FLAT_BACKGROUND_INDEPENDENT_CLEAN_FALSE_POSITIVE
+- new top-level count:
+  FlatBackgroundIndependentCleanFalsePositiveRescueCount
+
+Regression checks:
+- page015 RG012-shaped evidence must rescue at score 0.33985737.
+- any independent residual before cleanup blocks this rescue.
+- DominantMatchRatio < 0.95 blocks it.
+- cleaned detector score > 0.40 blocks it.
+- legacy residual density > 1% blocks it.
+- TELEA never enters this rescue path.
+- existing 0047 AMBIGUOUS_STRUCTURE tests remain unchanged.
+
+Intentionally not changed:
+- page008 sign classification / Render=false policy.
+- page010 OCR acquisition miss.
+- page011 secondary OCR promotion policy.
+- page014 TextFree preserve policy.
+- page015 "DON'T WORRY, HAL..." translation/render recovery issue.
+- no OCR, translation, ownership, geometry, erase-mask, or layout thresholds
+  were broadened in 0048.
