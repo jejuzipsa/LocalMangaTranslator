@@ -4184,3 +4184,98 @@ Intentionally not changed:
 - global sign policy is not broadened.
 - no RT-DETR geometry, erase, cleaned-state, mask, background, or layout
   thresholds are changed.
+
+
+============================================================
+0050 - trusted cross-pass secondary promotion provenance
+============================================================
+
+Validated 0049 result:
+- test pic/current/0049
+- commit c3abc48371e61de7648863e0bf91cdc4955812ce
+- detector/OCR structure stayed stable versus 0048:
+  * RegionCount=338
+  * BubbleCount=161
+  * TextRegionCount=177
+  * CanonicalLineCount=1063
+  * UnitCount=332
+  * SecondaryAccepted=161
+- page008 Green Lantern warning succeeded:
+  * "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!"
+  * translated and committed.
+- page009 and page011 exposed a second gate after 0049 promotion.
+
+Observed page009 failure:
+- source primary: "HTO" / confidence 0.32625562
+- Baberu: "GUYS?! TALK TO ME!"
+- 0049 successfully promoted CorrectedText and produced Korean translation.
+- independent OCR support already existed:
+  * Region1x "GUYS?!" 0.9299972
+  * Region1x "TALK TO" 0.99386835
+  * Region2x "GUYS?!" 0.93207264
+  * Region2x "TALK TO" 0.97762924
+  * Container2x "GUYS?!" 0.848427
+  * Container2x "TALK TO" 0.962071
+- final render still preserved the original:
+  vision_expansion_untrusted
+
+Observed page011 failure:
+- source primary: "RSE" / confidence 0.40335068
+- Baberu: "...AFTER I REBUILD IT!"
+- 0049 successfully promoted CorrectedText and produced Korean translation.
+- independent OCR support:
+  * Region1x "REBUILD IT!" 0.8843806
+  * Region2x "..AFTER I" 0.83914846
+  * Region2x "REBUILD IT!" 0.95314944
+  * Container2x "AFTER I" 0.78869665
+  * Container2x "REBUILD IT!" 0.8681169
+- final render still preserved the original:
+  vision_expansion_untrusted
+
+Cause:
+- RenderSafetyPolicy correctly protects against a low-confidence 1-4 character
+  primary being expanded by Vision into a long unsupported sentence.
+- 0049 changed CorrectedText but did not carry semantic provenance.
+- therefore the render stage still compared HTO/RSE against the promoted
+  sentence and treated real OCR evidence as Vision hallucination.
+
+0050 implementation:
+- do not relax the existing Vision expansion thresholds.
+- pass the full OcrStageResult.Observations into detector-owned recovery.
+- a 0049 secondary promotion becomes trusted only when:
+  * the immutable target is Speech + TextBubble,
+  * preliminary 0049 promotion rules already pass,
+  * secondary has at least two distinct meaningful tokens of length >=4,
+  * only Region1x/Region2x observations owned by that TextBubble are counted,
+  * only Container1x/2x/3x observations owned by that Speech candidate are counted,
+  * supporting observation confidence >=0.75,
+  * at least two secondary tokens are supported,
+  * supported-token ratio >=0.66,
+  * at least one Region OCR pass supports the reading,
+  * at least one Container OCR pass supports the reading.
+- trusted promotions record provenance on OcrTextBlock:
+  * SecondaryPromoted=true
+  * SecondaryPromotionReason=cross_pass_supported
+  * SecondarySupportRatio
+  * SecondarySupportingPasses
+- RenderSafetyPolicy bypasses only the vision_expansion_untrusted heuristic when
+  that exact trusted provenance is present.
+- layout fit, immutable RT-DETR binding, erase review, cleaned-state verification,
+  duplicate arbitration, and atomic commit remain unchanged.
+
+Focused regressions:
+- page011 AFTER/REBUILD evidence => trusted.
+- page009 GUYS/TALK evidence => trusted.
+- page007-like "YOU EZRT: CAN'T." with only repeated CAN'T region evidence and
+  no Container support => not trusted.
+- raw RSE -> long Vision text remains suspicious without provenance.
+- the same RSE expansion with trusted cross-pass provenance bypasses only the
+  Vision expansion heuristic.
+
+Intentionally not changed:
+- page010 "THE MAN OF STEEL IS MINE." acquisition miss.
+- page003/TextFree credit policy.
+- page014 TextFree preservation.
+- page015 "DON'T WORRY, HAL..." Laya shadow behavior.
+- 0049 Green Lantern sign recovery.
+- no RT-DETR, erase, cleaned-state, background, or layout threshold changed.

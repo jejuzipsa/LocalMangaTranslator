@@ -18,6 +18,15 @@ public sealed record OcrTextBlock(
     public string? SecondaryOcrText { get; init; }
     public string? SecondaryOcrSource { get; init; }
     public string? SecondaryOcrAgreement { get; init; }
+
+    // 0050 semantic provenance. These fields do not alter detector geometry;
+    // they only tell downstream safety that a longer canonical reading was
+    // independently supported by both Region OCR and Container OCR.
+    public bool SecondaryPromoted { get; init; }
+    public string? SecondaryPromotionReason { get; init; }
+    public double SecondarySupportRatio { get; init; }
+    public IReadOnlyList<string> SecondarySupportingPasses { get; init; } = [];
+
     public string? RegionId { get; init; }
 
     // Runtime-only structural evidence. The mask can be large, so keep it out

@@ -2905,6 +2905,284 @@ try
                     }
             }));
 
+    var page011CrossPassObservations =
+        new List<OcrObservation>
+        {
+            new(
+                "RO-P11-1",
+                OcrPassKind.Region1x,
+                1118,
+                1781,
+                266,
+                71,
+                "REBUILD IT!",
+                0.8843806f,
+                "en",
+                1,
+                textA.RegionId),
+            new(
+                "RO-P11-2",
+                OcrPassKind.Region2x,
+                1122,
+                1735,
+                262,
+                72.5,
+                "..AFTER I",
+                0.83914846f,
+                "en",
+                2,
+                textA.RegionId),
+            new(
+                "RO-P11-3",
+                OcrPassKind.Region2x,
+                1123.5,
+                1783,
+                260.5,
+                68.5,
+                "REBUILD IT!",
+                0.95314944f,
+                "en",
+                2,
+                textA.RegionId),
+            new(
+                "CO-P11-1",
+                OcrPassKind.Container2x,
+                1095,
+                1714,
+                317,
+                114.5,
+                "AFTER I",
+                0.78869665f,
+                "en",
+                2,
+                detectorOwnedCandidate.CandidateId),
+            new(
+                "CO-P11-2",
+                OcrPassKind.Container2x,
+                1097,
+                1762,
+                315,
+                107.5,
+                "REBUILD IT!",
+                0.8681169f,
+                "en",
+                2,
+                detectorOwnedCandidate.CandidateId)
+        };
+
+    Check("V2 0050 trusts page011 AFTER/REBUILD cross-pass evidence",
+        PagePipelineService.HasTrustedCrossPassSecondarySupport(
+            page011SecondaryDropped,
+            page011CrossPassObservations));
+
+    var page009GuysBlock =
+        page011SecondaryBlock with
+        {
+            Id = 2051,
+            Text = "HTO",
+            Lines =
+            [
+                new OcrLine(
+                    73.5,
+                    21,
+                    248,
+                    187.5,
+                    "HTO",
+                    0.32625562f,
+                    "en")
+            ],
+            SecondaryOcrText =
+                "GUYS?! TALK TO ME!"
+        };
+
+    var page009GuysDropped =
+        new VisionTranslation(
+            2051,
+            page009GuysBlock,
+            "HTO",
+            "",
+            "other",
+            false);
+
+    var page009CrossPassObservations =
+        new List<OcrObservation>
+        {
+            new(
+                "RO-P09-1",
+                OcrPassKind.Region1x,
+                115,
+                56,
+                168,
+                56,
+                "GUYS?!",
+                0.9299972f,
+                "en",
+                1,
+                textA.RegionId),
+            new(
+                "RO-P09-2",
+                OcrPassKind.Region1x,
+                114,
+                91,
+                168,
+                44,
+                "TALK TO",
+                0.99386835f,
+                "en",
+                1,
+                textA.RegionId),
+            new(
+                "RO-P09-3",
+                OcrPassKind.Region2x,
+                115.5,
+                59.5,
+                163,
+                46,
+                "GUYS?!",
+                0.93207264f,
+                "en",
+                2,
+                textA.RegionId),
+            new(
+                "CO-P09-1",
+                OcrPassKind.Container2x,
+                114,
+                52,
+                177,
+                63.5,
+                "GUYS?!",
+                0.848427f,
+                "en",
+                2,
+                detectorOwnedCandidate.CandidateId),
+            new(
+                "CO-P09-2",
+                OcrPassKind.Container2x,
+                110.5,
+                90,
+                173.5,
+                53,
+                "TALK TO",
+                0.962071f,
+                "en",
+                2,
+                detectorOwnedCandidate.CandidateId)
+        };
+
+    Check("V2 0050 trusts page009 GUYS/TALK cross-pass evidence",
+        PagePipelineService.HasTrustedCrossPassSecondarySupport(
+            page009GuysDropped,
+            page009CrossPassObservations));
+
+    var page007NoisyBlock =
+        page011SecondaryBlock with
+        {
+            Id = 2052,
+            Text = "YO",
+            Lines =
+            [
+                new OcrLine(
+                    137,
+                    2206,
+                    228,
+                    129,
+                    "YO",
+                    0.4221838f,
+                    "en")
+            ],
+            SecondaryOcrText =
+                "YOU EZRT: CAN'T."
+        };
+
+    var page007NoisyDropped =
+        new VisionTranslation(
+            2052,
+            page007NoisyBlock,
+            "YO",
+            "",
+            "other",
+            false);
+
+    var page007WeakObservations =
+        new List<OcrObservation>
+        {
+            new(
+                "RO-P07-1",
+                OcrPassKind.Region1x,
+                188,
+                2256,
+                123,
+                50,
+                "CAN'T.",
+                0.9406716f,
+                "en",
+                1,
+                textA.RegionId),
+            new(
+                "RO-P07-2",
+                OcrPassKind.Region2x,
+                192.5,
+                2266.5,
+                112,
+                33.5,
+                "CAN'T.",
+                0.9965766f,
+                "en",
+                2,
+                textA.RegionId)
+        };
+
+    Check("V2 0050 rejects page007-like single-fragment noisy secondary",
+        !PagePipelineService.HasTrustedCrossPassSecondarySupport(
+            page007NoisyDropped,
+            page007WeakObservations));
+
+    var promotedPage011Block =
+        page011SecondaryBlock with
+        {
+            SecondaryPromoted =
+                true,
+            SecondaryPromotionReason =
+                "cross_pass_supported",
+            SecondarySupportRatio =
+                1.0,
+            SecondarySupportingPasses =
+            [
+                nameof(OcrPassKind.Region1x),
+                nameof(OcrPassKind.Region2x),
+                nameof(OcrPassKind.Container2x)
+            ]
+        };
+
+    var promotedPage011 =
+        page011SecondaryDropped with
+        {
+            Source =
+                promotedPage011Block,
+            CorrectedText =
+                "...AFTER I REBUILD IT!",
+            Type =
+                "dialogue",
+            Render =
+                true
+        };
+
+    Check("V2 0050 keeps raw RSE expansion suspicious without provenance",
+        RenderSafetyPolicy.IsSuspiciousVisionExpansion(
+            page011SecondaryDropped with
+            {
+                CorrectedText =
+                    "...AFTER I REBUILD IT!",
+                Type =
+                    "dialogue",
+                Render =
+                    true
+            }));
+
+    Check("V2 0050 trusted secondary provenance bypasses only Vision expansion guard",
+        !RenderSafetyPolicy.IsSuspiciousVisionExpansion(
+            promotedPage011));
+
     var greenWarningText =
         "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!";
 

@@ -3864,6 +3864,26 @@ public static class RenderSafetyPolicy
     public static bool IsSuspiciousVisionExpansion(
         VisionTranslation region)
     {
+        bool trustedSecondaryPromotion =
+            region.Source.SecondaryPromoted &&
+            string.Equals(
+                region.Source.SecondaryPromotionReason,
+                "cross_pass_supported",
+                StringComparison.Ordinal) &&
+            region.Source.SecondarySupportRatio >= 0.66 &&
+            region.Source.SecondarySupportingPasses.Any(x =>
+                x is
+                    nameof(OcrPassKind.Region1x) or
+                    nameof(OcrPassKind.Region2x)) &&
+            region.Source.SecondarySupportingPasses.Any(x =>
+                x is
+                    nameof(OcrPassKind.Container1x) or
+                    nameof(OcrPassKind.Container2x) or
+                    nameof(OcrPassKind.Container3x));
+
+        if (trustedSecondaryPromotion)
+            return false;
+
         if (region.Source.Lines.Count == 0 ||
             region.Source.Lines.Count > 2)
             return false;

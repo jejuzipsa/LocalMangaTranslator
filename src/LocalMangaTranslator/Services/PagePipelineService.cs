@@ -168,7 +168,8 @@ public sealed class PagePipelineService
         var detectorRecovered =
             RecoverDetectorOwnedRenderableUnits(
                 reviewed,
-                pageAnalysisResult.Regions);
+                pageAnalysisResult.Regions,
+                ocrStage.Observations);
 
         int detectorRecoveredCount =
             detectorRecovered.Count(x =>
@@ -760,7 +761,8 @@ public sealed class PagePipelineService
 
     static List<VisionTranslation> RecoverDetectorOwnedRenderableUnits(
         IReadOnlyList<VisionTranslation> reviewed,
-        IReadOnlyList<PageRegion> regions)
+        IReadOnlyList<PageRegion> regions,
+        IReadOnlyList<OcrObservation> observations)
     {
         return reviewed
             .Select(region =>
@@ -770,10 +772,17 @@ public sealed class PagePipelineService
                         region.Source,
                         regions);
 
+                var secondaryCrossPass =
+                    EvaluateSecondaryCrossPassEvidence(
+                        region,
+                        observations,
+                        regions);
+
                 bool promoteSecondary =
                     ShouldPromoteSecondaryOcrForDetectorOwnedSpeech(
                         region,
-                        regions);
+                        regions) &&
+                    secondaryCrossPass.Trusted;
 
                 bool recoverBubbleSign =
                     ShouldRecoverDetectorOwnedSignAsCaption(
@@ -798,13 +807,25 @@ public sealed class PagePipelineService
                                 detectorTextRegion
                         };
 
-                // 0049: when primary OCR is only a low-confidence fragment but
-                // an independent Baberu pass reads a substantially longer
-                // sentence inside the same immutable speech TextBubble, promote
-                // only the semantic text. Detector geometry and erase ownership
-                // remain unchanged.
+                // 0050: 0049 promotion is only authoritative when independent
+                // Region OCR and Container OCR both support the same secondary
+                // reading. Record that provenance so later render safety does
+                // not mistake an OCR-evidence promotion for Vision hallucination.
                 if (promoteSecondary)
                 {
+                    recoveredSource =
+                        recoveredSource with
+                        {
+                            SecondaryPromoted =
+                                true,
+                            SecondaryPromotionReason =
+                                "cross_pass_supported",
+                            SecondarySupportRatio =
+                                secondaryCrossPass.SupportRatio,
+                            SecondarySupportingPasses =
+                                secondaryCrossPass.SupportingPasses
+                        };
+
                     return region with
                     {
                         Source =
@@ -841,6 +862,204 @@ public sealed class PagePipelineService
             })
             .OrderBy(x =>
                 x.Id)
+            .ToList();
+    }
+
+    public static bool HasTrustedCrossPassSecondarySupport(
+        VisionTranslation region,
+        IReadOnlyList<OcrObservation> observations,
+        IReadOnlyList<PageRegion>? regions = null)
+        => EvaluateSecondaryCrossPassEvidence(
+            region,
+            observations,
+            regions).Trusted;
+
+    sealed record SecondaryCrossPassEvidence(
+        bool Trusted,
+        double SupportRatio,
+        IReadOnlyList<string> SupportingPasses);
+
+    static SecondaryCrossPassEvidence EvaluateSecondaryCrossPassEvidence(
+        VisionTranslation region,
+        IReadOnlyList<OcrObservation> observations,
+        IReadOnlyList<PageRegion>? regions)
+    {
+        if (string.IsNullOrWhiteSpace(
+                region.Source.SecondaryOcrText) ||
+            observations.Count == 0)
+        {
+            return new(
+                false,
+                0,
+                []);
+        }
+
+        var textRegion =
+            ResolveDetectorOwnedTextRegion(
+                region.Source,
+                regions);
+
+        var container =
+            region.Source.RegionContainer;
+
+        if (textRegion is null ||
+            container is null ||
+            textRegion.Kind !=
+                PageRegionKind.TextBubble ||
+            container.Kind !=
+                ContainerCandidateKind.Speech)
+        {
+            return new(
+                false,
+                0,
+                []);
+        }
+
+        var targetTokens =
+            EvidenceTokens(
+                region.Source.SecondaryOcrText);
+
+        // 0050 intentionally requires at least two meaningful >=4-char words.
+        // This keeps a single easy fragment such as "CAN'T" from certifying a
+        // noisy secondary sentence.
+        if (targetTokens.Count < 2)
+        {
+            return new(
+                false,
+                0,
+                []);
+        }
+
+        var supported =
+            new HashSet<string>(
+                StringComparer.Ordinal);
+
+        var passes =
+            new HashSet<OcrPassKind>();
+
+        foreach (var observation in observations)
+        {
+            if (observation.Confidence < 0.75f)
+                continue;
+
+            bool regionObservation =
+                observation.Pass is
+                    OcrPassKind.Region1x or
+                    OcrPassKind.Region2x &&
+                string.Equals(
+                    observation.SourceKey,
+                    textRegion.RegionId,
+                    StringComparison.Ordinal);
+
+            bool containerObservation =
+                observation.Pass is
+                    OcrPassKind.Container1x or
+                    OcrPassKind.Container2x or
+                    OcrPassKind.Container3x &&
+                string.Equals(
+                    observation.SourceKey,
+                    container.CandidateId,
+                    StringComparison.Ordinal);
+
+            if (!regionObservation &&
+                !containerObservation)
+            {
+                continue;
+            }
+
+            var observedTokens =
+                EvidenceTokens(
+                    observation.Text)
+                .ToHashSet(
+                    StringComparer.Ordinal);
+
+            bool matched =
+                false;
+
+            foreach (string token in targetTokens)
+            {
+                if (!observedTokens.Contains(
+                        token))
+                {
+                    continue;
+                }
+
+                supported.Add(
+                    token);
+
+                matched =
+                    true;
+            }
+
+            if (matched)
+            {
+                passes.Add(
+                    observation.Pass);
+            }
+        }
+
+        double supportRatio =
+            targetTokens.Count == 0
+                ? 0
+                : supported.Count /
+                  (double)targetTokens.Count;
+
+        bool hasRegionSupport =
+            passes.Any(x =>
+                x is
+                    OcrPassKind.Region1x or
+                    OcrPassKind.Region2x);
+
+        bool hasContainerSupport =
+            passes.Any(x =>
+                x is
+                    OcrPassKind.Container1x or
+                    OcrPassKind.Container2x or
+                    OcrPassKind.Container3x);
+
+        bool trusted =
+            supported.Count >= 2 &&
+            supportRatio >= 0.66 &&
+            hasRegionSupport &&
+            hasContainerSupport;
+
+        return new(
+            trusted,
+            supportRatio,
+            passes
+                .OrderBy(x =>
+                    x)
+                .Select(x =>
+                    x.ToString())
+                .ToList());
+    }
+
+    static IReadOnlyList<string> EvidenceTokens(
+        string? text)
+    {
+        if (string.IsNullOrWhiteSpace(
+                text))
+        {
+            return [];
+        }
+
+        return text
+            .Split(
+                (char[]?)null,
+                StringSplitOptions.RemoveEmptyEntries |
+                StringSplitOptions.TrimEntries)
+            .Select(word =>
+                new string(
+                    word
+                        .Where(
+                            char.IsLetterOrDigit)
+                        .Select(
+                            char.ToUpperInvariant)
+                        .ToArray()))
+            .Where(word =>
+                word.Length >= 4)
+            .Distinct(
+                StringComparer.Ordinal)
             .ToList();
     }
 
