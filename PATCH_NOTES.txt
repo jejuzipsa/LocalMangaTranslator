@@ -4279,3 +4279,91 @@ Intentionally not changed:
 - page015 "DON'T WORRY, HAL..." Laya shadow behavior.
 - 0049 Green Lantern sign recovery.
 - no RT-DETR, erase, cleaned-state, background, or layout threshold changed.
+
+
+============================================================
+0051 - recover agreed dialogue when runtime Speech link is missing
+============================================================
+
+Validated 0050 result:
+- test pic/current/0050
+- commit 84ac0779e98f4f743d2fb48f9b2ed4d129a0868c
+- page009 "GUYS?! TALK TO ME!" committed successfully.
+- page011 "...AFTER I REBUILD IT!" committed successfully.
+- 15-page detector/OCR structure remained stable:
+  * RegionCount=338
+  * BubbleCount=161
+  * TextRegionCount=177
+  * CanonicalLineCount=1063
+  * UnitCount=332
+  * SecondaryAccepted=161
+- translated/erase/typeset commits increased 155 -> 157.
+- MissingUnits=0, EraseReviewFailedUnits=0.
+
+Observed page015 failure:
+- source: "DON'T WORRY HAL"
+- primary RapidOCR lines:
+  * DON'T 0.9968213
+  * WORRY 0.98138636
+  * HAL 0.9869554
+- Baberu: "DON'T WORRY, HAL..."
+- SecondaryOcrAgreement=agree
+- Vision corrected: "DON'T WORRY, HAL..."
+- Vision type=dialogue
+- Vision Render=false / Translation empty.
+- immutable detector evidence exists:
+  * Bubble RG037 score 0.9359542
+  * TextBubble RG038 score 0.83391184
+  * Speech candidate PC019, RegionId=RG037
+- Laya shadow independently proposed:
+  * Render=true
+  * translation="걱정하지 마, 할..."
+  * correct V2 binding RG038 -> RG037
+- Laya remains advisory and is not used as final authority.
+
+Cause:
+- ShouldRecoverDetectorOwnedRenderableUnit requires
+  Source.RegionContainer != null.
+- this unit lost only that runtime link even though page analysis still contains
+  one unambiguous Speech candidate (PC019) for Bubble RG037 and one TextBubble
+  child (RG038).
+- therefore strong, agreeing OCR evidence never reached final translation.
+
+0051 implementation:
+- keep the existing generic detector-owned recovery unchanged.
+- add a narrow lost-runtime-link recovery path.
+- it applies only when every condition holds:
+  * Vision Render=false
+  * Vision type=dialogue
+  * Source.RegionContainer is missing
+  * immutable Bubble -> unique TextBubble resolution succeeds
+  * exactly one Speech page candidate has the same RegionId
+  * SecondaryOcrAgreement=agree
+  * secondary text exists
+  * primary OCR lines exist
+  * average primary confidence >=0.90
+  * normalized primary text length >=6
+  * normalized primary == normalized secondary
+  * normalized corrected text == normalized secondary
+- on recovery:
+  * restore runtime RegionContainer from the unique Speech candidate
+  * restore RegionTextRegion from immutable detector geometry
+  * Render=true
+  * clear draft Translation so the final translation model regenerates Korean
+  * all V2 layout/erase/cleaned-state/atomic-commit checks still apply.
+
+Regression checks:
+- page015-shaped DON'T WORRY HAL recovers when the unique Speech candidate exists.
+- generic recovery still refuses the same unit while RegionContainer is missing.
+- secondary disagreement blocks recovery.
+- non-Speech candidate blocks recovery.
+- normalized primary/secondary mismatch blocks recovery.
+
+Intentionally not changed:
+- page010 "THE MAN OF STEEL IS MINE." acquisition miss.
+- page003/TextFree credit policy.
+- page014 TextFree preservation.
+- 0050 trusted secondary promotion thresholds.
+- 0049 Green Lantern sign recovery.
+- Laya mutation remains disabled.
+- no RT-DETR, erase, cleaned-state, background, or layout threshold changed.

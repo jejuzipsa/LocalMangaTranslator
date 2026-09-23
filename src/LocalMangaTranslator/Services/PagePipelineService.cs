@@ -169,7 +169,8 @@ public sealed class PagePipelineService
             RecoverDetectorOwnedRenderableUnits(
                 reviewed,
                 pageAnalysisResult.Regions,
-                ocrStage.Observations);
+                ocrStage.Observations,
+                ocrStage.PageCandidates);
 
         int detectorRecoveredCount =
             detectorRecovered.Count(x =>
@@ -762,7 +763,8 @@ public sealed class PagePipelineService
     static List<VisionTranslation> RecoverDetectorOwnedRenderableUnits(
         IReadOnlyList<VisionTranslation> reviewed,
         IReadOnlyList<PageRegion> regions,
-        IReadOnlyList<OcrObservation> observations)
+        IReadOnlyList<OcrObservation> observations,
+        IReadOnlyList<ContainerCandidate> pageCandidates)
     {
         return reviewed
             .Select(region =>
@@ -771,6 +773,11 @@ public sealed class PagePipelineService
                     ResolveDetectorOwnedTextRegion(
                         region.Source,
                         regions);
+
+                var detectorSpeechContainer =
+                    ResolveDetectorOwnedSpeechContainer(
+                        region.Source,
+                        pageCandidates);
 
                 var secondaryCrossPass =
                     EvaluateSecondaryCrossPassEvidence(
@@ -789,23 +796,45 @@ public sealed class PagePipelineService
                         region,
                         regions);
 
+                bool recoverAgreedDialogue =
+                    ShouldRecoverDetectorOwnedAgreedDialogue(
+                        region,
+                        regions,
+                        pageCandidates);
+
                 if (!ShouldRecoverDetectorOwnedRenderableUnit(
                         region,
                         regions) &&
                     !promoteSecondary &&
-                    !recoverBubbleSign)
+                    !recoverBubbleSign &&
+                    !recoverAgreedDialogue)
                 {
                     return region;
                 }
 
                 var recoveredSource =
-                    detectorTextRegion is null
-                        ? region.Source
-                        : region.Source with
+                    region.Source;
+
+                if (detectorTextRegion is not null)
+                {
+                    recoveredSource =
+                        recoveredSource with
                         {
                             RegionTextRegion =
                                 detectorTextRegion
                         };
+                }
+
+                if (recoveredSource.RegionContainer is null &&
+                    detectorSpeechContainer is not null)
+                {
+                    recoveredSource =
+                        recoveredSource with
+                        {
+                            RegionContainer =
+                                detectorSpeechContainer
+                        };
+                }
 
                 // 0050: 0049 promotion is only authoritative when independent
                 // Region OCR and Container OCR both support the same secondary
@@ -832,6 +861,22 @@ public sealed class PagePipelineService
                             recoveredSource,
                         CorrectedText =
                             region.Source.SecondaryOcrText!.Trim(),
+                        Translation = "",
+                        Type = "dialogue",
+                        Render = true
+                    };
+                }
+
+                // 0051: recover only the narrow case where OCR evidence already
+                // agrees, the immutable Bubble/TextBubble pair is unambiguous,
+                // and only the runtime RegionContainer link was lost. Final
+                // translation is regenerated; erase/layout safety remains V2-owned.
+                if (recoverAgreedDialogue)
+                {
+                    return region with
+                    {
+                        Source =
+                            recoveredSource,
                         Translation = "",
                         Type = "dialogue",
                         Render = true
@@ -1213,6 +1258,130 @@ public sealed class PagePipelineService
 
         return averageConfidence >= 0.90;
     }
+
+    public static bool ShouldRecoverDetectorOwnedAgreedDialogue(
+        VisionTranslation region,
+        IReadOnlyList<PageRegion>? regions,
+        IReadOnlyList<ContainerCandidate>? pageCandidates)
+    {
+        if (region.Render ||
+            !string.Equals(
+                region.Type,
+                "dialogue",
+                StringComparison.OrdinalIgnoreCase) ||
+            region.Source.RegionContainer is not null)
+        {
+            return false;
+        }
+
+        var textRegion =
+            ResolveDetectorOwnedTextRegion(
+                region.Source,
+                regions);
+
+        var speechContainer =
+            ResolveDetectorOwnedSpeechContainer(
+                region.Source,
+                pageCandidates);
+
+        if (textRegion is null ||
+            textRegion.Kind !=
+                PageRegionKind.TextBubble ||
+            speechContainer is null)
+        {
+            return false;
+        }
+
+        if (!string.Equals(
+                region.Source.SecondaryOcrAgreement,
+                "agree",
+                StringComparison.OrdinalIgnoreCase) ||
+            string.IsNullOrWhiteSpace(
+                region.Source.SecondaryOcrText) ||
+            region.Source.Lines.Count == 0)
+        {
+            return false;
+        }
+
+        double averageConfidence =
+            region.Source.Lines.Average(x =>
+                x.Confidence);
+
+        if (averageConfidence < 0.90)
+            return false;
+
+        string primary =
+            NormalizeAgreedDialogueText(
+                region.Source.Text);
+
+        string secondary =
+            NormalizeAgreedDialogueText(
+                region.Source.SecondaryOcrText);
+
+        string corrected =
+            NormalizeAgreedDialogueText(
+                string.IsNullOrWhiteSpace(
+                    region.CorrectedText)
+                    ? region.Source.Text
+                    : region.CorrectedText);
+
+        return primary.Length >= 6 &&
+               string.Equals(
+                   primary,
+                   secondary,
+                   StringComparison.Ordinal) &&
+               string.Equals(
+                   corrected,
+                   secondary,
+                   StringComparison.Ordinal);
+    }
+
+    static ContainerCandidate? ResolveDetectorOwnedSpeechContainer(
+        OcrTextBlock source,
+        IReadOnlyList<ContainerCandidate>? pageCandidates)
+    {
+        if (source.RegionContainer is { } direct &&
+            direct.Kind ==
+                ContainerCandidateKind.Speech)
+        {
+            return direct;
+        }
+
+        if (pageCandidates is null ||
+            string.IsNullOrWhiteSpace(
+                source.RegionId))
+        {
+            return null;
+        }
+
+        var matches =
+            pageCandidates
+                .Where(x =>
+                    x.Kind ==
+                        ContainerCandidateKind.Speech &&
+                    string.Equals(
+                        x.RegionId,
+                        source.RegionId,
+                        StringComparison.Ordinal))
+                .ToList();
+
+        return matches.Count == 1
+            ? matches[0]
+            : null;
+    }
+
+    static string NormalizeAgreedDialogueText(
+        string? text)
+        => string.IsNullOrWhiteSpace(
+               text)
+            ? ""
+            : new string(
+                text
+                    .Where(
+                        char.IsLetterOrDigit)
+                    .Select(
+                        char.ToUpperInvariant)
+                    .ToArray());
 
     public static bool ShouldRecoverDetectorOwnedRenderableUnit(
         VisionTranslation region,

@@ -3183,6 +3183,117 @@ try
         !RenderSafetyPolicy.IsSuspiciousVisionExpansion(
             promotedPage011));
 
+    var lostContainerHalBlock =
+        new OcrTextBlock(
+            2053,
+            145.5,
+            2872.5,
+            104.5,
+            98.16666666666652,
+            "DON'T WORRY HAL",
+            3,
+            "en",
+            [
+                new OcrLine(
+                    145.5,
+                    2872.5,
+                    104.5,
+                    42.5,
+                    "DON'T",
+                    0.9968213f,
+                    "en"),
+                new OcrLine(
+                    147,
+                    2906,
+                    96.33333333333334,
+                    37.333333333333485,
+                    "WORRY",
+                    0.98138636f,
+                    "en"),
+                new OcrLine(
+                    159.33333333333334,
+                    2936,
+                    54.66666666666666,
+                    34.666666666666515,
+                    "HAL",
+                    0.9869554f,
+                    "en")
+            ])
+        {
+            SecondaryOcrText =
+                "DON'T WORRY, HAL...",
+            SecondaryOcrSource =
+                "baberu",
+            SecondaryOcrAgreement =
+                "agree",
+            RegionId =
+                "VB-A",
+            RegionContainer =
+                null,
+            RegionTextRegion =
+                null
+        };
+
+    var lostContainerHal =
+        new VisionTranslation(
+            2053,
+            lostContainerHalBlock,
+            "DON'T WORRY, HAL...",
+            "",
+            "dialogue",
+            false);
+
+    Check("V2 0051 generic recovery still refuses a missing runtime container link",
+        !PagePipelineService.ShouldRecoverDetectorOwnedRenderableUnit(
+            lostContainerHal,
+            [bubbleA, textA, bubbleB, textB]));
+
+    Check("V2 0051 recovers high-confidence agreed dialogue from unique Speech candidate",
+        PagePipelineService.ShouldRecoverDetectorOwnedAgreedDialogue(
+            lostContainerHal,
+            [bubbleA, textA, bubbleB, textB],
+            [detectorOwnedCandidate]));
+
+    Check("V2 0051 disagreement never enters lost-container dialogue recovery",
+        !PagePipelineService.ShouldRecoverDetectorOwnedAgreedDialogue(
+            lostContainerHal with
+            {
+                Source =
+                    lostContainerHalBlock with
+                    {
+                        SecondaryOcrAgreement =
+                            "disagree"
+                    }
+            },
+            [bubbleA, textA, bubbleB, textB],
+            [detectorOwnedCandidate]));
+
+    Check("V2 0051 non-speech candidate cannot restore runtime container link",
+        !PagePipelineService.ShouldRecoverDetectorOwnedAgreedDialogue(
+            lostContainerHal,
+            [bubbleA, textA, bubbleB, textB],
+            [
+                detectorOwnedCandidate with
+                {
+                    Kind =
+                        ContainerCandidateKind.Caption
+                }
+            ]));
+
+    Check("V2 0051 normalized primary/secondary equality is required",
+        !PagePipelineService.ShouldRecoverDetectorOwnedAgreedDialogue(
+            lostContainerHal with
+            {
+                Source =
+                    lostContainerHalBlock with
+                    {
+                        SecondaryOcrText =
+                            "DON'T WORRY, BARRY..."
+                    }
+            },
+            [bubbleA, textA, bubbleB, textB],
+            [detectorOwnedCandidate]));
+
     var greenWarningText =
         "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!";
 
