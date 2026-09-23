@@ -1,0 +1,173 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-014.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "detector_retry",
+      "RegionId": 0,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5368,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "THE Bal E END: ALL ROADS LEAD BAGK",
+        "corrected_text": "...IN THE END...[BR]ALL ROADS LEAD BACK...",
+        "ocr_confidence": 0.7811091542243958,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 68.66666666666667,
+          "Y": 362.6666666666667,
+          "W": 614,
+          "H": 941.3333333333333
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5579,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "AEMI",
+        "corrected_text": "AGHHHHHHH!",
+        "ocr_confidence": 0.3782511055469513,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1372,
+          "Y": 1161.5,
+          "W": 459,
+          "H": 416.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6226,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "DARkNEBS.",
+        "corrected_text": "...TO DARKNESS.",
+        "ocr_confidence": 0.6387450098991394,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1219,
+          "Y": 2657,
+          "W": 730,
+          "H": 369
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.545,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THE Bal E END: ALL ROADS LEAD BAGK",
+        "corrected_text": "...IN THE END...[BR]ALL ROADS LEAD BACK...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.7811091542243958,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5275,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "AEMI",
+        "corrected_text": "AGHHHHHHH!",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.3782511055469513,
+        "type": "sfx"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6047,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "DARkNEBS.",
+        "corrected_text": "...TO DARKNESS.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6387450098991394,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6058,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THE Bal E END: ALL ROADS LEAD BAGK",
+        "corrected_source_text": "...IN THE END...[BR]ALL ROADS LEAD BACK...",
+        "korean_translation": "...\uACB0\uAD6D...[BR]\uBAA8\uB4E0 \uAE38\uC740 \uB2E4\uC2DC...[BR]\uC2DC\uC791\uC810\uC73C\uB85C \uC774\uC5B4\uC9C4\uB2E4...",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.7106,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DARkNEBS.",
+        "corrected_source_text": "...TO DARKNESS.",
+        "korean_translation": "...\uC5B4\uB460 \uC18D\uC73C\uB85C.",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    }
+  ]
+}

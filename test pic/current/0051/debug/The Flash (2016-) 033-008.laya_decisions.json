@@ -1,0 +1,787 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-008.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0829,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.93288493,
+            "BlockCoverage": 0.9696969696969698,
+            "CenterInside": true,
+            "CenterDistance": 3.6552853665768987,
+            "Affinity": 7.337919773836891
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5754,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "MK",
+        "corrected_text": "MK",
+        "ocr_confidence": 0.35462653636932373,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 209,
+          "Y": 209.33333333333334,
+          "W": 42.66666666666666,
+          "H": 95.66666666666666
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 2,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0462,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.93407583,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.426703296426811,
+            "Affinity": 7.462184509590618
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6268,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "%%",
+        "corrected_text": "%%",
+        "ocr_confidence": 0.5916454792022705,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1109,
+          "Y": 381,
+          "W": 119.33333333333348,
+          "H": 104.66666666666663
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 4,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.564,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "n",
+        "corrected_text": "n",
+        "ocr_confidence": 0.8746584057807922,
+        "secondary_ocr": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "secondary_agreement": "disagree",
+        "block": {
+          "X": 750.6666666666667,
+          "Y": 402.33333333333337,
+          "W": 15.333333333333258,
+          "H": 11.333333333333258
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG006",
+      "LayaDecision": "RG006",
+      "Confidence": 0.0854,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG006",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9106535,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.7682953714410904,
+            "Affinity": 7.453790145230476
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6115,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "As",
+        "corrected_text": "As",
+        "ocr_confidence": 0.5494004487991333,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 313,
+          "Y": 1072.6666666666667,
+          "W": 315.33333333333326,
+          "H": 240.33333333333326
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0648,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.95408547,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.1577036657875601,
+            "Affinity": 7.47472732729138
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0272,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG009",
+            "DetectorScore": 0.9438367,
+            "BlockCoverage": 0.9717164400250239,
+            "CenterInside": true,
+            "CenterDistance": 5.129571132170798,
+            "Affinity": 7.3485249623334346
+          }
+        ],
+        "RegionId": "RG009",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG013",
+      "LayaDecision": "RG013",
+      "Confidence": 0.1084,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG013",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.92878854,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 16.418147141366244,
+            "Affinity": 7.431557977091017
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 10,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0699,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG012",
+            "DetectorScore": 0.91440856,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.5,
+            "Affinity": 7.452204282283783
+          }
+        ],
+        "RegionId": "RG012",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 11,
+      "RuleDecision": "RG016",
+      "LayaDecision": "RG016",
+      "Confidence": 0.0775,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG016",
+            "BubbleRegionId": "RG015",
+            "DetectorScore": 0.9475405,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.1785113019778901,
+            "Affinity": 7.471413238206896
+          }
+        ],
+        "RegionId": "RG015",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 12,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.591,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "U",
+        "corrected_text": "U",
+        "ocr_confidence": 0.33092042803764343,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 823.3333333333334,
+          "Y": 2255.3333333333335,
+          "W": 71,
+          "H": 39.666666666666515
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.116,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.90963364,
+            "BlockCoverage": 0.9696000000000013,
+            "CenterInside": true,
+            "CenterDistance": 0.9753916592269721,
+            "Affinity": 7.3312660349188565
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0297,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WHAT DARK MAGIC THIS?! IS",
+        "secondary_ocr": "WHAT DARK MAGIC IS THIS?!",
+        "primary_confidence": 0.9914271235466003,
+        "current_agreement": "disagree",
+        "corrected_text": "WHAT DARK MAGIC IS THIS?!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 2,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1245,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "secondary_ocr": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "primary_confidence": 0.9987741112709045,
+        "current_agreement": "agree",
+        "corrected_text": "DO YOU FEEL THAT, WONDER WOMAN?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0629,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "n",
+        "secondary_ocr": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "primary_confidence": 0.8746584057807922,
+        "current_agreement": "disagree",
+        "corrected_text": "n"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1296,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "CY IS THIS You?!",
+        "secondary_ocr": "CY, IS THIS YOU?!",
+        "primary_confidence": 0.9616652131080627,
+        "current_agreement": "agree",
+        "corrected_text": "CY, IS THIS YOU?!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1107,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "secondary_ocr": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "primary_confidence": 0.9937872290611267,
+        "current_agreement": "agree",
+        "corrected_text": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1398,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!",
+        "secondary_ocr": "WARNING!\nINTERDIMENSIONAL\nENERGY\nUNKNOWN!",
+        "primary_confidence": 0.999210000038147,
+        "current_agreement": "agree",
+        "corrected_text": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0477,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "NOT LPINGI RING!",
+        "secondary_ocr": "NOT HELPING, RING!",
+        "primary_confidence": 0.9929189085960388,
+        "current_agreement": "disagree",
+        "corrected_text": "NOT HELPING, RING!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 10,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1374,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT\u0027S PULLING us IN!",
+        "secondary_ocr": "IT\u0027S PULLING US IN!",
+        "primary_confidence": 0.9913798570632935,
+        "current_agreement": "agree",
+        "corrected_text": "IT\u0027S PULLING US IN!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 11,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0339,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THIS IS WORSE TIDE THAN ANY DRAG I\u0027VE EVER ENCOUNTERED!",
+        "secondary_ocr": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "primary_confidence": 0.9916120767593384,
+        "current_agreement": "disagree",
+        "corrected_text": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 13,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1032,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MY RATE IS GOING UP!",
+        "secondary_ocr": "MY RATE IS GOING UP!",
+        "primary_confidence": 0.9804384112358093,
+        "current_agreement": "agree",
+        "corrected_text": "MY RATE IS GOING UP!"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5443,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WHAT DARK MAGIC THIS?! IS",
+        "corrected_text": "WHAT DARK MAGIC IS THIS?!",
+        "secondary_ocr": "WHAT DARK MAGIC IS THIS?!",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9914271235466003,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5506,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "CY IS THIS You?!",
+        "corrected_text": "CY, IS THIS YOU?!",
+        "secondary_ocr": "CY, IS THIS YOU?!",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9616652131080627,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5292,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "NOT LPINGI RING!",
+        "corrected_text": "NOT HELPING, RING!",
+        "secondary_ocr": "NOT HELPING, RING!",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9929189085960388,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5045,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THIS IS WORSE TIDE THAN ANY DRAG I\u0027VE EVER ENCOUNTERED!",
+        "corrected_text": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "secondary_ocr": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9916120767593384,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5291,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WHAT DARK MAGIC THIS?! IS",
+        "corrected_source_text": "WHAT DARK MAGIC IS THIS?!",
+        "korean_translation": "\uC774\uAC74 \uB300\uCCB4 \uBB34\uC2A8\n\uC5B4\uB460\uC758 \uB9C8\uBC95\uC774\uC9C0?!",
+        "type": "dialogue",
+        "secondary_ocr": "WHAT DARK MAGIC IS THIS?!",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5135,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "corrected_source_text": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "korean_translation": "\uB290\uAEF4\uC9C0\uB098, \uC6D0\uB354\uC6B0\uBA3C?",
+        "type": "dialogue",
+        "secondary_ocr": "DO YOU FEEL THAT, WONDER WOMAN?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5606,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "CY IS THIS You?!",
+        "corrected_source_text": "CY, IS THIS YOU?!",
+        "korean_translation": "\uC0AC\uC774, [BR]\uC774 \uB108\uC57C?!",
+        "type": "dialogue",
+        "secondary_ocr": "CY, IS THIS YOU?!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6081,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "As",
+        "corrected_source_text": "As",
+        "korean_translation": "\uADF8\uB54C",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5912,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "corrected_source_text": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "korean_translation": "\uB0B4 T-\uC2A4\uD53C\uC5B4\uAC00[BR]\uC774\uAC78 \uC0AC\uC774\uBCF4\uADF8\uC758[BR]\uBD90 \uD29C\uBE0C\uB85C[BR]\uC778\uC2DD\uD558\uC9C0 \uBABB\uD558\uACE0 \uC788\uC5B4!",
+        "type": "dialogue",
+        "secondary_ocr": "MY T-SPHERES ARE NOT RECOGNIZING IT AS ONE OF CYBORG\u0027S BOOM TUBES!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6214,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!",
+        "corrected_source_text": "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!",
+        "korean_translation": "\uACBD\uACE0! [BR]\uBBF8\uD655\uC778 \uCC28\uC6D0 \uC5D0\uB108\uC9C0 \uAC10\uC9C0!",
+        "type": "caption",
+        "secondary_ocr": "WARNING!\nINTERDIMENSIONAL\nENERGY\nUNKNOWN!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.545,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "NOT LPINGI RING!",
+        "corrected_source_text": "NOT HELPING, RING!",
+        "korean_translation": "\uB3C4\uC6C0 \uC548 \uB418\uB2C8\uAE4C, \uBCA8\uC774\uB098 \uC6B8\uB824!",
+        "type": "dialogue",
+        "secondary_ocr": "NOT HELPING, RING!",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5775,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT\u0027S PULLING us IN!",
+        "corrected_source_text": "IT\u0027S PULLING US IN!",
+        "korean_translation": "\uB2F9\uAE30\uACE0 \uC788\uC5B4!",
+        "type": "dialogue",
+        "secondary_ocr": "IT\u0027S PULLING US IN!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.602,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THIS IS WORSE TIDE THAN ANY DRAG I\u0027VE EVER ENCOUNTERED!",
+        "corrected_source_text": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "korean_translation": "\uC9C0\uAE08\uAE4C\uC9C0 \uACAA\uC5B4\uBCF8 \uC5B4\uB5A4 \uC870\uB958\uB3C4\n\uC774\uAC83\uBCF4\uB2E4 \uC2EC\uD558\uC9C4 \uC54A\uC558\uC5B4!",
+        "type": "dialogue",
+        "secondary_ocr": "THIS IS WORSE THAN ANY TIDE DRAG I\u0027VE EVER ENCOUNTERED!",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5774,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "U",
+        "corrected_source_text": "U",
+        "korean_translation": "\uC73D",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5269,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MY RATE IS GOING UP!",
+        "corrected_source_text": "MY RATE IS GOING UP!",
+        "korean_translation": "\uB0B4 \uC218\uC218\uB8CC\uAC00\n\uC624\uB97C \uAC70\uC57C!",
+        "type": "dialogue",
+        "secondary_ocr": "MY RATE IS GOING UP!",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+{
+  "SourceFile": "The Flash (2016-) 033-017.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-24T03:48:20.249493+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 845.6666666666667,
+        "Y": 315,
+        "W": 173.9999999999999,
+        "H": 112.66666666666669,
+        "Text": "YOU\u2019RE Nom GOING TO DIE HERE.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 882,
+            "Y": 315,
+            "W": 122,
+            "H": 41.333333333333314,
+            "Text": "YOU\u2019RE",
+            "Confidence": 0.929035,
+            "Language": "en"
+          },
+          {
+            "X": 969,
+            "Y": 329,
+            "W": 50.66666666666663,
+            "H": 98.66666666666669,
+            "Text": "Nom",
+            "Confidence": 0.50158733,
+            "Language": "en"
+          },
+          {
+            "X": 847,
+            "Y": 348,
+            "W": 166,
+            "H": 41.5,
+            "Text": "GOING TO",
+            "Confidence": 0.9723686,
+            "Language": "en"
+          },
+          {
+            "X": 845.6666666666667,
+            "Y": 378.33333333333337,
+            "W": 167.33333333333326,
+            "H": 45.66666666666663,
+            "Text": "DIE HERE.",
+            "Confidence": 0.99470097,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...YOU\u0027RE GOING TO DIE HERE.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "...YOU\u0027RE GOING TO DIE HERE.",
+      "Translation": "...\uB10C \uC5EC\uAE30\uC11C[BR]\uC8FD\uAC8C \uB420 \uAC70\uC57C.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 1168,
+        "Y": 401,
+        "W": 47,
+        "H": 42.33333333333337,
+        "Text": "D",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1168,
+            "Y": 401,
+            "W": 47,
+            "H": 42.33333333333337,
+            "Text": "D",
+            "Confidence": 0.55780494,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "D",
+      "Translation": "D",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 429,
+        "Y": 438,
+        "W": 55,
+        "H": 81,
+        "Text": "D6",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 429,
+            "Y": 438,
+            "W": 55,
+            "H": 81,
+            "Text": "D6",
+            "Confidence": 0.32349473,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "D6",
+      "Translation": "D6",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 1083.6666666666665,
+        "Y": 465.33333333333337,
+        "W": 74,
+        "H": 65.66666666666663,
+        "Text": "HA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1083.6666666666665,
+            "Y": 465.33333333333337,
+            "W": 74,
+            "H": 65.66666666666663,
+            "Text": "HA",
+            "Confidence": 0.97376657,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HA.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "HA.",
+      "Translation": "\uD6D7.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1166,
+        "Y": 541,
+        "W": 109,
+        "H": 96,
+        "Text": "HA.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1166,
+            "Y": 541,
+            "W": 109,
+            "H": 96,
+            "Text": "HA.",
+            "Confidence": 0.9361505,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HA.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "HA.",
+      "Translation": "\uD6D7.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1093,
+        "Y": 629.3333333333333,
+        "W": 175.66666666666652,
+        "H": 194.66666666666674,
+        "Text": "HA.",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1093,
+            "Y": 629.3333333333333,
+            "W": 175.66666666666652,
+            "H": 194.66666666666674,
+            "Text": "HA.",
+            "Confidence": 0.92067474,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "HA.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "HA.",
+      "Translation": "\uD6D7.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 424,
+        "Y": 646,
+        "W": 36,
+        "H": 61,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 424,
+            "Y": 646,
+            "W": 36,
+            "H": 61,
+            "Text": "A",
+            "Confidence": 0.38386884,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1343.6666666666667,
+        "Y": 779,
+        "W": 27,
+        "H": 15.333333333333258,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1343.6666666666667,
+            "Y": 779,
+            "W": 27,
+            "H": 15.333333333333258,
+            "Text": "A",
+            "Confidence": 0.7692422,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "A",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 1291,
+        "Y": 1021.6666666666666,
+        "W": 84,
+        "H": 46.33333333333337,
+        "Text": "2",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1291,
+            "Y": 1021.6666666666666,
+            "W": 84,
+            "H": 46.33333333333337,
+            "Text": "2",
+            "Confidence": 0.46052963,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "2",
+      "Translation": "2",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1227,
+        "Y": 1124,
+        "W": 164,
+        "H": 89,
+        "Text": "R",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1227,
+            "Y": 1124,
+            "W": 164,
+            "H": 89,
+            "Text": "R",
+            "Confidence": 0.63478214,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "R",
+      "Translation": "R",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1491,
+        "Y": 1441.5,
+        "W": 146.5,
+        "H": 144,
+        "Text": "()",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1491,
+            "Y": 1441.5,
+            "W": 146.5,
+            "H": 144,
+            "Text": "()",
+            "Confidence": 0.8241489,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "()",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1630.3333333333333,
+        "Y": 1481,
+        "W": 267.66666666666674,
+        "H": 70.33333333333326,
+        "Text": "I CAN HEAR BRUCE\u0027S VOICE...",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1667,
+            "Y": 1481,
+            "W": 201,
+            "H": 38,
+            "Text": "I CAN HEAR",
+            "Confidence": 0.99978703,
+            "Language": "en"
+          },
+          {
+            "X": 1630.3333333333333,
+            "Y": 1516.3333333333333,
+            "W": 267.66666666666674,
+            "H": 35,
+            "Text": "BRUCE\u0027S VOICE...",
+            "Confidence": 0.9897825,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I CAN HEAR BRUCE\u0027S VOICE...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "I CAN HEAR BRUCE\u0027S VOICE...",
+      "Translation": "\uBE0C\uB8E8\uC2A4\uC758 \uBAA9\uC18C\uB9AC\uAC00 \uB4E4\uB824...",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 780,
+        "Y": 2100.5,
+        "W": 273.3333333333335,
+        "H": 118.5,
+        "Text": "THE FOR IT\u0027S FIRST TIME NOT TELLING ME GO FASTER. TO",
+        "OriginalRegionCount": 9,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 970.5,
+            "Y": 2100.5,
+            "W": 70,
+            "H": 29.5,
+            "Text": "THE",
+            "Confidence": 0.9997497,
+            "Language": "en"
+          },
+          {
+            "X": 888.5,
+            "Y": 2101,
+            "W": 78.5,
+            "H": 27,
+            "Text": "FOR",
+            "Confidence": 0.9979913,
+            "Language": "en"
+          },
+          {
+            "X": 979.5,
+            "Y": 2129,
+            "W": 66.5,
+            "H": 30,
+            "Text": "IT\u0027S",
+            "Confidence": 0.99882716,
+            "Language": "en"
+          },
+          {
+            "X": 790,
+            "Y": 2129.5,
+            "W": 101.5,
+            "H": 29.5,
+            "Text": "FIRST",
+            "Confidence": 0.99831814,
+            "Language": "en"
+          },
+          {
+            "X": 892,
+            "Y": 2129.5,
+            "W": 84.5,
+            "H": 29.5,
+            "Text": "TIME",
+            "Confidence": 0.99981195,
+            "Language": "en"
+          },
+          {
+            "X": 780,
+            "Y": 2155,
+            "W": 273.3333333333335,
+            "H": 35.666666666666515,
+            "Text": "NOT TELLING ME",
+            "Confidence": 0.99923825,
+            "Language": "en"
+          },
+          {
+            "X": 843,
+            "Y": 2185,
+            "W": 62,
+            "H": 34,
+            "Text": "GO",
+            "Confidence": 0.9960112,
+            "Language": "en"
+          },
+          {
+            "X": 903,
+            "Y": 2189,
+            "W": 139,
+            "H": 29,
+            "Text": "FASTER.",
+            "Confidence": 0.9993517,
+            "Language": "en"
+          },
+          {
+            "X": 792,
+            "Y": 2189.5,
+            "W": 51.5,
+            "H": 26,
+            "Text": "TO",
+            "Confidence": 0.9998168,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...BUT FOR THE FIRST TIME IT\u0027S NOT TELLING ME TO GO FASTER.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "...BUT FOR THE FIRST TIME IT\u0027S NOT TELLING ME TO GO FASTER.",
+      "Translation": "...\uD558\uC9C0\uB9CC \uCC98\uC74C\uC73C\uB85C[BR]\uB354 \uBE68\uB9AC \uAC00\uB77C\uACE0 \uD558\uC9C0 \uC54A\uC544.",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 713,
+        "Y": 2612.6666666666665,
+        "W": 261,
+        "H": 130,
+        "Text": "ME TELLING THAT THERE IS NOWHERE TO RUIN...",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 917.3333333333333,
+            "Y": 2612.6666666666665,
+            "W": 56.66666666666674,
+            "H": 31,
+            "Text": "ME",
+            "Confidence": 0.9997467,
+            "Language": "en"
+          },
+          {
+            "X": 778.6666666666666,
+            "Y": 2613.3333333333335,
+            "W": 135.66666666666663,
+            "H": 30.33333333333303,
+            "Text": "TELLING",
+            "Confidence": 0.99991137,
+            "Language": "en"
+          },
+          {
+            "X": 713,
+            "Y": 2636,
+            "W": 258,
+            "H": 43,
+            "Text": "THAT THERE IS",
+            "Confidence": 0.9898388,
+            "Language": "en"
+          },
+          {
+            "X": 714.5,
+            "Y": 2670.5,
+            "W": 192,
+            "H": 35.5,
+            "Text": "NOWHERE",
+            "Confidence": 0.99930406,
+            "Language": "en"
+          },
+          {
+            "X": 909.6666666666667,
+            "Y": 2670.6666666666665,
+            "W": 57,
+            "H": 32.66666666666697,
+            "Text": "TO",
+            "Confidence": 0.99994063,
+            "Language": "en"
+          },
+          {
+            "X": 786,
+            "Y": 2703.3333333333335,
+            "W": 107.33333333333337,
+            "H": 39.33333333333303,
+            "Text": "RUIN...",
+            "Confidence": 0.9125818,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IT\u0027S TELLING ME THAT THERE IS NOWHERE TO RUN...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG013"
+      },
+      "CorrectedText": "IT\u0027S TELLING ME THAT THERE IS NOWHERE TO RUN...",
+      "Translation": "\uB3C4\uB9DD\uCE60 \uACF3\uC774[BR]\uC5C6\uB2E4\uACE0 \uB9D0\uD558\uACE0 \uC788\uC5B4...",
+      "Type": "thought",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 1107,
+        "Y": 2794,
+        "W": 710,
+        "H": 220.66666666666652,
+        "Text": "STICE LE JUSTICE LEAGUE #32. D. AND IN TWO WEEKS MEENA RETURNS In FLASH #39 BLACK HOLE PART 1!",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1155,
+            "Y": 2794,
+            "W": 173,
+            "H": 73,
+            "Text": "STICE LE",
+            "Confidence": 0.9953047,
+            "Language": "en"
+          },
+          {
+            "X": 1254.5,
+            "Y": 2846.5,
+            "W": 471.5,
+            "H": 68.5,
+            "Text": "JUSTICE LEAGUE #32.",
+            "Confidence": 0.9731075,
+            "Language": "en"
+          },
+          {
+            "X": 1222.5,
+            "Y": 2861,
+            "W": 37.5,
+            "H": 37,
+            "Text": "D.",
+            "Confidence": 0.63514787,
+            "Language": "en"
+          },
+          {
+            "X": 1131.3333333333333,
+            "Y": 2896.6666666666665,
+            "W": 667,
+            "H": 62.333333333333485,
+            "Text": "AND IN TWO WEEKS MEENA RETURNS",
+            "Confidence": 0.982111,
+            "Language": "en"
+          },
+          {
+            "X": 1107,
+            "Y": 2947.3333333333335,
+            "W": 710,
+            "H": 67.33333333333303,
+            "Text": "In FLASH #39 BLACK HOLE PART 1!",
+            "Confidence": 0.96020263,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "THE JUSTICE LEAGUE VS. THE DARK KNIGHTS\nIN JUSTICE LEAGUE #32.\nAND IN TWO WEEKS MEENA RETURNS\nIN FLASH #34 BLACK HOLE PART 1!",
+      "Translation": "\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8 vs. \uB2E4\uD06C \uB098\uC774\uCE20\n\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8 #32.\n\uADF8\uB9AC\uACE0 2\uC8FC \uD6C4, \uBBF8\uB098\uAC00 \uB3CC\uC544\uC635\uB2C8\uB2E4\n\uD50C\uB798\uC2DC #34 \uBE14\uB799\uD640 \uD30C\uD2B8 1!",
+      "Type": "caption",
+      "Render": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "Schema": "pipeline-v2-laya-summary-v2",
+  "SourceFile": "The Flash (2016-) 033-017.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "TotalDecisions": 36,
+  "Matched": 24,
+  "Mismatched": 12,
+  "NoAnswer": 0,
+  "ByKind": {
+    "ownership": {
+      "Compared": 8,
+      "Matched": 7,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.07210000000000001
+    },
+    "detector_retry": {
+      "Compared": 7,
+      "Matched": 6,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5898285714285715
+    },
+    "ocr_consensus": {
+      "Compared": 7,
+      "Matched": 7,
+      "Mismatched": 0,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.05431428571428572
+    },
+    "vision_correction": {
+      "Compared": 5,
+      "Matched": 2,
+      "Mismatched": 3,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5448999999999999
+    },
+    "translation_consistency": {
+      "Compared": 9,
+      "Matched": 2,
+      "Mismatched": 7,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.6207555555555556
+    }
+  }
+}

@@ -1,0 +1,914 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-005.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "detector_retry",
+      "RegionId": 0,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5415,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "FErHO0OSA",
+        "corrected_text": "FFHOOOOSH",
+        "ocr_confidence": 0.5665363669395447,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 621,
+          "Y": 0,
+          "W": 1084,
+          "H": 524
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5928,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "O",
+        "corrected_text": "O",
+        "ocr_confidence": 0.35093215107917786,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1196.3333333333333,
+          "Y": 1328.3333333333333,
+          "W": 40.333333333333485,
+          "H": 94
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5941,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "()",
+        "corrected_text": "()",
+        "ocr_confidence": 0.5518391132354736,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1399,
+          "Y": 1351,
+          "W": 121.5,
+          "H": 117
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0398,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.91289073,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 0.8374896350935734,
+            "Affinity": 7.454770386873993
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG004",
+      "LayaDecision": "RG004",
+      "Confidence": 0.0079,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG004",
+            "BubbleRegionId": "RG003",
+            "DetectorScore": 0.93578756,
+            "BlockCoverage": 0.96,
+            "CenterInside": true,
+            "CenterDistance": 3.7165171868296265,
+            "Affinity": 7.300460744904142
+          }
+        ],
+        "RegionId": "RG003",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.0731,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9358283,
+            "BlockCoverage": 0.979591836734694,
+            "CenterInside": true,
+            "CenterDistance": 9.056918779462498,
+            "Affinity": 7.368167673446166
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.1076,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.9609853,
+            "BlockCoverage": 0.9972972972972972,
+            "CenterInside": true,
+            "CenterDistance": 8.70663859107272,
+            "Affinity": 7.452268563469598
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG009",
+      "LayaDecision": "RG009",
+      "Confidence": 0.0759,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG009",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.9415798,
+            "BlockCoverage": 0.9965576592082613,
+            "CenterInside": true,
+            "CenterDistance": 0.3333333333334849,
+            "Affinity": 7.456353879529172
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG010",
+      "Confidence": 0.006,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.9358283,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 80.47860309147732,
+            "Affinity": 0.3069569578833601
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 9,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6213,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "y",
+        "corrected_text": "EL.",
+        "ocr_confidence": 0.4365309774875641,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1019.6666666666667,
+          "Y": 1706,
+          "W": 37.99999999999977,
+          "H": 45
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 10,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6073,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "N 4",
+        "corrected_text": "OF IT, ST",
+        "ocr_confidence": 0.6818234920501709,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 791,
+          "Y": 1713.3333333333333,
+          "W": 106.66666666666674,
+          "H": 42.66666666666674
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6079,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "G",
+        "corrected_text": "G",
+        "ocr_confidence": 0.6505560278892517,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1047,
+          "Y": 1718,
+          "W": 26.333333333333485,
+          "H": 19.333333333333258
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.0985,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.9441385,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.0615528128088303,
+            "Affinity": 7.4679461578326345
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0717,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9190664,
+            "BlockCoverage": 0.07573155759996263,
+            "CenterInside": false,
+            "CenterDistance": 209.6380478613345,
+            "Affinity": 0.3431833492462733
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0743,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.9190664,
+            "BlockCoverage": 0.9895833333333334,
+            "CenterInside": true,
+            "CenterDistance": 1.9002923751654162,
+            "Affinity": 7.414065963152095
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 14,
+      "RuleDecision": "R14",
+      "LayaDecision": "R14",
+      "Confidence": 0.0018,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG013",
+        "candidates": [
+          {
+            "option": "R13",
+            "Id": 13,
+            "source": "PE",
+            "corrected": "HE\u0027S...",
+            "secondary_agreement": null,
+            "ocr_confidence": 0.37970155477523804,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG014"
+            ],
+            "BubbleRegionId": "RG013",
+            "LayoutBounds": {
+              "Top": 2783,
+              "Bottom": 2933,
+              "Left": 1446,
+              "Right": 1730,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 10821.452963727172
+          },
+          {
+            "option": "R14",
+            "Id": 14,
+            "source": "HE WILL FIND BATMAN. I KNOW IT.",
+            "corrected": "HE WILL\nFIND BATMAN.\nI KNOW IT.",
+            "secondary_agreement": "agree",
+            "ocr_confidence": 0.9985800981521606,
+            "detector_text_region": "RG014",
+            "TextRegionIds": [
+              "RG014"
+            ],
+            "BubbleRegionId": "RG013",
+            "LayoutBounds": {
+              "Top": 2783,
+              "Bottom": 2933,
+              "Left": 1446,
+              "Right": 1730,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 138391.76381701353
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0484,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "\u0022JUST RUN FASTER, BARRY!\u0022",
+        "secondary_ocr": "\u0022JUST RUN FASTER, BARRY!\u0022",
+        "primary_confidence": 0.9980422258377075,
+        "current_agreement": "agree",
+        "corrected_text": "\u0022JUST RUN FASTER, BARRY!\u0022"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1543,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "You THINK SUPERMAN MADE IT, FLASH?",
+        "secondary_ocr": "YOU THINK\nSUPERMAN MADE\nIT, FLASH?",
+        "primary_confidence": 0.9249271750450134,
+        "current_agreement": "agree",
+        "corrected_text": "YOU THINK SUPERMAN MADE IT, FLASH?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0588,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IT\u0027S CHAOS GIVEN BUT",
+        "secondary_ocr": "IT\u0027S CHAOS GIVEN FORM... BUT...",
+        "primary_confidence": 0.9965328574180603,
+        "current_agreement": "disagree",
+        "corrected_text": "IT\u0027S CHAOS GIVEN FORM... BUT..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.049,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IN ALL MY TRAVELS WITHIN THE \u0027VERSE, I\u0027VE ALWAYS MULTIVE CIATED THE ORDER APPRECI OF IT, STEEL.",
+        "secondary_ocr": "IN ALL MY TRAVEL\u0027S WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL.",
+        "primary_confidence": 0.9885243773460388,
+        "current_agreement": "disagree",
+        "corrected_text": "IN ALL MY TRAVELS WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.071,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "ERSE, THE DARK ON THE OTHER HAND, IS NOT ORDER.",
+        "secondary_ocr": "THE DARK MULTIVERSE,\nON THE OTHER HAND,\nIS NOT ORDER.",
+        "primary_confidence": 0.9969878792762756,
+        "current_agreement": "disagree",
+        "corrected_text": "THE DARK MULTIVERSE, ON THE OTHER HAND, IS NOT ORDER."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1641,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?",
+        "secondary_ocr": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?",
+        "primary_confidence": 0.9867660999298096,
+        "current_agreement": "agree",
+        "corrected_text": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.085,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HE WILL FIND BATMAN. I KNOW IT.",
+        "secondary_ocr": "HE WILL\nFIND BATMAN.\nI KNOW IT.",
+        "primary_confidence": 0.9985800981521606,
+        "current_agreement": "agree",
+        "corrected_text": "HE WILL\nFIND BATMAN.\nI KNOW IT."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5049,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "FErHO0OSA",
+        "corrected_text": "FFHOOOOSH",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5665363669395447,
+        "type": "sfx"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5252,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IT\u0027S CHAOS GIVEN BUT",
+        "corrected_text": "IT\u0027S CHAOS GIVEN FORM... BUT...",
+        "secondary_ocr": "IT\u0027S CHAOS GIVEN FORM... BUT...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9965328574180603,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5244,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IN ALL MY TRAVELS WITHIN THE \u0027VERSE, I\u0027VE ALWAYS MULTIVE CIATED THE ORDER APPRECI OF IT, STEEL.",
+        "corrected_text": "IN ALL MY TRAVELS WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL.",
+        "secondary_ocr": "IN ALL MY TRAVEL\u0027S WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9885243773460388,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5854,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "ERSE, THE DARK ON THE OTHER HAND, IS NOT ORDER.",
+        "corrected_text": "THE DARK MULTIVERSE, ON THE OTHER HAND, IS NOT ORDER.",
+        "secondary_ocr": "THE DARK MULTIVERSE,\nON THE OTHER HAND,\nIS NOT ORDER.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9969878792762756,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5315,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "D",
+        "corrected_text": "BUT...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.5112571716308594,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5433,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "y",
+        "corrected_text": "EL.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.4365309774875641,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6453,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "N 4",
+        "corrected_text": "OF IT, ST",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6818234920501709,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5335,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "PE",
+        "corrected_text": "HE\u0027S...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.37970155477523804,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6462,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "O",
+        "corrected_source_text": "O",
+        "korean_translation": "\uC624",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5551,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "\u0022JUST RUN FASTER, BARRY!\u0022",
+        "corrected_source_text": "\u0022JUST RUN FASTER, BARRY!\u0022",
+        "korean_translation": "\u0022\uADF8\uB0E5 \uB354 \uBE68\uB9AC \uB6F0\uC5B4, \uBC30\uB9AC!\u0022",
+        "type": "dialogue",
+        "secondary_ocr": "\u0022JUST RUN FASTER, BARRY!\u0022",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5192,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "You THINK SUPERMAN MADE IT, FLASH?",
+        "corrected_source_text": "YOU THINK SUPERMAN MADE IT, FLASH?",
+        "korean_translation": "\uC288\uD37C\uB9E8\uC774 \uD574\uB0B8 \uAC70\uB77C\uACE0 \uC0DD\uAC01\uD558\uB098, \uD50C\uB798\uC2DC?",
+        "type": "dialogue",
+        "secondary_ocr": "YOU THINK\nSUPERMAN MADE\nIT, FLASH?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5808,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IT\u0027S CHAOS GIVEN BUT",
+        "corrected_source_text": "IT\u0027S CHAOS GIVEN FORM... BUT...",
+        "korean_translation": "\uD615\uD0DC\uB97C \uAC16\uCD98\n\uD63C\uB3C8... \uD558\uC9C0\uB9CC...",
+        "type": "dialogue",
+        "secondary_ocr": "IT\u0027S CHAOS GIVEN FORM... BUT...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5238,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IN ALL MY TRAVELS WITHIN THE \u0027VERSE, I\u0027VE ALWAYS MULTIVE CIATED THE ORDER APPRECI OF IT, STEEL.",
+        "corrected_source_text": "IN ALL MY TRAVELS WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL.",
+        "korean_translation": "\uBA40\uD2F0\uBC84\uC2A4\uB97C \uC5EC\uD589\uD558\uBA70[BR]\uB09C \uB298 \uADF8 \uC9C8\uC11C\uB97C[BR]\uC18C\uC911\uD788 \uC5EC\uACA8\uC654\uB124, \uC2A4\uD2F8.",
+        "type": "dialogue",
+        "secondary_ocr": "IN ALL MY TRAVEL\u0027S WITHIN THE MULTIVERSE, I\u0027VE ALWAYS APPRECIATED THE ORDER OF IT, STEEL.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5533,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "ERSE, THE DARK ON THE OTHER HAND, IS NOT ORDER.",
+        "corrected_source_text": "THE DARK MULTIVERSE, ON THE OTHER HAND, IS NOT ORDER.",
+        "korean_translation": "\uBC18\uBA74\uC5D0 \uB2E4\uD06C \uBA40\uD2F0\uBC84\uC2A4\uB294 \uC9C8\uC11C\uAC00 \uC544\uB2C8\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "THE DARK MULTIVERSE,\nON THE OTHER HAND,\nIS NOT ORDER.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5724,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "D",
+        "corrected_source_text": "BUT...",
+        "korean_translation": "\uD558\uC9C0\uB9CC...",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.7074,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "y",
+        "corrected_source_text": "EL.",
+        "korean_translation": "\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6119,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "N 4",
+        "corrected_source_text": "OF IT, ST",
+        "korean_translation": "\uADF8\uAC70, \uC2A4...",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6194,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?",
+        "corrected_source_text": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?",
+        "korean_translation": "\uC288\uD37C\uB9E8\uC774 \uB0A0\uC544\uAC00\uB294 \uAC78 \uBCF4\uACE0\uB3C4[BR]\uAC10\uB3D9\uC744 \uBABB \uBC1B\uB2E4\uB2C8 \uB9D0\uC774 \uB3FC?",
+        "type": "dialogue",
+        "secondary_ocr": "HOW CAN YOU SEE SUPERMAN FLY AND NOT BE INSPIRED?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6567,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "PE",
+        "corrected_source_text": "HE\u0027S...",
+        "korean_translation": "\uADF8\uAC00...",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5139,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HE WILL FIND BATMAN. I KNOW IT.",
+        "corrected_source_text": "HE WILL\nFIND BATMAN.\nI KNOW IT.",
+        "korean_translation": "\uADF8\uB294\n\uBC30\uD2B8\uB9E8\uC744\n\uCC3E\uC544\uB0BC \uAC70\uC57C.\n\uBD84\uBA85\uD574.",
+        "type": "dialogue",
+        "secondary_ocr": "HE WILL\nFIND BATMAN.\nI KNOW IT.",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

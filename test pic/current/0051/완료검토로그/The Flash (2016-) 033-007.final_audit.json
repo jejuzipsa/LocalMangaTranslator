@@ -1,0 +1,985 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-007.jpg",
+  "output_file": "The Flash (2016-) 033-007.translated.webp",
+  "image": {
+    "width": 3975,
+    "height": 3056,
+    "changed_pixels": 326630,
+    "changed_ratio": 0.026888438868583095,
+    "changed_regions": [
+      {
+        "x": 481,
+        "y": 601,
+        "width": 320,
+        "height": 142
+      },
+      {
+        "x": 1120,
+        "y": 1859,
+        "width": 278,
+        "height": 141
+      },
+      {
+        "x": 2497,
+        "y": 83,
+        "width": 151,
+        "height": 140
+      },
+      {
+        "x": 3648,
+        "y": 159,
+        "width": 186,
+        "height": 111
+      },
+      {
+        "x": 3688,
+        "y": 392,
+        "width": 200,
+        "height": 82
+      },
+      {
+        "x": 2422,
+        "y": 1951,
+        "width": 168,
+        "height": 82
+      },
+      {
+        "x": 2492,
+        "y": 1775,
+        "width": 177,
+        "height": 60
+      },
+      {
+        "x": 3568,
+        "y": 392,
+        "width": 122,
+        "height": 82
+      },
+      {
+        "x": 1356,
+        "y": 1914,
+        "width": 110,
+        "height": 86
+      },
+      {
+        "x": 1059,
+        "y": 1889,
+        "width": 83,
+        "height": 111
+      },
+      {
+        "x": 626,
+        "y": 602,
+        "width": 108,
+        "height": 84
+      },
+      {
+        "x": 3788,
+        "y": 1038,
+        "width": 118,
+        "height": 71
+      },
+      {
+        "x": 3483,
+        "y": 334,
+        "width": 153,
+        "height": 54
+      },
+      {
+        "x": 2406,
+        "y": 113,
+        "width": 99,
+        "height": 82
+      },
+      {
+        "x": 1005,
+        "y": 2242,
+        "width": 94,
+        "height": 86
+      },
+      {
+        "x": 2467,
+        "y": 325,
+        "width": 98,
+        "height": 81
+      },
+      {
+        "x": 3585,
+        "y": 159,
+        "width": 98,
+        "height": 81
+      },
+      {
+        "x": 2616,
+        "y": 112,
+        "width": 95,
+        "height": 82
+      },
+      {
+        "x": 805,
+        "y": 601,
+        "width": 139,
+        "height": 56
+      },
+      {
+        "x": 842,
+        "y": 656,
+        "width": 105,
+        "height": 72
+      },
+      {
+        "x": 854,
+        "y": 531,
+        "width": 100,
+        "height": 73
+      },
+      {
+        "x": 473,
+        "y": 737,
+        "width": 93,
+        "height": 75
+      },
+      {
+        "x": 3419,
+        "y": 392,
+        "width": 86,
+        "height": 81
+      },
+      {
+        "x": 473,
+        "y": 531,
+        "width": 84,
+        "height": 79
+      },
+      {
+        "x": 864,
+        "y": 742,
+        "width": 90,
+        "height": 70
+      },
+      {
+        "x": 3829,
+        "y": 322,
+        "width": 95,
+        "height": 66
+      },
+      {
+        "x": 2371,
+        "y": 83,
+        "width": 70,
+        "height": 88
+      },
+      {
+        "x": 183,
+        "y": 2844,
+        "width": 82,
+        "height": 73
+      },
+      {
+        "x": 3408,
+        "y": 322,
+        "width": 93,
+        "height": 64
+      },
+      {
+        "x": 1038,
+        "y": 2228,
+        "width": 115,
+        "height": 48
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-007.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 231997,
+    "erase_changed_ratio": 0.01909817577134578,
+    "typeset_changed_pixels": 140895,
+    "typeset_changed_ratio": 0.011598587375284007
+  },
+  "region_analysis": {
+    "total": 41,
+    "bubbles": 20,
+    "text_regions": 21,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 36,
+      "Global2x": 36,
+      "Focus3x": 271,
+      "Region1x": 93,
+      "Region2x": 122,
+      "Container1x": 109,
+      "Container2x": 127
+    },
+    "canonical_lines": 128,
+    "units": 32,
+    "assigned_lines": 115,
+    "orphan_groups": 12,
+    "secondary_total": 20,
+    "secondary_accepted": 20,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 59,
+          "Bottom": 306,
+          "Left": 3542,
+          "Right": 3904,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUSTICE\nLEAGUE, I KNOW\nYOU\u0027RE STRESSED,\nBUT REMEMBER WE\nCAN\u0027T LET",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 72,
+          "Bottom": 232,
+          "Left": 2357,
+          "Right": 2718,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AT LEAST YOU\u0027RE NOT SADDLED WITH GREEDY POND SCUM LIKE DEATHSTRO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 177,
+          "Bottom": 308,
+          "Left": 1072,
+          "Right": 1361,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "HEY, SPACE IS NO PICNIC EITHER, WONDER WOMAN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 310,
+          "Bottom": 416,
+          "Left": 2427,
+          "Right": 2555,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027M RIGHT HERE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG008",
+        "Bounds": {
+          "Top": 322,
+          "Bottom": 570,
+          "Left": 3408,
+          "Right": 3924,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW, MY PART IN SUPERMAN\u0027S GAME PLAN MIGHT BE ONE, BUT THERE\u0027S NO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 417,
+          "Bottom": 519,
+          "Left": 438,
+          "Right": 673,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I WISH THAT WERE TRUE, FLASH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 531,
+          "Bottom": 812,
+          "Left": 473,
+          "Right": 954,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "FLASH.\nTHE GODS HAVE NOT BLESSED MY JOURNEY TO THE ROCK OF ETERWITY WITH DOCTOR FATE AND KAND ANATA THENENTATA THALATATATATATATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1038,
+          "Bottom": 1148,
+          "Left": 3764,
+          "Right": 3906,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHERE CAN I HELP?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 1697,
+          "Bottom": 1867,
+          "Left": 2481,
+          "Right": 2767,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT IF THE NTH METAL CAN KILL THOSE TWISTED VERSIONS OF BATMAN?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1847,
+          "Bottom": 2095,
+          "Left": 1051,
+          "Right": 1475,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "MR. TERRIFIC AND I ARE HEADING TO THE HIDDEN HEART OF THE REAL T",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1884,
+          "Bottom": 2042,
+          "Left": 2340,
+          "Right": 2663,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I WILL RISK ATLANTIS TO BREACH THE FORBIDDEN HALLS BENEATH...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 2227,
+          "Bottom": 2305,
+          "Left": 155,
+          "Right": 342,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU EZRT: CAN\u0027T.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 2228,
+          "Bottom": 2390,
+          "Left": 773,
+          "Right": 1153,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YES, FLASH...\nIT\u0027S HE! YOU HAVE\nTO KNOW SZZRTS YOU\nARE OUT OF E",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 2235,
+          "Bottom": 2287,
+          "Left": 1403,
+          "Right": 1518,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEY",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG029",
+        "Bounds": {
+          "Top": 2263,
+          "Bottom": 2306,
+          "Left": 2281,
+          "Right": 2430,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "COMING",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0016",
+        "RegionId": "RG031",
+        "Bounds": {
+          "Top": 2299,
+          "Bottom": 2350,
+          "Left": 2778,
+          "Right": 2877,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0017",
+        "RegionId": "RG033",
+        "Bounds": {
+          "Top": 2332,
+          "Bottom": 2388,
+          "Left": 3638,
+          "Right": 3747,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "RUN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0018",
+        "RegionId": "RG034",
+        "Bounds": {
+          "Top": 2331,
+          "Bottom": 2380,
+          "Left": 2436,
+          "Right": 2535,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "FOR",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0019",
+        "RegionId": "RG037",
+        "Bounds": {
+          "Top": 2594,
+          "Bottom": 2645,
+          "Left": 1473,
+          "Right": 1574,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ARE",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0020",
+        "RegionId": "RG040",
+        "Bounds": {
+          "Top": 2852,
+          "Bottom": 2953,
+          "Left": 98,
+          "Right": 311,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "CYBORG?! THAT YOU, BUDDY?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 32,
+    "requested_render": 25
+  },
+  "render": {
+    "total": 20,
+    "approved": 19,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 25,
+    "TranslatedUnits": 19,
+    "PreservedOriginalUnits": 6,
+    "EraseCommittedUnits": 19,
+    "TypesetCommittedUnits": 19,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "N",
+        "Translation": "\uC544\uB2C8.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "JUSTICE LEAGUE, I KNOW YOU\u0027RE STRESSEDI BUT REMEMBER WE WE OUR LET GET FRUSTRATIONS IN TUE WAV OUR 05 TEAMWORK.",
+        "Translation": "\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8, \uB2E4\uB4E4 \uC2A4\uD2B8\uB808\uC2A4\uBC1B\uB294 \uAC74 \uC54C\uC9C0\uB9CC, \uAC1C\uC778\uC801\uC778 \uAC10\uC815 \uB54C\uBB38\uC5D0 \uD300\uC6CC\uD06C\uB97C \uB9DD\uCCD0\uC120 \uC548 \uB41C\uB2E4\uB294 \uAC78 \uC78A\uC9C0 \uB9C8\uC138\uC694.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "LEAST YOU\u0027RE AT NOT WITH SCUM GREEDY POND DEATHSTROKE, LIKE LANTERN.",
+        "Translation": "\uC801\uC5B4\uB3C4 \uB10C \uB370\uC2A4\uC2A4\uD2B8\uB85C\uD06C \uAC19\uC740 \uD0D0\uC695\uC2A4\uB7EC\uC6B4 \uC4F0\uB808\uAE30\uB97C \uC0C1\uB300\uD560 \uD544\uC694\uB294 \uC5C6\uC796\uC544, \uB79C\uD134.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "SPACE HEY, IS NO PICNIC EITHER, WONDER WOMAN.",
+        "Translation": "\uC774\uBD10, \uC6B0\uC8FC\uB3C4\n\uADF8\uB807\uAC8C\n\uC990\uAC70\uC6B4 \uACF3\uC774\n\uC544\uB2C8\uB77C\uACE0,\n\uC6D0\uB354 \uC6B0\uBA3C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "HD",
+        "Translation": "\uC774\uB9AC \uC640!",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "I\u0027M RIGHT HERE.",
+        "Translation": "\uB098 \uBC14\uB85C \uC5EC\uAE30 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "MY PART IN SUPERMAN\u0027S GAME PLAN MIGHT BE DONE, BUT THERE\u0027S NO WAY STEEL AND I ARE GOING TO STAND AROUND WHILE THE REST OF YOU RISK YOUR LIVES TO SAVE THE WORLD.",
+        "Translation": "\uC790, \uC288\uD37C\uB9E8\uC758 \uACC4\uD68D\uC5D0\uC11C \uB0B4 \uC5ED\uD560\uC740 \uB05D\uB0AC\uC744\uC9C0 \uBAB0\uB77C\uB3C4,[BR] \uB098\uBA38\uC9C0 \uB108\uD76C\uB4E4\uC774 \uBAA9\uC228\uC744 \uAC78\uACE0 \uC138\uC0C1\uC744 \uAD6C\uD558\uB294 \uB3D9\uC548[BR] \uC2A4\uD2F8\uACFC \uB0B4\uAC00 \uAC00\uB9CC\uD788 \uC11C \uC788\uC744 \uB9AC\uB294 \uC5C6\uC73C\uB2C8\uAE4C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "I WISH THAT TRUE. WERE FLASH.",
+        "Translation": "\uADF8\uAC8C \uC0AC\uC2E4\uC774\uBA74 \uC88B\uACA0\uB124, \uD50C\uB798\uC2DC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "HA THE GODS NOT BLESSED TO THER JOURNEY ETERNITY WITH DOCTOR FATE AND KENDRA SAUNDERS, BUT IF THIS IS THE ONLY WAY TO RETRIEVE THE NTH METAL, THEN IT WILL BE WORTH DIVINE WRATH.",
+        "Translation": "\uBC88\uCA4D.\n\n\uB2E5\uD130 \uD398\uC774\uD2B8, \uCF04\uB4DC\uB77C \uC0AC\uC6B4\uB354\uC2A4\uC640 \uD568\uAED8\n\uC601\uC6D0\uC758 \uBC14\uC704\uB85C \uD5A5\uD558\uB294 \uB0B4 \uC5EC\uC815\uC5D0\n\uC2E0\uB4E4\uC758 \uCD95\uBCF5\uC740 \uC5C6\uC5C8\uC73C\uB098,\nN\uBC88 \uAE08\uC18D\uC744 \uB418\uCC3E\uC744 \uC720\uC77C\uD55C\n\uBC29\uBC95\uC774 \uC774\uAC83\uC774\uB77C\uBA74,\n\uC2E0\uC758 \uBD84\uB178\uB97C \uAC10\uC218\uD560 \uAC00\uCE58\uAC00\n\uC788\uC744 \uAC83\uC774\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "I",
+        "Translation": "\uB098",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "WHERE CAN I HELP?",
+        "Translation": "\uBB34\uC5C7\uC744\n\uB3C4\uC640\n\uB4DC\uB9B4\uAE4C\uC694?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "FAY AA",
+        "Translation": "\uB3C4\uC640\uC918!",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "THE BUT IF NTH METAL KILL THOSE TWISTED VERSIONS OF BATMAN?",
+        "Translation": "\uD558\uC9C0\uB9CC N \uBA54\uD0C8\uC774 \uC800 \uB4A4\uD2C0\uB9B0 \uBC84\uC804\uC758 \uBC30\uD2B8\uB9E8\uB4E4\uC744[BR]\uC8FD\uC77C \uC218 \uC788\uB2E4\uBA74?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "MR. TERRIFIC AND I ARE HEADING TO THE HIDDEN HEART OF THE REAL THANAGAR EMPIRE, AND I DO NOT LIKE FLYING BLIND INTO THE UNKNOWN LIKE THIS...",
+        "Translation": "\uBBF8\uC2A4\uD130 \uD14C\uB9AC\uD53D\uACFC \uB098\uB294 \uC9C4\uC9DC \uD0C0\uB098\uAC00\uB974 \uC81C\uAD6D\uC758[BR]\uC228\uACA8\uC9C4 \uC2EC\uC7A5\uBD80\uB85C \uD5A5\uD558\uACE0 \uC788\uC5B4. \uC774\uB7F0 \uC2DD\uC73C\uB85C[BR]\uC815\uCCB4 \uBAA8\uB97C \uACF3\uC73C\uB85C \uBB34\uD131\uB300\uACE0[BR]\uB0A0\uC544\uAC00\uB294 \uAC74[BR]\uB0B4 \uC2A4\uD0C0\uC77C\uC774 \uC544\uB2C8\uAC70\uB4E0...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "RISK I WILL TO ATLANTIS THE BREACH FORBIDDEN HALLS BENEATH..",
+        "Translation": "\uC544\uD2C0\uB780\uD2F0\uC2A4\uB97C \uAC78\uACE0\uC11C\uB77C\uB3C4[BR]\uADF8 \uC544\uB798 \uAE08\uC9C0\uB41C \uD68C\uB791\uC744[BR]\uB3CC\uD30C\uD558\uACA0\uB2E4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "RPA",
+        "Translation": "\uADF8 \uC544\uB798...",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "MM",
+        "Translation": "\uADF8\uB798,",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "THEY",
+        "Translation": "\uADF8\uB188\uB4E4",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 23,
+        "SourceText": "YES, FLASH... IT\u0027S YOL HAVE ME! TO KNOW ZZRTE YOU ZZRT ARE OLIT OF TIME.",
+        "Translation": "\uADF8\uB798, \uD50C\uB798\uC2DC... \uC800\uB188\uC774\uC57C! \uC54C\uC544\uC57C \uD574, \uC2DC\uAC04\uC774 \uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 24,
+        "SourceText": "Cols",
+        "Translation": "\uB108.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 25,
+        "SourceText": "COMING",
+        "Translation": "\uC628\uB2E4!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 27,
+        "SourceText": "RUN.",
+        "Translation": "\uB3C4\uB9DD\uCCD0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 28,
+        "SourceText": "FOR",
+        "Translation": "\uC704\uD574",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 29,
+        "SourceText": "ARE",
+        "Translation": "\uC5B4?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 31,
+        "SourceText": "CYBORG?! THAT YOU, BUDDY?",
+        "Translation": "\uC0AC\uC774\uBCF4\uADF8\uB77C\uACE0?!\n\uB124\uAC00\n\uCE5C\uAD6C\uB77C\uACE0?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}
