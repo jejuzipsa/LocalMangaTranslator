@@ -1,0 +1,126 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "The Flash (2016-) 033-003.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": false,
+  "Requests": 2,
+  "RecoveredRequests": 0,
+  "AdvisoryEligibleRequests": 0,
+  "AppliedRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 12,
+      "SourceText": "WILLIAMSONWRITER HOWARD PCRTERARTIST HI-FICOLORS STEVE WANDS LETTERS ETHANVANSCIVER \u0026 JASCN WRIGHT COVER \u0026 HI-FI VARIANT COVER CORTER ANDREW MARINO ASSIST\u00C1NTEDITOR REBECCA EDITOR",
+      "CorrectedText": "JOSHUA WILLIAMSON WRITER\nHOWARD PORTER ARTIST\nHI-FI COLORS\nSTEVE WANDS LETTERS\nETHAN VAN SCIVER \u0026 JASON WRIGHT COVER\nPORTER \u0026 HI-FI VARIANT COVER\nANDREW MARINO ASSISTANT EDITOR\nREBECCA TAYLOR EDITOR",
+      "LayaConfidence": 0.5774,
+      "Block": {
+        "X": 65,
+        "Y": 572.3333333333333,
+        "W": 910.3333333333334,
+        "H": 404.66666666666674
+      },
+      "Recovered": false,
+      "TwoScaleAgreement": false,
+      "CrossScaleTextIoU": 0,
+      "CrossScaleBubbleIoU": 0,
+      "MinimumTextScore": 0,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "retry_not_recovered",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 0,
+            "Y": 0,
+            "Width": 1988,
+            "Height": 1988
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.32193158953722334,
+          "RegionCount": 11,
+          "TextBubbleCount": 5,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 0,
+            "Y": 46,
+            "Width": 1457,
+            "Height": 1457
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 0.43925875085792726,
+          "RegionCount": 4,
+          "TextBubbleCount": 1,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        }
+      ]
+    },
+    {
+      "TranslationRegionId": 13,
+      "SourceText": "BRIAN CUNNINGHAM BERGANZA GROUP EDITOR EDITORS SPECIALTHANKS TOSCCTTSNYDER, GREG CAPULLO AND JAMES TYNICNIV SUPERMAN CREATED BY JERRY SIEGEL AND JCE SHUSTER. BYSPECIAL ARRANGEMENT WITHTHE JERRY SIEGEL FAMILY.",
+      "CorrectedText": "ANDREW MARINO ASSISTANT EDITOR\nREBECCA TAYLOR EDITOR\nBRIAN CUNNINGHAM\n\u0026 EDDIE BERGANZA\nGROUP EDITORS\nSPECIAL THANKS TO SCOTT SNYDER,\nGREG CAPULLO AND JAMES TYNION IV\nSUPERMAN CREATED BY JERRY SIEGEL\nAND JOE SCHUSTER. BY SPECIAL ARRANGEMENT\nWITH THE JERRY SIEGEL FAMILY.",
+      "LayaConfidence": 0.5694,
+      "Block": {
+        "X": 70.66666666666667,
+        "Y": 970.3333333333334,
+        "W": 769,
+        "H": 381.33333333333337
+      },
+      "Recovered": false,
+      "TwoScaleAgreement": false,
+      "CrossScaleTextIoU": 0,
+      "CrossScaleBubbleIoU": 0,
+      "MinimumTextScore": 0,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "retry_not_recovered",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 0,
+            "Y": 238,
+            "Width": 1846,
+            "Height": 1846
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.3466955579631636,
+          "RegionCount": 12,
+          "TextBubbleCount": 5,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 0,
+            "Y": 546,
+            "Width": 1231,
+            "Height": 1231
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 0.5199025182778229,
+          "RegionCount": 1,
+          "TextBubbleCount": 0,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        }
+      ]
+    }
+  ]
+}

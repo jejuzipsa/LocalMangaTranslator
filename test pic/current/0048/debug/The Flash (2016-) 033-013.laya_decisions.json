@@ -1,0 +1,1576 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-013.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "detector_retry",
+      "RegionId": 0,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5768,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "Cantral City.",
+        "corrected_text": "Central City.",
+        "ocr_confidence": 0.9327952265739441,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 124,
+          "Y": 37.5,
+          "W": 589,
+          "H": 128.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5967,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "CHD E",
+        "corrected_text": "CHD E",
+        "ocr_confidence": 0.5181346535682678,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3343,
+          "Y": 94,
+          "W": 190.5,
+          "H": 167
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6654,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "Icome",
+        "corrected_text": "Welcome to Central City",
+        "ocr_confidence": 0.9468657970428467,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1179.3333333333333,
+          "Y": 244.66666666666666,
+          "W": 59.66666666666674,
+          "H": 27.333333333333343
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 3,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6125,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A mA",
+        "corrected_text": "A mA",
+        "ocr_confidence": 0.4594622254371643,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3381,
+          "Y": 410,
+          "W": 125.66666666666652,
+          "H": 70.33333333333331
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG003",
+      "LayaDecision": "RG003",
+      "Confidence": 0.2268,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG003",
+            "BubbleRegionId": "RG002",
+            "DetectorScore": 0.87614334,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.3333333333333712,
+            "Affinity": 7.435405001481374
+          }
+        ],
+        "RegionId": "RG002",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 5,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5941,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "ONS",
+        "corrected_text": "JOHNS",
+        "ocr_confidence": 0.31057804822921753,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 319,
+          "Y": 605.5,
+          "W": 99.5,
+          "H": 56
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 6,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5939,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "2",
+        "corrected_text": "2",
+        "ocr_confidence": 0.5666810274124146,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3008.5,
+          "Y": 613,
+          "W": 48,
+          "H": 52.5
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 7,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5932,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "E",
+        "corrected_text": "E",
+        "ocr_confidence": 0.34543317556381226,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3814,
+          "Y": 694,
+          "W": 91,
+          "H": 163
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 8,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.613,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "A",
+        "corrected_text": "A",
+        "ocr_confidence": 0.3508870005607605,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 0,
+          "Y": 703,
+          "W": 1042,
+          "H": 579
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG005",
+      "LayaDecision": "RG005",
+      "Confidence": 0.1099,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG005",
+            "BubbleRegionId": "RG004",
+            "DetectorScore": 0.8707186,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 4.190763653560053,
+            "Affinity": 7.426977771875772
+          }
+        ],
+        "RegionId": "RG004",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 10,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6093,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "m",
+        "corrected_text": "m",
+        "ocr_confidence": 0.3122480809688568,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3054,
+          "Y": 816.3333333333334,
+          "W": 18,
+          "H": 11.666666666666629
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6033,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "IES",
+        "corrected_text": "IES",
+        "ocr_confidence": 0.7088572978973389,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 120,
+          "Y": 1576.6666666666667,
+          "W": 61,
+          "H": 23.333333333333258
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 12,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG009",
+      "Confidence": 0.054,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG009",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.64859754,
+            "BlockCoverage": 0.8888888888888888,
+            "CenterInside": true,
+            "CenterDistance": 8.73212459828649,
+            "Affinity": 6.862390075594593
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1575,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG008",
+            "DetectorScore": 0.93144035,
+            "BlockCoverage": 0.9487352652259335,
+            "CenterInside": true,
+            "CenterDistance": 7.590198357823777,
+            "Affinity": 7.245480840884864
+          }
+        ],
+        "RegionId": "RG008",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG011",
+      "LayaDecision": "RG011",
+      "Confidence": 0.1649,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG011",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.94333357,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 5.044248650140498,
+            "Affinity": 7.4615782857941255
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 15,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5783,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "de",
+        "corrected_text": "de",
+        "ocr_confidence": 0.501549482345581,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 652.3333333333334,
+          "Y": 1628,
+          "W": 16.66666666666663,
+          "H": 12.666666666666742
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG014",
+      "LayaDecision": "RG014",
+      "Confidence": 0.0725,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG012",
+            "DetectorScore": 0.7888417,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 22.333333333333485,
+            "Affinity": 7.349754195531209
+          }
+        ],
+        "RegionId": "RG012",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 17,
+      "RuleDecision": "RG015",
+      "LayaDecision": "RG015",
+      "Confidence": 0.0452,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG015",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.7427258,
+            "BlockCoverage": 0.7860962566844929,
+            "CenterInside": true,
+            "CenterDistance": 1.9507833184529342,
+            "Affinity": 6.511846354874549
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 18,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6286,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "d",
+        "corrected_text": "d",
+        "ocr_confidence": 0.41270893812179565,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 407,
+          "Y": 1714.3333333333333,
+          "W": 78.66666666666669,
+          "H": 46
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 19,
+      "RuleDecision": "RG019",
+      "LayaDecision": "RG019",
+      "Confidence": 0.0901,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG019",
+            "BubbleRegionId": "RG016",
+            "DetectorScore": 0.8173897,
+            "BlockCoverage": 0.5403508771929825,
+            "CenterInside": true,
+            "CenterDistance": 4.47213595499958,
+            "Affinity": 5.561154100181327
+          }
+        ],
+        "RegionId": "RG016",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 20,
+      "RuleDecision": "RG018",
+      "LayaDecision": "RG018",
+      "Confidence": 0.0001,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG018",
+            "BubbleRegionId": "RG017",
+            "DetectorScore": 0.77100563,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 6.833333333333186,
+            "Affinity": 7.3718361485799155
+          },
+          {
+            "TextRegionId": "RG014",
+            "BubbleRegionId": "RG012",
+            "DetectorScore": 0.7888417,
+            "BlockCoverage": 0,
+            "CenterInside": false,
+            "CenterDistance": 87.83855139465301,
+            "Affinity": 0.21874375940856997
+          }
+        ],
+        "RegionId": "RG017",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 21,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG021",
+      "Confidence": 0.0917,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG021",
+            "BubbleRegionId": "RG020",
+            "DetectorScore": 0.9384542,
+            "BlockCoverage": 0.3913043478260889,
+            "CenterInside": false,
+            "CenterDistance": 137.51010063910851,
+            "Affinity": 1.7594242954052433
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 22,
+      "RuleDecision": "RG021",
+      "LayaDecision": "RG021",
+      "Confidence": 0.1117,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG021",
+            "BubbleRegionId": "RG020",
+            "DetectorScore": 0.9384542,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 4.613536845222117,
+            "Affinity": 7.4600000316886605
+          }
+        ],
+        "RegionId": "RG020",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 23,
+      "RuleDecision": "RG023",
+      "LayaDecision": "RG023",
+      "Confidence": 0.1352,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG023",
+            "BubbleRegionId": "RG022",
+            "DetectorScore": 0.9541441,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.25,
+            "Affinity": 7.474572060108184
+          }
+        ],
+        "RegionId": "RG022",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 24,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5446,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "O",
+        "corrected_text": "O",
+        "ocr_confidence": 0.42019954323768616,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 2064.6666666666665,
+          "Y": 1977.6666666666667,
+          "W": 19.333333333333485,
+          "H": 23.666666666666515
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 25,
+      "RuleDecision": "RG025",
+      "LayaDecision": "RG025",
+      "Confidence": 0.0679,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG025",
+            "BubbleRegionId": "RG024",
+            "DetectorScore": 0.9337584,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 2.3154073315751202,
+            "Affinity": 7.462248374351285
+          }
+        ],
+        "RegionId": "RG024",
+        "SecondaryOcrAgreement": "partial"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 26,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6092,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "M",
+        "corrected_text": "M",
+        "ocr_confidence": 0.43142765760421753,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 222.5,
+          "Y": 2405,
+          "W": 96.5,
+          "H": 101
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 27,
+      "RuleDecision": "RG027",
+      "LayaDecision": "RG027",
+      "Confidence": 0.0361,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG027",
+            "BubbleRegionId": "RG026",
+            "DetectorScore": 0.9471265,
+            "BlockCoverage": 0.948051948051948,
+            "CenterInside": true,
+            "CenterDistance": 1.0540925533895078,
+            "Affinity": 7.26366286098056
+          }
+        ],
+        "RegionId": "RG026",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 28,
+      "RuleDecision": "RG029",
+      "LayaDecision": "RG029",
+      "Confidence": 0.0352,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG029",
+            "BubbleRegionId": "RG028",
+            "DetectorScore": 0.7717364,
+            "BlockCoverage": 0.979498861047836,
+            "CenterInside": true,
+            "CenterDistance": 6.353039517515343,
+            "Affinity": 7.291157556875369
+          }
+        ],
+        "RegionId": "RG028",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 22,
+      "RuleDecision": "R22",
+      "LayaDecision": "R22",
+      "Confidence": 0.0229,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG020",
+        "candidates": [
+          {
+            "option": "R21",
+            "Id": 21,
+            "source": "K",
+            "corrected": "L DID.",
+            "secondary_agreement": null,
+            "ocr_confidence": 0.6645458936691284,
+            "detector_text_region": null,
+            "TextRegionIds": [
+              "RG021"
+            ],
+            "BubbleRegionId": "RG020",
+            "LayoutBounds": {
+              "Top": 1736,
+              "Bottom": 1931,
+              "Left": 1540,
+              "Right": 1843,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 17678.260589454047
+          },
+          {
+            "option": "R22",
+            "Id": 22,
+            "source": "RE DEATH.. HIS POWERS MA BE ae CAREFUL.",
+            "corrected": "RED DEATH... HIS POWERS MADE YOU SO BRITTLE... BE CAREFUL.",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.9380772709846497,
+            "detector_text_region": "RG021",
+            "TextRegionIds": [
+              "RG021"
+            ],
+            "BubbleRegionId": "RG020",
+            "LayoutBounds": {
+              "Top": 1736,
+              "Bottom": 1931,
+              "Left": 1540,
+              "Right": 1843,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 91142.53265588128
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1013,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "DAMN! THEY TAUNTED ME INTO A TRAP AND I RAN RIGHT AT IT!",
+        "secondary_ocr": "DAMN! THEY TALINTED ME INTO A TRAP AND I RAN RIGHT AT IT!",
+        "primary_confidence": 0.9965473413467407,
+        "current_agreement": "disagree",
+        "corrected_text": "DAMN! THEY TAUNTED ME INTO A TRAP AND I RAN RIGHT AT IT!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0396,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "BUT WHY WOULD THE KNIGHTS DARK SEND ME BACK--",
+        "secondary_ocr": "BUT WHY WOULD THE DARK KNIGHTS SEND ME BACK--",
+        "primary_confidence": 0.9929556846618652,
+        "current_agreement": "disagree",
+        "corrected_text": "BUT WHY WOULD THE DARK KNIGHTS\nSEND ME BACK--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 12,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0335,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "-HOME...?",
+        "secondary_ocr": "--HOME...?",
+        "primary_confidence": 0.9565609097480774,
+        "current_agreement": "agree",
+        "corrected_text": "--HOME...?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 13,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.047,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I-I\u0027M SORRY, ING IRIS--FOR JUDGING YOU LIKE I DID.",
+        "secondary_ocr": "I-I\u0027M SORRY, IRIS-FOR JUDGING YOU LIKE I DID.",
+        "primary_confidence": 0.9885047078132629,
+        "current_agreement": "disagree",
+        "corrected_text": "I-I\u0027M SORRY, IRIS--FOR JUDGING YOU LIKE I DID."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0617,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SHH...I KNOW. KNOW...I ANOTHER MOMENT PASS WITHOUT YOu, IRIS.",
+        "secondary_ocr": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT Y",
+        "primary_confidence": 0.9806882739067078,
+        "current_agreement": "disagree",
+        "corrected_text": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT YOU, IRIS."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0413,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "WALLY..",
+        "secondary_ocr": "WALLY...?",
+        "primary_confidence": 0.9752125144004822,
+        "current_agreement": "agree",
+        "corrected_text": "WALLY...?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 17,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0525,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "FLASH!",
+        "secondary_ocr": "FLASH!",
+        "primary_confidence": 0.9996885061264038,
+        "current_agreement": "agree",
+        "corrected_text": "FLASH!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 19,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0531,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "FLASH!",
+        "secondary_ocr": "FLASH!",
+        "primary_confidence": 0.9992190003395081,
+        "current_agreement": "agree",
+        "corrected_text": "FLASH!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 20,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0976,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "IRIS...?",
+        "secondary_ocr": "\u2026IRIS...?",
+        "primary_confidence": 0.9849858283996582,
+        "current_agreement": "agree",
+        "corrected_text": "...IRIS...?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 22,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.031,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "RE DEATH.. HIS POWERS MA BE ae CAREFUL.",
+        "secondary_ocr": "RED DEATH...\nHIS POWERS\nMADE YOU SO\nBRITTLE...BE\nCAREFUL.",
+        "primary_confidence": 0.9380772709846497,
+        "current_agreement": "disagree",
+        "corrected_text": "RED DEATH... HIS POWERS MADE YOU SO BRITTLE... BE CAREFUL."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 23,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0402,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I KEEP HOPING I\u0027LL THIS WAKE FROM UP AND NIGHTMARE FIND YOU SLEEPING TO LIKE ME BEFORE.",
+        "secondary_ocr": "I KEEP\nHOPING I\u0027LL\nWAKE UP FROM THIS\nNIGHTMARE AND\nFIND YOU SLEEPING\nNEXT TO ME LIKE\nBEFORE...",
+        "primary_confidence": 0.9956625699996948,
+        "current_agreement": "disagree",
+        "corrected_text": "I KEEP HOPING I\u0027LL WAKE UP FROM THIS NIGHTMARE AND FIND YOU SLEEPING NEXT TO ME LIKE BEFORE..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 25,
+      "RuleDecision": "partial",
+      "LayaDecision": "partial",
+      "Confidence": 0.0529,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "MISSED You SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--",
+        "secondary_ocr": "I\u0027VE MISSED YOU SO MUCH, BARRY-I\u0027M SORRY I KILLED THAWNE--",
+        "primary_confidence": 0.9741198420524597,
+        "current_agreement": "partial",
+        "corrected_text": "I\u0027VE MISSED YOU SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 27,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.1628,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY. I\u0027LL SAVE--",
+        "secondary_ocr": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY, I\u0027LL SAVE--",
+        "primary_confidence": 0.9789536595344543,
+        "current_agreement": "agree",
+        "corrected_text": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY. I\u0027LL SAVE--"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 28,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0163,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "OH NO...",
+        "secondary_ocr": "OH NO...",
+        "primary_confidence": 0.9316855072975159,
+        "current_agreement": "agree",
+        "corrected_text": "OH NO..."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.551,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "Cantral City.",
+        "corrected_text": "Central City.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.9327952265739441,
+        "type": "logo"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.602,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "Icome",
+        "corrected_text": "Welcome to Central City",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.9468657970428467,
+        "type": "sign"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5147,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "ONS",
+        "corrected_text": "JOHNS",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.31057804822921753,
+        "type": "sign"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5347,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "BUT WHY WOULD THE KNIGHTS DARK SEND ME BACK--",
+        "corrected_text": "BUT WHY WOULD THE DARK KNIGHTS\nSEND ME BACK--",
+        "secondary_ocr": "BUT WHY WOULD THE DARK KNIGHTS SEND ME BACK--",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9929556846618652,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5493,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "-HOME...?",
+        "corrected_text": "--HOME...?",
+        "secondary_ocr": "--HOME...?",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9565609097480774,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.586,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "I-I\u0027M SORRY, ING IRIS--FOR JUDGING YOU LIKE I DID.",
+        "corrected_text": "I-I\u0027M SORRY, IRIS--FOR JUDGING YOU LIKE I DID.",
+        "secondary_ocr": "I-I\u0027M SORRY, IRIS-FOR JUDGING YOU LIKE I DID.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9885047078132629,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5347,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SHH...I KNOW. KNOW...I ANOTHER MOMENT PASS WITHOUT YOu, IRIS.",
+        "corrected_text": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT YOU, IRIS.",
+        "secondary_ocr": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT Y",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9806882739067078,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5637,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "WALLY..",
+        "corrected_text": "WALLY...?",
+        "secondary_ocr": "WALLY...?",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9752125144004822,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 20,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5431,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "IRIS...?",
+        "corrected_text": "...IRIS...?",
+        "secondary_ocr": "\u2026IRIS...?",
+        "secondary_agreement": "agree",
+        "ocr_confidence": 0.9849858283996582,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 21,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5716,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "K",
+        "corrected_text": "L DID.",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6645458936691284,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 22,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5399,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "RE DEATH.. HIS POWERS MA BE ae CAREFUL.",
+        "corrected_text": "RED DEATH... HIS POWERS MADE YOU SO BRITTLE... BE CAREFUL.",
+        "secondary_ocr": "RED DEATH...\nHIS POWERS\nMADE YOU SO\nBRITTLE...BE\nCAREFUL.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9380772709846497,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 23,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5223,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "I KEEP HOPING I\u0027LL THIS WAKE FROM UP AND NIGHTMARE FIND YOU SLEEPING TO LIKE ME BEFORE.",
+        "corrected_text": "I KEEP HOPING I\u0027LL WAKE UP FROM THIS NIGHTMARE AND FIND YOU SLEEPING NEXT TO ME LIKE BEFORE...",
+        "secondary_ocr": "I KEEP\nHOPING I\u0027LL\nWAKE UP FROM THIS\nNIGHTMARE AND\nFIND YOU SLEEPING\nNEXT TO ME LIKE\nBEFORE...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9956625699996948,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 25,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5565,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MISSED You SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--",
+        "corrected_text": "I\u0027VE MISSED YOU SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--",
+        "secondary_ocr": "I\u0027VE MISSED YOU SO MUCH, BARRY-I\u0027M SORRY I KILLED THAWNE--",
+        "secondary_agreement": "partial",
+        "ocr_confidence": 0.9741198420524597,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5786,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "DAMN! THEY TAUNTED ME INTO A TRAP AND I RAN RIGHT AT IT!",
+        "corrected_source_text": "DAMN! THEY TAUNTED ME INTO A TRAP AND I RAN RIGHT AT IT!",
+        "korean_translation": "\uC820\uC7A5! \uB3C4\uBC1C\uC5D0 \uC18D\uC544[BR]\uD568\uC815\uC5D0 \uC815\uBA74\uC73C\uB85C \uB6F0\uC5B4\uB4E4\uC5C8\uC5B4!",
+        "type": "dialogue",
+        "secondary_ocr": "DAMN! THEY TALINTED ME INTO A TRAP AND I RAN RIGHT AT IT!",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5857,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "BUT WHY WOULD THE KNIGHTS DARK SEND ME BACK--",
+        "corrected_source_text": "BUT WHY WOULD THE DARK KNIGHTS\nSEND ME BACK--",
+        "korean_translation": "\uD558\uC9C0\uB9CC \uC65C \uB2E4\uD06C \uB098\uC774\uD2B8\uB4E4\uC774\n\uB098\uB97C \uB3CC\uB824\uBCF4\uB0B8 \uAC70\uC9C0--",
+        "type": "dialogue",
+        "secondary_ocr": "BUT WHY WOULD THE DARK KNIGHTS SEND ME BACK--",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.678,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "m",
+        "corrected_source_text": "m",
+        "korean_translation": "\uC74C",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5191,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "-HOME...?",
+        "corrected_source_text": "--HOME...?",
+        "korean_translation": "--\uC9D1...?",
+        "type": "dialogue",
+        "secondary_ocr": "--HOME...?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 13,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6288,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I-I\u0027M SORRY, ING IRIS--FOR JUDGING YOU LIKE I DID.",
+        "corrected_source_text": "I-I\u0027M SORRY, IRIS--FOR JUDGING YOU LIKE I DID.",
+        "korean_translation": "\uBBF8, \uBBF8\uC548\uD574, \uC544\uC774\uB9AC\uC2A4...[BR]\uB110 \uADF8\uB807\uAC8C \uD310\uB2E8\uD574\uC11C.",
+        "type": "dialogue",
+        "secondary_ocr": "I-I\u0027M SORRY, IRIS-FOR JUDGING YOU LIKE I DID.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6364,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SHH...I KNOW. KNOW...I ANOTHER MOMENT PASS WITHOUT YOu, IRIS.",
+        "corrected_source_text": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT YOU, IRIS.",
+        "korean_translation": "\uC27F... \uC54C\uC544. \uC54C\uC544.[BR]\uB108\uB97C \uB450\uACE0[BR]\uB2E8 \uD55C \uC21C\uAC04\uB3C4[BR]\uBCF4\uB0B4\uC9C0 \uC54A\uC744 \uAC70\uC57C,[BR]\uC544\uC774\uB9AC\uC2A4.",
+        "type": "dialogue",
+        "secondary_ocr": "SHH...I KNOW. I KNOW. I WON\u0027T LET ANOTHER MOMENT PASS WITHOUT Y",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 15,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6553,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "de",
+        "corrected_source_text": "de",
+        "korean_translation": "\uC5B4?",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5412,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "WALLY..",
+        "corrected_source_text": "WALLY...?",
+        "korean_translation": "\uC6D4\uB9AC...?",
+        "type": "dialogue",
+        "secondary_ocr": "WALLY...?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 17,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5225,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "FLASH!",
+        "corrected_source_text": "FLASH!",
+        "korean_translation": "\uBC88\uCA4D!",
+        "type": "dialogue",
+        "secondary_ocr": "FLASH!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 19,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5225,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "FLASH!",
+        "corrected_source_text": "FLASH!",
+        "korean_translation": "\uBC88\uCA4D!",
+        "type": "dialogue",
+        "secondary_ocr": "FLASH!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 20,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5629,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "IRIS...?",
+        "corrected_source_text": "...IRIS...?",
+        "korean_translation": "...\uC544\uC774\uB9AC\uC2A4...?",
+        "type": "dialogue",
+        "secondary_ocr": "\u2026IRIS...?",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 21,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.7535,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "K",
+        "corrected_source_text": "L DID.",
+        "korean_translation": "\uD588\uC5B4.",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 22,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5512,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "RE DEATH.. HIS POWERS MA BE ae CAREFUL.",
+        "corrected_source_text": "RED DEATH... HIS POWERS MADE YOU SO BRITTLE... BE CAREFUL.",
+        "korean_translation": "\uB808\uB4DC \uB370\uC2A4...[BR]\uADF8\uC758 \uD798 \uB54C\uBB38\uC5D0 \uB124 \uBAB8\uC774 \uB108\uBB34 \uC57D\uD574\uC84C\uC5B4...[BR]\uC870\uC2EC\uD574.",
+        "type": "dialogue",
+        "secondary_ocr": "RED DEATH...\nHIS POWERS\nMADE YOU SO\nBRITTLE...BE\nCAREFUL.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 23,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5723,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I KEEP HOPING I\u0027LL THIS WAKE FROM UP AND NIGHTMARE FIND YOU SLEEPING TO LIKE ME BEFORE.",
+        "corrected_source_text": "I KEEP HOPING I\u0027LL WAKE UP FROM THIS NIGHTMARE AND FIND YOU SLEEPING NEXT TO ME LIKE BEFORE...",
+        "korean_translation": "\uC774 \uC545\uBABD\uC5D0\uC11C \uAE68\uC5B4\uB098\uBA74[BR]\uC608\uC804\uCC98\uB7FC \uB124\uAC00 \uB0B4 \uACC1\uC5D0\uC11C[BR]\uC7A0\uB4E4\uC5B4 \uC788\uB294 \uAC78 \uBC1C\uACAC\uD558\uAC8C[BR]\uB418\uAE38 \uACC4\uC18D \uBC14\uB77C\uACE0 \uC788\uC5B4...",
+        "type": "dialogue",
+        "secondary_ocr": "I KEEP\nHOPING I\u0027LL\nWAKE UP FROM THIS\nNIGHTMARE AND\nFIND YOU SLEEPING\nNEXT TO ME LIKE\nBEFORE...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 24,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6103,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "O",
+        "corrected_source_text": "O",
+        "korean_translation": "\uC751",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 25,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6224,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "MISSED You SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--",
+        "corrected_source_text": "I\u0027VE MISSED YOU SO MUCH, BARRY--I\u0027M SORRY I KILLED THAWNE--",
+        "korean_translation": "\uC815\uB9D0 \uBCF4\uACE0 \uC2F6\uC5C8\uC5B4, \uBC30\uB9AC...[BR]\uC3DC\uC744 \uC8FD\uC5EC\uC11C \uBBF8\uC548\uD574--",
+        "type": "dialogue",
+        "secondary_ocr": "I\u0027VE MISSED YOU SO MUCH, BARRY-I\u0027M SORRY I KILLED THAWNE--",
+        "secondary_agreement": "partial"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 27,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5779,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY. I\u0027LL SAVE--",
+        "corrected_source_text": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY. I\u0027LL SAVE--",
+        "korean_translation": "\uB108\uB791 \uC648\uB9AC\uB97C[BR]\uC13C\uD2B8\uB7F4 \uC2DC\uD2F0\uC5D0\uC11C \uB370\uB9AC\uACE0 \uB098\uAC08\uAC8C. \uB0B4\uAC00 \uAD6C\uD574--",
+        "type": "dialogue",
+        "secondary_ocr": "I\u0027LL GET YOU AND WALLY OUT OF CENTRAL CITY, I\u0027LL SAVE--",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 28,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5235,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "OH NO...",
+        "corrected_source_text": "OH NO...",
+        "korean_translation": "\uC548 \uB3FC...",
+        "type": "dialogue",
+        "secondary_ocr": "OH NO...",
+        "secondary_agreement": "agree"
+      }
+    }
+  ]
+}

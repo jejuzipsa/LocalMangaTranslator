@@ -1,0 +1,91 @@
+{
+  "Schema": "pipeline-v2-laya-detector-retry-advisory-v1",
+  "SourceFile": "The Flash (2016-) 033-017.jpg",
+  "Mode": "Advisory",
+  "MutationApplied": false,
+  "Requests": 1,
+  "RecoveredRequests": 1,
+  "AdvisoryEligibleRequests": 0,
+  "AppliedRequests": 0,
+  "Items": [
+    {
+      "TranslationRegionId": 14,
+      "SourceText": "STICE LE JUSTICE LEAGUE #32. D. AND IN TWO WEEKS MEENA RETURNS In FLASH #39 BLACK HOLE PART 1!",
+      "CorrectedText": "THE JUSTICE LEAGUE VS. THE DARK KNIGHTS\nIN JUSTICE LEAGUE #32.\nAND IN TWO WEEKS MEENA RETURNS\nIN FLASH #34 BLACK HOLE PART 1!",
+      "LayaConfidence": 0.5194,
+      "Block": {
+        "X": 1107,
+        "Y": 2794,
+        "W": 710,
+        "H": 220.66666666666652
+      },
+      "Recovered": true,
+      "TwoScaleAgreement": false,
+      "CrossScaleTextIoU": 0,
+      "CrossScaleBubbleIoU": 0,
+      "MinimumTextScore": 0,
+      "ExistingFullPageDuplicate": false,
+      "AdvisoryEligible": false,
+      "Applied": false,
+      "RejectReason": "missing_two_scale_parent",
+      "AdvisoryTextRegion": null,
+      "AdvisoryBubbleRegion": null,
+      "Passes": [
+        {
+          "PassId": "local_2p40",
+          "CropBounds": {
+            "X": 284,
+            "Y": 1352,
+            "Width": 1704,
+            "Height": 1704
+          },
+          "ContextMultiplier": 2.4,
+          "InputPixelsPerSourcePixel": 0.3755868544600939,
+          "RegionCount": 12,
+          "TextBubbleCount": 5,
+          "Recovered": true,
+          "BestMatch": {
+            "RegionId": "SH_local_2p40_011",
+            "Kind": "TextBubble",
+            "Bounds": {
+              "X": 1087,
+              "Y": 2849,
+              "Width": 745,
+              "Height": 172
+            },
+            "Score": 0.44605434,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40",
+            "Affinity": 9.625337415211373
+          },
+          "ParentBubble": {
+            "RegionId": "SH_local_2p40_010",
+            "Bounds": {
+              "X": 1085,
+              "Y": 2848,
+              "Width": 747,
+              "Height": 174
+            },
+            "Score": 0.3232557,
+            "Source": "ogkalu-rtdetr-v2-shadow-local_2p40"
+          }
+        },
+        {
+          "PassId": "local_1p60",
+          "CropBounds": {
+            "X": 852,
+            "Y": 1920,
+            "Width": 1136,
+            "Height": 1136
+          },
+          "ContextMultiplier": 1.6,
+          "InputPixelsPerSourcePixel": 0.5633802816901409,
+          "RegionCount": 7,
+          "TextBubbleCount": 2,
+          "Recovered": false,
+          "BestMatch": null,
+          "ParentBubble": null
+        }
+      ]
+    }
+  ]
+}

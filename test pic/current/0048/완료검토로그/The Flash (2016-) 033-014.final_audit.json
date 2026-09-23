@@ -1,0 +1,94 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-014.jpg",
+  "output_file": "The Flash (2016-) 033-014.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 0,
+    "changed_ratio": 0,
+    "changed_regions": [],
+    "committed_cleaned_available": false,
+    "committed_cleaned_file": null,
+    "erase_changed_pixels": 0,
+    "erase_changed_ratio": 0,
+    "typeset_changed_pixels": 0,
+    "typeset_changed_ratio": 0
+  },
+  "region_analysis": {
+    "total": 2,
+    "bubbles": 0,
+    "text_regions": 2,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 7,
+      "Global2x": 8,
+      "Focus3x": 32,
+      "Region1x": 5,
+      "Region2x": 8
+    },
+    "canonical_lines": 10,
+    "units": 3,
+    "assigned_lines": 0,
+    "orphan_groups": 3,
+    "secondary_total": 0,
+    "secondary_accepted": 0,
+    "secondary_evidence": []
+  },
+  "translation": {
+    "total": 3,
+    "requested_render": 2
+  },
+  "render": {
+    "total": 0,
+    "approved": 0,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 2,
+    "TranslatedUnits": 0,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 0,
+    "TypesetCommittedUnits": 0,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "THE Bal E END: ALL ROADS LEAD BAGK",
+        "Translation": "...\uACB0\uAD6D...[BR]\uBAA8\uB4E0 \uAE38\uC740 \uB2E4\uC2DC...[BR]\uC2DC\uC791\uC810\uC73C\uB85C \uC774\uC5B4\uC9C4\uB2E4...",
+        "Status": "original_preserved:textfree_original",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "DARkNEBS.",
+        "Translation": "...\uC5B4\uB460 \uC18D\uC73C\uB85C.",
+        "Status": "original_preserved:textfree_original",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}
