@@ -1,0 +1,653 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-009.jpg",
+  "output_file": "The Flash (2016-) 033-009.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 88418,
+    "changed_ratio": 0.014553617516618033,
+    "changed_regions": [
+      {
+        "x": 1712,
+        "y": 2543,
+        "width": 176,
+        "height": 111
+      },
+      {
+        "x": 1724,
+        "y": 2395,
+        "width": 156,
+        "height": 82
+      },
+      {
+        "x": 212,
+        "y": 2033,
+        "width": 164,
+        "height": 72
+      },
+      {
+        "x": 121,
+        "y": 60,
+        "width": 164,
+        "height": 70
+      },
+      {
+        "x": 1627,
+        "y": 2542,
+        "width": 113,
+        "height": 82
+      },
+      {
+        "x": 1651,
+        "y": 248,
+        "width": 152,
+        "height": 42
+      },
+      {
+        "x": 921,
+        "y": 2624,
+        "width": 108,
+        "height": 53
+      },
+      {
+        "x": 674,
+        "y": 2552,
+        "width": 67,
+        "height": 82
+      },
+      {
+        "x": 789,
+        "y": 2552,
+        "width": 62,
+        "height": 82
+      },
+      {
+        "x": 836,
+        "y": 2552,
+        "width": 61,
+        "height": 83
+      },
+      {
+        "x": 1589,
+        "y": 1043,
+        "width": 153,
+        "height": 33
+      },
+      {
+        "x": 1661,
+        "y": 2408,
+        "width": 68,
+        "height": 68
+      },
+      {
+        "x": 1203,
+        "y": 802,
+        "width": 140,
+        "height": 31
+      },
+      {
+        "x": 736,
+        "y": 2553,
+        "width": 49,
+        "height": 81
+      },
+      {
+        "x": 1227,
+        "y": 1652,
+        "width": 104,
+        "height": 28
+      },
+      {
+        "x": 1076,
+        "y": 2624,
+        "width": 49,
+        "height": 53
+      },
+      {
+        "x": 895,
+        "y": 2609,
+        "width": 43,
+        "height": 60
+      },
+      {
+        "x": 1295,
+        "y": 1587,
+        "width": 72,
+        "height": 31
+      },
+      {
+        "x": 1030,
+        "y": 2624,
+        "width": 42,
+        "height": 53
+      },
+      {
+        "x": 161,
+        "y": 133,
+        "width": 60,
+        "height": 34
+      },
+      {
+        "x": 1028,
+        "y": 2679,
+        "width": 63,
+        "height": 31
+      },
+      {
+        "x": 1295,
+        "y": 1619,
+        "width": 65,
+        "height": 29
+      },
+      {
+        "x": 244,
+        "y": 2109,
+        "width": 52,
+        "height": 33
+      },
+      {
+        "x": 1332,
+        "y": 1652,
+        "width": 58,
+        "height": 28
+      },
+      {
+        "x": 1671,
+        "y": 293,
+        "width": 58,
+        "height": 26
+      },
+      {
+        "x": 789,
+        "y": 2523,
+        "width": 63,
+        "height": 23
+      },
+      {
+        "x": 946,
+        "y": 2679,
+        "width": 44,
+        "height": 32
+      },
+      {
+        "x": 157,
+        "y": 2031,
+        "width": 40,
+        "height": 35
+      },
+      {
+        "x": 294,
+        "y": 2109,
+        "width": 42,
+        "height": 33
+      },
+      {
+        "x": 167,
+        "y": 2071,
+        "width": 42,
+        "height": 33
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-009.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 63392,
+    "erase_changed_ratio": 0.01043433375119829,
+    "typeset_changed_pixels": 37898,
+    "typeset_changed_ratio": 0.0062380171078829
+  },
+  "region_analysis": {
+    "total": 21,
+    "bubbles": 10,
+    "text_regions": 11,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 26,
+      "Global2x": 24,
+      "Focus3x": 186,
+      "Region1x": 36,
+      "Region2x": 34,
+      "Container1x": 38,
+      "Container2x": 38
+    },
+    "canonical_lines": 58,
+    "units": 26,
+    "assigned_lines": 41,
+    "orphan_groups": 16,
+    "secondary_total": 10,
+    "secondary_accepted": 10,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 64,
+          "Bottom": 166,
+          "Left": 110,
+          "Right": 285,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "GUYS?! TALK TO ME!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 256,
+          "Bottom": 326,
+          "Left": 1632,
+          "Right": 1816,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WONDER WOMAN?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 796,
+          "Bottom": 841,
+          "Left": 1154,
+          "Right": 1362,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LANTERN?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 1037,
+          "Bottom": 1082,
+          "Left": 1554,
+          "Right": 1785,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AQUAMAN?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 1582,
+          "Bottom": 1683,
+          "Left": 1232,
+          "Right": 1395,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I NEVER LIKED BATMAN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 2040,
+          "Bottom": 2141,
+          "Left": 157,
+          "Right": 434,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IS CYBORG BRINGING THEM HERE...?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG014",
+        "Bounds": {
+          "Top": 2385,
+          "Bottom": 2511,
+          "Left": 1651,
+          "Right": 1884,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU JUST NEED TO GET TO KNOW HIM...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 2514,
+          "Bottom": 2669,
+          "Left": 666,
+          "Right": 938,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NO...LOOKS LIKE WE\u0027RE ABOUT TO HAVE SOME BAD COMPANY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG018",
+        "Bounds": {
+          "Top": 2533,
+          "Bottom": 2662,
+          "Left": 1616,
+          "Right": 1900,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...AND YOU\u0027RE ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG020",
+        "Bounds": {
+          "Top": 2613,
+          "Bottom": 2742,
+          "Left": 913,
+          "Right": 1135,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I HAVE A CONFESSION TO MAKE, FLASH.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 26,
+    "requested_render": 15
+  },
+  "render": {
+    "total": 10,
+    "approved": 10,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 15,
+    "TranslatedUnits": 10,
+    "PreservedOriginalUnits": 5,
+    "EraseCommittedUnits": 10,
+    "TypesetCommittedUnits": 10,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "HTO",
+        "Translation": "\uC598\uB4E4\uC544?! \uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "WONDER WOMAN?!",
+        "Translation": "\uC6D0\uB354 \uC6B0\uBA3C?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "LANTERN?!",
+        "Translation": "\uB79C\uD134?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "AQUAMAN?!",
+        "Translation": "\uC544\uCFE0\uC544\uB9E8?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "I NEVER LIKED BK BATMAN.",
+        "Translation": "\uB09C \uD55C \uBC88\uB3C4\n\uBC30\uD2B8\uB9E8\uC744\n\uC88B\uC544\uD55C \uC801\uC774\n\uC5C6\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "A",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "IS CYBORG BRINGING THEM HERE...?",
+        "Translation": "\uC0AC\uC774\uBC84\uADF8\uAC00 [BR]\uADF8\uAC83\uB4E4\uC744 [BR]\uC5EC\uAE30\uB85C \uAC00\uC838\uC624\uB294 \uAC74\uAC00...?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "Y",
+        "Translation": "\uC751",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 16,
+        "SourceText": "IL",
+        "Translation": "\uB110\n\uC808\uB300\n\uC6A9\uC11C\n\uC548\n\uD560\n\uAC70\uC57C!!",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "JUST 70u TO GET NEED TO KNOW HIM...",
+        "Translation": "\uADF8\uB97C \uC880\n\uC54C\uC544\uAC00\uAE30\uB9CC\n\uD558\uBA74 \uB3FC...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "718",
+        "Translation": "\uB098\uD55C\uD14C...",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "NO...LOOKS LIKE WE\u0027RE TO HAVE ABOUT BAD SOME COMPANY.",
+        "Translation": "\uC548 \uB3FC...[BR]\uBD88\uCCAD\uAC1D\uC774[BR]\uCC3E\uC544\uC62C[BR]\uAC83[BR]\uAC19\uC544.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "YOU\u0027RE AND ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+        "Translation": "...\uADF8\uB9AC\uACE0 \uC9C0\uAE08 \uB108\uD55C\uD14C[BR]\uAE30\uD68C\uAC00 \uB450 \uBC88\uC774\uB098[BR]\uC8FC\uC5B4\uC9C8 \uAC70\uC57C!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "HAVE A CONFESSION TO MAKE, FLASH.",
+        "Translation": "\uACE0\uBC31\uD560 \uAC8C \uC788\uC5B4, \uD50C\uB798\uC2DC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 25,
+        "SourceText": "JA",
+        "Translation": "\uC81C\uBC1C.",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}

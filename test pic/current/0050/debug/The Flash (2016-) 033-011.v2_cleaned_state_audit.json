@@ -1,0 +1,76 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-v4",
+  "SourceFile": "The Flash (2016-) 033-011.jpg",
+  "VerifierAvailable": true,
+  "VerifierMode": "cleaned_rtdetr_plus_erase_evidence",
+  "OriginalDetectedBubbleCount": 1,
+  "SelectedTargetCount": 1,
+  "ResidualTextDetectionCount": 0,
+  "DetectorOnlyFalsePositiveRescueCount": 0,
+  "FlatBackgroundDetectorOnlyFalsePositiveRescueCount": 0,
+  "FlatBackgroundIndependentCleanFalsePositiveRescueCount": 0,
+  "EraseTargetBubbleCount": 1,
+  "EmptyVerifiedBubbleCount": 1,
+  "BubbleCheckpointPass": true,
+  "EraseTargetBubbleIds": [
+    "RG001"
+  ],
+  "EmptyVerifiedBubbleIds": [
+    "RG001"
+  ],
+  "CheckpointMissingBubbleIds": [],
+  "EraseTargetTextFreeCount": 0,
+  "EmptyVerifiedTextFreeCount": 0,
+  "TextFreeCheckpointPass": true,
+  "OverallPass": true,
+  "LegacyReviewerDisagreements": 0,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "OriginalBounds": {
+        "Top": 1743,
+        "Bottom": 1844,
+        "Left": 1126,
+        "Right": 1376,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "ResidualRegionIds": [],
+      "MaxResidualScore": 0,
+      "LegacyReviewerClean": true,
+      "DetectorOnlyFalsePositiveRescue": false,
+      "DetectorOnlyFalsePositiveRescueMode": "none",
+      "LegacyInitialMaskPixels": 6601,
+      "LegacySelectedResidualPixels": 0,
+      "LegacyResidualRatio": 0,
+      "LegacyPersistentGlyphPixels": 0
+    }
+  ],
+  "Checkpoints": [
+    {
+      "CheckpointId": "RG001",
+      "Kind": "Bubble",
+      "Bounds": {
+        "Top": 1714,
+        "Bottom": 1872,
+        "Left": 1095,
+        "Right": 1412,
+        "Location": {},
+        "Size": {},
+        "TopLeft": {},
+        "BottomRight": {}
+      },
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "EmptyVerified": true,
+      "Status": "EMPTY_OK",
+      "LegacyReviewerClean": true
+    }
+  ],
+  "ResidualDetections": []
+}

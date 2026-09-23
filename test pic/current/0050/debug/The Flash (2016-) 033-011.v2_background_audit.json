@@ -1,0 +1,37 @@
+{
+  "Schema": "pipeline-v2-background-reconstruction-v1",
+  "SourceFile": "The Flash (2016-) 033-011.jpg",
+  "TargetCount": 1,
+  "FlatFillTargets": 1,
+  "TeleaTargets": 0,
+  "BackgroundQualityFailures": 0,
+  "Items": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextBubble",
+      "Bounds": {
+        "X": 1126,
+        "Y": 1743,
+        "Width": 250,
+        "Height": 101
+      },
+      "Strategy": "FLAT_FILL",
+      "MaskPixels": 6601,
+      "SampleCount": 2489,
+      "Background": {
+        "B": 255,
+        "G": 255,
+        "R": 255
+      },
+      "DominantMatchRatio": 0.9831257533145842,
+      "P75ColorDistance": 0,
+      "P90ColorDistance": 0,
+      "SpatialCoverage": 1,
+      "ExclusionRadius": 4,
+      "FlatAccepted": true,
+      "Reason": "dominant_purified_background_cluster",
+      "PostReconstructionP85": 0,
+      "BackgroundQualityPass": true
+    }
+  ]
+}

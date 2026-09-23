@@ -1,0 +1,29 @@
+{
+  "schema": "page-analysis-v3-region-first",
+  "mode": "hybrid_rtdetr",
+  "external_detector_used": true,
+  "external_detector_status": "regions=2; legacy_mask_candidates=80; active_region_containers=0",
+  "regions": [
+    {
+      "id": "RG001",
+      "kind": "TextFree",
+      "x": 82,
+      "y": 373,
+      "width": 356,
+      "height": 296,
+      "score": 0.40570152,
+      "source": "ogkalu-rtdetr-v2"
+    },
+    {
+      "id": "RG002",
+      "kind": "TextFree",
+      "x": 1249,
+      "y": 2652,
+      "width": 677,
+      "height": 332,
+      "score": 0.40047693,
+      "source": "ogkalu-rtdetr-v2"
+    }
+  ],
+  "active_containers": []
+}

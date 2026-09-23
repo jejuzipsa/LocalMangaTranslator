@@ -1,0 +1,1190 @@
+{
+  "SourceFile": "The Flash (2016-) 033-009.jpg",
+  "Model": "review=gemma4:12b; translation=gemma4:12b",
+  "CreatedAt": "2026-09-24T00:51:04.5685171+09:00",
+  "Regions": [
+    {
+      "Id": 0,
+      "Source": {
+        "Id": 0,
+        "X": 1577.6666666666667,
+        "Y": 0,
+        "W": 301.66666666666674,
+        "H": 116.33333333333333,
+        "Text": "WL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1577.6666666666667,
+            "Y": 0,
+            "W": 301.66666666666674,
+            "H": 116.33333333333333,
+            "Text": "WL",
+            "Confidence": 0.30797064,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "WL",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 1,
+      "Source": {
+        "Id": 1,
+        "X": 73.5,
+        "Y": 21,
+        "W": 248,
+        "H": 187.5,
+        "Text": "HTO",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 73.5,
+            "Y": 21,
+            "W": 248,
+            "H": 187.5,
+            "Text": "HTO",
+            "Confidence": 0.32625562,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "GUYS?! TALK TO ME!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": true,
+        "SecondaryPromotionReason": "cross_pass_supported",
+        "SecondarySupportRatio": 1,
+        "SecondarySupportingPasses": [
+          "Region1x",
+          "Region2x",
+          "Container2x"
+        ],
+        "RegionId": "RG001"
+      },
+      "CorrectedText": "GUYS?! TALK TO ME!",
+      "Translation": "\uC598\uB4E4\uC544?! \uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 2,
+      "Source": {
+        "Id": 2,
+        "X": 1634.6666666666667,
+        "Y": 255,
+        "W": 181.33333333333326,
+        "H": 72,
+        "Text": "WONDER WOMAN?!",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1641.6666666666667,
+            "Y": 255,
+            "W": 166.66666666666674,
+            "H": 40,
+            "Text": "WONDER",
+            "Confidence": 0.9994389,
+            "Language": "en"
+          },
+          {
+            "X": 1634.6666666666667,
+            "Y": 286.6666666666667,
+            "W": 181.33333333333326,
+            "H": 40.333333333333314,
+            "Text": "WOMAN?!",
+            "Confidence": 0.9959583,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "WONDER WOMAN?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG003"
+      },
+      "CorrectedText": "WONDER WOMAN?!",
+      "Translation": "\uC6D0\uB354 \uC6B0\uBA3C?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 3,
+      "Source": {
+        "Id": 3,
+        "X": 1160,
+        "Y": 281.3333333333333,
+        "W": 309,
+        "H": 136,
+        "Text": "m06",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1160,
+            "Y": 281.3333333333333,
+            "W": 309,
+            "H": 136,
+            "Text": "m06",
+            "Confidence": 0.51053774,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "m06",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 4,
+      "Source": {
+        "Id": 4,
+        "X": 1153.3333333333333,
+        "Y": 791.3333333333334,
+        "W": 209.00000000000023,
+        "H": 55.33333333333326,
+        "Text": "LANTERN?!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1153.3333333333333,
+            "Y": 791.3333333333334,
+            "W": 209.00000000000023,
+            "H": 55.33333333333326,
+            "Text": "LANTERN?!",
+            "Confidence": 0.99953777,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "LANTERN?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG005"
+      },
+      "CorrectedText": "LANTERN?!",
+      "Translation": "\uB79C\uD134?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 5,
+      "Source": {
+        "Id": 5,
+        "X": 1921,
+        "Y": 850,
+        "W": 52.66666666666674,
+        "H": 65,
+        "Text": "E",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1921,
+            "Y": 850,
+            "W": 52.66666666666674,
+            "H": 65,
+            "Text": "E",
+            "Confidence": 0.77617484,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "E",
+      "Translation": "E",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 6,
+      "Source": {
+        "Id": 6,
+        "X": 1183,
+        "Y": 910,
+        "W": 330,
+        "H": 66,
+        "Text": "MVGZWY",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1183,
+            "Y": 910,
+            "W": 330,
+            "H": 66,
+            "Text": "MVGZWY",
+            "Confidence": 0.60225105,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "MVGZWY",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 7,
+      "Source": {
+        "Id": 7,
+        "X": 1555.5,
+        "Y": 1028,
+        "W": 231.5,
+        "H": 60,
+        "Text": "AQUAMAN?!",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1555.5,
+            "Y": 1028,
+            "W": 231.5,
+            "H": 60,
+            "Text": "AQUAMAN?!",
+            "Confidence": 0.9979837,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "AQUAMAN?!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG007"
+      },
+      "CorrectedText": "AQUAMAN?!",
+      "Translation": "\uC544\uCFE0\uC544\uB9E8?!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 8,
+      "Source": {
+        "Id": 8,
+        "X": 55,
+        "Y": 1553,
+        "W": 590,
+        "H": 446.5,
+        "Text": "FO",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 55,
+            "Y": 1553,
+            "W": 590,
+            "H": 446.5,
+            "Text": "FO",
+            "Confidence": 0.38450658,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "BOOM",
+      "Translation": "\uCF70\uC559",
+      "Type": "sfx",
+      "Render": false
+    },
+    {
+      "Id": 9,
+      "Source": {
+        "Id": 9,
+        "X": 1211.6666666666667,
+        "Y": 1584.3333333333333,
+        "W": 183.66666666666652,
+        "H": 111.33333333333348,
+        "Text": "I NEVER LIKED BK BATMAN.",
+        "OriginalRegionCount": 4,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1232.6666666666667,
+            "Y": 1584.3333333333333,
+            "W": 162.66666666666652,
+            "H": 38,
+            "Text": "I NEVER",
+            "Confidence": 0.9987398,
+            "Language": "en"
+          },
+          {
+            "X": 1262.3333333333333,
+            "Y": 1616.3333333333333,
+            "W": 102,
+            "H": 33.66666666666674,
+            "Text": "LIKED",
+            "Confidence": 0.99927986,
+            "Language": "en"
+          },
+          {
+            "X": 1211.6666666666667,
+            "Y": 1630.3333333333333,
+            "W": 68.33333333333326,
+            "H": 65.33333333333348,
+            "Text": "BK",
+            "Confidence": 0.8605703,
+            "Language": "en"
+          },
+          {
+            "X": 1240.6666666666667,
+            "Y": 1645.3333333333333,
+            "W": 144.66666666666652,
+            "H": 34.66666666666674,
+            "Text": "BATMAN.",
+            "Confidence": 0.9998114,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I NEVER LIKED BATMAN.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG009"
+      },
+      "CorrectedText": "I NEVER LIKED\nBATMAN.",
+      "Translation": "\uB09C \uD55C \uBC88\uB3C4\n\uBC30\uD2B8\uB9E8\uC744\n\uC88B\uC544\uD55C \uC801\uC774\n\uC5C6\uC5B4.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 10,
+      "Source": {
+        "Id": 10,
+        "X": 1171.6666666666667,
+        "Y": 1608.3333333333333,
+        "W": 50.33333333333326,
+        "H": 68.66666666666674,
+        "Text": "F",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1171.6666666666667,
+            "Y": 1608.3333333333333,
+            "W": 50.33333333333326,
+            "H": 68.66666666666674,
+            "Text": "F",
+            "Confidence": 0.6704462,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "F",
+      "Translation": "F",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 11,
+      "Source": {
+        "Id": 11,
+        "X": 1037,
+        "Y": 1653,
+        "W": 120.66666666666674,
+        "H": 101,
+        "Text": "UO AOE",
+        "OriginalRegionCount": 2,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1039,
+            "Y": 1653,
+            "W": 86,
+            "H": 32,
+            "Text": "UO",
+            "Confidence": 0.569757,
+            "Language": "en"
+          },
+          {
+            "X": 1037,
+            "Y": 1699,
+            "W": 120.66666666666674,
+            "H": 55,
+            "Text": "AOE",
+            "Confidence": 0.5567954,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "NO ONE",
+      "Translation": "",
+      "Type": "dialogue",
+      "Render": false
+    },
+    {
+      "Id": 12,
+      "Source": {
+        "Id": 12,
+        "X": 0,
+        "Y": 1961.6666666666667,
+        "W": 156,
+        "H": 258.33333333333326,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 0,
+            "Y": 1961.6666666666667,
+            "W": 156,
+            "H": 258.33333333333326,
+            "Text": "A",
+            "Confidence": 0.3944119,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "\uC544",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 13,
+      "Source": {
+        "Id": 13,
+        "X": 161,
+        "Y": 2041,
+        "W": 266.6666666666667,
+        "H": 98,
+        "Text": "IS CYBORG BRINGING THEM HERE...?",
+        "OriginalRegionCount": 3,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 201.33333333333334,
+            "Y": 2041,
+            "W": 185.99999999999997,
+            "H": 38,
+            "Text": "IS CYBORG",
+            "Confidence": 0.99581337,
+            "Language": "en"
+          },
+          {
+            "X": 161,
+            "Y": 2070.3333333333335,
+            "W": 266.6666666666667,
+            "H": 38.666666666666515,
+            "Text": "BRINGING THEM",
+            "Confidence": 0.9988585,
+            "Language": "en"
+          },
+          {
+            "X": 211,
+            "Y": 2102,
+            "W": 169.5,
+            "H": 37,
+            "Text": "HERE...?",
+            "Confidence": 0.9840918,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "IS CYBORG BRINGING THEM HERE...?",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "agree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG011"
+      },
+      "CorrectedText": "IS CYBORG BRINGING THEM HERE...?",
+      "Translation": "\uC0AC\uC774\uBC84\uADF8\uAC00 [BR]\uADF8\uAC83\uB4E4\uC744 [BR]\uC5EC\uAE30\uB85C \uAC00\uC838\uC624\uB294 \uAC74\uAC00...?",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 14,
+      "Source": {
+        "Id": 14,
+        "X": 505.3333333333333,
+        "Y": 2066,
+        "W": 27.000000000000057,
+        "H": 20.666666666666515,
+        "Text": "F",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 505.3333333333333,
+            "Y": 2066,
+            "W": 27.000000000000057,
+            "H": 20.666666666666515,
+            "Text": "F",
+            "Confidence": 0.5747127,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "F",
+      "Translation": "F",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 15,
+      "Source": {
+        "Id": 15,
+        "X": 481,
+        "Y": 2207.6666666666665,
+        "W": 32.66666666666663,
+        "H": 37,
+        "Text": "Y",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 481,
+            "Y": 2207.6666666666665,
+            "W": 32.66666666666663,
+            "H": 37,
+            "Text": "Y",
+            "Confidence": 0.34098652,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "Y",
+      "Translation": "\uC751",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 16,
+      "Source": {
+        "Id": 16,
+        "X": 1881,
+        "Y": 2363,
+        "W": 107,
+        "H": 255,
+        "Text": "IL",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1881,
+            "Y": 2363,
+            "W": 107,
+            "H": 255,
+            "Text": "IL",
+            "Confidence": 0.9421598,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "I\u0027LL\nGET\nYOU\nRE\nSAVE\nES!!",
+      "Translation": "\uB110\n\uC808\uB300\n\uC6A9\uC11C\n\uC548\n\uD560\n\uAC70\uC57C!!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 17,
+      "Source": {
+        "Id": 17,
+        "X": 1654,
+        "Y": 2387.6666666666665,
+        "W": 227.66666666666652,
+        "H": 126.33333333333348,
+        "Text": "JUST 70u TO GET NEED TO KNOW HIM...",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1759.3333333333333,
+            "Y": 2387.6666666666665,
+            "W": 92.66666666666674,
+            "H": 33,
+            "Text": "JUST",
+            "Confidence": 0.99768525,
+            "Language": "en"
+          },
+          {
+            "X": 1686.6666666666667,
+            "Y": 2405,
+            "W": 71.66666666666674,
+            "H": 17,
+            "Text": "70u",
+            "Confidence": 0.8865568,
+            "Language": "en"
+          },
+          {
+            "X": 1741.6666666666667,
+            "Y": 2413.3333333333335,
+            "W": 139.99999999999977,
+            "H": 41.666666666666515,
+            "Text": "TO GET",
+            "Confidence": 0.99929726,
+            "Language": "en"
+          },
+          {
+            "X": 1654,
+            "Y": 2417,
+            "W": 96,
+            "H": 34,
+            "Text": "NEED",
+            "Confidence": 0.9975319,
+            "Language": "en"
+          },
+          {
+            "X": 1682.6666666666667,
+            "Y": 2445.3333333333335,
+            "W": 176.66666666666652,
+            "H": 33.666666666666515,
+            "Text": "TO KNOW",
+            "Confidence": 0.99790394,
+            "Language": "en"
+          },
+          {
+            "X": 1710,
+            "Y": 2467,
+            "W": 112,
+            "H": 47,
+            "Text": "HIM...",
+            "Confidence": 0.9633672,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "YOU JUST NEED TO GET TO KNOW HIM...",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG014"
+      },
+      "CorrectedText": "YOU JUST NEED TO GET TO KNOW HIM...",
+      "Translation": "\uADF8\uB97C \uC880\n\uC54C\uC544\uAC00\uAE30\uB9CC\n\uD558\uBA74 \uB3FC...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 18,
+      "Source": {
+        "Id": 18,
+        "X": 889.6666666666667,
+        "Y": 2400,
+        "W": 257.33333333333326,
+        "H": 205.66666666666652,
+        "Text": "718",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 889.6666666666667,
+            "Y": 2400,
+            "W": 257.33333333333326,
+            "H": 205.66666666666652,
+            "Text": "718",
+            "Confidence": 0.41614187,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "I HAVE A",
+      "Translation": "\uB098\uD55C\uD14C...",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 19,
+      "Source": {
+        "Id": 19,
+        "X": 342,
+        "Y": 2450,
+        "W": 313,
+        "H": 217,
+        "Text": "sd",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 342,
+            "Y": 2450,
+            "W": 313,
+            "H": 217,
+            "Text": "sd",
+            "Confidence": 0.48677024,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "sd",
+      "Translation": "",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 20,
+      "Source": {
+        "Id": 20,
+        "X": 670,
+        "Y": 2513,
+        "W": 268.33333333333326,
+        "H": 152.33333333333348,
+        "Text": "NO...LOOKS LIKE WE\u0027RE TO HAVE ABOUT BAD SOME COMPANY.",
+        "OriginalRegionCount": 7,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 706,
+            "Y": 2513,
+            "W": 196,
+            "H": 37.5,
+            "Text": "NO...LOOKS",
+            "Confidence": 0.9891225,
+            "Language": "en"
+          },
+          {
+            "X": 707.6666666666666,
+            "Y": 2544.3333333333335,
+            "W": 192.0000000000001,
+            "H": 36.33333333333303,
+            "Text": "LIKE WE\u0027RE",
+            "Confidence": 0.9982349,
+            "Language": "en"
+          },
+          {
+            "X": 784,
+            "Y": 2572.6666666666665,
+            "W": 154.33333333333326,
+            "H": 35.333333333333485,
+            "Text": "TO HAVE",
+            "Confidence": 0.99916834,
+            "Language": "en"
+          },
+          {
+            "X": 670,
+            "Y": 2574,
+            "W": 130,
+            "H": 33.666666666666515,
+            "Text": "ABOUT",
+            "Confidence": 0.99889565,
+            "Language": "en"
+          },
+          {
+            "X": 799.3333333333333,
+            "Y": 2603.3333333333335,
+            "W": 99.33333333333348,
+            "H": 34,
+            "Text": "BAD",
+            "Confidence": 0.9965593,
+            "Language": "en"
+          },
+          {
+            "X": 712,
+            "Y": 2604,
+            "W": 100.66666666666663,
+            "H": 32,
+            "Text": "SOME",
+            "Confidence": 0.99964243,
+            "Language": "en"
+          },
+          {
+            "X": 720,
+            "Y": 2633,
+            "W": 168,
+            "H": 32.333333333333485,
+            "Text": "COMPANY.",
+            "Confidence": 0.99901736,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "NO...LOOKS LIKE WE\u0027RE ABOUT TO HAVE SOME BAD COMPANY.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG016"
+      },
+      "CorrectedText": "NO...LOOKS LIKE WE\u0027RE ABOUT TO HAVE SOME BAD COMPANY.",
+      "Translation": "\uC548 \uB3FC...[BR]\uBD88\uCCAD\uAC1D\uC774[BR]\uCC3E\uC544\uC62C[BR]\uAC83[BR]\uAC19\uC544.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 21,
+      "Source": {
+        "Id": 21,
+        "X": 1622.5,
+        "Y": 2536.3333333333335,
+        "W": 268,
+        "H": 121.66666666666652,
+        "Text": "YOU\u0027RE AND ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+        "OriginalRegionCount": 6,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1744.3333333333333,
+            "Y": 2536.3333333333335,
+            "W": 128,
+            "H": 29.666666666666515,
+            "Text": "YOU\u0027RE",
+            "Confidence": 0.9965587,
+            "Language": "en"
+          },
+          {
+            "X": 1676.6666666666667,
+            "Y": 2539,
+            "W": 63.33333333333326,
+            "H": 17,
+            "Text": "AND",
+            "Confidence": 0.9602246,
+            "Language": "en"
+          },
+          {
+            "X": 1622.5,
+            "Y": 2564,
+            "W": 268,
+            "H": 34,
+            "Text": "ABOUT TO HAVE",
+            "Confidence": 0.9974108,
+            "Language": "en"
+          },
+          {
+            "X": 1626,
+            "Y": 2595.3333333333335,
+            "W": 84.66666666666674,
+            "H": 22.666666666666515,
+            "Text": "TWO",
+            "Confidence": 0.9928018,
+            "Language": "en"
+          },
+          {
+            "X": 1717,
+            "Y": 2596,
+            "W": 173,
+            "H": 22,
+            "Text": "CHANCES",
+            "Confidence": 0.996026,
+            "Language": "en"
+          },
+          {
+            "X": 1647.3333333333333,
+            "Y": 2621.6666666666665,
+            "W": 220.66666666666674,
+            "H": 36.333333333333485,
+            "Text": "RIGHT NOW!",
+            "Confidence": 0.9978366,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "...AND YOU\u0027RE ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "disagree",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG018"
+      },
+      "CorrectedText": "...AND YOU\u0027RE ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+      "Translation": "...\uADF8\uB9AC\uACE0 \uC9C0\uAE08 \uB108\uD55C\uD14C[BR]\uAE30\uD68C\uAC00 \uB450 \uBC88\uC774\uB098[BR]\uC8FC\uC5B4\uC9C8 \uAC70\uC57C!",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 22,
+      "Source": {
+        "Id": 22,
+        "X": 918,
+        "Y": 2617.3333333333335,
+        "W": 212.33333333333326,
+        "H": 121,
+        "Text": "HAVE A CONFESSION TO MAKE, FLASH.",
+        "OriginalRegionCount": 5,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 973.3333333333333,
+            "Y": 2617.3333333333335,
+            "W": 96.33333333333348,
+            "H": 32.33333333333303,
+            "Text": "HAVE",
+            "Confidence": 0.99976045,
+            "Language": "en"
+          },
+          {
+            "X": 1070,
+            "Y": 2621,
+            "W": 34,
+            "H": 26.333333333333485,
+            "Text": "A",
+            "Confidence": 0.9984415,
+            "Language": "en"
+          },
+          {
+            "X": 918,
+            "Y": 2646,
+            "W": 212.33333333333326,
+            "H": 33.333333333333485,
+            "Text": "CONFESSION",
+            "Confidence": 0.99846387,
+            "Language": "en"
+          },
+          {
+            "X": 939,
+            "Y": 2673,
+            "W": 168,
+            "H": 38,
+            "Text": "TO MAKE,",
+            "Confidence": 0.993047,
+            "Language": "en"
+          },
+          {
+            "X": 962.6666666666667,
+            "Y": 2704.3333333333335,
+            "W": 123.33333333333326,
+            "H": 34,
+            "Text": "FLASH.",
+            "Confidence": 0.999637,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": "I HAVE A CONFESSION TO MAKE, FLASH.",
+        "SecondaryOcrSource": "baberu",
+        "SecondaryOcrAgreement": "partial",
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": "RG020"
+      },
+      "CorrectedText": "I HAVE A CONFESSION TO MAKE, FLASH.",
+      "Translation": "\uACE0\uBC31\uD560 \uAC8C \uC788\uC5B4, \uD50C\uB798\uC2DC.",
+      "Type": "dialogue",
+      "Render": true
+    },
+    {
+      "Id": 23,
+      "Source": {
+        "Id": 23,
+        "X": 1171,
+        "Y": 2645.6666666666665,
+        "W": 48.666666666666515,
+        "H": 75.66666666666697,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 1171,
+            "Y": 2645.6666666666665,
+            "W": 48.666666666666515,
+            "H": 75.66666666666697,
+            "Text": "A",
+            "Confidence": 0.30898815,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "A",
+      "Translation": "A",
+      "Type": "other",
+      "Render": false
+    },
+    {
+      "Id": 24,
+      "Source": {
+        "Id": 24,
+        "X": 824,
+        "Y": 2679,
+        "W": 78.66666666666663,
+        "H": 41,
+        "Text": "A",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 824,
+            "Y": 2679,
+            "W": 78.66666666666663,
+            "H": 41,
+            "Text": "A",
+            "Confidence": 0.40179327,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "COMPANY.",
+      "Translation": "\uD68C\uC0AC.",
+      "Type": "sign",
+      "Render": false
+    },
+    {
+      "Id": 25,
+      "Source": {
+        "Id": 25,
+        "X": 960.6666666666667,
+        "Y": 2763,
+        "W": 79.33333333333326,
+        "H": 42.666666666666515,
+        "Text": "JA",
+        "OriginalRegionCount": 1,
+        "Language": "en",
+        "Lines": [
+          {
+            "X": 960.6666666666667,
+            "Y": 2763,
+            "W": 79.33333333333326,
+            "H": 42.666666666666515,
+            "Text": "JA",
+            "Confidence": 0.54211223,
+            "Language": "en"
+          }
+        ],
+        "SecondaryOcrText": null,
+        "SecondaryOcrSource": null,
+        "SecondaryOcrAgreement": null,
+        "SecondaryPromoted": false,
+        "SecondaryPromotionReason": null,
+        "SecondarySupportRatio": 0,
+        "SecondarySupportingPasses": [],
+        "RegionId": null
+      },
+      "CorrectedText": "PLEASE.",
+      "Translation": "\uC81C\uBC1C.",
+      "Type": "dialogue",
+      "Render": true
+    }
+  ]
+}

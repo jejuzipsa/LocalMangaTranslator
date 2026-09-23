@@ -1,0 +1,172 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "The Flash (2016-) 033-003.jpg",
+  "DetectedTextTargets": 9,
+  "CommittedTargets": 4,
+  "PreservedTargets": 5,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextFree",
+      "TextScore": 0.3829384,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 75,
+        "Y": 447,
+        "Width": 376,
+        "Height": 126
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG003",
+      "Kind": "TextBubble",
+      "TextScore": 0.37540486,
+      "BubbleRegionId": "RG001",
+      "TextBounds": {
+        "X": 487,
+        "Y": 456,
+        "Width": 117,
+        "Height": 95
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": 8,
+      "Status": "preserved_render_false:logo",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG004",
+      "Kind": "TextFree",
+      "TextScore": 0.5486872,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 62,
+        "Y": 540,
+        "Width": 768,
+        "Height": 820
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG005",
+      "Kind": "TextFree",
+      "TextScore": 0.37532258,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 64,
+        "Y": 550,
+        "Width": 778,
+        "Height": 578
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG006",
+      "Kind": "TextFree",
+      "TextScore": 0.4454581,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 63,
+        "Y": 1106,
+        "Width": 723,
+        "Height": 247
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG008",
+      "Kind": "TextBubble",
+      "TextScore": 0.8979559,
+      "BubbleRegionId": "RG007",
+      "TextBounds": {
+        "X": 1533,
+        "Y": 1165,
+        "Width": 283,
+        "Height": 103
+      },
+      "BoundTranslationRegionIds": [
+        15
+      ],
+      "BestTranslationRegionId": 15,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG010",
+      "Kind": "TextBubble",
+      "TextScore": 0.92139083,
+      "BubbleRegionId": "RG009",
+      "TextBounds": {
+        "X": 1581,
+        "Y": 1306,
+        "Width": 271,
+        "Height": 111
+      },
+      "BoundTranslationRegionIds": [
+        17
+      ],
+      "BestTranslationRegionId": 17,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG012",
+      "Kind": "TextBubble",
+      "TextScore": 0.8891275,
+      "BubbleRegionId": "RG011",
+      "TextBounds": {
+        "X": 1554,
+        "Y": 1464,
+        "Width": 311,
+        "Height": 77
+      },
+      "BoundTranslationRegionIds": [
+        18
+      ],
+      "BestTranslationRegionId": 18,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG014",
+      "Kind": "TextBubble",
+      "TextScore": 0.9104785,
+      "BubbleRegionId": "RG013",
+      "TextBounds": {
+        "X": 1491,
+        "Y": 1584,
+        "Width": 292,
+        "Height": 81
+      },
+      "BoundTranslationRegionIds": [
+        20
+      ],
+      "BestTranslationRegionId": 20,
+      "Status": "translated_committed",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-011.jpg",
+  "output_file": "The Flash (2016-) 033-011.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 8545,
+    "changed_ratio": 0.0014065084222613165,
+    "changed_regions": [
+      {
+        "x": 1162,
+        "y": 1795,
+        "width": 73,
+        "height": 40
+      },
+      {
+        "x": 1236,
+        "y": 1754,
+        "width": 68,
+        "height": 40
+      },
+      {
+        "x": 1310,
+        "y": 1752,
+        "width": 50,
+        "height": 36
+      },
+      {
+        "x": 1236,
+        "y": 1795,
+        "width": 33,
+        "height": 37
+      },
+      {
+        "x": 1303,
+        "y": 1795,
+        "width": 29,
+        "height": 37
+      },
+      {
+        "x": 1271,
+        "y": 1795,
+        "width": 28,
+        "height": 37
+      },
+      {
+        "x": 1189,
+        "y": 1753,
+        "width": 24,
+        "height": 39
+      },
+      {
+        "x": 1214,
+        "y": 1753,
+        "width": 25,
+        "height": 36
+      },
+      {
+        "x": 1160,
+        "y": 1759,
+        "width": 28,
+        "height": 30
+      },
+      {
+        "x": 1332,
+        "y": 1799,
+        "width": 23,
+        "height": 36
+      },
+      {
+        "x": 1137,
+        "y": 1803,
+        "width": 23,
+        "height": 34
+      },
+      {
+        "x": 1341,
+        "y": 1743,
+        "width": 35,
+        "height": 13
+      },
+      {
+        "x": 1353,
+        "y": 1797,
+        "width": 15,
+        "height": 29
+      },
+      {
+        "x": 1358,
+        "y": 1759,
+        "width": 10,
+        "height": 30
+      },
+      {
+        "x": 1126,
+        "y": 1743,
+        "width": 16,
+        "height": 17
+      },
+      {
+        "x": 1146,
+        "y": 1782,
+        "width": 13,
+        "height": 9
+      },
+      {
+        "x": 1346,
+        "y": 1827,
+        "width": 12,
+        "height": 9
+      },
+      {
+        "x": 1137,
+        "y": 1782,
+        "width": 6,
+        "height": 5
+      },
+      {
+        "x": 1369,
+        "y": 1840,
+        "width": 7,
+        "height": 4
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-011.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 6238,
+    "erase_changed_ratio": 0.0010267758382757276,
+    "typeset_changed_pixels": 3697,
+    "typeset_changed_ratio": 0.0006085268153423157
+  },
+  "region_analysis": {
+    "total": 2,
+    "bubbles": 1,
+    "text_regions": 1,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 4,
+      "Global2x": 4,
+      "Focus3x": 2,
+      "Region1x": 2,
+      "Region2x": 2,
+      "Container2x": 2
+    },
+    "canonical_lines": 6,
+    "units": 6,
+    "assigned_lines": 1,
+    "orphan_groups": 5,
+    "secondary_total": 1,
+    "secondary_accepted": 1,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 1743,
+          "Bottom": 1844,
+          "Left": 1126,
+          "Right": 1376,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...AFTER I REBUILD IT!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 6,
+    "requested_render": 3
+  },
+  "render": {
+    "total": 1,
+    "approved": 1,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 3,
+    "TranslatedUnits": 1,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 1,
+    "TypesetCommittedUnits": 1,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "y",
+        "Translation": "\uC751",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "IK",
+        "Translation": "\uC73D",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "RSE",
+        "Translation": "...\uB0B4\uAC00 \uB2E4\uC2DC \uACE0\uCCD0 \uB193\uC740 \uB2E4\uC74C\uC5D0!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

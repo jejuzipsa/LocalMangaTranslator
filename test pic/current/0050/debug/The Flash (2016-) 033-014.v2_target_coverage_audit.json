@@ -1,0 +1,45 @@
+{
+  "Schema": "pipeline-v2-target-coverage-v1",
+  "SourceFile": "The Flash (2016-) 033-014.jpg",
+  "DetectedTextTargets": 2,
+  "CommittedTargets": 0,
+  "PreservedTargets": 2,
+  "UnresolvedTargets": 0,
+  "CoverageComplete": true,
+  "Targets": [
+    {
+      "TextRegionId": "RG001",
+      "Kind": "TextFree",
+      "TextScore": 0.40570152,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 82,
+        "Y": 373,
+        "Width": 356,
+        "Height": 296
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    },
+    {
+      "TextRegionId": "RG002",
+      "Kind": "TextFree",
+      "TextScore": 0.40047693,
+      "BubbleRegionId": null,
+      "TextBounds": {
+        "X": 1249,
+        "Y": 2652,
+        "Width": 677,
+        "Height": 332
+      },
+      "BoundTranslationRegionIds": [],
+      "BestTranslationRegionId": null,
+      "Status": "preserved_policy:textfree_original",
+      "PlanReason": null,
+      "Unresolved": false
+    }
+  ]
+}
