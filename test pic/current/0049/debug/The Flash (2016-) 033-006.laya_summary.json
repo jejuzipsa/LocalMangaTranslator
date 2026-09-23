@@ -1,0 +1,57 @@
+{
+  "Schema": "pipeline-v2-laya-summary-v2",
+  "SourceFile": "The Flash (2016-) 033-006.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "TotalDecisions": 87,
+  "Matched": 58,
+  "Mismatched": 29,
+  "NoAnswer": 0,
+  "ByKind": {
+    "detector_retry": {
+      "Compared": 17,
+      "Matched": 17,
+      "Mismatched": 0,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.6079058823529411
+    },
+    "ownership": {
+      "Compared": 17,
+      "Matched": 16,
+      "Mismatched": 1,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.12207647058823531
+    },
+    "duplicate": {
+      "Compared": 1,
+      "Matched": 1,
+      "Mismatched": 0,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.0403
+    },
+    "ocr_consensus": {
+      "Compared": 16,
+      "Matched": 10,
+      "Mismatched": 6,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.06645625
+    },
+    "vision_correction": {
+      "Compared": 15,
+      "Matched": 3,
+      "Mismatched": 12,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5773733333333334
+    },
+    "translation_consistency": {
+      "Compared": 21,
+      "Matched": 11,
+      "Mismatched": 10,
+      "NoAnswer": 0,
+      "MeanConfidence": 0.5773666666666667
+    }
+  }
+}

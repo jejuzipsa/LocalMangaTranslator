@@ -1,0 +1,892 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-015.jpg",
+  "output_file": "The Flash (2016-) 033-015.translated.webp",
+  "image": {
+    "width": 1988,
+    "height": 3056,
+    "changed_pixels": 261155,
+    "changed_ratio": 0.04298615646760142,
+    "changed_regions": [
+      {
+        "x": 200,
+        "y": 366,
+        "width": 237,
+        "height": 170
+      },
+      {
+        "x": 357,
+        "y": 1785,
+        "width": 226,
+        "height": 113
+      },
+      {
+        "x": 211,
+        "y": 1584,
+        "width": 261,
+        "height": 81
+      },
+      {
+        "x": 65,
+        "y": 2494,
+        "width": 185,
+        "height": 112
+      },
+      {
+        "x": 184,
+        "y": 195,
+        "width": 242,
+        "height": 84
+      },
+      {
+        "x": 1604,
+        "y": 308,
+        "width": 230,
+        "height": 82
+      },
+      {
+        "x": 214,
+        "y": 109,
+        "width": 218,
+        "height": 83
+      },
+      {
+        "x": 219,
+        "y": 1785,
+        "width": 144,
+        "height": 113
+      },
+      {
+        "x": 357,
+        "y": 1902,
+        "width": 153,
+        "height": 90
+      },
+      {
+        "x": 199,
+        "y": 1901,
+        "width": 151,
+        "height": 82
+      },
+      {
+        "x": 809,
+        "y": 2154,
+        "width": 142,
+        "height": 84
+      },
+      {
+        "x": 1289,
+        "y": 238,
+        "width": 108,
+        "height": 110
+      },
+      {
+        "x": 477,
+        "y": 1583,
+        "width": 144,
+        "height": 81
+      },
+      {
+        "x": 797,
+        "y": 2306,
+        "width": 121,
+        "height": 82
+      },
+      {
+        "x": 267,
+        "y": 2093,
+        "width": 101,
+        "height": 85
+      },
+      {
+        "x": 966,
+        "y": 158,
+        "width": 85,
+        "height": 82
+      },
+      {
+        "x": 1790,
+        "y": 2076,
+        "width": 79,
+        "height": 84
+      },
+      {
+        "x": 598,
+        "y": 240,
+        "width": 79,
+        "height": 81
+      },
+      {
+        "x": 570,
+        "y": 1694,
+        "width": 94,
+        "height": 68
+      },
+      {
+        "x": 912,
+        "y": 158,
+        "width": 69,
+        "height": 82
+      },
+      {
+        "x": 777,
+        "y": 2277,
+        "width": 91,
+        "height": 62
+      },
+      {
+        "x": 1729,
+        "y": 2075,
+        "width": 62,
+        "height": 85
+      },
+      {
+        "x": 225,
+        "y": 1658,
+        "width": 119,
+        "height": 41
+      },
+      {
+        "x": 380,
+        "y": 1665,
+        "width": 139,
+        "height": 33
+      },
+      {
+        "x": 195,
+        "y": 2096,
+        "width": 79,
+        "height": 54
+      },
+      {
+        "x": 506,
+        "y": 1772,
+        "width": 85,
+        "height": 49
+      },
+      {
+        "x": 1354,
+        "y": 237,
+        "width": 77,
+        "height": 53
+      },
+      {
+        "x": 559,
+        "y": 2071,
+        "width": 134,
+        "height": 30
+      },
+      {
+        "x": 412,
+        "y": 1700,
+        "width": 72,
+        "height": 53
+      },
+      {
+        "x": 208,
+        "y": 109,
+        "width": 68,
+        "height": 53
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-015.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 174610,
+    "erase_changed_ratio": 0.028740835062732416,
+    "typeset_changed_pixels": 126095,
+    "typeset_changed_ratio": 0.020755257987716876
+  },
+  "region_analysis": {
+    "total": 38,
+    "bubbles": 19,
+    "text_regions": 19,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 74,
+      "Global2x": 81,
+      "Focus3x": 407,
+      "Region1x": 86,
+      "Region2x": 105,
+      "Container1x": 89,
+      "Container2x": 103
+    },
+    "canonical_lines": 117,
+    "units": 28,
+    "assigned_lines": 109,
+    "orphan_groups": 8,
+    "secondary_total": 19,
+    "secondary_accepted": 19,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 97,
+          "Bottom": 290,
+          "Left": 170,
+          "Right": 443,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WHAT THE HELL WAS THAT?! THE DARK ENERGY MUST BE GETTING STRONGER...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 118,
+          "Bottom": 277,
+          "Left": 817,
+          "Right": 1114,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "WE APPEAR TO BE IN CONTACT AGAIN...BUT I\u0027VE LOST DEATHSTROKE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 226,
+          "Bottom": 357,
+          "Left": 1243,
+          "Right": 1472,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I\u0027M\nCURRENTLY\nFLYING SOLO\nAS WELL.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG006",
+        "Bounds": {
+          "Top": 229,
+          "Bottom": 328,
+          "Left": 517,
+          "Right": 750,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I HAVE TO GET BACK TO--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 298,
+          "Bottom": 486,
+          "Left": 1599,
+          "Right": 1838,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEY SEPARATED US FROM OUR ALLIES. THEY WANTED US ALONE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 326,
+          "Bottom": 605,
+          "Left": 195,
+          "Right": 444,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...SUPERMAN SAID HE HAD HORRIFIC VISIONS IN METROPOLIS THAT SHOWED HIM LOSING OVER AND OVER AND",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 772,
+          "Bottom": 811,
+          "Left": 603,
+          "Right": 748,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "FLASH?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG014",
+        "Bounds": {
+          "Top": 781,
+          "Bottom": 825,
+          "Left": 286,
+          "Right": 400,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "UGH!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 993,
+          "Bottom": 1033,
+          "Left": 541,
+          "Right": 744,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "AQUAMAN?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 1574,
+          "Bottom": 1762,
+          "Left": 170,
+          "Right": 664,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "JUSTICE LEAGUE?! ;ZRT:\nI\u0027M USING EVERY BIT OF MY\n22RT: PROGRAMMING TO\nKEEP US TALKING BLT IT\u0027S IST\u0027S T CASTATT CEATSTATSTATATATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1772,
+          "Bottom": 1993,
+          "Left": 169,
+          "Right": 591,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EVERYONE IS\nBEING TAKEN TO\nGOTHAM...BARBATOS\nWANTS YOU FOUR\nTOGETHER...IT\u0027S.........IT\u0027S...\nIT\u0027S...\nITOTAN....\nITALLALAREN.....",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG023",
+        "Bounds": {
+          "Top": 2033,
+          "Bottom": 2168,
+          "Left": 1687,
+          "Right": 1918,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YES, LET ME HELP YOU FIND THE LIGHT, BARRY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 2034,
+          "Bottom": 2074,
+          "Left": 191,
+          "Right": 403,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "CYBORG?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG025",
+        "Bounds": {
+          "Top": 2037,
+          "Bottom": 2136,
+          "Left": 536,
+          "Right": 896,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BRUCE?! OH MY GOD, IT\u0027S SO GOOD TO HEAR YOUR--",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG029",
+        "Bounds": {
+          "Top": 2086,
+          "Bottom": 2180,
+          "Left": 183,
+          "Right": 420,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "YOU\u0027RE BREAKING UP! YOU THERE?!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0016",
+        "RegionId": "RG031",
+        "Bounds": {
+          "Top": 2143,
+          "Bottom": 2249,
+          "Left": 757,
+          "Right": 962,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EVERYTHING IS GOING TO BE OKAY.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0017",
+        "RegionId": "RG033",
+        "Bounds": {
+          "Top": 2269,
+          "Bottom": 2427,
+          "Left": 750,
+          "Right": 926,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ARE YOU IN THE DARK WITH US, TOO?",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0018",
+        "RegionId": "RG035",
+        "Bounds": {
+          "Top": 2454,
+          "Bottom": 2613,
+          "Left": 50,
+          "Right": 263,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DAMN! THE DARKNESS IN HERE IS IMPENETRA-BLE!",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0019",
+        "RegionId": "RG037",
+        "Bounds": {
+          "Top": 2871,
+          "Bottom": 2974,
+          "Left": 141,
+          "Right": 259,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "DON\u0027T WORRY, HAL...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 28,
+    "requested_render": 20
+  },
+  "render": {
+    "total": 19,
+    "approved": 18,
+    "rejected": 1,
+    "rejection_reasons": {
+      "container_duplicate_after_v2_candidate_arbitration": 1
+    }
+  },
+  "v2_commit": {
+    "RequestedUnits": 20,
+    "TranslatedUnits": 18,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 18,
+    "TypesetCommittedUnits": 18,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "HELL WHAT THE WAS THAT?! THE DARK ENERGY MUST BE GETTING TRONGER..",
+        "Translation": "\uB300\uCCB4 \uBC29\uAE08 \uADF8\uAC74 \uBB50\uC600\uC9C0?!\n\uC5B4\uB460\uC758 \uC5D0\uB108\uC9C0\uAC00\n\uAC15\uD574\uC9C0\uACE0 \uC788\uB294 \uAC8C \uBD84\uBA85\uD574...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "WE APPEAR TO BE IN AGA LOST DEATHSTROKE.",
+        "Translation": "\uB2E4\uC2DC \uC5F0\uB77D\uC774 \uB2FF\uC740 \uAC83 \uAC19\uAD70...[BR]\uD558\uC9C0\uB9CC\n\uB370\uC2A4\uC2A4\uD2B8\uB85C\uD06C\uB97C\n\uB193\uCCE4\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "I\u0027M CURRENTLY SOLO FLYING AS WE WELL.",
+        "Translation": "\uB098\uB3C4 \uC9C0\uAE08[BR]\uD63C\uC790 \uC6C0\uC9C1\uC774\uB294 \uC911\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "I HAVE BACK TO GET TO--",
+        "Translation": "\uBE68\uB9AC \uB3CC\uC544\uAC00\uC57C\n\uD574--",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 6,
+        "SourceText": "THEY SEPARATED FROM OUR ALLIES. THEY WANTE ALONE.",
+        "Translation": "\uADF8\uB188\uB4E4\uC774 \uC6B0\uB9AC\uB97C \uC544\uAD70\uACFC \uB5BC\uC5B4\uB193\uC558\uC5B4.[BR] \uC6B0\uB9AC\uB9CC \uACE8\uB77C\uB0B4\uB824 \uD55C \uAC70\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "ERMAN SAID HAD HE HORRIFIC VISIONS IN METROPOLIS THAT SHOWED LOSING OVER AND OVER AGAIN.",
+        "Translation": "...\uC288\uD37C\uB9E8\uC740 \uBA54\uD2B8\uB85C\uD3F4\uB9AC\uC2A4\uC5D0\uC11C[BR]\uC790\uC2E0\uC774 \uACC4\uC18D\uD574\uC11C \uD328\uBC30\uD558\uB294[BR]\uB054\uCC0D\uD55C \uD658\uC601\uC744 \uBCF4\uC558\uB2E4\uACE0[BR]\uB9D0\uD588\uC2B5\uB2C8\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "FLASH?",
+        "Translation": "\uBC88\uCA4D?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 9,
+        "SourceText": "UGH!",
+        "Translation": "\uC73D!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "AQUAMAN?!",
+        "Translation": "\uC544\uCFE0\uC544\uB9E8?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "JUSTICE LEAGUE?! ZRT\u00C9 I\u0027M LSING EVERY BIT OF MY ZRTE PROGRAMMING TO KEEP US TALKING, BUT IT\u0027S GETTING ZRT\u00C9 HARDER.",
+        "Translation": "\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8\uB77C\uACE0?! [\uCE58\uC9C1] \uB300\uD654\uB97C \uC774\uC5B4\uAC00\uB824\uACE0 [\uCE58\uC9C1] \uD504\uB85C\uADF8\uB798\uBC0D\uC744 \uCD1D\uB3D9\uC6D0\uD558\uACE0 \uC788\uC9C0\uB9CC, [\uCE58\uC9C1] \uC810\uC810 \uD798\uB4E4\uC5B4\uC9C0\uACE0 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 13,
+        "SourceText": "CI",
+        "Translation": "\uBBF8\uC548\uD574.",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "a",
+        "Translation": "\uC544",
+        "Status": "original_preserved:container_duplicate",
+        "Committed": false,
+        "Bound": true,
+        "LayoutApproved": false,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 15,
+        "SourceText": "EVERYONE IS BEING TAKEN TO GOTHAM...BARBATOS WANTS YOU FOUR TOGETHER...IT\u0027S...BAD.. IT\u0027S...HE WANTS TO CREECH\u0022 ZRT\u00C9",
+        "Translation": "\uBAA8\uB450\uAC00\n\uACE0\uB2F4\uC73C\uB85C\n\uB04C\uB824\uAC00\uACE0 \uC788\uC5B4...\n\uBC14\uBC14\uD1A0\uC2A4\uAC00\n\uB124 \uB137\uC744\n\uBAA8\uC73C\uB824 \uD574...\n\uADF8\uAC74...\n\uC2EC\uAC01\uD55C\n\uC0C1\uD669\uC774\uC57C...\n\uADF8\uB294...\n\u0022\uD06C\uB9AC\uCE58\u0022\n\uB97C\n\uC6D0\uD574.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "CYBORG?!",
+        "Translation": "\uC0AC\uC774\uBCF4\uADF8?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 19,
+        "SourceText": "BRUCE?! GOD. MY OH GOOD TO IT HEAR YOUR--",
+        "Translation": "\uBE0C\uB8E8\uC2A4?! \uC138\uC0C1\uC5D0, \uBAA9\uC18C\uB9AC\uB97C\n\uB4E4\uC73C\uB2C8 \uC815\uB9D0\n\uBC18\uAC00\uC6CC\uC694\u2014",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "LET YES HELP YOU FIND THE LIGHT, BARRY.",
+        "Translation": "\uADF8\uB798, \uBE5B\uC744 \uCC3E\uB294 \uAC78[BR]\uB3C4\uC640\uC904\uAC8C, \uBC30\uB9AC.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "YOU\u0027RE UP! BREAKING THERE?!",
+        "Translation": "\uC0AC\uC774\uBCF4\uADF8?![BR]\uBAB8\uC774 \uB9DD\uAC00\uC9C0\uACE0 \uC788\uC5B4![BR]\uAC70\uAE30 \uC788\uB294 \uAC70 \uBCF4\uC774\uC9C0?!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "EVERYTHING GOING 10 IS OKAY. BE",
+        "Translation": "\uB2E4 \uAD1C\uCC2E\uC544\uC9C8 \uAC70\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 23,
+        "SourceText": "ARE YOU IN THE DARK WITH US. TOO?",
+        "Translation": "\uB108\uB3C4 \uC6B0\uB9AC\uB791[BR]\uACF5\uC6D0\uC5D0 \uAC19\uC774 \uC788\uB294 \uAC70\uC57C?",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 26,
+        "SourceText": "DAMN! THE DARKNESS IN HERE IS IMPENETRA- BLE!",
+        "Translation": "\uC820\uC7A5! \uC5EC\uAE30 \uC5B4\uB460\uC774 \uB108\uBB34 \uC9D9\uC5B4\uC11C\n\uC544\uBB34\uAC83\uB3C4 \uC548 \uBCF4\uC5EC!",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

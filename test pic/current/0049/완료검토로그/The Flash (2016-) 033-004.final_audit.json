@@ -1,0 +1,890 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-004.jpg",
+  "output_file": "The Flash (2016-) 033-004.translated.webp",
+  "image": {
+    "width": 3975,
+    "height": 3056,
+    "changed_pixels": 336774,
+    "changed_ratio": 0.02772350093845698,
+    "changed_regions": [
+      {
+        "x": 1338,
+        "y": 2780,
+        "width": 370,
+        "height": 112
+      },
+      {
+        "x": 2996,
+        "y": 267,
+        "width": 396,
+        "height": 91
+      },
+      {
+        "x": 1062,
+        "y": 209,
+        "width": 245,
+        "height": 119
+      },
+      {
+        "x": 2690,
+        "y": 125,
+        "width": 321,
+        "height": 83
+      },
+      {
+        "x": 3627,
+        "y": 1484,
+        "width": 195,
+        "height": 111
+      },
+      {
+        "x": 267,
+        "y": 81,
+        "width": 339,
+        "height": 63
+      },
+      {
+        "x": 3315,
+        "y": 2057,
+        "width": 180,
+        "height": 113
+      },
+      {
+        "x": 2800,
+        "y": 597,
+        "width": 180,
+        "height": 101
+      },
+      {
+        "x": 2286,
+        "y": 1993,
+        "width": 252,
+        "height": 61
+      },
+      {
+        "x": 1262,
+        "y": 209,
+        "width": 127,
+        "height": 120
+      },
+      {
+        "x": 224,
+        "y": 2044,
+        "width": 182,
+        "height": 82
+      },
+      {
+        "x": 393,
+        "y": 2044,
+        "width": 178,
+        "height": 83
+      },
+      {
+        "x": 3209,
+        "y": 1437,
+        "width": 178,
+        "height": 83
+      },
+      {
+        "x": 3293,
+        "y": 2857,
+        "width": 183,
+        "height": 70
+      },
+      {
+        "x": 3573,
+        "y": 2057,
+        "width": 150,
+        "height": 84
+      },
+      {
+        "x": 3582,
+        "y": 2858,
+        "width": 116,
+        "height": 103
+      },
+      {
+        "x": 3507,
+        "y": 2857,
+        "width": 112,
+        "height": 104
+      },
+      {
+        "x": 602,
+        "y": 81,
+        "width": 184,
+        "height": 63
+      },
+      {
+        "x": 3470,
+        "y": 2057,
+        "width": 124,
+        "height": 84
+      },
+      {
+        "x": 3115,
+        "y": 125,
+        "width": 145,
+        "height": 55
+      },
+      {
+        "x": 589,
+        "y": 288,
+        "width": 262,
+        "height": 29
+      },
+      {
+        "x": 750,
+        "y": 256,
+        "width": 231,
+        "height": 30
+      },
+      {
+        "x": 3100,
+        "y": 86,
+        "width": 190,
+        "height": 36
+      },
+      {
+        "x": 200,
+        "y": 80,
+        "width": 67,
+        "height": 97
+      },
+      {
+        "x": 3692,
+        "y": 2858,
+        "width": 93,
+        "height": 69
+      },
+      {
+        "x": 136,
+        "y": 989,
+        "width": 192,
+        "height": 31
+      },
+      {
+        "x": 1425,
+        "y": 2780,
+        "width": 96,
+        "height": 52
+      },
+      {
+        "x": 3772,
+        "y": 2857,
+        "width": 72,
+        "height": 69
+      },
+      {
+        "x": 3033,
+        "y": 125,
+        "width": 84,
+        "height": 54
+      },
+      {
+        "x": 2261,
+        "y": 1008,
+        "width": 86,
+        "height": 51
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-004.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 202936,
+    "erase_changed_ratio": 0.016705851361585828,
+    "typeset_changed_pixels": 202408,
+    "typeset_changed_ratio": 0.01666238598570911
+  },
+  "region_analysis": {
+    "total": 39,
+    "bubbles": 19,
+    "text_regions": 20,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 46,
+      "Global2x": 49,
+      "Focus3x": 208,
+      "Region1x": 150,
+      "Region2x": 137,
+      "Container1x": 128,
+      "Container2x": 138
+    },
+    "canonical_lines": 107,
+    "units": 32,
+    "assigned_lines": 92,
+    "orphan_groups": 13,
+    "secondary_total": 19,
+    "secondary_accepted": 19,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 77,
+          "Bottom": 214,
+          "Left": 220,
+          "Right": 802,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SEVEN DAYS AGO, CHAKULENGERS\nMOUNTAIN APPEARED IN GOTHAN\nCITY FROM A NORILD OF CHAN\nCHALL CHALL CHALL",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG002",
+        "Bounds": {
+          "Top": 83,
+          "Bottom": 218,
+          "Left": 2682,
+          "Right": 3362,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THE DEVICION BARBATORIS LASED BATHMAN AS A DOORWAY TO OUR DICK W",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 200,
+          "Bottom": 337,
+          "Left": 1046,
+          "Right": 1402,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "A RACE WHERE I\u0027VE BEEN RUNNING AGAINST MY WORST FEARS, MADE REAL.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 247,
+          "Bottom": 355,
+          "Left": 578,
+          "Right": 999,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT WAS LIKE THE SHOT OF A STARTING GUN TO A RACE WITH NO END.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 262,
+          "Bottom": 426,
+          "Left": 2992,
+          "Right": 3461,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "PERVIERSIONS OF NOT ONLY BATMAN, BUT OF THE LEASUE AS WELL. THROUGH THEM THE WORLD H HEAN THERANSTRANSHERMSHATA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 499,
+          "Bottom": 549,
+          "Left": 131,
+          "Right": 457,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "* See METAL #1 - Tay",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 599,
+          "Bottom": 735,
+          "Left": 2790,
+          "Right": 2997,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SUPERMAN BELIEVES BATMAN IS ALIVE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 652,
+          "Bottom": 729,
+          "Left": 977,
+          "Right": 1095,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...WE LOSE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG017",
+        "Bounds": {
+          "Top": 953,
+          "Bottom": 1056,
+          "Left": 121,
+          "Right": 339,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOTHING SEEMS REAL ANYMORE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 999,
+          "Bottom": 1070,
+          "Left": 2220,
+          "Right": 2366,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...IT HURTS.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0011",
+        "RegionId": "RG021",
+        "Bounds": {
+          "Top": 1248,
+          "Bottom": 1300,
+          "Left": 730,
+          "Right": 878,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I RUN...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0012",
+        "RegionId": "RG024",
+        "Bounds": {
+          "Top": 1424,
+          "Bottom": 1557,
+          "Left": 3146,
+          "Right": 3395,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...SOMEWHERE IN THIS LINKNOWN REALM...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0013",
+        "RegionId": "RG026",
+        "Bounds": {
+          "Top": 1449,
+          "Bottom": 1521,
+          "Left": 1478,
+          "Right": 1629,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I KEEP GOING...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0014",
+        "RegionId": "RG028",
+        "Bounds": {
+          "Top": 1471,
+          "Bottom": 1607,
+          "Left": 3609,
+          "Right": 3842,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...THAT HE\u0027S THE KEY TO SAVING THE WORLD.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0015",
+        "RegionId": "RG030",
+        "Bounds": {
+          "Top": 1989,
+          "Bottom": 2092,
+          "Left": 2228,
+          "Right": 2624,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "...BUT ONLY I CAN\nHELP SEND SUPERMAN\nTO FIND BATMAN.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0016",
+        "RegionId": "RG032",
+        "Bounds": {
+          "Top": 2019,
+          "Bottom": 2180,
+          "Left": 3310,
+          "Right": 3736,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SO STEEL AND I CAME HERE, TO THE FORTRESS, TO LAUNCH OUR OWN SHO",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0017",
+        "RegionId": "RG033",
+        "Bounds": {
+          "Top": 2031,
+          "Bottom": 2134,
+          "Left": 216,
+          "Right": 593,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "EVERYONE ELSE HAS SCATTERED, LOOKING FOR ANSWERS...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0018",
+        "RegionId": "RG036",
+        "Bounds": {
+          "Top": 2769,
+          "Bottom": 2900,
+          "Left": 1332,
+          "Right": 1713,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I DON\u0027T KNOW IF CENTRAL CITY IS STILL STANDING OR IF IT IS OR WA",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0019",
+        "RegionId": "RG038",
+        "Bounds": {
+          "Top": 2859,
+          "Bottom": 2965,
+          "Left": 3287,
+          "Right": 3887,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT I CAN HEAR BRICLE\u0027S VOICE IN MY HEAR, SAYING WAHAT FALLAYS SAYS WHENEVER ITY LYACKATAS",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 32,
+    "requested_render": 20
+  },
+  "render": {
+    "total": 18,
+    "approved": 18,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 20,
+    "TranslatedUnits": 18,
+    "PreservedOriginalUnits": 2,
+    "EraseCommittedUnits": 18,
+    "TypesetCommittedUnits": 18,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 1,
+        "SourceText": "CHALLENGERS\u0027 APPEARED IN GOTHAM MOUNTAIN API CITY A WORLD OF CHAOS CITY FROM A E DARK MULTIVERSE.* CALLED THE",
+        "Translation": "7\uC77C \uC804, \uB2E4\uD06C \uBA40\uD2F0\uBC84\uC2A4\uC758\n\uD63C\uB3C8\uC758 \uC138\uACC4\uB85C\uBD80\uD130\n\uACE0\uB2F4 \uC2DC\uD2F0\uC5D0 \uCC4C\uB9B0\uC800\uC2A4 \uB9C8\uC6B4\uD2B8\uAC00\n\uCD9C\uD604\uD588\uB2E4... \uC774\uB984\uC740\n\u0027\uB354",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "THE DEMON BARBATOS USED BATMAN AS A DOORWAY TO AND BROUGHT THROUGH SEVEN NIG VERSIONS OF BRUCE WAYNE.",
+        "Translation": "\uC545\uB9C8 \uBC14\uBC14\uD1A0\uC2A4\uB294 \uBC30\uD2B8\uB9E8\uC744 \uD1B5\uB85C\uB85C \uC0BC\uC544[BR]\uC77C\uACF1 \uAC00\uC9C0 \uBC84\uC804\uC758 \uBE0C\uB8E8\uC2A4 \uC6E8\uC778\uC744[BR]\uC774\uACF3\uC73C\uB85C \uBD88\uB7EC\uB4E4\uC600\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 3,
+        "SourceText": "A RACE WHERE I\u2019VE BEEN RUNNING AGAINST MY WORST FEARS, MADE REAL.",
+        "Translation": "\uB0B4 \uCD5C\uC545\uC758 \uACF5\uD3EC\uC640[BR]\uB9DE\uC11C\uBA70 \uB2EC\uB824\uC628 \uACBD\uC8FC\uAC00[BR]\uC2E4\uCCB4\uB85C[BR]\uBCC0\uD574\uBC84\uB838\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "SHOT THE IT GUN TO END.",
+        "Translation": "\uADF8\uAC83\uC740 \uB9C8\uCE58 \uB05D\uC774 \uC5C6\uB294 \uACBD\uC8FC\uB97C \uC54C\uB9AC\uB294\n\uCD9C\uBC1C \uC2E0\uD638\uD0C4\uACFC\uB3C4 \uAC19\uC558\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 5,
+        "SourceText": "NOT PERVERSIONS OF ONLY BATMAN, BUT OF THE THROUGH THEM, THE WORLD HAS TRANSFORMED. BEEN",
+        "Translation": "\uB2E8\uC21C\uD788 \uBC30\uD2B8\uB9E8\uBFD0\uB9CC \uC544\uB2C8\uB77C[BR]\uB9AC\uADF8 \uC804\uCCB4\uAC00 \uD0C0\uB77D\uD588\uB2E4. \uADF8\uB4E4\uC744 \uD1B5\uD574[BR]\uC138\uC0C1\uC774 \uBCC0\uD574\uBC84\uB9B0 \uAC83\uC774\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 7,
+        "SourceText": "SUPERMAN BELIEVES BATMAN IS ALIVE...",
+        "Translation": "\uC288\uD37C\uB9E8\uC740 \uBC30\uD2B8\uB9E8\uC774\n\uC0B4\uC544\uC788\uB2E4\uACE0 \uBBFF\uACE0 \uC788\uB2E4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "\u2026WE LOSE.",
+        "Translation": "...\uC6B0\uB9B0 \uC84C\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "NOTHING SEEMS REAL ANYMORE.",
+        "Translation": "\uC774\uC81C \uC544\uBB34\uAC83\uB3C4 \uC9C4\uC9DC\uCC98\uB7FC \uB290\uAEF4\uC9C0\uC9C0 \uC54A\uC544.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "URTS",
+        "Translation": "...\uC544\uD30C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 14,
+        "SourceText": "I RUN...",
+        "Translation": "\uB3C4\uB9DD\uCCD0...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 20,
+        "SourceText": "SOMEWHERE THIS IN UNKNOWN REALM..",
+        "Translation": "...\uC774 \uBBF8\uC9C0\uC758 \uC601\uC5ED \uC5B4\uB518\uAC00...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "I KEEP GOING",
+        "Translation": "\uACC4\uC18D \uB098\uC544\uAC04\uB2E4...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "T HE\u0027S THAT HE\u0027S THE KEY TO THE SAVING WORLD.",
+        "Translation": "...\uADF8\uAC00 \uC138\uC0C1\uC744[BR]\uAD6C\uD560 \uC5F4\uC1E0\uB77C\uB294 \uAC83.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 23,
+        "SourceText": "NE",
+        "Translation": "\uC548 \uB3FC",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 25,
+        "SourceText": "AV",
+        "Translation": "\uC544\uC557!",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 26,
+        "SourceText": ".BUT ONLY I CAN SUPERMAN HELP SEND BATMAN. FIND TO",
+        "Translation": "...\uD558\uC9C0\uB9CC \uC624\uC9C1 \uB098\uB9CC\uC774\n\uC288\uD37C\uB9E8\uC744 \uBCF4\uB0B4\n\uBC30\uD2B8\uB9E8\uC744 \uCC3E\uAC8C\n\uB3C4\uC6B8 \uC218 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 27,
+        "SourceText": "SO STEEL AND I CAME FORTRESS, TO HERE, TO OUR OWN SHOT THE MULTIVERSE. DARK",
+        "Translation": "\uADF8\uB798\uC11C \uC2A4\uD2F8\uACFC \uB098\uB294 \uC774 \uC694\uC0C8\uC5D0 \uC654\uC5B4.[BR]\uB2E4\uD06C \uBA40\uD2F0\uBC84\uC2A4\uB97C \uD5A5\uD574[BR]\uC6B0\uB9AC\uB9CC\uC758 \uC77C\uACA9\uC744 \uB0A0\uB9AC\uAE30 \uC704\uD574\uC11C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 29,
+        "SourceText": "HAS VERYON SCA ING FOR ANSWER",
+        "Translation": "\uB2E4\uB978 \uC774\uB4E4\uC740 \uB2F5\uC744 \uCC3E\uC544\n\uC0AC\uBC29\uC73C\uB85C \uD769\uC5B4\uC84C\uACE0...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 30,
+        "SourceText": "KNOW IF CITY IS STILL CENTRAL STANDING OR WALLY ARE ALIVE.",
+        "Translation": "\uC13C\uD2B8\uB7F4 \uC2DC\uD2F0\uAC00 \uC544\uC9C1 \uBB34\uC0AC\uD55C\uC9C0,[BR]\uADF8\uB294 \uBB3C\uB860 \uC6D4\uB9AC\uAC00[BR]\uC0B4\uC544\uC788\uB294\uC9C0\uC870\uCC28[BR]\uBAA8\uB978\uB2E8 \uB9D0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 31,
+        "SourceText": "BUT I CAN HEAR BRUCE\u0027S VOICE IN MY HEAD, SAYING SAYS WHENEVER I\u0027M LINCERTAIN...",
+        "Translation": "\uD558\uC9C0\uB9CC \uBA38\uB9BF\uC18D\uC5D0\uC11C \uBE0C\uB8E8\uC2A4\uC758 \uBAA9\uC18C\uB9AC\uAC00 \uB4E4\uB824. [BR]\uB0B4\uAC00 \uB9DD\uC124\uC77C \uB54C\uB9C8\uB2E4 \uADF8\uAC00 \uB298 \uD558\uB358 \uB9D0\uC744... [BR]\uADF8\uAC00 \uD56D\uC0C1 \uD558\uB358 \uB9D0 \uB9D0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      }
+    ]
+  }
+}

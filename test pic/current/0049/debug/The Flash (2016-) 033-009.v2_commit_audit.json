@@ -1,0 +1,370 @@
+{
+  "Schema": "pipeline-v2-cleaned-state-commit-v2",
+  "SourceFile": "The Flash (2016-) 033-009.jpg",
+  "RequestedUnits": 15,
+  "TranslatedUnits": 9,
+  "PreservedOriginalUnits": 6,
+  "EraseCommittedUnits": 9,
+  "TypesetCommittedUnits": 9,
+  "MissingUnits": 0,
+  "DuplicateUnits": 0,
+  "EraseTypesetCountMatch": true,
+  "SourceToFinalCountMatch": true,
+  "Units": [
+    {
+      "RegionId": 1,
+      "SourceText": "HTO",
+      "Translation": "\uC598\uB4E4\uC544?! \uB0B4 \uB9D0 \uC880 \uB4E4\uC5B4\uBD10!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG002"
+      ],
+      "BubbleRegionId": "RG001",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 82,
+        "Y": 43,
+        "Width": 229,
+        "Height": 143
+      },
+      "Planned": true,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:vision_expansion_untrusted"
+    },
+    {
+      "RegionId": 2,
+      "SourceText": "WONDER WOMAN?!",
+      "Translation": "\uC6D0\uB354 \uC6B0\uBA3C?!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG004"
+      ],
+      "BubbleRegionId": "RG003",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1614,
+        "Y": 234,
+        "Width": 225,
+        "Height": 112
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 4,
+      "SourceText": "LANTERN?!",
+      "Translation": "\uB79C\uD134?!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG006"
+      ],
+      "BubbleRegionId": "RG005",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1132,
+        "Y": 773,
+        "Width": 249,
+        "Height": 92
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 7,
+      "SourceText": "AQUAMAN?!",
+      "Translation": "\uC544\uCFE0\uC544\uB9E8?!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG008"
+      ],
+      "BubbleRegionId": "RG007",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1531,
+        "Y": 1013,
+        "Width": 276,
+        "Height": 95
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 9,
+      "SourceText": "I NEVER LIKED BK BATMAN.",
+      "Translation": "\uB09C \uD55C \uBC88\uB3C4\n\uBC30\uD2B8\uB9E8\uC744\n\uC88B\uC544\uD55C \uC801\uC774\n\uC5C6\uC5B4.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG010"
+      ],
+      "BubbleRegionId": "RG009",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1207,
+        "Y": 1559,
+        "Width": 212,
+        "Height": 150
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 12,
+      "SourceText": "A",
+      "Translation": "\uC544",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 13,
+      "SourceText": "IS CYBORG BRINGING THEM HERE...?",
+      "Translation": "\uC0AC\uC774\uBC84\uADF8\uAC00 [BR]\uADF8\uAC83\uB4E4\uC744 [BR]\uC5EC\uAE30\uB85C \uAC00\uC838\uC624\uB294 \uAC74\uAC00...?",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG012"
+      ],
+      "BubbleRegionId": "RG011",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 138,
+        "Y": 2017,
+        "Width": 315,
+        "Height": 145
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 15,
+      "SourceText": "Y",
+      "Translation": "\uC751",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:ocr_noise"
+    },
+    {
+      "RegionId": 16,
+      "SourceText": "IL",
+      "Translation": "\uB110\n\uC808\uB300\n\uC6A9\uC11C\n\uC548\n\uD560\n\uAC70\uC57C!!",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 17,
+      "SourceText": "JUST 70u TO GET NEED TO KNOW HIM...",
+      "Translation": "\uADF8\uB97C \uC880\n\uC54C\uC544\uAC00\uAE30\uB9CC\n\uD558\uBA74 \uB3FC...",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG015"
+      ],
+      "BubbleRegionId": "RG014",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1627,
+        "Y": 2362,
+        "Width": 286,
+        "Height": 156
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 18,
+      "SourceText": "718",
+      "Translation": "\uB098\uD55C\uD14C...",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    },
+    {
+      "RegionId": 20,
+      "SourceText": "NO...LOOKS LIKE WE\u0027RE TO HAVE ABOUT BAD SOME COMPANY.",
+      "Translation": "\uC548 \uB3FC...[BR]\uBD88\uCCAD\uAC1D\uC774[BR]\uCC3E\uC544\uC62C[BR]\uAC83[BR]\uAC19\uC544.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG017"
+      ],
+      "BubbleRegionId": "RG016",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 647,
+        "Y": 2491,
+        "Width": 312,
+        "Height": 200
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 21,
+      "SourceText": "YOU\u0027RE AND ABOUT TO HAVE TWO CHANCES RIGHT NOW!",
+      "Translation": "...\uADF8\uB9AC\uACE0 \uC9C0\uAE08 \uB108\uD55C\uD14C[BR]\uAE30\uD68C\uAC00 \uB450 \uBC88\uC774\uB098[BR]\uC8FC\uC5B4\uC9C8 \uAC70\uC57C!",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG019"
+      ],
+      "BubbleRegionId": "RG018",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 1595,
+        "Y": 2519,
+        "Width": 326,
+        "Height": 167
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 22,
+      "SourceText": "HAVE A CONFESSION TO MAKE, FLASH.",
+      "Translation": "\uACE0\uBC31\uD560 \uAC8C \uC788\uC5B4, \uD50C\uB798\uC2DC.",
+      "Bound": true,
+      "TextRegionIds": [
+        "RG021"
+      ],
+      "BubbleRegionId": "RG020",
+      "LayoutMode": "rtdetr_parent_bubble",
+      "LayoutBounds": {
+        "X": 893,
+        "Y": 2588,
+        "Width": 262,
+        "Height": 178
+      },
+      "Planned": true,
+      "LayoutApproved": true,
+      "LegacyEraseReviewClean": true,
+      "CleanedStateVerifierAvailable": true,
+      "CleanedStateEmpty": true,
+      "ReviewerDisagreement": false,
+      "EraseClean": true,
+      "Committed": true,
+      "Status": "translated"
+    },
+    {
+      "RegionId": 25,
+      "SourceText": "JA",
+      "Translation": "\uC81C\uBC1C.",
+      "Bound": false,
+      "TextRegionIds": [],
+      "BubbleRegionId": null,
+      "LayoutMode": null,
+      "LayoutBounds": null,
+      "Planned": false,
+      "LayoutApproved": false,
+      "LegacyEraseReviewClean": false,
+      "CleanedStateVerifierAvailable": false,
+      "CleanedStateEmpty": false,
+      "ReviewerDisagreement": false,
+      "EraseClean": false,
+      "Committed": false,
+      "Status": "original_preserved:unbound"
+    }
+  ]
+}

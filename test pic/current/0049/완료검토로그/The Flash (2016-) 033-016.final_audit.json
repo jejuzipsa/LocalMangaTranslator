@@ -1,0 +1,668 @@
+{
+  "schema": "final-audit-v2",
+  "source_file": "The Flash (2016-) 033-016.jpg",
+  "output_file": "The Flash (2016-) 033-016.translated.webp",
+  "image": {
+    "width": 3975,
+    "height": 3056,
+    "changed_pixels": 186248,
+    "changed_ratio": 0.015332082057361125,
+    "changed_regions": [
+      {
+        "x": 3480,
+        "y": 1111,
+        "width": 244,
+        "height": 188
+      },
+      {
+        "x": 1094,
+        "y": 1681,
+        "width": 245,
+        "height": 118
+      },
+      {
+        "x": 238,
+        "y": 117,
+        "width": 206,
+        "height": 137
+      },
+      {
+        "x": 1519,
+        "y": 156,
+        "width": 162,
+        "height": 149
+      },
+      {
+        "x": 471,
+        "y": 1235,
+        "width": 193,
+        "height": 114
+      },
+      {
+        "x": 3348,
+        "y": 1139,
+        "width": 174,
+        "height": 126
+      },
+      {
+        "x": 2147,
+        "y": 2480,
+        "width": 187,
+        "height": 116
+      },
+      {
+        "x": 2658,
+        "y": 951,
+        "width": 201,
+        "height": 107
+      },
+      {
+        "x": 3470,
+        "y": 1635,
+        "width": 201,
+        "height": 101
+      },
+      {
+        "x": 333,
+        "y": 117,
+        "width": 163,
+        "height": 105
+      },
+      {
+        "x": 2348,
+        "y": 223,
+        "width": 126,
+        "height": 123
+      },
+      {
+        "x": 1643,
+        "y": 156,
+        "width": 85,
+        "height": 149
+      },
+      {
+        "x": 2321,
+        "y": 2482,
+        "width": 101,
+        "height": 83
+      },
+      {
+        "x": 2203,
+        "y": 2404,
+        "width": 103,
+        "height": 76
+      },
+      {
+        "x": 1338,
+        "y": 1683,
+        "width": 79,
+        "height": 84
+      },
+      {
+        "x": 2377,
+        "y": 2407,
+        "width": 81,
+        "height": 73
+      },
+      {
+        "x": 1729,
+        "y": 156,
+        "width": 42,
+        "height": 132
+      },
+      {
+        "x": 3659,
+        "y": 1108,
+        "width": 66,
+        "height": 78
+      },
+      {
+        "x": 2425,
+        "y": 2482,
+        "width": 58,
+        "height": 83
+      },
+      {
+        "x": 528,
+        "y": 377,
+        "width": 74,
+        "height": 65
+      },
+      {
+        "x": 3505,
+        "y": 1736,
+        "width": 132,
+        "height": 34
+      },
+      {
+        "x": 2302,
+        "y": 2404,
+        "width": 53,
+        "height": 76
+      },
+      {
+        "x": 3528,
+        "y": 1112,
+        "width": 104,
+        "height": 38
+      },
+      {
+        "x": 609,
+        "y": 441,
+        "width": 88,
+        "height": 41
+      },
+      {
+        "x": 634,
+        "y": 379,
+        "width": 57,
+        "height": 60
+      },
+      {
+        "x": 364,
+        "y": 220,
+        "width": 92,
+        "height": 35
+      },
+      {
+        "x": 3341,
+        "y": 1108,
+        "width": 78,
+        "height": 41
+      },
+      {
+        "x": 3458,
+        "y": 1669,
+        "width": 47,
+        "height": 67
+      },
+      {
+        "x": 1559,
+        "y": 156,
+        "width": 41,
+        "height": 75
+      },
+      {
+        "x": 2736,
+        "y": 1057,
+        "width": 78,
+        "height": 37
+      }
+    ],
+    "committed_cleaned_available": true,
+    "committed_cleaned_file": "The Flash (2016-) 033-016.v2_05_committed_cleaned.webp",
+    "erase_changed_pixels": 102089,
+    "erase_changed_ratio": 0.008404046889920642,
+    "typeset_changed_pixels": 113316,
+    "typeset_changed_ratio": 0.009328262372814384
+  },
+  "region_analysis": {
+    "total": 20,
+    "bubbles": 10,
+    "text_regions": 10,
+    "mode": "hybrid_rtdetr",
+    "external_detector": true
+  },
+  "ocr": {
+    "observations_by_pass": {
+      "Global1x": 15,
+      "Global2x": 26,
+      "Focus3x": 173,
+      "Region1x": 68,
+      "Region2x": 46,
+      "Container1x": 69,
+      "Container2x": 45
+    },
+    "canonical_lines": 75,
+    "units": 31,
+    "assigned_lines": 54,
+    "orphan_groups": 21,
+    "secondary_total": 10,
+    "secondary_accepted": 10,
+    "secondary_evidence": [
+      {
+        "EvidenceId": "BO0001",
+        "RegionId": "RG001",
+        "Bounds": {
+          "Top": 121,
+          "Bottom": 255,
+          "Left": 238,
+          "Right": 511,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "I KNOW I\u0027M NOT EXACTLY THE BRUCE YOU WERE HOPING FOR.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0002",
+        "RegionId": "RG003",
+        "Bounds": {
+          "Top": 165,
+          "Bottom": 300,
+          "Left": 1527,
+          "Right": 1809,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "ON MY WORLD,\nI DEVELOPED WAYS\nTO ELIMINATE THE\nJUSTICE LEAGUE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0003",
+        "RegionId": "RG005",
+        "Bounds": {
+          "Top": 222,
+          "Bottom": 356,
+          "Left": 2331,
+          "Right": 2505,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IT WAS\nA DARK TIME\nFOR THE\nLEAGUE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0004",
+        "RegionId": "RG007",
+        "Bounds": {
+          "Top": 373,
+          "Bottom": 482,
+          "Left": 519,
+          "Right": 697,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT I AM BRUCE. WE ALL ARE.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0005",
+        "RegionId": "RG009",
+        "Bounds": {
+          "Top": 956,
+          "Bottom": 1095,
+          "Left": 2658,
+          "Right": 2864,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "BUT IN ALL HONESTY...I WAS HOLDING BACK.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0006",
+        "RegionId": "RG011",
+        "Bounds": {
+          "Top": 1108,
+          "Bottom": 1302,
+          "Left": 3341,
+          "Right": 3721,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "IF THEY WE\u0027RE TO SAY...DAYLOP SEZURATE MURDEROUS BATCAMES METICULOUSLY DESIGNED WITH ACH YOH",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0007",
+        "RegionId": "RG013",
+        "Bounds": {
+          "Top": 1195,
+          "Bottom": 1358,
+          "Left": 477,
+          "Right": 673,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "LET ME REMIND YOU OF A STORY WE HAVE IN COMMON.",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0008",
+        "RegionId": "RG015",
+        "Bounds": {
+          "Top": 1638,
+          "Bottom": 1806,
+          "Left": 1088,
+          "Right": 1423,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "THEN THEY FOUND OUT AND WERE SO DISAPPOINTED IN ME. I BETRAYED T",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0009",
+        "RegionId": "RG016",
+        "Bounds": {
+          "Top": 1639,
+          "Bottom": 1771,
+          "Left": 3470,
+          "Right": 3701,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "SO I HOPE YOU APPRECIATE OUR WORK, BECAUSE...",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      },
+      {
+        "EvidenceId": "BO0010",
+        "RegionId": "RG019",
+        "Bounds": {
+          "Top": 2411,
+          "Bottom": 2629,
+          "Left": 2157,
+          "Right": 2497,
+          "Location": {},
+          "Size": {},
+          "TopLeft": {},
+          "BottomRight": {}
+        },
+        "Text": "NOW INAGINE\nIF SEVEN BRICE\nWAYNES PUT THEIR\nHEADS TOGETHER...MAT\nHOPROR THEY COULD\nBE CAPLAD",
+        "Source": "baberu",
+        "Accepted": true,
+        "Reason": "bubble_text_region"
+      }
+    ]
+  },
+  "translation": {
+    "total": 31,
+    "requested_render": 16
+  },
+  "render": {
+    "total": 10,
+    "approved": 10,
+    "rejected": 0,
+    "rejection_reasons": {}
+  },
+  "v2_commit": {
+    "RequestedUnits": 16,
+    "TranslatedUnits": 10,
+    "PreservedOriginalUnits": 6,
+    "EraseCommittedUnits": 10,
+    "TypesetCommittedUnits": 10,
+    "MissingUnits": 0,
+    "DuplicateUnits": 0,
+    "EraseTypesetCountMatch": true,
+    "SourceToFinalCountMatch": true,
+    "Units": [
+      {
+        "RegionId": 0,
+        "SourceText": "KNOW I\u0027M NOT EXACTLY THE BRUCE YOU WERE HOPING FOR.",
+        "Translation": "\uB0B4\uAC00 \uB124\uAC00 \uAE30\uB300\uD588\uB358\n\uADF8 \uBE0C\uB8E8\uC2A4\uB294\n\uC544\uB2C8\uB77C\uB294 \uAC70,\n\uC54C\uACE0 \uC788\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 1,
+        "SourceText": "ON MY WORLD,",
+        "Translation": "\uB0B4 \uC138\uACC4\uC5D0\uC120,\n\uC800\uC2A4\uD2F0\uC2A4 \uB9AC\uADF8\uB97C\n\uC81C\uAC70\uD560 \uBC29\uBC95\uB4E4\uC744\n\uAC1C\uBC1C\uD574 \uC654\uC9C0...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 2,
+        "SourceText": "IT WAS FOR THE LEAGUE.",
+        "Translation": "\uADF8 \uC2DC\uAE30\uB294\n\uB9AC\uADF8\uC5D0\uAC8C\n\uC5B4\uB450\uC6B4\n\uB54C\uC600\uB2E4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 4,
+        "SourceText": "BUT I AM BRUCE. WE ALL ARE.",
+        "Translation": "\uD558\uC9C0\uB9CC \uB09C \uBE0C\uB8E8\uC2A4\uC57C.[BR] \uC6B0\uB9AC \uBAA8\uB450\uAC00 \uADF8\uB807\uACE0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 8,
+        "SourceText": "o.",
+        "Translation": "\uC624.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 10,
+        "SourceText": "BUT IN ALL HONESTY...I WAS HOLDING BACK.",
+        "Translation": "\uD558\uC9C0\uB9CC \uC194\uC9C1\uD788 \uB9D0\uD574\uC11C...[BR]\uB09C \uD798\uC744 \uC870\uC808\uD558\uACE0 \uC788\uC5C8\uC5B4.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 11,
+        "SourceText": "MMAO MAA oke THEY WERE TO, SAY...DEVELOP ARATE MURDEROUS BATCAVES METICULOUSL DESIGNED WITH EACH OF YOL IN MIND.",
+        "Translation": "\uAE00\uC384, \uB9CC\uC57D \uADF8\uB4E4\uC774...[BR]\uB108\uD76C \uAC01\uC790\uB97C \uC704\uD574 \uC138\uC2EC\uD558\uAC8C \uC124\uACC4\uB41C[BR]\uC0B4\uC778\uC6A9 \uBC30\uD2B8\uCF00\uC774\uBE0C\uB97C[BR]\uB9CC\uB4E0\uB2E4\uBA74 \uB9D0\uC774\uC57C.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 12,
+        "SourceText": "a",
+        "Translation": "\uC544",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 17,
+        "SourceText": "LET ME REMIND YOU OF A STORY WE HAVE IN COMMON.",
+        "Translation": "\uC6B0\uB9AC \uB458 \uC0AC\uC774\uC5D0\n\uACF5\uD1B5\uB41C \uC774\uC57C\uAE30\uAC00\n\uD558\uB098 \uC788\uB2E4\uB294 \uAC78\n\uC78A\uC9C0 \uB9C8.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 18,
+        "SourceText": "U",
+        "Translation": "\uB124 \uC0DD\uAC01\uBFD0\uC774\uC57C.",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 21,
+        "SourceText": "anaa",
+        "Translation": "\uC544\uC544",
+        "Status": "original_preserved:unbound",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 22,
+        "SourceText": "A",
+        "Translation": "\uADF8\uB807\uB2E4\uBA74",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      },
+      {
+        "RegionId": 23,
+        "SourceText": "HOPE YOU APPRECIATE OUR WORK, BECAUSE.",
+        "Translation": "\uADF8\uB7EC\uB2C8 \uC6B0\uB9AC \uB178\uB825\uC744[BR]\uBD80\uB514 \uC54C\uC544\uC8FC\uC168\uC73C\uBA74 \uC88B\uACA0\uC5B4, \uC65C\uB0D0\uD558\uBA74...",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 24,
+        "SourceText": "THEN THEY FOUND OUT AND WERE SO DISAPPOINTED IN ME. I BETRAYED THEIR TRUST",
+        "Translation": "\uADF8\uB54C \uB4E4\uD1B5\uB098\uC11C \uB2E4\uB4E4 \uC2E4\uB9DD\uD588\uC5B4.[BR]\uB0B4\uAC00 \uADF8\uBD84\uB4E4\uC758 \uC2E0\uB8B0\uB97C \uC800\uBC84\uB838\uAC70\uB4E0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 26,
+        "SourceText": "NOW IMAGINE IF SEVEN BRUCE WAYNES PUT THEIR ECOWLAT HEADS TOGETHE HORROR THEY CAPABLE BE OF.",
+        "Translation": "\uC790, \uC0C1\uC0C1\uD574 \uBD10.\n\uBE0C\uB8E8\uC2A4 \uC6E8\uC778 \uC77C\uACF1 \uBA85\uC774\n\uBA38\uB9AC\uB97C \uB9DE\uB304\uB2E4\uBA74...\n\uADF8\uB4E4\uC774 \uC800\uC9C0\uB97C\n\uB054\uCC0D\uD55C \uC9D3\uC774\n\uC5BC\uB9C8\uB098 \uC5C4\uCCAD\uB0A0\uC9C0.",
+        "Status": "translated",
+        "Committed": true,
+        "Bound": true,
+        "LayoutApproved": true,
+        "EraseClean": true,
+        "LegacyEraseReviewClean": true,
+        "CleanedStateVerifierAvailable": true,
+        "CleanedStateEmpty": true,
+        "ReviewerDisagreement": false,
+        "LayoutMode": "rtdetr_parent_bubble"
+      },
+      {
+        "RegionId": 28,
+        "SourceText": "I",
+        "Translation": "\uB098",
+        "Status": "original_preserved:ocr_noise",
+        "Committed": false,
+        "Bound": false,
+        "LayoutApproved": false,
+        "EraseClean": false,
+        "LegacyEraseReviewClean": false,
+        "CleanedStateVerifierAvailable": false,
+        "CleanedStateEmpty": false,
+        "ReviewerDisagreement": false,
+        "LayoutMode": null
+      }
+    ]
+  }
+}

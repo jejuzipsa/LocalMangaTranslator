@@ -1,0 +1,1085 @@
+{
+  "Schema": "pipeline-v2-laya-shadow-v2",
+  "SourceFile": "The Flash (2016-) 033-010.jpg",
+  "Track": "LayaExperimental",
+  "Mode": "Advisory",
+  "Runtime": "python \u00B7 Python 3.12.10 \u00B7 laya 0.3.5 \u00B7 typed-decisions \u00B7 cpu",
+  "Available": true,
+  "Error": null,
+  "Decisions": [
+    {
+      "Kind": "ownership",
+      "RegionId": 0,
+      "RuleDecision": "RG002",
+      "LayaDecision": "RG002",
+      "Confidence": 0.0602,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG002",
+            "BubbleRegionId": "RG001",
+            "DetectorScore": 0.9223902,
+            "BlockCoverage": 0.9935064935064933,
+            "CenterInside": true,
+            "CenterDistance": 1.8633899812497061,
+            "Affinity": 7.431494305338194
+          }
+        ],
+        "RegionId": "RG001",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 1,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6252,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "ATATOR",
+        "corrected_text": "VASSATOR!",
+        "ocr_confidence": 0.9375276565551758,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 3481,
+          "Y": 190.5,
+          "W": 423,
+          "H": 199
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 2,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.566,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "MURDER. MACHINE!",
+        "corrected_text": "MURDER\nMACHINE!",
+        "ocr_confidence": 0.9417997598648071,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 75,
+          "Y": 549,
+          "W": 568,
+          "H": 440
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 3,
+      "RuleDecision": "RG008",
+      "LayaDecision": "RG008",
+      "Confidence": 0.0662,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG008",
+            "BubbleRegionId": "RG005",
+            "DetectorScore": 0.84857523,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.3017082793178727,
+            "Affinity": 7.421684200647937
+          }
+        ],
+        "RegionId": "RG005",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 4,
+      "RuleDecision": "RG009",
+      "LayaDecision": "RG009",
+      "Confidence": 0.1356,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG009",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.7196655,
+            "BlockCoverage": 0.9842105263157894,
+            "CenterInside": true,
+            "CenterDistance": 7.440504761849759,
+            "Affinity": 7.281793859411334
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 5,
+      "RuleDecision": "RG010",
+      "LayaDecision": "RG010",
+      "Confidence": 0.1424,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG010",
+            "BubbleRegionId": "RG007",
+            "DetectorScore": 0.95497197,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 1.7716909687889515,
+            "Affinity": 7.473942602626249
+          }
+        ],
+        "RegionId": "RG007",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 6,
+      "RuleDecision": "RG009",
+      "LayaDecision": "RG009",
+      "Confidence": 0.0166,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG009",
+            "BubbleRegionId": "RG006",
+            "DetectorScore": 0.7196655,
+            "BlockCoverage": 0.9652173913043498,
+            "CenterInside": true,
+            "CenterDistance": 94.6813368914673,
+            "Affinity": 7.03133965510634
+          }
+        ],
+        "RegionId": "RG006",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 7,
+      "RuleDecision": "RG012",
+      "LayaDecision": "RG012",
+      "Confidence": 0.16,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG012",
+            "BubbleRegionId": "RG011",
+            "DetectorScore": 0.915625,
+            "BlockCoverage": 0.983511154219205,
+            "CenterInside": true,
+            "CenterDistance": 0.9166666666665151,
+            "Affinity": 7.390023771622558
+          }
+        ],
+        "RegionId": "RG011",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 8,
+      "RuleDecision": "RG015",
+      "LayaDecision": "RG015",
+      "Confidence": 0.088,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG015",
+            "BubbleRegionId": "RG013",
+            "DetectorScore": 0.748544,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 3.640054944640259,
+            "Affinity": 7.366991878979433
+          }
+        ],
+        "RegionId": "RG013",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 9,
+      "RuleDecision": "RG017",
+      "LayaDecision": "RG017",
+      "Confidence": 0.1421,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG017",
+            "BubbleRegionId": "RG016",
+            "DetectorScore": 0.9109049,
+            "BlockCoverage": 0.30818198381973677,
+            "CenterInside": true,
+            "CenterDistance": 91.10193466661397,
+            "Affinity": 4.505976508114909
+          }
+        ],
+        "RegionId": "RG016",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 10,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6118,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "SX",
+        "corrected_text": "AND SET...",
+        "ocr_confidence": 0.6126686930656433,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1452,
+          "Y": 1880.6666666666667,
+          "W": 101.33333333333326,
+          "H": 52.33333333333326
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 11,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.6192,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "a",
+        "corrected_text": "a",
+        "ocr_confidence": 0.9726200699806213,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 768.3333333333334,
+          "Y": 2017.6666666666667,
+          "W": 45.33333333333326,
+          "H": 33.99999999999977
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 12,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.5849,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "TINK",
+        "corrected_text": "THUNK",
+        "ocr_confidence": 0.7329254150390625,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 108.66666666666667,
+          "Y": 2035.6666666666667,
+          "W": 227,
+          "H": 142.66666666666674
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 13,
+      "RuleDecision": "UNBOUND",
+      "LayaDecision": "RG017",
+      "Confidence": 0.0922,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG017",
+            "BubbleRegionId": "RG016",
+            "DetectorScore": 0.9109049,
+            "BlockCoverage": 0.27114963059186464,
+            "CenterInside": false,
+            "CenterDistance": 225.5813477316875,
+            "Affinity": 1.088888269073273
+          }
+        ],
+        "RegionId": null,
+        "SecondaryOcrAgreement": null
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 14,
+      "RuleDecision": "RG019",
+      "LayaDecision": "RG019",
+      "Confidence": 0.1073,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG019",
+            "BubbleRegionId": "RG018",
+            "DetectorScore": 0.88627255,
+            "BlockCoverage": 1,
+            "CenterInside": true,
+            "CenterDistance": 3.7453675090409617,
+            "Affinity": 7.435645539796524
+          }
+        ],
+        "RegionId": "RG018",
+        "SecondaryOcrAgreement": "agree"
+      }
+    },
+    {
+      "Kind": "detector_retry",
+      "RegionId": 15,
+      "RuleDecision": "false",
+      "LayaDecision": "false",
+      "Confidence": 0.588,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_detector_retry",
+        "source_text": "G",
+        "corrected_text": "G",
+        "ocr_confidence": 0.3614968955516815,
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "block": {
+          "X": 1118,
+          "Y": 2506,
+          "W": 90,
+          "H": 57
+        },
+        "detector_textbubble_candidates": 0
+      }
+    },
+    {
+      "Kind": "ownership",
+      "RegionId": 16,
+      "RuleDecision": "RG021",
+      "LayaDecision": "RG021",
+      "Confidence": 0.1762,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "candidates": [
+          {
+            "TextRegionId": "RG021",
+            "BubbleRegionId": "RG020",
+            "DetectorScore": 0.9240194,
+            "BlockCoverage": 0.9111528822055142,
+            "CenterInside": true,
+            "CenterDistance": 4.6097722286464435,
+            "Affinity": 7.097401682517306
+          }
+        ],
+        "RegionId": "RG020",
+        "SecondaryOcrAgreement": "disagree"
+      }
+    },
+    {
+      "Kind": "duplicate",
+      "RegionId": 4,
+      "RuleDecision": "R4",
+      "LayaDecision": "R6",
+      "Confidence": 0.0049,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_duplicate_arbitration",
+        "stage": "v2_physical_container",
+        "physical_owner_key": "bubble:RG006",
+        "candidates": [
+          {
+            "option": "R4",
+            "Id": 4,
+            "source": "JOUR TECHNOLOGY IMPRESSIVE, IS ET AND",
+            "corrected": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.9829434156417847,
+            "detector_text_region": "RG009",
+            "TextRegionIds": [
+              "RG009"
+            ],
+            "BubbleRegionId": "RG006",
+            "LayoutBounds": {
+              "Top": 1715,
+              "Bottom": 1897,
+              "Left": 1376,
+              "Right": 1639,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": 91123.1215569487
+          },
+          {
+            "option": "R6",
+            "Id": 6,
+            "source": "SIC",
+            "corrected": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+            "secondary_agreement": "disagree",
+            "ocr_confidence": 0.46182867884635925,
+            "detector_text_region": "RG009",
+            "TextRegionIds": [
+              "RG009"
+            ],
+            "BubbleRegionId": "RG006",
+            "LayoutBounds": {
+              "Top": 1715,
+              "Bottom": 1897,
+              "Left": 1376,
+              "Right": 1639,
+              "Location": {},
+              "Size": {},
+              "TopLeft": {},
+              "BottomRight": {}
+            },
+            "classic_keep_score": -27017.383753483664
+          }
+        ]
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 0,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.05,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "secondary_ocr": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "primary_confidence": 0.988093376159668,
+        "current_agreement": "agree",
+        "corrected_text": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 3,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0432,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "THERE WASN\u0027T A VERSION you OF WORLD, MY ON STEEL.",
+        "secondary_ocr": "...THERE WASN\u0027T A UERSION OF YOU ON MY VORLD, STEEL.",
+        "primary_confidence": 0.9577913284301758,
+        "current_agreement": "disagree",
+        "corrected_text": "...THERE WASN\u0027T A VERSION OF YOU ON MY WORLD, STEEL."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 4,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0082,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "JOUR TECHNOLOGY IMPRESSIVE, IS ET AND",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "primary_confidence": 0.9829434156417847,
+        "current_agreement": "disagree",
+        "corrected_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 5,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0503,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "CARE I DON\u0027T WORLD YOU\u0027RE WHAT WILL FROM, HAMMER MY KNOCK BACK THERE!",
+        "secondary_ocr": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "primary_confidence": 0.9975733757019043,
+        "current_agreement": "disagree",
+        "corrected_text": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 6,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0142,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "SIC",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "primary_confidence": 0.46182867884635925,
+        "current_agreement": "disagree",
+        "corrected_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 7,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0319,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "I\u0027LL PRESENI JHE COSMIC TUNING FORK TO THE MASTER...",
+        "secondary_ocr": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "primary_confidence": 0.916223406791687,
+        "current_agreement": "disagree",
+        "corrected_text": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER..."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 8,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0353,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "you JUST WERE NOT IMPORTANT ENOUGHI.",
+        "secondary_ocr": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "primary_confidence": 0.9694517254829407,
+        "current_agreement": "disagree",
+        "corrected_text": "YOU WERE JUST NOT IMPORTANT ENOUGH."
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 9,
+      "RuleDecision": "disagree",
+      "LayaDecision": "disagree",
+      "Confidence": 0.0253,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "D2 A HAT DOOMSDAY VIRUS MIND, VIRUS INFECTED YOUR THAT DEVASTATOR, OR TOR, OR DO YOU AVE A PLAN TO BRING THAT SMIC FORK COSMIC TUNING FO BARBATOS? wro",
+        "secondary_ocr": "HAS THAT DOCMEDIATION\nWIRLE NIFECTED YOUR MIND,\nDEVATATIOR OR DO",
+        "primary_confidence": 0.8279770016670227,
+        "current_agreement": "disagree",
+        "corrected_text": "HAS THAT DOOMSDAY\nVIRUS INFECTED YOUR MIND,\nDEVSTATOR, OR DO YOU\nHAVE A PLAN TO BRING\nTHAT COSMIC TUNING\nFORK TO BARBATOS?"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 14,
+      "RuleDecision": "agree",
+      "LayaDecision": "agree",
+      "Confidence": 0.3005,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "secondary_ocr": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "primary_confidence": 0.9979398846626282,
+        "current_agreement": "agree",
+        "corrected_text": "HE\u0027S JUST AS FAST AS SUPERMAN!"
+      }
+    },
+    {
+      "Kind": "ocr_consensus",
+      "RegionId": 16,
+      "RuleDecision": "disagree",
+      "LayaDecision": "agree",
+      "Confidence": 0.0427,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_ocr_consensus",
+        "primary_ocr": "YOU WILL LEARN NOT TO DOUST ME, BATMAN WHO LAUGHS.",
+        "secondary_ocr": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "primary_confidence": 0.9718751311302185,
+        "current_agreement": "disagree",
+        "corrected_text": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS."
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 1,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5751,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "ATATOR",
+        "corrected_text": "VASSATOR!",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.9375276565551758,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 2,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5037,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "MURDER. MACHINE!",
+        "corrected_text": "MURDER\nMACHINE!",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.9417997598648071,
+        "type": "other"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5167,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "THERE WASN\u0027T A VERSION you OF WORLD, MY ON STEEL.",
+        "corrected_text": "...THERE WASN\u0027T A VERSION OF YOU ON MY WORLD, STEEL.",
+        "secondary_ocr": "...THERE WASN\u0027T A UERSION OF YOU ON MY VORLD, STEEL.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9577913284301758,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5694,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "JOUR TECHNOLOGY IMPRESSIVE, IS ET AND",
+        "corrected_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9829434156417847,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6233,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "CARE I DON\u0027T WORLD YOU\u0027RE WHAT WILL FROM, HAMMER MY KNOCK BACK THERE!",
+        "corrected_text": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "secondary_ocr": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9975733757019043,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5464,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SIC",
+        "corrected_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.46182867884635925,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5134,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "I\u0027LL PRESENI JHE COSMIC TUNING FORK TO THE MASTER...",
+        "corrected_text": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "secondary_ocr": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.916223406791687,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5614,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "you JUST WERE NOT IMPORTANT ENOUGHI.",
+        "corrected_text": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "secondary_ocr": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9694517254829407,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5484,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "D2 A HAT DOOMSDAY VIRUS MIND, VIRUS INFECTED YOUR THAT DEVASTATOR, OR TOR, OR DO YOU AVE A PLAN TO BRING THAT SMIC FORK COSMIC TUNING FO BARBATOS? wro",
+        "corrected_text": "HAS THAT DOOMSDAY\nVIRUS INFECTED YOUR MIND,\nDEVSTATOR, OR DO YOU\nHAVE A PLAN TO BRING\nTHAT COSMIC TUNING\nFORK TO BARBATOS?",
+        "secondary_ocr": "HAS THAT DOCMEDIATION\nWIRLE NIFECTED YOUR MIND,\nDEVATATIOR OR DO",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.8279770016670227,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6362,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "SX",
+        "corrected_text": "AND SET...",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.6126686930656433,
+        "type": "caption"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 12,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.532,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "TINK",
+        "corrected_text": "THUNK",
+        "secondary_ocr": null,
+        "secondary_agreement": null,
+        "ocr_confidence": 0.7329254150390625,
+        "type": "sfx"
+      }
+    },
+    {
+      "Kind": "vision_correction",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5011,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_vision_correction",
+        "source_text": "YOU WILL LEARN NOT TO DOUST ME, BATMAN WHO LAUGHS.",
+        "corrected_text": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "secondary_ocr": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "secondary_agreement": "disagree",
+        "ocr_confidence": 0.9718751311302185,
+        "type": "dialogue"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 0,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.513,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "corrected_source_text": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "korean_translation": "\uC774\uAC74 \uB124 \uAC70\uC57C. [BR]\uC800\uB188\uB4E4 \uC911 \uD558\uB098\uB294 \uC774\uBBF8 \uCC98\uB9AC\uD574 \uB480\uC73C\uB2C8\uAE4C.",
+        "type": "dialogue",
+        "secondary_ocr": "HE\u0027S ALL YOURS, I\u0027VE ALREADY KILLED ONE OF THOSE.",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 3,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5411,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "THERE WASN\u0027T A VERSION you OF WORLD, MY ON STEEL.",
+        "corrected_source_text": "...THERE WASN\u0027T A VERSION OF YOU ON MY WORLD, STEEL.",
+        "korean_translation": "...\uB0B4 \uC138\uC0C1\uC5D0 \uB108 \uAC19\uC740 \uAC74[BR]\uC874\uC7AC\uD55C \uC801 \uC5C6\uC5B4, \uC2A4\uD2F8.",
+        "type": "dialogue",
+        "secondary_ocr": "...THERE WASN\u0027T A UERSION OF YOU ON MY VORLD, STEEL.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 4,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5475,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "JOUR TECHNOLOGY IMPRESSIVE, IS ET AND",
+        "corrected_source_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "korean_translation": "\uAE30\uC220\uB825\uC740 \uB300\uB2E8\uD558\uAD70, \uD558\uC9C0\uB9CC...",
+        "type": "dialogue",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 5,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6092,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "CARE I DON\u0027T WORLD YOU\u0027RE WHAT WILL FROM, HAMMER MY KNOCK BACK THERE!",
+        "corrected_source_text": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "korean_translation": "\uB124\uAC00 \uC5B4\uB290 \uC138\uACC4\uC5D0\uC11C \uC654\uB4E0 \uC0C1\uAD00\uC5C6\uC5B4, \uB0B4 \uB9DD\uCE58\uB85C \uB124 \uACE0\uD5A5\uAE4C\uC9C0 \uB0A0\uB824\uBC84\uB824 \uC8FC\uB9C8!",
+        "type": "dialogue",
+        "secondary_ocr": "I DON\u0027T CARE WHAT WORLD YOU\u0027RE FROM, MY HAMMER WILL KNOCK YOU BACK THERE!",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 6,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5949,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SIC",
+        "corrected_source_text": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "korean_translation": "\uAE30\uC220\uC740 \uD6CC\uB96D\uD558\uAD70, \uD558\uC9C0\uB9CC...",
+        "type": "dialogue",
+        "secondary_ocr": "YOUR TECHNOLOGY IS IMPRESSIVE, AND YET...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 7,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5998,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "I\u0027LL PRESENI JHE COSMIC TUNING FORK TO THE MASTER...",
+        "corrected_source_text": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "korean_translation": "\uC6B0\uC8FC \uC870\uC728\uC6A9 \uD3EC\uD06C\uB97C[BR]\uB9C8\uC2A4\uD130\uC5D0\uAC8C \uBC14\uCE58\uACA0\uC18C...",
+        "type": "dialogue",
+        "secondary_ocr": "I\u0027LL PRESENT THE COSMIC TUNING FORK TO THE MASTER...",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 8,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.6048,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "you JUST WERE NOT IMPORTANT ENOUGHI.",
+        "corrected_source_text": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "korean_translation": "\uB124\uAC00 \uBCC4\uB85C \uC911\uC694\uD558\uC9C0 \uC54A\uC558\uC744 \uBFD0\uC774\uC57C.",
+        "type": "dialogue",
+        "secondary_ocr": "YOU WERE JUST NOT IMPORTANT ENOUGH.",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 9,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.5319,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "D2 A HAT DOOMSDAY VIRUS MIND, VIRUS INFECTED YOUR THAT DEVASTATOR, OR TOR, OR DO YOU AVE A PLAN TO BRING THAT SMIC FORK COSMIC TUNING FO BARBATOS? wro",
+        "corrected_source_text": "HAS THAT DOOMSDAY\nVIRUS INFECTED YOUR MIND,\nDEVSTATOR, OR DO YOU\nHAVE A PLAN TO BRING\nTHAT COSMIC TUNING\nFORK TO BARBATOS?",
+        "korean_translation": "\uADF8 \uC885\uB9D0\uC758 \uBC14\uC774\uB7EC\uC2A4\uAC00[BR]\uB124 \uC815\uC2E0\uC744 \uC880\uBA39\uC5C8\uB098, \uB370\uBE0C\uC2A4\uD14C\uC774\uD130?[BR]\uC544\uB2C8\uBA74 \uADF8 \uC6B0\uC8FC \uC870\uC728[BR]\uD3EC\uD06C\uB97C \uBC14\uB974\uBC14\uD1A0\uC2A4\uB85C[BR]\uAC00\uC838\uC62C \uACC4\uD68D\uC774\uB77C\uB3C4[BR]\uC788\uB294 \uAC74\uAC00?",
+        "type": "dialogue",
+        "secondary_ocr": "HAS THAT DOCMEDIATION\nWIRLE NIFECTED YOUR MIND,\nDEVATATIOR OR DO",
+        "secondary_agreement": "disagree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 10,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.6847,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "SX",
+        "corrected_source_text": "AND SET...",
+        "korean_translation": "\uADF8\uB9AC\uACE0 \uC124\uC815...",
+        "type": "caption",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 11,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5977,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "a",
+        "corrected_source_text": "a",
+        "korean_translation": "\uC544",
+        "type": "dialogue",
+        "secondary_ocr": null,
+        "secondary_agreement": null
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 14,
+      "RuleDecision": "accept",
+      "LayaDecision": "reject",
+      "Confidence": 0.5221,
+      "Match": false,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "corrected_source_text": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "korean_translation": "\uC800 \uB140\uC11D\uB3C4[BR]\uC288\uD37C\uB9E8\uB9CC\uD07C\uC774\uB098 \uBE68\uB77C!",
+        "type": "dialogue",
+        "secondary_ocr": "HE\u0027S JUST AS FAST AS SUPERMAN!",
+        "secondary_agreement": "agree"
+      }
+    },
+    {
+      "Kind": "translation_consistency",
+      "RegionId": 16,
+      "RuleDecision": "accept",
+      "LayaDecision": "accept",
+      "Confidence": 0.629,
+      "Match": true,
+      "Status": "shadow_only",
+      "Evidence": {
+        "task": "comic_translation_consistency",
+        "source_text": "YOU WILL LEARN NOT TO DOUST ME, BATMAN WHO LAUGHS.",
+        "corrected_source_text": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "korean_translation": "\uB098\uB97C \uC758\uC2EC\uD558\uC9C0 \uC54A\uAC8C \uB420 \uAC70\uB2E4,[BR]\uC6C3\uB294 \uBC30\uD2B8\uB9E8.",
+        "type": "dialogue",
+        "secondary_ocr": "YOU WILL LEARN NOT TO DOUBT ME, BATMAN WHO LAUGHS.",
+        "secondary_agreement": "disagree"
+      }
+    }
+  ]
+}
