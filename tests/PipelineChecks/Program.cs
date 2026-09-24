@@ -3294,6 +3294,38 @@ try
             [bubbleA, textA, bubbleB, textB],
             [detectorOwnedCandidate]));
 
+    var dontWorryRenderable =
+        lostContainerHal with
+        {
+            CorrectedText =
+                "DON'T WORRY, HAL...",
+            Type =
+                "dialogue",
+            Render =
+                true
+        };
+
+    Check("V2 0052 accepts standalone Korean prohibitive 마 for DON'T",
+        TranslationRefinementService.IsUsableTranslation(
+            dontWorryRenderable,
+            "걱정 마, 할..."));
+
+    Check("V2 0052 still rejects a DON'T translation with no negative meaning",
+        !TranslationRefinementService.IsUsableTranslation(
+            dontWorryRenderable,
+            "걱정해, 할..."));
+
+    Check("V2 0052 does not treat 마 inside an ordinary noun as negation",
+        !TranslationRefinementService.IsUsableTranslation(
+            dontWorryRenderable,
+            "마법이야, 할..."));
+
+    Check("V2 0052 exposes the validator rejection reason",
+        TranslationRefinementService.GetTranslationValidationFailureReason(
+            dontWorryRenderable,
+            "걱정해, 할...") ==
+            "explicit_negation_missing");
+
     var greenWarningText =
         "WARNING! INTERDIMENSIONAL ENERGY UNKNOWN!";
 

@@ -4367,3 +4367,30 @@ Intentionally not changed:
 - 0049 Green Lantern sign recovery.
 - Laya mutation remains disabled.
 - no RT-DETR, erase, cleaned-state, background, or layout threshold changed.
+
+============================================================
+0052 - 번역 단계의 한국어 금지형 '마' 누락 수정 / 검증 실패 사유 가시화
+============================================================
+
+- 0051 실주행 결과에서 page015의 "DON'T WORRY, HAL..."는 OCR/말풍선 연결까지는 정상이고,
+  최종 번역 단계 진입 시점에는 Render=true였지만 번역 완료 뒤 Render=false로 탈락했다.
+- 0051 결과는 0050과 15페이지 최종 이미지 SHA가 전부 동일했고, 따라서 0051의 lost-container
+  recovery만으로는 실제 탈락 지점을 건드리지 못했다.
+- TranslationRefinementService의 부정 의미 검증에서 영어 DON'T를 자연스럽게 옮긴
+  "걱정 마"의 독립 토큰 "마"를 기존 cue 목록이 인정하지 못하는 구멍을 수정했다.
+- 독립된 "마"만 부정 cue로 인정하도록 Unicode letter/number 경계 정규식을 사용한다.
+  "마법"처럼 단어 내부의 '마'는 인정하지 않아 기존 안전장치를 느슨하게 만들지 않는다.
+- IsUsableTranslation의 내부 판정을 GetTranslationValidationFailureReason으로 분리해
+  empty_translation / placeholder / empty_source / explicit_negation_missing / missing_hangul /
+  unchanged_source / too_much_latin 사유를 식별할 수 있게 했다.
+- 1차 번역, repair 재시도, Vision draft fallback이 검증에서 거부될 때 작업 로그에
+  unit id / reject reason / 후보 번역을 남긴다. 다음 실주행에서 page015가 다시 탈락하더라도
+  정확히 어느 validator에 걸렸는지 바로 확인할 수 있다.
+- 회귀 체크 추가:
+  * DON'T WORRY, HAL... -> "걱정 마, 할..." 허용
+  * 부정 의미가 없는 "걱정해, 할..." 거부
+  * "마법이야, 할..."의 단어 내부 '마'는 부정 cue로 오인하지 않음
+  * reject reason이 explicit_negation_missing으로 노출되는지 확인
+- RT-DETR geometry, OCR ownership, erase mask, layout box, Laya shadow 판단에는 변경 없음.
+- page015 실제 복구 여부는 다음 동일 회귀 테스트에서 확인한다.
+

@@ -67,9 +67,23 @@ public sealed class TranslationRefinementService
                 foreach (var item in translated)
                 {
                     var source = batch.FirstOrDefault(x => x.Id == item.Id);
-                    if (source is not null &&
-                        IsUsableTranslation(source, item.Translation))
+                    if (source is null)
+                        continue;
+
+                    var validationFailure =
+                        GetTranslationValidationFailureReason(
+                            source,
+                            item.Translation);
+
+                    if (validationFailure is null)
+                    {
                         map[item.Id] = item.Translation;
+                    }
+                    else
+                    {
+                        progress?.Report(
+                            $"번역 ID {item.Id} 1차 검증 거부 · {validationFailure} · 후보 {Compact(item.Translation)}");
+                    }
                 }
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
@@ -97,11 +111,19 @@ public sealed class TranslationRefinementService
                     var recovered = one.FirstOrDefault(x =>
                         x.Id == item.Id && !string.IsNullOrWhiteSpace(x.Translation));
 
-                    if (IsUsableTranslation(item, recovered.Translation))
+                    var retryFailure =
+                        GetTranslationValidationFailureReason(
+                            item,
+                            recovered.Translation);
+
+                    if (retryFailure is null)
                     {
                         map[item.Id] = recovered.Translation;
                         continue;
                     }
+
+                    progress?.Report(
+                        $"번역 ID {item.Id} 재시도 검증 거부 · {retryFailure} · 후보 {Compact(recovered.Translation ?? "")}");
                 }
                 catch (Exception ex) when (ex is not OperationCanceledException)
                 {
@@ -111,9 +133,12 @@ public sealed class TranslationRefinementService
                 // Vision draft도 최종 안전성 검사를 통과할 때만 fallback으로
                 // 사용한다. placeholder/부정 의미 반전 등이 그대로 최종 출력으로
                 // 새는 경우에는 해당 unit을 원문 보존으로 돌린다.
-                if (IsUsableTranslation(
+                var fallbackFailure =
+                    GetTranslationValidationFailureReason(
                         item,
-                        item.Translation))
+                        item.Translation);
+
+                if (fallbackFailure is null)
                 {
                     map[item.Id] =
                         item.Translation;
@@ -135,7 +160,7 @@ public sealed class TranslationRefinementService
                     }
 
                     progress?.Report(
-                        $"번역 ID {item.Id} 검증 실패 · 안전하게 원문 유지");
+                        $"번역 ID {item.Id} 최종 검증 실패 · {fallbackFailure} · 안전하게 원문 유지");
                 }
             }
 
@@ -353,22 +378,29 @@ INPUT:
     public static bool IsUsableTranslation(
         VisionTranslation source,
         string? translation)
+        => GetTranslationValidationFailureReason(
+               source,
+               translation) is null;
+
+    public static string? GetTranslationValidationFailureReason(
+        VisionTranslation source,
+        string? translation)
     {
         if (string.IsNullOrWhiteSpace(translation))
-            return false;
+            return "empty_translation";
 
         string text = translation.Trim();
 
         if (ContainsDisallowedPlaceholder(
                 text))
         {
-            return false;
+            return "placeholder";
         }
 
         if (!HasMeaningfulSource(
                 source.CorrectedText))
         {
-            return false;
+            return "empty_source";
         }
 
         if (HasExplicitEnglishNegation(
@@ -376,7 +408,7 @@ INPUT:
             !HasKoreanNegationCue(
                 text))
         {
-            return false;
+            return "explicit_negation_missing";
         }
 
         bool sourceUsesLatin =
@@ -384,18 +416,19 @@ INPUT:
                 c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
 
         if (!sourceUsesLatin)
-            return true;
+            return null;
 
         bool hasHangul =
             text.Any(c => c is >= '\uAC00' and <= '\uD7A3');
 
-        // 영어 대사/캡션이 그대로 남는 결과를 막는다.
         if (IsRenderableType(source.Type) && !hasHangul)
-            return false;
+            return "missing_hangul";
 
         if (NormalizeComparable(text) ==
             NormalizeComparable(source.CorrectedText))
-            return false;
+        {
+            return "unchanged_source";
+        }
 
         int latin = text.Count(c =>
             c is >= 'A' and <= 'Z' or >= 'a' and <= 'z');
@@ -403,13 +436,13 @@ INPUT:
         int hangul = text.Count(c =>
             c is >= '\uAC00' and <= '\uD7A3');
 
-        // 고유명사 몇 글자는 허용하되, 결과 대부분이 영어라면 실패로 보고
-        // 개별 재시도 후 Vision 단계 번역으로 fallback한다.
         if (latin >= 4 &&
             latin > Math.Max(4, hangul * 2))
-            return false;
+        {
+            return "too_much_latin";
+        }
 
-        return true;
+        return null;
     }
 
     static bool HasMeaningfulSource(
@@ -530,10 +563,24 @@ INPUT:
     static bool HasKoreanNegationCue(
         string translation)
     {
-        string compact =
+        string spaced =
             translation
                 .Replace("[BR]", " ", StringComparison.OrdinalIgnoreCase)
-                .Replace(" ", "");
+                .Trim();
+
+        // 0052: "걱정 마", "하지 마"처럼 독립된 금지형 '마'는
+        // DON'T의 정상 번역이다. 글자/숫자 경계를 강제해 '마법' 같은
+        // 일반 단어 내부의 '마'가 부정 cue로 오인되지 않게 한다.
+        if (Regex.IsMatch(
+                spaced,
+                @"(?<![\p{L}\p{N}])마(?![\p{L}\p{N}])",
+                RegexOptions.CultureInvariant))
+        {
+            return true;
+        }
+
+        string compact =
+            spaced.Replace(" ", "");
 
         string[] cues =
         [
